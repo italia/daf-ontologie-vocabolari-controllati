@@ -1,0 +1,1428 @@
+@prefix : <http://dati.gov.it/onto/iotapit/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix to: <http://dati.gov.it/onto/to/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix ssn: <http://www.w3.org/ns/ssn/> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix sosa: <http://www.w3.org/ns/sosa/> .
+@prefix terms: <http://purl.org/dc/terms/> .
+@prefix clapit: <http://dati.gov.it/onto/clapit/> .
+@base <http://dati.gov.it/onto/iotapit/> .
+
+<http://dati.gov.it/onto/iotapit/> rdf:type owl:Ontology ;
+                                   
+                                   owl:versionInfo "Versione 0.6 - 04 Luglio 2017"^^xsd:dateTime ;
+                                   
+                                   terms:issued "2017-05-15"@en ;
+                                   
+                                   dc:creator "Agency for Digital Italy - AgID"@en ,
+                                              "Institute of Cognitive Sciences and Technologies of the Italian Research Council (CNR) - Semantic Technology Laboratory (STLab)"@en ,
+                                              "Italian Digital Transformation Team"@en ;
+                                   
+                                   rdfs:comment "This is the ontology used to represent IoT events. It can be used to model temporal series and measures of sensors of different type. Currently the ontology is specialized for modelling traffic flows."@en ;
+                                   
+                                   owl:versionInfo "Version 0.6 - July 04 2017"@en ;
+                                   
+                                   dc:creator "Agenzia per l'Italia Digitale - AgID"@it ,
+                                              "Istituto di Scienze e Tecnologie della Cognizione del CNR - Semantic Technology Lab (STLab)"@it ;
+                                   
+                                   rdfs:comment "Questa è l'ontologia di eventi IoT. Essa può essere utilizzata per esempio per rappresentare serie temporali e misure di sensoristica di vario tipo. Attualmente l'ontologia include classi specializzate per la modellazione di flussi di traffico."@it ;
+                                   
+                                   dc:creator "Team per la Trasformazione Digitale"@it ;
+                                   
+                                   rdfs:isDefinedBy <http://dati.gov.it/onto/iotap> ;
+                                   
+                                   prov:wasDerivedFrom <http://dati.gov.it/onto/iotapit/0.5> ;
+                                   
+                                   owl:versionIRI <http://dati.gov.it/onto/iotapit/0.6> .
+
+
+#################################################################
+#
+#    Annotation properties
+#
+#################################################################
+
+
+###  http://dati.gov.it/onto/iotapit/date
+
+:date rdf:type owl:AnnotationProperty ;
+      
+      rdfs:domain :TimeInterval .
+
+
+
+###  http://dati.gov.it/onto/iotapit/endDate
+
+:endDate rdf:type owl:AnnotationProperty ;
+         
+         rdfs:domain :TimeInterval .
+
+
+
+###  http://dati.gov.it/onto/iotapit/startDate
+
+:startDate rdf:type owl:AnnotationProperty ;
+           
+           rdfs:domain :TimeInterval .
+
+
+
+###  http://purl.org/dc/elements/1.1/creator
+
+dc:creator rdf:type owl:AnnotationProperty .
+
+
+
+###  http://www.w3.org/ns/prov#wasDerivedFrom
+
+prov:wasDerivedFrom rdf:type owl:AnnotationProperty .
+
+
+
+
+
+#################################################################
+#
+#    Datatypes
+#
+#################################################################
+
+
+###  http://dati.gov.it/onto/iotapit/TimeInterval
+
+:TimeInterval rdf:type rdfs:Datatype .
+
+
+
+
+
+#################################################################
+#
+#    Object Properties
+#
+#################################################################
+
+
+###  http://dati.gov.it/onto/iotapit/atTime
+
+:atTime rdf:type owl:ObjectProperty ;
+        
+        rdfs:label "at time"@en ,
+                   "al tempo"@it ;
+        
+        rdfs:comment "Property that links an observation to the time interval in which is performed."@en ;
+        
+        owl:versionInfo "stable"@en ;
+        
+        rdfs:comment "Proprietà che lega un'osservazione all'intervallo temporale in cui è condotta."@it ;
+        
+        owl:versionInfo "stabile"@it ;
+        
+        rdfs:isDefinedBy <http://dati.gov.it/onto/iotapit/> ;
+        
+        rdfs:domain :Observation ;
+        
+        rdfs:range :TimeInterval .
+
+
+
+###  http://dati.gov.it/onto/iotapit/consistsOf
+
+:consistsOf rdf:type owl:ObjectProperty ;
+            
+            rdfs:label "consists of"@en ,
+                       "consiste di"@it ;
+            
+            rdfs:comment "Property that links a collection of observations with its observations."@en ;
+            
+            owl:versionInfo "stable"@en ;
+            
+            rdfs:comment "Proprietà che collega una collezione di osservazioni con le sue osservazioni."@it ;
+            
+            owl:versionInfo "stabile"@it ;
+            
+            rdfs:isDefinedBy <http://dati.gov.it/onto/iotapit/> ;
+            
+            rdfs:range :Observation ;
+            
+            rdfs:domain :ObservationCollection ;
+            
+            owl:inverseOf :isPartOf .
+
+
+
+###  http://dati.gov.it/onto/iotapit/generationTime
+
+:generationTime rdf:type owl:ObjectProperty ;
+                
+                rdfs:label "generation time"@en ,
+                           "tempo di generazione"@it ;
+                
+                rdfs:comment "This property is a subproperty of atTime and defines the generation time of the observation."@en ;
+                
+                owl:versionInfo "stable"@en ;
+                
+                rdfs:comment "Questa proprietà è sottoproprietà di atTime e consente di modellare il tempo di generazione della osservazione."@it ;
+                
+                owl:versionInfo "stabile"@it ;
+                
+                rdfs:isDefinedBy <http://dati.gov.it/onto/iotapit/> ;
+                
+                rdfs:domain :Observation ;
+                
+                rdfs:range :TimeInterval ;
+                
+                rdfs:subPropertyOf :atTime .
+
+
+
+###  http://dati.gov.it/onto/iotapit/hasAssociatedGeometry
+
+:hasAssociatedGeometry rdf:type owl:ObjectProperty ;
+                       
+                       rdfs:label "has associated geometry"@en ,
+                                  "ha geometria associata"@it ;
+                       
+                       rdfs:comment "The property links the Observation to its geometry that is described by a type (point, line, polygon, etc.), coordinates and a coordinate reference system."@en ;
+                       
+                       owl:versionInfo "stable"@en ;
+                       
+                       rdfs:comment "Proprietà che lega un'osservazione alla sua geometria descritta in termini di tipo (linea, punto, poligono, ecc.), coordinate geografiche e sistema di riferimento delle coordinate."@it ;
+                       
+                       owl:versionInfo "stabile"@it ;
+                       
+                       rdfs:isDefinedBy <http://dati.gov.it/onto/iotapit/> ;
+                       
+                       rdfs:range :Geometry ;
+                       
+                       rdfs:domain :Observation .
+
+
+
+###  http://dati.gov.it/onto/iotapit/hasFeatureOfInterest
+
+:hasFeatureOfInterest rdf:type owl:ObjectProperty ;
+                      
+                      rdfs:label "has feature of interest"@en ,
+                                 "ha caratteristica di interesse"@it ;
+                      
+                      rdfs:comment "Property that links the Observation to a feature of interest."@en ;
+                      
+                      owl:versionInfo "stable"@en ;
+                      
+                      rdfs:comment "Proprietà che lega un'osservazione a una caratteristica di interesse."@it ;
+                      
+                      owl:versionInfo "stabile"@it ;
+                      
+                      rdfs:isDefinedBy <http://dati.gov.it/onto/iotapit/> ;
+                      
+                      rdfs:range :FeatureOfInterest ;
+                      
+                      rdfs:domain :Observation ;
+                      
+                      owl:inverseOf :isFeatureOfInterestFor .
+
+
+
+###  http://dati.gov.it/onto/iotapit/hasMeasurementQualityValue
+
+:hasMeasurementQualityValue rdf:type owl:ObjectProperty ;
+                            
+                            rdfs:label "has measurement quality value"@en ,
+                                       "ha valore di qualità di misurazione"@it ;
+                            
+                            rdfs:comment "Property that links the Measrurement Quality with its value."@en ;
+                            
+                            owl:versionInfo "stable"@en ;
+                            
+                            rdfs:comment "Proprietà che collega la Misurazione di qualità con il relativo valore."@it ;
+                            
+                            owl:versionInfo "stabile"@it ;
+                            
+                            rdfs:isDefinedBy <http://dati.gov.it/onto/iotapit/> ;
+                            
+                            rdfs:domain :MeasurementQuality ;
+                            
+                            rdfs:range :MeasurementQualityValue .
+
+
+
+###  http://dati.gov.it/onto/iotapit/hasMeasurementUnit
+
+:hasMeasurementUnit rdf:type owl:ObjectProperty ;
+                    
+                    rdfs:label "has measurement unit"@en ,
+                               "ha unità di misura"@it ;
+                    
+                    rdfs:comment "Property that links an ObservedValue or a MesurementCapability to its Measurement Unit"@en ;
+                    
+                    owl:versionInfo "stable"@en ;
+                    
+                    rdfs:comment "Proprietà che lega un valore osservato o un parametro di misurazione con la sua unità di misura."@it ;
+                    
+                    owl:versionInfo "stabile"@it ;
+                    
+                    rdfs:isDefinedBy <http://dati.gov.it/onto/iotapit/> ;
+                    
+                    rdfs:range :MeasurementUnit ;
+                    
+                    rdfs:domain [ rdf:type owl:Class ;
+                                  owl:unionOf ( :MeasurementQuality
+                                                :ObservationValue
+                                              )
+                                ] .
+
+
+
+###  http://dati.gov.it/onto/iotapit/hasObservationParameter
+
+:hasObservationParameter rdf:type owl:ObjectProperty ;
+                         
+                         rdfs:label "has observation parameter"@en ,
+                                    "ha parametro dell'osservazione"@it ;
+                         
+                         rdfs:comment "Property that links an observation to its parameter being observed."@en ;
+                         
+                         owl:versionInfo "stable"@en ;
+                         
+                         rdfs:comment "Proprietà che collega un'osservazione al suo parametro osservato."@it ;
+                         
+                         owl:versionInfo "stabile"@it ;
+                         
+                         rdfs:isDefinedBy <http://dati.gov.it/onto/iotapit/> ;
+                         
+                         rdfs:domain :Observation ;
+                         
+                         rdfs:range :ObservationParameter .
+
+
+
+###  http://dati.gov.it/onto/iotapit/hasObservationValue
+
+:hasObservationValue rdf:type owl:ObjectProperty ;
+                     
+                     rdfs:label "has observation value"@en ,
+                                "ha valore dell'osservazione"@it ;
+                     
+                     rdfs:comment "Property that links an Observation to its value."@en ;
+                     
+                     owl:versionInfo "stable"@en ;
+                     
+                     rdfs:comment "Proprietà che lega un'osservazione al suo valore."@it ;
+                     
+                     owl:versionInfo "stabile"@it ;
+                     
+                     rdfs:isDefinedBy <http://dati.gov.it/onto/iotapit/> ;
+                     
+                     rdfs:domain :Observation ;
+                     
+                     rdfs:range :ObservationValue ;
+                     
+                     owl:inverseOf :isObservationValueOf .
+
+
+
+###  http://dati.gov.it/onto/iotapit/hasQuality
+
+:hasQuality rdf:type owl:ObjectProperty ;
+            
+            rdfs:label "has quality"@en ,
+                       "ha qualità"@it ;
+            
+            rdfs:comment "Property that links an Observation to a number of measurement capabilities."@en ;
+            
+            owl:versionInfo "stable"@en ;
+            
+            rdfs:comment "Proprietà che lega un'osservazione a una serie di parametri di qualità."@it ;
+            
+            owl:versionInfo "stabile"@it ;
+            
+            rdfs:isDefinedBy <http://dati.gov.it/onto/iotapit/> ;
+            
+            rdfs:range :MeasurementQuality ;
+            
+            rdfs:domain :Observation .
+
+
+
+###  http://dati.gov.it/onto/iotapit/hasValueForObservationParameter
+
+:hasValueForObservationParameter rdf:type owl:ObjectProperty ;
+                                 
+                                 rdfs:label "This property links the Observation Parameter to the Observation Value."@en ,
+                                            "has value for observation parameter"@en ,
+                                            "Questa proprietà connette l'attributo (parametro) dell'osservazione a rispettivo valore dell'osservazione."@it ,
+                                            "ha valore per parametro di osservazione"@it ;
+                                 
+                                 owl:versionInfo "stable"@en ,
+                                                 "stabile"@it ;
+                                 
+                                 rdfs:isDefinedBy <http://dati.gov.it/onto/iotapit/> ;
+                                 
+                                 rdfs:domain :ObservationParameter ;
+                                 
+                                 rdfs:range :ObservationValue ;
+                                 
+                                 owl:inverseOf :isValueForObservationParameter .
+
+
+
+###  http://dati.gov.it/onto/iotapit/isFeatureOfInterestFor
+
+:isFeatureOfInterestFor rdf:type owl:ObjectProperty ;
+                        
+                        rdfs:label "is feature of interest for"@en ,
+                                   "è caratteristica di interesse per"@it ;
+                        
+                        rdfs:comment "Inverse property of has feature of interest that links a feature of interest to an observation."@en ;
+                        
+                        owl:versionInfo "stable"@en ;
+                        
+                        rdfs:comment "Proprietà inversa di ha caratteristica di interesse che lega una caratteristica di interesse a un'osservaizione."@it ;
+                        
+                        owl:versionInfo "stabile"@it ;
+                        
+                        rdfs:isDefinedBy <http://dati.gov.it/onto/iotapit/> ;
+                        
+                        rdfs:domain :FeatureOfInterest ;
+                        
+                        rdfs:range :Observation .
+
+
+
+###  http://dati.gov.it/onto/iotapit/isMeasurementQualityValueOf
+
+:isMeasurementQualityValueOf rdf:type owl:ObjectProperty ;
+                             
+                             rdfs:label "is measurement quality value of"@en ,
+                                        "è valore di qualità di misurazione di"@it ;
+                             
+                             rdfs:comment "Inverse property of has measurement quality value that links the measurement quality value to the measurment quality."@en ;
+                             
+                             owl:versionInfo "stable"@en ;
+                             
+                             rdfs:comment "Proprietà inversa che lega un valore della qualità di misurazione con la qualità di misurazione."@it ;
+                             
+                             owl:versionInfo "stabile"@it ;
+                             
+                             rdfs:isDefinedBy <http://dati.gov.it/onto/iotapit/> ;
+                             
+                             rdfs:range :MeasurementQuality ;
+                             
+                             rdfs:domain :MeasurementQualityValue ;
+                             
+                             owl:inverseOf :hasMeasurementQualityValue .
+
+
+
+###  http://dati.gov.it/onto/iotapit/isObservationParameterFor
+
+:isObservationParameterFor rdf:type owl:ObjectProperty ;
+                           
+                           rdfs:label "is observation parameter for"@en ,
+                                      "è parametro dell'osservazione per"@it ;
+                           
+                           rdfs:comment "Inverse property of hasObservationParameter that links a parameter to its related observation."@en ;
+                           
+                           owl:versionInfo "stable"@en ;
+                           
+                           rdfs:comment "Proprietà inversa di ha attributo osservato che lega un attributo osservato alla sua relativa osservazione."@it ;
+                           
+                           owl:versionInfo "stabile"@it ;
+                           
+                           rdfs:isDefinedBy <http://dati.gov.it/onto/iotapit/> ;
+                           
+                           rdfs:range :Observation ;
+                           
+                           rdfs:domain :ObservationParameter ;
+                           
+                           owl:inverseOf :hasObservationParameter .
+
+
+
+###  http://dati.gov.it/onto/iotapit/isObservationValueOf
+
+:isObservationValueOf rdf:type owl:ObjectProperty ;
+                      
+                      rdfs:label "is osbservation value of"@en ,
+                                 "è valore osservato di"@it ;
+                      
+                      rdfs:comment "Inverse property of hasObservedValue that links an ObservedValue to its related Observation."@en ;
+                      
+                      owl:versionInfo "stable"@en ;
+                      
+                      rdfs:comment "Proprietà inversa di ha valore osservato che unisce un valore osservato alla relativa osservazione."@it ;
+                      
+                      owl:versionInfo "stabile"@it ;
+                      
+                      rdfs:isDefinedBy <http://dati.gov.it/onto/iotapit/> ;
+                      
+                      rdfs:range :Observation ;
+                      
+                      rdfs:domain :ObservationValue .
+
+
+
+###  http://dati.gov.it/onto/iotapit/isPartOf
+
+:isPartOf rdf:type owl:ObjectProperty ;
+          
+          rdfs:label "is part of"@en ,
+                     "è parte di"@it ;
+          
+          rdfs:comment "Inverse property of consistsOf that links an observation to its related collection."@en ;
+          
+          owl:versionInfo "stable"@en ;
+          
+          rdfs:comment "Proprietà inversa di consiste di che lega un'osservazione alla sua relativa collezione."@it ;
+          
+          owl:versionInfo "stabile"@it ;
+          
+          rdfs:isDefinedBy <http://dati.gov.it/onto/iotapit/> ;
+          
+          rdfs:domain :Observation ;
+          
+          rdfs:range :ObservationCollection .
+
+
+
+###  http://dati.gov.it/onto/iotapit/isValueForObservationParameter
+
+:isValueForObservationParameter rdf:type owl:ObjectProperty ;
+                                
+                                rdfs:label "is value for observation parameter"@en ,
+                                           "è valore per parametro osservazione"@it ;
+                                
+                                rdfs:comment "Inverse property of has value for observation parameter that links an observation value to the  observation parameter"@en ;
+                                
+                                owl:versionInfo "stable"@en ;
+                                
+                                rdfs:comment "Proprietà inversa di ha valore per il parametro di osservazione che lega un valore dell'osservazione al parametro dell'osservazione."@it ;
+                                
+                                owl:versionInfo "stabile"@it ;
+                                
+                                rdfs:isDefinedBy <http://dati.gov.it/onto/iotapit/> ;
+                                
+                                rdfs:range :ObservationParameter ;
+                                
+                                rdfs:domain :ObservationValue .
+
+
+
+###  http://dati.gov.it/onto/iotapit/makesObservation
+
+:makesObservation rdf:type owl:ObjectProperty ;
+                  
+                  rdfs:label "makes observation"@en ,
+                             "fa osservazione"@it ;
+                  
+                  rdfs:comment "Property that links a Sensor to the Observation."@en ;
+                  
+                  owl:versionInfo "stable"@en ;
+                  
+                  rdfs:comment "Proprietà che collega un sensore all'osservazione fatta dal sensore."@it ;
+                  
+                  owl:versionInfo "stabile"@it ;
+                  
+                  rdfs:isDefinedBy <http://dati.gov.it/onto/iotapit/> ;
+                  
+                  rdfs:range :Observation ;
+                  
+                  rdfs:domain :Sensor .
+
+
+
+###  http://dati.gov.it/onto/iotapit/makesObservationCollection
+
+:makesObservationCollection rdf:type owl:ObjectProperty ;
+                            
+                            rdfs:label "makes observation collection"@en ,
+                                       "fa collezioni di osservazioni"@it ;
+                            
+                            rdfs:comment "The property links a sensor to the collection of observations that it makes."@en ;
+                            
+                            owl:versionInfo "stable"@en ;
+                            
+                            rdfs:comment "Questa proprietà collega un sensore a una collezione di osservazioni che esso fa."@it ;
+                            
+                            owl:versionInfo "stabile"@it ;
+                            
+                            rdfs:isDefinedBy <http://dati.gov.it/onto/iotapit/> ;
+                            
+                            rdfs:range :ObservationCollection ;
+                            
+                            rdfs:domain :Sensor ;
+                            
+                            owl:inverseOf :observationCollectionMadeBySensor .
+
+
+
+###  http://dati.gov.it/onto/iotapit/observationCollectionMadeBySensor
+
+:observationCollectionMadeBySensor rdf:type owl:ObjectProperty ;
+                                   
+                                   rdfs:label "observation collection made by sensor"@en ,
+                                              "collezione di osservazioni fatte da sensore"@it ;
+                                   
+                                   rdfs:comment "Inverse property of makes observation collection that links a collection of observation made by a sensor."@en ;
+                                   
+                                   owl:versionInfo "stable"@en ;
+                                   
+                                   rdfs:comment "Proprietà inversa di fa collezioni di osservazioni che unisce una collezione di osservazioni a un sensore che le produce."@it ;
+                                   
+                                   owl:versionInfo "stabile"@it ;
+                                   
+                                   rdfs:isDefinedBy <http://dati.gov.it/onto/iotapit/> ;
+                                   
+                                   rdfs:domain :ObservationCollection ;
+                                   
+                                   rdfs:range :Sensor .
+
+
+
+###  http://dati.gov.it/onto/iotapit/observationMadeBySensor
+
+:observationMadeBySensor rdf:type owl:ObjectProperty ;
+                         
+                         rdfs:label "observation made by sensor"@en ,
+                                    "osservazione fatta dal sensore"@it ;
+                         
+                         rdfs:comment "This is the inverse property of makesObservation and links an Observation to the Sensor."@en ;
+                         
+                         owl:versionInfo "stable"@en ;
+                         
+                         rdfs:comment "Questa è la proprietù inversa che lega un'osservazione al sensore."@it ;
+                         
+                         owl:versionInfo "stabile"@it ;
+                         
+                         rdfs:isDefinedBy <http://dati.gov.it/onto/iotapit/> ;
+                         
+                         rdfs:domain :Observation ;
+                         
+                         rdfs:range :Sensor ;
+                         
+                         owl:inverseOf :makesObservation .
+
+
+
+###  http://dati.gov.it/onto/iotapit/phenomenonTime
+
+:phenomenonTime rdf:type owl:ObjectProperty ;
+                
+                rdfs:label "phenomenon time"@en ,
+                           "tempo di validità"@it ;
+                
+                rdfs:comment "This property is subproperty of atTime and it is used to model the valididty time of an observation."@en ;
+                
+                owl:versionInfo "stable"@en ;
+                
+                rdfs:comment "Questa proprietà è sotto proprietà di atTime ed è utilizzata per modellare il tempo di validità dell'osservazione."@it ;
+                
+                owl:versionInfo "stabile"@it ;
+                
+                rdfs:isDefinedBy <http://dati.gov.it/onto/iotapit/> ;
+                
+                rdfs:domain :Observation ;
+                
+                rdfs:range :TimeInterval ;
+                
+                rdfs:subPropertyOf :atTime .
+
+
+
+
+
+#################################################################
+#
+#    Data properties
+#
+#################################################################
+
+
+###  http://dati.gov.it/onto/iotapit/date
+
+:date rdf:type owl:DatatypeProperty ;
+      
+      rdfs:domain :TimeInterval ;
+      
+      rdfs:range xsd:dateTime .
+
+
+
+###  http://dati.gov.it/onto/iotapit/description
+
+:description rdf:type owl:DatatypeProperty ;
+             
+             rdfs:label "description"@en ,
+                        "descrizione"@it ;
+             
+             rdfs:comment "This property is equivalent to http://purl.org/dc/terms/description as included in the alignment file. It is used in order to model the description of the Things of the Italian  IoT Applicaiton Profile."@en ;
+             
+             owl:versionInfo "stable"@en ;
+             
+             rdfs:comment "Questa proprietà è equivalente a in http://purl.org/dc/terms/description, come indicato nel file di allineamento dell'ontologia ad altre esterne del web dei dati,  ed è usata allo scopo di modellare le descrizioni delle \"cose\" del profilo applicativo italiano per IoT."@it ;
+             
+             owl:versionInfo "stabile"@it ;
+             
+             rdfs:isDefinedBy <http://dati.gov.it/onto/iotapit/> ;
+             
+             rdfs:range rdfs:Literal ;
+             
+             rdfs:domain owl:Thing .
+
+
+
+###  http://dati.gov.it/onto/iotapit/endDate
+
+:endDate rdf:type owl:DatatypeProperty ;
+         
+         rdfs:domain :TimeInterval ;
+         
+         rdfs:range xsd:dateTime .
+
+
+
+###  http://dati.gov.it/onto/iotapit/identifier
+
+:identifier rdf:type owl:DatatypeProperty ,
+                     owl:FunctionalProperty ;
+            
+            rdfs:label "identifier"@en ,
+                       "Identificaivo"@it ;
+            
+            rdfs:comment "This property is equivalent to http://purl.org/dc/terms/identifier as included in the alignment file, and it is used in order to model an identifier for the things of the Italian IoT Application profile."@en ;
+            
+            owl:versionInfo "stable"@en ;
+            
+            rdfs:comment "Questa proprietà è equivalente a http://purl.org/dc/terms/identifier, come indicato nel file di allineamento di questa ontologia ad altre del web dei dati, ed è usata al fine di modellare un identificativo per una cosa del profilo italiano applicativo per l'IoT."@it ;
+            
+            owl:versionInfo "stabile"@it ;
+            
+            rdfs:isDefinedBy <http://dati.gov.it/onto/iotapit/> ;
+            
+            rdfs:range rdfs:Literal ;
+            
+            rdfs:domain owl:Thing .
+
+
+
+###  http://dati.gov.it/onto/iotapit/issued
+
+:issued rdf:type owl:DatatypeProperty ;
+        
+        rdfs:label "time of issuance"@en ,
+                   "istante di tempo (generazione)"@it ;
+        
+        rdfs:comment "This property represents the istant of time that can coincide with the generation time or the startTime of an interval. The property is redundant and can be used directly for representing the observation generation time."@en ;
+        
+        owl:versionInfo "unstable"@en ;
+        
+        rdfs:comment "La proprietà rappresenta l'istante di tempo che può coincidere con il tempo di generazione o con la data di inizio dell'intervallo di tempo. E' una proprietà ridondante che può essere utilizzata direttamente per poter rappresentare il tempo di generazione dell'osservazione."@it ;
+        
+        owl:versionInfo "instabile"@it ;
+        
+        rdfs:isDefinedBy <http://dati.gov.it/onto/iotapit/> ;
+        
+        rdfs:range xsd:dateTime ;
+        
+        rdfs:domain owl:Thing .
+
+
+
+###  http://dati.gov.it/onto/iotapit/modified
+
+:modified rdf:type owl:DatatypeProperty ;
+          
+          rdfs:label "update time"@en ,
+                     "tempo di aggiornamento"@it ;
+          
+          rdfs:comment "This property is equivalent to http://purl.org/dc/terms/modified as indicated in the alignment file and it is used in order to model the update time of an observation."@en ;
+          
+          owl:versionInfo "unstable"@en ;
+          
+          rdfs:comment "Questa proprietà è equivalente a http://purl.org/dc/terms/modified come indicato nel file di allineamento di questa ontologia ad altre del web dei dati ed è utilizzata per modellare direttamente il tempo di modifica di un'osservazione."@it ;
+          
+          owl:versionInfo "instabile"@it ;
+          
+          rdfs:isDefinedBy <http://dati.gov.it/onto/iotapit/> ;
+          
+          rdfs:range xsd:dateTime ;
+          
+          rdfs:domain owl:Thing .
+
+
+
+###  http://dati.gov.it/onto/iotapit/prefLabel
+
+:prefLabel rdf:type owl:DatatypeProperty ;
+           
+           rdfs:label "preferred label"@en ,
+                      "etichetta principale"@it ;
+           
+           owl:versionInfo "Stable"@en ;
+           
+           rdfs:comment "This property is equivalent to http://www.w3.org/2004/02/skos/core#prefLabel as indicated in the alignment file and it is used to model the preferred label associate with the things of the Italian application profile for IoT."@en ,
+                        "Questa proprietà è equivalente a http://www.w3.org/2004/02/skos/core#prefLabel come indicato nel file di allineamento dell'ontologia ad altre esterne del web dei dati. Essa è utilizzata per modellare l'etichetta principale associata alle cose dell'ontologia IoT."@it ;
+           
+           owl:versionInfo "stabile"@it ;
+           
+           rdfs:isDefinedBy <http://dati.gov.it/onto/iotapit/> ;
+           
+           rdfs:range rdfs:Literal ;
+           
+           rdfs:domain owl:Thing .
+
+
+
+###  http://dati.gov.it/onto/iotapit/startDate
+
+:startDate rdf:type owl:DatatypeProperty ;
+           
+           rdfs:domain :TimeInterval ;
+           
+           rdfs:range xsd:dateTime .
+
+
+
+###  http://dati.gov.it/onto/iotapit/value
+
+:value rdf:type owl:DatatypeProperty ;
+       
+       rdfs:label "value"@en ,
+                  "valore"@it ;
+       
+       rdfs:comment "This property represents a value. It can be the value of the observedValue or the value of the Measurement Capability."@en ;
+       
+       owl:versionInfo "stable"@en ;
+       
+       rdfs:comment "Questa proprietà rappresenta un valore, il valore osservato e il valore di una capacità di misurazione"@it ;
+       
+       owl:versionInfo "stabile"@it ;
+       
+       rdfs:isDefinedBy <http://dati.gov.it/onto/iotapit> ;
+       
+       rdfs:range xsd:float ;
+       
+       rdfs:domain owl:Thing .
+
+
+
+
+
+#################################################################
+#
+#    Classes
+#
+#################################################################
+
+
+###  http://dati.gov.it/onto/iotapit/Accuracy
+
+:Accuracy rdf:type owl:Class ;
+          
+          rdfs:label "Accuracy"@en ,
+                     "Accuratezza"@it ;
+          
+          rdfs:subClassOf :MeasurementQuality ;
+          
+          rdfs:comment "It represents the Accuracy; that is, the maximimum difference between the indicated value and the actual measurand being monitored, whilst taking into account all possible sources of error that are relevant to the application."@en ;
+          
+          owl:versionInfo "unstable"@en ;
+          
+          rdfs:comment "Questa classe rappresenta l'Accuratezza, cioè la differenza massima tra il valore indicato e il valore effettivo monitorato, tenuto conto di tutte le possibili fonti di errore rilevanti per l'applicazione."@it ;
+          
+          owl:versionInfo "instabile"@it ;
+          
+          rdfs:isDefinedBy <http://dati.gov.it/onto/iotapit/> .
+
+
+
+###  http://dati.gov.it/onto/iotapit/FeatureOfInterest
+
+:FeatureOfInterest rdf:type owl:Class ;
+                   
+                   rdfs:label "Feature of Interest"@en ,
+                              "Caratteristica di interesse"@it ;
+                   
+                   rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                     owl:onProperty :isFeatureOfInterestFor ;
+                                     owl:allValuesFrom :Observation
+                                   ] ;
+                   
+                   rdfs:comment "It represents the Feature whose Observed Attribute is being observed by a Sensor in order to get an Observed Value. For instance, if we say that the temperature of the kitchen is 28 celsius degrees, the Feature of Interest is the kitchen."@en ;
+                   
+                   owl:versionInfo "stable"@en ;
+                   
+                   rdfs:comment "Rappresenta la caratteristica di interesse il cui attributo osservato è osservato da un sensor per ottenere un valore osservato. Per esempio, se diciamo che la temperatura della cucina è di 28 gradi celsius, la caratteristica di interesse è la cucina."@it ;
+                   
+                   owl:versionInfo "stabile"@it ;
+                   
+                   rdfs:isDefinedBy <http://dati.gov.it/onto/iotapit/> .
+
+
+
+###  http://dati.gov.it/onto/iotapit/Frequency
+
+:Frequency rdf:type owl:Class ;
+           
+           rdfs:label "Frequency"@en ,
+                      "Frequenza"@en ;
+           
+           rdfs:subClassOf :MeasurementQuality ;
+           
+           rdfs:comment "It represents the Frequency; that is, the smallest possible time between one observation and the next, under the defined conditions."@en ;
+           
+           owl:versionInfo "unstable"@en ;
+           
+           rdfs:comment "Questa classe rappresenta la frequenza ovvero il più piccolo tempo possibile tra un'osservazione e un'altra, in determinate condizioni."@it ;
+           
+           owl:versionInfo "instabile"@it ;
+           
+           rdfs:isDefinedBy <http://dati.gov.it/onto/iotapit/> .
+
+
+
+###  http://dati.gov.it/onto/iotapit/Geometry
+
+:Geometry rdf:type owl:Class ;
+          
+          rdfs:label "Geometry"@en ,
+                     "Geometria"@it ;
+          
+          rdfs:comment "This class represents a geometry. A geometry provides the means to identify a location as a point, line, polygon, etc. expressed using coordinates in some coordinate reference system. The class is defined in the italian core location application profile.. Its properties  are not defined in the OWL since in practice  geometry encodings all include already these properties. At least one of the following encodings must be used: GML or WKT."@en ;
+          
+          owl:versionInfo "stable"@en ;
+          
+          rdfs:comment "Questa classe rappresenta una geometria. La geometria è uno strumento per rappresentare un luogo come un punto, una linea un poligono, ecc. espresso utilizzando coordinate geografiche definite nell'ambito di un sistema di riferimento di coordinate geografiche. La classe è definita è definita nel profilo application italiano core location. Le sue proprietà non sono tuttavia definite nell'OWL dal momento che, in pratica, meccanismi di codifica di geometrie includono già tutte queste proprietà. Aalmeno una delle seguenti codifiche deve essere utilizzata: GML o WKT."@it ;
+          
+          owl:versionInfo "stabile"@it ;
+          
+          rdfs:isDefinedBy clapit: .
+
+
+
+###  http://dati.gov.it/onto/iotapit/Latency
+
+:Latency rdf:type owl:Class ;
+         
+         rdfs:label "Latency"@en ,
+                    "Latenza"@it ;
+         
+         rdfs:subClassOf :MeasurementQuality ;
+         
+         rdfs:comment "It represents the Latency; i.e., the time delay between the cause and the effect of some change in the system being observed"@en ;
+         
+         owl:versionInfo "unstable"@en ;
+         
+         rdfs:comment "Questa classe rappresenta la Latenza, ovvero il ritardo di tempo tra la causa e l'effetto di qualche cambiamento nel sistema osservarto."@it ;
+         
+         owl:versionInfo "instabile"@it ;
+         
+         rdfs:isDefinedBy <http://dati.gov.it/onto/iotapit/> .
+
+
+
+###  http://dati.gov.it/onto/iotapit/MeasurementQuality
+
+:MeasurementQuality rdf:type owl:Class ;
+                    
+                    rdfs:label "Measurement Quality"@en ,
+                               "Qualità di Misurazione"@it ;
+                    
+                    rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                      owl:onProperty :hasMeasurementQualityValue ;
+                                      owl:onClass :MeasurementQualityValue ;
+                                      owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger
+                                    ] ;
+                    
+                    rdfs:comment "This class represents quality parameters or measurement capabilities/qualities of an observation. Examples include Latency, Accuracy, Repetability, etc."@en ;
+                    
+                    owl:versionInfo "unstable"@en ;
+                    
+                    rdfs:comment "Questa classe rappresenta dei parametri di qualità o capacità di misurazione dell'osservazione. Esempi di parametri sono: Latenza, Accuratezza, Ripetibilità, ecc."@it ;
+                    
+                    owl:versionInfo "instabile"@it ;
+                    
+                    rdfs:isDefinedBy <http://dati.gov.it/onto/iotapit/> .
+
+
+
+###  http://dati.gov.it/onto/iotapit/MeasurementQualityValue
+
+:MeasurementQualityValue rdf:type owl:Class ;
+                         
+                         rdfs:label "Measurement Quality Value"@en ,
+                                    "Valore Qualità di Misurazione"@it ;
+                         
+                         rdfs:subClassOf :Value ,
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty :isMeasurementQualityValueOf ;
+                                           owl:someValuesFrom :MeasurementQuality
+                                         ] ;
+                         
+                         rdfs:isDefinedBy <http://dati.gov.it/onto/iotapit/> .
+
+
+
+###  http://dati.gov.it/onto/iotapit/MeasurementUnit
+
+:MeasurementUnit rdf:type owl:Class ;
+                 
+                 rdfs:label "Measurement Unit"@en ,
+                            "Unità di Misura"@it ;
+                 
+                 rdfs:comment "This class is used to model a measurement unit (e.g., meter, kilometer, gram, etc.)"@en ;
+                 
+                 owl:versionInfo "stable"@en ;
+                 
+                 rdfs:comment "Questa classe è utilizzata per rappresentare un'unità di misura (e.g., metro, chilometro, grammo, ecc.)."@it ;
+                 
+                 owl:versionInfo "stabile"@it ;
+                 
+                 rdfs:isDefinedBy <http://dati.gov.it/onto/iotapit/> .
+
+
+
+###  http://dati.gov.it/onto/iotapit/Observation
+
+:Observation rdf:type owl:Class ;
+             
+             rdfs:label "Observation"@en ,
+                        "Osservazione"@it ;
+             
+             rdfs:subClassOf [ rdf:type owl:Restriction ;
+                               owl:onProperty :hasQuality ;
+                               owl:allValuesFrom :MeasurementQuality
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :issued ;
+                               owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                               owl:onDataRange xsd:dateTime
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :modified ;
+                               owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                               owl:onDataRange xsd:dateTime
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :description ;
+                               owl:allValuesFrom rdfs:Literal
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :hasObservationParameter ;
+                               owl:someValuesFrom :ObservationParameter
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :identifier ;
+                               owl:cardinality "1"^^xsd:nonNegativeInteger
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :hasObservationValue ;
+                               owl:someValuesFrom :ObservationValue
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :phenomenonTime ;
+                               owl:onClass :TimeInterval ;
+                               owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :isPartOf ;
+                               owl:onClass :ObservationCollection ;
+                               owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :hasAssociatedGeometry ;
+                               owl:onClass :Geometry ;
+                               owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :generationTime ;
+                               owl:onClass :TimeInterval ;
+                               owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :hasFeatureOfInterest ;
+                               owl:onClass :FeatureOfInterest ;
+                               owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :observationMadeBySensor ;
+                               owl:onClass :Sensor ;
+                               owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :atTime ;
+                               owl:onClass :TimeInterval ;
+                               owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger
+                             ] ;
+             
+             rdfs:comment "Act of carrying out an Observation (which is an Event) to estimate or calculate a value of an attribute of a feature of interest."@en ;
+             
+             owl:versionInfo "stable"@en ;
+             
+             rdfs:comment "L'atto di condurre un'osservazione (che è un evento) per stimare o calcolare un valore di un attributo di una caratteristica di interesse."@it ;
+             
+             owl:versionInfo "stabile"@it ;
+             
+             rdfs:isDefinedBy <http://dati.gov.it/onto/iotapit/> .
+
+
+
+###  http://dati.gov.it/onto/iotapit/ObservationCollection
+
+:ObservationCollection rdf:type owl:Class ;
+                       
+                       rdfs:label "Observation Collection"@en ,
+                                  "Collezione di Osservazioni"@it ;
+                       
+                       rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                         owl:onProperty :consistsOf ;
+                                         owl:someValuesFrom :Observation
+                                       ] ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty :observationCollectionMadeBySensor ;
+                                         owl:onClass :Sensor ;
+                                         owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger
+                                       ] ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty :identifier ;
+                                         owl:cardinality "1"^^xsd:nonNegativeInteger
+                                       ] ;
+                       
+                       rdfs:comment "This class represents a collection of observations made by a sensor. It can also be thought of as a data stream."@en ;
+                       
+                       owl:versionInfo "unstable"@en ;
+                       
+                       rdfs:comment "Questa classe rappresenta una collezione di osservazioni fatte da un sensore. Potrebbe anche essere vista come uno stream di dati."@it ;
+                       
+                       owl:versionInfo "instabile"@it ;
+                       
+                       rdfs:isDefinedBy <http://dati.gov.it/onto/iotapit/> .
+
+
+
+###  http://dati.gov.it/onto/iotapit/ObservationParameter
+
+:ObservationParameter rdf:type owl:Class ;
+                      
+                      rdfs:label "Observation Parameter"@en ,
+                                 "Parametro dell'Osservazione"@it ;
+                      
+                      rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                        owl:onProperty :hasValueForObservationParameter ;
+                                        owl:someValuesFrom :ObservationValue
+                                      ] ,
+                                      [ rdf:type owl:Restriction ;
+                                        owl:onProperty :isObservationParameterFor ;
+                                        owl:allValuesFrom :Observation
+                                      ] ;
+                      
+                      rdfs:comment "An observation parameter (property, characteristic) of a feature of interest. For instance, if we say that the temperature of the kitchen is 28 clesius degrees, the observed attribute is temperature."@en ;
+                      
+                      owl:versionInfo "stable"@en ;
+                      
+                      rdfs:comment "Rappresenta un parametro (proprietà) dell'osservazione di una caratteristica di interesse. Per esempio, se diciamo che la temperatura della cucina è di 28 gradi celsius, la temperatura rappresenta l'attributo osservato."@it ;
+                      
+                      owl:versionInfo "stabile"@it ;
+                      
+                      rdfs:isDefinedBy <http://dati.gov.it/onto/iotapit/> .
+
+
+
+###  http://dati.gov.it/onto/iotapit/ObservationValue
+
+:ObservationValue rdf:type owl:Class ;
+                  
+                  rdfs:label "Observation Value"@en ,
+                             "Valore dell'Osservazione"@it ;
+                  
+                  rdfs:subClassOf :Value ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty :isObservationValueOf ;
+                                    owl:someValuesFrom :Observation
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty :isValueForObservationParameter ;
+                                    owl:someValuesFrom :ObservationValue
+                                  ] ;
+                  
+                  rdfs:comment "It represents the value of the observation. For instance if we say that the temperature of the kitchen is 28 celsius degrees, the observed value is 28 celsius degrees."@en ;
+                  
+                  owl:versionInfo "stable"@en ;
+                  
+                  rdfs:comment "Rappresenta il valore dell'osservazione. Per esempio se diciamo che la temperatura della cucina è di 28 gradi celsius, il valore osservato è 28 gradi celsius."@it ;
+                  
+                  owl:versionInfo "stabile"@it ;
+                  
+                  rdfs:isDefinedBy <http://dati.gov.it/onto/iotapit/> .
+
+
+
+###  http://dati.gov.it/onto/iotapit/Offset
+
+:Offset rdf:type owl:Class ;
+        
+        rdfs:label "Offset"@en ,
+                   "Compensazione"@it ;
+        
+        rdfs:subClassOf :MeasurementQuality ;
+        
+        rdfs:comment "It represents the offset error; that is, the difference between the actual output value and the specified output value under some particular set of conditions."@en ;
+        
+        owl:versionInfo "unstable"@en ;
+        
+        rdfs:comment "Questa classe rappresenta l'errore di compensazione, ovvero  la differenza tra il valore reale di uscita e il valore di uscita specificato in alcune particolari condizioni."@it ;
+        
+        owl:versionInfo "instabile"@it ;
+        
+        rdfs:isDefinedBy <http://dati.gov.it/onto/iotapit/> .
+
+
+
+###  http://dati.gov.it/onto/iotapit/Precision
+
+:Precision rdf:type owl:Class ;
+           
+           rdfs:label "Precision"@en ,
+                      "Precisione"@it ;
+           
+           rdfs:subClassOf :MeasurementQuality ;
+           
+           rdfs:comment "It represents the Precision; i.e., the  degree of reproducibility of a measurement. In other words, if exactly the same values were measured a number of times, an ideal sensor would output exactly the same value every time."@en ;
+           
+           owl:versionInfo "unstable"@en ;
+           
+           rdfs:comment "Questa classe rappresenta la Precisione, ovvero il grado di riproducibilità di una misura. In altre parole, se esattamente gli stessi valori sono stati misurati un certo numero di volte, un sensor ideale produrrebbe come output esattamente lo stesso valore ogni volta."@it ;
+           
+           owl:versionInfo "instabile"@it ;
+           
+           rdfs:isDefinedBy <http://dati.gov.it/onto/iotapit/> .
+
+
+
+###  http://dati.gov.it/onto/iotapit/Repetability
+
+:Repetability rdf:type owl:Class ;
+              
+              rdfs:label "Repetability"@en ,
+                         "Ripetibilità"@it ;
+              
+              rdfs:subClassOf :MeasurementQuality ;
+              
+              rdfs:comment "It represents the Repetability; that is, the variation in measurements taken by the sensor on the same item, under the same conditions, and in a short period of time."@en ;
+              
+              owl:versionInfo "unstable"@en ;
+              
+              rdfs:comment "Questa classe rappresenta la ripetibilità ovvero la variazione nelle misurazioni fatte da un sensor sullo stesso oggetto, alle stesse condizioni e in un lasso breve di tempo."@it ;
+              
+              owl:versionInfo "instabile"@it ;
+              
+              rdfs:isDefinedBy <http://dati.gov.it/onto/iotapit/> .
+
+
+
+###  http://dati.gov.it/onto/iotapit/RoadSegment
+
+:RoadSegment rdf:type owl:Class ;
+             
+             rdfs:label "Road Segment"@en ,
+                        "Arco Stradale"@it ;
+             
+             rdfs:subClassOf :FeatureOfInterest ;
+             
+             rdfs:comment "This class represents the Road Segment  If the ontology is used to represent IoT events in the context of real time data traffic, the class is revelant and it represents the road segment of the observation."@en ;
+             
+             owl:versionInfo "stable"@en ;
+             
+             rdfs:comment "Classe che rappresenta un arco stradale. Se l'ontologia è utilizzata per rappresentare eventi IoT nell'ambito dei dati real time sul traffico, la classe è rilevante e connota l'arco stradale dell'osservazione."@it ;
+             
+             owl:versionInfo "stabile"@it ;
+             
+             rdfs:isDefinedBy <http://dati.gov.it/onto/iotapit/> .
+
+
+
+###  http://dati.gov.it/onto/iotapit/Sensor
+
+:Sensor rdf:type owl:Class ;
+        
+        rdfs:label "Sensor"@en ,
+                   "Sensore"@it ;
+        
+        rdfs:subClassOf [ rdf:type owl:Restriction ;
+                          owl:onProperty :description ;
+                          owl:allValuesFrom rdfs:Literal
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :makesObservation ;
+                          owl:allValuesFrom :Observation
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :identifier ;
+                          owl:cardinality "1"^^xsd:nonNegativeInteger
+                        ] ;
+        
+        rdfs:comment "This class represents a sensor. A sensor is a device whose purpose is to detect and respond to events or changes in its environment. The detected information can be used and disseminated for successive elaborations."@en ;
+        
+        owl:versionInfo "stable"@en ;
+        
+        rdfs:comment "Questa classe rappresenta un sensore. Un sensore è uno strumento il cui scopo è quello di rilevare e rispondere a eventi o cambiamenti che avvengono nel proprio ambienti. L'informazione rilevata può essere  utilizzata e distribuita per successive elaborazioni."@it ;
+        
+        owl:versionInfo "stabile"@it ;
+        
+        rdfs:isDefinedBy <http://dati.gov.it/onto/iotapit/> .
+
+
+
+###  http://dati.gov.it/onto/iotapit/TimeInterval
+
+:TimeInterval rdf:type owl:Class ;
+              
+              rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                owl:onProperty :startDate ;
+                                owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                owl:onDataRange xsd:dateTime
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :date ;
+                                owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                owl:onDataRange xsd:dateTime
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :endDate ;
+                                owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                owl:onDataRange xsd:dateTime
+                              ] .
+
+
+
+###  http://dati.gov.it/onto/iotapit/TrafficFlow
+
+:TrafficFlow rdf:type owl:Class ;
+             
+             rdfs:label "Traffic Flow"@en ,
+                        "Flusso Traffico"@it ;
+             
+             rdfs:subClassOf :Observation ;
+             
+             rdfs:comment "This class represents a specific observation on the traffic flows"@en ;
+             
+             owl:versionInfo "unstable"@en ;
+             
+             rdfs:comment "Questa classe rappresenta una specifica osservazione sui flussi di traffico"@it ;
+             
+             owl:versionInfo "instabile"@it ;
+             
+             rdfs:isDefinedBy <http://dati.gov.it/onto/iotapit/> .
+
+
+
+###  http://dati.gov.it/onto/iotapit/Value
+
+:Value rdf:type owl:Class ;
+       
+       rdfs:label "Value"@en ,
+                  "Valore"@it ;
+       
+       rdfs:subClassOf [ rdf:type owl:Restriction ;
+                         owl:onProperty :value ;
+                         owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                         owl:onDataRange xsd:float
+                       ] ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :hasMeasurementUnit ;
+                         owl:onClass :MeasurementUnit ;
+                         owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger
+                       ] ;
+       
+       rdfs:comment "This class represents a value. It can be an Observation value or a Measurement Quality Value."@en ;
+       
+       owl:versionInfo "stable"@en ;
+       
+       rdfs:comment "Questa classe rappresenta un valore. Esso può essere un valore dell'osservazione oppure un valore della qualità della misurazione."@it ;
+       
+       owl:versionInfo "stabile"@it ;
+       
+       rdfs:isDefinedBy <http://dati.gov.it/onto/iotapit/> .
+
+
+
+
+
+#################################################################
+#
+#    Annotations
+#
+#################################################################
+
+
+:date rdfs:label "time instant"@en ,
+                 "istante di tempo"@it ;
+      
+      rdfs:comment "This property is used to model time instants"@en ;
+      
+      owl:versionInfo "unstable"@en ;
+      
+      rdfs:comment "Questa proprietà è utilizzata per modellare istanti di tempo"@it ;
+      
+      owl:versionInfo "instabile"@it ;
+      
+      rdfs:isDefinedBy <http://dati.gov.it/onto/iotapit/> .
+
+
+
+:startDate rdfs:label "start date"@en ,
+                      "data di inizio"@it ;
+           
+           rdfs:comment "This property indicates the start date of a time interval"@en ;
+           
+           owl:versionInfo "stable"@en ;
+           
+           rdfs:comment "Questa proprietà indica la data di inizio di un intervallo temporale."@it ;
+           
+           owl:versionInfo "stabile"@it ;
+           
+           rdfs:isDefinedBy <http://dati.gov.it/onto/iotapit/> .
+
+
+
+:endDate rdfs:label "end date"@en ,
+                    "data di fine"@it ;
+         
+         rdfs:comment "This property indicates the end date of a time interval."@en ;
+         
+         owl:versionInfo "stable"@en ;
+         
+         rdfs:comment "Questa proprietà indica la data di fine di un intervallo temporale."@it ;
+         
+         owl:versionInfo "stabile"@it ;
+         
+         rdfs:isDefinedBy <http://dati.gov.it/onto/iotapit/> .
+
+
+
+:TimeInterval rdfs:label "Time Interval"@en ,
+                         "Intervallo Temporale"@it ;
+              
+              rdfs:comment "It represents a Time Interval defined by a start date/time and an end date/time. This is defined in the Italian time ontology"@en ;
+              
+              owl:versionInfo "stable"@en ;
+              
+              rdfs:comment "Rappresenta un intervallo temporale definito da una data/tempo di inizio e data/tempo di fine. Questa è definita nell'ontologia italiana del tempo."@it ;
+              
+              owl:versionInfo "stabile"@it ;
+              
+              rdfs:isDefinedBy <http://dati.gov.it/onto/iotapit/> .
+
+
+
+
+###  Generated by the OWL API (version 3.5.1) http://owlapi.sourceforge.net
+
