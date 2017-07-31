@@ -5,7 +5,7 @@ Questo è il repository delle ontologie e dei vocabolari controllati sviluppati 
 Il repository è suddiviso in due directory:
 
   + **Ontologie**: contiene le ontologie OWL, serializzate anche in RDF/XML e RDF/Turtle, il diagramma UML delle ontologie sviluppate.
-  + **Vocabolari** controllati: contiene l'elenco dei vocabolari controllati sviluppati anche a supporto delle ontologie.
+  + **Vocabolari controllati**: contiene l'elenco dei vocabolari controllati sviluppati anche a supporto delle ontologie.
 
 Il contenuto della directory Ontologie è attualmente il seguente:
   + IoT-AP_IT: Ontologia del profilo applicativo italiano degli eventi IoT.
