@@ -1,0 +1,2725 @@
+@prefix : <http://dati.gov.it/onto/covapit#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://dati.gov.it/onto/covapit/> .
+
+<http://dati.gov.it/onto/covapit/> rdf:type owl:Ontology ;
+                                   
+                                   dct:issued "2017-07-20"^^xsd:date ;
+                                   
+                                   dct:modified "2017-08-08" ;
+                                   
+                                   dc:creator "Agency for Digital Italy - AgID"@en ,
+                                              "Institute of Cognitive Sciences and Technologies of the Italian Research Council (CNR) - Semantic Technology Laboratory (STLab)"@en ,
+                                              "Italian Digital Transformation Team"@en ;
+                                   
+                                   rdfs:comment "Questa è l'ontologia del profilo applicativo italiano sulle organizzazioni (pubbliche e private)"@en ,
+                                                "This is the ontology of the Italian application profile for Organizations (Public and Private)"@en ;
+                                   
+                                   owl:versionInfo "Version 0.2 - 08  August 2017 - added hasSubOrganization property and its inverse"@en ,
+                                                   "Versione 0.2 - 08 Agosto 2017 - aggiunta  proprietà hasSubOrganization e la sua inversa"@it ;
+                                   
+                                   rdfs:isDefinedBy <http://dati.gov.it/onto/covapit/> ;
+                                   
+                                   prov:wasDerivedFrom <http://dati.gov.it/onto/covapit/0.1> ;
+                                   
+                                   owl:versionIRI <http://dati.gov.it/onto/covapit/0.2> ;
+                                   
+                                   dct:license <https://creativecommons.org/licenses/by/4.0/> .
+
+
+#################################################################
+#
+#    Object Properties
+#
+#################################################################
+
+
+###  http://dati.gov.it/onto/covapit#actsonBehalfOf
+
+:actsonBehalfOf rdf:type owl:ObjectProperty ;
+                
+                rdfs:label "acts on behalf of"@en ,
+                           "agisce per conto di"@it ;
+                
+                rdfs:comment "This property links an agent to another agent and it is used to represent  general reporting or accountability relationships"@en ;
+                
+                owl:versionInfo "stable"@en ;
+                
+                rdfs:comment "Questa proprietà lega un agent ad un altro agente ed è utilizzata per modellare relazioni generali di responsabilità e di resoconto."@it ;
+                
+                owl:versionInfo "stabile"@it ;
+                
+                rdfs:domain :Agent ;
+                
+                rdfs:range :Agent ;
+                
+                rdfs:isDefinedBy <http://dati.gov.it/onto/covapit/> .
+
+
+
+###  http://dati.gov.it/onto/covapit#atTime
+
+:atTime rdf:type owl:ObjectProperty ;
+        
+        rdfs:label "at time"@en ,
+                   "al tempo"@it ;
+        
+        rdfs:comment "This property links all the situations represented in the ontology where a time interval is part of the situation (e.g., n-ary relationships Particpation, Membership and AddressInTime)"@en ;
+        
+        owl:versionInfo "stable"@en ;
+        
+        rdfs:comment "Questa proprietà collega tutte le situazioni rappresentate nell'ontologia dove un intervallo temporale è parte della situazione (e.g., le relazioni ennarie Partecipazione, Appartenenza e Indirizzo nel Tempo)"@it ;
+        
+        owl:versionInfo "stabile"@it ;
+        
+        rdfs:range :TimeInterval ;
+        
+        rdfs:isDefinedBy <http://dati.gov.it/onto/covapit/> ;
+        
+        rdfs:domain [ rdf:type owl:Class ;
+                      owl:unionOf ( :AddressInTime
+                                    :Membership
+                                    :Participation
+                                  )
+                    ] .
+
+
+
+###  http://dati.gov.it/onto/covapit#changedBy
+
+:changedBy rdf:type owl:ObjectProperty ;
+           
+           rdfs:label "changed by"@en ,
+                      "cambiata da"@it ;
+           
+           rdfs:comment "This property is the inverse of orginal organization and it is used to link the organization with the change event."@en ;
+           
+           owl:versionInfo "stable"@en ;
+           
+           rdfs:comment "Questa proprietà è l'inversa di organizzazione d'origine e collega un'organizzazione a un evento di cambiamento."@it ;
+           
+           owl:versionInfo "stabile"@it ;
+           
+           rdfs:range :ChangeEvent ;
+           
+           rdfs:domain :Organization ;
+           
+           rdfs:isDefinedBy <http://dati.gov.it/onto/covapit/> .
+
+
+
+###  http://dati.gov.it/onto/covapit#follows
+
+:follows rdf:type owl:ObjectProperty ;
+         
+         rdfs:label "follows"@en ,
+                    "segue"@it ;
+         
+         rdfs:comment "This property models an ordered sequence of organizations that precede and succeed each other.. In particular this property represents the organization that follows another."@en ;
+         
+         owl:versionInfo "stable"@en ;
+         
+         rdfs:comment "Questa proprietà modella una sequenza ordinata di organizzazioni that precedono o si susseguono le un con le altre.  Nello specifico questa proprietà rappresenta un'organizzazione che segue un'altra."@it ;
+         
+         owl:versionInfo "stabile"@it ;
+         
+         rdfs:range :Organization ;
+         
+         rdfs:domain :Organization ;
+         
+         rdfs:isDefinedBy <http://dati.gov.it/onto/covapit/> .
+
+
+
+###  http://dati.gov.it/onto/covapit#hasActivityType
+
+:hasActivityType rdf:type owl:ObjectProperty ;
+                 
+                 rdfs:label "has activity type"@en ,
+                            "ha tipo di attività"@it ;
+                 
+                 rdfs:comment "This property links an organization with the type of function/activities it carries out."@en ;
+                 
+                 owl:versionInfo "unstable"@en ;
+                 
+                 rdfs:comment "Questa proprietà lega un'organizzazione con il tipo di funzioni/attività svolte."@it ;
+                 
+                 owl:versionInfo "provvisoria"@it ;
+                 
+                 rdfs:range :ActivityType ;
+                 
+                 rdfs:domain :Organization ;
+                 
+                 rdfs:isDefinedBy <http://dati.gov.it/onto/covapit/> .
+
+
+
+###  http://dati.gov.it/onto/covapit#hasAddress
+
+:hasAddress rdf:type owl:ObjectProperty ;
+            
+            rdfs:label "has address"@en ,
+                       "ha indirizzo"@it ;
+            
+            rdfs:comment "This property links the organization to the addresses of its sites At least an address must be specified."@en ;
+            
+            owl:versionInfo "stable"@en ;
+            
+            rdfs:comment "Questa proprietà lega l'organizzazione agli indirizzi delle sue sedi. Almeno un indirizzo deve essere specificato (almeno quello della sede legale)."@it ;
+            
+            owl:versionInfo "stabile"@it ;
+            
+            rdfs:range :Address ;
+            
+            rdfs:domain :Organization ;
+            
+            rdfs:isDefinedBy <http://dati.gov.it/onto/covapit/> .
+
+
+
+###  http://dati.gov.it/onto/covapit#hasAddressInTime
+
+:hasAddressInTime rdf:type owl:ObjectProperty ;
+                  
+                  rdfs:label "has address in time"@en ,
+                             "ha indirizzo nel tempo"@it ;
+                  
+                  rdfs:comment "This property links the organization to the situation of its address that changes over time."@en ;
+                  
+                  owl:versionInfo "stable"@en ;
+                  
+                  rdfs:comment "Questa proprietà lega l'organizzazione con la situazione di un indicizzo della stessa che cambia nel tempo."@it ;
+                  
+                  owl:versionInfo "stabile"@it ;
+                  
+                  rdfs:range :AddressInTime ;
+                  
+                  rdfs:domain :Organization ;
+                  
+                  rdfs:isDefinedBy <http://dati.gov.it/onto/covapit/> .
+
+
+
+###  http://dati.gov.it/onto/covapit#hasBalanceSheet
+
+:hasBalanceSheet rdf:type owl:ObjectProperty ;
+                 
+                 rdfs:label "has balance sheet"@en ,
+                            "ha bilancio"@it ;
+                 
+                 rdfs:comment "This property links the Organization with one or more balance sheets."@en ;
+                 
+                 owl:versionInfo "stable"@en ;
+                 
+                 rdfs:comment "Questa proprietà lega un'organizzazione a uno o più bilanci."@it ;
+                 
+                 owl:versionInfo "stabile"@it ;
+                 
+                 rdfs:range :BalanceSheet ;
+                 
+                 rdfs:domain :Organization ;
+                 
+                 rdfs:isDefinedBy <http://dati.gov.it/onto/covapit/> .
+
+
+
+###  http://dati.gov.it/onto/covapit#hasCategory
+
+:hasCategory rdf:type owl:ObjectProperty ;
+             
+             rdfs:label "has category"@en ,
+                        "ha categoria"@it ;
+             
+             rdfs:comment "This property links the public organization to its category."@en ;
+             
+             owl:versionInfo "stable"@en ;
+             
+             rdfs:comment "Questa proprietà lega l'organizzazione pubblica alla propria categoria."@it ;
+             
+             owl:versionInfo "stabile"@it ;
+             
+             rdfs:domain :PublicOrganization ;
+             
+             rdfs:range :PublicOrganizationCategory ;
+             
+             rdfs:isDefinedBy <http://dati.gov.it/onto/covapit/> .
+
+
+
+###  http://dati.gov.it/onto/covapit#hasContactPoint
+
+:hasContactPoint rdf:type owl:ObjectProperty ;
+                 
+                 rdfs:label "has contact point"@en ,
+                            "ha punto di contatto"@it ;
+                 
+                 rdfs:comment "This property links the organization with one contact point. The contact point may consist of different elements (one or more email addresses, one or more social netwrk accounts one or more telephone numbers, ecc.),"@en ;
+                 
+                 owl:versionInfo "stable"@en ;
+                 
+                 rdfs:comment "Questa proprietà lega un'organizzazione a un punto di contatto. Il punto di contatto può essere formato da diversi elementi (uno o più social network account, uno o più indirizzi email, uno o più numeri di telefono)."@it ;
+                 
+                 owl:versionInfo "stabile"@it ;
+                 
+                 rdfs:range :ContactPoint ;
+                 
+                 rdfs:domain :Organization ;
+                 
+                 rdfs:isDefinedBy <http://dati.gov.it/onto/covapit/> .
+
+
+
+###  http://dati.gov.it/onto/covapit#hasEInvoiceService
+
+:hasEInvoiceService rdf:type owl:ObjectProperty ;
+                    
+                    rdfs:label "has eInvoice service"@en ,
+                               "ha servizio di fatturazione elettronica"@it ;
+                    
+                    rdfs:comment "This property links an office (or organizational unit) to a eInvoice Service. This property is materialized (it is mandatory) in the case of public organization."@en ;
+                    
+                    owl:versionInfo "stable"@en ;
+                    
+                    rdfs:comment "Questa proprietà lega l'ufficio o l'unità organizzativa al servizio di fatturazione elettronica. Questa proprietà è materializzata nello specifico per le organizzazioni pubbliche"@it ;
+                    
+                    owl:versionInfo "stabile"@it ;
+                    
+                    rdfs:domain :Office ;
+                    
+                    rdfs:range :eInvoiceService ;
+                    
+                    rdfs:isDefinedBy <http://dati.gov.it/onto/covapit/> .
+
+
+
+###  http://dati.gov.it/onto/covapit#hasEmail
+
+:hasEmail rdf:type owl:ObjectProperty ;
+          
+          rdfs:label "has email"@en ,
+                     "ha email"@it ;
+          
+          rdfs:comment "This property links the contact point with one or more email addresses of various types. At least one email address must be specified for the contact point of the organization."@en ;
+          
+          owl:versionInfo "stable"@en ;
+          
+          rdfs:comment "Questa proprietà collega il punto di contatto con uno o più indirizzi email di vario tipo. Almeno un indirizzo email deve essere specificato per il punto di contatto di un'organizzazione."@it ;
+          
+          owl:versionInfo "stabile"@it ;
+          
+          rdfs:domain :ContactPoint ;
+          
+          rdfs:range :Email ;
+          
+          rdfs:isDefinedBy <http://dati.gov.it/onto/covapit/> .
+
+
+
+###  http://dati.gov.it/onto/covapit#hasEmailType
+
+:hasEmailType rdf:type owl:ObjectProperty ;
+              
+              rdfs:label "has email type"@en ,
+                         "ha tipo email"@it ;
+              
+              rdfs:comment "This property links the Email to its type."@en ;
+              
+              owl:versionInfo "stable"@en ;
+              
+              rdfs:comment "Questa proprietà collega l'email al suo tipo."@it ;
+              
+              owl:versionInfo "stabile"@it ;
+              
+              rdfs:domain :Email ;
+              
+              rdfs:range :EmailType ;
+              
+              rdfs:isDefinedBy <http://dati.gov.it/onto/covapit/> .
+
+
+
+###  http://dati.gov.it/onto/covapit#hasHomepage
+
+:hasHomepage rdf:type owl:ObjectProperty ;
+             
+             rdfs:label "has homepage"@en ,
+                        "ha homepage"@it ;
+             
+             rdfs:comment "This property links the organization to its home page."@en ;
+             
+             owl:versionInfo "stable"@en ;
+             
+             rdfs:comment "Questa proprietà collega l'organizzaziona alla sua homepage"@it ;
+             
+             owl:versionInfo "stabile"@it ;
+             
+             rdfs:domain :Organization ;
+             
+             rdfs:range :WebSite ;
+             
+             rdfs:isDefinedBy <http://dati.gov.it/onto/covapit/> .
+
+
+
+###  http://dati.gov.it/onto/covapit#hasLegalStatus
+
+:hasLegalStatus rdf:type owl:ObjectProperty ;
+                
+                rdfs:label "has legal status"@en ,
+                           "ha forma giuridica"@it ;
+                
+                rdfs:comment "This property links the private organization to its legal status"@en ;
+                
+                owl:versionInfo "stable"@en ;
+                
+                rdfs:comment "Questa proprietà lega l'organizzazione privata alla sua forma giuridica."@it ;
+                
+                owl:versionInfo "stabile"@it ;
+                
+                rdfs:range :LegalStatus ;
+                
+                rdfs:domain :PrivateOrganization ;
+                
+                rdfs:isDefinedBy <http://dati.gov.it/onto/covapit/> .
+
+
+
+###  http://dati.gov.it/onto/covapit#hasLogo
+
+:hasLogo rdf:type owl:ObjectProperty ;
+         
+         rdfs:label "has logo"@en ,
+                    "ha logo"@it ;
+         
+         rdfs:comment "This property links the organization to the Image object representing the logo of the organization."@en ;
+         
+         owl:versionInfo "stable"@en ;
+         
+         rdfs:comment "Questa proprietà collega un'organizzazione a un oggetto immagine e rappresenta il logo dell'organizzazione."@it ;
+         
+         owl:versionInfo "stabile"@it ;
+         
+         rdfs:range :ImageObject ;
+         
+         rdfs:domain :Organization ;
+         
+         rdfs:isDefinedBy <http://dati.gov.it/onto/covapit/> .
+
+
+
+###  http://dati.gov.it/onto/covapit#hasParticipationType
+
+:hasParticipationType rdf:type owl:ObjectProperty ;
+                      
+                      rdfs:label "has participation type"@en ,
+                                 "ha tipo di partecipazione"@it ;
+                      
+                      rdfs:comment "This property links the Participation to its type (i.e., direct or indirect)."@en ;
+                      
+                      owl:versionInfo "stable"@en ;
+                      
+                      rdfs:comment "Questa proprietà collega la partecipazione al suo tipo (diretta o indiretta)."@it ;
+                      
+                      owl:versionInfo "stabile"@it ;
+                      
+                      rdfs:domain :Participation ;
+                      
+                      rdfs:range :ParticipationType ;
+                      
+                      rdfs:isDefinedBy <http://dati.gov.it/onto/covapit/> .
+
+
+
+###  http://dati.gov.it/onto/covapit#hasPrimaryAddress
+
+:hasPrimaryAddress rdf:type owl:ObjectProperty ;
+                   
+                   rdfs:label "has primary address"@en ,
+                              "ha indirizzo primario"@it ;
+                   
+                   rdfs:comment "This property is subproperty of has address and it is used to specified the primary address of the legal site of the organization."@en ;
+                   
+                   owl:versionInfo "unstable"@en ;
+                   
+                   rdfs:comment "Questa proprietà è sottoproprietà di ha indirizzo ed è utilizzata per modellare l'indirizzo primario della sede legale dell'organizzazione."@it ;
+                   
+                   owl:versionInfo "provvisoria"@it ;
+                   
+                   rdfs:range :Address ;
+                   
+                   rdfs:domain :Organization ;
+                   
+                   rdfs:subPropertyOf :hasAddress ;
+                   
+                   rdfs:isDefinedBy <http://dati.gov.it/onto/covapit/> .
+
+
+
+###  http://dati.gov.it/onto/covapit#hasSocialNetworkAccount
+
+:hasSocialNetworkAccount rdf:type owl:ObjectProperty ;
+                         
+                         rdfs:label "has social network account"@en ,
+                                    "ha account social network"@it ;
+                         
+                         rdfs:comment "This property links the point of cotact of the organization to one or more social network accounts."@en ;
+                         
+                         owl:versionInfo "stable"@en ;
+                         
+                         rdfs:comment "Questa proprietà lega il punto di contatto dell'organizzazione con uno o più account di social network."@it ;
+                         
+                         owl:versionInfo "stabile"@it ;
+                         
+                         rdfs:domain :ContactPoint ;
+                         
+                         rdfs:range :SocialNetworkAccount ;
+                         
+                         rdfs:isDefinedBy <http://dati.gov.it/onto/covapit/> .
+
+
+
+###  http://dati.gov.it/onto/covapit#hasSocialType
+
+:hasSocialType rdf:type owl:ObjectProperty ;
+               
+               rdfs:label "has social type"@en ,
+                          "ha tipo di social"@it ;
+               
+               rdfs:comment "This property links the social network account to the type of social network (e.g., twitter, facebook, youtube, etc.)."@en ;
+               
+               owl:versionInfo "stable"@en ;
+               
+               rdfs:comment "Questa proprietà collega il social netwrok account al tipo di social (facebook, twitter, youtube, ecc.)."@it ;
+               
+               owl:versionInfo "stabile"@it ;
+               
+               rdfs:domain :SocialNetworkAccount ;
+               
+               rdfs:range :SocialType ;
+               
+               rdfs:isDefinedBy <http://dati.gov.it/onto/covapit/> .
+
+
+
+###  http://dati.gov.it/onto/covapit#hasSpatialCoverage
+
+:hasSpatialCoverage rdf:type owl:ObjectProperty ;
+                    
+                    rdfs:label "has spatial coverage"@en ,
+                               "ha copertura spaziale"@it ;
+                    
+                    rdfs:comment "This property links the organizations with the administrative region(s) it covers. Thus, it allows one to represent the spatial coverage of the organization."@en ;
+                    
+                    owl:versionInfo "stable"@en ;
+                    
+                    rdfs:comment "Questa proprietà collega l'organizzazione alle aree amministrative che essa copre. Consente pertanto di esprimere la copertura spaziale dell'organizzazione."@it ;
+                    
+                    owl:versionInfo "stabile"@it ;
+                    
+                    rdfs:range :Location ;
+                    
+                    rdfs:domain :Organization ;
+                    
+                    rdfs:isDefinedBy <http://dati.gov.it/onto/covapit/> .
+
+
+
+###  http://dati.gov.it/onto/covapit#hasSupportUnit
+
+:hasSupportUnit rdf:type owl:ObjectProperty ;
+                
+                rdfs:label "has support unit"@en ,
+                           "ha unità di supperto (dipartimento)"@it ;
+                
+                rdfs:comment "This property links an organization to its support units (or dividision or departments) that can be homogeneous organizational areas or offices."@en ;
+                
+                owl:versionInfo "stable"@en ;
+                
+                rdfs:comment "Questa proprietà lega un'organizzazione alle sue unità di supporto (o divisioni o dipartimenti) che possono essere areee organizzative omogenee o uffici"@it ;
+                
+                owl:versionInfo "stabile"@it ;
+                
+                rdfs:domain :Organization ;
+                
+                rdfs:range :SupportUnit ;
+                
+                rdfs:isDefinedBy <http://dati.gov.it/onto/covapit/> .
+
+
+
+###  http://dati.gov.it/onto/covapit#hasTypoloy
+
+:hasTypoloy rdf:type owl:ObjectProperty ;
+            
+            rdfs:label "has typology"@en ,
+                       "ha tipologia"@it ;
+            
+            rdfs:comment "This property links the organization to its typology"@en ;
+            
+            owl:versionInfo "stable"@en ;
+            
+            rdfs:comment "Questa proprietà lega l'organizzazione alla sua tipologia."@it ;
+            
+            owl:versionInfo "stabile"@it ;
+            
+            rdfs:domain :Organization ;
+            
+            rdfs:range :OrganizationTypology ;
+            
+            rdfs:isDefinedBy <http://dati.gov.it/onto/covapit/> .
+
+
+
+###  http://dati.gov.it/onto/covapit#holdMembership
+
+:holdMembership rdf:type owl:ObjectProperty ;
+                
+                rdfs:label "hold membership"@en ,
+                           "detiene una relazione di appartenenza"@it ;
+                
+                rdfs:comment "This property links an Agent to the situation Membership in an organization."@en ;
+                
+                owl:versionInfo "stable"@en ;
+                
+                rdfs:comment "Questa proprietà lega un agente alla sitauzione di appartenenza a un'organizzazione."@it ;
+                
+                owl:versionInfo "stabile"@it ;
+                
+                rdfs:domain :Agent ;
+                
+                rdfs:range :Membership ;
+                
+                rdfs:isDefinedBy <http://dati.gov.it/onto/covapit/> .
+
+
+
+###  http://dati.gov.it/onto/covapit#isPartOf
+
+:isPartOf rdf:type owl:ObjectProperty ;
+          
+          rdfs:label "is part of"@en ,
+                     "è parte di"@it ;
+          
+          rdfs:comment "This property links an office (or organizational unit) to its homogeneous organizational area of reference. This may be applied in the specific case of public organizations."@en ;
+          
+          owl:versionInfo "unstable"@en ;
+          
+          rdfs:comment "Questa proprietà lega un ufficio (o unità organizzativa) alla sua AOO (area organizzativa omogenea) di riferimento. Questo caso potrebbe presentarsi nello specifico per le organizzazioni pubbliche."@it ;
+          
+          owl:versionInfo "provvisoria"@it ;
+          
+          rdfs:range :HomogeneousOrganizationalArea ;
+          
+          rdfs:domain :Office ;
+          
+          rdfs:isDefinedBy <http://dati.gov.it/onto/covapit/> .
+
+
+
+###  http://dati.gov.it/onto/covapit#isSupportUnitOf
+
+:isSupportUnitOf rdf:type owl:ObjectProperty ;
+                 
+                 rdfs:label "is support unit of"@en ,
+                            "è unità di supporto di"@it ;
+                 
+                 rdfs:comment "This property is the inverse of has support unit and links a support unit with its organization."@en ;
+                 
+                 owl:versionInfo "stable"@en ;
+                 
+                 rdfs:comment "Questa proprietà è l'inversa di ha unità di supporto e lega l'unità di supporto con la relativa organizzazione."@it ;
+                 
+                 owl:versionInfo "stabile"@it ;
+                 
+                 rdfs:range :Organization ;
+                 
+                 rdfs:domain :SupportUnit ;
+                 
+                 owl:inverseOf :hasSupportUnit ;
+                 
+                 rdfs:isDefinedBy <http://dati.gov.it/onto/covapit/> .
+
+
+
+###  http://dati.gov.it/onto/covapit#membershipFor
+
+:membershipFor rdf:type owl:ObjectProperty ;
+               
+               rdfs:label "membership for"@en ,
+                          "appartenenza per"@it ;
+               
+               rdfs:comment "This property links the situation Membership to the organization."@en ;
+               
+               owl:versionInfo "stable"@en ;
+               
+               rdfs:comment "Questa proprietà lega la situazione appartenenza all'organizzazione."@it ;
+               
+               owl:versionInfo "stabile"@it ;
+               
+               rdfs:domain :Membership ;
+               
+               rdfs:range :Organization ;
+               
+               rdfs:isDefinedBy <http://dati.gov.it/onto/covapit/> .
+
+
+
+###  http://dati.gov.it/onto/covapit#orginalOrganization
+
+:orginalOrganization rdf:type owl:ObjectProperty ;
+                     
+                     rdfs:label "original organization"@en ,
+                                "organizzazione di origine"@it ;
+                     
+                     rdfs:comment "The property links a Change Event to the organization that existed before the change. Although the Foundation Event class is defined as a sub class of Change Event, it is inappropriate to use this property with the Foundation Event class."@en ;
+                     
+                     owl:versionInfo "stable"@en ;
+                     
+                     rdfs:comment "Questa proprietà collega un evento del cambiamento all'organizzazione che esisteva prima del cambiamento. Sebbene la classe Costituzione sia sotto classe di Evento del Cambiamento, è inappropriato utilizzare tale classe con questa proprietà."@it ;
+                     
+                     owl:versionInfo "stabile"@it ;
+                     
+                     rdfs:domain :ChangeEvent ;
+                     
+                     rdfs:range :Organization ;
+                     
+                     owl:inverseOf :changedBy ;
+                     
+                     rdfs:isDefinedBy <http://dati.gov.it/onto/covapit/> .
+
+
+
+###  http://dati.gov.it/onto/covapit#participated
+
+:participated rdf:type owl:ObjectProperty ;
+              
+              rdfs:label "participated"@en ,
+                         "partecipata"@it ;
+              
+              rdfs:comment "This property links the situation of participation of an organization to an organization. Specifically this property models the fact that an organization is participated by another one."@en ;
+              
+              owl:versionInfo "unstable"@en ;
+              
+              rdfs:comment "Questa proprietà collega la situazione partecipazione di un'organizzazione all0organizzazione. In particolare, questa proprietà modella il fatto che un'organizzazione è partecipata dall'altra."@it ;
+              
+              owl:versionInfo "provvisoria"@it ;
+              
+              rdfs:range :Organization ;
+              
+              rdfs:domain :Participation ;
+              
+              rdfs:isDefinedBy <http://dati.gov.it/onto/covapit/> .
+
+
+
+###  http://dati.gov.it/onto/covapit#participating
+
+:participating rdf:type owl:ObjectProperty ;
+               
+               rdfs:label "participating"@en ,
+                          "partecipante"@it ;
+               
+               rdfs:comment "This property links the organization to the situation partecipation. The property models the fact that an organization participates in another one."@en ;
+               
+               owl:versionInfo "unstable"@en ;
+               
+               rdfs:comment "Questa proprietà collega un'organizzazione alla situazione partecipazione. In particolare, la proprietà modella il fatto che un'organizzazione partecipa in un'altra."@it ;
+               
+               owl:versionInfo "provvisoria"@it ;
+               
+               rdfs:domain :Organization ;
+               
+               rdfs:range :Participation ;
+               
+               rdfs:isDefinedBy <http://dati.gov.it/onto/covapit/> .
+
+
+
+###  http://dati.gov.it/onto/covapit#precedes
+
+:precedes rdf:type owl:ObjectProperty ;
+          
+          rdfs:label "precedes"@en ,
+                     "precede"@it ;
+          
+          rdfs:comment "This property models an ordered sequence of organizations that precede and succeed each other.. In particular this property represents the organization that precedes another."@en ;
+          
+          owl:versionInfo "stable"@en ;
+          
+          rdfs:comment "Questa proprietà modella una sequenza ordinata di organizzazioni that precedono o si susseguono le un con le altre.  Nello specifico questa proprietà rappresenta un'organizzazione che precede un'altra."@it ;
+          
+          owl:versionInfo "stabile"@it ;
+          
+          rdfs:domain :Organization ;
+          
+          rdfs:range :Organization ;
+          
+          rdfs:isDefinedBy <http://dati.gov.it/onto/covapit/> .
+
+
+
+###  http://dati.gov.it/onto/covapit#resultedFrom
+
+:resultedFrom rdf:type owl:ObjectProperty ;
+              
+              rdfs:label "resulted from"@en ,
+                         "risultante da"@it ;
+              
+              rdfs:comment "This property is the inverse of resulting organization and links an organization to the change event through which the organization has been created."@en ;
+              
+              owl:versionInfo "stable"@en ;
+              
+              rdfs:comment "Questa proprietà è l'inversa di organizzazione risultante e lega un'organizzazione all'evento di cambiameno attraverso cui l'organizzazione si è originata."@it ;
+              
+              owl:versionInfo "stabile"@it ;
+              
+              rdfs:range :ChangeEvent ;
+              
+              rdfs:domain :Organization ;
+              
+              owl:inverseOf :resultingOrganization ;
+              
+              rdfs:isDefinedBy <http://dati.gov.it/onto/covapit/> .
+
+
+
+###  http://dati.gov.it/onto/covapit#resultingOrganization
+
+:resultingOrganization rdf:type owl:ObjectProperty ;
+                       
+                       rdfs:label "resulting organization"@en ,
+                                  "organizzazione risultante"@it ;
+                       
+                       rdfs:comment "This property links a Change Event  to the organization that resulted from it."@en ;
+                       
+                       owl:versionInfo "stable"@en ;
+                       
+                       rdfs:comment "Questa proprietà lega un evento di cambiamento alla organizzazione che risultante al termine del cambiamento."@it ;
+                       
+                       owl:versionInfo "stabile"@it ;
+                       
+                       rdfs:domain :ChangeEvent ;
+                       
+                       rdfs:range :Organization ;
+                       
+                       rdfs:isDefinedBy <http://dati.gov.it/onto/covapit/> .
+
+
+
+###  http://dati.gov.it/onto/covapit#withRole
+
+:withRole rdf:type owl:FunctionalProperty ,
+                   owl:ObjectProperty ;
+          
+          rdfs:label "with role"@en ,
+                     "con ruolo"@it ;
+          
+          rdfs:comment "This property links the situation membership with the related Role."@en ;
+          
+          owl:versionInfo "stable"@en ;
+          
+          rdfs:comment "Questa proprietà lega la situazione Appartenenza al relativo Ruolo. E' utilizzata per specificare il ruolo di un membro in una situazione di appartenenza dello stesso a un'organizzazione."@it ;
+          
+          owl:versionInfo "stabile"@it ;
+          
+          rdfs:domain :Membership ;
+          
+          rdfs:range :Role ;
+          
+          rdfs:isDefinedBy <http://dati.gov.it/onto/covapit/> .
+
+
+
+###  http://dati.gov.it/onto/covapit/hasSubOrganization
+
+:hasSubOrganization rdf:type owl:ObjectProperty ;
+                    
+                    rdfs:label "has sub-organization"@en ,
+                               "ha sotto-organizzazione"@it ;
+                    
+                    rdfs:comment "Organizations are often large and complex and may be a collection of smaller organizations, each of which has a specific identity that may be legally defined.  This property, together with its inverse subOrganizationOf allows one to model a hierarchical structure between organizations."@en ;
+                    
+                    owl:versionInfo "stable"@en ;
+                    
+                    rdfs:comment "Organizzazioni sono spesso grandi e complesse e possono essere viste come una collezione di organizzazioni più piccole, ognuna delle quali con una specifica identità legamente definita. Questa proprietà, insieme alla sua inversa sotto-organizzazione di, consente di modellare una struttura gerarchica tra organizzazioni. Si pensi per esempio ai concetti di holding per organizazioni private."@it ;
+                    
+                    owl:versionInfo "stabile"@it ;
+                    
+                    rdfs:domain :Organization ;
+                    
+                    rdfs:range :Organization ;
+                    
+                    rdfs:isDefinedBy <http://dati.gov.it/onto/covapit/> .
+
+
+
+###  http://dati.gov.it/onto/covapit/subOrganizationOf
+
+:subOrganizationOf rdf:type owl:ObjectProperty ;
+                   
+                   rdfs:label "sub-organization of"@en ,
+                              "sotto-organizzazione di"@it ;
+                   
+                   rdfs:comment "Organizations are often large and complex and may be a collection of smaller organizations, each of which has a specific identity that may be legally defined.  This property, together with its inverse hasSubOrganization allows one to model a hierarchical structure between organizations."@en ;
+                   
+                   owl:versionInfo "stable"@en ;
+                   
+                   rdfs:comment "Organizzazioni sono spesso grandi e complesse e possono essere viste come una collezione di organizzazioni più piccole, ognuna delle quali con una specifica identità legamente definita. Questa proprietà, insieme alla sua inversa ha sotto-organizzazione, consente di modellare una struttura gerarchica tra organizzazioni. Si pensi per esempio ai concetti di holding per organizazioni private."@it ;
+                   
+                   owl:versionInfo "stabile"@it ;
+                   
+                   rdfs:range :Organization ;
+                   
+                   rdfs:domain :Organization ;
+                   
+                   rdfs:isDefinedBy <http://dati.gov.it/onto/covapit/> ;
+                   
+                   owl:inverseOf :hasSubOrganization .
+
+
+
+
+
+#################################################################
+#
+#    Data properties
+#
+#################################################################
+
+
+###  http://dati.gov.it/onto/covapit#AOOIdentifier
+
+:AOOIdentifier rdf:type owl:DatatypeProperty ,
+                        owl:FunctionalProperty ;
+               
+               rdfs:label "homegeneous organizational area identifier"@en ,
+                          "codice AOO"@it ;
+               
+               rdfs:comment "This property represents the unique code assigned to the homogeneous organizational area of a public organization."@en ;
+               
+               owl:versionInfo "stable"@en ;
+               
+               rdfs:comment "Questa proprietà rappresenta il codice univoco che viene assegnato alle AOO dall'organizzazione pubblica."@it ;
+               
+               owl:versionInfo "stabile"@it ;
+               
+               rdfs:domain :HomogeneousOrganizationalArea ;
+               
+               rdfs:subPropertyOf :identifier ;
+               
+               rdfs:isDefinedBy <http://dati.gov.it/onto/covapit/> ;
+               
+               rdfs:range rdfs:Literal .
+
+
+
+###  http://dati.gov.it/onto/covapit#IPAcode
+
+:IPAcode rdf:type owl:DatatypeProperty ,
+                  owl:FunctionalProperty ;
+         
+         rdfs:label "IPA code"@en ,
+                    "codice IPA (codice Indice PA)"@it ;
+         
+         rdfs:comment "This property represents the unique identifier of a public organization assigned when it is registered in the Italian national registry of Public Administrations (IPA)."@en ;
+         
+         owl:versionInfo "stable"@en ;
+         
+         rdfs:comment "Questa proprietà rappresenta il codice IPA, il codice univoco, assegnato all'organizzazione pubblica in fase di accreditamento presso l'indice nazionale PA (IPA). Il Codice IPA viene comunicato tramite e-mail dal Gestore dell'IPA al referente dell'Ente."@it ;
+         
+         owl:versionInfo "stabile"@it ;
+         
+         rdfs:domain :PublicOrganization ;
+         
+         rdfs:subPropertyOf :identifier ;
+         
+         rdfs:isDefinedBy <http://dati.gov.it/onto/covapit/> ;
+         
+         rdfs:range rdfs:Literal .
+
+
+
+###  http://dati.gov.it/onto/covapit#REANumber
+
+:REANumber rdf:type owl:DatatypeProperty ;
+           
+           rdfs:label "REA number"@en ,
+                      "numero REA"@it ;
+           
+           rdfs:comment "This property represents a specific code named REA number associated with the registration of a private organization in the related Italian national registry."@en ;
+           
+           owl:versionInfo "stable"@en ;
+           
+           rdfs:comment "Questa proprietà rappresenta il numero REA (Repertorio Economico Amministrativo) associato a un'impresa.  Il numero REA è costituito da un numero decimale progressivo ed è sempre associato ad una codifica, che precede il numero progressivo, della provincia/CCIAA che lo ha assegnato e, nella prassi, comprende anche tale codifica (ad es. RM-123456). Ogni soggetto/impresa obbligato per legge all´iscrizione al REA riceve un numero REA diverso per ogni provincia/CCIAA in cui apre Sede/Unità Locali."@it ;
+           
+           owl:versionInfo "stabile"@it ;
+           
+           rdfs:domain :PrivateOrganization ;
+           
+           rdfs:subPropertyOf :identifier ;
+           
+           rdfs:comment <http://dati.gov.it/onto/covapit/> ;
+           
+           rdfs:range rdfs:Literal .
+
+
+
+###  http://dati.gov.it/onto/covapit#VATnumber
+
+:VATnumber rdf:type owl:DatatypeProperty ,
+                    owl:FunctionalProperty ;
+           
+           rdfs:label "VAT number"@en ,
+                      "Partita Iva"@it ;
+           
+           rdfs:comment "This property represents the VAT number of a private organization."@en ;
+           
+           owl:versionInfo "stable"@en ;
+           
+           rdfs:comment "Questa proprietà rappresenta il numero di Partita IVA di un'organizzazione privata (impresa)."@it ;
+           
+           owl:versionInfo "stabile"@it ;
+           
+           rdfs:domain :PrivateOrganization ;
+           
+           rdfs:subPropertyOf :identifier ;
+           
+           rdfs:comment <http://dati.gov.it/onto/covapit/> ;
+           
+           rdfs:range rdfs:Literal .
+
+
+
+###  http://dati.gov.it/onto/covapit#accreditationDate
+
+:accreditationDate rdf:type owl:DatatypeProperty ;
+                   
+                   rdfs:label "accreditation date"@en ,
+                              "data di accreditamento"@it ;
+                   
+                   rdfs:comment "This property represents the accreditation date of the organization in the public registry (e.g., in Italy in  \"IPA\" registry for public administrations, and in the \"Registro Imprese\" for private organizations)."@en ;
+                   
+                   owl:versionInfo "stable"@en ;
+                   
+                   rdfs:comment "Questa proprietà rappresenta la data di accreditamento dell'organizzazione nel pubblico registro (e.g., in \"IPA\" nel caso di pubbliche amministrazioni, in \"Registro Imprese\" nel caso di organizzazioni private)."@it ;
+                   
+                   owl:versionInfo "stabile"@it ;
+                   
+                   rdfs:domain :Organization ;
+                   
+                   rdfs:isDefinedBy <http://dati.gov.it/onto/covapit/> ;
+                   
+                   rdfs:range xsd:dateTime .
+
+
+
+###  http://dati.gov.it/onto/covapit#acronym
+
+:acronym rdf:type owl:DatatypeProperty ,
+                  owl:FunctionalProperty ;
+         
+         rdfs:label "acronym"@en ,
+                    "acronimo"@it ;
+         
+         rdfs:comment "This property represents the acronym of the organization."@en ;
+         
+         owl:versionInfo "stable"@en ;
+         
+         rdfs:comment "Questa proprietà rappresenta l'acronimo dell'organizzazione."@it ;
+         
+         owl:versionInfo "stabile"@it ;
+         
+         rdfs:domain :Organization ;
+         
+         rdfs:isDefinedBy <http://dati.gov.it/onto/covapit/> ;
+         
+         rdfs:range rdfs:Literal .
+
+
+
+###  http://dati.gov.it/onto/covapit#altLabel
+
+:altLabel rdf:type owl:DatatypeProperty ;
+          
+          rdfs:label "alternative name"@en ,
+                     "nome alternativo"@it ;
+          
+          rdfs:comment "This property represents an alternative name for the organization such as a colloquial name."@en ;
+          
+          owl:versionInfo "stable"@en ,
+                          "Questa proprietà rappresenta un nome alternativo dell'organizzazione (e.g., un nome colloquiale)."@it ,
+                          "stabile"@it ;
+          
+          rdfs:domain :Organization ;
+          
+          rdfs:isDefinedBy <http://dati.gov.it/onto/covapit/> ;
+          
+          rdfs:range rdfs:Literal .
+
+
+
+###  http://dati.gov.it/onto/covapit#businessObjective
+
+:businessObjective rdf:type owl:DatatypeProperty ;
+                   
+                   rdfs:label "business objective"@en ,
+                              "oggetto sociale"@it ;
+                   
+                   rdfs:comment "This property represents the business objectives or the corporate purpose of the private organization."@en ;
+                   
+                   owl:versionInfo "unstable"@en ;
+                   
+                   rdfs:comment "Questa proprietà rappresenta l'oggetto sociale dell'organizzazione privata (impresa)."@it ;
+                   
+                   owl:versionInfo "provvisoria"@it ;
+                   
+                   rdfs:domain :PrivateOrganization ;
+                   
+                   rdfs:isDefinedBy <http://dati.gov.it/onto/covapit/> ;
+                   
+                   rdfs:range rdfs:Literal .
+
+
+
+###  http://dati.gov.it/onto/covapit#description
+
+:description rdf:type owl:DatatypeProperty ;
+             
+             rdfs:label "description"@en ,
+                        "descrizione"@it ;
+             
+             rdfs:comment "This property allows one to describe the organization."@en ;
+             
+             owl:versionInfo "stable"@en ;
+             
+             rdfs:comment "Questa proprietà consente di fornire una descrizione dell'organizzazione."@it ;
+             
+             owl:versionInfo "stabile"@it ;
+             
+             rdfs:isDefinedBy <http://dati.gov.it/onto/covapit/> ;
+             
+             rdfs:range rdfs:Literal ;
+             
+             rdfs:domain [ rdf:type owl:Class ;
+                           owl:unionOf ( :ChangeEvent
+                                         :Organization
+                                       )
+                         ] .
+
+
+
+###  http://dati.gov.it/onto/covapit#eInvoiceServiceStartingDate
+
+:eInvoiceServiceStartingDate rdf:type owl:DatatypeProperty ;
+                             
+                             rdfs:label "eInvoice service starting date"@en ,
+                                        "data di avivo del servizio"@it ;
+                             
+                             rdfs:comment "This property is used to model the starting date of the eInvoice service."@en ;
+                             
+                             owl:versionInfo "stable"@en ;
+                             
+                             rdfs:comment "Questa proprietà è utilizzata per modellare la data di avvio del servizio di fatturazione elettronica."@it ;
+                             
+                             owl:versionInfo "stabile"@it ;
+                             
+                             rdfs:domain :eInvoiceService ;
+                             
+                             rdfs:isDefinedBy <http://dati.gov.it/onto/covapit/> ;
+                             
+                             rdfs:range xsd:dateTime .
+
+
+
+###  http://dati.gov.it/onto/covapit#emailAddress
+
+:emailAddress rdf:type owl:DatatypeProperty ;
+              
+              rdfs:label "email address"@en ,
+                         "indirizzo email"@it ;
+              
+              rdfs:comment "This property represents the email address expressed as mailto:XX@YY.ZZ"@en ;
+              
+              owl:versionInfo "unstable"@en ;
+              
+              rdfs:comment "Questa proprietà rappresenta l'indirizzo email che deve essere espresso nella forma mailto:XX@YY.ZZ"@it ;
+              
+              owl:versionInfo "provvisoria"@it ;
+              
+              rdfs:domain :Email ;
+              
+              rdfs:isDefinedBy <http://dati.gov.it/onto/covapit/> ;
+              
+              rdfs:range xsd:anyURI .
+
+
+
+###  http://dati.gov.it/onto/covapit#endDate
+
+:endDate rdf:type owl:DatatypeProperty ;
+         
+         rdfs:label "end date"@en ,
+                    "data di fine"@it ;
+         
+         rdfs:comment "This property represents the end date of a time interval."@en ;
+         
+         owl:versionInfo "stable"@en ;
+         
+         rdfs:comment "Questa proprietà rappresenta la data di fine di un intervallo temporale."@it ;
+         
+         owl:versionInfo "stabile"@it ;
+         
+         rdfs:domain :TimeInterval ;
+         
+         rdfs:isDefinedBy <http://dati.gov.it/onto/covapit/> ;
+         
+         rdfs:range xsd:dateTime .
+
+
+
+###  http://dati.gov.it/onto/covapit#foundationDate
+
+:foundationDate rdf:type owl:DatatypeProperty ;
+                
+                rdfs:label "foundation  date"@en ,
+                           "data di costituzione"@it ;
+                
+                rdfs:comment "This property represents the date in which the organization was founded."@en ;
+                
+                owl:versionInfo "stable"@en ;
+                
+                rdfs:comment "Questa proprietà rappresenta la data di costituzione dell'organizzazione privata (impresa)."@it ;
+                
+                owl:versionInfo "stabile"@it ;
+                
+                rdfs:domain :PrivateOrganization ;
+                
+                rdfs:isDefinedBy <http://dati.gov.it/onto/covapit/> ;
+                
+                rdfs:range xsd:dateTime .
+
+
+
+###  http://dati.gov.it/onto/covapit#hasTelephone
+
+:hasTelephone rdf:type owl:DatatypeProperty ;
+              
+              rdfs:label "has telephone"@en ,
+                         "ha telefono"@it ;
+              
+              rdfs:comment "This property is used to model the telephone number for the contact point of the organization."@en ;
+              
+              owl:versionInfo "unstable"@en ;
+              
+              rdfs:comment "Questa proprietà è utilizzata per modellare il numero di telefono per il punto di contatto dell'organizzazione."@it ;
+              
+              owl:versionInfo "provvisoria"@it ;
+              
+              rdfs:domain :ContactPoint ;
+              
+              rdfs:isDefinedBy <http://dati.gov.it/onto/covapit/> ;
+              
+              rdfs:range rdfs:Literal .
+
+
+
+###  http://dati.gov.it/onto/covapit#identifier
+
+:identifier rdf:type owl:DatatypeProperty ;
+            
+            rdfs:label "generic identifier"@en ,
+                       "identificativo generico"@it ;
+            
+            rdfs:comment "This property is used to represent a generic identifier that is associated with things or the represented domain. The property is specialized in subproperties that represent identifiers of specific entities of the domain."@en ;
+            
+            owl:versionInfo "unstable"@en ;
+            
+            rdfs:comment "Questa proprietà è utilizzata per rappresentare un generico identificativo associato a cose del dominio rappresentato. Esso è specializzato in una serie di sottoproprietà che rappresentano codicispecifii di alcune entità del dominio."@it ;
+            
+            owl:versionInfo "provvisoria"@it ;
+            
+            rdfs:isDefinedBy <http://dati.gov.it/onto/covapit/> ;
+            
+            rdfs:range rdfs:Literal ;
+            
+            rdfs:domain owl:Thing .
+
+
+
+###  http://dati.gov.it/onto/covapit#mainFunction
+
+:mainFunction rdf:type owl:DatatypeProperty ;
+              
+              rdfs:label "main function"@en ,
+                         "funzione principale"@it ;
+              
+              rdfs:comment "This property represents a general description of the main functions of the organization."@en ;
+              
+              owl:versionInfo "stable"@en ;
+              
+              rdfs:comment "Questa proprietà raappresenta una descrizione generale delle principali funzioni dell'organizzazione."@it ;
+              
+              owl:versionInfo "stabile"@it ;
+              
+              rdfs:domain :Organization ;
+              
+              rdfs:isDefinedBy <http://dati.gov.it/onto/covapit/> ;
+              
+              rdfs:range rdfs:Literal .
+
+
+
+###  http://dati.gov.it/onto/covapit#modified
+
+:modified rdf:type owl:DatatypeProperty ;
+          
+          rdfs:comment "This property represents the date in which the organization information is changed."@en ;
+          
+          owl:versionInfo "last modified"@en ,
+                          "unstable"@en ;
+          
+          rdfs:comment "Questa proprietà rappresenta la data di ultima modifica delle informazioni sull'organizzazione."@it ;
+          
+          owl:versionInfo "data di ultimo aggiornamento"@it ,
+                          "provvisoria"@it ;
+          
+          rdfs:domain :Organization ;
+          
+          rdfs:isDefinedBy <http://dati.gov.it/onto/covapit/> ;
+          
+          rdfs:range xsd:dateTime .
+
+
+
+###  http://dati.gov.it/onto/covapit#officeIdentifier
+
+:officeIdentifier rdf:type owl:DatatypeProperty ,
+                           owl:FunctionalProperty ;
+                  
+                  rdfs:label "office identifier"@en ,
+                             "codice univoco ufficio"@it ;
+                  
+                  rdfs:comment "This property represents the unique code used to identify the office of the organization."@en ;
+                  
+                  owl:versionInfo "stable"@en ;
+                  
+                  rdfs:comment "Questa proprietà rappresenta il codice univoco dell'ufficio dell'organizzazione."@it ;
+                  
+                  owl:versionInfo "stabile"@it ;
+                  
+                  rdfs:domain :SupportUnit ;
+                  
+                  rdfs:subPropertyOf :identifier ;
+                  
+                  rdfs:isDefinedBy <http://dati.gov.it/onto/covapit/> ;
+                  
+                  rdfs:range rdfs:Literal .
+
+
+
+###  http://dati.gov.it/onto/covapit#participationPercentage
+
+:participationPercentage rdf:type owl:DatatypeProperty ;
+                         
+                         rdfs:label "participation percentage"@en ,
+                                    "percentuale partecipazione"@it ;
+                         
+                         rdfs:comment "This property represents the percentage of participation (share) of an organization in another during a time period."@en ;
+                         
+                         owl:versionInfo "stable"@en ;
+                         
+                         rdfs:comment "Questa proprietà rappresenta la percentuale (quota) di partecipazione di un'organizzazione in un'altra in un certo lasso temporale. Esempio \"2.38\"). La proprietà è molto utile nei casi di descrizione di società partecipate per esempio."@it ;
+                         
+                         owl:versionInfo "stabile"@it ;
+                         
+                         rdfs:domain :Participation ;
+                         
+                         rdfs:isDefinedBy <http://dati.gov.it/onto/covapit/> ;
+                         
+                         rdfs:range xsd:float .
+
+
+
+###  http://dati.gov.it/onto/covapit#prefLabel
+
+:prefLabel rdf:type owl:DatatypeProperty ;
+           
+           rdfs:label "preferred label"@en ,
+                      "nome legale"@it ;
+           
+           rdfs:comment "This is the primary or legal name for the organization or it can be used to indicate the primary label of a role."@en ;
+           
+           owl:versionInfo "stable"@en ;
+           
+           rdfs:comment "Questa proprietà rappresenta il nome primario o il nome legale dell'organizzazione oppure può essere utilizzata per rappresentare l'etichetta primaria per il ruolo."@it ;
+           
+           owl:versionInfo "stabile"@it ;
+           
+           rdfs:isDefinedBy <http://dati.gov.it/onto/covapit/> ;
+           
+           rdfs:range rdfs:Literal ;
+           
+           rdfs:domain [ rdf:type owl:Class ;
+                         owl:unionOf ( :Organization
+                                       :Role
+                                     )
+                       ] .
+
+
+
+###  http://dati.gov.it/onto/covapit#remuneration
+
+:remuneration rdf:type owl:DatatypeProperty ;
+              
+              rdfs:label "remuneration"@en ,
+                         "compenso"@it ;
+              
+              rdfs:comment "This property represents the remuneration of a member with a specific role on the organization."@en ;
+              
+              owl:versionInfo "stable"@en ;
+              
+              rdfs:comment "Questa proprietà rappresenta il compenso di un membro con uno specifico ruolo nell'organizzazione."@it ;
+              
+              owl:versionInfo "stabile"@it ;
+              
+              rdfs:domain :Membership ;
+              
+              rdfs:isDefinedBy <http://dati.gov.it/onto/covapit/> ;
+              
+              rdfs:range xsd:double .
+
+
+
+###  http://dati.gov.it/onto/covapit#socialAccountName
+
+:socialAccountName rdf:type owl:DatatypeProperty ;
+                   
+                   rdfs:label "social account name"@en ,
+                              "nickname social network"@it ;
+                   
+                   rdfs:comment "This property represents the account name of the organization on the social network."@en ;
+                   
+                   owl:versionInfo "stable"@en ;
+                   
+                   rdfs:comment "Questa proprietà rappresenta il nickname utilizzato dall'organizzazione sui social network."@it ;
+                   
+                   owl:versionInfo "stabile"@it ;
+                   
+                   rdfs:domain :SocialNetworkAccount ;
+                   
+                   rdfs:isDefinedBy <http://dati.gov.it/onto/covapit/> ;
+                   
+                   rdfs:range rdfs:Literal .
+
+
+
+###  http://dati.gov.it/onto/covapit#startDate
+
+:startDate rdf:type owl:DatatypeProperty ;
+           
+           rdfs:label "start date"@en ,
+                      "data di inizio"@it ;
+           
+           rdfs:comment "This property represents the start date of the time interval."@en ;
+           
+           owl:versionInfo "stable"@en ;
+           
+           rdfs:comment "Questa proprietà rappresenta la data di inizio di un intervallo temporale."@it ;
+           
+           owl:versionInfo "stabile"@it ;
+           
+           rdfs:domain :TimeInterval ;
+           
+           rdfs:isDefinedBy <http://dati.gov.it/onto/covapit/> ;
+           
+           rdfs:range xsd:dateTime .
+
+
+
+###  http://dati.gov.it/onto/covapit#startingActivityDate
+
+:startingActivityDate rdf:type owl:DatatypeProperty ;
+                      
+                      rdfs:label "starting activity date"@en ,
+                                 "data inizio attività impresa"@it ;
+                      
+                      rdfs:comment "This property represents the date of the starting of the activity for a private organization."@en ;
+                      
+                      owl:versionInfo "unstable"@en ;
+                      
+                      rdfs:comment "Questa proprietà rappresenta la data di inizio di attività per un'organizzazione privata (impresa)."@it ;
+                      
+                      owl:versionInfo "provvisoria"@it ;
+                      
+                      rdfs:domain :PrivateOrganization ;
+                      
+                      rdfs:isDefinedBy <http://dati.gov.it/onto/covapit/> ;
+                      
+                      rdfs:range xsd:dateTime .
+
+
+
+###  http://dati.gov.it/onto/covapit#taxCode
+
+:taxCode rdf:type owl:DatatypeProperty ,
+                  owl:FunctionalProperty ;
+         
+         rdfs:label "tax code"@en ,
+                    "codice fiscale"@it ;
+         
+         rdfs:comment "This property represents the tax code of an organization."@en ;
+         
+         owl:versionInfo "stable"@en ;
+         
+         rdfs:comment "Questa proprietà rappresenta il codice fiscale dell'organizzazione sia essa pubblica che privata. Nel caso di imprese private il codice fiscale e la partita iva, tranne eccezioni, sono sempre coincidenti per le società, e sempre differenti per le imprese individuali. Il numero \"Registro Imprese\", ovvero il numero di iscrizione attribuito dal Registro Imprese della Camera di Commercio per le organizzazioni private, è il Codice Fiscale; nel caso si tratti di impresa individuale sarà il Codice Fiscale del titolare."@it ;
+         
+         owl:versionInfo "stabile"@it ;
+         
+         rdfs:domain :Organization ;
+         
+         rdfs:subPropertyOf :identifier ;
+         
+         rdfs:isDefinedBy <http://dati.gov.it/onto/covapit/> ;
+         
+         rdfs:range rdfs:Literal .
+
+
+
+###  http://dati.gov.it/onto/covapit#taxCodeEInvoiceService
+
+:taxCodeEInvoiceService rdf:type owl:DatatypeProperty ,
+                                 owl:FunctionalProperty ;
+                        
+                        rdfs:label "tax code of the eInvoice service"@en ,
+                                   "codice fiscale servizio di fatturazione elettronica"@it ;
+                        
+                        rdfs:comment "This property represents the tax code of the einvoice service."@en ;
+                        
+                        owl:versionInfo "stable"@en ;
+                        
+                        rdfs:comment "Questa proprietà rappresenta il codice fiscale del servizio di fatturazione elettronica."@it ;
+                        
+                        owl:versionInfo "stabile"@it ;
+                        
+                        rdfs:domain :eInvoiceService ;
+                        
+                        rdfs:subPropertyOf :identifier ;
+                        
+                        rdfs:isDefinedBy <http://dati.gov.it/onto/covapit/> ;
+                        
+                        rdfs:range rdfs:Literal .
+
+
+
+###  http://dati.gov.it/onto/covapit#taxCodeValidationDate
+
+:taxCodeValidationDate rdf:type owl:DatatypeProperty ;
+                       
+                       rdfs:label "tax code validation date"@en ,
+                                  "ultima data validazione codice fiscale"@it ;
+                       
+                       rdfs:comment "This property represents the last validation date for the tax code associated with the eInvoiceService."@en ;
+                       
+                       owl:versionInfo "unstable"@en ;
+                       
+                       rdfs:comment "Questa proprietà rappresenta l'utima data di validazione del codice fiscale per il servizio di fatturazione elettronica."@it ;
+                       
+                       owl:versionInfo "provvisoria"@it ;
+                       
+                       rdfs:domain :eInvoiceService ;
+                       
+                       rdfs:isDefinedBy <http://dati.gov.it/onto/covapit/> ;
+                       
+                       rdfs:range xsd:dateTime .
+
+
+
+###  http://dati.gov.it/onto/covapit#totalAmount
+
+:totalAmount rdf:type owl:DatatypeProperty ;
+             
+             rdfs:label "total amount"@en ,
+                        "ammontare totale"@it ;
+             
+             rdfs:comment "This property represents the total amount of the balance sheet of an organization."@en ;
+             
+             owl:versionInfo "stable"@en ;
+             
+             rdfs:comment "Questa proprietà rappresenta l'ammontare totale del bilancio di un'organizzazione."@it ;
+             
+             owl:versionInfo "stabile"@it ;
+             
+             rdfs:domain :BalanceSheet ;
+             
+             rdfs:isDefinedBy <http://dati.gov.it/onto/covapit/> ;
+             
+             rdfs:range xsd:float .
+
+
+
+###  http://dati.gov.it/onto/covapit#totalTaxBurden
+
+:totalTaxBurden rdf:type owl:DatatypeProperty ;
+                
+                rdfs:label "total tax burden"@en ,
+                           "onere complessivo"@it ;
+                
+                rdfs:comment "This property is used to model the total tax burden of the year which impacts on the balance of the organization. This data is required by specific Italian law."@en ;
+                
+                owl:versionInfo "unstable"@en ;
+                
+                rdfs:comment "Questa proprietà rappresenta l'onere complessivo a qualsiasi titolo gravante per l'anno sul bilancio dell'amministrazione. Questa informazione è richiesta per la pubblicazione ai sensi dell’art. 22, c. 2 del d.lgs. n. 33/2013."@it ;
+                
+                owl:versionInfo "provvisoria"@it ;
+                
+                rdfs:domain :BalanceSheet ;
+                
+                rdfs:isDefinedBy <http://dati.gov.it/onto/covapit/> ;
+                
+                rdfs:range xsd:float .
+
+
+
+###  http://dati.gov.it/onto/covapit#yearOfReference
+
+:yearOfReference rdf:type owl:DatatypeProperty ;
+                 
+                 rdfs:label "year of reference"@en ,
+                            "anno di riferimento"@it ;
+                 
+                 rdfs:comment "This property represents the year of reference for an organization."@en ;
+                 
+                 owl:versionInfo "stable"@en ;
+                 
+                 rdfs:comment "Questa proprietà rappresenta l'anno di riferimento per il bilancio di un'organizzazione."@it ;
+                 
+                 owl:versionInfo "stabile"@it ;
+                 
+                 rdfs:domain :BalanceSheet ;
+                 
+                 rdfs:isDefinedBy <http://dati.gov.it/onto/covapit/> ;
+                 
+                 rdfs:range rdfs:Literal .
+
+
+
+
+
+#################################################################
+#
+#    Classes
+#
+#################################################################
+
+
+###  http://dati.gov.it/onto/covapit#ActivityType
+
+:ActivityType rdf:type owl:Class ;
+              
+              rdfs:label "Activity Type"@en ,
+                         "Tipo attività"@it ;
+              
+              rdfs:comment "This class represents the type of activities carried out  by the organization. The instances of this class can be modelled as skos concepts of a controlled vocabulary. In the case of private organization, this class is represented by the ATECO 2007 classification. In the case of public organizations, the COFOG classification can be used."@en ;
+              
+              owl:versionInfo "unstable"@en ;
+              
+              rdfs:comment "Questa classe rappresenta il tipo di attiità svolta dall'organizzazione. Le istanze di questa classe possono essere rappresentate come concetti dello standard skos di un vocabolario controllato. Nel caso di organizzazioni private (impresa) è necessario utilizzare la classificazione delle attività ATECO. Nel caso di organizzazioni pubbliche si può utilizzare la classificazione COFOG."@it ;
+              
+              owl:versionInfo "provvisoria"@it ;
+              
+              rdfs:isDefinedBy <http://dati.gov.it/onto/covapit/> .
+
+
+
+###  http://dati.gov.it/onto/covapit#Address
+
+:Address rdf:type owl:Class ;
+         
+         rdfs:label "Address"@en ,
+                    "Indirizzo"@it ;
+         
+         rdfs:comment "This class represents the address of one or more addresses of the organization."@en ;
+         
+         owl:versionInfo "stable"@en ;
+         
+         rdfs:comment "Questa classe rappresenta l'indirizzo di una o più sede dell'organizzazione."@it ;
+         
+         owl:versionInfo "stabile"@it ;
+         
+         rdfs:isDefinedBy <http://dati.gov.it/onto/covapit/> .
+
+
+
+###  http://dati.gov.it/onto/covapit#AddressInTime
+
+:AddressInTime rdf:type owl:Class ;
+               
+               rdfs:label "Address in Time"@en ,
+                          "Indirizzo nel Tempo"@it ;
+               
+               rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                 owl:onProperty :atTime ;
+                                 owl:onClass :TimeInterval ;
+                                 owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger
+                               ] ;
+               
+               rdfs:comment "This class represents the situation of an address of an organization that changes over time. It is modelled as a n-ray relationship between the Address, the Organization, and the Time Interval."@en ;
+               
+               owl:versionInfo "unstable"@en ;
+               
+               rdfs:comment "Questa classe rappresenta una situazione di un indirizzo di un'organizzazione che evolve nel tempo. Essa è modellata come una relazione ennaria tra l'Indirizzo, l'Organizzazione e l'Intervallo Temporale."@it ;
+               
+               owl:versionInfo "provvisoria"@it ;
+               
+               rdfs:isDefinedBy <http://dati.gov.it/onto/covapit/> .
+
+
+
+###  http://dati.gov.it/onto/covapit#Agent
+
+:Agent rdf:type owl:Class ;
+       
+       rdfs:label "Agent"@en ,
+                  "Agente"@it ;
+       
+       rdfs:subClassOf [ rdf:type owl:Restriction ;
+                         owl:onProperty :holdMembership ;
+                         owl:someValuesFrom :Membership
+                       ] ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :actsonBehalfOf ;
+                         owl:allValuesFrom :Agent
+                       ] ;
+       
+       rdfs:comment "This class represents an Agent. An Agent can be an organization, a person or a group."@en ;
+       
+       owl:versionInfo "stable"@en ;
+       
+       rdfs:comment "Questa classe rappresenta un agente. Un agente può essere un'organizzazione, una persona un gruppo."@it ;
+       
+       owl:versionInfo "stabile"@it ;
+       
+       rdfs:isDefinedBy <http://dati.gov.it/onto/covapit/> .
+
+
+
+###  http://dati.gov.it/onto/covapit#BalanceSheet
+
+:BalanceSheet rdf:type owl:Class ;
+              
+              rdfs:label "Balance sheet"@en ,
+                         "Bilancio"@it ;
+              
+              rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                owl:onProperty :totalAmount ;
+                                owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                owl:onDataRange xsd:float
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :totalTaxBurden ;
+                                owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                owl:onDataRange xsd:float
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :yearOfReference ;
+                                owl:cardinality "1"^^xsd:nonNegativeInteger
+                              ] ;
+              
+              owl:versionInfo "unstable"@en ;
+              
+              rdfs:comment "Questa classe rappresenta le principali informazioni sul bilancio dell'organizzazione quali per esempio l'anno di riferimento, l'ammontare totale e l'onere complessivo."@it ;
+              
+              owl:versionInfo "provvisoria"@it ;
+              
+              rdfs:isDefinedBy <http://dati.gov.it/onto/covapit/> .
+
+
+
+###  http://dati.gov.it/onto/covapit#ChangeEvent
+
+:ChangeEvent rdf:type owl:Class ;
+             
+             rdfs:label "Change Event"@en ,
+                        "Evento di cambiamento"@it ;
+             
+             rdfs:subClassOf [ rdf:type owl:Restriction ;
+                               owl:onProperty :resultingOrganization ;
+                               owl:allValuesFrom :Organization
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :description ;
+                               owl:someValuesFrom rdfs:Literal
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :orginalOrganization ;
+                               owl:allValuesFrom :Organization
+                             ] ;
+             
+             rdfs:comment "Organizations are formed and changed in response to events. This may be the result of new legislation, new policies, taking on new obligations etc. This class captures these events. Currently, the following events have been identified: Foundation, Scission, Merger, Replacement, Closing."@en ;
+             
+             owl:versionInfo "stable"@en ;
+             
+             rdfs:comment "Organizzazioni sono formate o cambiano in risposta ad eventi. Questo potrebbe essere il risultato di nuove normative, di nuove obbligazioni, di riassetti ecc. Questa classe mira a catturare questi tipi di eventi di cambiamento nell'organizzazione. In particolare, al momento si sono individuati i seguenti tipi di eventi: Fondazione, Chiusura, Fusione, Scissione, Sostituzione."@it ;
+             
+             owl:versionInfo "stabile"@it ;
+             
+             rdfs:isDefinedBy <http://dati.gov.it/onto/covapit/> .
+
+
+
+###  http://dati.gov.it/onto/covapit#Closing
+
+:Closing rdf:type owl:Class ;
+         
+         rdfs:label "Closing"@en ,
+                    "Chiusura"@it ;
+         
+         rdfs:subClassOf :ChangeEvent ;
+         
+         rdfs:comment "This class represents the Closing event for an organization."@en ;
+         
+         owl:versionInfo "stable"@en ;
+         
+         rdfs:comment "Questa classe rappresenta un evento di Chiusra per un'organizzazione."@it ;
+         
+         owl:versionInfo "stabile"@it ;
+         
+         rdfs:isDefinedBy <http://dati.gov.it/onto/covapit/> .
+
+
+
+###  http://dati.gov.it/onto/covapit#ContactPoint
+
+:ContactPoint rdf:type owl:Class ;
+              
+              rdfs:label "Point of Contact"@en ,
+                         "Punto di Contatto"@it ;
+              
+              rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                owl:onProperty :hasSocialNetworkAccount ;
+                                owl:allValuesFrom :SocialNetworkAccount
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :hasEmail ;
+                                owl:someValuesFrom :Email
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :hasTelephone ;
+                                owl:allValuesFrom rdfs:Literal
+                              ] ;
+              
+              owl:versionInfo "stable"@en ;
+              
+              rdfs:comment "Questa classe rappresenta il punto di contatto dell'organizzazione. Il punto di contatto è costituito da tutti quei canali (email, social network account, telefono) attraverso cui è possibile instaurare un contatto con l'organizzazione"@it ;
+              
+              owl:versionInfo "stabile"@it ;
+              
+              rdfs:isDefinedBy <http://dati.gov.it/onto/covapit/> .
+
+
+
+###  http://dati.gov.it/onto/covapit#Email
+
+:Email rdf:type owl:Class ;
+       
+       rdfs:label "Email"@en ,
+                  "Email"@it ;
+       
+       rdfs:subClassOf [ rdf:type owl:Restriction ;
+                         owl:onProperty :hasEmailType ;
+                         owl:onClass :EmailType ;
+                         owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger
+                       ] ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :emailAddress ;
+                         owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                         owl:onDataRange xsd:anyURI
+                       ] ;
+       
+       rdfs:comment "This class represents the Email address of the contact point of an organization. The class is linked to the type of email that can be specified. In the Italian context we identify two types of Emails; namely, Certified Electronic Email and Traditional Email addresses."@en ;
+       
+       owl:versionInfo "stable"@en ;
+       
+       rdfs:comment "Questa classe rappresenta l'indirizzo email del punto di contatto di un'organizzazione. La classe è collegata al tipo di email. Nell'ambito itailano si identificano due tipi principali di email, la PEC e l'email tradizionale."@it ;
+       
+       owl:versionInfo "stabile"@it ;
+       
+       rdfs:isDefinedBy <http://dati.gov.it/onto/covapit/> .
+
+
+
+###  http://dati.gov.it/onto/covapit#EmailType
+
+:EmailType rdf:type owl:Class ;
+           
+           rdfs:label "Email Type"@en ,
+                      "Tipo Email"@it ;
+           
+           rdfs:comment "This class represents the type of email. It can assume two values that are defined in the Channel controlled vocabulary http://dati.gov.it/onto/controlledvocabulary/Channel.rdf. In particular, the istances of this class are http://dati.gov.it/onto/controlledvocabulary/Channel/041 (Certified Electronic Mail) and http://dati.gov.it/onto/controlledvocabulary/Channel/042 (E-mail)."@en ;
+           
+           owl:versionInfo "stable"@en ;
+           
+           rdfs:comment "Questa classe rappresenta i tipo di email e può assumere due valori come definiti nel vocabolario controllato dei canali di erogazione dei servizi (http://dati.gov.it/onto/controlledvocabulary/Channel.rdf. Nello specifico le istanze di questa classe sono: http://dati.gov.it/onto/controlledvocabulary/Channel/042 (Email tradizionale) e http://dati.gov.it/onto/controlledvocabulary/Channel/041 (PEC)."@it ;
+           
+           owl:versionInfo "stabile"@it ;
+           
+           rdfs:isDefinedBy <http://dati.gov.it/onto/covapit/> .
+
+
+
+###  http://dati.gov.it/onto/covapit#Foundation
+
+:Foundation rdf:type owl:Class ;
+            
+            rdfs:label "Foundation"@en ,
+                       "Costituzione"@it ;
+            
+            rdfs:subClassOf :ChangeEvent ;
+            
+            rdfs:comment "This class represents the foundation event for an organization."@en ;
+            
+            owl:versionInfo "stable"@en ;
+            
+            rdfs:comment "Questa classe rappresenta un evento di costituzione di un'organizzazione."@it ;
+            
+            owl:versionInfo "stabile"@it ;
+            
+            rdfs:isDefinedBy <http://dati.gov.it/onto/covapit/> .
+
+
+
+###  http://dati.gov.it/onto/covapit#Group
+
+:Group rdf:type owl:Class ;
+       
+       rdfs:label "Group"@en ,
+                  "Gruppo"@it ;
+       
+       rdfs:subClassOf :Agent ;
+       
+       owl:disjointWith :Organization ;
+       
+       rdfs:comment "This class represents a group, a collection of individual agents. This concept is intentionally quite broad, covering informal and ad-hoc groups, long-lived communities, organizational groups within a workplace, etc."@en ;
+       
+       owl:versionInfo "unstable"@en ;
+       
+       rdfs:comment "Questa classe rappresenta un gruppo ossia una collezione di agenti individuatli. Il concetto è volutamente ampio per poter rappresentare gruppi informale ma anche gruppi formati ad-hoc, comunità, ecc."@it ;
+       
+       owl:versionInfo "provvisoria"@it ;
+       
+       rdfs:isDefinedBy <http://dati.gov.it/onto/covapit/> .
+
+
+
+###  http://dati.gov.it/onto/covapit#HomogeneousOrganizationalArea
+
+:HomogeneousOrganizationalArea rdf:type owl:Class ;
+                               
+                               rdfs:label "Homogeneous Organizational Area"@en ,
+                                          "Area Organizzativa Omogenea (AOO)"@it ;
+                               
+                               rdfs:subClassOf :SupportUnit ,
+                                               [ rdf:type owl:Restriction ;
+                                                 owl:onProperty :AOOIdentifier ;
+                                                 owl:cardinality "1"^^xsd:nonNegativeInteger
+                                               ] ;
+                               
+                               owl:disjointWith :Office ;
+                               
+                               rdfs:comment "This class represents what is called in the italian context the homogeneous organizational area that identifies the protocol office of a public organization. The protocol office manages the documental flows in input and output."@en ;
+                               
+                               owl:versionInfo "stable"@en ;
+                               
+                               rdfs:comment "Questa classe rappresenta quello che nel contesto italiano viene chiamato Area Organizzativa Omogenea (AOO).  Le Aree Organizzative Omogenee (AOO) identificano gli uffici di protocollo degli Enti che gestiscono i flussi documentali in entrata e in uscita dall'Ente. Esse sono le vie principali per instaurare rapporti con gli Enti e rappresentano i canali ufficiali per l'invio di istanze e l'avvio di procedimenti amministrativi. Come previsto dall'art. 47 comma 3 del CAD, le Amministrazioni devono istituire e pubblicare nell'IPA almeno una casella di posta elettronica certificata per ciascun registro di protocollo (e quindi per ciascuna AOO)."@it ;
+                               
+                               owl:versionInfo "stabile"@it ;
+                               
+                               rdfs:isDefinedBy <http://dati.gov.it/onto/covapit/> .
+
+
+
+###  http://dati.gov.it/onto/covapit#ImageObject
+
+:ImageObject rdf:type owl:Class ;
+             
+             rdfs:label "Image Object"@en ,
+                        "Logo"@it ;
+             
+             rdfs:comment "This class represents an image object and in the specific case of an organization, the class is used to represent the logo."@en ;
+             
+             owl:versionInfo "stable"@en ;
+             
+             rdfs:comment "Questa classe rappresenta un oggetto immagine e nel caso specifico per l'organizzazione, la classe è utilizzata per rappresentare il logo."@it ;
+             
+             owl:versionInfo "stabile"@it ;
+             
+             rdfs:isDefinedBy <http://dati.gov.it/onto/covapit/> .
+
+
+
+###  http://dati.gov.it/onto/covapit#LegalStatus
+
+:LegalStatus rdf:type owl:Class ;
+             
+             rdfs:label "Legal Status"@en ,
+                        "Forma Giuridica"@it ;
+             
+             rdfs:comment "This class represents the legal form/status of the private organization. The instances of this class can be represented as skos concepts of a controlled vocabulary."@en ;
+             
+             owl:versionInfo "unstable"@en ;
+             
+             rdfs:comment "Questa classe rappresenta la forma giuridica di un'organizzazione privata (impresa). Le istanze di questa classe possono essere rappresentate da concetti dello standard skos di un vocabolario controllato. Esempi di forma giuridica per le imprese sono: \"Impresa Individuale\", \"società a responsabilità limitata\", ecc."@it ;
+             
+             owl:versionInfo "provvisoria"@it ;
+             
+             rdfs:isDefinedBy <http://dati.gov.it/onto/covapit/> .
+
+
+
+###  http://dati.gov.it/onto/covapit#Location
+
+:Location rdf:type owl:Class ;
+          
+          rdfs:label "Location (Administrative Region)"@en ,
+                     "Localizzazione (Area Amministrativa)"@it ;
+          
+          rdfs:comment "This class represents the location or administrative region(s) covered by the organization. It is recommended the use of a controlled vocabulary. To this end, it is possibile to use the Places vocabulary published by the Publication Office of the European Commission or, alternatively, if the area is not reported in that vocabulary, it is recommended the use of geonames."@en ;
+          
+          owl:versionInfo "stable"@en ;
+          
+          rdfs:comment "Questa classe rappresenta una localizzazione o un'area amministrativa di riferiemnto per l'organizzazione. E' consigliato utilizzare un vocabolario controllato. Si consiglia il vocabolario Places del Publication Office della Commissione Europea e in caso di mancanza, in tale vocabolario, dell'area amministrativa di riferimento per l'organizzazione, si raccomanda l'uso di geonames."@it ;
+          
+          owl:versionInfo "stabile"@it ;
+          
+          rdfs:isDefinedBy <http://dati.gov.it/onto/covapit/> .
+
+
+
+###  http://dati.gov.it/onto/covapit#Membership
+
+:Membership rdf:type owl:Class ;
+            
+            rdfs:label "Membership"@en ,
+                       "Appartenenza"@it ;
+            
+            rdfs:subClassOf [ rdf:type owl:Restriction ;
+                              owl:onProperty :withRole ;
+                              owl:onClass :Role ;
+                              owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :remuneration ;
+                              owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                              owl:onDataRange xsd:double
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :atTime ;
+                              owl:onClass :TimeInterval ;
+                              owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :membershipFor ;
+                              owl:onClass :Organization ;
+                              owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger
+                            ] ;
+            
+            rdfs:comment "This class represents the nature of an Agent's membership of an organization. In particular, the class is an n-ary relationship (a situation) that involves an Agent, an Organization, a Role and a Time Period."@en ;
+            
+            owl:versionInfo "stable"@en ;
+            
+            rdfs:comment "Questa classe rappresenta la natura di appartenenza di un agente di un'organizzazione. In particolare, la classe è una relazione ennaria che rappresenta una situazione che coinvolge un agente, un'organizzazione, i l ruolo che l'agente ricopre nell'organizzazione ed eventualment eil lasso temporale in cui quel ruolo è svolto. Esempio: la classe consente di rappresentare il ruolo di amministratore delegato  di un'impresa in un certo lasso temporale oppure il ruolo di consigliere in una società partecipata di una pubblica amministrazione in un certo intervallo temporale."@it ;
+            
+            owl:versionInfo "stabile"@it ;
+            
+            rdfs:isDefinedBy <http://dati.gov.it/onto/covapit/> .
+
+
+
+###  http://dati.gov.it/onto/covapit#Merger
+
+:Merger rdf:type owl:Class ;
+        
+        rdfs:label "Merger"@en ,
+                   "Fusione"@it ;
+        
+        rdfs:subClassOf :ChangeEvent ;
+        
+        rdfs:comment "This class represents the merger event for an organization."@en ;
+        
+        owl:versionInfo "stable"@en ;
+        
+        rdfs:comment "Questa classe rappresenta un evento di fusione per un'organizzazione."@it ;
+        
+        owl:versionInfo "stabile"@it ;
+        
+        rdfs:isDefinedBy <http://dati.gov.it/onto/covapit/> .
+
+
+
+###  http://dati.gov.it/onto/covapit#Office
+
+:Office rdf:type owl:Class ;
+        
+        rdfs:label "Office"@en ,
+                   "Ufficio (Unità organizzativa)"@it ;
+        
+        rdfs:subClassOf :SupportUnit ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :hasEInvoiceService ;
+                          owl:onClass :eInvoiceService ;
+                          owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :officeIdentifier ;
+                          owl:cardinality "1"^^xsd:nonNegativeInteger
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :isPartOf ;
+                          owl:onClass :HomogeneousOrganizationalArea ;
+                          owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger
+                        ] ;
+        
+        rdfs:comment "This class represents a specific office of an organization. In the public organization sector it can be also known as Organizational Unit."@en ;
+        
+        owl:versionInfo "stable"@en ;
+        
+        rdfs:comment "Questa classe rappresenta un ufficio dell'organizzazione (nell'ambito delle organizzazioni pubbliche è anche detto unità organizzativa)."@it ;
+        
+        owl:versionInfo "stabile"@it ;
+        
+        rdfs:isDefinedBy <http://dati.gov.it/onto/covapit/> .
+
+
+
+###  http://dati.gov.it/onto/covapit#Organization
+
+:Organization rdf:type owl:Class ;
+              
+              rdfs:label "Organization"@en ,
+                         "Organizzazione"@it ;
+              
+              rdfs:subClassOf :Agent ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :hasLogo ;
+                                owl:onClass :ImageObject ;
+                                owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :changedBy ;
+                                owl:allValuesFrom :ChangeEvent
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :resultedFrom ;
+                                owl:allValuesFrom :ChangeEvent
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :hasBalanceSheet ;
+                                owl:allValuesFrom :BalanceSheet
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :hasHomepage ;
+                                owl:onClass :WebSite ;
+                                owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :foundationDate ;
+                                owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                owl:onDataRange xsd:dateTime
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :hasContactPoint ;
+                                owl:onClass :ContactPoint ;
+                                owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :description ;
+                                owl:someValuesFrom rdfs:Literal
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :altLabel ;
+                                owl:maxCardinality "1"^^xsd:nonNegativeInteger
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :hasPrimaryAddress ;
+                                owl:onClass :Address ;
+                                owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :hasTypoloy ;
+                                owl:onClass :OrganizationTypology ;
+                                owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :hasAddress ;
+                                owl:someValuesFrom :Address
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :taxCode ;
+                                owl:cardinality "1"^^xsd:nonNegativeInteger
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :mainFunction ;
+                                owl:allValuesFrom rdfs:Literal
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :hasAddressInTime ;
+                                owl:allValuesFrom :AddressInTime
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :hasSpatialCoverage ;
+                                owl:allValuesFrom :Location
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :hasActivityType ;
+                                owl:allValuesFrom :ActivityType
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :accreditationDate ;
+                                owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                owl:onDataRange xsd:dateTime
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :acronym ;
+                                owl:cardinality "1"^^xsd:nonNegativeInteger
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :prefLabel ;
+                                owl:someValuesFrom rdfs:Literal
+                              ] ;
+              
+              owl:disjointWith :Person ;
+              
+              rdfs:comment "This class represents an organization, be it public or private, usually registrated in a national public registry (e.g. in Italy \"indice delle PA\" for the public administrations, \"Registro imprese\" for the private organizations. Examples: \"Agenzia per l'Italia Digitale\", \"Comune di Roma\", \"TELECOM ITALIA SPA o TIM S.P.A.\""@en ;
+              
+              owl:versionInfo "stable"@en ;
+              
+              rdfs:comment "Questa è la classe che rappresenta un'organizzazione, sia essa pubblica che privata, tipicamente registrata all'interno di un registro pubblico (e.g., indice della PA per le pubbliche amministrazioni, registro imprese per le organizzazioni private). Esempio \"Agenzia per l'Ialia Digitale\", \"Comune di Bologna\", \"TELECOM ITALIA SPA O TIM S.P.A.\""@it ;
+              
+              owl:versionInfo "stabile"@it ;
+              
+              rdfs:isDefinedBy <http://dati.gov.it/onto/covapit/> .
+
+
+
+###  http://dati.gov.it/onto/covapit#OrganizationTypology
+
+:OrganizationTypology rdf:type owl:Class ;
+                      
+                      rdfs:label "Organization Typology"@en ,
+                                 "Tipologia Organizzazione"@it ;
+                      
+                      rdfs:comment "This class represents the type of organization be it the type of public organizations or the type of private organizations. The instances of this class can be represented as skos:concepts of a controlled vocabulary."@en ;
+                      
+                      owl:versionInfo "unstable"@en ;
+                      
+                      rdfs:comment "Questa classe rappresenta il tipo di organizzazione, sia esso il tipo di organizzazione pubblica che privata. Le istanze di queste classe possono essere concetti espressi utilizzando lo standard skos di un vocabolario controllato. Esempi di tipi di organizzazioni pubbliche: pubbliche amministrazioni, gestori di pubblici servizi, ecc. Esempi di tipi di organizzazioni private (impresa): \"Altra forma\", \"Società di capitale\", ecc."@it ;
+                      
+                      owl:versionInfo "provvisoria"@it ;
+                      
+                      rdfs:isDefinedBy <http://dati.gov.it/onto/covapit/> .
+
+
+
+###  http://dati.gov.it/onto/covapit#Participation
+
+:Participation rdf:type owl:Class ;
+               
+               rdfs:label "Participation"@en ,
+                          "Partecipazione"@it ;
+               
+               rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                 owl:onProperty :atTime ;
+                                 owl:onClass :TimeInterval ;
+                                 owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :hasParticipationType ;
+                                 owl:onClass :ParticipationType ;
+                                 owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :participationPercentage ;
+                                 owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                 owl:onDataRange xsd:float
+                               ] ;
+               
+               rdfs:comment "This class represents a participation of an organization in another. It is a n-ray relationship (situation) between organizations in a certain time interval. The participation can be of a specific type. Example is the participation of a municipality in a controlled enterprise that provides public services such as water management or public transportation."@en ;
+               
+               owl:versionInfo "unstable"@en ;
+               
+               rdfs:comment "Questa classe rappresenta la situazione di partecipazione di un'organizzazione in un'altra. E? quindi una relazione ennaria tra organizazzioni in un certo lasso temporale. La partecipazione può essere di un certo tipo. Esempio: la classe può essere utilizzata per rappresentare le informazioni di partecipazione (e.g., quote) di comuni in società controllate/partecipate (società dei trasporti pubblici, società di gestione dell'acqua, ecc.)"@it ;
+               
+               owl:versionInfo "provvisoria"@it ;
+               
+               rdfs:isDefinedBy <http://dati.gov.it/onto/covapit/> .
+
+
+
+###  http://dati.gov.it/onto/covapit#ParticipationType
+
+:ParticipationType rdf:type owl:Class ;
+                   
+                   rdfs:label "Participation Type"@en ,
+                              "Tipo Partecipazione"@it ;
+                   
+                   rdfs:comment "This class represents the type of participation of an organization in another. The class is materialized with two possible values \"Direct\" \"Indirect\" participation."@en ;
+                   
+                   owl:versionInfo "stable"@en ;
+                   
+                   rdfs:comment "Questa classe rappresenta il tipo di partecipazione di un'organizzazione in un'altra. Essa assume al momento due valori \"Diretta\" e \"Indiretta\"."@it ;
+                   
+                   owl:versionInfo "stabile"@it ;
+                   
+                   rdfs:isDefinedBy <http://dati.gov.it/onto/covapit/> .
+
+
+
+###  http://dati.gov.it/onto/covapit#Person
+
+:Person rdf:type owl:Class ;
+        
+        rdfs:label "Person"@en ,
+                   "Persona"@it ;
+        
+        rdfs:subClassOf :Agent ;
+        
+        rdfs:comment "This class represents the type of agent, Person."@en ;
+        
+        owl:versionInfo "stable"@en ;
+        
+        rdfs:comment "Questa classe rappresenta il tipo di agente Persona."@it ;
+        
+        owl:versionInfo "stabile"@it ;
+        
+        rdfs:isDefinedBy <http://dati.gov.it/onto/covapit/> .
+
+
+
+###  http://dati.gov.it/onto/covapit#PrivateOrganization
+
+:PrivateOrganization rdf:type owl:Class ;
+                     
+                     rdfs:label "Private Organization"@en ,
+                                "Organizzazione Privata"@it ;
+                     
+                     rdfs:subClassOf :Organization ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty :hasLegalStatus ;
+                                       owl:onClass :LegalStatus ;
+                                       owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger
+                                     ] ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty :REANumber ;
+                                       owl:someValuesFrom rdfs:Literal
+                                     ] ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty :VATnumber ;
+                                       owl:cardinality "1"^^xsd:nonNegativeInteger
+                                     ] ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty :startingActivityDate ;
+                                       owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                       owl:onDataRange xsd:dateTime
+                                     ] ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty :businessObjective ;
+                                       owl:allValuesFrom rdfs:Literal
+                                     ] ;
+                     
+                     owl:disjointWith :PublicOrganization ;
+                     
+                     rdfs:comment "This class represents a private organization as registered in a national public registry."@en ;
+                     
+                     owl:versionInfo "stable"@en ;
+                     
+                     rdfs:comment "Questa classe rappresenta un'organizzazione privata ufficialmente registrata presso un registro nazionale (registro imprese)."@it ;
+                     
+                     owl:versionInfo "stabile"@it ;
+                     
+                     rdfs:isDefinedBy <http://dati.gov.it/onto/covapit/> .
+
+
+
+###  http://dati.gov.it/onto/covapit#PublicOrganization
+
+:PublicOrganization rdf:type owl:Class ;
+                    
+                    rdfs:label "public organization"@en ,
+                               "organizzazione pubblica"@it ;
+                    
+                    rdfs:subClassOf :Organization ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty :hasCategory ;
+                                      owl:onClass :PublicOrganizationCategory ;
+                                      owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty :IPAcode ;
+                                      owl:cardinality "1"^^xsd:nonNegativeInteger
+                                    ] ;
+                    
+                    rdfs:comment "This class represents a public organization. Thus, a public administration is a public organization. Any other organization that is defined public can be modelled using this class."@en ;
+                    
+                    owl:versionInfo "stable"@en ;
+                    
+                    rdfs:comment "Questa classe rappresenta un'organizzazione pubblica. Una pubblica amministrazione e qualsiasi altra organizzazione di nautra pubblica può essere modellata utilizzando questa classe. In generale,  individui di questa classe sono organizzazioni registrate presso l'Indice della PA (IPA)."@it ;
+                    
+                    owl:versionInfo "stabile"@it ;
+                    
+                    rdfs:isDefinedBy <http://dati.gov.it/onto/covapit/> .
+
+
+
+###  http://dati.gov.it/onto/covapit#PublicOrganizationCategory
+
+:PublicOrganizationCategory rdf:type owl:Class ;
+                            
+                            rdfs:label "Public Organization Category"@en ,
+                                       "Categoria Organizzazione Pubblica"@it ;
+                            
+                            rdfs:comment "This class represents the category of the public organization. The instances of this class can be modelled as concept of the skos standard of a controlled vocabulary."@en ;
+                            
+                            owl:versionInfo "unstable"@en ;
+                            
+                            rdfs:comment "Questa classe rappresenta la cateogoria dell'organizzazione pubblica. Le istanze di questa classe possono essere modellate come concetti dello standard skos di un vocabolario controllato. Esempi includono: \"Agenzie ed Enti per il Turismo\", \"Città Metropolitane\", \"Presidenza del Consiglio, Minsiteri e Avvocatura dello Stato\"."@it ;
+                            
+                            owl:versionInfo "provvisoria"@it ;
+                            
+                            rdfs:isDefinedBy <http://dati.gov.it/onto/covapit/> .
+
+
+
+###  http://dati.gov.it/onto/covapit#Replacement
+
+:Replacement rdf:type owl:Class ;
+             
+             rdfs:label "Replacement"@en ,
+                        "Sostituzione"@it ;
+             
+             rdfs:subClassOf :ChangeEvent ;
+             
+             rdfs:comment "This class represents a replacement event for an organization."@en ;
+             
+             owl:versionInfo "stable"@en ;
+             
+             rdfs:comment "Questa classe rappresenta un evento di sostituzione per un'organizzazione. Come la sostituzione di una pubblica amministrazioe con un'altra."@it ;
+             
+             owl:versionInfo "stabile"@it ;
+             
+             rdfs:isDefinedBy <http://dati.gov.it/onto/covapit/> .
+
+
+
+###  http://dati.gov.it/onto/covapit#Role
+
+:Role rdf:type owl:Class ;
+      
+      rdfs:label "Role"@en ,
+                 "Ruolo"@it ;
+      
+      rdfs:subClassOf [ rdf:type owl:Restriction ;
+                        owl:onProperty :prefLabel ;
+                        owl:someValuesFrom rdfs:Literal
+                      ] ;
+      
+      rdfs:comment "This class represents the Role in the n-ary relationship involving the Membership, the Agent and the Organization. It is used to model the Role of a member of the organization in a certain time interval."@en ;
+      
+      owl:versionInfo "unstable"@en ;
+      
+      rdfs:comment "Questa classe rappresenta il ruolo nella relazione ennaria con l'Agente, l'Organizzazione, e la situazione di Appartenenza. Essa è utilizzata per modellare il Ruolo di un membro dell'organizzazione in un certo intervallo temporale."@it ;
+      
+      owl:versionInfo "provvisoria"@it ;
+      
+      rdfs:isDefinedBy <http://dati.gov.it/onto/covapit/> .
+
+
+
+###  http://dati.gov.it/onto/covapit#Scission
+
+:Scission rdf:type owl:Class ;
+          
+          rdfs:label "Scission"@en ,
+                     "Scissione"@it ;
+          
+          rdfs:subClassOf :ChangeEvent ;
+          
+          rdfs:comment "This class represents a scission event for an organization."@en ;
+          
+          owl:versionInfo "stable"@en ;
+          
+          rdfs:comment "Questa classe rappresenta una scissione per un'organizzaizone."@it ;
+          
+          owl:versionInfo "stabile"@it ;
+          
+          rdfs:isDefinedBy <http://dati.gov.it/onto/covapit/> .
+
+
+
+###  http://dati.gov.it/onto/covapit#SocialNetworkAccount
+
+:SocialNetworkAccount rdf:type owl:Class ;
+                      
+                      rdfs:label "Social Network Account"@en ,
+                                 "Account Social Network"@it ;
+                      
+                      rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                        owl:onProperty :socialAccountName ;
+                                        owl:cardinality "1"^^xsd:nonNegativeInteger
+                                      ] ,
+                                      [ rdf:type owl:Restriction ;
+                                        owl:onProperty :hasSocialType ;
+                                        owl:onClass :SocialType ;
+                                        owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger
+                                      ] ;
+                      
+                      rdfs:comment "This class represents the social network account of the organization."@en ;
+                      
+                      owl:versionInfo "stable"@en ;
+                      
+                      rdfs:comment "Questa classe rappresenta l'account di un social network dell'organizzazione."@it ;
+                      
+                      owl:versionInfo "stabile"@it ;
+                      
+                      rdfs:isDefinedBy <http://dati.gov.it/onto/covapit/> .
+
+
+
+###  http://dati.gov.it/onto/covapit#SocialType
+
+:SocialType rdf:type owl:Class ;
+            
+            rdfs:label "Social  Network Type"@en ,
+                       "Tipo Social Network"@it ;
+            
+            rdfs:comment "This class represents the social network type. Currently, it assumes the following values: facebook, googleplus, linkedin, twitter and youtube."@en ;
+            
+            owl:versionInfo "stable"@en ;
+            
+            rdfs:comment "Questa classe rappresenta il tipo di social network. Al momento essa assume questi valori: facebook, googleplus, linkedin, twitter e youtube."@it ;
+            
+            owl:versionInfo "stabile"@it ;
+            
+            rdfs:isDefinedBy <http://dati.gov.it/onto/covapit/> .
+
+
+
+###  http://dati.gov.it/onto/covapit#Status
+
+:Status rdf:type owl:Class ;
+        
+        rdfs:label "Status"@en ,
+                   "Stato"@it ;
+        
+        rdfs:comment "This class is used to represent the status of a private organization. This class assumes the following values: \"registered\" \"cancelled\" and \"under registration\"."@en ;
+        
+        owl:versionInfo "unstable"@en ;
+        
+        rdfs:comment "Questa classe rappresenta lo stato di un'organizzazione privata (impresa). Essa assume i seguenti valori predefiniti: \"registrata\" \"cancellata\" \"in fase di registrazione\"."@it ;
+        
+        owl:versionInfo "provvisoria"@it ;
+        
+        rdfs:isDefinedBy <http://dati.gov.it/onto/covapit/> .
+
+
+
+###  http://dati.gov.it/onto/covapit#SupportUnit
+
+:SupportUnit rdf:type owl:Class ;
+             
+             rdfs:label "Support Unit (Department)"@en ,
+                        "Unità di supporto (dipartimento)"@it ;
+             
+             rdfs:subClassOf :Organization ;
+             
+             rdfs:comment "This class represents a generic support unit/division of an organization. An alternative name can be department. In the italian context there are two main types of support unit; namely, the homogeneous organizational area and the office. This is an astract class that is instantitate with the two above two types."@en ;
+             
+             owl:versionInfo "unstable"@en ;
+             
+             rdfs:comment "Questa classe rappresenta una generica unità di supporto o unità/divisione dell'organizzazione. Un nome alternativo potrebbe essere anche Dipartimento. Essa, nel contesto italiano, si suddivide in due tipologie di unità di supporto: Area Organizzativa Omogena e Ufficio (unità organizzativa). Questa è una classe astratta istanziata nei dati con i due precedenti tipi."@it ;
+             
+             owl:versionInfo "provvisoria"@it ;
+             
+             rdfs:isDefinedBy <http://dati.gov.it/onto/covapit/> .
+
+
+
+###  http://dati.gov.it/onto/covapit#TimeInterval
+
+:TimeInterval rdf:type owl:Class ;
+              
+              rdfs:label "Time Interval"@en ,
+                         "Intervallo di Tempo"@it ;
+              
+              rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                owl:onProperty :endDate ;
+                                owl:allValuesFrom xsd:dateTime
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :startDate ;
+                                owl:allValuesFrom xsd:dateTime
+                              ] ;
+              
+              rdfs:comment "This class represents a time interval."@en ;
+              
+              owl:versionInfo "stable"@en ;
+              
+              rdfs:comment "Questa classe rappresenta un intervallo temporale."@it ;
+              
+              owl:versionInfo "stabile"@it ;
+              
+              rdfs:isDefinedBy <http://dati.gov.it/onto/covapit/> .
+
+
+
+###  http://dati.gov.it/onto/covapit#WebSite
+
+:WebSite rdf:type owl:Class ;
+         
+         rdfs:label "Web Site"@en ,
+                    "Sito Web"@it ;
+         
+         rdfs:comment "This class represents the web site of refernce of the organization."@en ;
+         
+         owl:versionInfo "unstable"@en ;
+         
+         rdfs:comment "Questa classe rappresenta il sito web di riferimento dell'organizzazione."@it ;
+         
+         owl:versionInfo "provvisoria"@it ;
+         
+         rdfs:isDefinedBy <http://dati.gov.it/onto/covapit/> .
+
+
+
+###  http://dati.gov.it/onto/covapit#eInvoiceService
+
+:eInvoiceService rdf:type owl:Class ;
+                 
+                 rdfs:label "eInvoice Service"@en ,
+                            "Servizio Fatturazione Elettronica"@it ;
+                 
+                 rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                   owl:onProperty :eInvoiceServiceStartingDate ;
+                                   owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                   owl:onDataRange xsd:dateTime
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty :taxCodeValidationDate ;
+                                   owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                   owl:onDataRange xsd:dateTime
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty :taxCodeEInvoiceService ;
+                                   owl:cardinality "1"^^xsd:nonNegativeInteger
+                                 ] ;
+                 
+                 rdfs:comment "This class represents the Italian references for the eInvoice service, as defined in the national registry of public administrations named IPA."@en ;
+                 
+                 owl:versionInfo "stable"@en ;
+                 
+                 rdfs:comment "Questa classe rappresenta il servizio di fatturazione elettronica così come definito nell'ambito dell'indice della pubblica amministrazione (IPA)."@it ;
+                 
+                 owl:versionInfo "stabile"@it ;
+                 
+                 rdfs:isDefinedBy <http://dati.gov.it/onto/covapit/> .
+
+
+
+
+
+#################################################################
+#
+#    Individuals
+#
+#################################################################
+
+
+###  http://dati.gov.it/onto/covapit#Cancelled
+
+:Cancelled rdf:type :Status ,
+                    owl:NamedIndividual .
+
+
+
+###  http://dati.gov.it/onto/covapit#Direct
+
+:Direct rdf:type :ParticipationType ,
+                 owl:NamedIndividual .
+
+
+
+###  http://dati.gov.it/onto/covapit#Facebook
+
+:Facebook rdf:type :SocialType ,
+                   owl:NamedIndividual ;
+          
+          rdfs:isDefinedBy <http://dati.gov.it/onto/covapit/> .
+
+
+
+###  http://dati.gov.it/onto/covapit#GooglePlus
+
+:GooglePlus rdf:type :SocialType ,
+                     owl:NamedIndividual ;
+            
+            rdfs:isDefinedBy <http://dati.gov.it/onto/covapit/> .
+
+
+
+###  http://dati.gov.it/onto/covapit#Indirect
+
+:Indirect rdf:type :ParticipationType ,
+                   owl:NamedIndividual .
+
+
+
+###  http://dati.gov.it/onto/covapit#LinkedIn
+
+:LinkedIn rdf:type :SocialType ,
+                   owl:NamedIndividual ;
+          
+          rdfs:isDefinedBy <http://dati.gov.it/onto/covapit/> .
+
+
+
+###  http://dati.gov.it/onto/covapit#Registered
+
+:Registered rdf:type :Status ,
+                     owl:NamedIndividual .
+
+
+
+###  http://dati.gov.it/onto/covapit#Twitter
+
+:Twitter rdf:type :SocialType ,
+                  owl:NamedIndividual ;
+         
+         rdfs:isDefinedBy <http://dati.gov.it/onto/covapit/> .
+
+
+
+###  http://dati.gov.it/onto/covapit#UnderRegistration
+
+:UnderRegistration rdf:type :Status ,
+                            owl:NamedIndividual .
+
+
+
+###  http://dati.gov.it/onto/covapit#YouTube
+
+:YouTube rdf:type :SocialType ,
+                  owl:NamedIndividual ;
+         
+         rdfs:isDefinedBy <http://dati.gov.it/onto/covapit/> .
+
+
+
+
+###  Generated by the OWL API (version 3.5.1) http://owlapi.sourceforge.net
+

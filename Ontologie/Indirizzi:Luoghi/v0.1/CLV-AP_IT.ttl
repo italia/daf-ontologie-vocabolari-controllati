@@ -1,0 +1,1049 @@
+@prefix : <http://dati.gov.it/onto/clvapit#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://dati.gov.it/onto/clvapit> .
+
+<http://dati.gov.it/onto/clvapit> rdf:type owl:Ontology ;
+                                  
+                                  dct:issued "2017-08-07"^^xsd:date ;
+                                  
+                                  dct:modified "2017-08-08"^^xsd:date ;
+                                  
+                                  dc:creator "Agency for Digital Italy - AgID"@en ,
+                                             "Institute of Cognitive Sciences and Technologies of the Italian Research Council (CNR) - Semantic Technology Laboratory (STLab)"@en ,
+                                             "Italian Digital Transformation Team"@en ;
+                                  
+                                  rdfs:comment "This is the ontology of the Italian application profile for Location and Addresses"@en ;
+                                  
+                                  owl:versionInfo "Version 0.1 - 07 August 2017"@en ;
+                                  
+                                  rdfs:comment "Questa è l'ontologia del profilo di italiano sui luoghi e gli indirizzi (Italian Core Location Vocabulary - Application Profile  - CLV-AP_IT)"@it ;
+                                  
+                                  owl:versionInfo "Versione 0.1 - 07 Agosto 2017"@it ;
+                                  
+                                  rdfs:isDefinedBy <http://dati.gov.it/onto/clvapit/> ;
+                                  
+                                  owl:versionIRI <http://dati.gov.it/onto/clvapit/0.1> .
+
+
+#################################################################
+#
+#    Object Properties
+#
+#################################################################
+
+
+###  http://dati.gov.it/onto/clvapit#atTime
+
+:atTime rdf:type owl:ObjectProperty ;
+        
+        rdfs:domain :AddressInTime ;
+        
+        rdfs:range :TimeInterval .
+
+
+
+###  http://dati.gov.it/onto/clvapit#hasAddress
+
+:hasAddress rdf:type owl:ObjectProperty ;
+            
+            rdfs:range :Address ;
+            
+            rdfs:subPropertyOf :hasFeature ;
+            
+            rdfs:domain owl:Thing .
+
+
+
+###  http://dati.gov.it/onto/clvapit#hasAddressArea
+
+:hasAddressArea rdf:type owl:ObjectProperty ;
+                
+                rdfs:subPropertyOf :hasFeature .
+
+
+
+###  http://dati.gov.it/onto/clvapit#hasAddressIdentifier
+
+:hasAddressIdentifier rdf:type owl:ObjectProperty ;
+                      
+                      rdfs:domain :Address ;
+                      
+                      rdfs:range :Identifier ;
+                      
+                      rdfs:subPropertyOf :hasIdentifier .
+
+
+
+###  http://dati.gov.it/onto/clvapit#hasAdressinTime
+
+:hasAdressinTime rdf:type owl:ObjectProperty ;
+                 
+                 rdfs:range :AddressInTime ;
+                 
+                 rdfs:subPropertyOf :hasFeature ;
+                 
+                 rdfs:domain owl:Thing .
+
+
+
+###  http://dati.gov.it/onto/clvapit#hasCity
+
+:hasCity rdf:type owl:ObjectProperty ;
+         
+         rdfs:domain :Address ;
+         
+         rdfs:range :City ;
+         
+         rdfs:subPropertyOf :hasFeature .
+
+
+
+###  http://dati.gov.it/onto/clvapit#hasCountry
+
+:hasCountry rdf:type owl:ObjectProperty ;
+            
+            rdfs:domain :Address ;
+            
+            rdfs:range :Country ;
+            
+            rdfs:subPropertyOf :hasFeature .
+
+
+
+###  http://dati.gov.it/onto/clvapit#hasFeature
+
+:hasFeature rdf:type owl:ObjectProperty ;
+            
+            rdfs:range :Feature ;
+            
+            rdfs:domain owl:Thing .
+
+
+
+###  http://dati.gov.it/onto/clvapit#hasGeometry
+
+:hasGeometry rdf:type owl:ObjectProperty ;
+             
+             rdfs:range :Geometry ;
+             
+             rdfs:domain owl:Thing .
+
+
+
+###  http://dati.gov.it/onto/clvapit#hasIdentifier
+
+:hasIdentifier rdf:type owl:ObjectProperty .
+
+
+
+###  http://dati.gov.it/onto/clvapit#hasNumber
+
+:hasNumber rdf:type owl:ObjectProperty ;
+           
+           rdfs:domain :Address ;
+           
+           rdfs:range :Number ;
+           
+           rdfs:subPropertyOf :hasFeature .
+
+
+
+###  http://dati.gov.it/onto/clvapit#hasPrimaryAddress
+
+:hasPrimaryAddress rdf:type owl:ObjectProperty ;
+                   
+                   rdfs:range :Address ;
+                   
+                   rdfs:subPropertyOf :hasAddress ;
+                   
+                   rdfs:domain owl:Thing .
+
+
+
+###  http://dati.gov.it/onto/clvapit#hasRegion
+
+:hasRegion rdf:type owl:ObjectProperty ;
+           
+           rdfs:domain :Address ;
+           
+           rdfs:subPropertyOf :hasFeature .
+
+
+
+###  http://dati.gov.it/onto/clvapit#hasSpatialCoverage
+
+:hasSpatialCoverage rdf:type owl:ObjectProperty ;
+                    
+                    rdfs:range :Feature ;
+                    
+                    rdfs:domain owl:Thing .
+
+
+
+###  http://dati.gov.it/onto/clvapit#hasStreet
+
+:hasStreet rdf:type owl:ObjectProperty ;
+           
+           rdfs:domain :Address ;
+           
+           rdfs:range :Street ;
+           
+           rdfs:subPropertyOf :hasFeature .
+
+
+
+###  http://dati.gov.it/onto/clvapit#hasValidity
+
+:hasValidity rdf:type owl:ObjectProperty ;
+             
+             rdfs:domain :Address ;
+             
+             rdfs:range :TimeInterval .
+
+
+
+###  http://dati.gov.it/onto/clvapit#isAddressFor
+
+:isAddressFor rdf:type owl:ObjectProperty ;
+              
+              owl:inverseOf :hasAddress .
+
+
+
+###  http://dati.gov.it/onto/clvapit#isFeatureOf
+
+:isFeatureOf rdf:type owl:ObjectProperty ;
+             
+             owl:inverseOf :hasFeature .
+
+
+
+###  http://dati.gov.it/onto/clvapit#isGeometryFor
+
+:isGeometryFor rdf:type owl:ObjectProperty ;
+               
+               owl:inverseOf :hasGeometry .
+
+
+
+###  http://dati.gov.it/onto/clvapit#isSpatialCoverageFor
+
+:isSpatialCoverageFor rdf:type owl:ObjectProperty ;
+                      
+                      owl:inverseOf :hasSpatialCoverage .
+
+
+
+###  http://dati.gov.it/onto/clvapit#issuedBy
+
+:issuedBy rdf:type owl:ObjectProperty ;
+          
+          rdfs:label "issued by"@en ,
+                     "rilasciato da"@it ;
+          
+          rdfs:comment "This property links an Identifier with the Authority that issued it"@en ;
+          
+          rdfs:isDefinedBy <http://dati.gov.it/onto/clvapit> ;
+          
+          rdfs:domain :Identifier ;
+          
+          rdfs:range :Organization .
+
+
+
+###  http://dati.gov.it/onto/clvapit#refersTo
+
+:refersTo rdf:type owl:ObjectProperty ;
+          
+          rdfs:label "refers to"@en ,
+                     "si riferisce a"@it ;
+          
+          rdfs:comment "This property links the internal number of the address and the street number (external number)."@en ;
+          
+          owl:versionInfo "unstable"@en ;
+          
+          rdfs:comment "Questa proprietà collega il numero interno al numero civico dell'indirizzo."@it ;
+          
+          owl:versionInfo "provvisoria"@it ;
+          
+          rdfs:isDefinedBy <http://dati.gov.it/onto/clvapit> ;
+          
+          rdfs:range :External ;
+          
+          rdfs:domain :Internal .
+
+
+
+###  http://dati.gov.it/onto/clvapit#withAddress
+
+:withAddress rdf:type owl:ObjectProperty ;
+             
+             rdfs:range :Address ;
+             
+             rdfs:domain :AddressInTime .
+
+
+
+
+
+#################################################################
+#
+#    Data properties
+#
+#################################################################
+
+
+###  http://dati.gov.it/onto/clvapit#alt
+
+:alt rdf:type owl:DatatypeProperty ;
+     
+     rdfs:domain :Geometry ;
+     
+     rdfs:range rdfs:Literal .
+
+
+
+###  http://dati.gov.it/onto/clvapit#building
+
+:building rdf:type owl:DatatypeProperty ;
+          
+          rdfs:label "Numero arabo assegnato all’edificio cui si accede alle scale o agli accessi interni, ove presente"@it ,
+                     "edificio"@it ;
+          
+          rdfs:domain :Internal ;
+          
+          rdfs:range rdfs:Literal .
+
+
+
+###  http://dati.gov.it/onto/clvapit#exponent
+
+:exponent rdf:type owl:DatatypeProperty ;
+          
+          rdfs:label "esponente"@it ;
+          
+          rdfs:comment "Parte letterale del numero civico, ove presente;"@it ;
+          
+          rdfs:isDefinedBy <http://dati.gov.it/onto/clvapit> ;
+          
+          rdfs:domain :Number ;
+          
+          rdfs:range rdfs:Literal .
+
+
+
+###  http://dati.gov.it/onto/clvapit#flatNumber
+
+:flatNumber rdf:type owl:DatatypeProperty ;
+            
+            rdfs:label "flat number"@en ,
+                       "interno"@it ;
+            
+            rdfs:comment "Valore del numero interno assegnato all’accesso interno secondo la successione naturale dei numeri;"@it ;
+            
+            rdfs:isDefinedBy <http://dati.gov.it/onto/clvapit> ;
+            
+            rdfs:domain :Internal ;
+            
+            rdfs:range xsd:int .
+
+
+
+###  http://dati.gov.it/onto/clvapit#floor
+
+:floor rdf:type owl:DatatypeProperty ;
+       
+       rdfs:comment "Numero del piano su cui è ubicato l’accesso interno, ove presente;"@it ;
+       
+       rdfs:isDefinedBy <http://dati.gov.it/onto/clvapit> ;
+       
+       rdfs:domain :Internal ;
+       
+       rdfs:range rdfs:Literal .
+
+
+
+###  http://dati.gov.it/onto/clvapit#fullAddress
+
+:fullAddress rdf:type owl:DatatypeProperty ;
+             
+             rdfs:domain :Address ;
+             
+             rdfs:range rdfs:Literal .
+
+
+
+###  http://dati.gov.it/onto/clvapit#geographicPositionMethod
+
+:geographicPositionMethod rdf:type owl:DatatypeProperty ;
+                          
+                          rdfs:domain :Geometry ;
+                          
+                          rdfs:range rdfs:Literal .
+
+
+
+###  http://dati.gov.it/onto/clvapit#geographicalName
+
+:geographicalName rdf:type owl:DatatypeProperty ;
+                  
+                  rdfs:domain :Feature ;
+                  
+                  rdfs:subPropertyOf :name ;
+                  
+                  rdfs:range rdfs:Literal .
+
+
+
+###  http://dati.gov.it/onto/clvapit#geometryType
+
+:geometryType rdf:type owl:DatatypeProperty ;
+              
+              rdfs:domain :Geometry ;
+              
+              rdfs:range rdfs:Literal .
+
+
+
+###  http://dati.gov.it/onto/clvapit#hasSerialization
+
+:hasSerialization rdf:type owl:DatatypeProperty ;
+                  
+                  rdfs:domain :Geometry ;
+                  
+                  rdfs:range rdfs:Literal .
+
+
+
+###  http://dati.gov.it/onto/clvapit#identifier
+
+:identifier rdf:type owl:DatatypeProperty ;
+            
+            rdfs:isDefinedBy <http://dati.gov.it/onto/clvapit> ;
+            
+            rdfs:domain :Identifier ;
+            
+            rdfs:range rdfs:Literal .
+
+
+
+###  http://dati.gov.it/onto/clvapit#identifierType
+
+:identifierType rdf:type owl:DatatypeProperty ;
+                
+                rdfs:isDefinedBy <http://dati.gov.it/onto/clvapit> ;
+                
+                rdfs:domain :Identifier ;
+                
+                rdfs:range rdfs:Literal .
+
+
+
+###  http://dati.gov.it/onto/clvapit#lat
+
+:lat rdf:type owl:DatatypeProperty ;
+     
+     rdfs:domain :Geometry ;
+     
+     rdfs:range rdfs:Literal .
+
+
+
+###  http://dati.gov.it/onto/clvapit#long
+
+:long rdf:type owl:DatatypeProperty ;
+      
+      rdfs:domain :Geometry ;
+      
+      rdfs:range rdfs:Literal .
+
+
+
+###  http://dati.gov.it/onto/clvapit#modified
+
+:modified rdf:type owl:DatatypeProperty ;
+          
+          rdfs:label "date of last update"@en ,
+                     "data di ultimo aggiornamento"@it ;
+          
+          rdfs:comment "Data di ultimo aggiornamento utilizzata sia per il numero civico (external) sia per l'interno (Internal) sia per l'indirizzo (address)."@it ;
+          
+          rdfs:isDefinedBy <http://dati.gov.it/onto/clvapit> ;
+          
+          rdfs:domain :Address ;
+          
+          rdfs:range xsd:dateTime .
+
+
+
+###  http://dati.gov.it/onto/clvapit#name
+
+:name rdf:type owl:DatatypeProperty ;
+      
+      rdfs:range rdfs:Literal ;
+      
+      rdfs:domain owl:Thing .
+
+
+
+###  http://dati.gov.it/onto/clvapit#postalCode
+
+:postalCode rdf:type owl:DatatypeProperty ;
+            
+            rdfs:domain :Address ;
+            
+            rdfs:range xsd:int .
+
+
+
+###  http://dati.gov.it/onto/clvapit#room
+
+:room rdf:type owl:DatatypeProperty ;
+      
+      rdfs:domain :Address ;
+      
+      rdfs:range rdfs:Literal .
+
+
+
+###  http://dati.gov.it/onto/clvapit#staircase
+
+:staircase rdf:type owl:DatatypeProperty ;
+           
+           rdfs:domain :Internal ;
+           
+           rdfs:range rdfs:Literal .
+
+
+
+###  http://dati.gov.it/onto/clvapit#streetNumber
+
+:streetNumber rdf:type owl:DatatypeProperty ;
+              
+              rdfs:label "civico"@it ;
+              
+              rdfs:comment "Valore del numero civico assegnato all’accesso esterno secondo la successione naturale dei numeri;"@it ;
+              
+              rdfs:domain :External ;
+              
+              rdfs:range xsd:int .
+
+
+
+###  http://dati.gov.it/onto/clvapit#toponym
+
+:toponym rdf:type owl:DatatypeProperty ;
+         
+         rdfs:domain :Street ;
+         
+         rdfs:subPropertyOf :name ;
+         
+         rdfs:range rdfs:Literal .
+
+
+
+###  http://dati.gov.it/onto/clvapit#yard
+
+:yard rdf:type owl:DatatypeProperty ;
+      
+      rdfs:label "cortile"@it ;
+      
+      rdfs:comment "Numero romano assegnato a ciascun spazio privato (cortile, corte e simili) cui si accede agli edifici o agli accessi interni, ove presente;"@it ;
+      
+      rdfs:domain :Internal ;
+      
+      rdfs:range rdfs:Literal .
+
+
+
+
+
+#################################################################
+#
+#    Classes
+#
+#################################################################
+
+
+###  http://dati.gov.it/onto/clvapit#Address
+
+:Address rdf:type owl:Class ;
+         
+         rdfs:label "Address"@en ,
+                    "Indirizzo"@it ;
+         
+         rdfs:subClassOf :Feature ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :postalCode ;
+                           owl:cardinality "1"^^xsd:nonNegativeInteger
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :hasValidity ;
+                           owl:onClass :TimeInterval ;
+                           owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :fullAddress ;
+                           owl:cardinality "1"^^xsd:nonNegativeInteger
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :hasCity ;
+                           owl:onClass :City ;
+                           owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :hasAddressIdentifier ;
+                           owl:someValuesFrom :Identifier
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :hasNumber ;
+                           owl:allValuesFrom :Number
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :hasAddressArea ;
+                           owl:allValuesFrom :AddressArea
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :hasCountry ;
+                           owl:onClass :Country ;
+                           owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :hasStreet ;
+                           owl:onClass :Street ;
+                           owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger
+                         ] ;
+         
+         rdfs:comment "This class represents an address."@en ;
+         
+         owl:versionInfo "stable"@en ;
+         
+         rdfs:comment "Questa classe rappresenta un indirizzo"@it ;
+         
+         owl:versionInfo "stabile"@it ;
+         
+         rdfs:isDefinedBy <http://dati.gov.it/onto/clvapit> .
+
+
+
+###  http://dati.gov.it/onto/clvapit#AddressArea
+
+:AddressArea rdf:type owl:Class ;
+             
+             rdfs:label "Address Area"@en ,
+                        "Area dell'Indirizzo"@it ;
+             
+             rdfs:subClassOf :AddressComponent ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :geographicalName ;
+                               owl:maxCardinality "1"^^xsd:nonNegativeInteger
+                             ] ;
+             
+             rdfs:comment "An address component which represents the name of a geographic area (such as Region or a Province) or a locality that groups a number of addressable objects for addressing purposes, without being an administrative unit."@en ;
+             
+             owl:versionInfo "unstable"@en ;
+             
+             rdfs:comment "E' una componente dell'indirizzo che rappresenta il nome di un'area geografica (come per esempio una Regione o Provincia) o di una località che raggruppa un numero di oggetti indirizzatibili, per scopi di indirizzamento, senza necessariamente essere un'unità amministrativa territoriale. Nell'ambito dell'anagrafe nazionale numeri civici e strade urbane (ANNCSU) la classe può essere usata per rappresentare la LOCALITA’: una porzione più o meno vasta di territorio comunale, sulla quale insistono una o più aree di circolazione (presente se fornita dal Comune)."@it ;
+             
+             owl:versionInfo "provvisoria"@it ;
+             
+             rdfs:isDefinedBy <http://dati.gov.it/onto/clvapit> .
+
+
+
+###  http://dati.gov.it/onto/clvapit#AddressComponent
+
+:AddressComponent rdf:type owl:Class ;
+                  
+                  rdfs:label "Address Component"@en ,
+                             "Componente Indirizzo"@it ;
+                  
+                  rdfs:subClassOf :Address ;
+                  
+                  rdfs:comment "This is an abstract class meant to identify the different alements that compose an address such as Country also known as AdminitrativeLevelUnit 1, Region also known as AdministrativeLevelUnit2, Street, Municipality and Number."@en ;
+                  
+                  owl:versionInfo "unstable"@en ,
+                                  "provvisoria"@it ;
+                  
+                  rdfs:isDefinedBy <http://dati.gov.it/onto/clvapit> .
+
+
+
+###  http://dati.gov.it/onto/clvapit#AddressInTime
+
+:AddressInTime rdf:type owl:Class ;
+               
+               rdfs:label "Address in Time"@en ,
+                          "Indirizzo nel Tempo"@it ;
+               
+               rdfs:subClassOf :Feature ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :atTime ;
+                                 owl:onClass :TimeInterval ;
+                                 owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :withAddress ;
+                                 owl:onClass :Address ;
+                                 owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger
+                               ] ;
+               
+               rdfs:comment "This class represents a situation of an address that changes over time. It is an n-ary relatioship between the address, time interval and the thing connected with the address."@en ;
+               
+               owl:versionInfo "stable"@en ;
+               
+               rdfs:comment "Questa classe rappresenta la situazione di un indirizzo che cambia nel tempo. E' una relazione ennaria tra l'indirizzo, l'intervallo il tempo e un oggetto che è associato all'indirizzo."@it ;
+               
+               owl:versionInfo "stabile"@it ;
+               
+               rdfs:isDefinedBy <http://dati.gov.it/onto/clvapit> .
+
+
+
+###  http://dati.gov.it/onto/clvapit#City
+
+:City rdf:type owl:Class ;
+      
+      rdfs:label "City"@en ,
+                 "Città (Comune)"@it ;
+      
+      rdfs:subClassOf :AddressComponent ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :geographicalName ;
+                        owl:cardinality "1"^^xsd:nonNegativeInteger
+                      ] ;
+      
+      rdfs:comment "This class represents the city of the address."@en ;
+      
+      owl:versionInfo "unstable"@en ;
+      
+      rdfs:comment "Questa classe rappresenta la città (Comune) dell'indirizzo."@it ;
+      
+      owl:versionInfo "provvisoria"@it ;
+      
+      rdfs:isDefinedBy <http://dati.gov.it/onto/clvapit> .
+
+
+
+###  http://dati.gov.it/onto/clvapit#Country
+
+:Country rdf:type owl:Class ;
+         
+         rdfs:label "Country"@en ,
+                    "Stato"@it ;
+         
+         rdfs:subClassOf :AddressComponent ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :geographicalName ;
+                           owl:maxCardinality "1"^^xsd:nonNegativeInteger
+                         ] ;
+         
+         rdfs:comment "This class represents the  uppermost administrative unit for the address, almost always a country. \"United Kingdom\", \"Italy\", etc. In the Core Location Vocabulary this is modelled as adminUnit1."@en ;
+         
+         owl:versionInfo "stable"@en ;
+         
+         rdfs:comment "Questa classe rappresenta lo stato dell'indirizzo. Esempio: \"Italia - Italy\" oppure \"United Kingdom\", ecc."@it ;
+         
+         owl:versionInfo "stabile"@it ;
+         
+         rdfs:isDefinedBy <http://dati.gov.it/onto/clvapit> .
+
+
+
+###  http://dati.gov.it/onto/clvapit#External
+
+:External rdf:type owl:Class ;
+          
+          rdfs:label "Street Number"@en ,
+                     "Numero Civico"@it ;
+          
+          rdfs:subClassOf :Number ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :streetNumber ;
+                            owl:cardinality "1"^^xsd:nonNegativeInteger
+                          ] ;
+          
+          owl:disjointWith :Internal ;
+          
+          rdfs:comment "This class represents the street number for the external accesses to the buildings."@en ;
+          
+          owl:versionInfo "unstable"@en ;
+          
+          rdfs:comment "Questa classe rappresenta il numero civico e tutte le informazioni a esso collegate così come definite nell'ambito dell'anagrafe nazionale numeri civici e strate urbane.  I numeri civici individuano gli ACCESSI ESTERNI, cioè quelli che dall’area di circolazione immettono, direttamente o indirettamente, alle unità ecografiche semplici ossia abitazioni, esercizi commerciali, uffici e simili."@it ;
+          
+          owl:versionInfo "provvisoria"@it ;
+          
+          rdfs:isDefinedBy <http://dati.gov.it/onto/clvapit> .
+
+
+
+###  http://dati.gov.it/onto/clvapit#Feature
+
+:Feature rdf:type owl:Class ;
+         
+         rdfs:label "Feature"@en ,
+                    "Caratteristica"@it ;
+         
+         rdfs:subClassOf :SpatialObject ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :modified ;
+                           owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                           owl:onDataRange xsd:dateTime
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :hasGeometry ;
+                           owl:allValuesFrom :Geometry
+                         ] ;
+         
+         owl:disjointWith :Geometry ;
+         
+         rdfs:comment "This class is used to represent any geographical entity."@en ;
+         
+         owl:versionInfo "stable"@en ;
+         
+         rdfs:comment "Questa classe è utilizzata per rappresentare un'entittà geografica."@it ;
+         
+         owl:versionInfo "stabile"@it ;
+         
+         rdfs:isDefinedBy <http://dati.gov.it/onto/clvapit> .
+
+
+
+###  http://dati.gov.it/onto/clvapit#Geometry
+
+:Geometry rdf:type owl:Class ;
+          
+          rdfs:label "Geometry"@en ,
+                     "Geometria"@it ;
+          
+          rdfs:subClassOf :SpatialObject ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :long ;
+                            owl:cardinality "1"^^xsd:nonNegativeInteger
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :geometryType ;
+                            owl:cardinality "1"^^xsd:nonNegativeInteger
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :geographicPositionMethod ;
+                            owl:allValuesFrom rdfs:Literal
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :lat ;
+                            owl:cardinality "1"^^xsd:nonNegativeInteger
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :alt ;
+                            owl:maxCardinality "1"^^xsd:nonNegativeInteger
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :hasSerialization ;
+                            owl:allValuesFrom rdfs:Literal
+                          ] ;
+          
+          rdfs:comment "This class represents the geometry of a spatial entity."@en ;
+          
+          owl:versionInfo "stable"@en ;
+          
+          rdfs:comment "Questa classe rappresenta la geometria associabile a un'entità spaziale."@it ;
+          
+          owl:versionInfo "stabile"@it ;
+          
+          rdfs:isDefinedBy <http://dati.gov.it/onto/clvapit> .
+
+
+
+###  http://dati.gov.it/onto/clvapit#Identifier
+
+:Identifier rdf:type owl:Class ;
+            
+            rdfs:label "Identifier (Code)"@en ,
+                       "Identificativo (Codice)"@it ;
+            
+            rdfs:subClassOf [ rdf:type owl:Restriction ;
+                              owl:onProperty :identifierType ;
+                              owl:maxCardinality "1"^^xsd:nonNegativeInteger
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :identifier ;
+                              owl:cardinality "1"^^xsd:nonNegativeInteger
+                            ] ;
+            
+            rdfs:comment "This class represents the Identifier and all the information associated with it (the identifier itself, the type, the authority that issued it)."@en ;
+            
+            owl:versionInfo "stable"@en ;
+            
+            rdfs:comment "Questa classe rappresenta un identificativo e tutte le sue informazioni associate (l'identificativo stesso, il tipo di identificativo, l'autorità che l'ha rilasciato)."@it ;
+            
+            owl:versionInfo "stabile"@it ;
+            
+            rdfs:isDefinedBy <http://dati.gov.it/onto/clvapit> .
+
+
+
+###  http://dati.gov.it/onto/clvapit#Internal
+
+:Internal rdf:type owl:Class ;
+          
+          rdfs:label "Address Internal Number"@en ,
+                     "Numero Interno Indirizzo"@it ;
+          
+          rdfs:subClassOf :Number ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :floor ;
+                            owl:maxCardinality "1"^^xsd:nonNegativeInteger
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :room ;
+                            owl:allValuesFrom rdfs:Literal
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :staircase ;
+                            owl:allValuesFrom rdfs:Literal
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :yard ;
+                            owl:maxCardinality "1"^^xsd:nonNegativeInteger
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :flatNumber ;
+                            owl:allValuesFrom rdfs:Literal
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :building ;
+                            owl:maxCardinality "1"^^xsd:nonNegativeInteger
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :refersTo ;
+                            owl:onClass :External ;
+                            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger
+                          ] ;
+          
+          rdfs:comment "This class represents the internal number that refers to the external number (street number) of an Address. The internal number consists of a set of informaton related to the Internal accesses to private spaces or staircase that allow one to access to private residential units."@en ;
+          
+          owl:versionInfo "unstable"@en ;
+          
+          rdfs:comment "Questa classe rappresenta il numero interno associato al numero civico. Il numero interno è composto da una serie di informazioni relative agli ACCESSI INTERNI, cioè quelli che da spazi privati o da scale immettono direttamente alle unità ecografiche semplici ossia abitazioni, esercizi commerciali, uffici e simili."@it ;
+          
+          owl:versionInfo "provvisoria"@it ;
+          
+          rdfs:isDefinedBy <http://dati.gov.it/onto/clvapit> .
+
+
+
+###  http://dati.gov.it/onto/clvapit#Number
+
+:Number rdf:type owl:Class ;
+        
+        rdfs:label "Address Number"@en ,
+                   "Numero dell'Indirizzo"@it ;
+        
+        rdfs:subClassOf :AddressComponent ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :hasIdentifier ;
+                          owl:someValuesFrom :Identifier
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :exponent ;
+                          owl:maxCardinality "1"^^xsd:nonNegativeInteger
+                        ] ;
+        
+        rdfs:comment "This is an abstract class that represents the number of the address. The numbers can be Street numbers that identify external accesses or Internal numbers that are related to the Internal Access to private spaces or staircase."@en ;
+        
+        owl:versionInfo "unstable"@en ;
+        
+        rdfs:comment "Questa classe astratta rappresenta il numero dell'indirizzo. I numeri possono essere Numero Civici, che individuano gli ACCESSI ESTERNI, cioè quelli che dall’area di circolazione immettono, direttamente o indirettamente, alle unità ecografiche semplici ossia abitazioni, esercizi commerciali, uffici e simili, oppure Numeri Interni, relative agli ACCESSI INTERNI, cioè quelli che da spazi privati o da scale immettono direttamente alle unità ecografiche semplici ossia abitazioni, esercizi commerciali, uffici e simili."@it ;
+        
+        owl:versionInfo "provvisoria"@it ;
+        
+        rdfs:isDefinedBy <http://dati.gov.it/onto/clvapit> .
+
+
+
+###  http://dati.gov.it/onto/clvapit#Organization
+
+:Organization rdf:type owl:Class ;
+              
+              rdfs:label "Otganization"@en ,
+                         "Organizzazione"@it ;
+              
+              rdfs:comment "This class is used to represent the Organization tht issued the identifier for the address or circulation area. This class is equivalent to the Organization class of the COV-AP_IT (Core Organization Vocabulary - Italian Application Profile)"@en ,
+                           "Questa classe è utilizzata per rappresentare l'organizzazione che ha rilasciato gli identificativi/codici per l'indirizzo (o l'area di circolazione). LLa classe è equivalente alla classe Organizzazione dell'ontologia COV-AP_IT (Core Organization Vocabulary - Italian Application Profile)."@it ;
+              
+              rdfs:isDefinedBy <http://dati.gov.it/onto/clvapit> .
+
+
+
+###  http://dati.gov.it/onto/clvapit#SpatialObject
+
+:SpatialObject rdf:type owl:Class ;
+               
+               rdfs:label "Spatial Object"@en ,
+                          "Oggetto Spaziale"@it ;
+               
+               rdfs:comment "This class represents everything that can have a spatial representation."@en ;
+               
+               owl:versionInfo "stable"@en ;
+               
+               rdfs:comment "Qualsiasi cosa che può avere una rappresentazione spaziale."@it ;
+               
+               owl:versionInfo "stabile"@it ;
+               
+               rdfs:isDefinedBy <http://dati.gov.it/onto/clvapit> .
+
+
+
+###  http://dati.gov.it/onto/clvapit#Street
+
+:Street rdf:type owl:Class ;
+        
+        rdfs:label "Street"@en ,
+                   "Strada"@it ;
+        
+        rdfs:subClassOf :AddressComponent ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :toponym ;
+                          owl:cardinality "1"^^xsd:nonNegativeInteger
+                        ] ;
+        
+        rdfs:comment "This class represents the street. It has a given name (toponym)."@en ;
+        
+        owl:versionInfo "stable"@en ;
+        
+        rdfs:comment "Questa classe rappresenta la strada dell'indirizzo. La strada ha un nome proprio (toponimo)."@it ;
+        
+        owl:versionInfo "stabile"@it ;
+        
+        rdfs:isDefinedBy <http://dati.gov.it/onto/clvapit> .
+
+
+
+###  http://dati.gov.it/onto/clvapit#TimeInterval
+
+:TimeInterval rdf:type owl:Class ;
+              
+              rdfs:label "Time Interval"@en ,
+                         "Intervallo Temporale"@it ;
+              
+              rdfs:comment "This class represents a time interval. It is used to model the time in the situtation in which the address change over time and the validity time interval for the address"@en ;
+              
+              owl:versionInfo "stable"@en ;
+              
+              rdfs:comment "Questa classe rappresenta un intervallo temporale. E' utilizzata per rappresentare il tempo in presenza della situazione di un indirizzo che varia nel tempo e per rappresentare l'intervallo di validità dell'indirizzo (come riportato nell'anagrafe nazionale numeri civici e strade urbane)."@it ;
+              
+              owl:versionInfo "stabile"@it ;
+              
+              rdfs:isDefinedBy <http://dati.gov.it/onto/clvapit> .
+
+
+
+
+###  Generated by the OWL API (version 3.5.1) http://owlapi.sourceforge.net
+

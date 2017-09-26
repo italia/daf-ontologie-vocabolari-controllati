@@ -1,0 +1,513 @@
+@prefix : <http://dati.gov.it/onto/person/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://dati.gov.it/onto/cpvapit/> .
+
+<http://dati.gov.it/onto/cpvapit/> rdf:type owl:Ontology ;
+                                   
+                                   dct:issued "2017-07-19"^^xsd:date ;
+                                   
+                                   dct:modified "2017-08-08" ;
+                                   
+                                   dc:creator "Agency for Digital Italy - AgID"@en ,
+                                              "Institute of Cognitive Sciences and Technologies of the Italian Research Council (CNR) - Semantic Technology Laboratory (STLab)"@en ,
+                                              "Italian Digital Transformation Team"@en ;
+                                   
+                                   rdfs:comment "This is the ontology of the Italian application profile for Person"@en ;
+                                   
+                                   owl:versionInfo "Version 0.2 - 08  August 2017 - exclusion of Location part of the ontology since it is included in the related ontology"@en ;
+                                   
+                                   dc:creator "Agenzia per l'italia Digitale (AgID)"@it ,
+                                              "Istituto di Scienze e Tecnologie della Cognizione dell'Istituto nazionale delle Ricerche (CNR) - Laboratorio di Tecnologie Semantiche (STlab)"@it ;
+                                   
+                                   rdfs:comment "Questa è l'ontologia del profilo applicativo italiano sulle persone."@it ;
+                                   
+                                   dc:creator "Team per la Trasformazione Digitale"@it ;
+                                   
+                                   owl:versionInfo "Versione 0.2 - 08 Agosto 2017 - separata la parte luoghi dall'ontologia persone"@it ;
+                                   
+                                   owl:versionIRI <http://dati.gov.it/onto/cpvapit/0.2> ;
+                                   
+                                   rdfs:isDefinedBy : ;
+                                   
+                                   prov:wasDerivedFrom <http://dati.gov.it/onto/person/0.1> ;
+                                   
+                                   dct:license <https://creativecommons.org/licenses/by/4.0/> .
+
+
+#################################################################
+#
+#    Datatypes
+#
+#################################################################
+
+
+###  http://www.w3.org/2001/XMLSchema#date
+
+xsd:date rdf:type rdfs:Datatype .
+
+
+
+
+
+#################################################################
+#
+#    Object Properties
+#
+#################################################################
+
+
+###  http://dati.gov.it/onto/cpvapit/hasAccount
+
+:hasAccount rdf:type owl:ObjectProperty ;
+            
+            rdfs:label "has account"@en ,
+                       "ha account"@it ;
+            
+            rdfs:comment "Relation between an agent and an account. E.g. this property allows to associate 'John White' with his Twitter account."@en ,
+                         "Relazione tra un agente ed un account. Ex. questa proprietà permette di associare 'Mario Rossi' al suo account Twitter."@it ;
+            
+            rdfs:range :Account ;
+            
+            rdfs:domain :Agent .
+
+
+
+###  http://dati.gov.it/onto/cpvapit/hasActivity
+
+:hasActivity rdf:type owl:ObjectProperty ;
+             
+             rdfs:label "has activity"@en ,
+                        "ha attività"@it ;
+             
+             rdfs:comment "Relation between a legal person and any possible business activity."@en ,
+                          "Relazione tra una persona giuridica ed una possibile attività economica."@it ;
+             
+             rdfs:range :Activity ;
+             
+             rdfs:domain :LegalPerson .
+
+
+
+###  http://dati.gov.it/onto/cpvapit/hasAddress
+
+:hasAddress rdf:type owl:ObjectProperty ;
+            
+            rdfs:subPropertyOf :hasLocation .
+
+
+
+###  http://dati.gov.it/onto/cpvapit/hasBirthPalce
+
+:hasBirthPalce rdf:type owl:ObjectProperty ;
+               
+               rdfs:label "birth place"@en ,
+                          "luogo di nascita"@it ;
+               
+               rdfs:range :Location ;
+               
+               rdfs:domain :Person .
+
+
+
+###  http://dati.gov.it/onto/cpvapit/hasDeathPlace
+
+:hasDeathPlace rdf:type owl:ObjectProperty ;
+               
+               rdfs:label "death place"@en ,
+                          "luogo di morte"@it ;
+               
+               rdfs:range :Location ;
+               
+               rdfs:domain :Person .
+
+
+
+###  http://dati.gov.it/onto/cpvapit/hasLegalAddress
+
+:hasLegalAddress rdf:type owl:ObjectProperty ;
+                 
+                 rdfs:domain :LegalEntity ;
+                 
+                 rdfs:subPropertyOf :hasAddress .
+
+
+
+###  http://dati.gov.it/onto/cpvapit/hasLegalPerson
+
+:hasLegalPerson rdf:type owl:ObjectProperty ;
+                
+                rdfs:label "has legal person"@en ,
+                           "ha persona giuridica"@it ;
+                
+                rdfs:comment "Relation between a physical person and a legal one."@en ,
+                             "Relazione tra una persona fisica ed una giuridica."@it ;
+                
+                rdfs:range :LegalPerson ;
+                
+                rdfs:domain :Person .
+
+
+
+###  http://dati.gov.it/onto/cpvapit/hasLocation
+
+:hasLocation rdf:type owl:ObjectProperty ;
+             
+             rdfs:range :Location ;
+             
+             rdfs:domain owl:Thing .
+
+
+
+###  http://dati.gov.it/onto/cpvapit/hasParent
+
+:hasParent rdf:type owl:ObjectProperty ;
+           
+           rdfs:label "has parent"@en ,
+                      "ha genitore"@it ;
+           
+           rdfs:comment "The property that models child-parent relationship. E.g. 'John White' has parent 'Bob Black' means that 'Bob Black' is the parent of 'John White'."@en ,
+                        "La relazione figlio-padre. Ex. 'Mario Rossi' ha padre 'Paolo Neri'."@it ;
+           
+           rdfs:domain :Person ;
+           
+           rdfs:range :Person ;
+           
+           rdfs:subPropertyOf :hasRelationshipWith .
+
+
+
+###  http://dati.gov.it/onto/cpvapit/hasRelationshipWith
+
+:hasRelationshipWith rdf:type owl:ObjectProperty ;
+                     
+                     rdfs:label "has relationship with"@en ,
+                                "ha relazione con"@it ;
+                     
+                     rdfs:comment "Any relationship between agents."@en ,
+                                  "Qualsiasi relazione tra agenti."@it ;
+                     
+                     rdfs:domain :Agent ;
+                     
+                     rdfs:range :Agent .
+
+
+
+###  http://dati.gov.it/onto/cpvapit/isAccountOf
+
+:isAccountOf rdf:type owl:ObjectProperty ;
+             
+             rdfs:label "is account of"@en ,
+                        "è account di"@it ;
+             
+             rdfs:comment "Relation between an account and an agent."@en ,
+                          "Relazione tra un account ed un agente."@it ;
+             
+             rdfs:domain :Account ;
+             
+             rdfs:range :Agent ;
+             
+             owl:inverseOf :hasAccount .
+
+
+
+###  http://dati.gov.it/onto/cpvapit/isActivityOf
+
+:isActivityOf rdf:type owl:ObjectProperty ;
+              
+              rdfs:label "is activity of"@en ,
+                         "è attività di"@it ;
+              
+              rdfs:comment "Relation between an activity and a legal person."@en ,
+                           "Relazione tra un'attività ed una persona giuridica."@it ;
+              
+              rdfs:domain :Activity ;
+              
+              rdfs:range :LegalPerson .
+
+
+
+###  http://dati.gov.it/onto/cpvapit/isBirthPlaceOf
+
+:isBirthPlaceOf rdf:type owl:ObjectProperty ;
+                
+                rdfs:domain :Location ;
+                
+                rdfs:range :Person ;
+                
+                owl:inverseOf :hasBirthPalce .
+
+
+
+###  http://dati.gov.it/onto/cpvapit/isDeathPlaceOf
+
+:isDeathPlaceOf rdf:type owl:ObjectProperty ;
+                
+                rdfs:label "death place of"@en ,
+                           "luogo di morte di"@it ;
+                
+                rdfs:comment "The property to associate a death place (i.e. a location) with a person."@en ,
+                             "La proprietà per associare un luogo (i.e. una località) ad una persona a persona per rappresentare il luogo di morte di quest'ultima."@it ;
+                
+                rdfs:domain :Location ;
+                
+                rdfs:range :Person ;
+                
+                owl:inverseOf :hasDeathPlace .
+
+
+
+###  http://dati.gov.it/onto/cpvapit/isLegalPersonOf
+
+:isLegalPersonOf rdf:type owl:ObjectProperty ;
+                 
+                 rdfs:label "is legal person of"@en ,
+                            "è persona giuridica di"@it ;
+                 
+                 rdfs:comment "Relation between a legal person and a physical person."@en ,
+                              "Relazione tra una persona giuridica e una persona fisica."@it ;
+                 
+                 rdfs:domain :LegalPerson ;
+                 
+                 rdfs:range :Person ;
+                 
+                 owl:inverseOf :hasLegalPerson .
+
+
+
+###  http://dati.gov.it/onto/cpvapit/isLocationOf
+
+:isLocationOf rdf:type owl:ObjectProperty ;
+              
+              owl:inverseOf :hasLocation .
+
+
+
+###  http://dati.gov.it/onto/cpvapit/isParentOf
+
+:isParentOf rdf:type owl:ObjectProperty ;
+            
+            rdfs:label "The parent-child relationship."@en ,
+                       "is parent of"@en ,
+                       "La relazione padre-figlio."@it ,
+                       "è genitore di"@it ;
+            
+            rdfs:domain :Person ;
+            
+            rdfs:range :Person ;
+            
+            owl:inverseOf :hasParent ;
+            
+            rdfs:subPropertyOf :hasRelationshipWith .
+
+
+
+###  http://dati.gov.it/onto/cpvapit/knows
+
+:knows rdf:type owl:ObjectProperty ,
+                owl:SymmetricProperty ;
+       
+       rdfs:label "knows"@en ,
+                  "conosce"@it ;
+       
+       rdfs:comment "The relationship of knowledge between two people. E.g. 'John White' knows 'Bob Black'."@en ,
+                    "La relazione di conoscenza che intercorre tra due persone. Ex. 'Mario Rossi' conosce 'Paolo Neri'."@it ;
+       
+       rdfs:range :Person ;
+       
+       rdfs:domain :Person ;
+       
+       rdfs:subPropertyOf :hasRelationshipWith .
+
+
+
+
+
+#################################################################
+#
+#    Data properties
+#
+#################################################################
+
+
+###  http://dati.gov.it/onto/cpvapit/altName
+
+:altName rdf:type owl:DatatypeProperty ;
+         
+         rdfs:range xsd:string ;
+         
+         rdfs:domain owl:Thing .
+
+
+
+###  http://dati.gov.it/onto/cpvapit/birthDate
+
+:birthDate rdf:type owl:DatatypeProperty ;
+           
+           rdfs:domain :Person ;
+           
+           rdfs:range xsd:date .
+
+
+
+###  http://dati.gov.it/onto/cpvapit/familyName
+
+:familyName rdf:type owl:DatatypeProperty ;
+            
+            rdfs:label "family name"@en ,
+                       "cognome"@it ;
+            
+            rdfs:comment "The family name of a person. E.g. 'Rossi' is the family name of the person 'Mario Rossi'."@en ,
+                         "Il cognome di una persona. Ex. 'Rossi' è il cognome della persona 'Mario Rossi'"@it ;
+            
+            rdfs:domain :Person ;
+            
+            rdfs:range xsd:string .
+
+
+
+###  http://dati.gov.it/onto/cpvapit/givenName
+
+:givenName rdf:type owl:DatatypeProperty ;
+           
+           rdfs:label "given name"@en ,
+                      "nome"@it ;
+           
+           rdfs:comment "The given name of a person. E.g. 'Mario' is the given name of the person 'Mario Rossi'."@en ,
+                        "Il nome di una persona. Ex. 'Mario' è il nome della persona 'Mario Rossi'."@it ;
+           
+           rdfs:domain :Person ;
+           
+           rdfs:range xsd:string .
+
+
+
+###  http://dati.gov.it/onto/cpvapit/identifier
+
+:identifier rdf:type owl:DatatypeProperty ;
+            
+            rdfs:range rdfs:Literal ;
+            
+            rdfs:domain owl:Thing .
+
+
+
+###  http://dati.gov.it/onto/cpvapit/name
+
+:name rdf:type owl:DatatypeProperty ;
+      
+      rdfs:label "name"@en ,
+                 "nome"@it ;
+      
+      rdfs:comment "The name used for referencing any individual of the class Agent. E.g. 'Mario Rossi' is the name of the person 'Mario Rossi' or 'CNR' is one of the possible alternatives used for referencing the National Italian Council for Research."@en ,
+                   "Il nome con cui ci si referisce ad un individiduo della classe Agent. Ex. 'Mario Rossi' è il nome della persona 'Mario Rossi' oppure 'CNR' è uno dei possibili nomi con cui ci si riferisce al Consiglio Nazionale delle Ricerche."@it ;
+      
+      rdfs:domain :Agent ;
+      
+      rdfs:range xsd:string .
+
+
+
+
+
+#################################################################
+#
+#    Classes
+#
+#################################################################
+
+
+###  http://dati.gov.it/onto/cpvapit/Account
+
+:Account rdf:type owl:Class ;
+         
+         rdfs:label "Account"@en ,
+                    "Account"@it ;
+         
+         rdfs:subClassOf :Agent ;
+         
+         rdfs:comment "Any account that can be associated with an agent. E.g. the Twitter account of 'John White'."@en ,
+                      "Qualsiasi account che possa essere associato ad un agente. Ex. l'account Twitter di 'Mario Rossi'."@it .
+
+
+
+###  http://dati.gov.it/onto/cpvapit/Activity
+
+:Activity rdf:type owl:Class .
+
+
+
+###  http://dati.gov.it/onto/cpvapit/Agent
+
+:Agent rdf:type owl:Class ;
+       
+       rdfs:subClassOf [ rdf:type owl:Restriction ;
+                         owl:onProperty :name ;
+                         owl:someValuesFrom xsd:string
+                       ] ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :altName ;
+                         owl:allValuesFrom xsd:string
+                       ] .
+
+
+
+###  http://dati.gov.it/onto/cpvapit/LegalEntity
+
+:LegalEntity rdf:type owl:Class ;
+             
+             rdfs:subClassOf :Agent ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :identifier ;
+                               owl:cardinality "1"^^xsd:nonNegativeInteger
+                             ] .
+
+
+
+###  http://dati.gov.it/onto/cpvapit/LegalPerson
+
+:LegalPerson rdf:type owl:Class ;
+             
+             rdfs:subClassOf :LegalEntity .
+
+
+
+###  http://dati.gov.it/onto/cpvapit/Location
+
+:Location rdf:type owl:Class ;
+          
+          rdfs:subClassOf [ rdf:type owl:Restriction ;
+                            owl:onProperty :name ;
+                            owl:someValuesFrom xsd:string
+                          ] .
+
+
+
+###  http://dati.gov.it/onto/cpvapit/Person
+
+:Person rdf:type owl:Class ;
+        
+        rdfs:label "Person"@en ,
+                   "Persona"@it ;
+        
+        rdfs:subClassOf :Agent ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :hasLegalPerson ;
+                          owl:onClass :LegalPerson ;
+                          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger
+                        ] ;
+        
+        rdfs:comment "A natural person"@en ,
+                     "Una persona naturale"@it .
+
+
+
+
+###  Generated by the OWL API (version 3.5.1) http://owlapi.sourceforge.net
+

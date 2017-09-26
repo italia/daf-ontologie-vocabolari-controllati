@@ -1,0 +1,594 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+]>
+
+
+<rdf:RDF xmlns="http://dati.gov.it/onto/person/"
+     xml:base="http://dati.gov.it/onto/person/"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+    <owl:Ontology rdf:about="http://dati.gov.it/onto/person/">
+        <owl:versionIRI rdf:resource="http://dati.gov.it/onto/person/0.1"/>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Datatypes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.w3.org/2001/XMLSchema#date -->
+
+    <rdfs:Datatype rdf:about="&xsd;date"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://dati.gov.it/onto/person/hasAccount -->
+
+    <owl:ObjectProperty rdf:about="http://dati.gov.it/onto/person/hasAccount">
+        <rdfs:label xml:lang="en">has account</rdfs:label>
+        <rdfs:label xml:lang="it">ha account</rdfs:label>
+        <rdfs:comment xml:lang="en">Relation between an agent and an account. E.g. this property allows to associate &apos;John White&apos; with his Twitter account.</rdfs:comment>
+        <rdfs:comment xml:lang="it">Relazione tra un agente ed un account. Ex. questa proprietà permette di associare &apos;Mario Rossi&apos; al suo account Twitter.</rdfs:comment>
+        <rdfs:range rdf:resource="http://dati.gov.it/onto/person/Account"/>
+        <rdfs:domain rdf:resource="http://dati.gov.it/onto/person/Agent"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://dati.gov.it/onto/person/hasActivity -->
+
+    <owl:ObjectProperty rdf:about="http://dati.gov.it/onto/person/hasActivity">
+        <rdfs:label xml:lang="en">has activity</rdfs:label>
+        <rdfs:label xml:lang="it">ha attività</rdfs:label>
+        <rdfs:comment xml:lang="en">Relation between a legal person and any possible business activity.</rdfs:comment>
+        <rdfs:comment xml:lang="it">Relazione tra una persona giuridica ed una possibile attività economica.</rdfs:comment>
+        <rdfs:range rdf:resource="http://dati.gov.it/onto/person/Activity"/>
+        <rdfs:domain rdf:resource="http://dati.gov.it/onto/person/LegalPerson"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://dati.gov.it/onto/person/hasAddress -->
+
+    <owl:ObjectProperty rdf:about="http://dati.gov.it/onto/person/hasAddress">
+        <rdfs:range rdf:resource="http://dati.gov.it/onto/person/Address"/>
+        <rdfs:subPropertyOf rdf:resource="http://dati.gov.it/onto/person/hasLocation"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://dati.gov.it/onto/person/hasBirthPalce -->
+
+    <owl:ObjectProperty rdf:about="http://dati.gov.it/onto/person/hasBirthPalce">
+        <rdfs:label xml:lang="en">birth place</rdfs:label>
+        <rdfs:label xml:lang="it">luogo di nascita</rdfs:label>
+        <rdfs:range rdf:resource="http://dati.gov.it/onto/person/Location"/>
+        <rdfs:domain rdf:resource="http://dati.gov.it/onto/person/Person"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://dati.gov.it/onto/person/hasCity -->
+
+    <owl:ObjectProperty rdf:about="http://dati.gov.it/onto/person/hasCity">
+        <rdfs:range rdf:resource="http://dati.gov.it/onto/person/City"/>
+        <rdfs:subPropertyOf rdf:resource="http://dati.gov.it/onto/person/hasLocation"/>
+        <rdfs:domain rdf:resource="&owl;Thing"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://dati.gov.it/onto/person/hasDeathPlace -->
+
+    <owl:ObjectProperty rdf:about="http://dati.gov.it/onto/person/hasDeathPlace">
+        <rdfs:label xml:lang="en">death place</rdfs:label>
+        <rdfs:label xml:lang="it">luogo di morte</rdfs:label>
+        <rdfs:range rdf:resource="http://dati.gov.it/onto/person/Location"/>
+        <rdfs:domain rdf:resource="http://dati.gov.it/onto/person/Person"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://dati.gov.it/onto/person/hasLegalAddress -->
+
+    <owl:ObjectProperty rdf:about="http://dati.gov.it/onto/person/hasLegalAddress">
+        <rdfs:range rdf:resource="http://dati.gov.it/onto/person/Address"/>
+        <rdfs:domain rdf:resource="http://dati.gov.it/onto/person/LegalEntity"/>
+        <rdfs:subPropertyOf rdf:resource="http://dati.gov.it/onto/person/hasAddress"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://dati.gov.it/onto/person/hasLegalPerson -->
+
+    <owl:ObjectProperty rdf:about="http://dati.gov.it/onto/person/hasLegalPerson">
+        <rdfs:label xml:lang="en">has legal person</rdfs:label>
+        <rdfs:label xml:lang="it">ha persona giuridica</rdfs:label>
+        <rdfs:comment xml:lang="en">Relation between a physical person and a legal one.</rdfs:comment>
+        <rdfs:comment xml:lang="it">Relazione tra una persona fisica ed una giuridica.</rdfs:comment>
+        <rdfs:range rdf:resource="http://dati.gov.it/onto/person/LegalPerson"/>
+        <rdfs:domain rdf:resource="http://dati.gov.it/onto/person/Person"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://dati.gov.it/onto/person/hasLocation -->
+
+    <owl:ObjectProperty rdf:about="http://dati.gov.it/onto/person/hasLocation">
+        <rdfs:range rdf:resource="http://dati.gov.it/onto/person/Location"/>
+        <rdfs:domain rdf:resource="&owl;Thing"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://dati.gov.it/onto/person/hasParent -->
+
+    <owl:ObjectProperty rdf:about="http://dati.gov.it/onto/person/hasParent">
+        <rdfs:label xml:lang="en">has parent</rdfs:label>
+        <rdfs:label xml:lang="it">ha genitore</rdfs:label>
+        <rdfs:comment xml:lang="en">The property that models child-parent relationship. E.g. &apos;John White&apos; has parent &apos;Bob Black&apos; means that &apos;Bob Black&apos; is the parent of &apos;John White&apos;.</rdfs:comment>
+        <rdfs:comment xml:lang="it">La relazione figlio-padre. Ex. &apos;Mario Rossi&apos; ha padre &apos;Paolo Neri&apos;.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://dati.gov.it/onto/person/Person"/>
+        <rdfs:range rdf:resource="http://dati.gov.it/onto/person/Person"/>
+        <rdfs:subPropertyOf rdf:resource="http://dati.gov.it/onto/person/hasRelationshipWith"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://dati.gov.it/onto/person/hasRelationshipWith -->
+
+    <owl:ObjectProperty rdf:about="http://dati.gov.it/onto/person/hasRelationshipWith">
+        <rdfs:label xml:lang="en">has relationship with</rdfs:label>
+        <rdfs:label xml:lang="it">ha relazione con</rdfs:label>
+        <rdfs:comment xml:lang="en">Any relationship between agents.</rdfs:comment>
+        <rdfs:comment xml:lang="it">Qualsiasi relazione tra agenti.</rdfs:comment>
+        <rdfs:range rdf:resource="http://dati.gov.it/onto/person/Agent"/>
+        <rdfs:domain rdf:resource="http://dati.gov.it/onto/person/Agent"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://dati.gov.it/onto/person/hasStreet -->
+
+    <owl:ObjectProperty rdf:about="http://dati.gov.it/onto/person/hasStreet">
+        <rdfs:domain rdf:resource="http://dati.gov.it/onto/person/Address"/>
+        <rdfs:range rdf:resource="http://dati.gov.it/onto/person/Street"/>
+        <rdfs:subPropertyOf rdf:resource="http://dati.gov.it/onto/person/hasLocation"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://dati.gov.it/onto/person/isAccountOf -->
+
+    <owl:ObjectProperty rdf:about="http://dati.gov.it/onto/person/isAccountOf">
+        <rdfs:label xml:lang="en">is account of</rdfs:label>
+        <rdfs:label xml:lang="it">è account di</rdfs:label>
+        <rdfs:comment xml:lang="en">Relation between an account and an agent.</rdfs:comment>
+        <rdfs:comment xml:lang="it">Relazione tra un account ed un agente.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://dati.gov.it/onto/person/Account"/>
+        <rdfs:range rdf:resource="http://dati.gov.it/onto/person/Agent"/>
+        <owl:inverseOf rdf:resource="http://dati.gov.it/onto/person/hasAccount"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://dati.gov.it/onto/person/isActivityOf -->
+
+    <owl:ObjectProperty rdf:about="http://dati.gov.it/onto/person/isActivityOf">
+        <rdfs:label xml:lang="en">is activity of</rdfs:label>
+        <rdfs:label xml:lang="it">è attività di</rdfs:label>
+        <rdfs:comment xml:lang="en">Relation between an activity and a legal person.</rdfs:comment>
+        <rdfs:comment xml:lang="it">Relazione tra un&apos;attività ed una persona giuridica.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://dati.gov.it/onto/person/Activity"/>
+        <rdfs:range rdf:resource="http://dati.gov.it/onto/person/LegalPerson"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://dati.gov.it/onto/person/isBirthPlaceOf -->
+
+    <owl:ObjectProperty rdf:about="http://dati.gov.it/onto/person/isBirthPlaceOf">
+        <rdfs:domain rdf:resource="http://dati.gov.it/onto/person/Location"/>
+        <rdfs:range rdf:resource="http://dati.gov.it/onto/person/Person"/>
+        <owl:inverseOf rdf:resource="http://dati.gov.it/onto/person/hasBirthPalce"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://dati.gov.it/onto/person/isDeathPlaceOf -->
+
+    <owl:ObjectProperty rdf:about="http://dati.gov.it/onto/person/isDeathPlaceOf">
+        <rdfs:label xml:lang="en">death place of</rdfs:label>
+        <rdfs:label xml:lang="it">luogo di morte di</rdfs:label>
+        <rdfs:comment xml:lang="en">The property to associate a death place (i.e. a location) with a person.</rdfs:comment>
+        <rdfs:comment xml:lang="it">La proprietà per associare un luogo (i.e. una località) ad una persona a persona per rappresentare il luogo di morte di quest&apos;ultima.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://dati.gov.it/onto/person/Location"/>
+        <rdfs:range rdf:resource="http://dati.gov.it/onto/person/Person"/>
+        <owl:inverseOf rdf:resource="http://dati.gov.it/onto/person/hasDeathPlace"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://dati.gov.it/onto/person/isLegalPersonOf -->
+
+    <owl:ObjectProperty rdf:about="http://dati.gov.it/onto/person/isLegalPersonOf">
+        <rdfs:label xml:lang="en">is legal person of</rdfs:label>
+        <rdfs:label xml:lang="it">è persona giuridica di</rdfs:label>
+        <rdfs:comment xml:lang="en">Relation between a legal person and a physical person.</rdfs:comment>
+        <rdfs:comment xml:lang="it">Relazione tra una persona giuridica e una persona fisica.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://dati.gov.it/onto/person/LegalPerson"/>
+        <rdfs:range rdf:resource="http://dati.gov.it/onto/person/Person"/>
+        <owl:inverseOf rdf:resource="http://dati.gov.it/onto/person/hasLegalPerson"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://dati.gov.it/onto/person/isLocationOf -->
+
+    <owl:ObjectProperty rdf:about="http://dati.gov.it/onto/person/isLocationOf">
+        <owl:inverseOf rdf:resource="http://dati.gov.it/onto/person/hasLocation"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://dati.gov.it/onto/person/isParentOf -->
+
+    <owl:ObjectProperty rdf:about="http://dati.gov.it/onto/person/isParentOf">
+        <rdfs:label xml:lang="en">The parent-child relationship.</rdfs:label>
+        <rdfs:label xml:lang="en">is parent of</rdfs:label>
+        <rdfs:label xml:lang="it">La relazione padre-figlio.</rdfs:label>
+        <rdfs:label xml:lang="it">è genitore di</rdfs:label>
+        <rdfs:range rdf:resource="http://dati.gov.it/onto/person/Person"/>
+        <rdfs:domain rdf:resource="http://dati.gov.it/onto/person/Person"/>
+        <owl:inverseOf rdf:resource="http://dati.gov.it/onto/person/hasParent"/>
+        <rdfs:subPropertyOf rdf:resource="http://dati.gov.it/onto/person/hasRelationshipWith"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://dati.gov.it/onto/person/knows -->
+
+    <owl:ObjectProperty rdf:about="http://dati.gov.it/onto/person/knows">
+        <rdf:type rdf:resource="&owl;SymmetricProperty"/>
+        <rdfs:label xml:lang="en">knows</rdfs:label>
+        <rdfs:label xml:lang="it">conosce</rdfs:label>
+        <rdfs:comment xml:lang="en">The relationship of knowledge between two people. E.g. &apos;John White&apos; knows &apos;Bob Black&apos;.</rdfs:comment>
+        <rdfs:comment xml:lang="it">La relazione di conoscenza che intercorre tra due persone. Ex. &apos;Mario Rossi&apos; conosce &apos;Paolo Neri&apos;.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://dati.gov.it/onto/person/Person"/>
+        <rdfs:range rdf:resource="http://dati.gov.it/onto/person/Person"/>
+        <rdfs:subPropertyOf rdf:resource="http://dati.gov.it/onto/person/hasRelationshipWith"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://dati.gov.it/onto/person/altName -->
+
+    <owl:DatatypeProperty rdf:about="http://dati.gov.it/onto/person/altName">
+        <rdfs:range rdf:resource="&xsd;string"/>
+        <rdfs:domain rdf:resource="&owl;Thing"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://dati.gov.it/onto/person/birthDate -->
+
+    <owl:DatatypeProperty rdf:about="http://dati.gov.it/onto/person/birthDate">
+        <rdfs:domain rdf:resource="http://dati.gov.it/onto/person/Person"/>
+        <rdfs:range rdf:resource="&xsd;date"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://dati.gov.it/onto/person/familyName -->
+
+    <owl:DatatypeProperty rdf:about="http://dati.gov.it/onto/person/familyName">
+        <rdfs:label xml:lang="en">family name</rdfs:label>
+        <rdfs:label xml:lang="it">cognome</rdfs:label>
+        <rdfs:comment xml:lang="en">The family name of a person. E.g. &apos;Rossi&apos; is the family name of the person &apos;Mario Rossi&apos;.</rdfs:comment>
+        <rdfs:comment xml:lang="it">Il cognome di una persona. Ex. &apos;Rossi&apos; è il cognome della persona &apos;Mario Rossi&apos;</rdfs:comment>
+        <rdfs:domain rdf:resource="http://dati.gov.it/onto/person/Person"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://dati.gov.it/onto/person/givenName -->
+
+    <owl:DatatypeProperty rdf:about="http://dati.gov.it/onto/person/givenName">
+        <rdfs:label xml:lang="en">given name</rdfs:label>
+        <rdfs:label xml:lang="it">nome</rdfs:label>
+        <rdfs:comment xml:lang="en">The given name of a person. E.g. &apos;Mario&apos; is the given name of the person &apos;Mario Rossi&apos;.</rdfs:comment>
+        <rdfs:comment xml:lang="it">Il nome di una persona. Ex. &apos;Mario&apos; è il nome della persona &apos;Mario Rossi&apos;.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://dati.gov.it/onto/person/Person"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://dati.gov.it/onto/person/identifier -->
+
+    <owl:DatatypeProperty rdf:about="http://dati.gov.it/onto/person/identifier">
+        <rdfs:range rdf:resource="&rdfs;Literal"/>
+        <rdfs:domain rdf:resource="&owl;Thing"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://dati.gov.it/onto/person/name -->
+
+    <owl:DatatypeProperty rdf:about="http://dati.gov.it/onto/person/name">
+        <rdfs:label xml:lang="en">name</rdfs:label>
+        <rdfs:label xml:lang="it">nome</rdfs:label>
+        <rdfs:comment xml:lang="en">The name used for referencing any individual of the class Agent. E.g. &apos;Mario Rossi&apos; is the name of the person &apos;Mario Rossi&apos; or &apos;CNR&apos; is one of the possible alternatives used for referencing the National Italian Council for Research.</rdfs:comment>
+        <rdfs:comment xml:lang="it">Il nome con cui ci si referisce ad un individiduo della classe Agent. Ex. &apos;Mario Rossi&apos; è il nome della persona &apos;Mario Rossi&apos; oppure &apos;CNR&apos; è uno dei possibili nomi con cui ci si riferisce al Consiglio Nazionale delle Ricerche.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://dati.gov.it/onto/person/Agent"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://dati.gov.it/onto/person/postalCode -->
+
+    <owl:DatatypeProperty rdf:about="http://dati.gov.it/onto/person/postalCode">
+        <rdfs:label xml:lang="en">postal code</rdfs:label>
+        <rdfs:label xml:lang="it">codice postale</rdfs:label>
+        <rdfs:comment xml:lang="en">The postal code associated with an address or a city.</rdfs:comment>
+        <rdfs:comment xml:lang="it">Il codice postale associato ad un indirizzo o una città.</rdfs:comment>
+        <rdfs:range rdf:resource="&xsd;int"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://dati.gov.it/onto/person/Address"/>
+                    <rdf:Description rdf:about="http://dati.gov.it/onto/person/City"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://dati.gov.it/onto/person/streetNumber -->
+
+    <owl:DatatypeProperty rdf:about="http://dati.gov.it/onto/person/streetNumber">
+        <rdfs:label xml:lang="en">street number</rdfs:label>
+        <rdfs:label xml:lang="it">numero civico</rdfs:label>
+        <rdfs:comment xml:lang="en">The street number of an address.</rdfs:comment>
+        <rdfs:comment xml:lang="it">Il numero civico di un indirizzo.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://dati.gov.it/onto/person/Address"/>
+        <rdfs:range rdf:resource="&xsd;int"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://dati.gov.it/onto/person/Account -->
+
+    <owl:Class rdf:about="http://dati.gov.it/onto/person/Account">
+        <rdfs:label xml:lang="en">Account</rdfs:label>
+        <rdfs:label xml:lang="it">Account</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://dati.gov.it/onto/person/Agent"/>
+        <rdfs:comment xml:lang="en">Any account that can be associated with an agent. E.g. the Twitter account of &apos;John White&apos;.</rdfs:comment>
+        <rdfs:comment xml:lang="it">Qualsiasi account che possa essere associato ad un agente. Ex. l&apos;account Twitter di &apos;Mario Rossi&apos;.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://dati.gov.it/onto/person/Activity -->
+
+    <owl:Class rdf:about="http://dati.gov.it/onto/person/Activity"/>
+    
+
+
+    <!-- http://dati.gov.it/onto/person/Address -->
+
+    <owl:Class rdf:about="http://dati.gov.it/onto/person/Address">
+        <rdfs:label xml:lang="en">Address</rdfs:label>
+        <rdfs:label xml:lang="it">Indirizzo</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://dati.gov.it/onto/person/Location"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://dati.gov.it/onto/person/streetNumber"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="&xsd;int"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://dati.gov.it/onto/person/hasStreet"/>
+                <owl:onClass rdf:resource="http://dati.gov.it/onto/person/Street"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://dati.gov.it/onto/person/postalCode"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="&xsd;int"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://dati.gov.it/onto/person/hasCity"/>
+                <owl:onClass rdf:resource="http://dati.gov.it/onto/person/City"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <owl:disjointWith rdf:resource="http://dati.gov.it/onto/person/City"/>
+        <owl:disjointWith rdf:resource="http://dati.gov.it/onto/person/Street"/>
+        <owl:hasKey rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://dati.gov.it/onto/person/hasCity"/>
+            <rdf:Description rdf:about="http://dati.gov.it/onto/person/hasStreet"/>
+            <rdf:Description rdf:about="http://dati.gov.it/onto/person/streetNumber"/>
+        </owl:hasKey>
+    </owl:Class>
+    
+
+
+    <!-- http://dati.gov.it/onto/person/Agent -->
+
+    <owl:Class rdf:about="http://dati.gov.it/onto/person/Agent">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://dati.gov.it/onto/person/altName"/>
+                <owl:allValuesFrom rdf:resource="&xsd;string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://dati.gov.it/onto/person/name"/>
+                <owl:someValuesFrom rdf:resource="&xsd;string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://dati.gov.it/onto/person/City -->
+
+    <owl:Class rdf:about="http://dati.gov.it/onto/person/City">
+        <rdfs:label xml:lang="en">City</rdfs:label>
+        <rdfs:label xml:lang="it">Città</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://dati.gov.it/onto/person/Location"/>
+        <owl:disjointWith rdf:resource="http://dati.gov.it/onto/person/Street"/>
+    </owl:Class>
+    
+
+
+    <!-- http://dati.gov.it/onto/person/Country -->
+
+    <owl:Class rdf:about="http://dati.gov.it/onto/person/Country">
+        <rdfs:label xml:lang="en">Country</rdfs:label>
+        <rdfs:label xml:lang="it">Paese</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://dati.gov.it/onto/person/Location"/>
+    </owl:Class>
+    
+
+
+    <!-- http://dati.gov.it/onto/person/LegalEntity -->
+
+    <owl:Class rdf:about="http://dati.gov.it/onto/person/LegalEntity">
+        <rdfs:subClassOf rdf:resource="http://dati.gov.it/onto/person/Agent"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://dati.gov.it/onto/person/hasLegalAddress"/>
+                <owl:onClass rdf:resource="http://dati.gov.it/onto/person/Address"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://dati.gov.it/onto/person/identifier"/>
+                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://dati.gov.it/onto/person/hasAddress"/>
+                <owl:someValuesFrom rdf:resource="http://dati.gov.it/onto/person/Address"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://dati.gov.it/onto/person/LegalPerson -->
+
+    <owl:Class rdf:about="http://dati.gov.it/onto/person/LegalPerson">
+        <rdfs:subClassOf rdf:resource="http://dati.gov.it/onto/person/LegalEntity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://dati.gov.it/onto/person/Location -->
+
+    <owl:Class rdf:about="http://dati.gov.it/onto/person/Location">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://dati.gov.it/onto/person/name"/>
+                <owl:someValuesFrom rdf:resource="&xsd;string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://dati.gov.it/onto/person/Person -->
+
+    <owl:Class rdf:about="http://dati.gov.it/onto/person/Person">
+        <rdfs:label xml:lang="en">Person</rdfs:label>
+        <rdfs:label xml:lang="it">Persona</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://dati.gov.it/onto/person/Agent"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://dati.gov.it/onto/person/hasLegalPerson"/>
+                <owl:onClass rdf:resource="http://dati.gov.it/onto/person/LegalPerson"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">A natural person</rdfs:comment>
+        <rdfs:comment xml:lang="it">Una persona naturale</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://dati.gov.it/onto/person/Street -->
+
+    <owl:Class rdf:about="http://dati.gov.it/onto/person/Street">
+        <rdfs:label xml:lang="en">Street</rdfs:label>
+        <rdfs:label xml:lang="it">Strada</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://dati.gov.it/onto/person/Location"/>
+    </owl:Class>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.5.1) http://owlapi.sourceforge.net -->
+

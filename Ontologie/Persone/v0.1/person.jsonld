@@ -1,0 +1,653 @@
+{
+  "@graph" : [ {
+    "@id" : "_:b0",
+    "@type" : "owl:Restriction",
+    "onClass" : "http://dati.gov.it/onto/person/Street",
+    "onProperty" : "http://dati.gov.it/onto/person/hasStreet",
+    "qualifiedCardinality" : "1"
+  }, {
+    "@id" : "_:b1",
+    "@type" : "owl:Restriction",
+    "onClass" : "http://dati.gov.it/onto/person/LegalPerson",
+    "onProperty" : "http://dati.gov.it/onto/person/hasLegalPerson",
+    "qualifiedCardinality" : "1"
+  }, {
+    "@id" : "_:b10",
+    "@type" : "owl:Restriction",
+    "onProperty" : "http://dati.gov.it/onto/person/name",
+    "someValuesFrom" : "xsd:string"
+  }, {
+    "@id" : "_:b11",
+    "@type" : "owl:Class",
+    "unionOf" : {
+      "@list" : [ "http://dati.gov.it/onto/person/Address", "http://dati.gov.it/onto/person/City" ]
+    }
+  }, {
+    "@id" : "_:b14",
+    "@type" : "owl:Restriction",
+    "onDataRange" : "xsd:int",
+    "onProperty" : "http://dati.gov.it/onto/person/postalCode",
+    "qualifiedCardinality" : "1"
+  }, {
+    "@id" : "_:b16",
+    "@type" : "owl:Restriction",
+    "onClass" : "http://dati.gov.it/onto/person/City",
+    "onProperty" : "http://dati.gov.it/onto/person/hasCity",
+    "qualifiedCardinality" : "1"
+  }, {
+    "@id" : "_:b4",
+    "@type" : "owl:Restriction",
+    "onProperty" : "http://dati.gov.it/onto/person/hasAddress",
+    "someValuesFrom" : "http://dati.gov.it/onto/person/Address"
+  }, {
+    "@id" : "_:b5",
+    "@type" : "owl:Restriction",
+    "allValuesFrom" : "xsd:string",
+    "onProperty" : "http://dati.gov.it/onto/person/altName"
+  }, {
+    "@id" : "_:b6",
+    "@type" : "owl:Restriction",
+    "onDataRange" : "xsd:int",
+    "onProperty" : "http://dati.gov.it/onto/person/streetNumber",
+    "qualifiedCardinality" : "1"
+  }, {
+    "@id" : "_:b7",
+    "@type" : "owl:Restriction",
+    "onProperty" : "http://dati.gov.it/onto/person/name",
+    "someValuesFrom" : "xsd:string"
+  }, {
+    "@id" : "_:b8",
+    "@type" : "owl:Restriction",
+    "cardinality" : "1",
+    "onProperty" : "http://dati.gov.it/onto/person/identifier"
+  }, {
+    "@id" : "_:b9",
+    "@type" : "owl:Restriction",
+    "onClass" : "http://dati.gov.it/onto/person/Address",
+    "onProperty" : "http://dati.gov.it/onto/person/hasLegalAddress",
+    "qualifiedCardinality" : "1"
+  }, {
+    "@id" : "http://dati.gov.it/onto/person/",
+    "@type" : "owl:Ontology",
+    "versionIRI" : "http://dati.gov.it/onto/person/0.1"
+  }, {
+    "@id" : "http://dati.gov.it/onto/person/Account",
+    "@type" : "owl:Class",
+    "comment" : [ {
+      "@language" : "it",
+      "@value" : "Qualsiasi account che possa essere associato ad un agente. Ex. l'account Twitter di 'Mario Rossi'."
+    }, {
+      "@language" : "en",
+      "@value" : "Any account that can be associated with an agent. E.g. the Twitter account of 'John White'."
+    } ],
+    "label" : [ {
+      "@language" : "it",
+      "@value" : "Account"
+    }, {
+      "@language" : "en",
+      "@value" : "Account"
+    } ],
+    "subClassOf" : "http://dati.gov.it/onto/person/Agent"
+  }, {
+    "@id" : "http://dati.gov.it/onto/person/Activity",
+    "@type" : "owl:Class"
+  }, {
+    "@id" : "http://dati.gov.it/onto/person/Address",
+    "@type" : "owl:Class",
+    "label" : [ {
+      "@language" : "en",
+      "@value" : "Address"
+    }, {
+      "@language" : "it",
+      "@value" : "Indirizzo"
+    } ],
+    "subClassOf" : [ "_:b14", "http://dati.gov.it/onto/person/Location", "_:b6", "_:b16", "_:b0" ],
+    "disjointWith" : [ "http://dati.gov.it/onto/person/Street", "http://dati.gov.it/onto/person/City" ],
+    "hasKey" : {
+      "@list" : [ "http://dati.gov.it/onto/person/hasCity", "http://dati.gov.it/onto/person/hasStreet", "http://dati.gov.it/onto/person/streetNumber" ]
+    }
+  }, {
+    "@id" : "http://dati.gov.it/onto/person/Agent",
+    "@type" : "owl:Class",
+    "subClassOf" : [ "_:b10", "_:b5" ]
+  }, {
+    "@id" : "http://dati.gov.it/onto/person/City",
+    "@type" : "owl:Class",
+    "label" : [ {
+      "@language" : "it",
+      "@value" : "Città"
+    }, {
+      "@language" : "en",
+      "@value" : "City"
+    } ],
+    "subClassOf" : "http://dati.gov.it/onto/person/Location",
+    "disjointWith" : "http://dati.gov.it/onto/person/Street"
+  }, {
+    "@id" : "http://dati.gov.it/onto/person/Country",
+    "@type" : "owl:Class",
+    "label" : [ {
+      "@language" : "it",
+      "@value" : "Paese"
+    }, {
+      "@language" : "en",
+      "@value" : "Country"
+    } ],
+    "subClassOf" : "http://dati.gov.it/onto/person/Location"
+  }, {
+    "@id" : "http://dati.gov.it/onto/person/LegalEntity",
+    "@type" : "owl:Class",
+    "subClassOf" : [ "_:b4", "_:b8", "_:b9", "http://dati.gov.it/onto/person/Agent" ]
+  }, {
+    "@id" : "http://dati.gov.it/onto/person/LegalPerson",
+    "@type" : "owl:Class",
+    "subClassOf" : "http://dati.gov.it/onto/person/LegalEntity"
+  }, {
+    "@id" : "http://dati.gov.it/onto/person/Location",
+    "@type" : "owl:Class",
+    "subClassOf" : "_:b7"
+  }, {
+    "@id" : "http://dati.gov.it/onto/person/Person",
+    "@type" : "owl:Class",
+    "comment" : [ {
+      "@language" : "it",
+      "@value" : "Una persona naturale"
+    }, {
+      "@language" : "en",
+      "@value" : "A natural person"
+    } ],
+    "label" : [ {
+      "@language" : "it",
+      "@value" : "Persona"
+    }, {
+      "@language" : "en",
+      "@value" : "Person"
+    } ],
+    "subClassOf" : [ "_:b1", "http://dati.gov.it/onto/person/Agent" ]
+  }, {
+    "@id" : "http://dati.gov.it/onto/person/Street",
+    "@type" : "owl:Class",
+    "label" : [ {
+      "@language" : "it",
+      "@value" : "Strada"
+    }, {
+      "@language" : "en",
+      "@value" : "Street"
+    } ],
+    "subClassOf" : "http://dati.gov.it/onto/person/Location"
+  }, {
+    "@id" : "http://dati.gov.it/onto/person/altName",
+    "@type" : "owl:DatatypeProperty",
+    "domain" : "owl:Thing",
+    "range" : "xsd:string"
+  }, {
+    "@id" : "http://dati.gov.it/onto/person/birthDate",
+    "@type" : "owl:DatatypeProperty",
+    "domain" : "http://dati.gov.it/onto/person/Person",
+    "range" : "xsd:date"
+  }, {
+    "@id" : "http://dati.gov.it/onto/person/familyName",
+    "@type" : "owl:DatatypeProperty",
+    "comment" : [ {
+      "@language" : "it",
+      "@value" : "Il cognome di una persona. Ex. 'Rossi' è il cognome della persona 'Mario Rossi'"
+    }, {
+      "@language" : "en",
+      "@value" : "The family name of a person. E.g. 'Rossi' is the family name of the person 'Mario Rossi'."
+    } ],
+    "domain" : "http://dati.gov.it/onto/person/Person",
+    "label" : [ {
+      "@language" : "it",
+      "@value" : "cognome"
+    }, {
+      "@language" : "en",
+      "@value" : "family name"
+    } ],
+    "range" : "xsd:string"
+  }, {
+    "@id" : "http://dati.gov.it/onto/person/givenName",
+    "@type" : "owl:DatatypeProperty",
+    "comment" : [ {
+      "@language" : "it",
+      "@value" : "Il nome di una persona. Ex. 'Mario' è il nome della persona 'Mario Rossi'."
+    }, {
+      "@language" : "en",
+      "@value" : "The given name of a person. E.g. 'Mario' is the given name of the person 'Mario Rossi'."
+    } ],
+    "domain" : "http://dati.gov.it/onto/person/Person",
+    "label" : [ {
+      "@language" : "it",
+      "@value" : "nome"
+    }, {
+      "@language" : "en",
+      "@value" : "given name"
+    } ],
+    "range" : "xsd:string"
+  }, {
+    "@id" : "http://dati.gov.it/onto/person/hasAccount",
+    "@type" : "owl:ObjectProperty",
+    "comment" : [ {
+      "@language" : "it",
+      "@value" : "Relazione tra un agente ed un account. Ex. questa proprietà permette di associare 'Mario Rossi' al suo account Twitter."
+    }, {
+      "@language" : "en",
+      "@value" : "Relation between an agent and an account. E.g. this property allows to associate 'John White' with his Twitter account."
+    } ],
+    "domain" : "http://dati.gov.it/onto/person/Agent",
+    "label" : [ {
+      "@language" : "it",
+      "@value" : "ha account"
+    }, {
+      "@language" : "en",
+      "@value" : "has account"
+    } ],
+    "range" : "http://dati.gov.it/onto/person/Account"
+  }, {
+    "@id" : "http://dati.gov.it/onto/person/hasActivity",
+    "@type" : "owl:ObjectProperty",
+    "comment" : [ {
+      "@language" : "it",
+      "@value" : "Relazione tra una persona giuridica ed una possibile attività economica."
+    }, {
+      "@language" : "en",
+      "@value" : "Relation between a legal person and any possible business activity."
+    } ],
+    "domain" : "http://dati.gov.it/onto/person/LegalPerson",
+    "label" : [ {
+      "@language" : "it",
+      "@value" : "ha attività"
+    }, {
+      "@language" : "en",
+      "@value" : "has activity"
+    } ],
+    "range" : "http://dati.gov.it/onto/person/Activity"
+  }, {
+    "@id" : "http://dati.gov.it/onto/person/hasAddress",
+    "@type" : "owl:ObjectProperty",
+    "range" : "http://dati.gov.it/onto/person/Address",
+    "subPropertyOf" : "http://dati.gov.it/onto/person/hasLocation"
+  }, {
+    "@id" : "http://dati.gov.it/onto/person/hasBirthPalce",
+    "@type" : "owl:ObjectProperty",
+    "domain" : "http://dati.gov.it/onto/person/Person",
+    "label" : [ {
+      "@language" : "it",
+      "@value" : "luogo di nascita"
+    }, {
+      "@language" : "en",
+      "@value" : "birth place"
+    } ],
+    "range" : "http://dati.gov.it/onto/person/Location"
+  }, {
+    "@id" : "http://dati.gov.it/onto/person/hasCity",
+    "@type" : "owl:ObjectProperty",
+    "domain" : "owl:Thing",
+    "range" : "http://dati.gov.it/onto/person/City",
+    "subPropertyOf" : "http://dati.gov.it/onto/person/hasLocation"
+  }, {
+    "@id" : "http://dati.gov.it/onto/person/hasDeathPlace",
+    "@type" : "owl:ObjectProperty",
+    "domain" : "http://dati.gov.it/onto/person/Person",
+    "label" : [ {
+      "@language" : "it",
+      "@value" : "luogo di morte"
+    }, {
+      "@language" : "en",
+      "@value" : "death place"
+    } ],
+    "range" : "http://dati.gov.it/onto/person/Location"
+  }, {
+    "@id" : "http://dati.gov.it/onto/person/hasLegalAddress",
+    "@type" : "owl:ObjectProperty",
+    "domain" : "http://dati.gov.it/onto/person/LegalEntity",
+    "range" : "http://dati.gov.it/onto/person/Address",
+    "subPropertyOf" : "http://dati.gov.it/onto/person/hasAddress"
+  }, {
+    "@id" : "http://dati.gov.it/onto/person/hasLegalPerson",
+    "@type" : "owl:ObjectProperty",
+    "comment" : [ {
+      "@language" : "it",
+      "@value" : "Relazione tra una persona fisica ed una giuridica."
+    }, {
+      "@language" : "en",
+      "@value" : "Relation between a physical person and a legal one."
+    } ],
+    "domain" : "http://dati.gov.it/onto/person/Person",
+    "label" : [ {
+      "@language" : "it",
+      "@value" : "ha persona giuridica"
+    }, {
+      "@language" : "en",
+      "@value" : "has legal person"
+    } ],
+    "range" : "http://dati.gov.it/onto/person/LegalPerson"
+  }, {
+    "@id" : "http://dati.gov.it/onto/person/hasLocation",
+    "@type" : "owl:ObjectProperty",
+    "domain" : "owl:Thing",
+    "range" : "http://dati.gov.it/onto/person/Location"
+  }, {
+    "@id" : "http://dati.gov.it/onto/person/hasParent",
+    "@type" : "owl:ObjectProperty",
+    "comment" : [ {
+      "@language" : "it",
+      "@value" : "La relazione figlio-padre. Ex. 'Mario Rossi' ha padre 'Paolo Neri'."
+    }, {
+      "@language" : "en",
+      "@value" : "The property that models child-parent relationship. E.g. 'John White' has parent 'Bob Black' means that 'Bob Black' is the parent of 'John White'."
+    } ],
+    "domain" : "http://dati.gov.it/onto/person/Person",
+    "label" : [ {
+      "@language" : "it",
+      "@value" : "ha genitore"
+    }, {
+      "@language" : "en",
+      "@value" : "has parent"
+    } ],
+    "range" : "http://dati.gov.it/onto/person/Person",
+    "subPropertyOf" : "http://dati.gov.it/onto/person/hasRelationshipWith"
+  }, {
+    "@id" : "http://dati.gov.it/onto/person/hasRelationshipWith",
+    "@type" : "owl:ObjectProperty",
+    "comment" : [ {
+      "@language" : "it",
+      "@value" : "Qualsiasi relazione tra agenti."
+    }, {
+      "@language" : "en",
+      "@value" : "Any relationship between agents."
+    } ],
+    "domain" : "http://dati.gov.it/onto/person/Agent",
+    "label" : [ {
+      "@language" : "it",
+      "@value" : "ha relazione con"
+    }, {
+      "@language" : "en",
+      "@value" : "has relationship with"
+    } ],
+    "range" : "http://dati.gov.it/onto/person/Agent"
+  }, {
+    "@id" : "http://dati.gov.it/onto/person/hasStreet",
+    "@type" : "owl:ObjectProperty",
+    "domain" : "http://dati.gov.it/onto/person/Address",
+    "range" : "http://dati.gov.it/onto/person/Street",
+    "subPropertyOf" : "http://dati.gov.it/onto/person/hasLocation"
+  }, {
+    "@id" : "http://dati.gov.it/onto/person/identifier",
+    "@type" : "owl:DatatypeProperty",
+    "domain" : "owl:Thing",
+    "range" : "rdfs:Literal"
+  }, {
+    "@id" : "http://dati.gov.it/onto/person/isAccountOf",
+    "@type" : "owl:ObjectProperty",
+    "comment" : [ {
+      "@language" : "it",
+      "@value" : "Relazione tra un account ed un agente."
+    }, {
+      "@language" : "en",
+      "@value" : "Relation between an account and an agent."
+    } ],
+    "domain" : "http://dati.gov.it/onto/person/Account",
+    "label" : [ {
+      "@language" : "it",
+      "@value" : "è account di"
+    }, {
+      "@language" : "en",
+      "@value" : "is account of"
+    } ],
+    "range" : "http://dati.gov.it/onto/person/Agent",
+    "inverseOf" : "http://dati.gov.it/onto/person/hasAccount"
+  }, {
+    "@id" : "http://dati.gov.it/onto/person/isActivityOf",
+    "@type" : "owl:ObjectProperty",
+    "comment" : [ {
+      "@language" : "it",
+      "@value" : "Relazione tra un'attività ed una persona giuridica."
+    }, {
+      "@language" : "en",
+      "@value" : "Relation between an activity and a legal person."
+    } ],
+    "domain" : "http://dati.gov.it/onto/person/Activity",
+    "label" : [ {
+      "@language" : "it",
+      "@value" : "è attività di"
+    }, {
+      "@language" : "en",
+      "@value" : "is activity of"
+    } ],
+    "range" : "http://dati.gov.it/onto/person/LegalPerson"
+  }, {
+    "@id" : "http://dati.gov.it/onto/person/isBirthPlaceOf",
+    "@type" : "owl:ObjectProperty",
+    "domain" : "http://dati.gov.it/onto/person/Location",
+    "range" : "http://dati.gov.it/onto/person/Person",
+    "inverseOf" : "http://dati.gov.it/onto/person/hasBirthPalce"
+  }, {
+    "@id" : "http://dati.gov.it/onto/person/isDeathPlaceOf",
+    "@type" : "owl:ObjectProperty",
+    "comment" : [ {
+      "@language" : "it",
+      "@value" : "La proprietà per associare un luogo (i.e. una località) ad una persona a persona per rappresentare il luogo di morte di quest'ultima."
+    }, {
+      "@language" : "en",
+      "@value" : "The property to associate a death place (i.e. a location) with a person."
+    } ],
+    "domain" : "http://dati.gov.it/onto/person/Location",
+    "label" : [ {
+      "@language" : "it",
+      "@value" : "luogo di morte di"
+    }, {
+      "@language" : "en",
+      "@value" : "death place of"
+    } ],
+    "range" : "http://dati.gov.it/onto/person/Person",
+    "inverseOf" : "http://dati.gov.it/onto/person/hasDeathPlace"
+  }, {
+    "@id" : "http://dati.gov.it/onto/person/isLegalPersonOf",
+    "@type" : "owl:ObjectProperty",
+    "comment" : [ {
+      "@language" : "it",
+      "@value" : "Relazione tra una persona giuridica e una persona fisica."
+    }, {
+      "@language" : "en",
+      "@value" : "Relation between a legal person and a physical person."
+    } ],
+    "domain" : "http://dati.gov.it/onto/person/LegalPerson",
+    "label" : [ {
+      "@language" : "it",
+      "@value" : "è persona giuridica di"
+    }, {
+      "@language" : "en",
+      "@value" : "is legal person of"
+    } ],
+    "range" : "http://dati.gov.it/onto/person/Person",
+    "inverseOf" : "http://dati.gov.it/onto/person/hasLegalPerson"
+  }, {
+    "@id" : "http://dati.gov.it/onto/person/isLocationOf",
+    "@type" : "owl:ObjectProperty",
+    "inverseOf" : "http://dati.gov.it/onto/person/hasLocation"
+  }, {
+    "@id" : "http://dati.gov.it/onto/person/isParentOf",
+    "@type" : "owl:ObjectProperty",
+    "domain" : "http://dati.gov.it/onto/person/Person",
+    "label" : [ {
+      "@language" : "it",
+      "@value" : "è genitore di"
+    }, {
+      "@language" : "it",
+      "@value" : "La relazione padre-figlio."
+    }, {
+      "@language" : "en",
+      "@value" : "is parent of"
+    }, {
+      "@language" : "en",
+      "@value" : "The parent-child relationship."
+    } ],
+    "range" : "http://dati.gov.it/onto/person/Person",
+    "subPropertyOf" : "http://dati.gov.it/onto/person/hasRelationshipWith",
+    "inverseOf" : "http://dati.gov.it/onto/person/hasParent"
+  }, {
+    "@id" : "http://dati.gov.it/onto/person/knows",
+    "@type" : [ "owl:SymmetricProperty", "owl:ObjectProperty" ],
+    "comment" : [ {
+      "@language" : "it",
+      "@value" : "La relazione di conoscenza che intercorre tra due persone. Ex. 'Mario Rossi' conosce 'Paolo Neri'."
+    }, {
+      "@language" : "en",
+      "@value" : "The relationship of knowledge between two people. E.g. 'John White' knows 'Bob Black'."
+    } ],
+    "domain" : "http://dati.gov.it/onto/person/Person",
+    "label" : [ {
+      "@language" : "it",
+      "@value" : "conosce"
+    }, {
+      "@language" : "en",
+      "@value" : "knows"
+    } ],
+    "range" : "http://dati.gov.it/onto/person/Person",
+    "subPropertyOf" : "http://dati.gov.it/onto/person/hasRelationshipWith"
+  }, {
+    "@id" : "http://dati.gov.it/onto/person/name",
+    "@type" : "owl:DatatypeProperty",
+    "comment" : [ {
+      "@language" : "it",
+      "@value" : "Il nome con cui ci si referisce ad un individiduo della classe Agent. Ex. 'Mario Rossi' è il nome della persona 'Mario Rossi' oppure 'CNR' è uno dei possibili nomi con cui ci si riferisce al Consiglio Nazionale delle Ricerche."
+    }, {
+      "@language" : "en",
+      "@value" : "The name used for referencing any individual of the class Agent. E.g. 'Mario Rossi' is the name of the person 'Mario Rossi' or 'CNR' is one of the possible alternatives used for referencing the National Italian Council for Research."
+    } ],
+    "domain" : "http://dati.gov.it/onto/person/Agent",
+    "label" : [ {
+      "@language" : "it",
+      "@value" : "nome"
+    }, {
+      "@language" : "en",
+      "@value" : "name"
+    } ],
+    "range" : "xsd:string"
+  }, {
+    "@id" : "http://dati.gov.it/onto/person/postalCode",
+    "@type" : "owl:DatatypeProperty",
+    "comment" : [ {
+      "@language" : "it",
+      "@value" : "Il codice postale associato ad un indirizzo o una città."
+    }, {
+      "@language" : "en",
+      "@value" : "The postal code associated with an address or a city."
+    } ],
+    "domain" : "_:b11",
+    "label" : [ {
+      "@language" : "it",
+      "@value" : "codice postale"
+    }, {
+      "@language" : "en",
+      "@value" : "postal code"
+    } ],
+    "range" : "xsd:int"
+  }, {
+    "@id" : "http://dati.gov.it/onto/person/streetNumber",
+    "@type" : "owl:DatatypeProperty",
+    "comment" : [ {
+      "@language" : "it",
+      "@value" : "Il numero civico di un indirizzo."
+    }, {
+      "@language" : "en",
+      "@value" : "The street number of an address."
+    } ],
+    "domain" : "http://dati.gov.it/onto/person/Address",
+    "label" : [ {
+      "@language" : "it",
+      "@value" : "numero civico"
+    }, {
+      "@language" : "en",
+      "@value" : "street number"
+    } ],
+    "range" : "xsd:int"
+  }, {
+    "@id" : "xsd:date",
+    "@type" : "rdfs:Datatype"
+  } ],
+  "@context" : {
+    "qualifiedCardinality" : {
+      "@id" : "http://www.w3.org/2002/07/owl#qualifiedCardinality",
+      "@type" : "http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+    },
+    "onClass" : {
+      "@id" : "http://www.w3.org/2002/07/owl#onClass",
+      "@type" : "@id"
+    },
+    "onProperty" : {
+      "@id" : "http://www.w3.org/2002/07/owl#onProperty",
+      "@type" : "@id"
+    },
+    "subPropertyOf" : {
+      "@id" : "http://www.w3.org/2000/01/rdf-schema#subPropertyOf",
+      "@type" : "@id"
+    },
+    "inverseOf" : {
+      "@id" : "http://www.w3.org/2002/07/owl#inverseOf",
+      "@type" : "@id"
+    },
+    "domain" : {
+      "@id" : "http://www.w3.org/2000/01/rdf-schema#domain",
+      "@type" : "@id"
+    },
+    "range" : {
+      "@id" : "http://www.w3.org/2000/01/rdf-schema#range",
+      "@type" : "@id"
+    },
+    "label" : {
+      "@id" : "http://www.w3.org/2000/01/rdf-schema#label"
+    },
+    "comment" : {
+      "@id" : "http://www.w3.org/2000/01/rdf-schema#comment"
+    },
+    "subClassOf" : {
+      "@id" : "http://www.w3.org/2000/01/rdf-schema#subClassOf",
+      "@type" : "@id"
+    },
+    "rest" : {
+      "@id" : "http://www.w3.org/1999/02/22-rdf-syntax-ns#rest",
+      "@type" : "@id"
+    },
+    "first" : {
+      "@id" : "http://www.w3.org/1999/02/22-rdf-syntax-ns#first",
+      "@type" : "@id"
+    },
+    "someValuesFrom" : {
+      "@id" : "http://www.w3.org/2002/07/owl#someValuesFrom",
+      "@type" : "@id"
+    },
+    "allValuesFrom" : {
+      "@id" : "http://www.w3.org/2002/07/owl#allValuesFrom",
+      "@type" : "@id"
+    },
+    "disjointWith" : {
+      "@id" : "http://www.w3.org/2002/07/owl#disjointWith",
+      "@type" : "@id"
+    },
+    "onDataRange" : {
+      "@id" : "http://www.w3.org/2002/07/owl#onDataRange",
+      "@type" : "@id"
+    },
+    "versionIRI" : {
+      "@id" : "http://www.w3.org/2002/07/owl#versionIRI",
+      "@type" : "@id"
+    },
+    "hasKey" : {
+      "@id" : "http://www.w3.org/2002/07/owl#hasKey",
+      "@type" : "@id"
+    },
+    "unionOf" : {
+      "@id" : "http://www.w3.org/2002/07/owl#unionOf",
+      "@type" : "@id"
+    },
+    "cardinality" : {
+      "@id" : "http://www.w3.org/2002/07/owl#cardinality",
+      "@type" : "http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+    },
+    "@vocab" : "http://dati.gov.it/onto/person/",
+    "rdf" : "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "owl" : "http://www.w3.org/2002/07/owl#",
+    "xsd" : "http://www.w3.org/2001/XMLSchema#",
+    "rdfs" : "http://www.w3.org/2000/01/rdf-schema#"
+  }
+}

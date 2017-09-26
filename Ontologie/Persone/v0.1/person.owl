@@ -1,0 +1,963 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE Ontology [
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY xml "http://www.w3.org/XML/1998/namespace" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+]>
+
+
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://dati.gov.it/onto/person/"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://dati.gov.it/onto/person/"
+     versionIRI="http://dati.gov.it/onto/person/0.1">
+    <Prefix name="" IRI="http://dati.gov.it/onto/person/"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Declaration>
+        <Class IRI="Account"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="Activity"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="Address"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="Agent"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="City"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="Country"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="LegalEntity"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="LegalPerson"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="Location"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="Person"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="Street"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="hasAccount"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="hasActivity"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="hasAddress"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="hasBirthPalce"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="hasCity"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="hasDeathPlace"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="hasLegalAddress"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="hasLegalPerson"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="hasLocation"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="hasParent"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="hasRelationshipWith"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="hasStreet"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="isAccountOf"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="isActivityOf"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="isBirthPlaceOf"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="isDeathPlaceOf"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="isLegalPersonOf"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="isLocationOf"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="isParentOf"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="knows"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="altName"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="birthDate"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="familyName"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="givenName"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="identifier"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="name"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="postalCode"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="streetNumber"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="Account"/>
+        <Class IRI="Agent"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="Address"/>
+        <Class IRI="Location"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="Address"/>
+        <ObjectExactCardinality cardinality="1">
+            <ObjectProperty IRI="hasCity"/>
+            <Class IRI="City"/>
+        </ObjectExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="Address"/>
+        <ObjectExactCardinality cardinality="1">
+            <ObjectProperty IRI="hasStreet"/>
+            <Class IRI="Street"/>
+        </ObjectExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="Address"/>
+        <DataExactCardinality cardinality="1">
+            <DataProperty IRI="postalCode"/>
+            <Datatype abbreviatedIRI="xsd:int"/>
+        </DataExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="Address"/>
+        <DataExactCardinality cardinality="1">
+            <DataProperty IRI="streetNumber"/>
+            <Datatype abbreviatedIRI="xsd:int"/>
+        </DataExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="Agent"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="name"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="Agent"/>
+        <DataAllValuesFrom>
+            <DataProperty IRI="altName"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="City"/>
+        <Class IRI="Location"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="Country"/>
+        <Class IRI="Location"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="LegalEntity"/>
+        <Class IRI="Agent"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="LegalEntity"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="hasAddress"/>
+            <Class IRI="Address"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="LegalEntity"/>
+        <ObjectExactCardinality cardinality="1">
+            <ObjectProperty IRI="hasLegalAddress"/>
+            <Class IRI="Address"/>
+        </ObjectExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="LegalEntity"/>
+        <DataExactCardinality cardinality="1">
+            <DataProperty IRI="identifier"/>
+        </DataExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="LegalPerson"/>
+        <Class IRI="LegalEntity"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="Location"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="name"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="Person"/>
+        <Class IRI="Agent"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="Person"/>
+        <ObjectExactCardinality cardinality="1">
+            <ObjectProperty IRI="hasLegalPerson"/>
+            <Class IRI="LegalPerson"/>
+        </ObjectExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="Street"/>
+        <Class IRI="Location"/>
+    </SubClassOf>
+    <DisjointClasses>
+        <Class IRI="Address"/>
+        <Class IRI="City"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="Address"/>
+        <Class IRI="Street"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="City"/>
+        <Class IRI="Street"/>
+    </DisjointClasses>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="hasAddress"/>
+        <ObjectProperty IRI="hasLocation"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="hasCity"/>
+        <ObjectProperty IRI="hasLocation"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="hasLegalAddress"/>
+        <ObjectProperty IRI="hasAddress"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="hasParent"/>
+        <ObjectProperty IRI="hasRelationshipWith"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="hasStreet"/>
+        <ObjectProperty IRI="hasLocation"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="isParentOf"/>
+        <ObjectProperty IRI="hasRelationshipWith"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="knows"/>
+        <ObjectProperty IRI="hasRelationshipWith"/>
+    </SubObjectPropertyOf>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="isAccountOf"/>
+        <ObjectProperty IRI="hasAccount"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="isBirthPlaceOf"/>
+        <ObjectProperty IRI="hasBirthPalce"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="isDeathPlaceOf"/>
+        <ObjectProperty IRI="hasDeathPlace"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="isLegalPersonOf"/>
+        <ObjectProperty IRI="hasLegalPerson"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="isLocationOf"/>
+        <ObjectProperty IRI="hasLocation"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="isParentOf"/>
+        <ObjectProperty IRI="hasParent"/>
+    </InverseObjectProperties>
+    <SymmetricObjectProperty>
+        <ObjectProperty IRI="knows"/>
+    </SymmetricObjectProperty>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="hasAccount"/>
+        <Class IRI="Agent"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="hasActivity"/>
+        <Class IRI="LegalPerson"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="hasBirthPalce"/>
+        <Class IRI="Person"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="hasCity"/>
+        <Class abbreviatedIRI="owl:Thing"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="hasDeathPlace"/>
+        <Class IRI="Person"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="hasLegalAddress"/>
+        <Class IRI="LegalEntity"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="hasLegalPerson"/>
+        <Class IRI="Person"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="hasLocation"/>
+        <Class abbreviatedIRI="owl:Thing"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="hasParent"/>
+        <Class IRI="Person"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="hasRelationshipWith"/>
+        <Class IRI="Agent"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="hasStreet"/>
+        <Class IRI="Address"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="isAccountOf"/>
+        <Class IRI="Account"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="isActivityOf"/>
+        <Class IRI="Activity"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="isBirthPlaceOf"/>
+        <Class IRI="Location"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="isDeathPlaceOf"/>
+        <Class IRI="Location"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="isLegalPersonOf"/>
+        <Class IRI="LegalPerson"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="isParentOf"/>
+        <Class IRI="Person"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="knows"/>
+        <Class IRI="Person"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="hasAccount"/>
+        <Class IRI="Account"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="hasActivity"/>
+        <Class IRI="Activity"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="hasAddress"/>
+        <Class IRI="Address"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="hasBirthPalce"/>
+        <Class IRI="Location"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="hasCity"/>
+        <Class IRI="City"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="hasDeathPlace"/>
+        <Class IRI="Location"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="hasLegalAddress"/>
+        <Class IRI="Address"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="hasLegalPerson"/>
+        <Class IRI="LegalPerson"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="hasLocation"/>
+        <Class IRI="Location"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="hasParent"/>
+        <Class IRI="Person"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="hasRelationshipWith"/>
+        <Class IRI="Agent"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="hasStreet"/>
+        <Class IRI="Street"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="isAccountOf"/>
+        <Class IRI="Agent"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="isActivityOf"/>
+        <Class IRI="LegalPerson"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="isBirthPlaceOf"/>
+        <Class IRI="Person"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="isDeathPlaceOf"/>
+        <Class IRI="Person"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="isLegalPersonOf"/>
+        <Class IRI="Person"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="isParentOf"/>
+        <Class IRI="Person"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="knows"/>
+        <Class IRI="Person"/>
+    </ObjectPropertyRange>
+    <DataPropertyDomain>
+        <DataProperty IRI="altName"/>
+        <Class abbreviatedIRI="owl:Thing"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="birthDate"/>
+        <Class IRI="Person"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="familyName"/>
+        <Class IRI="Person"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="givenName"/>
+        <Class IRI="Person"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="identifier"/>
+        <Class abbreviatedIRI="owl:Thing"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="name"/>
+        <Class IRI="Agent"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="postalCode"/>
+        <ObjectUnionOf>
+            <Class IRI="Address"/>
+            <Class IRI="City"/>
+        </ObjectUnionOf>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="streetNumber"/>
+        <Class IRI="Address"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="altName"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="birthDate"/>
+        <Datatype abbreviatedIRI="xsd:date"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="familyName"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="givenName"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="identifier"/>
+        <Datatype abbreviatedIRI="rdfs:Literal"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="name"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="postalCode"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="streetNumber"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <HasKey>
+        <Class IRI="Address"/>
+        <ObjectProperty IRI="hasCity"/>
+        <ObjectProperty IRI="hasStreet"/>
+        <DataProperty IRI="streetNumber"/>
+    </HasKey>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>Account</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Any account that can be associated with an agent. E.g. the Twitter account of &apos;John White&apos;.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>Account</IRI>
+        <Literal xml:lang="it" datatypeIRI="&rdf;PlainLiteral">Qualsiasi account che possa essere associato ad un agente. Ex. l&apos;account Twitter di &apos;Mario Rossi&apos;.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>Account</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Account</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>Account</IRI>
+        <Literal xml:lang="it" datatypeIRI="&rdf;PlainLiteral">Account</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>Address</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Address</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>Address</IRI>
+        <Literal xml:lang="it" datatypeIRI="&rdf;PlainLiteral">Indirizzo</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>City</IRI>
+        <Literal xml:lang="it" datatypeIRI="&rdf;PlainLiteral">Città</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>City</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">City</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>Country</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Country</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>Country</IRI>
+        <Literal xml:lang="it" datatypeIRI="&rdf;PlainLiteral">Paese</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>Person</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">A natural person</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>Person</IRI>
+        <Literal xml:lang="it" datatypeIRI="&rdf;PlainLiteral">Una persona naturale</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>Person</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Person</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>Person</IRI>
+        <Literal xml:lang="it" datatypeIRI="&rdf;PlainLiteral">Persona</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>Street</IRI>
+        <Literal xml:lang="it" datatypeIRI="&rdf;PlainLiteral">Strada</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>Street</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Street</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>familyName</IRI>
+        <Literal xml:lang="it" datatypeIRI="&rdf;PlainLiteral">Il cognome di una persona. Ex. &apos;Rossi&apos; è il cognome della persona &apos;Mario Rossi&apos;</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>familyName</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">The family name of a person. E.g. &apos;Rossi&apos; is the family name of the person &apos;Mario Rossi&apos;.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>familyName</IRI>
+        <Literal xml:lang="it" datatypeIRI="&rdf;PlainLiteral">cognome</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>familyName</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">family name</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>givenName</IRI>
+        <Literal xml:lang="it" datatypeIRI="&rdf;PlainLiteral">Il nome di una persona. Ex. &apos;Mario&apos; è il nome della persona &apos;Mario Rossi&apos;.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>givenName</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">The given name of a person. E.g. &apos;Mario&apos; is the given name of the person &apos;Mario Rossi&apos;.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>givenName</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">given name</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>givenName</IRI>
+        <Literal xml:lang="it" datatypeIRI="&rdf;PlainLiteral">nome</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>hasAccount</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Relation between an agent and an account. E.g. this property allows to associate &apos;John White&apos; with his Twitter account.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>hasAccount</IRI>
+        <Literal xml:lang="it" datatypeIRI="&rdf;PlainLiteral">Relazione tra un agente ed un account. Ex. questa proprietà permette di associare &apos;Mario Rossi&apos; al suo account Twitter.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>hasAccount</IRI>
+        <Literal xml:lang="it" datatypeIRI="&rdf;PlainLiteral">ha account</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>hasAccount</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">has account</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>hasActivity</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Relation between a legal person and any possible business activity.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>hasActivity</IRI>
+        <Literal xml:lang="it" datatypeIRI="&rdf;PlainLiteral">Relazione tra una persona giuridica ed una possibile attività economica.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>hasActivity</IRI>
+        <Literal xml:lang="it" datatypeIRI="&rdf;PlainLiteral">ha attività</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>hasActivity</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">has activity</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>hasBirthPalce</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">birth place</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>hasBirthPalce</IRI>
+        <Literal xml:lang="it" datatypeIRI="&rdf;PlainLiteral">luogo di nascita</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>hasDeathPlace</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">death place</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>hasDeathPlace</IRI>
+        <Literal xml:lang="it" datatypeIRI="&rdf;PlainLiteral">luogo di morte</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>hasLegalPerson</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Relation between a physical person and a legal one.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>hasLegalPerson</IRI>
+        <Literal xml:lang="it" datatypeIRI="&rdf;PlainLiteral">Relazione tra una persona fisica ed una giuridica.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>hasLegalPerson</IRI>
+        <Literal xml:lang="it" datatypeIRI="&rdf;PlainLiteral">ha persona giuridica</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>hasLegalPerson</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">has legal person</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>hasParent</IRI>
+        <Literal xml:lang="it" datatypeIRI="&rdf;PlainLiteral">La relazione figlio-padre. Ex. &apos;Mario Rossi&apos; ha padre &apos;Paolo Neri&apos;.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>hasParent</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">The property that models child-parent relationship. E.g. &apos;John White&apos; has parent &apos;Bob Black&apos; means that &apos;Bob Black&apos; is the parent of &apos;John White&apos;.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>hasParent</IRI>
+        <Literal xml:lang="it" datatypeIRI="&rdf;PlainLiteral">ha genitore</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>hasParent</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">has parent</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>hasRelationshipWith</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Any relationship between agents.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>hasRelationshipWith</IRI>
+        <Literal xml:lang="it" datatypeIRI="&rdf;PlainLiteral">Qualsiasi relazione tra agenti.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>hasRelationshipWith</IRI>
+        <Literal xml:lang="it" datatypeIRI="&rdf;PlainLiteral">ha relazione con</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>hasRelationshipWith</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">has relationship with</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>isAccountOf</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Relation between an account and an agent.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>isAccountOf</IRI>
+        <Literal xml:lang="it" datatypeIRI="&rdf;PlainLiteral">Relazione tra un account ed un agente.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>isAccountOf</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">is account of</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>isAccountOf</IRI>
+        <Literal xml:lang="it" datatypeIRI="&rdf;PlainLiteral">è account di</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>isActivityOf</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Relation between an activity and a legal person.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>isActivityOf</IRI>
+        <Literal xml:lang="it" datatypeIRI="&rdf;PlainLiteral">Relazione tra un&apos;attività ed una persona giuridica.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>isActivityOf</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">is activity of</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>isActivityOf</IRI>
+        <Literal xml:lang="it" datatypeIRI="&rdf;PlainLiteral">è attività di</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>isDeathPlaceOf</IRI>
+        <Literal xml:lang="it" datatypeIRI="&rdf;PlainLiteral">La proprietà per associare un luogo (i.e. una località) ad una persona a persona per rappresentare il luogo di morte di quest&apos;ultima.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>isDeathPlaceOf</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">The property to associate a death place (i.e. a location) with a person.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>isDeathPlaceOf</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">death place of</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>isDeathPlaceOf</IRI>
+        <Literal xml:lang="it" datatypeIRI="&rdf;PlainLiteral">luogo di morte di</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>isLegalPersonOf</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Relation between a legal person and a physical person.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>isLegalPersonOf</IRI>
+        <Literal xml:lang="it" datatypeIRI="&rdf;PlainLiteral">Relazione tra una persona giuridica e una persona fisica.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>isLegalPersonOf</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">is legal person of</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>isLegalPersonOf</IRI>
+        <Literal xml:lang="it" datatypeIRI="&rdf;PlainLiteral">è persona giuridica di</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>isParentOf</IRI>
+        <Literal xml:lang="it" datatypeIRI="&rdf;PlainLiteral">La relazione padre-figlio.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>isParentOf</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">The parent-child relationship.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>isParentOf</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">is parent of</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>isParentOf</IRI>
+        <Literal xml:lang="it" datatypeIRI="&rdf;PlainLiteral">è genitore di</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>knows</IRI>
+        <Literal xml:lang="it" datatypeIRI="&rdf;PlainLiteral">La relazione di conoscenza che intercorre tra due persone. Ex. &apos;Mario Rossi&apos; conosce &apos;Paolo Neri&apos;.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>knows</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">The relationship of knowledge between two people. E.g. &apos;John White&apos; knows &apos;Bob Black&apos;.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>knows</IRI>
+        <Literal xml:lang="it" datatypeIRI="&rdf;PlainLiteral">conosce</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>knows</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">knows</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>name</IRI>
+        <Literal xml:lang="it" datatypeIRI="&rdf;PlainLiteral">Il nome con cui ci si referisce ad un individiduo della classe Agent. Ex. &apos;Mario Rossi&apos; è il nome della persona &apos;Mario Rossi&apos; oppure &apos;CNR&apos; è uno dei possibili nomi con cui ci si riferisce al Consiglio Nazionale delle Ricerche.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>name</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">The name used for referencing any individual of the class Agent. E.g. &apos;Mario Rossi&apos; is the name of the person &apos;Mario Rossi&apos; or &apos;CNR&apos; is one of the possible alternatives used for referencing the National Italian Council for Research.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>name</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">name</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>name</IRI>
+        <Literal xml:lang="it" datatypeIRI="&rdf;PlainLiteral">nome</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>postalCode</IRI>
+        <Literal xml:lang="it" datatypeIRI="&rdf;PlainLiteral">Il codice postale associato ad un indirizzo o una città.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>postalCode</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">The postal code associated with an address or a city.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>postalCode</IRI>
+        <Literal xml:lang="it" datatypeIRI="&rdf;PlainLiteral">codice postale</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>postalCode</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">postal code</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>streetNumber</IRI>
+        <Literal xml:lang="it" datatypeIRI="&rdf;PlainLiteral">Il numero civico di un indirizzo.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>streetNumber</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">The street number of an address.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>streetNumber</IRI>
+        <Literal xml:lang="it" datatypeIRI="&rdf;PlainLiteral">numero civico</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>streetNumber</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">street number</Literal>
+    </AnnotationAssertion>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 3.5.1) http://owlapi.sourceforge.net -->
+
