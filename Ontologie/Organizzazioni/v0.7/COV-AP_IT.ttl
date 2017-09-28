@@ -11,41 +11,41 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix smapit: <http://dati.gov.it/onto/smapit/> .
 @prefix clvapit: <http://dati.gov.it/onto/clvapit#> .
-@base <http://localhost/TeamDigitale/Ontologie/Location/v0.5.L0/CLV-AP_IT.ttl> .
+@base <http://dati.gov.it/onto/covapit> .
 
-<http://localhost/TeamDigitale/Ontologie/Location/v0.5.L0/CLV-AP_IT.ttl> rdf:type owl:Ontology ;
+<http://dati.gov.it/onto/covapit> rdf:type owl:Ontology ;
 
-                                                                         rdfs:label "Organization (Private & Public)"@en ,
-                                                                                    "Organizzazioni (Pubbliche e Private)"@it ;
+      rdfs:label "Organization (Private & Public)"@en ,
+                 "Organizzazioni (Pubbliche e Private)"@it ;
 
-                                                                         dct:issued "2017-07-20"^^xsd:date ;
+      dct:issued "2017-07-20"^^xsd:date ;
 
-                                                                         dct:modified "2017-09-25" ;
+      dct:modified "2017-09-25" ;
 
-                                                                         dc:creator "Agency for Digital Italy - AgID"@en ,
-                                                                                    "Institute of Cognitive Sciences and Technologies of the Italian Research Council (CNR) - Semantic Technology Laboratory (STLab)"@en ,
-                                                                                    "Italian Digital Transformation Team"@en ;
+      dc:creator "Agency for Digital Italy - AgID"@en ,
+      "Institute of Cognitive Sciences and Technologies of the Italian Research Council (CNR) - Semantic Technology Laboratory (STLab)"@en ,
+      "Italian Digital Transformation Team"@en ;
 
-                                                                         rdfs:comment "Questa è l'ontologia del profilo applicativo italiano sulle organizzazioni (pubbliche e private)"@en ,
-                                                                                      "This is the ontology of the Italian application profile for Organizations (Public and Private)"@en ;
+      rdfs:comment "Questa è l'ontologia del profilo applicativo italiano sulle organizzazioni (pubbliche e private)"@en ,
+      "This is the ontology of the Italian application profile for Organizations (Public and Private)"@en ;
 
-                                                                         owl:versionInfo "Version 0.6 - 25  September 2017 - refactorisation based on the Level 0 ontology."@en ,
-                                                                                         "Versione 0.6 - 25 Settembre 2017 - Rifattorizzazione basata sull'introduzione dell'ontologia Level 0."@it ;
+      owl:versionInfo "Version 0.7 - 25  September 2017 - updated refactorisation based on the Level 0 ontology."@en ,
+      "Versione 0.7 - 25 Settembre 2017 - Aggiornamento della rifattorizzazione basata sull'introduzione dell'ontologia Level 0."@it ;
 
-                                                                         owl:imports <http://dati.gov.it/onto/clvapit/0.5> ;
+      owl:imports <http://dati.gov.it/onto/clvapit/0.6> ;
 
-                                                                         rdfs:isDefinedBy <http://dati.gov.it/onto/covapit/> ;
+      rdfs:isDefinedBy <http://dati.gov.it/onto/covapit/> ;
 
-                                                                         prov:wasDerivedFrom <http://dati.gov.it/onto/covapit/0.5> ;
+      prov:wasDerivedFrom <http://dati.gov.it/onto/covapit/0.5> ;
 
-                                                                         owl:versionIRI <http://dati.gov.it/onto/covapit/0.7.l0> ;
+      owl:versionIRI <http://dati.gov.it/onto/covapit/0.7> ;
 
-                                                                         owl:imports <http://dati.gov.it/onto/smapit/> ,
-                                                                                     <http://dati.gov.it/onto/l0/> ,
-                                                                                     <http://dati.gov.it/onto/clvapit> ,
-                                                                                     <http://dati.gov.it/onto/tiapit/> ;
+      owl:imports <http://dati.gov.it/onto/smapit/> ,
+      <http://dati.gov.it/onto/l0/> ,
+      <http://dati.gov.it/onto/clvapit> ,
+      <http://dati.gov.it/onto/tiapit/> ;
 
-                                                                         dct:license <https://creativecommons.org/licenses/by/4.0/> .
+      dct:license <https://creativecommons.org/licenses/by/4.0/> .
 
 
 #################################################################
@@ -352,29 +352,6 @@ prov:wasInfluencedBy rdf:type owl:AnnotationProperty .
                       rdfs:range :ParticipationType ;
 
                       rdfs:isDefinedBy <http://dati.gov.it/onto/covapit/> .
-
-
-
-###  http://dati.gov.it/onto/covapit#hasSpatialCoverage
-
-:hasSpatialCoverage rdf:type owl:ObjectProperty ;
-
-                    rdfs:label "has spatial coverage"@en ,
-                               "ha copertura spaziale"@it ;
-
-                    rdfs:comment "This property links the organizations with the administrative region(s) it covers. Thus, it allows one to represent the spatial coverage of the organization."@en ;
-
-                    owl:versionInfo "stable"@en ;
-
-                    rdfs:comment "Questa proprietà collega l'organizzazione alle aree amministrative che essa copre. Consente pertanto di esprimere la copertura spaziale dell'organizzazione."@it ;
-
-                    owl:versionInfo "stabile"@it ;
-
-                    rdfs:domain :Organization ;
-
-                    rdfs:isDefinedBy <http://dati.gov.it/onto/covapit/> ;
-
-                    rdfs:range l0:Location .
 
 
 
@@ -1710,7 +1687,7 @@ prov:wasInfluencedBy rdf:type owl:AnnotationProperty .
 
               rdfs:subClassOf l0:Agent ,
                               [ rdf:type owl:Restriction ;
-                                owl:onProperty :hasSpatialCoverage ;
+                                owl:onProperty clvapit:hasSpatialCoverage ;
                                 owl:allValuesFrom l0:Location
                               ] ,
                               [ rdf:type owl:Restriction ;
