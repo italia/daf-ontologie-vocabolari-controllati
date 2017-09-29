@@ -5,7 +5,7 @@ Le ontologie create sono tra loro collegate creando una vera e propria network c
 
 Il repository è suddiviso in due directory:
 
-  + **Ontologie**: contiene le ontologie OWL, serializzate principalmente in RDF/Turtle e altre serializzazioni RDF quali RDF/XML e JSON-LD. I diagrammi UML delle ontologie sono attualmente in fase di definizione e revisione a seguito dei collegamenti abilitati tra tutte le ontologie. Le ontologie hanno label e commenti sia in inglese (EN), sia in italiano (IT).
+  + **Ontologie**: contiene le ontologie OWL, serializzate in RDF/Turtle RDF/XML e JSON-LD. I diagrammi UML delle ontologie sono attualmente in fase di definizione e revisione a seguito dei collegamenti abilitati tra tutte le ontologie. Le ontologie hanno label e commenti sia in inglese (EN), sia in italiano (IT).
   + **Vocabolari controllati**: contiene un primo elenco dei vocabolari controllati sviluppati anche a supporto delle ontologie.
 
 Il contenuto della directory Ontologie è attualmente il seguente:
