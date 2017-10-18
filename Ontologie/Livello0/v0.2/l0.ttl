@@ -1,0 +1,121 @@
+@prefix : <http://dati.gov.it/onto/l0/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@base <http://dati.gov.it/onto/l0/> .
+
+<http://dati.gov.it/onto/l0/> rdf:type owl:Ontology ;
+                               rdfs:comment "Questa ontologia fornisce il livello fondazionale allo stack ontologico di dati.gov.it. Il nome L0 sta per Level-0 ontology poiché essa fornisce le fondamenta concettuali elementari all'intero stack. Questa ontologia è parzialmente ispirata da DOLCE zero (http://www.ontologydesignpatterns.org/ont/d0.owl)"@it ;
+                               prov:wasInfluencedBy <http://www.ontologydesignpatterns.org/ont/d0.owl> ;
+                               rdfs:comment "This ontology provides the foundational level of the ontological stack of dati.gov.it. The name L0 stands for Level-0 ontology as it provides the basic conceptual foundations to the whole stack. This ontology is partially inspired by DOLCE 0 (http://www.ontologydesignpatterns.org/ont/d0.owl)"@en ;
+                               owl:versionInfo "0.2 - added the following axiom: Location subclass of Entity; added soft link with DOLCE 0"@en ;
+                               owl:verionInfo "0.2 - aggiunto il seguente assioma: Location sottoclasse di Entity e aggiunto un collegamento con DOLCE 0." ;
+                               dct:issued "2017-09-29" ;
+                               dct:modified "2017-10-18" ;
+                               dc:creator "Agency for Digital Italy - AgID"@en ,
+                                          "Institute of Cognitive Sciences and Technologies of the Italian Research Council (CNR) - Semantic Technology Laboratory (STLab)"@en ,
+                                          "Italian Digital Transformation Team"@en ;
+                               rdfs:label "Level-0 ontology"@en ,
+                                          "Ontologia Level-0"@it .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://www.w3.org/ns/prov#wasInfluencedBy
+<http://www.w3.org/ns/prov#wasInfluencedBy> rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://dati.gov.it/onto/l0/Activity
+:Activity rdf:type owl:Class ;
+          rdfs:comment "La classe che rappresenta un'attività."@it ,
+                       "The class whose that models an activity."@en ;
+          rdfs:label "Activity"@en ,
+                     "Attività"@it .
+
+
+###  http://dati.gov.it/onto/l0/Agent
+:Agent rdf:type owl:Class ;
+       rdfs:subClassOf :Entity ;
+       rdfs:comment "Any agentive Object , either physical (e.g. a person, a robot, an oak), or social (e.g. a corporation, an institution, a community)."@en ,
+                    "Un agente, sia fisico (ex. una persona, un robot, una quercia), o sociale (ex. una società, un'istituzione, una comunità)."@it ;
+       rdfs:label "Agent"@en ,
+                  "Agente"@it .
+
+
+###  http://dati.gov.it/onto/l0/Characteristic
+:Characteristic rdf:type owl:Class ;
+                rdfs:comment "Questa classe rappresenta una caratteristica."@it ,
+                             "This class represent a characteristic."@en ;
+                rdfs:label "Caratteristica"@it ,
+                           "Characteristic"@en .
+
+
+###  http://dati.gov.it/onto/l0/Collection
+:Collection rdf:type owl:Class ;
+            rdfs:comment "La classe che rappresenta una collezione di qualsiasi cosa."@it ,
+                         "The class that represents a collection of things."@en ;
+            rdfs:label "Collection"@en ,
+                       "Collezione"@it .
+
+
+###  http://dati.gov.it/onto/l0/Entity
+:Entity rdf:type owl:Class ;
+        rdfs:comment "Anything: real, possible, or imaginary, which some modeller wants to talk about for some purpose."@en ,
+                     "Qualsiasi cosa reale, possibile o immaginaria."@it ;
+        rdfs:label "Entity"@en ,
+                   "Entità"@it .
+
+
+###  http://dati.gov.it/onto/l0/Event
+:Event rdf:type owl:Class ;
+       rdfs:comment "Rappresentazione del concetto di evento."@it ,
+                    "Representation of the concept of event."@en ;
+       rdfs:label "Event"@en ,
+                  "Evento"@it .
+
+
+###  http://dati.gov.it/onto/l0/Location
+:Location rdf:type owl:Class ;
+          rdfs:subClassOf :Entity ;
+          rdfs:comment "Classe che rappresenta il concetto di luogo. Le istanze di questa classe sono, pertanto, luoghi."@it ,
+                       "The class that reprepresents a location. Individuals of this class are locations (e.g. geographical places, spacial objects, etc.)."@en ;
+          rdfs:label "Location"@en ,
+                     "Luogo"@it .
+
+
+###  http://dati.gov.it/onto/l0/Object
+:Object rdf:type owl:Class ;
+        rdfs:subClassOf :Entity ;
+        rdfs:comment "An object."@en ,
+                     "Un oggetto."@it ;
+        rdfs:label "Object"@en ,
+                   "Oggetto"@it .
+
+
+###  http://dati.gov.it/onto/l0/System
+:System rdf:type owl:Class ;
+        rdfs:comment "Questa classe rappresenta un sistema. Esempi di sistema sono un sistema politico o economico."@it ,
+                     "This class represents a system. Example of systems are politacal or economical systems."@en ;
+        rdfs:label "Sistema"@it ,
+                   "System"@en .
+
+
+###  http://dati.gov.it/onto/l0/Topic
+:Topic rdf:type owl:Class ;
+       rdfs:comment "Il concetto di tema o argomento."@it ,
+                    "The concept of topic."@en ;
+       rdfs:label "Tema"@it ,
+                  "Topic"@en .
+
+
+###  Generated by the OWL API (version 4.2.8.20170104-2310) https://github.com/owlcs/owlapi
