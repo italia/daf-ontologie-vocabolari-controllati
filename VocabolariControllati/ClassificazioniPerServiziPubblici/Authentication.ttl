@@ -1,0 +1,177 @@
+@prefix dct:     <http://purl.org/dc/terms/> .
+@prefix adms:    <http://www.w3.org/ns/adms#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix skos:    <http://www.w3.org/2004/02/skos/core#> .
+
+
+skos:ConceptScheme
+      a       rdfs:Class .
+      
+skos:Concept
+      a       rdfs:Class .
+      
+skos:prefLabel
+      a       rdfs:Property .
+      
+skos:notation
+      a       rdfs:Property .
+      
+skos:inScheme
+      a       rdfs:Property .
+      
+skos:definition
+      a       rdfs:Property .
+      
+skos:narrower 
+	  a 	  rdfs:Property .
+	  
+skos:broader 
+	  a		  rdfs:Property .
+      
+dct:identifier
+	  a       rdfs:Property .
+      
+<http://dati.gov.it/onto/controlledvocabulary/Authentication>
+      a       skos:ConceptScheme , adms:SemanticAsset ;
+      rdfs:comment "Classification of the types of authentication"@en ;
+      rdfs:comment "Classificazione dei tipi di autenticazione"@it ;
+      rdfs:label "Authentication"@en ;
+      dct:type <http://purl.org/adms/assettype/Taxonomy> ;
+      adms:representationTechnique <http://purl.org/adms/representationtechnique/SKOS> ;
+      rdfs:label "Autenticazione"@it .
+      
+<http://dati.gov.it/onto/controlledvocabulary/Authentication/NONE>
+	  a  	skos:Concept ;
+	  skos:inScheme <http://dati.gov.it/onto/controlledvocabulary/Authentication> ;
+	  skos:notation "NONE" ;
+	  dct:identifier "NONE" ;
+	  skos:prefLabel "Nessuna - accesso libero"@it ;
+	  skos:prefLabel "None - free access"@en .	  
+
+<http://dati.gov.it/onto/controlledvocabulary/Authentication/SFA>
+	  a  	skos:Concept ;
+	  skos:inScheme <http://dati.gov.it/onto/controlledvocabulary/Authentication> ;
+	  skos:notation "SFA" ;
+	  dct:identifier "SFA" ;
+	  skos:narrower <http://dati.gov.it/onto/controlledvocabulary/Authentication/IDPWD> ;
+	  skos:narrower <http://dati.gov.it/onto/controlledvocabulary/Authentication/SPIDL1> ;
+	  skos:prefLabel "Autenticazione Singolo Fattore"@it ;
+	  skos:prefLabel "Single Factor Authentication"@en .
+	  
+<http://dati.gov.it/onto/controlledvocabulary/Authentication/IDPEWD
+	  a  	skos:Concept ;
+	  skos:inScheme <http://dati.gov.it/onto/controlledvocabulary/Authentication> ;
+	  skos:broader <http://dati.gov.it/onto/controlledvocabulary/Authentication/SFA> ;
+	  skos:notation "IDPWD" ;
+	  dct:identifier "IDPWD" ;
+	  skos:prefLabel "User ID e password"@it ;
+	  skos:prefLabel "User ID and password"@en ;
+	  skos:definition "Credenziale semplice basata sull'uso di username e password. Accesso tramite sistemi quali NoiPA, FiscoOnline e ogni altro sistema che richiede solo credenziali di tipo usernname e password ricadono in questa categoria"@it ;
+	  skos:definition "Simple credential consisting in username and password. Access to online Italian systems such as NoiPA and Fiscoonline and any other system that requires username and password fall into this category"@en .
+	  
+	  
+<http://dati.gov.it/onto/controlledvocabulary/Authentication/SPIDL1>
+	  a  	skos:Concept ;
+	  skos:inScheme <http://dati.gov.it/onto/controlledvocabulary/Authentication> ;
+	  skos:broader <http://dati.gov.it/onto/controlledvocabulary/Authentication/SFA> ;
+	  skos:notation "SPIDL1" ;
+	  dct:identifier "SPIDL1" ;
+	  skos:prefLabel "Credenziale SPID Livello 1"@it ;
+	  skos:prefLabel "Credential SPID (National public system of e-ID) Level 1"@en .
+	  
+	
+
+<http://dati.gov.it/onto/controlledvocabulary/Authentication/2FA>
+	  a  	skos:Concept ;
+	  skos:inScheme <http://dati.gov.it/onto/controlledvocabulary/Authentication> ;
+	  skos:notation "2FA" ;
+	  dct:identifier "2FA" ;
+	  skos:narrower <http://dati.gov.it/onto/controlledvocabulary/Authentication/SPIDL2> ;
+	  skos:narrower <http://dati.gov.it/onto/controlledvocabulary/Authentication/IDOTP> ;
+	  skos:prefLabel "Autenticazione a due fattori"@it ;
+	  skos:prefLabel "Two Factor authentication"@en .
+	  
+	  	  
+<http://dati.gov.it/onto/controlledvocabulary/Authentication/SPIDL2>
+	  a  	skos:Concept ;
+	  skos:inScheme <http://dati.gov.it/onto/controlledvocabulary/Authentication> ;
+	  skos:notation "SPIDL2" ;
+	  dct:identifier "SPIDL2" ;
+	  skos:broader <http://dati.gov.it/onto/controlledvocabulary/Authentication/2FA> ;
+	  skos:prefLabel "SPID Livello 2"@it ;
+	  skos:prefLabel "SPID (National public system of e-ID) Level 2"@en .
+	  
+<http://dati.gov.it/onto/controlledvocabulary/Authentication/IDOTP>
+	  a  	skos:Concept ;
+	  skos:inScheme <http://dati.gov.it/onto/controlledvocabulary/Authentication> ;
+	  skos:notation "ID OTP" ;
+	  dct:identifier "ID OTP" ;
+	  skos:broader <http://dati.gov.it/onto/controlledvocabulary/Authentication/2FA> ;
+	  skos:prefLabel "User ID e One Time Password"@it ;
+	  skos:prefLabel "User ID and One Time Password"@en ;
+	  skos:definition "Combinazione di due fattori: userid e one time password"@it ;
+	  skos:definition "Combination of two factors: userid and one time password"@en .
+	  
+
+<http://dati.gov.it/onto/controlledvocabulary/Authentication/2FAHW>
+	  a  	skos:Concept ;
+	  skos:inScheme <http://dati.gov.it/onto/controlledvocabulary/Authentication> ;
+	  skos:notation ""2FAHW" ;
+	  dct:identifier "2FAHW" ;
+	  skos:narrower <http://dati.gov.it/onto/controlledvocabulary/Authentication/SPIDL3> ;
+	  skos:narrower <http://dati.gov.it/onto/controlledvocabulary/Authentication/CNS> ;
+	  skos:narrower <http://dati.gov.it/onto/controlledvocabulary/Authentication/CIE> ;
+	  skos:prefLabel "Autenticazione a due fattori hardware"@it ;
+	  skos:prefLabel "Two Factor Authentication hardware"@en .
+
+
+<http://dati.gov.it/onto/controlledvocabulary/Authentication/SPIDL3>
+	  a  	skos:Concept ;
+	  skos:inScheme <http://dati.gov.it/onto/controlledvocabulary/Authentication> ;
+	  skos:notation "SPIDL3" ;
+	  dct:identifier "SPIDL3" ;
+	  skos:broader <http://dati.gov.it/onto/controlledvocabulary/Authentication/2FAHW> ;
+	  skos:prefLabel "SPID Livello 3"@it ;
+	  skos:prefLabel "SPID (National public system of e-ID) Level 3"@en .
+	  
+<http://dati.gov.it/onto/controlledvocabulary/Authentication/CNS>
+	  a  	skos:Concept ;
+	  skos:inScheme <http://dati.gov.it/onto/controlledvocabulary/Authentication> ;
+	  skos:notation "CNS" ;
+	  dct:identifier "CNS" ;
+	  skos:broader <http://dati.gov.it/onto/controlledvocabulary/Authentication/2FAHW> ;
+	  skos:prefLabel "Carta nazionale dei servizi (CNS)"@it ;
+	  skos:prefLabel "National service card"@en .
+	  
+<http://dati.gov.it/onto/controlledvocabulary/Authentication/CIE>
+	  a  	skos:Concept ;
+	  skos:inScheme <http://dati.gov.it/onto/controlledvocabulary/Authentication> ;
+	  skos:notation "CIE" ;
+	  dct:identifier "CIE" ;
+	  skos:broader <http://dati.gov.it/onto/controlledvocabulary/Authentication/2FAHW> ;
+	  skos:prefLabel "Carta d'identità elettronica (CIE)"@it ;
+	  skos:prefLabel "Electronic identity card"@en .
+	  
+	  
+<http://dati.gov.it/onto/controlledvocabulary/Authentication/MFA>
+	  a  	skos:Concept ;
+	  skos:inScheme <http://dati.gov.it/onto/controlledvocabulary/Authentication> ;
+	  skos:notation "MFA" ;
+	  dct:identifier "MFA" ;
+	  skos:narrower <http://dati.gov.it/onto/controlledvocabulary/Authentication/IDOTPBIO> ;
+	  skos:prefLabel "Autenticazione multi-fattore"@it ;
+	  skos:prefLabel "Multi-factor authentication"@en .
+	
+<http://dati.gov.it/onto/controlledvocabulary/Authentication/IDOTPBIO>
+	  a  	skos:Concept ;
+	  skos:inScheme <http://dati.gov.it/onto/controlledvocabulary/Authentication> ;
+	  skos:notation "USERID OTP BIO" ;
+	  dct:identifier "USERID OTP BIO" ;
+	  skos:broader <http://dati.gov.it/onto/controlledvocabulary/Authentication/MFA> ;
+	  skos:prefLabel "User ID, One Time Password e Biometria"@it ;
+	  skos:prefLabel "User ID, One Time Password and Biometric"@en ;
+	  skos:definition "Combinazione di più fattori: userid, one time password e strumenti di biometria"@it ;
+	  skos:definition "Combination of different factors: userid,  one time password and biometric mechanisms"@en .
+	  
