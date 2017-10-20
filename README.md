@@ -17,13 +17,16 @@ Il contenuto della directory Ontologie è attualmente il seguente:
   + **Indirizzi/luoghi**: Ontologia del profilo applicativo italiano sugli indirizzi e luoghi (CLV-AP_IT - Core Location Vocabulary - Italian Application Profile). Nella directory relativa all'ultima versione attuale dell'ontologia vi è anche il file con i relativi allineamenti a ontologie esterne del Web (e.g., Core Location Vocabulary, AD conforme a INSPIRE, GeoSparql, Geonames, ecc.).
   + **InternetSocialMedia**: Ontologia di supporto. Essa è il profilo applicativo italiano per la modellazione dei social media (account dei social network) e delle informazioni di contatto digitali (sito web istituzionale, indirizzo email, loghi), utilizzati sia nell'ontologia delle organizzazioni che in quella delle persone.
   + **Tempo**: Primissima versione dell'ontologia di supporto del tempo utilizzata in tutte le ontologie precedenti per cogliere la dimensione temporale dei principali concetti.
+  + **Punti di interesse**: Ontologia del profilo applicativo italiano sui punti di interesse (Point of Interest - Italian Application Profile (POI-AP_IT)). E' un'ontologia intermedia utilizzata per rappresentare i punti di interesse. Questa sarà specializzata con una serie di ontologie calate sui singoli domini quali strutture ricettive, parcheggi, trasporto pubblico, farmacie, ecc.
   + **Livello0 (L0)**: E' un'ontologia top-level che consente di collegare tutte le ontologie sopra elencate abilitando così la network di ontologie.
+
 
 Il contenuto della directory Vocabolari Controllati è attualmente il seguente:
 
-  + **Tipi Eventi Pubblici**: E' una classificazione dei possibili tipi di eventi pubblici.
+  + **Tipi Eventi Pubblici**: E' una classificazione dei possibili tipi di eventi pubblici. La classificazione è allineata a schema.org.
   + **Licenze**: E' la classificazione delle licenze suddivise per tipologia. Questo è il vocabolario controllato da utilizzare per il profilo di metadatazione nazionale DCAT-AP_IT.
   + **Mapping Temi-Sottotemi**: E' il mapping tra i 13 temi del profilo DCAT-AP_IT e alcune voci del vocabolario Eurovoc da utilizzare per la proprietà [dct:subject](https://linee-guida-cataloghi-dati-profilo-dcat-ap-it.readthedocs.io/it/latest/dataset_elementi_raccomandati.html#sottotema-del-dataset-dct-subject) del profilo DCAT-AP_IT. Il mapping puà essere utilizzato anche in applicativi per guidare l'utente a selezionare i sottotemi Eurovoc in linea con i temi DCAT-AP_IT. Il mapping è basato principalmente sull'analogo mapping utilizzato dall'European Data Portal.
   + **Classificazione Territorio**: E' un dataset RDF allineato con l'ontologia degli Indirizzi/Luoghi suddetta (CLV-AP_IT) basato sul dataset CSV fornito da ISTAT sulla suddivisione Regione/Provincia/Comune e relativi codici.
+  + **Clasificazione Categorie Punti di Interesse**: E' un dataset, disponibile in CSV, XLSX, e RDF (RDF/XMl, RDF/Turtle JSON-LD) delle categorie di punti di interesse. La categorizzazione è basata sul primo livello di classificazione dei punti di interesse offerta da Open Street Map.
 
 Le ontologie e i vocabolari controllati potranno ancora subire cambiamenti rispetto a quelli qui inclusi anche a seguito di collaborazioni in atto con altri team quali quello dell'ISTAT e il team ANPR.
