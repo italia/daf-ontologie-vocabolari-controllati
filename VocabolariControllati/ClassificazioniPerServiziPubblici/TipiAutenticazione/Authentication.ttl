@@ -4,7 +4,8 @@
 @prefix owl:     <http://www.w3.org/2002/07/owl#> .
 @prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix skos:    <http://www.w3.org/2004/02/skos/core#> .
-
+@prefix xkos:    <http://rdf-vocabulary.ddialliance.org/xkos#> .
+@prefix clvapit: <http://dati.gov.it/onto/clvapit#> .
 
 skos:ConceptScheme
       a       rdfs:Class .
@@ -33,11 +34,18 @@ skos:broader
 dct:identifier
 	  a       rdfs:Property .
 
+xkos:numberOfLevels
+    a     rdfs:Property .
+
+clvapit:hasRankOrder
+    a     rdfs:Property .
+
 <http://dati.gov.it/onto/controlledvocabulary/Authentication>
       a       skos:ConceptScheme , adms:SemanticAsset ;
       rdfs:comment "Classification of the types of authentication"@en ;
       rdfs:comment "Classificazione dei tipi di autenticazione"@it ;
       rdfs:label "Authentication"@en ;
+      xkos:numberOfLevels "2";
       dct:type <http://purl.org/adms/assettype/Taxonomy> ;
       adms:representationTechnique <http://purl.org/adms/representationtechnique/SKOS> ;
       rdfs:label "Tipi di Autenticazione"@it .
@@ -47,6 +55,7 @@ dct:identifier
 	  skos:inScheme <http://dati.gov.it/onto/controlledvocabulary/Authentication> ;
 	  skos:notation "NONE" ;
 	  dct:identifier "NONE" ;
+    clvapit:hasRankOrder "1" ;
 	  skos:prefLabel "Nessuna - accesso libero"@it ;
 	  skos:prefLabel "None - free access"@en .
 
@@ -55,6 +64,7 @@ dct:identifier
 	  skos:inScheme <http://dati.gov.it/onto/controlledvocabulary/Authentication> ;
 	  skos:notation "SFA" ;
 	  dct:identifier "SFA" ;
+    clvapit:hasRankOrder "1" ;
 	  skos:narrower <http://dati.gov.it/onto/controlledvocabulary/Authentication/IDPWD> ;
 	  skos:narrower <http://dati.gov.it/onto/controlledvocabulary/Authentication/SPIDL1> ;
 	  skos:prefLabel "Autenticazione Singolo Fattore"@it ;
@@ -66,6 +76,7 @@ dct:identifier
 	  skos:broader <http://dati.gov.it/onto/controlledvocabulary/Authentication/SFA> ;
 	  skos:notation "IDPWD" ;
 	  dct:identifier "IDPWD" ;
+    clvapit:hasRankOrder "2" ;
 	  skos:prefLabel "User ID e password"@it ;
 	  skos:prefLabel "User ID and password"@en ;
 	  skos:definition "Credenziale semplice basata sull'uso di username e password. Accesso tramite sistemi quali NoiPA, FiscoOnline e ogni altro sistema che richiede solo credenziali di tipo usernname e password ricadono in questa categoria"@it ;
@@ -78,6 +89,7 @@ dct:identifier
 	  skos:broader <http://dati.gov.it/onto/controlledvocabulary/Authentication/SFA> ;
 	  skos:notation "SPIDL1" ;
 	  dct:identifier "SPIDL1" ;
+    clvapit:hasRankOrder "2" ;
 	  skos:prefLabel "Credenziale SPID Livello 1"@it ;
 	  skos:prefLabel "Credential SPID (National public system of e-ID) Level 1"@en .
 
@@ -88,6 +100,7 @@ dct:identifier
 	  skos:inScheme <http://dati.gov.it/onto/controlledvocabulary/Authentication> ;
 	  skos:notation "2FA" ;
 	  dct:identifier "2FA" ;
+    clvapit:hasRankOrder "1" ;
 	  skos:narrower <http://dati.gov.it/onto/controlledvocabulary/Authentication/SPIDL2> ;
 	  skos:narrower <http://dati.gov.it/onto/controlledvocabulary/Authentication/IDOTP> ;
 	  skos:prefLabel "Autenticazione a due fattori"@it ;
@@ -99,6 +112,7 @@ dct:identifier
 	  skos:inScheme <http://dati.gov.it/onto/controlledvocabulary/Authentication> ;
 	  skos:notation "SPIDL2" ;
 	  dct:identifier "SPIDL2" ;
+    clvapit:hasRankOrder "2" ;
 	  skos:broader <http://dati.gov.it/onto/controlledvocabulary/Authentication/2FA> ;
 	  skos:prefLabel "SPID Livello 2"@it ;
 	  skos:prefLabel "SPID (National public system of e-ID) Level 2"@en .
@@ -108,6 +122,7 @@ dct:identifier
 	  skos:inScheme <http://dati.gov.it/onto/controlledvocabulary/Authentication> ;
 	  skos:notation "ID OTP" ;
 	  dct:identifier "ID OTP" ;
+    clvapit:hasRankOrder "2" ;
 	  skos:broader <http://dati.gov.it/onto/controlledvocabulary/Authentication/2FA> ;
 	  skos:prefLabel "User ID e One Time Password"@it ;
 	  skos:prefLabel "User ID and One Time Password"@en ;
@@ -120,6 +135,7 @@ dct:identifier
 	  skos:inScheme <http://dati.gov.it/onto/controlledvocabulary/Authentication> ;
 	  skos:notation "2FAHW" ;
 	  dct:identifier "2FAHW" ;
+    clvapit:hasRankOrder "1" ;
 	  skos:narrower <http://dati.gov.it/onto/controlledvocabulary/Authentication/SPIDL3> ;
 	  skos:narrower <http://dati.gov.it/onto/controlledvocabulary/Authentication/CNS> ;
 	  skos:narrower <http://dati.gov.it/onto/controlledvocabulary/Authentication/CIE> ;
@@ -132,6 +148,7 @@ dct:identifier
 	  skos:inScheme <http://dati.gov.it/onto/controlledvocabulary/Authentication> ;
 	  skos:notation "SPIDL3" ;
 	  dct:identifier "SPIDL3" ;
+    clvapit:hasRankOrder "2" ;
 	  skos:broader <http://dati.gov.it/onto/controlledvocabulary/Authentication/2FAHW> ;
 	  skos:prefLabel "SPID Livello 3"@it ;
 	  skos:prefLabel "SPID (National public system of e-ID) Level 3"@en .
@@ -141,6 +158,7 @@ dct:identifier
 	  skos:inScheme <http://dati.gov.it/onto/controlledvocabulary/Authentication> ;
 	  skos:notation "CNS" ;
 	  dct:identifier "CNS" ;
+    clvapit:hasRankOrder "2" ;
 	  skos:broader <http://dati.gov.it/onto/controlledvocabulary/Authentication/2FAHW> ;
 	  skos:prefLabel "Carta nazionale dei servizi (CNS)"@it ;
 	  skos:prefLabel "National service card"@en .
@@ -150,6 +168,7 @@ dct:identifier
 	  skos:inScheme <http://dati.gov.it/onto/controlledvocabulary/Authentication> ;
 	  skos:notation "CIE" ;
 	  dct:identifier "CIE" ;
+    clvapit:hasRankOrder "2" ;
 	  skos:broader <http://dati.gov.it/onto/controlledvocabulary/Authentication/2FAHW> ;
 	  skos:prefLabel "Carta d'identità elettronica (CIE)"@it ;
 	  skos:prefLabel "Electronic identity card"@en .
@@ -160,6 +179,7 @@ dct:identifier
 	  skos:inScheme <http://dati.gov.it/onto/controlledvocabulary/Authentication> ;
 	  skos:notation "MFA" ;
 	  dct:identifier "MFA" ;
+    clvapit:hasRankOrder "2" ;
 	  skos:narrower <http://dati.gov.it/onto/controlledvocabulary/Authentication/IDOTPBIO> ;
 	  skos:prefLabel "Autenticazione multi-fattore"@it ;
 	  skos:prefLabel "Multi-factor authentication"@en .
@@ -169,6 +189,7 @@ dct:identifier
 	  skos:inScheme <http://dati.gov.it/onto/controlledvocabulary/Authentication> ;
 	  skos:notation "USERID OTP BIO" ;
 	  dct:identifier "USERID OTP BIO" ;
+    clvapit:hasRankOrder "2" ;
 	  skos:broader <http://dati.gov.it/onto/controlledvocabulary/Authentication/MFA> ;
 	  skos:prefLabel "User ID, One Time Password e Biometria"@it ;
 	  skos:prefLabel "User ID, One Time Password and Biometric"@en ;
