@@ -18,6 +18,7 @@ Il contenuto della directory Ontologie è attualmente il seguente:
   + **InternetSocialMedia**: Ontologia di supporto. Essa è il profilo applicativo italiano per la modellazione dei social media (account dei social network) e delle informazioni di contatto digitali (sito web istituzionale, indirizzo email, loghi), utilizzati sia nell'ontologia delle organizzazioni che in quella delle persone.
   + **Tempo (Time)**: Primissima versione dell'ontologia di supporto del tempo utilizzata in tutte le ontologie precedenti per cogliere la dimensione temporale dei principali concetti.
   + **Punti di interesse (Points of Interest)**: Ontologia del profilo applicativo italiano sui punti di interesse (Point of Interest - Italian Application Profile (POI-AP_IT)). E' un'ontologia intermedia utilizzata per rappresentare i punti di interesse. Questa sarà specializzata con una serie di ontologie calate sui singoli domini quali strutture ricettive, parcheggi, trasporto pubblico, farmacie, ecc.
+  + **Strutture Ricettive (Accommodation)**: Ontologia del profilo applicativo italiano sulle strutture ricettive (Accommodation Italian Application Profile - ACCO-AP_IT).
   + **Livello0 (L0) (Level0)**: E' un'ontologia top-level che consente di collegare tutte le ontologie sopra elencate abilitando così la network di ontologie.
 
 
@@ -29,5 +30,6 @@ Il contenuto della directory Vocabolari Controllati è attualmente il seguente:
   + **Classificazione Territorio (Territorial Classification)**: E' un dataset RDF allineato con l'ontologia degli Indirizzi/Luoghi suddetta (CLV-AP_IT) basato sul dataset CSV fornito da ISTAT sulla suddivisione Regione/Provincia/Comune e relativi codici.
   + **Clasificazione Categorie Punti di Interesse (Categories of Point of Interest)**: E' un dataset, disponibile in CSV, XLSX, e RDF (RDF/XMl, RDF/Turtle JSON-LD) delle categorie di punti di interesse. La categorizzazione è basata sul primo livello di classificazione dei punti di interesse offerta da Open Street Map.
   + **Classificazioni per i servizi pubblici (Classifications for public services)**: La directory contiene tutti vocabolari controllati, ad esclusione di quelli già definiti a livello Europeo per cui si rimanda ai relativi riferimenti, attualmente utilizzati per lo sviluppo del catalogo servizi pubblici.
+  + **Classificazioni per le strutture ricettive (Classifications for accommodation facilities)**: La directory contiene tutti i vocabolari controllati specifici per le strutture ricettive (e.g., classificazione a stelle). Al momento la directory contiene soltanto quella sulle stelle; si rilascerà anche quella sulle tipologie che tiene in considerazione anche alcune classificazioni disponibili a livello regionale.
 
 Le ontologie e i vocabolari controllati potranno ancora subire cambiamenti rispetto a quelli qui inclusi anche a seguito di collaborazioni in atto con altri team quali quello dell'ISTAT e il team ANPR.
