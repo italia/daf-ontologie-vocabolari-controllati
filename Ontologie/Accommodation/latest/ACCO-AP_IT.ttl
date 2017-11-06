@@ -1,0 +1,992 @@
+@prefix : <http://dati.gov.it/onto/accoapit#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix l0: <http://dati.gov.it/onto/l0/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix smapit: <http://dati.gov.it/onto/smapit/> .
+@prefix tiapit: <http://dati.gov.it/onto/tiapit/> .
+@prefix covapit: <http://dati.gov.it/onto/covapit#> .
+@prefix poiapit: <http://dati.gov.it/onto/poiapit#> .
+@base <http://dati.gov.it/onto/accoapit> .
+
+<http://dati.gov.it/onto/accoapit> rdf:type owl:Ontology ;
+                                    owl:versionIRI <http://dati.gov.it/onto/accoapit/0.1> ;
+                                    owl:imports tiapit: ,
+                                                l0: ,
+                                                smapit: ,
+                                                poiapit: ,
+                                                covapit: ;
+                                    dc:creator "Institute of Cognitive Sciences and Technologies of the Italian Research Council (CNR) - Semantic Technology Laboratory (STLab)"@en ;
+                                    dct:modified "2017-10-23" ;
+                                    owl:versionInfo "Versione 0.1 - 23 Ottobre 2017 - Creazione dell'ontologia."@it ;
+                                    dc:creator "Italian Digital Transformation Team"@en ;
+                                    dct:issued "2017-10-23" ;
+                                    dc:creator "Istituto di Scienze e Tecnologie della Cognizione del CNR - Laboratorio di Tecnologie Semantiche (STLab)"@it ;
+                                    rdfs:comment "Questa è l'ontologia del profilo  italiano sulle Strutture Ricettive (Accomodation Facility - Italian Application Profile - ACCO-AP_IT)"@it ;
+                                    owl:versionInfo "Version 0.1 - 23 October 2017 - Creation of the ontology "@en ;
+                                    dc:creator "Team per la Trasformazione Digitale"@it ;
+                                    rdfs:comment "This is the ontology of the Italian application profile for Accomodation Facilities"@en ;
+                                    dc:creator "Agency for Digital Italy - AgID"@en ;
+                                    rdfs:label "Strutture ricettive"@it ;
+                                    rdfs:isDefinedBy <http://dati.gov.it/onto/accoapit/> ;
+                                    dc:creator "Agenzia per l'Italia Digitale - AgID"@it ;
+                                    rdfs:label "Accommodation Facilities"@en .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://www.w3.org/ns/prov#wasDerivedFrom
+prov:wasDerivedFrom rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/ns/prov#wasInfluencedBy
+prov:wasInfluencedBy rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://dati.gov.it/onto/accoapit#hasAccommodationClassification
+:hasAccommodationClassification rdf:type owl:ObjectProperty ;
+                                owl:inverseOf :isAccommodationClassificationOf ;
+                                rdfs:domain :Accommodation ;
+                                rdfs:range :AccommodationStarRating ;
+                                rdfs:comment "Questa proprietà lega una struttura ricettiva alla sua classificazione rispetto al modello a stelle. Se si vuole indicare che un albergo è a 4 stelle, si può usare questa proprietà."@it ,
+                                             "This property links an accommodation facility with exactly 1 accommodation star rating. If you want to represent that a hotel is 4 star superior, you can use this property."@en ;
+                                rdfs:isDefinedBy <http://dati.gov.it/onto/accoapit> ;
+                                rdfs:label "ha classificazione struttura ricettiva"@it ,
+                                           "has accommodation classification"@en ;
+                                owl:versionInfo "stabile"@it ,
+                                                "stable"@en .
+
+
+###  http://dati.gov.it/onto/accoapit#hasAccommodationTypology
+:hasAccommodationTypology rdf:type owl:ObjectProperty ;
+                          owl:inverseOf :isAccommodationTypologyOf ;
+                          rdfs:domain :Accommodation ;
+                          rdfs:range :AccommodationTypology ;
+                          rdfs:comment "Questa proprietà collega una struttura ricettiva con almeno una tipologia (hotel, motel, campeggio, albergo diffuso, ecc.)"@it ,
+                                       "This property links an accommodation with at least one typology (hotel, motel, camping, etc.)."@en ;
+                          rdfs:isDefinedBy <http://dati.gov.it/onto/accoapit> ;
+                          rdfs:label "ha tipologia struttura ricettiva"@it ,
+                                     "has accommodation typology"@en ;
+                          owl:versionInfo "stabile"@it ,
+                                          "stable"@en .
+
+
+###  http://dati.gov.it/onto/accoapit#hasAssociatedOffer
+:hasAssociatedOffer rdf:type owl:ObjectProperty ;
+                    owl:inverseOf :isOfferFor ;
+                    rdfs:domain owl:Thing ;
+                    rdfs:range :Offer ;
+                    rdfs:comment "Questa proprietà lega qualsiasi cosa del dominio modellato con un'offerta."@it ,
+                                 "This property links any thing of a the modelled domain with an offer."@en ;
+                    rdfs:label "ha offerta"@it ,
+                               "has associated offer"@en ;
+                    owl:versionInfo "stable"@en ,
+                                    "stable"@it .
+
+
+###  http://dati.gov.it/onto/accoapit#hasDuration
+:hasDuration rdf:type owl:ObjectProperty ;
+             rdfs:domain :Validity ;
+             rdfs:range [ rdf:type owl:Class ;
+                          owl:unionOf ( :QuantitativeValue
+                                        tiapit:TimeInterval
+                                      )
+                        ] ;
+             rdfs:comment "Questa proprietà lega una validità (per esempio la validità di un'offerta) a un qualsiasi intervallo temporale oppure a un qualsiasi valore quantitativo."@it ,
+                          "This property links the validity with a duration that can be expressed in a time interval or with a general quantitative value."@en ;
+             rdfs:label "ha durata"@it ,
+                        "has duration"@en ;
+             owl:versionInfo "stable"@en ,
+                             "stable"@it .
+
+
+###  http://dati.gov.it/onto/accoapit#hasMeasurementUnit
+:hasMeasurementUnit rdf:type owl:ObjectProperty ;
+                    rdfs:domain :QuantitativeValue ;
+                    rdfs:range :MeasurementUnit ;
+                    rdfs:comment "Questa proprietà lega un valore quantitativo alla relativa unità di misura"@it ,
+                                 "This property links a quantitative value to its measurement unit"@en ;
+                    rdfs:label "ha unità di misura"@it ,
+                               "has measurement unit"@en ;
+                    owl:versionInfo "stable"@en ,
+                                    "stable"@it .
+
+
+###  http://dati.gov.it/onto/accoapit#hasOSDCriterion
+:hasOSDCriterion rdf:type owl:ObjectProperty ;
+                 rdfs:domain :OfferedServiceDescription ;
+                 rdfs:range :OSDCriterion ;
+                 rdfs:comment "Questa proprietà collega la descrizione dei servizi, offerti da una struttura ricettiva o da una camera della struttura ricettiva, ai relativi criteri che possono essere usati per completare la descrizione."@it ,
+                              "This property links the offered service description to its criteria ."@en ;
+                 rdfs:isDefinedBy <http://dati.gov.it/onto/accoapit> ;
+                 rdfs:label "ha criterio per descrizione servizi offerti"@it ,
+                            "has offered service description criterion"@en ;
+                 owl:versionInfo "provvisoria"@it ,
+                                 "unstable"@en .
+
+
+###  http://dati.gov.it/onto/accoapit#hasOSDFeature
+:hasOSDFeature rdf:type owl:ObjectProperty ;
+               rdfs:domain :OfferedServiceDescription ;
+               rdfs:range :OSDFeature ;
+               rdfs:comment "Questa proprietà collega la descrizione dei servizi offerti alla caratteristica descritta. Esempi di caratteristica sono: lo spazio occupato per una stanza, camera da letto per la struttura ricettiva, unità abitative, posto letto, ecc."@it ,
+                            "This property links the description of the offered services to its feature (or attribute or characteristic)."@en ;
+               rdfs:isDefinedBy <http://dati.gov.it/onto/accoapit> ;
+               rdfs:label "ha caratteristica  descrizione servizi offerti"@it ,
+                          "has offered service description feature"@en ;
+               owl:versionInfo "stable"@en ,
+                               "stable"@it .
+
+
+###  http://dati.gov.it/onto/accoapit#hasOfferedServiceDescription
+:hasOfferedServiceDescription rdf:type owl:ObjectProperty ;
+                              rdfs:domain [ rdf:type owl:Class ;
+                                            owl:unionOf ( :Accommodation
+                                                          :AccommodationRoom
+                                                        )
+                                          ] ;
+                              rdfs:range :OfferedServiceDescription ;
+                              rdfs:comment "Questa proprietà collega una struttura ricettiva ( o una camera della struttura ricettiva) alla descrizione di tutti i possibili servizi offerti dalla struttura (camera) stessa."@it ,
+                                           "This property links an accommodation facility (or an accommodation room)  to the description of the offered services."@en ;
+                              rdfs:isDefinedBy <http://dati.gov.it/onto/accoapit> ;
+                              rdfs:label "ha descrizione servizi offerti"@it ,
+                                         "has offered service description"@en ;
+                              owl:versionInfo "stable"@en ,
+                                              "stable"@it .
+
+
+###  http://dati.gov.it/onto/accoapit#hasOwner
+:hasOwner rdf:type owl:ObjectProperty ;
+          rdfs:domain :Accommodation ;
+          rdfs:range covapit:Organization ;
+          rdfs:comment "Questa proprietà collega una struttura ricettiva a un'organizzazione esprimento lo specifico ruolo di proprietario. Questa proprietà può essere utilizzata per mappare il \"codice esercente\" alla struttura ricettiva."@it ,
+                       "This property links an accommodation facility to an organization expressing the specific role of owner"@en ;
+          rdfs:isDefinedBy <http://dati.gov.it/onto/accoapit> ;
+          rdfs:label "ha proprietario"@it ,
+                     "has owner"@en ;
+          owl:versionInfo "stable"@en ,
+                          "stable"@it .
+
+
+###  http://dati.gov.it/onto/accoapit#hasPrice
+:hasPrice rdf:type owl:ObjectProperty ;
+          rdfs:domain :Offer ;
+          rdfs:range :Price .
+
+
+###  http://dati.gov.it/onto/accoapit#hasRoom
+:hasRoom rdf:type owl:ObjectProperty ;
+         owl:inverseOf :isRoomOf ;
+         rdfs:domain :Accommodation ;
+         rdfs:range :AccommodationRoom ;
+         rdfs:comment "Questa proprietà è l'implementazione dell'ontology design pattern \"ParteDi\". Essa collega la struttura ricettiva con le sue camere che sono appunto parte della struttura stessa."@it ,
+                      "This property is the implementation of the ontology design pattern \"PartOf\". It links the accommodation facility to its rooms that are part of the facility."@en ;
+         rdfs:isDefinedBy <http://dati.gov.it/onto/accoapit> ;
+         rdfs:label "ha camera"@it ,
+                    "has room"@en ;
+         owl:versionInfo "stabile"@it ,
+                         "stable"@en .
+
+
+###  http://dati.gov.it/onto/accoapit#hasValidity
+:hasValidity rdf:type owl:ObjectProperty ;
+             rdfs:domain :Offer ;
+             rdfs:range :Validity ;
+             rdfs:comment "Questa proprietà consente di specificare la validità per un'offerta."@it ,
+                          "This property binds the offer to its validity"@en ;
+             rdfs:label "ha validità"@it ,
+                        "has validity"@en ;
+             owl:versionInfo "stable"@en ,
+                             "stable"@it .
+
+
+###  http://dati.gov.it/onto/accoapit#includesAccommodation
+:includesAccommodation rdf:type owl:ObjectProperty ;
+                       rdfs:subPropertyOf poiapit:includesPOI ;
+                       owl:inverseOf :isIncludedInAccommodation ;
+                       rdfs:domain :AccommodationChain ;
+                       rdfs:range :Accommodation ;
+                       rdfs:comment "Questa proprietà collega una catena di strutture ricettive con tutte le strutture ricettive della catena"@it ,
+                                    "This property connects an accommodation chain with all the accommodation facility that are part of the accommodation chain"@en ;
+                       rdfs:isDefinedBy <http://dati.gov.it/onto/accoapit> ;
+                       rdfs:label "include struttura ricettiva"@it ,
+                                  "includes accommodation"@en ;
+                       owl:versionInfo "stabile"@it ,
+                                       "stable"@en .
+
+
+###  http://dati.gov.it/onto/accoapit#isAccommodationClassificationOf
+:isAccommodationClassificationOf rdf:type owl:ObjectProperty ;
+                                 rdfs:domain :AccommodationStarRating ;
+                                 rdfs:range :Accommodation ;
+                                 rdfs:comment "Inverse property of \"has accommodation classification\" that links the star rating to the accommodation facility"@en ,
+                                              "Proprietà inversa di \"ha classificazione struttura ricettiva\" e collega il rating a stelle alla struttura ricettiva"@it ;
+                                 rdfs:isDefinedBy <http://dati.gov.it/onto/accoapit> ;
+                                 rdfs:label "is accommodation classification of"@en ,
+                                            "è classificazione di struttura ricettiva"@it ;
+                                 owl:versionInfo "stabile"@it ,
+                                                 "stable"@en .
+
+
+###  http://dati.gov.it/onto/accoapit#isAccommodationTypologyOf
+:isAccommodationTypologyOf rdf:type owl:ObjectProperty ;
+                           rdfs:domain :AccommodationTypology ;
+                           rdfs:range :Accommodation ;
+                           rdfs:comment "Inverse property of \"has accommodation typology\" and links the typology with the accommodation facility"@en ,
+                                        "Proprietà inversa di \"ha tipologia struttura ricettiva\" usata per collegare la tipologia alla struttura ricettiva"@it ;
+                           rdfs:isDefinedBy <http://dati.gov.it/onto/accoapit> ;
+                           rdfs:label "is accommodation typology of"@en ,
+                                      "è tipologia di struttura ricettiva"@it ;
+                           owl:versionInfo "stabile"@it ,
+                                           "stable"@en .
+
+
+###  http://dati.gov.it/onto/accoapit#isIncludedInAccommodation
+:isIncludedInAccommodation rdf:type owl:ObjectProperty ;
+                           rdfs:domain :Accommodation ;
+                           rdfs:range :AccommodationChain ;
+                           rdfs:comment "Inverse property of \"includes accommodation\" used to link a accommodation facility to its accommodatin chain"@en ,
+                                        "Proprietà inversa di \"include struttura ricettiva\" utilizzata per collegare una struttura ricettiva a una catena di strutture ricettive"@it ;
+                           rdfs:isDefinedBy <http://dati.gov.it/onto/accoapit> ;
+                           rdfs:label "is included in accommodation"@en ,
+                                      "è inclusa in struttura ricettiva"@it ;
+                           owl:versionInfo "stabile"@it ,
+                                           "stable"@en .
+
+
+###  http://dati.gov.it/onto/accoapit#isOfferFor
+:isOfferFor rdf:type owl:ObjectProperty ;
+            rdfs:domain :Offer ;
+            rdfs:range owl:Thing ;
+            rdfs:comment "Inverse property of \"has associated offer\" that links an offer to anything of the modelled domain"@en ,
+                         "Proprietà inversa di \"ha offerta associata\" che collega un'offerta a qualunque cosa del dominio modellato"@it ;
+            rdfs:label "is offer for"@en ,
+                       "è offerta per"@it ;
+            owl:versionInfo "stabile"@it ,
+                            "stable"@en .
+
+
+###  http://dati.gov.it/onto/accoapit#isRoomOf
+:isRoomOf rdf:type owl:ObjectProperty ;
+          rdfs:domain :AccommodationRoom ;
+          rdfs:range :Accommodation ;
+          rdfs:comment "Inverse property of \"has room\" that links an accommodation room to its facility"@en ,
+                       "Proprietà inversa di \"ha camera\" che collega una camera (sala) alla propria struttura ricettiva."@it ;
+          rdfs:isDefinedBy <http://dati.gov.it/onto/accoapit> ;
+          rdfs:label "is room of"@en ,
+                     "è camera di"@it ;
+          owl:versionInfo "stabile"@it ,
+                          "stable"@en .
+
+
+###  http://dati.gov.it/onto/poiapit#includesPOI
+poiapit:includesPOI rdf:type owl:ObjectProperty ;
+                    rdfs:domain :AccommodationChain ;
+                    rdfs:range :Accommodation ;
+                    rdfs:isDefinedBy <http://dati.gov.it/onto/poiapit> .
+
+
+###  http://dati.gov.it/onto/smapit/hasOnlineContactPoint
+smapit:hasOnlineContactPoint rdf:type owl:ObjectProperty ;
+                             rdfs:domain owl:Thing ;
+                             rdfs:range smapit:OnlineContactPoint ;
+                             rdfs:isDefinedBy smapit: .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://dati.gov.it/onto/accoapit#accommodationCode
+:accommodationCode rdf:type owl:DatatypeProperty ,
+                            owl:FunctionalProperty ;
+                   rdfs:domain :Accommodation ;
+                   rdfs:range rdfs:Literal ;
+                   rdfs:isDefinedBy <http://dati.gov.it/onto/accoapit> ,
+                                    "A code associated with the accommodation facility"@en ,
+                                    "Un codice associato alla struttura ricettiva."@it ;
+                   rdfs:label "accommodation code"@en ,
+                              "codice struttura ricettiva"@it ;
+                   owl:priorVersion "stabile"@it ,
+                                    "stable"@en .
+
+
+###  http://dati.gov.it/onto/accoapit#checkIn
+:checkIn rdf:type owl:DatatypeProperty ;
+         rdfs:domain :Accommodation ;
+         rdfs:range xsd:dateTime ;
+         rdfs:comment "Il checkin previsto dalla struttura ricettiva"@it ,
+                      "The checkin time of the accommodation facility"@en ;
+         rdfs:isDefinedBy <http://dati.gov.it/onto/accoapit> ;
+         rdfs:label "check in"@en ,
+                    "check in"@it ;
+         owl:priorVersion "stabile"@it ,
+                          "stable"@en .
+
+
+###  http://dati.gov.it/onto/accoapit#checkOut
+:checkOut rdf:type owl:DatatypeProperty ;
+          rdfs:domain :Accommodation ;
+          rdfs:range xsd:dateTime ;
+          rdfs:comment "Il check out previsto dalla struttura ricettiva"@it ,
+                       "The check out time of the accommodation facility"@en ;
+          rdfs:isDefinedBy <http://dati.gov.it/onto/accoapit> ;
+          rdfs:label "check out"@en ,
+                     "check out"@it ;
+          owl:priorVersion "stabile"@it ,
+                           "stable"@en .
+
+
+###  http://dati.gov.it/onto/accoapit#criterion
+:criterion rdf:type owl:DatatypeProperty ;
+           rdfs:domain :OSDCriterion ;
+           rdfs:range rdfs:Literal ;
+           rdfs:comment "Questa proprietà consente di specificare un generico criterio per la classe \"Criterio per Descrizione Servizi Offerti\". Esempio: metri quadrati"@it ,
+                        "This property allows one to specify a generic criterion for the class \"Offered Service Description Criterion\". Example: square meters"@en ;
+           rdfs:isDefinedBy <http://dati.gov.it/onto/accoapit> ;
+           rdfs:label "criterio"@it ,
+                      "criterion"@en ;
+           owl:versionInfo "provvisoria"@it ,
+                           "unstable"@en .
+
+
+###  http://dati.gov.it/onto/accoapit#featureDescription
+:featureDescription rdf:type owl:DatatypeProperty ;
+                    rdfs:domain :OSDFeature ;
+                    rdfs:range rdfs:Literal ;
+                    rdfs:comment "Questa proprietà consente di specificare una descrizione complessiva testuale della caratteristica della descrizione dei servizi offerti"@it ,
+                                 "This property allows one to specify a textual description of the feature of the offered services description"@en ;
+                    rdfs:isDefinedBy <http://dati.gov.it/onto/accoapit> ;
+                    rdfs:label "descrizione caratteristica"@it ,
+                               "feature description"@en ;
+                    owl:versionInfo "stabile"@it ,
+                                    "stable"@en .
+
+
+###  http://dati.gov.it/onto/accoapit#featureName
+:featureName rdf:type owl:DatatypeProperty ;
+             rdfs:domain :OSDFeature ;
+             rdfs:range rdfs:Literal ;
+             rdfs:comment "Questa proprietà rappresenta il nome della caratteristica associata alla classe Caratteristica della Descrizione Servizi Offerti"@it ,
+                          "This is the feature name associated with the class Offered Service Description Feature"@en ;
+             rdfs:isDefinedBy <http://dati.gov.it/onto/accoapit> ;
+             rdfs:label "feature name"@en ,
+                        "nome caratteristica"@it ;
+             owl:versionInfo "stabile"@it ,
+                             "stable"@en .
+
+
+###  http://dati.gov.it/onto/accoapit#genericValue
+:genericValue rdf:type owl:DatatypeProperty ,
+                       owl:FunctionalProperty ;
+              rdfs:domain :OfferedServiceDescription ;
+              rdfs:range rdfs:Literal ;
+              rdfs:comment "Questa proprietà rappresenta un valore generico. Nel dominio modellato delle strutture ricettive essa è associata alla descrizione dei serivizi offerti"@it ,
+                           "This property represents a generic value (literal). In the modelled domain of the accommodation facilities it is associated with the description of the offered services."@en ;
+              rdfs:isDefinedBy <http://dati.gov.it/onto/accoapit> ;
+              rdfs:label "generic value"@en ,
+                         "valore generico"@it ;
+              owl:versionInfo "provvisoria"@it ,
+                              "unstable"@en .
+
+
+###  http://dati.gov.it/onto/accoapit#maxValue
+:maxValue rdf:type owl:DatatypeProperty ,
+                   owl:FunctionalProperty ;
+          rdfs:domain :OfferedServiceDescription ;
+          rdfs:range xsd:int ;
+          rdfs:comment "Questa proprietà è utilizzata per specificare un valore massimo intero. Nell'ambito dell'ontologia delle strutture ricettive essa è associata alla descrizione dei servizi offerti"@it ,
+                       "This property is used to represent a maximum integer value. In the context of the ontology on accommodation facilities, it is associates with the Offered Service Description class"@en ;
+          rdfs:isDefinedBy <http://dati.gov.it/onto/accoapit> ;
+          rdfs:label "maximum value"@en ,
+                     "valore massimo"@it ;
+          owl:versionInfo "provvisoria"@it ,
+                          "unstable"@en .
+
+
+###  http://dati.gov.it/onto/accoapit#minValue
+:minValue rdf:type owl:DatatypeProperty ,
+                   owl:FunctionalProperty ;
+          rdfs:domain :OfferedServiceDescription ;
+          rdfs:range xsd:int ;
+          rdfs:comment "Questa proprietà rappresenta un valore minimo intero. Nel dominio modellato è associato con la descrizione dei servizi offerti"@it ,
+                       "This property represents a minumun integer value. In the modelled domain it is associated with the description of the offered services."@en ;
+          rdfs:isDefinedBy <http://dati.gov.it/onto/accoapit> ;
+          rdfs:label "minimum value"@en ,
+                     "valore minimo"@it ;
+          owl:versionInfo "provvisoria"@it ,
+                          "unstable"@en .
+
+
+###  http://dati.gov.it/onto/accoapit#offerDescription
+:offerDescription rdf:type owl:DatatypeProperty ;
+                  rdfs:domain :Offer ;
+                  rdfs:range rdfs:Literal ;
+                  rdfs:comment <http://dati.gov.it/onto/accoapit> ,
+                               "Questa proprietà rappresenta la descrizione dell'offerta della struttura ricettiva o/o della camera/stanza della struttura ricettiva"@it ,
+                               "This property represents the description of the offer of the accommodation facility and/or accommodation room"@en ;
+                  rdfs:label "descrizione dell'offerta"@it ,
+                             "offer description"@en ;
+                  owl:versionInfo "stabile"@it ,
+                                  "stable"@en .
+
+
+###  http://dati.gov.it/onto/accoapit#priceValue
+:priceValue rdf:type owl:DatatypeProperty ;
+            rdfs:domain :Price ;
+            rdfs:range xsd:float ;
+            rdfs:comment "Questa proprietà rappresenta il valore numerico del prezzo"@it ,
+                         "This property represents the value of the price"@en ;
+            rdfs:isDefinedBy <http://dati.gov.it/onto/accoapit> ;
+            rdfs:label "price value"@en ,
+                       "valore del prezzo"@it ;
+            owl:versionInfo "stabile"@it ,
+                            "stable"@en .
+
+
+###  http://dati.gov.it/onto/accoapit#priceVat
+:priceVat rdf:type owl:DatatypeProperty ;
+          rdfs:domain :Price ;
+          rdfs:range rdfs:Literal ;
+          rdfs:comment "Questa proprietà rappresenta l'iva sul prezzo associato all'offerta."@it ,
+                       "This property represents the VAT of the price of the offer."@en ;
+          rdfs:label "iva sul prezzo"@it ,
+                     "price VAT"@en ;
+          owl:versionInfo "provvisoria"@it ,
+                          "unstable"@en .
+
+
+###  http://dati.gov.it/onto/accoapit#quantitativeValue
+:quantitativeValue rdf:type owl:DatatypeProperty ;
+                   rdfs:domain :QuantitativeValue ;
+                   rdfs:range rdfs:Literal ;
+                   rdfs:comment "Questa proprietà permette di associare un valore al valore quantitativo per definire la durata di un'offerta. Se la durata di un'offerta è di 3 giorni, questa proprietà consente di specificare 3."@it ,
+                                "This property allows one to specify the quantitative value for the concept \"Quantitative value\"."@en ;
+                   rdfs:label "quantitative value"@en ,
+                              "valore quantitativo"@it ;
+                   owl:versionInfo "stabile"@it ,
+                                   "stable"@en .
+
+
+###  http://dati.gov.it/onto/accoapit#quantityOfAdmission
+:quantityOfAdmission rdf:type owl:DatatypeProperty ;
+                     rdfs:domain :MeasurementUnit ;
+                     rdfs:range rdfs:Literal ;
+                     rdfs:comment "Questa proprietà consente di specificare il tipo di unità di misura. Esempio: giorni, settimane, ogni altra unità di misura generica."@it ,
+                                  "This property allows one to specify the type of measuremnet unit."@en ;
+                     rdfs:label "quantity of admission"@en ,
+                                "quantità ammessa"@it ;
+                     owl:versionInfo "stable"@en ,
+                                     "stable"@it .
+
+
+###  http://dati.gov.it/onto/accoapit#roomName
+:roomName rdf:type owl:DatatypeProperty ;
+          rdfs:domain :AccommodationRoom ;
+          rdfs:range rdfs:Literal ;
+          rdfs:comment <http://dati.gov.it/onto/accoapit> ,
+                       "Questa proprietà rappresenta il nome di una stanza (sala) o camera. Esempio: camera \"arancione\", oppure \"sala A\", ecc."@it ,
+                       "This property represents the name of the room."@en ;
+          rdfs:label "nome della camera"@it ,
+                     "room name"@en ;
+          owl:versionInfo "stable"@en ,
+                          "stable"@it .
+
+
+###  http://dati.gov.it/onto/accoapit#totalBed
+:totalBed rdf:type owl:DatatypeProperty ;
+          rdfs:domain :Accommodation ;
+          rdfs:range xsd:int ;
+          rdfs:comment "Questa proprietà rappresenta il numero totale di letti di una struttura ricettiva."@it ,
+                       "This property represents the total number of beds of the accommodation facility."@en ;
+          rdfs:isDefinedBy <http://dati.gov.it/onto/accoapit> ;
+          rdfs:label "numero totale di letti"@it ,
+                     "total number of beds"@en ;
+          owl:priorVersion "stabile"@it ,
+                           "stable"@en .
+
+
+###  http://dati.gov.it/onto/accoapit#totalRoom
+:totalRoom rdf:type owl:DatatypeProperty ;
+           rdfs:domain :Accommodation ;
+           rdfs:range xsd:int ;
+           rdfs:comment "Questa proprietà rappresenta il numero totale di camere della struttura ricettiva."@it ,
+                        "This property represents the total number of rooms of the accommodation facility."@en ;
+           rdfs:isDefinedBy <http://dati.gov.it/onto/accoapit> ;
+           rdfs:label "numero totale di camere"@it ,
+                      "total number of rooms"@en ;
+           owl:priorVersion "stabile"@it ,
+                            "stable"@en .
+
+
+###  http://dati.gov.it/onto/accoapit#totalToilet
+:totalToilet rdf:type owl:DatatypeProperty ;
+             rdfs:domain :Accommodation ;
+             rdfs:range xsd:int ;
+             rdfs:comment "Questa proprietà rappresenta il numero totale di bagni della struttura ricettiva."@it ,
+                          "This property represents the total number of toilets of the accommodation facility"@en ;
+             rdfs:isDefinedBy <http://dati.gov.it/onto/accoapit> ;
+             rdfs:label "numero totale di bagni"@it ,
+                        "total number of toilets"@en ;
+             owl:priorVersion "stabile"@it ,
+                              "stable"@en .
+
+
+###  http://dati.gov.it/onto/accoapit#totalValue
+:totalValue rdf:type owl:DatatypeProperty ;
+            rdfs:domain :OfferedServiceDescription ;
+            rdfs:range xsd:int ;
+            rdfs:comment "Questa proprietà rappresenta un valore totale (intero). Nel dominio modellato delle strutture ricettive essa è associata alal descrizione dei servizi offerti"@it ,
+                         "This property represents a total value (integer). In the modelled domain it is associated with the description of the offered services."@en ;
+            rdfs:isDefinedBy <http://dati.gov.it/onto/accoapit> ;
+            rdfs:label "total value"@en ,
+                       "valore totale"@it ;
+            owl:versionInfo "provvisoria"@it ,
+                            "unstable"@en .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://dati.gov.it/onto/accoapit#Accommodation
+:Accommodation rdf:type owl:Class ;
+               rdfs:subClassOf poiapit:PointOfInterest ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :hasAccommodationTypology ;
+                                 owl:someValuesFrom :AccommodationTypology
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :hasAssociatedOffer ;
+                                 owl:allValuesFrom :Offer
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :hasOfferedServiceDescription ;
+                                 owl:allValuesFrom :OfferedServiceDescription
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :hasRoom ;
+                                 owl:allValuesFrom :AccommodationRoom
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :isIncludedInAccommodation ;
+                                 owl:allValuesFrom :AccommodationChain
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :hasAccommodationClassification ;
+                                 owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                 owl:onClass :AccommodationStarRating
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :hasOwner ;
+                                 owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                 owl:onClass covapit:Organization
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty smapit:hasOnlineContactPoint ;
+                                 owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                 owl:onClass smapit:OnlineContactPoint
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :checkIn ;
+                                 owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                 owl:onDataRange xsd:dateTime
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :checkOut ;
+                                 owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                 owl:onDataRange xsd:dateTime
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :totalBed ;
+                                 owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                 owl:onDataRange xsd:int
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :totalRoom ;
+                                 owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                 owl:onDataRange xsd:int
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :totalToilet ;
+                                 owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                 owl:onDataRange xsd:int
+                               ] ;
+               rdfs:comment "Questa è la classe principale che rappresenta la struttura ricettiva. La struttura ricettiva è un punto di interesse e quindi dichiarata come sotto classe di PointOfInterest definito in http://dati.gov.it/onto/poiapit. Essa pertanto eredita tutte le proprietà e classi del punto di interesse."@it ,
+                            "This is the main class and it represents an accommodation facility. The accommodation facility is a point of interest; thus it is a subclass of PointOfInterest as defined in http://dati.gov.it/onto/poiapit. It then inherit all the properties and classes defined for the PointOfInterest."@en ;
+               rdfs:isDefinedBy <http://dati.gov.it/onto/accoapit> ;
+               rdfs:label "Accommodation Facility"@en ,
+                          "Struttura ricettiva"@it ;
+               owl:versionInfo "stabile"@it ,
+                               "stable"@en ;
+               prov:wasDerivedFrom <http://purl.org/acco/ns#Accommodation> ,
+                                   <http://schema.org/Accommodation> .
+
+
+###  http://dati.gov.it/onto/accoapit#AccommodationChain
+:AccommodationChain rdf:type owl:Class ;
+                    rdfs:subClassOf :Accommodation ,
+                                    poiapit:MultiplePointOfInterest ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty :includesAccommodation ;
+                                      owl:someValuesFrom :Accommodation
+                                    ] ;
+                    rdfs:comment "Questa classe rappresenta una catena di strutture ricettive che a sua volta è una struttura ricettiva."@it ,
+                                 "This class represents a chain of accommodation facilities that in turn is an accommodation facility."@en ;
+                    rdfs:isDefinedBy <http://dati.gov.it/onto/accoapit> ;
+                    rdfs:label "Accommodation Chain"@en ,
+                               "Catena di Strutture Ricettive"@it ;
+                    owl:versionInfo "stabile"@it ,
+                                    "stable"@en .
+
+
+###  http://dati.gov.it/onto/accoapit#AccommodationRoom
+:AccommodationRoom rdf:type owl:Class ;
+                   rdfs:subClassOf :OSDFeature ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty :hasAssociatedOffer ;
+                                     owl:allValuesFrom :Offer
+                                   ] ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty :hasOfferedServiceDescription ;
+                                     owl:allValuesFrom :OfferedServiceDescription
+                                   ] ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty :isRoomOf ;
+                                     owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                     owl:onClass :Accommodation
+                                   ] ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty :roomName ;
+                                     owl:allValuesFrom rdfs:Literal
+                                   ] ;
+                   rdfs:comment "Questa è una classe astratta utilizzta per modellare una camera/stanza di una struttura ricettiva."@it ,
+                                "This is an abstract class  used to model a  room of the accommodation facility."@en ;
+                   rdfs:isDefinedBy <http://dati.gov.it/onto/accoapit> ;
+                   rdfs:label "Accommodation Room"@en ,
+                              "Camera (Stanza) della Struttura Ricettiva"@it ;
+                   owl:versionInfo "stabile"@it ,
+                                   "stable"@en ;
+                   prov:wasDerivedFrom <http://schema.org/Room> .
+
+
+###  http://dati.gov.it/onto/accoapit#AccommodationStarRating
+:AccommodationStarRating rdf:type owl:Class ;
+                         rdfs:subClassOf l0:Characteristic ,
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty :isAccommodationClassificationOf ;
+                                           owl:allValuesFrom :Accommodation
+                                         ] ;
+                         rdfs:comment "Questa classe rappresenta la classificazione a stelle delle strutture ricettive. I valori di questa classe sono dei concetti del vocabolario skos (skos:Concept) e devono essere definiti secondo quanto indicato nel seguente vocabolario controllato http://dati.gov.ti/onto/controlledvocabulary/AccommodationStarRating"@it ,
+                                      "This class represents the star classification of accommodation facilities. Values in this class are concepts of skos vocabulary (skos: Concept) and must be defined according to the following controlled vocabulary http://dati.gov.ti/onto/controlledvocabulary/AccommodationStarRating"@en ;
+                         rdfs:isDefinedBy <http://dati.gov.it/onto/accoapit> ;
+                         rdfs:label "Accommodation Star Rating"@en ,
+                                    "Classificazione a Stelle Strutture Ricettive"@it ;
+                         owl:versionInfo "stabile"@it ,
+                                         "stable"@en ;
+                         prov:wasInfluencedBy <http://schema.org/Rating> .
+
+
+###  http://dati.gov.it/onto/accoapit#AccommodationTypology
+:AccommodationTypology rdf:type owl:Class ;
+                       rdfs:subClassOf l0:Topic ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty :isAccommodationTypologyOf ;
+                                         owl:allValuesFrom :Accommodation
+                                       ] ;
+                       rdfs:comment "Questa classe rappresenta la tipologia di Struttura ricettiva. Gli elementi di questa classe sono concetti del vocabolario skos (skos:Concept) e devono essere definiti sulla base del vocabolario controllato disponibile in http://dati.gov.it/onto/controlledvcoabulary/AccommodationTypology. Questo vocabolario controllato definisce le tipologie di strutture ricettive così come identificate nel Decreto legislativo n°79 del 23 maggio 2011."@it ,
+                                    "This class represents the typology of accommodation facility. The elements of this class are skos:Concept and must be defined according to the controlled vocabulary available at http://dati.gov.it/onto/controlledvocabulary/AccommodationTypology"@en ;
+                       rdfs:isDefinedBy <http://dati.gov.it/onto/accoapit> ;
+                       rdfs:label "Accommodation Typology"@en ,
+                                  "Tipologia di Struttura Ricettiva"@it ;
+                       owl:versionInfo "stabile"@it ,
+                                       "stable"@en .
+
+
+###  http://dati.gov.it/onto/accoapit#Bedroom
+:Bedroom rdf:type owl:Class ;
+         rdfs:subClassOf :AccommodationRoom ;
+         rdfs:comment "Questa è una classe astratta utilizzata per modellare una camera da letto di una struttura ricettiva"@it ,
+                      "This is an abstract class used to model a bed room of an accommodation facility"@en ;
+         rdfs:label "Bedroom"@en ,
+                    "Camera da Letto"@it ;
+         owl:versionInfo "provvisoria"@it ,
+                         "unstable"@en ;
+         prov:wasDerivedFrom <http://schema.org/HotelRoom> ;
+         prov:wasInfluencedBy <http://purl.org/acco/ns#HotelRoom> .
+
+
+###  http://dati.gov.it/onto/accoapit#DoubleRoom
+:DoubleRoom rdf:type owl:Class ;
+            rdfs:subClassOf :Bedroom ;
+            rdfs:comment "Questa classe è usata per modellare una camera doppia della struttura ricettiva."@it ,
+                         "This class is used to model a double room of an accommodation facility."@en ;
+            rdfs:isDefinedBy <http://dati.gov.it/onto/accoapit> ;
+            rdfs:label "Camera Doppia"@it ,
+                       "Double Room"@en ;
+            owl:versionInfo "stabile"@it ,
+                            "stable"@en .
+
+
+###  http://dati.gov.it/onto/accoapit#MeasurementUnit
+:MeasurementUnit rdf:type owl:Class ;
+                 rdfs:subClassOf l0:System ;
+                 rdfs:comment "Questa classe rappresenta il concetto di Unità di Misura. Gli individui di questa classe rappresentano un insieme definito di quantità fisiche. Per esempio, è possibile definire una quantità per il tempo (e.g., il secondo), per lo spazio (e.g., metro) o per la temperatura (gradi celcius). Un'unità di misura è sempre collegata agli individui della classe \"Valore Quantitativo\" attraverso la proprietà \"ha unità di misura\"."@it ,
+                              "This class represents the concept of Measurement Unit"@en ;
+                 rdfs:label "Measurement Unit"@en ,
+                            "Unità di Misura"@it ;
+                 owl:versionInfo "stable"@en ,
+                                 "stable"@it .
+
+
+###  http://dati.gov.it/onto/accoapit#MeetingRoom
+:MeetingRoom rdf:type owl:Class ;
+             rdfs:subClassOf :AccommodationRoom ;
+             rdfs:comment "Questa classe è utilizzata per modellare una sala riunioni, un centro congressi di una struttura ricettiva"@it ,
+                          "This class is used to model a meeting room, a conference room, or a conference hall where singular events such as business conferences and meetings happen."@en ;
+             rdfs:label "Meeting Room"@en ,
+                        "Sala riunioni"@it ;
+             owl:versionInfo "provvisoria"@it ,
+                             "unstable"@en ;
+             prov:wasDerivedFrom <http://purl.org/acco/ns#HotelRoom> ,
+                                 <http://schema.org/HotelRoom> .
+
+
+###  http://dati.gov.it/onto/accoapit#OSDCriterion
+:OSDCriterion rdf:type owl:Class ;
+              rdfs:subClassOf l0:Characteristic ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :criterion ;
+                                owl:someValuesFrom rdfs:Literal
+                              ] ;
+              rdfs:comment "Questa classe rappresenta i criteri utilizzati per descrivere servizi offerti dalla struttura ricettiva o servizi offerti per singole stanze della struttura ricettiva. Esempio: un criterio potrebbe essere quello di valutare lo spazio occupato (feature) da una camera con i \"metri quadrati\" (criterio)."@it ,
+                           "This class represents the criterion used to describe offered services of the accommodation facility and of single rooms of the accommodation facility. For instance, a criterion can be to evaluate the occupancy (feature) of a room with the square meters (criterion)."@en ;
+              rdfs:isDefinedBy <http://dati.gov.it/onto/accoapit> ;
+              rdfs:label "Criterio per Descrizione dei Servizi Offerti"@it ,
+                         "Offered Service Description Criterion"@en ;
+              owl:versionInfo "provvisoria"@it ,
+                              "unstable"@en .
+
+
+###  http://dati.gov.it/onto/accoapit#OSDFeature
+:OSDFeature rdf:type owl:Class ;
+            rdfs:subClassOf l0:Entity ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :featureName ;
+                              owl:someValuesFrom rdfs:Literal
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :featureDescription ;
+                              owl:allValuesFrom rdfs:Literal
+                            ] ;
+            rdfs:comment "Questa classe rappresenta una specifica caratteristica della descrizione dei servizi offerti dalla struttura ricettiva e/o dalla singola camera. Per esempio una caratterisca può essere il bagno, il letto, la camera d'albergo stessa, la carta di credito, lo spazio occupato da una camera da letto, ecc."@it ,
+                         "This class represents the specific feature of the description of the services offered by the accommodation facility and/or by the single room. For instance, it can be the toilet, bed, room, credit card, etc all elements of a general description of the offered services."@en ;
+            rdfs:isDefinedBy <http://dati.gov.it/onto/accoapit> ;
+            rdfs:label "Caratteristica della Descrizione dei Servizi Offerti"@it ,
+                       "Offered Service Description Feature"@en ;
+            owl:versionInfo "stabile"@it ,
+                            "stable"@en ;
+            prov:wasInfluencedBy <http://purl.org/acco/ns#AccommodationFeature> .
+
+
+###  http://dati.gov.it/onto/accoapit#Offer
+:Offer rdf:type owl:Class ;
+       rdfs:subClassOf l0:Object ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :hasPrice ;
+                         owl:someValuesFrom :Price
+                       ] ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :hasValidity ;
+                         owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                         owl:onClass :Validity
+                       ] ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :offerDescription ;
+                         owl:allValuesFrom rdfs:Literal
+                       ] ;
+       rdfs:comment "Questa clase rappresenta un'offerta pubblica, non necessariamente vincolante e non necessariamente esclusiva della struttura ricettiva in generale e/o di una specifica camera/stanza della struttura ricettiva. Per esempio questa classe è utilizzata per rappresentare che una camera ha un'offerta di 78,00 euro per notte."@it ,
+                    "This class represents an offer public, not necessarily binding, not necessarily exclusive of the accommodation facility and/or specific accommodation room."@en ;
+       rdfs:label "Offer"@en ,
+                  "Offerta"@it ;
+       owl:versionInfo "stable"@en ,
+                       "stable"@it ;
+       prov:wasDerivedFrom <http://purl.org/goodrelations/v1#Offering> ,
+                           <http://schema.org/Offer> .
+
+
+###  http://dati.gov.it/onto/accoapit#OfferedServiceDescription
+:OfferedServiceDescription rdf:type owl:Class ;
+                           rdfs:subClassOf l0:Object ;
+                           rdfs:comment "Questa classe rappresenta la descrizine dei servizi offerti. Essa è l'implementazione del pattern descrizione ed è utilizzata quando specifiche caratteristiche dei servizi offerti non sono note in anticipo."@it ,
+                                        "This class allows one to model a description of the offered services. It is the implementation of the ontology design pattern description that can be used when specific features of the offered services are not known in advanced."@en ;
+                           rdfs:isDefinedBy <http://dati.gov.it/onto/accoapit> ;
+                           rdfs:label "Descrizione Servizi Offerti"@it ,
+                                      "Offered Service Description"@en ;
+                           owl:priorVersion "stable"@en ;
+                           owl:versionInfo "stabile"@it ;
+                           prov:wasInfluencedBy <http://www.ontologydesignpatterns.org/cp/owl/description.owl> .
+
+
+###  http://dati.gov.it/onto/accoapit#Price
+:Price rdf:type owl:Class ;
+       rdfs:subClassOf l0:Characteristic ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :priceVat ;
+                         owl:maxCardinality "1"^^xsd:nonNegativeInteger
+                       ] ;
+       rdfs:comment "Questa classe rappresenta il prezzo dell'offerta della struttura ricettiva e/o della camera/stanza della struttura ricettiva. Esso è definito da un valore (il prezzo) e dall'iva."@it ,
+                    "This class represents the Price. It is associated with the offer of an accommodation facility in general and/or of a specific accommodation room."@en ;
+       rdfs:label "Prezzo"@it ,
+                  "Price"@en ;
+       owl:versionInfo "stable"@en ,
+                       "stable"@it ;
+       prov:wasDerivedFrom <http://purl.org/goodrelations/v1#PriceSpecification> ,
+                           <http://schema.org/PriceSpecification> .
+
+
+###  http://dati.gov.it/onto/accoapit#QuadrupleRoom
+:QuadrupleRoom rdf:type owl:Class ;
+               rdfs:subClassOf :Bedroom ;
+               rdfs:comment "Questa classe è usata per modellare una camera quadrupla della struttura ricettiva."@it ,
+                            "This class is used to model a quadruple room of an accommodation facility."@en ;
+               rdfs:isDefinedBy <http://dati.gov.it/onto/accoapit> ;
+               rdfs:label "Camera quadrupla"@it ,
+                          "Quadruple Room"@en ;
+               owl:versionInfo "stabile"@it ,
+                               "stable"@en .
+
+
+###  http://dati.gov.it/onto/accoapit#QuantitativeValue
+:QuantitativeValue rdf:type owl:Class ;
+                   rdfs:subClassOf l0:Characteristic ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty :quantitativeValue ;
+                                     owl:cardinality "1"^^xsd:nonNegativeInteger
+                                   ] ;
+                   rdfs:comment "Questa classe rappresenta un valore quantitativo generico per la durata di una offerta di una struttura ricettiva e/o di una specifica camera/stanza della struttura ricettiva."@it ,
+                                "This class represents a quantitatuve value associated with the duration of a specific offer of the accommodation facility and/or a particular accommodation room."@en ;
+                   rdfs:label "Quantitative Value"@en ,
+                              "Valore Quantitativo"@it ;
+                   owl:versionInfo "stabile"@it ,
+                                   "stable"@en .
+
+
+###  http://dati.gov.it/onto/accoapit#SingleRoom
+:SingleRoom rdf:type owl:Class ;
+            rdfs:subClassOf :Bedroom ;
+            rdfs:comment "Questa classe è usata per modellare una camera singola della struttura ricettiva."@it ,
+                         "This class is used to model a single room of an accommodation facility."@en ;
+            rdfs:isDefinedBy <http://dati.gov.it/onto/accoapit> ;
+            rdfs:label "Camera Singola"@it ,
+                       "Single Room"@en ;
+            owl:priorVersion "stable"@en ;
+            owl:versionInfo "stabile"@it .
+
+
+###  http://dati.gov.it/onto/accoapit#Suite
+:Suite rdf:type owl:Class ;
+       rdfs:subClassOf :Bedroom ;
+       rdfs:comment "Questa classe è usata per modellare una suite della struttura ricettiva."@it ,
+                    "This class is used to model a suite of an accommodation facility."@en ;
+       rdfs:isDefinedBy <http://dati.gov.it/onto/accoapit> ;
+       rdfs:label "Suite"@en ,
+                  "Suite"@it ;
+       owl:priorVersion "stable"@en ;
+       owl:versionInfo "stabile"@it ;
+       prov:wasDerivedFrom <http://purl.org/acco/ns#Suite> .
+
+
+###  http://dati.gov.it/onto/accoapit#TripleRoom
+:TripleRoom rdf:type owl:Class ;
+            rdfs:subClassOf :Bedroom ;
+            rdfs:comment "Questa classe è usata per modellare una camera tripla della struttura ricettiva."@it ,
+                         "This class is used to model a triple room of an accommodation facility."@en ;
+            rdfs:isDefinedBy <http://dati.gov.it/onto/accoapit> ;
+            rdfs:label "Camera Tripla"@it ,
+                       "Triple Room"@en ;
+            owl:priorVersion "stable"@en ;
+            owl:versionInfo "stabile"@it .
+
+
+###  http://dati.gov.it/onto/accoapit#Validity
+:Validity rdf:type owl:Class ;
+          rdfs:subClassOf l0:Characteristic ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :hasDuration ;
+                            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                            owl:onClass [ rdf:type owl:Class ;
+                                          owl:unionOf ( :QuantitativeValue
+                                                        tiapit:TimeInterval
+                                                      )
+                                        ]
+                          ] ;
+          rdfs:comment "Questa classe rappresenta il concetto di validità e può essere associata a un'offerta per modellare la validità dell'offerta stessa in un lasso temporale preciso (dal giorno 30/10/2017 al 4/11/2017) o per un generico ammontare di tempo (e.g., per 3 giorni)"@it ,
+                       "This class represents the concept of validity and it can be associated with an offer to model its validity in a time interval or according to a specific quantitative value."@en ;
+          rdfs:label "Validity"@en ,
+                     "Validità"@it ;
+          owl:versionInfo "stable"@en ,
+                          "stable"@it .
+
+
+###  http://dati.gov.it/onto/covapit#Organization
+covapit:Organization rdf:type owl:Class ;
+                     rdfs:isDefinedBy <http://dati.gov.it/onto/covapit> .
+
+
+###  http://dati.gov.it/onto/l0/Characteristic
+l0:Characteristic rdf:type owl:Class ;
+                  rdfs:isDefinedBy l0: .
+
+
+###  http://dati.gov.it/onto/l0/Entity
+l0:Entity rdf:type owl:Class ;
+          rdfs:isDefinedBy l0: .
+
+
+###  http://dati.gov.it/onto/l0/Object
+l0:Object rdf:type owl:Class ;
+          rdfs:isDefinedBy l0: .
+
+
+###  http://dati.gov.it/onto/l0/System
+l0:System rdf:type owl:Class ;
+          rdfs:isDefinedBy l0: .
+
+
+###  http://dati.gov.it/onto/l0/Topic
+l0:Topic rdf:type owl:Class ;
+         rdfs:isDefinedBy l0: .
+
+
+###  http://dati.gov.it/onto/poiapit#MultiplePointOfInterest
+poiapit:MultiplePointOfInterest rdf:type owl:Class ;
+                                rdfs:isDefinedBy <http://dati.gov.it/onto/poiapit> .
+
+
+###  http://dati.gov.it/onto/poiapit#PointOfInterest
+poiapit:PointOfInterest rdf:type owl:Class ;
+                        rdfs:isDefinedBy <http://dati.gov.it/onto/poiapit> .
+
+
+###  http://dati.gov.it/onto/smapit/OnlineContactPoint
+smapit:OnlineContactPoint rdf:type owl:Class ;
+                          rdfs:isDefinedBy smapit: .
+
+
+###  http://dati.gov.it/onto/tiapit/TimeInterval
+tiapit:TimeInterval rdf:type owl:Class ;
+                    rdfs:isDefinedBy tiapit: .
+
+
+###  Generated by the OWL API (version 4.2.8.20170104-2310) https://github.com/owlcs/owlapi
