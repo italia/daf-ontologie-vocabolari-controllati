@@ -1,7 +1,7 @@
 # Ontologie e Vocabolari Controllati
 
 Questo è il repository delle ontologie e dei vocabolari controllati sviluppati nell'ambito delle azioni previste dal piano triennale e a supporto del lavoro da svolgere per l'[elenco delle basi di dati chiave](http://elenco-basi-di-dati-chiave.readthedocs.io/it/latest/).
-Le ontologie create sono tra loro collegate creando una vera e propria network chiamata **OntoPA** - a OntoNet system.
+Le ontologie create sono tra loro collegate creando una vera e propria network chiamata **OntoPiA** - a OntoNet system.
 
 Il repository è suddiviso in due directory:
 
