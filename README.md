@@ -22,7 +22,7 @@ Il contenuto della directory Ontologie è attualmente il seguente:
   + **Livello0 (L0) (Level0)**: E' un'ontologia top-level che consente di collegare tutte le ontologie sopra elencate abilitando così la network di ontologie.
 
 
-I Vocabolari Controllati sono, ove possibile, disponibili in RDF (nelle tre serializzazioni RDF/turtle, RDF/XML, JSON-LD), in CSV (codifica usata: UTF-8 con separatore ,) e in excel. In particolare, il contenuto della directory Vocabolari Controllati è attualmente il seguente:
+I Vocabolari Controllati sono in generale disponibili in RDF (nelle tre serializzazioni RDF/Turtle, RDF/XML, JSON-LD), in CSV (codifica usata **UTF-8** con separatore **,** (comma)) e in excel. In particolare, il contenuto della directory Vocabolari Controllati è attualmente il seguente:
 
   + **Tipi Eventi Pubblici (Types of Public Events)**: E' una classificazione dei possibili tipi di eventi pubblici. La classificazione è allineata a schema.org.
   + **Licenze (Licenses)**: E' la classificazione delle licenze suddivise per tipologia. Questo è il vocabolario controllato da utilizzare per il profilo di metadatazione nazionale DCAT-AP_IT.
