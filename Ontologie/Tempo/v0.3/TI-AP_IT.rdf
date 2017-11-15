@@ -5,6 +5,7 @@
     <!ENTITY dct "http://purl.org/dc/terms/" >
     <!ENTITY l0 "http://dati.gov.it/onto/l0/" >
     <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY muapit "http://dati.gov.it/onto/muapit/" >
     <!ENTITY dc "http://purl.org/dc/elements/1.1/" >
     <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
     <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
@@ -20,17 +21,42 @@
      xmlns:owl="http://www.w3.org/2002/07/owl#"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:muapit="http://dati.gov.it/onto/muapit/"
      xmlns:dc="http://purl.org/dc/elements/1.1/">
     <owl:Ontology rdf:about="http://dati.gov.it/onto/tiapit">
+        <rdfs:label xml:lang="en">Time ontology</rdfs:label>
+        <rdfs:label xml:lang="it">Ontologia del tempo</rdfs:label>
         <dct:issued rdf:datatype="&xsd;date">2017-09-25</dct:issued>
         <dc:creator xml:lang="en">Agency for Digital Italy - AgID</dc:creator>
         <dc:creator xml:lang="en">Institute of Cognitive Sciences and Technologies of the Italian Research Council (CNR) - Semantic Technology Laboratory (STLab)</dc:creator>
         <dc:creator xml:lang="en">Italian Digital Transformation Team</dc:creator>
-        <owl:versionInfo xml:lang="en">Version 0.1 - 25  September</owl:versionInfo>
+        <rdfs:comment xml:lang="en">This is the ontology of the Italian application profile for time</rdfs:comment>
+        <owl:versionInfo xml:lang="en">Version 0.3 - 14 November 2017</owl:versionInfo>
+        <rdfs:comment xml:lang="it">Questa è l&apos;ontologia del profilo applicativo italiano sul tempo</rdfs:comment>
+        <owl:versionInfo xml:lang="it">Versione 0.3 - 14 Novembre 2017</owl:versionInfo>
         <owl:imports rdf:resource="http://dati.gov.it/onto/l0/"/>
-        <owl:versionIRI rdf:resource="http://dati.gov.it/onto/tiapit/0.2"/>
+        <owl:imports rdf:resource="&muapit;0.1"/>
+        <rdfs:isDefinedBy rdf:resource="http://dati.gov.it/onto/tiapit/"/>
+        <owl:versionIRI rdf:resource="http://dati.gov.it/onto/tiapit/0.3"/>
         <dct:license rdf:resource="https://creativecommons.org/licenses/by/4.0/"/>
     </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Datatypes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.w3.org/2001/XMLSchema#duration -->
+
+    <rdfs:Datatype rdf:about="&xsd;duration"/>
     
 
 
@@ -71,6 +97,28 @@
     
 
 
+    <!-- http://dati.gov.it/onto/tiapit/hasDuration -->
+
+    <owl:ObjectProperty rdf:about="http://dati.gov.it/onto/tiapit/hasDuration">
+        <rdfs:label xml:lang="en">has duration</rdfs:label>
+        <rdfs:label xml:lang="it">ha durata</rdfs:label>
+        <rdfs:comment xml:lang="en">This property is used to specify the temporal duration of the validity.</rdfs:comment>
+        <rdfs:comment xml:lang="it">Questa proprietà è utilizzata per specificare il periodo temporale di validità.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://dati.gov.it/onto/tiapit"/>
+        <rdfs:domain rdf:resource="&owl;Thing"/>
+        <rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
+        <rdfs:range>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&muapit;Value"/>
+                    <rdf:Description rdf:about="http://dati.gov.it/onto/tiapit/TimeInterval"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    
+
+
     <!-- http://dati.gov.it/onto/tiapit/isDayOfWeekOf -->
 
     <owl:ObjectProperty rdf:about="http://dati.gov.it/onto/tiapit/isDayOfWeekOf">
@@ -90,6 +138,20 @@
     ///////////////////////////////////////////////////////////////////////////////////////
      -->
 
+    
+
+
+    <!-- http://dati.gov.it/onto/tiapit/duration -->
+
+    <owl:DatatypeProperty rdf:about="http://dati.gov.it/onto/tiapit/duration">
+        <rdfs:label xml:lang="en">duration</rdfs:label>
+        <rdfs:label xml:lang="it">durata</rdfs:label>
+        <rdfs:comment xml:lang="en">Property that associates a duratin value with a time interval.</rdfs:comment>
+        <rdfs:comment xml:lang="it">Proprietà che associa un valore di durata ad un intervallo di tempo.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://dati.gov.it/onto/tiapit"/>
+        <rdfs:domain rdf:resource="http://dati.gov.it/onto/tiapit/TimeInterval"/>
+        <rdfs:range rdf:resource="&xsd;duration"/>
+    </owl:DatatypeProperty>
     
 
 
@@ -154,6 +216,7 @@
     <owl:Class rdf:about="http://dati.gov.it/onto/tiapit/TimeInterval">
         <rdfs:label xml:lang="en">Time interval</rdfs:label>
         <rdfs:label xml:lang="it">Intervallo di tempo</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&l0;Characteristic"/>
         <rdfs:subClassOf rdf:resource="&l0;Entity"/>
         <rdfs:comment xml:lang="en">A time interval</rdfs:comment>
         <rdfs:comment xml:lang="it">Rappresentazione di intervallo di tempo.</rdfs:comment>
@@ -239,25 +302,6 @@
         <rdfs:label xml:lang="en">Wednesday</rdfs:label>
         <rdfs:label xml:lang="it">Mercoledì</rdfs:label>
     </owl:NamedIndividual>
-    
-
-
-    <!-- 
-    ///////////////////////////////////////////////////////////////////////////////////////
-    //
-    // Annotations
-    //
-    ///////////////////////////////////////////////////////////////////////////////////////
-     -->
-
-    <rdf:Description rdf:about="http://dati.gov.it/onto/tiapit">
-        <rdfs:label xml:lang="en">Time ontology</rdfs:label>
-        <rdfs:label xml:lang="it">Ontologia del tempo</rdfs:label>
-        <rdfs:comment xml:lang="en">This is the ontology of the Italian application profile for time</rdfs:comment>
-        <rdfs:comment xml:lang="it">Questa è l&apos;ontologia del profilo applicativo italiano sul tempo</rdfs:comment>
-        <owl:versionInfo xml:lang="it">Versione 0.6 - 25 Settembre 2017</owl:versionInfo>
-        <rdfs:isDefinedBy rdf:resource="http://dati.gov.it/onto/tiapit/"/>
-    </rdf:Description>
 </rdf:RDF>
 
 

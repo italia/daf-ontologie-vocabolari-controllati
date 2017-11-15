@@ -1,0 +1,600 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY l0 "http://dati.gov.it/onto/l0/" >
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY tiapit "http://dati.gov.it/onto/tiapit/" >
+    <!ENTITY muapit "http://dati.gov.it/onto/muapit/" >
+    <!ENTITY dc "http://purl.org/dc/elements/1.1/" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+]>
+
+
+<rdf:RDF xmlns="http://dati.gov.it/onto/potapit/"
+     xml:base="http://dati.gov.it/onto/potapit/"
+     xmlns:l0="http://dati.gov.it/onto/l0/"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:tiapit="http://dati.gov.it/onto/tiapit/"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:muapit="http://dati.gov.it/onto/muapit/"
+     xmlns:dc="http://purl.org/dc/elements/1.1/">
+    <owl:Ontology rdf:about="http://dati.gov.it/onto/potapit">
+        <owl:imports rdf:resource="http://dati.gov.it/onto/l0/"/>
+        <owl:versionIRI rdf:resource="http://dati.gov.it/onto/potapit/0.1"/>
+        <owl:imports rdf:resource="&tiapit;0.3"/>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/dc/elements/1.1/description -->
+
+    <owl:AnnotationProperty rdf:about="&dc;description"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://dati.gov.it/onto/potapit/forAccessTo -->
+
+    <owl:ObjectProperty rdf:about="http://dati.gov.it/onto/potapit/forAccessTo">
+        <rdfs:label xml:lang="it">per l&apos;accesso a</rdfs:label>
+        <rdfs:comment xml:lang="en">Property used to associate a ticket with an event or a cultural institute or site</rdfs:comment>
+        <rdfs:comment xml:lang="en">for access to</rdfs:comment>
+        <rdfs:comment xml:lang="it">Proprietà che consente di associare un biglietto a un evento o a un istituto e luogo della cultura.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://dati.gov.it/onto/potapit"/>
+        <rdfs:domain rdf:resource="http://dati.gov.it/onto/potapit/Ticket"/>
+        <rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
+        <rdfs:range>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&l0;Event"/>
+                    <rdf:Description rdf:about="&l0;Location"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://dati.gov.it/onto/potapit/hasCurrency -->
+
+    <owl:ObjectProperty rdf:about="http://dati.gov.it/onto/potapit/hasCurrency">
+        <rdfs:label xml:lang="en">has currency</rdfs:label>
+        <rdfs:label xml:lang="it">ha valuta</rdfs:label>
+        <rdfs:comment xml:lang="en">This property is used to connected the Price specification to Currency</rdfs:comment>
+        <rdfs:comment xml:lang="it">Questa proprietà collega la specifica del prezzo del ticket per un evento o istituto e luogo della cultura con la classe currency.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://dati.gov.it/onto/potapit"/>
+        <rdfs:range rdf:resource="http://dati.gov.it/onto/potapit/Currency"/>
+        <rdfs:domain rdf:resource="http://dati.gov.it/onto/potapit/PriceSpecification"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://dati.gov.it/onto/potapit/hasEligibleUser -->
+
+    <owl:ObjectProperty rdf:about="http://dati.gov.it/onto/potapit/hasEligibleUser">
+        <rdfs:label xml:lang="en">has eligible user</rdfs:label>
+        <rdfs:label xml:lang="it">ha utente eligibile</rdfs:label>
+        <rdfs:comment xml:lang="en">Property used to associate the an offert for the access to an event or a locationsite with the type of user</rdfs:comment>
+        <rdfs:comment xml:lang="it">Proprietà che consente di associare un&apos;offerta per l&apos;accesso a un evento o un luogo ad una tipologia di utente</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://dati.gov.it/onto/potapit"/>
+        <rdfs:domain rdf:resource="http://dati.gov.it/onto/potapit/Offer"/>
+        <rdfs:range rdf:resource="http://dati.gov.it/onto/potapit/UserType"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://dati.gov.it/onto/potapit/hasPriceSpecification -->
+
+    <owl:ObjectProperty rdf:about="http://dati.gov.it/onto/potapit/hasPriceSpecification">
+        <rdfs:label xml:lang="en">has price specification</rdfs:label>
+        <rdfs:label xml:lang="it">ha specifica di prezzo</rdfs:label>
+        <rdfs:comment xml:lang="en">This property is used to link the offer for a ticket to its price specification.</rdfs:comment>
+        <rdfs:comment xml:lang="it">Questa proprietà è utliizzata per collegare l&apos;offerta per i biglietti a una specifica del prezzo.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://dati.gov.it/onto/potapit"/>
+        <rdfs:domain rdf:resource="http://dati.gov.it/onto/potapit/Offer"/>
+        <rdfs:range rdf:resource="http://dati.gov.it/onto/potapit/PriceSpecification"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://dati.gov.it/onto/potapit/hasTicket -->
+
+    <owl:ObjectProperty rdf:about="http://dati.gov.it/onto/potapit/hasTicket">
+        <rdfs:label xml:lang="en">has ticket</rdfs:label>
+        <rdfs:label xml:lang="it">ha biglietto</rdfs:label>
+        <rdfs:comment xml:lang="en">Property that associates a thing with a ticket.</rdfs:comment>
+        <rdfs:comment xml:lang="it">Proprietà che associa una cosa ad un biglietto.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://dati.gov.it/onto/potapit"/>
+        <rdfs:range rdf:resource="http://dati.gov.it/onto/potapit/Ticket"/>
+        <owl:inverseOf rdf:resource="http://dati.gov.it/onto/potapit/forAccessTo"/>
+        <rdfs:domain rdf:resource="&owl;Thing"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://dati.gov.it/onto/potapit/hasValidity -->
+
+    <owl:ObjectProperty rdf:about="http://dati.gov.it/onto/potapit/hasValidity">
+        <rdfs:label xml:lang="en">has validity</rdfs:label>
+        <rdfs:label xml:lang="it">ha validità</rdfs:label>
+        <rdfs:comment xml:lang="en">Property used to specify the validity of an offer or ticket.</rdfs:comment>
+        <rdfs:comment xml:lang="it">Proprietà utilizzata per specificare una validità di un offerta o di un biglietto.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://dati.gov.it/onto/potapit"/>
+        <rdfs:range rdf:resource="http://dati.gov.it/onto/potapit/Validity"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://dati.gov.it/onto/potapit/Offer"/>
+                    <rdf:Description rdf:about="http://dati.gov.it/onto/potapit/Ticket"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://dati.gov.it/onto/potapit/includes -->
+
+    <owl:ObjectProperty rdf:about="http://dati.gov.it/onto/potapit/includes">
+        <rdfs:label xml:lang="en">includes</rdfs:label>
+        <rdfs:label xml:lang="it">include</rdfs:label>
+        <rdfs:comment xml:lang="en">Property used to associate an offer with the relative ticket</rdfs:comment>
+        <rdfs:comment xml:lang="it">Proprietà utilizzata per associare un&apos;offerta al relativo biglietto.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://dati.gov.it/onto/potapit"/>
+        <rdfs:domain rdf:resource="http://dati.gov.it/onto/potapit/Offer"/>
+        <rdfs:range rdf:resource="http://dati.gov.it/onto/potapit/Ticket"/>
+        <rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://dati.gov.it/onto/potapit/offers -->
+
+    <owl:ObjectProperty rdf:about="http://dati.gov.it/onto/potapit/offers">
+        <rdfs:label xml:lang="en">offers</rdfs:label>
+        <rdfs:label xml:lang="it">offre</rdfs:label>
+        <rdfs:comment xml:lang="en">Property used to associate an agent with an offer for accessing an event or a cultural institute or site</rdfs:comment>
+        <rdfs:comment xml:lang="it">Proprietà che consente di associare un agente all&apos;offerta per l&apos;accesso a un evento o a un luogo della cultura.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://dati.gov.it/onto/potapit"/>
+        <rdfs:domain rdf:resource="&l0;Agent"/>
+        <rdfs:range rdf:resource="http://dati.gov.it/onto/potapit/Offer"/>
+        <rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://dati.gov.it/onto/tiapit/hasDuration -->
+
+    <owl:ObjectProperty rdf:about="&tiapit;hasDuration"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://dati.gov.it/onto/potapit/hasCurrencyValue -->
+
+    <owl:DatatypeProperty rdf:about="http://dati.gov.it/onto/potapit/hasCurrencyValue">
+        <rdfs:label xml:lang="en">currency value</rdfs:label>
+        <rdfs:label xml:lang="it">prezzo</rdfs:label>
+        <rdfs:comment xml:lang="en">Property used to represent the price of the ticket.</rdfs:comment>
+        <rdfs:comment xml:lang="it">Proprietà utilizzata per indicare il prezzo del biglietto.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://dati.gov.it/onto/potapit"/>
+        <rdfs:domain rdf:resource="http://dati.gov.it/onto/potapit/PriceSpecification"/>
+        <rdfs:range rdf:resource="&xsd;double"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://dati.gov.it/onto/l0/Characteristic -->
+
+    <owl:Class rdf:about="&l0;Characteristic"/>
+    
+
+
+    <!-- http://dati.gov.it/onto/l0/Description -->
+
+    <owl:Class rdf:about="&l0;Description"/>
+    
+
+
+    <!-- http://dati.gov.it/onto/l0/Event -->
+
+    <owl:Class rdf:about="&l0;Event"/>
+    
+
+
+    <!-- http://dati.gov.it/onto/l0/Location -->
+
+    <owl:Class rdf:about="&l0;Location"/>
+    
+
+
+    <!-- http://dati.gov.it/onto/l0/Object -->
+
+    <owl:Class rdf:about="&l0;Object"/>
+    
+
+
+    <!-- http://dati.gov.it/onto/muapit/Value -->
+
+    <owl:Class rdf:about="&muapit;Value"/>
+    
+
+
+    <!-- http://dati.gov.it/onto/potapit/Card -->
+
+    <owl:Class rdf:about="http://dati.gov.it/onto/potapit/Card">
+        <rdfs:label xml:lang="en">Card</rdfs:label>
+        <rdfs:label xml:lang="it">Carta d&apos;ingresso</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://dati.gov.it/onto/potapit/Ticket"/>
+        <rdfs:comment xml:lang="en">This class represents a card valid for the entrance to more than one Cultural Institute or Site. It is a subclass of Ticket.</rdfs:comment>
+        <dc:description xml:lang="en">Un esempio di utilizzo della classe cis:Card  è il seguente:
+
+&lt;pre&gt;
+
+card:Parco_archeologico_di_Liternum_Card
+    a cis:Card ;
+    rdfs:label &quot;Ingresso per due giorni al Parco archeologico di Liternum&quot;@it ; 
+    rdfs:label &quot;Two-day access to Parco archeologico di Liternum&quot;@en ;
+    cis:name &quot;Ingresso per due giorni al Parco archeologico di Liternum&quot;@it ; 
+    cis:name &quot;Two-day access to the Parco archeologico di Liternum&quot;@en ;
+    cis:hasValidity Parco_archeologico_di_Liternum_Card_Validity ;
+    cis:forAccessTo cissite:Parco_archeologico_di_Liternum ;
+    cis:description &quot;With this card a tourist can visit Parco archeologico di Liternum for 2 consecutive days&quot;@en ; 
+    cis:description &quot;La card permette l&apos;accesso al Parco archeologico di Liternum per 2 giorni consecutivi&quot;@it .
+
+validity:Parco_archeologico_di_Liternum_Card_Validity
+    a cis:Validity ;
+    rdfs:label &quot;Two-day validity&quot;@en ;
+    rdfs:label &quot;Validità per due giorni&quot;@it ;
+    cis:hasDuration Parco_archeologico_di_Liternum_Card_Validity_Duration .
+ 
+quantitativevalue:Parco_archeologico_di_Liternum_Card_Validity_Duration
+    a cis:QuantitativeValue ;
+    rdfs:label &quot;2&quot; ;
+    cis:hasMeasurementUnit cis:Day ;
+    cis:hasValue &quot;2&quot;^^xsd:positiveInteger .
+
+cis:Day a cis:MeasurementUnit .
+
+&lt;/pre&gt;</dc:description>
+        <rdfs:comment xml:lang="it">Questa classe rappresenta una carta d&apos;ingresso che dà diritto a più ingressi in più luoghi della cultura. E&apos; sottoclasse di ticket.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://dati.gov.it/onto/potapit"/>
+    </owl:Class>
+    
+
+
+    <!-- http://dati.gov.it/onto/potapit/Currency -->
+
+    <owl:Class rdf:about="http://dati.gov.it/onto/potapit/Currency">
+        <rdfs:label xml:lang="en">Currency</rdfs:label>
+        <rdfs:label xml:lang="it">Valuta</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&l0;Object"/>
+        <dc:description xml:lang="en">Individuals of the this class represent currency instances (e.g., Euro, US Dollar, Pound, Australian Dollar, etc.); they are always associated with individuals of the class &apos;Price Specification&apos;.
+
+This allows modelling Price Specification as a a quantified value, where the value is expressed as an integer and it is quantified in terms of a currency
+
+An example is the following:
+
+&lt;pre&gt;
+
+priceSpecification:Under18&gt;
+      a       cis:PriceSpecification ;
+      rdfs:label &quot;price specification under 18 &quot;@en , &quot;costo under 18 &quot;@it ;
+      cis:hasCurrency cis:Euro ;
+      cis:hasCurrencyValue
+              &quot;5&quot;^^xsd:float .
+
+cis:Euro a cis:Currency ;
+      rdfs:label &quot;Euro&quot;@en, &quot;Euro&quot;@it .
+
+&lt;/pre&gt;</dc:description>
+        <rdfs:comment xml:lang="en">This class represents a currency. In our domain currency is typically associated with Price Specification for tickets, and assumes specific values (e.g., Euro).</rdfs:comment>
+        <rdfs:comment xml:lang="it">Questa classe rappresenta la valuta per i biglietti di ingresso agli eventi o luoghi della cultura. Nel nostro dominio è associata alla descrizione del prezzo per i biglietti. Assume valori specifici (e.g., Euro).</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://dati.gov.it/onto/potapit"/>
+    </owl:Class>
+    
+
+
+    <!-- http://dati.gov.it/onto/potapit/Offer -->
+
+    <owl:Class rdf:about="http://dati.gov.it/onto/potapit/Offer">
+        <rdfs:label xml:lang="en">Offer</rdfs:label>
+        <rdfs:label xml:lang="it">Offerta</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&l0;Description"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://dati.gov.it/onto/potapit/hasValidity"/>
+                <owl:allValuesFrom rdf:resource="http://dati.gov.it/onto/potapit/Validity"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://dati.gov.it/onto/potapit/includes"/>
+                <owl:someValuesFrom rdf:resource="http://dati.gov.it/onto/potapit/Ticket"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <dc:description xml:lang="en">Any fare is expressed within the ontology by using instances of the class Offer.
+
+It is possible to specify: 
+ * the type of user to whom the offer is applicable  (cf. object property cis:hasEligibleUser);
+ * the information about the price (cf. object property hasPriceSpecification);
+ * the information about the temporal validity of the offer (cf. object property hasValidity);
+ * the association with a ticket (cf. object property includes).
+
+The following turtle example exemplifies the base offer of the Biblioteca Nazionale Centrale di Roma.
+
+&lt;pre&gt;
+
+offer:Biblioteca_Nazionale_Centrale_base_offer
+      a       cis:Offer ;
+      rdfs:label &quot;offerta base &quot;@it , &quot;base offer &quot;@en ;
+      cis:hasEligibleUser userType:Under18 ;
+      cis:hasPriceSpecification
+              priceSpecification:Under18 ;
+      cis:hasValidity validity:Biblioteca_nazionale_centrale_validity ;
+      cis:includes ticket:Biblioteca_nazionale_centrale_ticket_1 .
+
+&lt;/pre&gt;</dc:description>
+        <rdfs:comment xml:lang="en">It represents an offer (reduction  for specific types of users or base price) related to the entrance ticket for the Cultural Institute or Site or for the Event.</rdfs:comment>
+        <rdfs:comment xml:lang="it">Concetto utilizzato per rappresentare  offerte (riduzioni per specifiche categorie di utenti o importo intero) relative ai biglietti d&apos;ingresso per un istituto e luogo della cultura o per un evento.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://dati.gov.it/onto/potapit"/>
+    </owl:Class>
+    
+
+
+    <!-- http://dati.gov.it/onto/potapit/PriceSpecification -->
+
+    <owl:Class rdf:about="http://dati.gov.it/onto/potapit/PriceSpecification">
+        <rdfs:label xml:lang="en">Price Specification</rdfs:label>
+        <rdfs:label xml:lang="it">Prezzo</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&l0;Characteristic"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://dati.gov.it/onto/potapit/hasCurrencyValue"/>
+                <owl:someValuesFrom rdf:resource="&xsd;float"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://dati.gov.it/onto/potapit/hasCurrency"/>
+                <owl:someValuesFrom rdf:resource="http://dati.gov.it/onto/potapit/Currency"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <dc:description xml:lang="en">A price specification provides the information about the cost of an offer for entering a Cultural Institute or Site.
+
+It is associated to a currency (e.g., Euro) and a currency value (i.e., a quantity, e.g., 5).
+
+The following turtle provides an example about the price specification of the base offer for entering the Biblioteca Nazionale Centrale di Roma.
+
+&lt;pre&gt;
+
+priceSpecification:Under18
+      a       cis:PriceSpecification ;
+      rdfs:label &quot;price specification under 18 &quot;@en , &quot;costo under 18 &quot;@it ;
+      cis:hasCurrency cis:Euro ;
+      cis:hasCurrencyValue
+              &quot;5&quot;^^xsd:float .
+
+
+offer:Biblioteca_Nazionale_Centrale_base_offer
+      a       cis:Offer ;
+      rdfs:label &quot;offerta base &quot;@it , &quot;base offer &quot;@en ;
+      cis:hasEligibleUser userType:Under18 ;
+      cis:hasPriceSpecification
+              priceSpecification:Under18 ;
+      cis:hasValidity validity:Biblioteca_nazionale_centrale_validity ;
+      cis:includes ticket:Biblioteca_nazionale_centrale_ticket_1 .
+
+
+&lt;/pre&gt;</dc:description>
+        <rdfs:comment xml:lang="en">It represents the price specification of the ticket</rdfs:comment>
+        <rdfs:comment xml:lang="it">Rappresenta la specifica del prezzo del biglietto.</rdfs:comment>
+        <dc:description rdf:resource="http://dati.beniculturali.it/cis/img/priceSpecification.png"/>
+        <rdfs:isDefinedBy rdf:resource="http://dati.gov.it/onto/potapit"/>
+    </owl:Class>
+    
+
+
+    <!-- http://dati.gov.it/onto/potapit/Ticket -->
+
+    <owl:Class rdf:about="http://dati.gov.it/onto/potapit/Ticket">
+        <rdfs:label xml:lang="en">Ticket</rdfs:label>
+        <rdfs:label xml:lang="it">Biglietto</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&l0;Object"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://dati.gov.it/onto/potapit/hasValidity"/>
+                <owl:allValuesFrom rdf:resource="http://dati.gov.it/onto/potapit/Validity"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <dc:description xml:lang="en">An example of usage of the class cis:Ticket is the following:
+
+&lt;pre&gt;
+
+offer:Biblioteca_Nazionale_Centrale_base_offer
+      a       cis:Offer ;
+      rdfs:label &quot;offerta base &quot;@it , &quot;base offer&quot;@en ;
+      cis:hasEligibleUser userType:Under18 ;
+      cis:hasPriceSpecification priceSpecification:Under18 ;
+      cis:hasValidity validity:Biblioteca_nazionale_centrale_validity ;
+      cis:includes ticket:Biblioteca_nazionale_centrale_ticket_1 .
+
+ticket:Biblioteca_nazionale_centrale_ticket_1 
+     a cis:Ticket ;
+     rdfs:label &quot;Biglietto per accedere a &apos;Biblioteca Nazionale Centrale di Roma&apos;&quot;@it ;
+     rdfs:label &quot;Ticket for access to &apos;Biblioteca Nazionale Centrale di Roma&apos;&quot;@en ;
+     cis:name &quot;Biglietto base per accedere &apos;Biblioteca Nazionale Centrale di Roma&apos;&quot;@it ;
+     cis:name&quot;Basic ticket for access to &apos;Biblioteca Nazionale Centrale di Roma&apos;&quot;@en ;
+     cis:description &quot;Biglietto che permette l&apos;accesso per un giorno alla &apos;Biblioteca Nazionale Centrale di Roma&apos;&quot;@it ;
+     cis:description &quot;One-day ticket for &apos;Biblioteca Nazionale Centrale di Roma&apos;&quot;@en ;
+     cis:hasValidity validity:Biblioteca_nazionale_centrale_ticket_1;
+     cis:forAccessTo cissite:Biblioteca_nazionale_centrale .
+
+validity:Biblioteca_nazionale_centrale_ticket_1
+    a cis:Validity ;
+    rdfs:label &quot;One day validity&quot;@en ;
+    rdfs:label &quot;Validità per 1 giorno&quot;@it ;
+    cis:hasDuration qv:Biblioteca_nazionale_centrale_ticket_1 .
+
+qv:Biblioteca_nazionale_centrale_ticket_1
+    a cis:QuantitativeValue ;
+    rdfs:label &quot;1&quot;;
+    cis:hasMeasurementUnit cis:Day ;
+    cis:hasValue &quot;1&quot;^^xsd:positiveInteger .
+
+priceSpecification:Under18
+      a       cis:PriceSpecification ;
+      rdfs:label &quot;price specification under 18 &quot;@en , &quot;costo per ragazzi sotto i 18 anni &quot;@it ;
+      cis:hasCurrency cis:Euro ;
+      cis:hasCurrencyValue &quot;5&quot;^^xsd:float .
+
+userType:Under18 
+   a cis:UserType ; 
+   rdfs:label &quot;Under 18&quot; ; 
+   cis:name &quot;Under 18&quot;; ;
+   cis:description &quot;People under 18 years old&quot;;@en;
+   cis:description &quot;Persone con età inferiore ai 18 anni&quot;@it  .
+
+&lt;/pre&gt;</dc:description>
+        <rdfs:comment xml:lang="en">It represents an entrance ticket for a Cultural Institute or Site, if required, and for an event</rdfs:comment>
+        <rdfs:comment xml:lang="it">Rappresenta il biglietto d&apos;ingresso per l&apos;Istitituto e Luogo della Cultura, qualora sia previsto, e per l&apos;evento culturale.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://dati.gov.it/onto/potapit"/>
+    </owl:Class>
+    
+
+
+    <!-- http://dati.gov.it/onto/potapit/UserType -->
+
+    <owl:Class rdf:about="http://dati.gov.it/onto/potapit/UserType">
+        <rdfs:label xml:lang="en">User Type</rdfs:label>
+        <rdfs:label xml:lang="it">Tipo di utente</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&l0;Characteristic"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&l0;description"/>
+                <owl:allValuesFrom rdf:resource="&rdfs;Literal"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&l0;name"/>
+                <owl:allValuesFrom rdf:resource="&rdfs;Literal"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <dc:description xml:lang="en">An example of usage of the class cis:UserType is the following:
+
+&lt;pre&gt;
+userType:Under18 
+   a cis:UserType ; 
+   rdfs:label &quot;Under 18&quot; ; 
+   cis:name &quot;Under 18&quot;; ;
+   cis:description &quot;People under 18 years old&quot;;@en;
+   cis:description &quot;Persone con età inferiore ai 18 anni&quot;@it  .
+
+&lt;/pre&gt;</dc:description>
+        <rdfs:comment xml:lang="en">It represents the identified type of users related to the tickets used to access an event or location. Examples include: people over 25 years old, people over 65 years old,  children, etc.</rdfs:comment>
+        <rdfs:comment xml:lang="it">Rappresenta la tipologia di utenti relativa ai biglietti per accedere a un evento o a un luogo. Esempi includono:  &quot;maggiorenni over 25&quot;, oppure &quot;over 65&quot;, &quot;bambini&quot;, ecc.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://dati.gov.it/onto/potapit"/>
+    </owl:Class>
+    
+
+
+    <!-- http://dati.gov.it/onto/potapit/Validity -->
+
+    <owl:Class rdf:about="http://dati.gov.it/onto/potapit/Validity">
+        <rdfs:label xml:lang="en">Validity</rdfs:label>
+        <rdfs:label xml:lang="it">Validità</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&l0;Event"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&tiapit;hasDuration"/>
+                <owl:allValuesFrom>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="&muapit;Value"/>
+                            <rdf:Description rdf:about="&tiapit;TimeInterval"/>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <dc:description xml:lang="en">An example of usage of the class cis:Validity is the following:
+
+&lt;pre&gt;
+
+validity:Parco_archeologico_di_Liternum_Card_Validity
+    a cis:Validity ;
+    rdfs:label &quot;Two-day validity&quot;@en ;
+    rdfs:label &quot;Validità per due giorni&quot;@it ;
+    cis:hasDuration Parco_archeologico_di_Liternum_Card_Validity_Duration .
+
+qv:Parco_archeologico_di_Liternum_Card_Validity_Duration
+    a cis:QuantitativeValue ;
+    rdfs:label &quot;2&quot;;;
+    cis:hasMeasurementUnit cis:Day ;
+    cis:hasValue &quot;2&quot;^^xsd:positiveInteger .
+
+&lt;/pre&gt;</dc:description>
+        <rdfs:comment xml:lang="en">This class represents the validity for the ticket and offering.</rdfs:comment>
+        <rdfs:comment xml:lang="it">Questa classe rappresenta la validità di biglietti e di offerte.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://dati.gov.it/onto/potapit"/>
+    </owl:Class>
+    
+
+
+    <!-- http://dati.gov.it/onto/tiapit/TimeInterval -->
+
+    <owl:Class rdf:about="&tiapit;TimeInterval"/>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.5.1) http://owlapi.sourceforge.net -->
+

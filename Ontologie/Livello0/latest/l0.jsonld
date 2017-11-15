@@ -1,7 +1,6 @@
 {
   "@context": {
     "dc": "http://purl.org/dc/elements/1.1/",
-    "dct": "http://purl.org/dc/terms/",
     "dcterms": "http://purl.org/dc/terms/",
     "owl": "http://www.w3.org/2002/07/owl#",
     "prov": "http://www.w3.org/ns/prov#",
@@ -35,6 +34,39 @@
       ]
     },
     {
+      "@id": "http://dati.gov.it/onto/l0/name",
+      "@type": "owl:DatatypeProperty",
+      "rdfs:comment": [
+        {
+          "@language": "en",
+          "@value": "Any literal that represents the name of a thing."
+        },
+        {
+          "@language": "it",
+          "@value": "Un letterale che rappresenta il nome di una cosa."
+        }
+      ],
+      "rdfs:domain": {
+        "@id": "owl:Thing"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "http://dati.gov.it/onto/l0/"
+      },
+      "rdfs:label": [
+        {
+          "@language": "it",
+          "@value": "nome"
+        },
+        {
+          "@language": "en",
+          "@value": "name"
+        }
+      ],
+      "rdfs:range": {
+        "@id": "rdfs:Literal"
+      }
+    },
+    {
       "@id": "http://dati.gov.it/onto/l0/Agent",
       "@type": "owl:Class",
       "rdfs:comment": [
@@ -49,12 +81,12 @@
       ],
       "rdfs:label": [
         {
-          "@language": "it",
-          "@value": "Agente"
-        },
-        {
           "@language": "en",
           "@value": "Agent"
+        },
+        {
+          "@language": "it",
+          "@value": "Agente"
         }
       ],
       "rdfs:subClassOf": {
@@ -66,50 +98,80 @@
       "@type": "owl:Class",
       "rdfs:comment": [
         {
-          "@language": "it",
-          "@value": "Questa classe rappresenta un sistema. Esempi di sistema sono un sistema politico o economico."
-        },
-        {
           "@language": "en",
           "@value": "This class represents a system. Example of systems are politacal or economical systems."
+        },
+        {
+          "@language": "it",
+          "@value": "Questa classe rappresenta un sistema. Esempi di sistema sono un sistema politico o economico."
         }
       ],
       "rdfs:label": [
         {
-          "@language": "it",
-          "@value": "Sistema"
-        },
-        {
           "@language": "en",
           "@value": "System"
+        },
+        {
+          "@language": "it",
+          "@value": "Sistema"
         }
       ]
     },
     {
-      "@id": "http://dati.gov.it/onto/l0/Object",
+      "@id": "http://dati.gov.it/onto/l0/Activity",
       "@type": "owl:Class",
       "rdfs:comment": [
         {
-          "@language": "en",
-          "@value": "An object."
+          "@language": "it",
+          "@value": "La classe che rappresenta un'attività."
         },
         {
-          "@language": "it",
-          "@value": "Un oggetto."
+          "@language": "en",
+          "@value": "The class whose that models an activity."
         }
       ],
       "rdfs:label": [
         {
           "@language": "it",
-          "@value": "Oggetto"
+          "@value": "Attività"
         },
         {
           "@language": "en",
-          "@value": "Object"
+          "@value": "Activity"
+        }
+      ]
+    },
+    {
+      "@id": "http://dati.gov.it/onto/l0/hasDescription",
+      "@type": "owl:ObjectProperty",
+      "rdfs:comment": [
+        {
+          "@language": "en",
+          "@value": "Property that associates an entity with its description."
+        },
+        {
+          "@language": "it",
+          "@value": "Proprietà che associa un'entità alla sua descrizione."
         }
       ],
-      "rdfs:subClassOf": {
-        "@id": "http://dati.gov.it/onto/l0/Entity"
+      "rdfs:domain": {
+        "@id": "owl:Thing"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "http://dati.gov.it/onto/l0/"
+      },
+      "rdfs:label": [
+        {
+          "@language": "it",
+          "@value": "ha descrizione"
+        },
+        {
+          "@language": "en",
+          "@value": "has description"
+        }
+      ],
+      "rdfs:range": {
+        "@id": "http://dati.gov.it/onto/l0/Description"
       }
     },
     {
@@ -117,12 +179,12 @@
       "@type": "owl:Class",
       "rdfs:comment": [
         {
-          "@language": "it",
-          "@value": "Questa classe rappresenta una caratteristica."
-        },
-        {
           "@language": "en",
           "@value": "This class represent a characteristic."
+        },
+        {
+          "@language": "it",
+          "@value": "Questa classe rappresenta una caratteristica."
         }
       ],
       "rdfs:label": [
@@ -133,6 +195,30 @@
         {
           "@language": "en",
           "@value": "Characteristic"
+        }
+      ]
+    },
+    {
+      "@id": "http://dati.gov.it/onto/l0/controlledVocabulary",
+      "@type": "owl:AnnotationProperty",
+      "rdfs:comment": [
+        {
+          "@language": "it",
+          "@value": "Questa proprietà è utilizzata per collegare una proprietà (data type property) di un'ontologia al relativo vocabolario controllato dove si trovano le istanze della proprietà stessa"
+        },
+        {
+          "@language": "en",
+          "@value": "This property is used to link a property (data type property) of an ontology to the related controlled vocabulary where the individuals of the property are located"
+        }
+      ],
+      "rdfs:label": [
+        {
+          "@language": "en",
+          "@value": "vocabolario controllato"
+        },
+        {
+          "@language": "it",
+          "@value": "vocabolario controllato"
         }
       ]
     },
@@ -151,12 +237,12 @@
       ],
       "rdfs:label": [
         {
-          "@language": "en",
-          "@value": "Entity"
-        },
-        {
           "@language": "it",
           "@value": "Entità"
+        },
+        {
+          "@language": "en",
+          "@value": "Entity"
         }
       ]
     },
@@ -166,11 +252,11 @@
       "dc:creator": [
         {
           "@language": "en",
-          "@value": "Italian Digital Transformation Team"
+          "@value": "Agency for Digital Italy - AgID"
         },
         {
           "@language": "en",
-          "@value": "Agency for Digital Italy - AgID"
+          "@value": "Italian Digital Transformation Team"
         },
         {
           "@language": "en",
@@ -189,76 +275,34 @@
       },
       "rdfs:comment": [
         {
-          "@language": "it",
-          "@value": "Questa ontologia fornisce il livello fondazionale allo stack ontologico di dati.gov.it. Il nome L0 sta per Level-0 ontology poiché essa fornisce le fondamenta concettuali elementari all'intero stack. Questa ontologia è parzialmente ispirata da DOLCE zero (http://www.ontologydesignpatterns.org/ont/d0.owl)"
-        },
-        {
           "@language": "en",
           "@value": "This ontology provides the foundational level of the ontological stack of dati.gov.it. The name L0 stands for Level-0 ontology as it provides the basic conceptual foundations to the whole stack. This ontology is partially inspired by DOLCE 0 (http://www.ontologydesignpatterns.org/ont/d0.owl)"
+        },
+        {
+          "@language": "it",
+          "@value": "Questa ontologia fornisce il livello fondazionale allo stack ontologico di dati.gov.it. Il nome L0 sta per Level-0 ontology poiché essa fornisce le fondamenta concettuali elementari all'intero stack. Questa ontologia è parzialmente ispirata da DOLCE zero (http://www.ontologydesignpatterns.org/ont/d0.owl)"
         }
       ],
       "rdfs:label": [
-        {
-          "@language": "it",
-          "@value": "Ontologia Level-0"
-        },
         {
           "@language": "en",
           "@value": "Level-0 ontology"
+        },
+        {
+          "@language": "it",
+          "@value": "Ontologia Level-0"
         }
       ]
     },
     {
-      "@id": "prov:wasInfluencedBy",
-      "@type": "owl:AnnotationProperty"
-    },
-    {
-      "@id": "http://dati.gov.it/onto/l0/controlledVocabulary",
-      "@type": "owl:AnnotationProperty" ,
-      "rdfs:comment": [
-        {
-          "@language": "en",
-          "@value": "This property is used to link a property (data type property) of an ontology to the related controlled vocabulary where the individuals of the property are located"
-        },
-        {
-          "@language": "it",
-          "@value": "Questa proprietà è utilizzata per collegare una proprietà (data type property) di un'ontologia al relativo vocabolario controllato dove si trovano le istanze della proprietà stessa"
-        }
-      ],
-      "rdfs:label": [
-        {
-          "@language": "it",
-          "@value": "vocabolario controllato"
-        },
-        {
-          "@language": "en",
-          "@value": "controlled vocabulary"
-        }
-      ]
-    },
-    {
-      "@id": "http://dati.gov.it/onto/l0/Activity",
-      "@type": "owl:Class",
-      "rdfs:comment": [
-        {
-          "@language": "en",
-          "@value": "The class whose that models an activity."
-        },
-        {
-          "@language": "it",
-          "@value": "La classe che rappresenta un'attività."
-        }
-      ],
-      "rdfs:label": [
-        {
-          "@language": "it",
-          "@value": "Attività"
-        },
-        {
-          "@language": "en",
-          "@value": "Activity"
-        }
-      ]
+      "@id": "_:N3345d48c38274dc8acc3d8f48b09ecb3",
+      "@type": "owl:Restriction",
+      "owl:onProperty": {
+        "@id": "http://dati.gov.it/onto/l0/description"
+      },
+      "owl:someValuesFrom": {
+        "@id": "rdfs:Literal"
+      }
     },
     {
       "@id": "http://dati.gov.it/onto/l0/Collection",
@@ -275,14 +319,116 @@
       ],
       "rdfs:label": [
         {
+          "@language": "en",
+          "@value": "Collection"
+        },
+        {
           "@language": "it",
           "@value": "Collezione"
+        }
+      ]
+    },
+    {
+      "@id": "http://dati.gov.it/onto/l0/Description",
+      "@type": "owl:Class",
+      "rdfs:comment": [
+        {
+          "@language": "en",
+          "@value": "A Description is a SocialObject that represents a conceptualization. \nIt can be thought also as a 'descriptive context' that uses or defines concepts in order to create a view on a 'relational context' (cf. Situation) out of a set of data or observations. \nFor example, a Plan is a Description of some actions to be executed by agents in a certain way, with certain parameters; a Diagnosis is a Description that provides an interpretation for a set of observed entities, etc."
+        },
+        {
+          "@language": "it",
+          "@value": "Una descrizione è un oggetto sociale che rappresenta una concettualizzazione.\nEsso può essere pensato come un 'contesto descrittivo' che usa o definisce concetti al fine di creare una vista su un 'contesto relazionale' (Situazione) su un insieme di dati o osservazioni.\nPer esempio, un piano è una descrizione di qualche azione da eseguire da degli agenti in un certo modo, con determinati parametri; una diagnosi è una descrizione che fornisce un interpretazione di un insieme di osservazioni cliniche, ec..."
+        }
+      ],
+      "rdfs:isDefinedBy": {
+        "@id": "http://dati.gov.it/onto/l0/"
+      },
+      "rdfs:label": [
+        {
+          "@language": "en",
+          "@value": "Description"
+        },
+        {
+          "@language": "it",
+          "@value": "Descrizione"
+        }
+      ],
+      "rdfs:subClassOf": [
+        {
+          "@id": "http://dati.gov.it/onto/l0/Object"
+        },
+        {
+          "@id": "_:N3345d48c38274dc8acc3d8f48b09ecb3"
+        }
+      ]
+    },
+    {
+      "@id": "http://dati.gov.it/onto/l0/Object",
+      "@type": "owl:Class",
+      "rdfs:comment": [
+        {
+          "@language": "en",
+          "@value": "An object."
+        },
+        {
+          "@language": "it",
+          "@value": "Un oggetto."
+        }
+      ],
+      "rdfs:label": [
+        {
+          "@language": "en",
+          "@value": "Object"
+        },
+        {
+          "@language": "it",
+          "@value": "Oggetto"
+        }
+      ],
+      "rdfs:subClassOf": {
+        "@id": "http://dati.gov.it/onto/l0/Entity"
+      }
+    },
+    {
+      "@id": "http://dati.gov.it/onto/l0/isDescriptionOf",
+      "@type": "owl:ObjectProperty",
+      "owl:inverseOf": {
+        "@id": "http://dati.gov.it/onto/l0/hasDescription"
+      },
+      "rdfs:comment": [
+        {
+          "@language": "it",
+          "@value": "Proprietà inversa di 'ha descrizione'."
         },
         {
           "@language": "en",
-          "@value": "Collection"
+          "@value": "Inverse property of 'has description'."
         }
-      ]
+      ],
+      "rdfs:domain": {
+        "@id": "http://dati.gov.it/onto/l0/Description"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "http://dati.gov.it/onto/l0/"
+      },
+      "rdfs:label": [
+        {
+          "@language": "en",
+          "@value": "is description of"
+        },
+        {
+          "@language": "it",
+          "@value": "è descrizione di"
+        }
+      ],
+      "rdfs:range": {
+        "@id": "owl:Thing"
+      }
+    },
+    {
+      "@id": "prov:wasInfluencedBy",
+      "@type": "owl:AnnotationProperty"
     },
     {
       "@id": "http://dati.gov.it/onto/l0/Location",
@@ -299,12 +445,12 @@
       ],
       "rdfs:label": [
         {
-          "@language": "it",
-          "@value": "Luogo"
-        },
-        {
           "@language": "en",
           "@value": "Location"
+        },
+        {
+          "@language": "it",
+          "@value": "Luogo"
         }
       ],
       "rdfs:subClassOf": {
@@ -316,24 +462,57 @@
       "@type": "owl:Class",
       "rdfs:comment": [
         {
-          "@language": "en",
-          "@value": "Representation of the concept of event."
-        },
-        {
           "@language": "it",
           "@value": "Rappresentazione del concetto di evento."
+        },
+        {
+          "@language": "en",
+          "@value": "Representation of the concept of event."
         }
       ],
       "rdfs:label": [
         {
+          "@language": "it",
+          "@value": "Evento"
+        },
+        {
           "@language": "en",
           "@value": "Event"
+        }
+      ]
+    },
+    {
+      "@id": "http://dati.gov.it/onto/l0/description",
+      "@type": "owl:DatatypeProperty",
+      "rdfs:comment": [
+        {
+          "@language": "it",
+          "@value": "Datatype property che associa un valore letterale ad un oggetto che rappresenta una descrizione."
+        },
+        {
+          "@language": "en",
+          "@value": "Datatype property that associates a literal value with an individual of the class Description."
+        }
+      ],
+      "rdfs:domain": {
+        "@id": "http://dati.gov.it/onto/l0/Description"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "http://dati.gov.it/onto/l0/"
+      },
+      "rdfs:label": [
+        {
+          "@language": "en",
+          "@value": "description"
         },
         {
           "@language": "it",
-          "@value": "Evento"
+          "@value": "descrizione"
         }
-      ]
+      ],
+      "rdfs:range": {
+        "@id": "rdfs:Literal"
+      }
     }
   ]
 }

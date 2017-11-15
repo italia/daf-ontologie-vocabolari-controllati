@@ -24,17 +24,20 @@
      xmlns:prov="http://www.w3.org/ns/prov#"
      xmlns:dc="http://purl.org/dc/elements/1.1/">
     <owl:Ontology rdf:about="http://dati.gov.it/onto/smapit/">
+        <rdfs:label xml:lang="en">Social Media ontology</rdfs:label>
+        <rdfs:label xml:lang="it">Ontologia per i social media</rdfs:label>
         <dct:modified>2017-11-13</dct:modified>
         <dct:issued>2017-09-29</dct:issued>
         <dc:creator xml:lang="en">Agency for Digital Italy - AgID</dc:creator>
         <dc:creator xml:lang="en">Institute of Cognitive Sciences and Technologies of the Italian Research Council (CNR) - Semantic Technology Laboratory (STLab)</dc:creator>
         <dc:creator xml:lang="en">Italian Digital Transformation Team</dc:creator>
+        <rdfs:comment xml:lang="en">The ontology for Social Media. This ontology allows to represents social networks, account, email addresses, logos, etc.</rdfs:comment>
+        <owl:versionInfo xml:lang="en">Version 0.2 - added online contact point</owl:versionInfo>
         <dc:creator xml:lang="it">Agenzia per l&apos;Italia Digitale - AgID</dc:creator>
         <dc:creator xml:lang="it">Istituto di Scienze e Tecnologie della Cognizione del CNR - Laboratorio di Tecnologie Semantiche (STLab)</dc:creator>
         <rdfs:comment xml:lang="it">L&apos;ontologia per i social media e i punti di contatto online. Questa ontologia permette di rappresentare social network, account, indirizzi email, loghi, ecc...</rdfs:comment>
         <dc:creator xml:lang="it">Team per la Trasformazione Digitale</dc:creator>
         <owl:versionInfo xml:lang="it">Version 0.3 - aggiunta proprietà per posta certificata</owl:versionInfo>
-        <owl:imports rdf:resource="http://dati.gov.it/onto/l0/"/>
         <prov:wasDerivedFrom rdf:resource="http://dati.gov.it/onto/smapit/0.1/"/>
         <owl:versionIRI rdf:resource="http://dati.gov.it/onto/smapit/0.3/"/>
     </owl:Ontology>
@@ -614,6 +617,12 @@
         <rdfs:subClassOf rdf:resource="&l0;Object"/>
         <rdfs:subClassOf>
             <owl:Restriction>
+                <owl:onProperty rdf:resource="http://dati.gov.it/onto/smapit/hasUserAccount"/>
+                <owl:allValuesFrom rdf:resource="http://dati.gov.it/onto/smapit/UserAccount"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
                 <owl:onProperty rdf:resource="http://dati.gov.it/onto/smapit/hasTelephone"/>
                 <owl:allValuesFrom rdf:resource="http://dati.gov.it/onto/smapit/Telephone"/>
             </owl:Restriction>
@@ -622,12 +631,6 @@
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://dati.gov.it/onto/smapit/hasWebSite"/>
                 <owl:allValuesFrom rdf:resource="http://dati.gov.it/onto/smapit/WebSite"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://dati.gov.it/onto/smapit/hasUserAccount"/>
-                <owl:allValuesFrom rdf:resource="http://dati.gov.it/onto/smapit/UserAccount"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -654,15 +657,15 @@
         <rdfs:subClassOf rdf:resource="&l0;Object"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://dati.gov.it/onto/smapit/postContent"/>
-                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+                <owl:onProperty rdf:resource="http://dati.gov.it/onto/smapit/hasCreator"/>
+                <owl:onClass rdf:resource="http://dati.gov.it/onto/smapit/UserAccount"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://dati.gov.it/onto/smapit/hasCreator"/>
-                <owl:onClass rdf:resource="http://dati.gov.it/onto/smapit/UserAccount"/>
-                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onProperty rdf:resource="http://dati.gov.it/onto/smapit/postContent"/>
+                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:comment xml:lang="en">A post on a social media.</rdfs:comment>
@@ -708,15 +711,15 @@
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://dati.gov.it/onto/smapit/isTelephoneOf"/>
-                <owl:onClass rdf:resource="http://dati.gov.it/onto/smapit/OnlineContactPoint"/>
-                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onProperty rdf:resource="http://dati.gov.it/onto/smapit/telephoneNumber"/>
+                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://dati.gov.it/onto/smapit/telephoneNumber"/>
-                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+                <owl:onProperty rdf:resource="http://dati.gov.it/onto/smapit/isTelephoneOf"/>
+                <owl:onClass rdf:resource="http://dati.gov.it/onto/smapit/OnlineContactPoint"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:comment xml:lang="en">This class represents the Telephone that is characterized by a type (Voice, Fax) and a telephone number.</rdfs:comment>
@@ -757,6 +760,13 @@
         <rdfs:subClassOf rdf:resource="&l0;Object"/>
         <rdfs:subClassOf>
             <owl:Restriction>
+                <owl:onProperty rdf:resource="http://dati.gov.it/onto/smapit/isUserAccountOf"/>
+                <owl:onClass rdf:resource="http://dati.gov.it/onto/smapit/OnlineContactPoint"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
                 <owl:onProperty rdf:resource="http://dati.gov.it/onto/smapit/isAccountIssuedBy"/>
                 <owl:onClass rdf:resource="http://dati.gov.it/onto/smapit/SocialMedia"/>
                 <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
@@ -767,13 +777,6 @@
                 <owl:onProperty rdf:resource="http://dati.gov.it/onto/smapit/userAccountName"/>
                 <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
                 <owl:onDataRange rdf:resource="&xsd;string"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://dati.gov.it/onto/smapit/isUserAccountOf"/>
-                <owl:onClass rdf:resource="http://dati.gov.it/onto/smapit/OnlineContactPoint"/>
-                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:comment xml:lang="en">This class represents a user account, such as the account owned by a person on a social network.</rdfs:comment>
@@ -827,23 +830,6 @@
     <!-- http://dati.gov.it/onto/smapit/TraditionalEmail -->
 
     <owl:NamedIndividual rdf:about="http://dati.gov.it/onto/smapit/TraditionalEmail"/>
-    
-
-
-    <!-- 
-    ///////////////////////////////////////////////////////////////////////////////////////
-    //
-    // Annotations
-    //
-    ///////////////////////////////////////////////////////////////////////////////////////
-     -->
-
-    <rdf:Description rdf:about="http://dati.gov.it/onto/smapit/">
-        <rdfs:label xml:lang="en">Social Media ontology</rdfs:label>
-        <rdfs:label xml:lang="it">Ontologia per i social media</rdfs:label>
-        <rdfs:comment xml:lang="en">The ontology for Social Media. This ontology allows to represents social networks, account, email addresses, logos, etc.</rdfs:comment>
-        <owl:versionInfo xml:lang="en">Version 0.2 - added online contact point</owl:versionInfo>
-    </rdf:Description>
 </rdf:RDF>
 
 

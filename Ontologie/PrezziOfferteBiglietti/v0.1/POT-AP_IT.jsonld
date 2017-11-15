@@ -1,0 +1,771 @@
+{
+  "@context": {
+    "dc": "http://purl.org/dc/elements/1.1/",
+    "l0": "http://dati.gov.it/onto/l0/",
+    "muapit": "http://dati.gov.it/onto/muapit/",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "tiapit": "http://dati.gov.it/onto/tiapit/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#"
+  },
+  "@graph": [
+    {
+      "@id": "l0:Description",
+      "@type": "owl:Class"
+    },
+    {
+      "@id": "_:N88cc1c79decc4bcba0d40c01b2c1fa8a",
+      "@type": "owl:Class",
+      "owl:unionOf": {
+        "@list": [
+          {
+            "@id": "http://dati.gov.it/onto/potapit/Offer"
+          },
+          {
+            "@id": "http://dati.gov.it/onto/potapit/Ticket"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "http://dati.gov.it/onto/potapit/PriceSpecification",
+      "@type": "owl:Class",
+      "dc:description": [
+        {
+          "@id": "http://dati.beniculturali.it/cis/img/priceSpecification.png"
+        },
+        {
+          "@language": "en",
+          "@value": "A price specification provides the information about the cost of an offer for entering a Cultural Institute or Site.\n\nIt is associated to a currency (e.g., Euro) and a currency value (i.e., a quantity, e.g., 5).\n\nThe following turtle provides an example about the price specification of the base offer for entering the Biblioteca Nazionale Centrale di Roma.\n\n<pre>\n\npriceSpecification:Under18\n      a       cis:PriceSpecification ;\n      rdfs:label \"price specification under 18 \"@en , \"costo under 18 \"@it ;\n      cis:hasCurrency cis:Euro ;\n      cis:hasCurrencyValue\n              \"5\"^^xsd:float .\n\n\noffer:Biblioteca_Nazionale_Centrale_base_offer\n      a       cis:Offer ;\n      rdfs:label \"offerta base \"@it , \"base offer \"@en ;\n      cis:hasEligibleUser userType:Under18 ;\n      cis:hasPriceSpecification\n              priceSpecification:Under18 ;\n      cis:hasValidity validity:Biblioteca_nazionale_centrale_validity ;\n      cis:includes ticket:Biblioteca_nazionale_centrale_ticket_1 .\n\n\n</pre>"
+        }
+      ],
+      "rdfs:comment": [
+        {
+          "@language": "it",
+          "@value": "Rappresenta la specifica del prezzo del biglietto."
+        },
+        {
+          "@language": "en",
+          "@value": "It represents the price specification of the ticket"
+        }
+      ],
+      "rdfs:isDefinedBy": {
+        "@id": "http://dati.gov.it/onto/potapit"
+      },
+      "rdfs:label": [
+        {
+          "@language": "en",
+          "@value": "Price Specification"
+        },
+        {
+          "@language": "it",
+          "@value": "Prezzo"
+        }
+      ],
+      "rdfs:subClassOf": [
+        {
+          "@id": "_:Nd3e8588e480c4025bf544279d032f070"
+        },
+        {
+          "@id": "l0:Characteristic"
+        },
+        {
+          "@id": "_:N027a046957a04df8a506efaaf0d339d5"
+        }
+      ]
+    },
+    {
+      "@id": "_:Nfa2107d6634b45f4bd6d59b5b8f6f034",
+      "@type": "owl:Restriction",
+      "owl:allValuesFrom": {
+        "@id": "http://dati.gov.it/onto/potapit/Validity"
+      },
+      "owl:onProperty": {
+        "@id": "http://dati.gov.it/onto/potapit/hasValidity"
+      }
+    },
+    {
+      "@id": "http://dati.gov.it/onto/potapit",
+      "@type": "owl:Ontology",
+      "owl:imports": [
+        {
+          "@id": "l0:"
+        },
+        {
+          "@id": "tiapit:0.3"
+        }
+      ],
+      "owl:versionIRI": {
+        "@id": "http://dati.gov.it/onto/potapit/0.1"
+      }
+    },
+    {
+      "@id": "_:N0a78b2bd7a314f109c0cd1d5c2ad3415",
+      "@type": "owl:Restriction",
+      "owl:allValuesFrom": {
+        "@id": "http://dati.gov.it/onto/potapit/Validity"
+      },
+      "owl:onProperty": {
+        "@id": "http://dati.gov.it/onto/potapit/hasValidity"
+      }
+    },
+    {
+      "@id": "_:N222521d981d34324a19ce49382a04fb2",
+      "@type": "owl:Restriction",
+      "owl:allValuesFrom": {
+        "@id": "rdfs:Literal"
+      },
+      "owl:onProperty": {
+        "@id": "l0:description"
+      }
+    },
+    {
+      "@id": "l0:Event",
+      "@type": "owl:Class"
+    },
+    {
+      "@id": "_:N027a046957a04df8a506efaaf0d339d5",
+      "@type": "owl:Restriction",
+      "owl:onProperty": {
+        "@id": "http://dati.gov.it/onto/potapit/hasCurrencyValue"
+      },
+      "owl:someValuesFrom": {
+        "@id": "xsd:float"
+      }
+    },
+    {
+      "@id": "_:Nfea1c49ada904491b5dddeded777c20b",
+      "@type": "owl:Restriction",
+      "owl:allValuesFrom": {
+        "@id": "rdfs:Literal"
+      },
+      "owl:onProperty": {
+        "@id": "l0:name"
+      }
+    },
+    {
+      "@id": "http://dati.gov.it/onto/potapit/hasEligibleUser",
+      "@type": "owl:ObjectProperty",
+      "rdfs:comment": [
+        {
+          "@language": "it",
+          "@value": "Proprietà che consente di associare un'offerta per l'accesso a un evento o un luogo ad una tipologia di utente"
+        },
+        {
+          "@language": "en",
+          "@value": "Property used to associate the an offert for the access to an event or a locationsite with the type of user"
+        }
+      ],
+      "rdfs:domain": {
+        "@id": "http://dati.gov.it/onto/potapit/Offer"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "http://dati.gov.it/onto/potapit"
+      },
+      "rdfs:label": [
+        {
+          "@language": "it",
+          "@value": "ha utente eligibile"
+        },
+        {
+          "@language": "en",
+          "@value": "has eligible user"
+        }
+      ],
+      "rdfs:range": {
+        "@id": "http://dati.gov.it/onto/potapit/UserType"
+      }
+    },
+    {
+      "@id": "http://dati.gov.it/onto/potapit/forAccessTo",
+      "@type": "owl:ObjectProperty",
+      "rdfs:comment": [
+        {
+          "@language": "en",
+          "@value": "for access to"
+        },
+        {
+          "@language": "en",
+          "@value": "Property used to associate a ticket with an event or a cultural institute or site"
+        },
+        {
+          "@language": "it",
+          "@value": "Proprietà che consente di associare un biglietto a un evento o a un istituto e luogo della cultura."
+        }
+      ],
+      "rdfs:domain": {
+        "@id": "http://dati.gov.it/onto/potapit/Ticket"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "http://dati.gov.it/onto/potapit"
+      },
+      "rdfs:label": {
+        "@language": "it",
+        "@value": "per l'accesso a"
+      },
+      "rdfs:range": {
+        "@id": "_:Nc126911832a5434dba79e53fe0b61ac2"
+      },
+      "rdfs:subPropertyOf": {
+        "@id": "owl:topObjectProperty"
+      }
+    },
+    {
+      "@id": "tiapit:hasDuration",
+      "@type": "owl:ObjectProperty"
+    },
+    {
+      "@id": "_:Nc126911832a5434dba79e53fe0b61ac2",
+      "@type": "owl:Class",
+      "owl:unionOf": {
+        "@list": [
+          {
+            "@id": "l0:Event"
+          },
+          {
+            "@id": "l0:Location"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "http://dati.gov.it/onto/potapit/UserType",
+      "@type": "owl:Class",
+      "dc:description": {
+        "@language": "en",
+        "@value": "An example of usage of the class cis:UserType is the following:\n\n<pre>\nuserType:Under18 \n   a cis:UserType ; \n   rdfs:label \"Under 18\" ; \n   cis:name \"Under 18\"; ;\n   cis:description \"People under 18 years old\";@en;\n   cis:description \"Persone con età inferiore ai 18 anni\"@it  .\n\n</pre>"
+      },
+      "rdfs:comment": [
+        {
+          "@language": "en",
+          "@value": "It represents the identified type of users related to the tickets used to access an event or location. Examples include: people over 25 years old, people over 65 years old,  children, etc."
+        },
+        {
+          "@language": "it",
+          "@value": "Rappresenta la tipologia di utenti relativa ai biglietti per accedere a un evento o a un luogo. Esempi includono:  \"maggiorenni over 25\", oppure \"over 65\", \"bambini\", ecc."
+        }
+      ],
+      "rdfs:isDefinedBy": {
+        "@id": "http://dati.gov.it/onto/potapit"
+      },
+      "rdfs:label": [
+        {
+          "@language": "it",
+          "@value": "Tipo di utente"
+        },
+        {
+          "@language": "en",
+          "@value": "User Type"
+        }
+      ],
+      "rdfs:subClassOf": [
+        {
+          "@id": "_:Nfea1c49ada904491b5dddeded777c20b"
+        },
+        {
+          "@id": "l0:Characteristic"
+        },
+        {
+          "@id": "_:N222521d981d34324a19ce49382a04fb2"
+        }
+      ]
+    },
+    {
+      "@id": "http://dati.gov.it/onto/potapit/hasPriceSpecification",
+      "@type": "owl:ObjectProperty",
+      "rdfs:comment": [
+        {
+          "@language": "it",
+          "@value": "Questa proprietà è utliizzata per collegare l'offerta per i biglietti a una specifica del prezzo."
+        },
+        {
+          "@language": "en",
+          "@value": "This property is used to link the offer for a ticket to its price specification."
+        }
+      ],
+      "rdfs:domain": {
+        "@id": "http://dati.gov.it/onto/potapit/Offer"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "http://dati.gov.it/onto/potapit"
+      },
+      "rdfs:label": [
+        {
+          "@language": "it",
+          "@value": "ha specifica di prezzo"
+        },
+        {
+          "@language": "en",
+          "@value": "has price specification"
+        }
+      ],
+      "rdfs:range": {
+        "@id": "http://dati.gov.it/onto/potapit/PriceSpecification"
+      }
+    },
+    {
+      "@id": "http://dati.gov.it/onto/potapit/hasCurrency",
+      "@type": "owl:ObjectProperty",
+      "rdfs:comment": [
+        {
+          "@language": "it",
+          "@value": "Questa proprietà collega la specifica del prezzo del ticket per un evento o istituto e luogo della cultura con la classe currency."
+        },
+        {
+          "@language": "en",
+          "@value": "This property is used to connected the Price specification to Currency"
+        }
+      ],
+      "rdfs:domain": {
+        "@id": "http://dati.gov.it/onto/potapit/PriceSpecification"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "http://dati.gov.it/onto/potapit"
+      },
+      "rdfs:label": [
+        {
+          "@language": "it",
+          "@value": "ha valuta"
+        },
+        {
+          "@language": "en",
+          "@value": "has currency"
+        }
+      ],
+      "rdfs:range": {
+        "@id": "http://dati.gov.it/onto/potapit/Currency"
+      }
+    },
+    {
+      "@id": "http://dati.gov.it/onto/potapit/Currency",
+      "@type": "owl:Class",
+      "dc:description": {
+        "@language": "en",
+        "@value": "Individuals of the this class represent currency instances (e.g., Euro, US Dollar, Pound, Australian Dollar, etc.); they are always associated with individuals of the class 'Price Specification'.\n\nThis allows modelling Price Specification as a a quantified value, where the value is expressed as an integer and it is quantified in terms of a currency\n\nAn example is the following:\n\n<pre>\n\npriceSpecification:Under18>\n      a       cis:PriceSpecification ;\n      rdfs:label \"price specification under 18 \"@en , \"costo under 18 \"@it ;\n      cis:hasCurrency cis:Euro ;\n      cis:hasCurrencyValue\n              \"5\"^^xsd:float .\n\ncis:Euro a cis:Currency ;\n      rdfs:label \"Euro\"@en, \"Euro\"@it .\n\n</pre>"
+      },
+      "rdfs:comment": [
+        {
+          "@language": "en",
+          "@value": "This class represents a currency. In our domain currency is typically associated with Price Specification for tickets, and assumes specific values (e.g., Euro)."
+        },
+        {
+          "@language": "it",
+          "@value": "Questa classe rappresenta la valuta per i biglietti di ingresso agli eventi o luoghi della cultura. Nel nostro dominio è associata alla descrizione del prezzo per i biglietti. Assume valori specifici (e.g., Euro)."
+        }
+      ],
+      "rdfs:isDefinedBy": {
+        "@id": "http://dati.gov.it/onto/potapit"
+      },
+      "rdfs:label": [
+        {
+          "@language": "it",
+          "@value": "Valuta"
+        },
+        {
+          "@language": "en",
+          "@value": "Currency"
+        }
+      ],
+      "rdfs:subClassOf": {
+        "@id": "l0:Object"
+      }
+    },
+    {
+      "@id": "tiapit:TimeInterval",
+      "@type": "owl:Class"
+    },
+    {
+      "@id": "http://dati.gov.it/onto/potapit/hasTicket",
+      "@type": "owl:ObjectProperty",
+      "owl:inverseOf": {
+        "@id": "http://dati.gov.it/onto/potapit/forAccessTo"
+      },
+      "rdfs:comment": [
+        {
+          "@language": "it",
+          "@value": "Proprietà che associa una cosa ad un biglietto."
+        },
+        {
+          "@language": "en",
+          "@value": "Property that associates a thing with a ticket."
+        }
+      ],
+      "rdfs:domain": {
+        "@id": "owl:Thing"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "http://dati.gov.it/onto/potapit"
+      },
+      "rdfs:label": [
+        {
+          "@language": "en",
+          "@value": "has ticket"
+        },
+        {
+          "@language": "it",
+          "@value": "ha biglietto"
+        }
+      ],
+      "rdfs:range": {
+        "@id": "http://dati.gov.it/onto/potapit/Ticket"
+      }
+    },
+    {
+      "@id": "http://dati.gov.it/onto/potapit/Offer",
+      "@type": "owl:Class",
+      "dc:description": {
+        "@language": "en",
+        "@value": "Any fare is expressed within the ontology by using instances of the class Offer.\n\nIt is possible to specify: \n * the type of user to whom the offer is applicable  (cf. object property cis:hasEligibleUser);\n * the information about the price (cf. object property hasPriceSpecification);\n * the information about the temporal validity of the offer (cf. object property hasValidity);\n * the association with a ticket (cf. object property includes).\n\nThe following turtle example exemplifies the base offer of the Biblioteca Nazionale Centrale di Roma.\n\n<pre>\n\noffer:Biblioteca_Nazionale_Centrale_base_offer\n      a       cis:Offer ;\n      rdfs:label \"offerta base \"@it , \"base offer \"@en ;\n      cis:hasEligibleUser userType:Under18 ;\n      cis:hasPriceSpecification\n              priceSpecification:Under18 ;\n      cis:hasValidity validity:Biblioteca_nazionale_centrale_validity ;\n      cis:includes ticket:Biblioteca_nazionale_centrale_ticket_1 .\n\n</pre>"
+      },
+      "rdfs:comment": [
+        {
+          "@language": "en",
+          "@value": "It represents an offer (reduction  for specific types of users or base price) related to the entrance ticket for the Cultural Institute or Site or for the Event."
+        },
+        {
+          "@language": "it",
+          "@value": "Concetto utilizzato per rappresentare  offerte (riduzioni per specifiche categorie di utenti o importo intero) relative ai biglietti d'ingresso per un istituto e luogo della cultura o per un evento."
+        }
+      ],
+      "rdfs:isDefinedBy": {
+        "@id": "http://dati.gov.it/onto/potapit"
+      },
+      "rdfs:label": [
+        {
+          "@language": "en",
+          "@value": "Offer"
+        },
+        {
+          "@language": "it",
+          "@value": "Offerta"
+        }
+      ],
+      "rdfs:subClassOf": [
+        {
+          "@id": "_:Na0672a2e8d204574b8ad458deb6819cd"
+        },
+        {
+          "@id": "_:N0a78b2bd7a314f109c0cd1d5c2ad3415"
+        },
+        {
+          "@id": "l0:Description"
+        }
+      ]
+    },
+    {
+      "@id": "http://dati.gov.it/onto/potapit/offers",
+      "@type": "owl:ObjectProperty",
+      "rdfs:comment": [
+        {
+          "@language": "en",
+          "@value": "Property used to associate an agent with an offer for accessing an event or a cultural institute or site"
+        },
+        {
+          "@language": "it",
+          "@value": "Proprietà che consente di associare un agente all'offerta per l'accesso a un evento o a un luogo della cultura."
+        }
+      ],
+      "rdfs:domain": {
+        "@id": "l0:Agent"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "http://dati.gov.it/onto/potapit"
+      },
+      "rdfs:label": [
+        {
+          "@language": "it",
+          "@value": "offre"
+        },
+        {
+          "@language": "en",
+          "@value": "offers"
+        }
+      ],
+      "rdfs:range": {
+        "@id": "http://dati.gov.it/onto/potapit/Offer"
+      },
+      "rdfs:subPropertyOf": {
+        "@id": "owl:topObjectProperty"
+      }
+    },
+    {
+      "@id": "l0:Characteristic",
+      "@type": "owl:Class"
+    },
+    {
+      "@id": "_:N9524eb773c1d461494aec525d02452fe",
+      "@type": "owl:Class",
+      "owl:unionOf": {
+        "@list": [
+          {
+            "@id": "muapit:Value"
+          },
+          {
+            "@id": "tiapit:TimeInterval"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "muapit:Value",
+      "@type": "owl:Class"
+    },
+    {
+      "@id": "http://dati.gov.it/onto/potapit/hasValidity",
+      "@type": "owl:ObjectProperty",
+      "rdfs:comment": [
+        {
+          "@language": "en",
+          "@value": "Property used to specify the validity of an offer or ticket."
+        },
+        {
+          "@language": "it",
+          "@value": "Proprietà utilizzata per specificare una validità di un offerta o di un biglietto."
+        }
+      ],
+      "rdfs:domain": {
+        "@id": "_:N88cc1c79decc4bcba0d40c01b2c1fa8a"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "http://dati.gov.it/onto/potapit"
+      },
+      "rdfs:label": [
+        {
+          "@language": "it",
+          "@value": "ha validità"
+        },
+        {
+          "@language": "en",
+          "@value": "has validity"
+        }
+      ],
+      "rdfs:range": {
+        "@id": "http://dati.gov.it/onto/potapit/Validity"
+      }
+    },
+    {
+      "@id": "_:N227026887dff48f6bd0bac4a59212177",
+      "@type": "owl:Restriction",
+      "owl:allValuesFrom": {
+        "@id": "_:N9524eb773c1d461494aec525d02452fe"
+      },
+      "owl:onProperty": {
+        "@id": "tiapit:hasDuration"
+      }
+    },
+    {
+      "@id": "http://dati.gov.it/onto/potapit/Card",
+      "@type": "owl:Class",
+      "dc:description": {
+        "@language": "en",
+        "@value": "Un esempio di utilizzo della classe cis:Card  è il seguente:\n\n<pre>\n\ncard:Parco_archeologico_di_Liternum_Card\n    a cis:Card ;\n    rdfs:label \"Ingresso per due giorni al Parco archeologico di Liternum\"@it ; \n    rdfs:label \"Two-day access to Parco archeologico di Liternum\"@en ;\n    cis:name \"Ingresso per due giorni al Parco archeologico di Liternum\"@it ; \n    cis:name \"Two-day access to the Parco archeologico di Liternum\"@en ;\n    cis:hasValidity Parco_archeologico_di_Liternum_Card_Validity ;\n    cis:forAccessTo cissite:Parco_archeologico_di_Liternum ;\n    cis:description \"With this card a tourist can visit Parco archeologico di Liternum for 2 consecutive days\"@en ; \n    cis:description \"La card permette l'accesso al Parco archeologico di Liternum per 2 giorni consecutivi\"@it .\n\nvalidity:Parco_archeologico_di_Liternum_Card_Validity\n    a cis:Validity ;\n    rdfs:label \"Two-day validity\"@en ;\n    rdfs:label \"Validità per due giorni\"@it ;\n    cis:hasDuration Parco_archeologico_di_Liternum_Card_Validity_Duration .\n \nquantitativevalue:Parco_archeologico_di_Liternum_Card_Validity_Duration\n    a cis:QuantitativeValue ;\n    rdfs:label \"2\" ;\n    cis:hasMeasurementUnit cis:Day ;\n    cis:hasValue \"2\"^^xsd:positiveInteger .\n\ncis:Day a cis:MeasurementUnit .\n\n</pre>"
+      },
+      "rdfs:comment": [
+        {
+          "@language": "it",
+          "@value": "Questa classe rappresenta una carta d'ingresso che dà diritto a più ingressi in più luoghi della cultura. E' sottoclasse di ticket."
+        },
+        {
+          "@language": "en",
+          "@value": "This class represents a card valid for the entrance to more than one Cultural Institute or Site. It is a subclass of Ticket."
+        }
+      ],
+      "rdfs:isDefinedBy": {
+        "@id": "http://dati.gov.it/onto/potapit"
+      },
+      "rdfs:label": [
+        {
+          "@language": "en",
+          "@value": "Card"
+        },
+        {
+          "@language": "it",
+          "@value": "Carta d'ingresso"
+        }
+      ],
+      "rdfs:subClassOf": {
+        "@id": "http://dati.gov.it/onto/potapit/Ticket"
+      }
+    },
+    {
+      "@id": "http://dati.gov.it/onto/potapit/includes",
+      "@type": "owl:ObjectProperty",
+      "rdfs:comment": [
+        {
+          "@language": "it",
+          "@value": "Proprietà utilizzata per associare un'offerta al relativo biglietto."
+        },
+        {
+          "@language": "en",
+          "@value": "Property used to associate an offer with the relative ticket"
+        }
+      ],
+      "rdfs:domain": {
+        "@id": "http://dati.gov.it/onto/potapit/Offer"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "http://dati.gov.it/onto/potapit"
+      },
+      "rdfs:label": [
+        {
+          "@language": "en",
+          "@value": "includes"
+        },
+        {
+          "@language": "it",
+          "@value": "include"
+        }
+      ],
+      "rdfs:range": {
+        "@id": "http://dati.gov.it/onto/potapit/Ticket"
+      },
+      "rdfs:subPropertyOf": {
+        "@id": "owl:topObjectProperty"
+      }
+    },
+    {
+      "@id": "l0:Location",
+      "@type": "owl:Class"
+    },
+    {
+      "@id": "http://dati.gov.it/onto/potapit/Ticket",
+      "@type": "owl:Class",
+      "dc:description": {
+        "@language": "en",
+        "@value": "An example of usage of the class cis:Ticket is the following:\n\n<pre>\n\noffer:Biblioteca_Nazionale_Centrale_base_offer\n      a       cis:Offer ;\n      rdfs:label \"offerta base \"@it , \"base offer\"@en ;\n      cis:hasEligibleUser userType:Under18 ;\n      cis:hasPriceSpecification priceSpecification:Under18 ;\n      cis:hasValidity validity:Biblioteca_nazionale_centrale_validity ;\n      cis:includes ticket:Biblioteca_nazionale_centrale_ticket_1 .\n\nticket:Biblioteca_nazionale_centrale_ticket_1 \n     a cis:Ticket ;\n     rdfs:label \"Biglietto per accedere a 'Biblioteca Nazionale Centrale di Roma'\"@it ;\n     rdfs:label \"Ticket for access to 'Biblioteca Nazionale Centrale di Roma'\"@en ;\n     cis:name \"Biglietto base per accedere 'Biblioteca Nazionale Centrale di Roma'\"@it ;\n     cis:name\"Basic ticket for access to 'Biblioteca Nazionale Centrale di Roma'\"@en ;\n     cis:description \"Biglietto che permette l'accesso per un giorno alla 'Biblioteca Nazionale Centrale di Roma'\"@it ;\n     cis:description \"One-day ticket for 'Biblioteca Nazionale Centrale di Roma'\"@en ;\n     cis:hasValidity validity:Biblioteca_nazionale_centrale_ticket_1;\n     cis:forAccessTo cissite:Biblioteca_nazionale_centrale .\n\nvalidity:Biblioteca_nazionale_centrale_ticket_1\n    a cis:Validity ;\n    rdfs:label \"One day validity\"@en ;\n    rdfs:label \"Validità per 1 giorno\"@it ;\n    cis:hasDuration qv:Biblioteca_nazionale_centrale_ticket_1 .\n\nqv:Biblioteca_nazionale_centrale_ticket_1\n    a cis:QuantitativeValue ;\n    rdfs:label \"1\";\n    cis:hasMeasurementUnit cis:Day ;\n    cis:hasValue \"1\"^^xsd:positiveInteger .\n\npriceSpecification:Under18\n      a       cis:PriceSpecification ;\n      rdfs:label \"price specification under 18 \"@en , \"costo per ragazzi sotto i 18 anni \"@it ;\n      cis:hasCurrency cis:Euro ;\n      cis:hasCurrencyValue \"5\"^^xsd:float .\n\nuserType:Under18 \n   a cis:UserType ; \n   rdfs:label \"Under 18\" ; \n   cis:name \"Under 18\"; ;\n   cis:description \"People under 18 years old\";@en;\n   cis:description \"Persone con età inferiore ai 18 anni\"@it  .\n\n</pre>"
+      },
+      "rdfs:comment": [
+        {
+          "@language": "it",
+          "@value": "Rappresenta il biglietto d'ingresso per l'Istitituto e Luogo della Cultura, qualora sia previsto, e per l'evento culturale."
+        },
+        {
+          "@language": "en",
+          "@value": "It represents an entrance ticket for a Cultural Institute or Site, if required, and for an event"
+        }
+      ],
+      "rdfs:isDefinedBy": {
+        "@id": "http://dati.gov.it/onto/potapit"
+      },
+      "rdfs:label": [
+        {
+          "@language": "en",
+          "@value": "Ticket"
+        },
+        {
+          "@language": "it",
+          "@value": "Biglietto"
+        }
+      ],
+      "rdfs:subClassOf": [
+        {
+          "@id": "l0:Object"
+        },
+        {
+          "@id": "_:Nfa2107d6634b45f4bd6d59b5b8f6f034"
+        }
+      ]
+    },
+    {
+      "@id": "_:Na0672a2e8d204574b8ad458deb6819cd",
+      "@type": "owl:Restriction",
+      "owl:onProperty": {
+        "@id": "http://dati.gov.it/onto/potapit/includes"
+      },
+      "owl:someValuesFrom": {
+        "@id": "http://dati.gov.it/onto/potapit/Ticket"
+      }
+    },
+    {
+      "@id": "dc:description",
+      "@type": "owl:AnnotationProperty"
+    },
+    {
+      "@id": "_:Nd3e8588e480c4025bf544279d032f070",
+      "@type": "owl:Restriction",
+      "owl:onProperty": {
+        "@id": "http://dati.gov.it/onto/potapit/hasCurrency"
+      },
+      "owl:someValuesFrom": {
+        "@id": "http://dati.gov.it/onto/potapit/Currency"
+      }
+    },
+    {
+      "@id": "l0:Object",
+      "@type": "owl:Class"
+    },
+    {
+      "@id": "http://dati.gov.it/onto/potapit/hasCurrencyValue",
+      "@type": "owl:DatatypeProperty",
+      "rdfs:comment": [
+        {
+          "@language": "en",
+          "@value": "Property used to represent the price of the ticket."
+        },
+        {
+          "@language": "it",
+          "@value": "Proprietà utilizzata per indicare il prezzo del biglietto."
+        }
+      ],
+      "rdfs:domain": {
+        "@id": "http://dati.gov.it/onto/potapit/PriceSpecification"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "http://dati.gov.it/onto/potapit"
+      },
+      "rdfs:label": [
+        {
+          "@language": "it",
+          "@value": "prezzo"
+        },
+        {
+          "@language": "en",
+          "@value": "currency value"
+        }
+      ],
+      "rdfs:range": {
+        "@id": "xsd:double"
+      }
+    },
+    {
+      "@id": "http://dati.gov.it/onto/potapit/Validity",
+      "@type": "owl:Class",
+      "dc:description": {
+        "@language": "en",
+        "@value": "An example of usage of the class cis:Validity is the following:\n\n<pre>\n\nvalidity:Parco_archeologico_di_Liternum_Card_Validity\n    a cis:Validity ;\n    rdfs:label \"Two-day validity\"@en ;\n    rdfs:label \"Validità per due giorni\"@it ;\n    cis:hasDuration Parco_archeologico_di_Liternum_Card_Validity_Duration .\n\nqv:Parco_archeologico_di_Liternum_Card_Validity_Duration\n    a cis:QuantitativeValue ;\n    rdfs:label \"2\";;\n    cis:hasMeasurementUnit cis:Day ;\n    cis:hasValue \"2\"^^xsd:positiveInteger .\n\n</pre>"
+      },
+      "rdfs:comment": [
+        {
+          "@language": "it",
+          "@value": "Questa classe rappresenta la validità di biglietti e di offerte."
+        },
+        {
+          "@language": "en",
+          "@value": "This class represents the validity for the ticket and offering."
+        }
+      ],
+      "rdfs:isDefinedBy": {
+        "@id": "http://dati.gov.it/onto/potapit"
+      },
+      "rdfs:label": [
+        {
+          "@language": "en",
+          "@value": "Validity"
+        },
+        {
+          "@language": "it",
+          "@value": "Validità"
+        }
+      ],
+      "rdfs:subClassOf": [
+        {
+          "@id": "_:N227026887dff48f6bd0bac4a59212177"
+        },
+        {
+          "@id": "l0:Event"
+        }
+      ]
+    }
+  ]
+}

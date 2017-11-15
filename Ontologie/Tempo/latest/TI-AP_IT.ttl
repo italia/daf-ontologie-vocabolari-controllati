@@ -7,6 +7,7 @@
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix muapit: <http://dati.gov.it/onto/muapit/> .
 @base <http://dati.gov.it/onto/tiapit> .
 
 <http://dati.gov.it/onto/tiapit> rdf:type owl:Ontology ;
@@ -22,19 +23,35 @@
                                  
                                  rdfs:comment "This is the ontology of the Italian application profile for time"@en ;
                                  
-                                 owl:versionInfo "Version 0.1 - 25  September"@en ;
+                                 owl:versionInfo "Version 0.3 - 14 November 2017"@en ;
                                  
                                  rdfs:comment "Questa è l'ontologia del profilo applicativo italiano sul tempo"@it ;
                                  
-                                 owl:versionInfo "Versione 0.6 - 25 Settembre 2017"@it ;
+                                 owl:versionInfo "Versione 0.3 - 14 Novembre 2017"@it ;
                                  
-                                 owl:imports l0: ;
+                                 owl:imports l0: ,
+                                             <http://dati.gov.it/onto/muapit/0.1> ;
                                  
                                  rdfs:isDefinedBy : ;
                                  
-                                 owl:versionIRI <http://dati.gov.it/onto/tiapit/0.2> ;
+                                 owl:versionIRI <http://dati.gov.it/onto/tiapit/0.3> ;
                                  
                                  dct:license <https://creativecommons.org/licenses/by/4.0/> .
+
+
+#################################################################
+#
+#    Datatypes
+#
+#################################################################
+
+
+###  http://www.w3.org/2001/XMLSchema#duration
+
+xsd:duration rdf:type rdfs:Datatype .
+
+
+
 
 
 #################################################################
@@ -76,6 +93,30 @@
 
 
 
+###  http://dati.gov.it/onto/tiapit/hasDuration
+
+:hasDuration rdf:type owl:ObjectProperty ;
+             
+             rdfs:label "has duration"@en ,
+                        "ha durata"@it ;
+             
+             rdfs:comment "This property is used to specify the temporal duration of the validity."@en ,
+                          "Questa proprietà è utilizzata per specificare il periodo temporale di validità."@it ;
+             
+             rdfs:isDefinedBy <http://dati.gov.it/onto/tiapit> ;
+             
+             rdfs:domain owl:Thing ;
+             
+             rdfs:subPropertyOf owl:topObjectProperty ;
+             
+             rdfs:range [ rdf:type owl:Class ;
+                          owl:unionOf ( muapit:Value
+                                        :TimeInterval
+                                      )
+                        ] .
+
+
+
 ###  http://dati.gov.it/onto/tiapit/isDayOfWeekOf
 
 :isDayOfWeekOf rdf:type owl:ObjectProperty ;
@@ -95,6 +136,24 @@
 #    Data properties
 #
 #################################################################
+
+
+###  http://dati.gov.it/onto/tiapit/duration
+
+:duration rdf:type owl:DatatypeProperty ;
+          
+          rdfs:label "duration"@en ,
+                     "durata"@it ;
+          
+          rdfs:comment "Property that associates a duratin value with a time interval."@en ,
+                       "Proprietà che associa un valore di durata ad un intervallo di tempo."@it ;
+          
+          rdfs:isDefinedBy <http://dati.gov.it/onto/tiapit> ;
+          
+          rdfs:domain :TimeInterval ;
+          
+          rdfs:range xsd:duration .
+
 
 
 ###  http://dati.gov.it/onto/tiapit/endTime
@@ -167,7 +226,8 @@ l0:Entity rdf:type owl:Class .
               rdfs:label "Time interval"@en ,
                          "Intervallo di tempo"@it ;
               
-              rdfs:subClassOf l0:Entity ;
+              rdfs:subClassOf l0:Characteristic ,
+                              l0:Entity ;
               
               rdfs:comment "A time interval"@en ,
                            "Rappresentazione di intervallo di tempo."@it .
