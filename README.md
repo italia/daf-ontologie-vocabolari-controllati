@@ -19,7 +19,8 @@ Il contenuto della directory Ontologie è attualmente il seguente:
   + **Tempo (Time)**: Primissima versione dell'ontologia di supporto del tempo utilizzata in tutte le ontologie precedenti per cogliere la dimensione temporale dei principali concetti.
   + **Punti di interesse (Points of Interest)**: Ontologia del profilo applicativo italiano sui punti di interesse (Point of Interest - Italian Application Profile (POI-AP_IT)). E' un'ontologia intermedia utilizzata per rappresentare i punti di interesse. Questa sarà specializzata con una serie di ontologie calate sui singoli domini quali strutture ricettive, parcheggi, trasporto pubblico, farmacie, ecc.
   + **Strutture Ricettive (Accommodation)**: Ontologia del profilo applicativo italiano sulle strutture ricettive (Accommodation Italian Application Profile - ACCO-AP_IT).
-  + **Unità Di Misura (Measurement Unit)**: Ontologia di supporto per la modellazione delle unità di misura. 
+  + **Unità Di Misura (Measurement Unit)**: Ontologia di supporto per la modellazione delle unità di misura.
+  + **Prezzi Offerte e Biglietti (Prices Offers and Tickets)**: Ontologia del profilo applicativo italiano per i prezzi, le offerte i biglietti (Price Offer Ticket - Italian Application Profile -POT-AP_IT. E' un'ontologia di supporto che consente di rappresentare offerte, prezzi e biglietti. Essa può essere utilizzata in svariati contesti come per esempio nell'ambito dei luoghi ed eventi della cultura, nell'ambito delle strutture ricettive o nell'ambito del trasporto, ecc.
   + **Livello0 (L0) (Level0)**: E' un'ontologia top-level che consente di collegare tutte le ontologie sopra elencate abilitando così la network di ontologie.
 
 
