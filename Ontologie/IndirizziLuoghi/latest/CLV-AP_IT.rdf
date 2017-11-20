@@ -973,12 +973,6 @@
         <rdfs:subClassOf rdf:resource="http://dati.gov.it/onto/clvapit#Feature"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://dati.gov.it/onto/clvapit#fullAddress"/>
-                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
                 <owl:onProperty rdf:resource="http://dati.gov.it/onto/clvapit#postalCode"/>
                 <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
             </owl:Restriction>
@@ -987,6 +981,12 @@
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://dati.gov.it/onto/clvapit#hasAddressComponent"/>
                 <owl:someValuesFrom rdf:resource="http://dati.gov.it/onto/clvapit#AddressComponent"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://dati.gov.it/onto/clvapit#fullAddress"/>
+                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="http://dati.gov.it/onto/clvapit#AddressComponent"/>
@@ -1048,6 +1048,18 @@
         <rdfs:subClassOf rdf:resource="&l0;Event"/>
         <rdfs:subClassOf>
             <owl:Restriction>
+                <owl:onProperty rdf:resource="http://dati.gov.it/onto/clvapit#prev"/>
+                <owl:allValuesFrom rdf:resource="http://dati.gov.it/onto/clvapit#AddressInTime"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&ti;atTime"/>
+                <owl:someValuesFrom rdf:resource="&ti;TimeInterval"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
                 <owl:onProperty rdf:resource="http://dati.gov.it/onto/clvapit#withAddress"/>
                 <owl:onClass rdf:resource="http://dati.gov.it/onto/clvapit#Address"/>
                 <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
@@ -1057,18 +1069,6 @@
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://dati.gov.it/onto/clvapit#next"/>
                 <owl:allValuesFrom rdf:resource="http://dati.gov.it/onto/clvapit#AddressInTime"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://dati.gov.it/onto/clvapit#prev"/>
-                <owl:allValuesFrom rdf:resource="http://dati.gov.it/onto/clvapit#AddressInTime"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&ti;atTime"/>
-                <owl:someValuesFrom rdf:resource="&ti;TimeInterval"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:comment xml:lang="en">This class represents a situation of an address that changes over time. It is an n-ary relatioship between the address, time interval and the thing connected with the address.</rdfs:comment>
@@ -1205,14 +1205,14 @@
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://dati.gov.it/onto/clvapit#metric"/>
-                <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+                <owl:onProperty rdf:resource="http://dati.gov.it/onto/clvapit#streetNumber"/>
+                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://dati.gov.it/onto/clvapit#streetNumber"/>
-                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+                <owl:onProperty rdf:resource="http://dati.gov.it/onto/clvapit#metric"/>
+                <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="http://dati.gov.it/onto/clvapit#InternalAddressNumber"/>
@@ -1239,6 +1239,13 @@
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
+                <owl:onProperty rdf:resource="http://dati.gov.it/onto/clvapit#modified"/>
+                <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onDataRange rdf:resource="&xsd;dateTime"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
                 <owl:onProperty rdf:resource="http://dati.gov.it/onto/clvapit#hasValidity"/>
                 <owl:allValuesFrom rdf:resource="&ti;TimeInterval"/>
             </owl:Restriction>
@@ -1247,13 +1254,6 @@
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://dati.gov.it/onto/clvapit#hasSpatialCoverage"/>
                 <owl:allValuesFrom rdf:resource="http://dati.gov.it/onto/clvapit#Feature"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://dati.gov.it/onto/clvapit#modified"/>
-                <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
-                <owl:onDataRange rdf:resource="&xsd;dateTime"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="http://dati.gov.it/onto/clvapit#Geometry"/>
@@ -1277,19 +1277,13 @@
         <rdfs:subClassOf rdf:resource="http://dati.gov.it/onto/clvapit#SpatialObject"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://dati.gov.it/onto/clvapit#alt"/>
-                <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://dati.gov.it/onto/clvapit#long"/>
+                <owl:onProperty rdf:resource="http://dati.gov.it/onto/clvapit#lat"/>
                 <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://dati.gov.it/onto/clvapit#geographicPositionMethod"/>
+                <owl:onProperty rdf:resource="http://dati.gov.it/onto/clvapit#alt"/>
                 <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -1308,7 +1302,13 @@
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://dati.gov.it/onto/clvapit#lat"/>
+                <owl:onProperty rdf:resource="http://dati.gov.it/onto/clvapit#geographicPositionMethod"/>
+                <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://dati.gov.it/onto/clvapit#long"/>
                 <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -1346,14 +1346,14 @@
         <rdfs:subClassOf rdf:resource="&l0;Characteristic"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://dati.gov.it/onto/clvapit#identifier"/>
-                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+                <owl:onProperty rdf:resource="http://dati.gov.it/onto/clvapit#identifierType"/>
+                <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://dati.gov.it/onto/clvapit#identifierType"/>
-                <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+                <owl:onProperty rdf:resource="http://dati.gov.it/onto/clvapit#identifier"/>
+                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -1380,6 +1380,19 @@
         <rdfs:subClassOf rdf:resource="http://dati.gov.it/onto/clvapit#AddressNumber"/>
         <rdfs:subClassOf>
             <owl:Restriction>
+                <owl:onProperty rdf:resource="http://dati.gov.it/onto/clvapit#refersToExternalNumber"/>
+                <owl:onClass rdf:resource="http://dati.gov.it/onto/clvapit#ExternalAddressNumber"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://dati.gov.it/onto/clvapit#staircase"/>
+                <owl:allValuesFrom rdf:resource="&rdfs;Literal"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
                 <owl:onProperty rdf:resource="http://dati.gov.it/onto/clvapit#flatNumber"/>
                 <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
             </owl:Restriction>
@@ -1392,26 +1405,13 @@
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://dati.gov.it/onto/clvapit#staircase"/>
-                <owl:allValuesFrom rdf:resource="&rdfs;Literal"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://dati.gov.it/onto/clvapit#floor"/>
+                <owl:onProperty rdf:resource="http://dati.gov.it/onto/clvapit#building"/>
                 <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://dati.gov.it/onto/clvapit#refersToExternalNumber"/>
-                <owl:onClass rdf:resource="http://dati.gov.it/onto/clvapit#ExternalAddressNumber"/>
-                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://dati.gov.it/onto/clvapit#building"/>
+                <owl:onProperty rdf:resource="http://dati.gov.it/onto/clvapit#floor"/>
                 <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -1459,8 +1459,15 @@
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://dati.gov.it/onto/clvapit#hasDirectHigherRank"/>
-                <owl:onClass rdf:resource="http://dati.gov.it/onto/clvapit#Region"/>
+                <owl:onProperty rdf:resource="http://dati.gov.it/onto/clvapit#hasHigherRank"/>
+                <owl:onClass>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="http://dati.gov.it/onto/clvapit#Country"/>
+                            <rdf:Description rdf:about="http://dati.gov.it/onto/clvapit#Region"/>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:onClass>
                 <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -1472,15 +1479,8 @@
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://dati.gov.it/onto/clvapit#hasHigherRank"/>
-                <owl:onClass>
-                    <owl:Class>
-                        <owl:unionOf rdf:parseType="Collection">
-                            <rdf:Description rdf:about="http://dati.gov.it/onto/clvapit#Country"/>
-                            <rdf:Description rdf:about="http://dati.gov.it/onto/clvapit#Region"/>
-                        </owl:unionOf>
-                    </owl:Class>
-                </owl:onClass>
+                <owl:onProperty rdf:resource="http://dati.gov.it/onto/clvapit#hasDirectHigherRank"/>
+                <owl:onClass rdf:resource="http://dati.gov.it/onto/clvapit#Region"/>
                 <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -1502,13 +1502,6 @@
         <rdfs:subClassOf rdf:resource="http://dati.gov.it/onto/clvapit#NamedAddressComponent"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://dati.gov.it/onto/clvapit#hasDirectHigherRank"/>
-                <owl:onClass rdf:resource="http://dati.gov.it/onto/clvapit#Country"/>
-                <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
                 <owl:onProperty rdf:resource="http://dati.gov.it/onto/clvapit#hasLowerRank"/>
                 <owl:allValuesFrom>
                     <owl:Class>
@@ -1518,6 +1511,13 @@
                         </owl:unionOf>
                     </owl:Class>
                 </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://dati.gov.it/onto/clvapit#hasDirectHigherRank"/>
+                <owl:onClass rdf:resource="http://dati.gov.it/onto/clvapit#Country"/>
+                <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
