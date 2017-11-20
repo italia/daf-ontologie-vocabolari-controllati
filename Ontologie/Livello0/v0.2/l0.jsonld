@@ -1,6 +1,7 @@
 {
   "@context": {
     "dc": "http://purl.org/dc/elements/1.1/",
+    "dct": "http://purl.org/dc/terms/",
     "dcterms": "http://purl.org/dc/terms/",
     "owl": "http://www.w3.org/2002/07/owl#",
     "prov": "http://www.w3.org/ns/prov#",
@@ -24,26 +25,36 @@
       ],
       "rdfs:label": [
         {
-          "@language": "it",
-          "@value": "Tema"
-        },
-        {
           "@language": "en",
           "@value": "Topic"
+        },
+        {
+          "@language": "it",
+          "@value": "Tema"
         }
       ]
     },
     {
-      "@id": "http://dati.gov.it/onto/l0/name",
+      "@id": "http://dati.gov.it/onto/l0/identifier",
       "@type": "owl:DatatypeProperty",
-      "rdfs:comment": [
-        {
-          "@language": "en",
-          "@value": "Any literal that represents the name of a thing."
-        },
+      "owl:versionInfo": [
         {
           "@language": "it",
-          "@value": "Un letterale che rappresenta il nome di una cosa."
+          "@value": "stabile"
+        },
+        {
+          "@language": "en",
+          "@value": "stable"
+        }
+      ],
+      "rdfs:comment": [
+        {
+          "@language": "it",
+          "@value": "Questa proprietà è utilizzata per rappresentare un generico identificativo associato a cose del dominio modellato. Essa può essere specializzata in una serie di sottoproprietà che rappresentano codici specifii di alcune entità del dominio modellato."
+        },
+        {
+          "@language": "en",
+          "@value": "This property is used to represent a generic identifier that is asoociated with things of the modelled domain. the property can be speclalized in subproperties that represent identifier so f specific entities of the modelled domain."
         }
       ],
       "rdfs:domain": {
@@ -54,12 +65,45 @@
       },
       "rdfs:label": [
         {
+          "@language": "en",
+          "@value": "generic identifier"
+        },
+        {
           "@language": "it",
-          "@value": "nome"
+          "@value": "identificativo generico"
+        }
+      ],
+      "rdfs:range": {
+        "@id": "rdfs:Literal"
+      }
+    },
+    {
+      "@id": "http://dati.gov.it/onto/l0/name",
+      "@type": "owl:DatatypeProperty",
+      "rdfs:comment": [
+        {
+          "@language": "it",
+          "@value": "Un letterale che rappresenta il nome di una cosa."
         },
         {
           "@language": "en",
+          "@value": "Any literal that represents the name of a thing."
+        }
+      ],
+      "rdfs:domain": {
+        "@id": "owl:Thing"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "http://dati.gov.it/onto/l0/"
+      },
+      "rdfs:label": [
+        {
+          "@language": "en",
           "@value": "name"
+        },
+        {
+          "@language": "it",
+          "@value": "nome"
         }
       ],
       "rdfs:range": {
@@ -71,12 +115,12 @@
       "@type": "owl:Class",
       "rdfs:comment": [
         {
-          "@language": "it",
-          "@value": "Un agente, sia fisico (ex. una persona, un robot, una quercia), o sociale (ex. una società, un'istituzione, una comunità)."
-        },
-        {
           "@language": "en",
           "@value": "Any agentive Object , either physical (e.g. a person, a robot, an oak), or social (e.g. a corporation, an institution, a community)."
+        },
+        {
+          "@language": "it",
+          "@value": "Un agente, sia fisico (ex. una persona, un robot, una quercia), o sociale (ex. una società, un'istituzione, una comunità)."
         }
       ],
       "rdfs:label": [
@@ -108,42 +152,48 @@
       ],
       "rdfs:label": [
         {
-          "@language": "en",
-          "@value": "System"
-        },
-        {
           "@language": "it",
           "@value": "Sistema"
+        },
+        {
+          "@language": "en",
+          "@value": "System"
         }
       ]
     },
     {
-      "@id": "http://dati.gov.it/onto/l0/Activity",
+      "@id": "http://dati.gov.it/onto/l0/Object",
       "@type": "owl:Class",
       "rdfs:comment": [
         {
-          "@language": "it",
-          "@value": "La classe che rappresenta un'attività."
+          "@language": "en",
+          "@value": "An object."
         },
         {
-          "@language": "en",
-          "@value": "The class whose that models an activity."
+          "@language": "it",
+          "@value": "Un oggetto."
         }
       ],
       "rdfs:label": [
         {
-          "@language": "it",
-          "@value": "Attività"
+          "@language": "en",
+          "@value": "Object"
         },
         {
-          "@language": "en",
-          "@value": "Activity"
+          "@language": "it",
+          "@value": "Oggetto"
         }
-      ]
+      ],
+      "rdfs:subClassOf": {
+        "@id": "http://dati.gov.it/onto/l0/Entity"
+      }
     },
     {
       "@id": "http://dati.gov.it/onto/l0/hasDescription",
       "@type": "owl:ObjectProperty",
+      "owl:inverseOf": {
+        "@id": "http://dati.gov.it/onto/l0/isDescriptionOf"
+      },
       "rdfs:comment": [
         {
           "@language": "en",
@@ -203,21 +253,21 @@
       "@type": "owl:AnnotationProperty",
       "rdfs:comment": [
         {
-          "@language": "it",
-          "@value": "Questa proprietà è utilizzata per collegare una proprietà (data type property) di un'ontologia al relativo vocabolario controllato dove si trovano le istanze della proprietà stessa"
-        },
-        {
           "@language": "en",
           "@value": "This property is used to link a property (data type property) of an ontology to the related controlled vocabulary where the individuals of the property are located"
+        },
+        {
+          "@language": "it",
+          "@value": "Questa proprietà è utilizzata per collegare una proprietà (data type property) di un'ontologia al relativo vocabolario controllato dove si trovano le istanze della proprietà stessa"
         }
       ],
       "rdfs:label": [
         {
-          "@language": "en",
+          "@language": "it",
           "@value": "vocabolario controllato"
         },
         {
-          "@language": "it",
+          "@language": "en",
           "@value": "vocabolario controllato"
         }
       ]
@@ -252,7 +302,7 @@
       "dc:creator": [
         {
           "@language": "en",
-          "@value": "Agency for Digital Italy - AgID"
+          "@value": "Institute of Cognitive Sciences and Technologies of the Italian Research Council (CNR) - Semantic Technology Laboratory (STLab)"
         },
         {
           "@language": "en",
@@ -260,7 +310,7 @@
         },
         {
           "@language": "en",
-          "@value": "Institute of Cognitive Sciences and Technologies of the Italian Research Council (CNR) - Semantic Technology Laboratory (STLab)"
+          "@value": "Agency for Digital Italy - AgID"
         }
       ],
       "dcterms:issued": "2017-09-29",
@@ -285,48 +335,42 @@
       ],
       "rdfs:label": [
         {
-          "@language": "en",
-          "@value": "Level-0 ontology"
-        },
-        {
           "@language": "it",
           "@value": "Ontologia Level-0"
+        },
+        {
+          "@language": "en",
+          "@value": "Level-0 ontology"
         }
       ]
     },
     {
-      "@id": "_:N3345d48c38274dc8acc3d8f48b09ecb3",
-      "@type": "owl:Restriction",
-      "owl:onProperty": {
-        "@id": "http://dati.gov.it/onto/l0/description"
-      },
-      "owl:someValuesFrom": {
-        "@id": "rdfs:Literal"
-      }
-    },
-    {
-      "@id": "http://dati.gov.it/onto/l0/Collection",
+      "@id": "http://dati.gov.it/onto/l0/Activity",
       "@type": "owl:Class",
       "rdfs:comment": [
         {
-          "@language": "it",
-          "@value": "La classe che rappresenta una collezione di qualsiasi cosa."
+          "@language": "en",
+          "@value": "The class whose that models an activity."
         },
         {
-          "@language": "en",
-          "@value": "The class that represents a collection of things."
+          "@language": "it",
+          "@value": "La classe che rappresenta un'attività."
         }
       ],
       "rdfs:label": [
         {
           "@language": "en",
-          "@value": "Collection"
+          "@value": "Activity"
         },
         {
           "@language": "it",
-          "@value": "Collezione"
+          "@value": "Attività"
         }
       ]
+    },
+    {
+      "@id": "prov:wasInfluencedBy",
+      "@type": "owl:AnnotationProperty"
     },
     {
       "@id": "http://dati.gov.it/onto/l0/Description",
@@ -356,54 +400,34 @@
       ],
       "rdfs:subClassOf": [
         {
-          "@id": "http://dati.gov.it/onto/l0/Object"
+          "@id": "_:ub271bL169C30"
         },
         {
-          "@id": "_:N3345d48c38274dc8acc3d8f48b09ecb3"
+          "@id": "http://dati.gov.it/onto/l0/Object"
         }
       ]
     },
     {
-      "@id": "http://dati.gov.it/onto/l0/Object",
-      "@type": "owl:Class",
-      "rdfs:comment": [
-        {
-          "@language": "en",
-          "@value": "An object."
-        },
-        {
-          "@language": "it",
-          "@value": "Un oggetto."
-        }
-      ],
-      "rdfs:label": [
-        {
-          "@language": "en",
-          "@value": "Object"
-        },
-        {
-          "@language": "it",
-          "@value": "Oggetto"
-        }
-      ],
-      "rdfs:subClassOf": {
-        "@id": "http://dati.gov.it/onto/l0/Entity"
+      "@id": "_:ub271bL169C30",
+      "@type": "owl:Restriction",
+      "owl:onProperty": {
+        "@id": "http://dati.gov.it/onto/l0/description"
+      },
+      "owl:someValuesFrom": {
+        "@id": "rdfs:Literal"
       }
     },
     {
       "@id": "http://dati.gov.it/onto/l0/isDescriptionOf",
       "@type": "owl:ObjectProperty",
-      "owl:inverseOf": {
-        "@id": "http://dati.gov.it/onto/l0/hasDescription"
-      },
       "rdfs:comment": [
-        {
-          "@language": "it",
-          "@value": "Proprietà inversa di 'ha descrizione'."
-        },
         {
           "@language": "en",
           "@value": "Inverse property of 'has description'."
+        },
+        {
+          "@language": "it",
+          "@value": "Proprietà inversa di 'ha descrizione'."
         }
       ],
       "rdfs:domain": {
@@ -414,12 +438,12 @@
       },
       "rdfs:label": [
         {
-          "@language": "en",
-          "@value": "is description of"
-        },
-        {
           "@language": "it",
           "@value": "è descrizione di"
+        },
+        {
+          "@language": "en",
+          "@value": "is description of"
         }
       ],
       "rdfs:range": {
@@ -427,30 +451,50 @@
       }
     },
     {
-      "@id": "prov:wasInfluencedBy",
-      "@type": "owl:AnnotationProperty"
+      "@id": "http://dati.gov.it/onto/l0/Collection",
+      "@type": "owl:Class",
+      "rdfs:comment": [
+        {
+          "@language": "en",
+          "@value": "The class that represents a collection of things."
+        },
+        {
+          "@language": "it",
+          "@value": "La classe che rappresenta una collezione di qualsiasi cosa."
+        }
+      ],
+      "rdfs:label": [
+        {
+          "@language": "en",
+          "@value": "Collection"
+        },
+        {
+          "@language": "it",
+          "@value": "Collezione"
+        }
+      ]
     },
     {
       "@id": "http://dati.gov.it/onto/l0/Location",
       "@type": "owl:Class",
       "rdfs:comment": [
         {
-          "@language": "en",
-          "@value": "The class that reprepresents a location. Individuals of this class are locations (e.g. geographical places, spacial objects, etc.)."
-        },
-        {
           "@language": "it",
           "@value": "Classe che rappresenta il concetto di luogo. Le istanze di questa classe sono, pertanto, luoghi."
+        },
+        {
+          "@language": "en",
+          "@value": "The class that reprepresents a location. Individuals of this class are locations (e.g. geographical places, spacial objects, etc.)."
         }
       ],
       "rdfs:label": [
         {
-          "@language": "en",
-          "@value": "Location"
-        },
-        {
           "@language": "it",
           "@value": "Luogo"
+        },
+        {
+          "@language": "en",
+          "@value": "Location"
         }
       ],
       "rdfs:subClassOf": {
@@ -472,12 +516,12 @@
       ],
       "rdfs:label": [
         {
-          "@language": "it",
-          "@value": "Evento"
-        },
-        {
           "@language": "en",
           "@value": "Event"
+        },
+        {
+          "@language": "it",
+          "@value": "Evento"
         }
       ]
     },
@@ -486,28 +530,28 @@
       "@type": "owl:DatatypeProperty",
       "rdfs:comment": [
         {
-          "@language": "it",
-          "@value": "Datatype property che associa un valore letterale ad un oggetto che rappresenta una descrizione."
+          "@language": "en",
+          "@value": "Datatype property that associates a literal value with a thing"
         },
         {
-          "@language": "en",
-          "@value": "Datatype property that associates a literal value with an individual of the class Description."
+          "@language": "it",
+          "@value": "Datatype property che associa un valore letterale a una cosa."
         }
       ],
       "rdfs:domain": {
-        "@id": "http://dati.gov.it/onto/l0/Description"
+        "@id": "owl:Thing"
       },
       "rdfs:isDefinedBy": {
         "@id": "http://dati.gov.it/onto/l0/"
       },
       "rdfs:label": [
         {
-          "@language": "en",
-          "@value": "description"
-        },
-        {
           "@language": "it",
           "@value": "descrizione"
+        },
+        {
+          "@language": "en",
+          "@value": "description"
         }
       ],
       "rdfs:range": {

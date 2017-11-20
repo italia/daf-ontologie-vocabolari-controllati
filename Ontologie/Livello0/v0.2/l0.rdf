@@ -1,39 +1,27 @@
 <?xml version="1.0"?>
-
-
-<!DOCTYPE rdf:RDF [
-    <!ENTITY dct "http://purl.org/dc/terms/" >
-    <!ENTITY prov "http://www.w3.org/ns/prov#" >
-    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
-    <!ENTITY dc "http://purl.org/dc/elements/1.1/" >
-    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
-    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
-    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
-]>
-
-
 <rdf:RDF xmlns="http://dati.gov.it/onto/l0/"
      xml:base="http://dati.gov.it/onto/l0/"
      xmlns:dct="http://purl.org/dc/terms/"
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
      xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
      xmlns:prov="http://www.w3.org/ns/prov#"
      xmlns:dc="http://purl.org/dc/elements/1.1/">
     <owl:Ontology rdf:about="http://dati.gov.it/onto/l0/">
-        <rdfs:label xml:lang="en">Level-0 ontology</rdfs:label>
-        <rdfs:label xml:lang="it">Ontologia Level-0</rdfs:label>
-        <dct:issued>2017-09-29</dct:issued>
-        <owl:verionInfo>0.2 - aggiunto il seguente assioma: Location sottoclasse di Entity e aggiunto un collegamento con DOLCE 0.</owl:verionInfo>
-        <dct:modified>2017-10-18</dct:modified>
-        <owl:versionInfo xml:lang="en">0.2 - added the following axiom: Location subclass of Entity; added soft link with DOLCE 0</owl:versionInfo>
-        <dc:creator xml:lang="en">Agency for Digital Italy - AgID</dc:creator>
+        <rdfs:comment xml:lang="it">Questa ontologia fornisce il livello fondazionale allo stack ontologico di dati.gov.it. Il nome L0 sta per Level-0 ontology poiché essa fornisce le fondamenta concettuali elementari all&apos;intero stack. Questa ontologia è parzialmente ispirata da DOLCE zero (http://www.ontologydesignpatterns.org/ont/d0.owl)</rdfs:comment>
         <dc:creator xml:lang="en">Institute of Cognitive Sciences and Technologies of the Italian Research Council (CNR) - Semantic Technology Laboratory (STLab)</dc:creator>
+        <owl:verionInfo>0.2 - aggiunto il seguente assioma: Location sottoclasse di Entity e aggiunto un collegamento con DOLCE 0.</owl:verionInfo>
+        <prov:wasInfluencedBy rdf:resource="http://www.ontologydesignpatterns.org/ont/d0.owl"/>
+        <dct:issued>2017-09-29</dct:issued>
         <dc:creator xml:lang="en">Italian Digital Transformation Team</dc:creator>
         <rdfs:comment xml:lang="en">This ontology provides the foundational level of the ontological stack of dati.gov.it. The name L0 stands for Level-0 ontology as it provides the basic conceptual foundations to the whole stack. This ontology is partially inspired by DOLCE 0 (http://www.ontologydesignpatterns.org/ont/d0.owl)</rdfs:comment>
-        <rdfs:comment xml:lang="it">Questa ontologia fornisce il livello fondazionale allo stack ontologico di dati.gov.it. Il nome L0 sta per Level-0 ontology poiché essa fornisce le fondamenta concettuali elementari all&apos;intero stack. Questa ontologia è parzialmente ispirata da DOLCE zero (http://www.ontologydesignpatterns.org/ont/d0.owl)</rdfs:comment>
-        <prov:wasInfluencedBy rdf:resource="http://www.ontologydesignpatterns.org/ont/d0.owl"/>
+        <dct:modified>2017-10-18</dct:modified>
+        <rdfs:label xml:lang="en">Level-0 ontology</rdfs:label>
+        <rdfs:label xml:lang="it">Ontologia Level-0</rdfs:label>
+        <dc:creator xml:lang="en">Agency for Digital Italy - AgID</dc:creator>
+        <owl:versionInfo xml:lang="en">0.2 - added the following axiom: Location subclass of Entity; added soft link with DOLCE 0</owl:versionInfo>
     </owl:Ontology>
     
 
@@ -52,17 +40,17 @@
     <!-- http://dati.gov.it/onto/l0/controlledVocabulary -->
 
     <owl:AnnotationProperty rdf:about="http://dati.gov.it/onto/l0/controlledVocabulary">
+        <rdfs:comment xml:lang="it">Questa proprietà è utilizzata per collegare una proprietà (data type property) di un&apos;ontologia al relativo vocabolario controllato dove si trovano le istanze della proprietà stessa</rdfs:comment>
+        <rdfs:comment xml:lang="en">This property is used to link a property (data type property) of an ontology to the related controlled vocabulary where the individuals of the property are located</rdfs:comment>
         <rdfs:label xml:lang="en">vocabolario controllato</rdfs:label>
         <rdfs:label xml:lang="it">vocabolario controllato</rdfs:label>
-        <rdfs:comment xml:lang="en">This property is used to link a property (data type property) of an ontology to the related controlled vocabulary where the individuals of the property are located</rdfs:comment>
-        <rdfs:comment xml:lang="it">Questa proprietà è utilizzata per collegare una proprietà (data type property) di un&apos;ontologia al relativo vocabolario controllato dove si trovano le istanze della proprietà stessa</rdfs:comment>
     </owl:AnnotationProperty>
     
 
 
     <!-- http://www.w3.org/ns/prov#wasInfluencedBy -->
 
-    <owl:AnnotationProperty rdf:about="&prov;wasInfluencedBy"/>
+    <owl:AnnotationProperty rdf:about="http://www.w3.org/ns/prov#wasInfluencedBy"/>
     
 
 
@@ -80,13 +68,14 @@
     <!-- http://dati.gov.it/onto/l0/hasDescription -->
 
     <owl:ObjectProperty rdf:about="http://dati.gov.it/onto/l0/hasDescription">
-        <rdfs:label xml:lang="en">has description</rdfs:label>
-        <rdfs:label xml:lang="it">ha descrizione</rdfs:label>
+        <owl:inverseOf rdf:resource="http://dati.gov.it/onto/l0/isDescriptionOf"/>
+        <rdfs:domain rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <rdfs:range rdf:resource="http://dati.gov.it/onto/l0/Description"/>
         <rdfs:comment xml:lang="en">Property that associates an entity with its description.</rdfs:comment>
         <rdfs:comment xml:lang="it">Proprietà che associa un&apos;entità alla sua descrizione.</rdfs:comment>
         <rdfs:isDefinedBy rdf:resource="http://dati.gov.it/onto/l0/"/>
-        <rdfs:range rdf:resource="http://dati.gov.it/onto/l0/Description"/>
-        <rdfs:domain rdf:resource="&owl;Thing"/>
+        <rdfs:label xml:lang="it">ha descrizione</rdfs:label>
+        <rdfs:label xml:lang="en">has description</rdfs:label>
     </owl:ObjectProperty>
     
 
@@ -94,14 +83,13 @@
     <!-- http://dati.gov.it/onto/l0/isDescriptionOf -->
 
     <owl:ObjectProperty rdf:about="http://dati.gov.it/onto/l0/isDescriptionOf">
-        <rdfs:label xml:lang="en">is description of</rdfs:label>
-        <rdfs:label xml:lang="it">è descrizione di</rdfs:label>
+        <rdfs:domain rdf:resource="http://dati.gov.it/onto/l0/Description"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
         <rdfs:comment xml:lang="en">Inverse property of &apos;has description&apos;.</rdfs:comment>
         <rdfs:comment xml:lang="it">Proprietà inversa di &apos;ha descrizione&apos;.</rdfs:comment>
         <rdfs:isDefinedBy rdf:resource="http://dati.gov.it/onto/l0/"/>
-        <rdfs:domain rdf:resource="http://dati.gov.it/onto/l0/Description"/>
-        <owl:inverseOf rdf:resource="http://dati.gov.it/onto/l0/hasDescription"/>
-        <rdfs:range rdf:resource="&owl;Thing"/>
+        <rdfs:label xml:lang="en">is description of</rdfs:label>
+        <rdfs:label xml:lang="it">è descrizione di</rdfs:label>
     </owl:ObjectProperty>
     
 
@@ -120,13 +108,29 @@
     <!-- http://dati.gov.it/onto/l0/description -->
 
     <owl:DatatypeProperty rdf:about="http://dati.gov.it/onto/l0/description">
+        <rdfs:domain rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+        <rdfs:comment xml:lang="it">Datatype property che associa un valore letterale a una cosa.</rdfs:comment>
+        <rdfs:comment xml:lang="en">Datatype property that associates a literal value with a thing</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://dati.gov.it/onto/l0/"/>
         <rdfs:label xml:lang="en">description</rdfs:label>
         <rdfs:label xml:lang="it">descrizione</rdfs:label>
-        <rdfs:comment xml:lang="en">Datatype property that associates a literal value with an individual of the class Description.</rdfs:comment>
-        <rdfs:comment xml:lang="it">Datatype property che associa un valore letterale ad un oggetto che rappresenta una descrizione.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://dati.gov.it/onto/l0/identifier -->
+
+    <owl:DatatypeProperty rdf:about="http://dati.gov.it/onto/l0/identifier">
+        <rdfs:domain rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+        <rdfs:comment xml:lang="it">Questa proprietà è utilizzata per rappresentare un generico identificativo associato a cose del dominio modellato. Essa può essere specializzata in una serie di sottoproprietà che rappresentano codici specifii di alcune entità del dominio modellato.</rdfs:comment>
+        <rdfs:comment xml:lang="en">This property is used to represent a generic identifier that is asoociated with things of the modelled domain. the property can be speclalized in subproperties that represent identifier so f specific entities of the modelled domain.</rdfs:comment>
         <rdfs:isDefinedBy rdf:resource="http://dati.gov.it/onto/l0/"/>
-        <rdfs:domain rdf:resource="http://dati.gov.it/onto/l0/Description"/>
-        <rdfs:range rdf:resource="&rdfs;Literal"/>
+        <rdfs:label xml:lang="en">generic identifier</rdfs:label>
+        <rdfs:label xml:lang="it">identificativo generico</rdfs:label>
+        <owl:versionInfo xml:lang="it">stabile</owl:versionInfo>
+        <owl:versionInfo xml:lang="en">stable</owl:versionInfo>
     </owl:DatatypeProperty>
     
 
@@ -134,13 +138,13 @@
     <!-- http://dati.gov.it/onto/l0/name -->
 
     <owl:DatatypeProperty rdf:about="http://dati.gov.it/onto/l0/name">
-        <rdfs:label xml:lang="en">name</rdfs:label>
-        <rdfs:label xml:lang="it">nome</rdfs:label>
+        <rdfs:domain rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
         <rdfs:comment xml:lang="en">Any literal that represents the name of a thing.</rdfs:comment>
         <rdfs:comment xml:lang="it">Un letterale che rappresenta il nome di una cosa.</rdfs:comment>
         <rdfs:isDefinedBy rdf:resource="http://dati.gov.it/onto/l0/"/>
-        <rdfs:range rdf:resource="&rdfs;Literal"/>
-        <rdfs:domain rdf:resource="&owl;Thing"/>
+        <rdfs:label xml:lang="en">name</rdfs:label>
+        <rdfs:label xml:lang="it">nome</rdfs:label>
     </owl:DatatypeProperty>
     
 
@@ -159,10 +163,10 @@
     <!-- http://dati.gov.it/onto/l0/Activity -->
 
     <owl:Class rdf:about="http://dati.gov.it/onto/l0/Activity">
+        <rdfs:comment xml:lang="it">La classe che rappresenta un&apos;attività.</rdfs:comment>
+        <rdfs:comment xml:lang="en">The class whose that models an activity.</rdfs:comment>
         <rdfs:label xml:lang="en">Activity</rdfs:label>
         <rdfs:label xml:lang="it">Attività</rdfs:label>
-        <rdfs:comment xml:lang="en">The class whose that models an activity.</rdfs:comment>
-        <rdfs:comment xml:lang="it">La classe che rappresenta un&apos;attività.</rdfs:comment>
     </owl:Class>
     
 
@@ -170,11 +174,11 @@
     <!-- http://dati.gov.it/onto/l0/Agent -->
 
     <owl:Class rdf:about="http://dati.gov.it/onto/l0/Agent">
-        <rdfs:label xml:lang="en">Agent</rdfs:label>
-        <rdfs:label xml:lang="it">Agente</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://dati.gov.it/onto/l0/Entity"/>
         <rdfs:comment xml:lang="en">Any agentive Object , either physical (e.g. a person, a robot, an oak), or social (e.g. a corporation, an institution, a community).</rdfs:comment>
         <rdfs:comment xml:lang="it">Un agente, sia fisico (ex. una persona, un robot, una quercia), o sociale (ex. una società, un&apos;istituzione, una comunità).</rdfs:comment>
+        <rdfs:label xml:lang="en">Agent</rdfs:label>
+        <rdfs:label xml:lang="it">Agente</rdfs:label>
     </owl:Class>
     
 
@@ -182,10 +186,10 @@
     <!-- http://dati.gov.it/onto/l0/Characteristic -->
 
     <owl:Class rdf:about="http://dati.gov.it/onto/l0/Characteristic">
-        <rdfs:label xml:lang="en">Characteristic</rdfs:label>
-        <rdfs:label xml:lang="it">Caratteristica</rdfs:label>
-        <rdfs:comment xml:lang="en">This class represent a characteristic.</rdfs:comment>
         <rdfs:comment xml:lang="it">Questa classe rappresenta una caratteristica.</rdfs:comment>
+        <rdfs:comment xml:lang="en">This class represent a characteristic.</rdfs:comment>
+        <rdfs:label xml:lang="it">Caratteristica</rdfs:label>
+        <rdfs:label xml:lang="en">Characteristic</rdfs:label>
     </owl:Class>
     
 
@@ -193,10 +197,10 @@
     <!-- http://dati.gov.it/onto/l0/Collection -->
 
     <owl:Class rdf:about="http://dati.gov.it/onto/l0/Collection">
+        <rdfs:comment xml:lang="it">La classe che rappresenta una collezione di qualsiasi cosa.</rdfs:comment>
+        <rdfs:comment xml:lang="en">The class that represents a collection of things.</rdfs:comment>
         <rdfs:label xml:lang="en">Collection</rdfs:label>
         <rdfs:label xml:lang="it">Collezione</rdfs:label>
-        <rdfs:comment xml:lang="en">The class that represents a collection of things.</rdfs:comment>
-        <rdfs:comment xml:lang="it">La classe che rappresenta una collezione di qualsiasi cosa.</rdfs:comment>
     </owl:Class>
     
 
@@ -204,13 +208,11 @@
     <!-- http://dati.gov.it/onto/l0/Description -->
 
     <owl:Class rdf:about="http://dati.gov.it/onto/l0/Description">
-        <rdfs:label xml:lang="en">Description</rdfs:label>
-        <rdfs:label xml:lang="it">Descrizione</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://dati.gov.it/onto/l0/Object"/>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://dati.gov.it/onto/l0/description"/>
-                <owl:someValuesFrom rdf:resource="&rdfs;Literal"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:comment xml:lang="en">A Description is a SocialObject that represents a conceptualization. 
@@ -220,6 +222,8 @@ For example, a Plan is a Description of some actions to be executed by agents in
 Esso può essere pensato come un &apos;contesto descrittivo&apos; che usa o definisce concetti al fine di creare una vista su un &apos;contesto relazionale&apos; (Situazione) su un insieme di dati o osservazioni.
 Per esempio, un piano è una descrizione di qualche azione da eseguire da degli agenti in un certo modo, con determinati parametri; una diagnosi è una descrizione che fornisce un interpretazione di un insieme di osservazioni cliniche, ec...</rdfs:comment>
         <rdfs:isDefinedBy rdf:resource="http://dati.gov.it/onto/l0/"/>
+        <rdfs:label xml:lang="en">Description</rdfs:label>
+        <rdfs:label xml:lang="it">Descrizione</rdfs:label>
     </owl:Class>
     
 
@@ -227,10 +231,10 @@ Per esempio, un piano è una descrizione di qualche azione da eseguire da degli 
     <!-- http://dati.gov.it/onto/l0/Entity -->
 
     <owl:Class rdf:about="http://dati.gov.it/onto/l0/Entity">
-        <rdfs:label xml:lang="en">Entity</rdfs:label>
-        <rdfs:label xml:lang="it">Entità</rdfs:label>
         <rdfs:comment xml:lang="en">Anything: real, possible, or imaginary, which some modeller wants to talk about for some purpose.</rdfs:comment>
         <rdfs:comment xml:lang="it">Qualsiasi cosa reale, possibile o immaginaria.</rdfs:comment>
+        <rdfs:label xml:lang="en">Entity</rdfs:label>
+        <rdfs:label xml:lang="it">Entità</rdfs:label>
     </owl:Class>
     
 
@@ -238,10 +242,10 @@ Per esempio, un piano è una descrizione di qualche azione da eseguire da degli 
     <!-- http://dati.gov.it/onto/l0/Event -->
 
     <owl:Class rdf:about="http://dati.gov.it/onto/l0/Event">
+        <rdfs:comment xml:lang="it">Rappresentazione del concetto di evento.</rdfs:comment>
+        <rdfs:comment xml:lang="en">Representation of the concept of event.</rdfs:comment>
         <rdfs:label xml:lang="en">Event</rdfs:label>
         <rdfs:label xml:lang="it">Evento</rdfs:label>
-        <rdfs:comment xml:lang="en">Representation of the concept of event.</rdfs:comment>
-        <rdfs:comment xml:lang="it">Rappresentazione del concetto di evento.</rdfs:comment>
     </owl:Class>
     
 
@@ -249,11 +253,11 @@ Per esempio, un piano è una descrizione di qualche azione da eseguire da degli 
     <!-- http://dati.gov.it/onto/l0/Location -->
 
     <owl:Class rdf:about="http://dati.gov.it/onto/l0/Location">
+        <rdfs:subClassOf rdf:resource="http://dati.gov.it/onto/l0/Entity"/>
+        <rdfs:comment xml:lang="it">Classe che rappresenta il concetto di luogo. Le istanze di questa classe sono, pertanto, luoghi.</rdfs:comment>
+        <rdfs:comment xml:lang="en">The class that reprepresents a location. Individuals of this class are locations (e.g. geographical places, spacial objects, etc.).</rdfs:comment>
         <rdfs:label xml:lang="en">Location</rdfs:label>
         <rdfs:label xml:lang="it">Luogo</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://dati.gov.it/onto/l0/Entity"/>
-        <rdfs:comment xml:lang="en">The class that reprepresents a location. Individuals of this class are locations (e.g. geographical places, spacial objects, etc.).</rdfs:comment>
-        <rdfs:comment xml:lang="it">Classe che rappresenta il concetto di luogo. Le istanze di questa classe sono, pertanto, luoghi.</rdfs:comment>
     </owl:Class>
     
 
@@ -261,11 +265,11 @@ Per esempio, un piano è una descrizione di qualche azione da eseguire da degli 
     <!-- http://dati.gov.it/onto/l0/Object -->
 
     <owl:Class rdf:about="http://dati.gov.it/onto/l0/Object">
-        <rdfs:label xml:lang="en">Object</rdfs:label>
-        <rdfs:label xml:lang="it">Oggetto</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://dati.gov.it/onto/l0/Entity"/>
         <rdfs:comment xml:lang="en">An object.</rdfs:comment>
         <rdfs:comment xml:lang="it">Un oggetto.</rdfs:comment>
+        <rdfs:label xml:lang="en">Object</rdfs:label>
+        <rdfs:label xml:lang="it">Oggetto</rdfs:label>
     </owl:Class>
     
 
@@ -273,10 +277,10 @@ Per esempio, un piano è una descrizione di qualche azione da eseguire da degli 
     <!-- http://dati.gov.it/onto/l0/System -->
 
     <owl:Class rdf:about="http://dati.gov.it/onto/l0/System">
-        <rdfs:label xml:lang="en">System</rdfs:label>
-        <rdfs:label xml:lang="it">Sistema</rdfs:label>
-        <rdfs:comment xml:lang="en">This class represents a system. Example of systems are politacal or economical systems.</rdfs:comment>
         <rdfs:comment xml:lang="it">Questa classe rappresenta un sistema. Esempi di sistema sono un sistema politico o economico.</rdfs:comment>
+        <rdfs:comment xml:lang="en">This class represents a system. Example of systems are politacal or economical systems.</rdfs:comment>
+        <rdfs:label xml:lang="it">Sistema</rdfs:label>
+        <rdfs:label xml:lang="en">System</rdfs:label>
     </owl:Class>
     
 
@@ -284,14 +288,14 @@ Per esempio, un piano è una descrizione di qualche azione da eseguire da degli 
     <!-- http://dati.gov.it/onto/l0/Topic -->
 
     <owl:Class rdf:about="http://dati.gov.it/onto/l0/Topic">
-        <rdfs:label xml:lang="en">Topic</rdfs:label>
-        <rdfs:label xml:lang="it">Tema</rdfs:label>
-        <rdfs:comment xml:lang="en">The concept of topic.</rdfs:comment>
         <rdfs:comment xml:lang="it">Il concetto di tema o argomento.</rdfs:comment>
+        <rdfs:comment xml:lang="en">The concept of topic.</rdfs:comment>
+        <rdfs:label xml:lang="it">Tema</rdfs:label>
+        <rdfs:label xml:lang="en">Topic</rdfs:label>
     </owl:Class>
 </rdf:RDF>
 
 
 
-<!-- Generated by the OWL API (version 3.5.1) http://owlapi.sourceforge.net -->
+<!-- Generated by the OWL API (version 4.2.8.20170104-2310) https://github.com/owlcs/owlapi -->
 
