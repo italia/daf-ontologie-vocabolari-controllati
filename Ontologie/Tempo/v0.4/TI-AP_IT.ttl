@@ -11,770 +11,506 @@
 @base <http://dati.gov.it/onto/tiapit> .
 
 <http://dati.gov.it/onto/tiapit> rdf:type owl:Ontology ;
-                                 
-                                 rdfs:label "Time ontology"@en ,
-                                            "Ontologia del tempo"@it ;
-                                 
-                                 dct:issued "2017-09-25"^^xsd:date ;
-                                 
-                                 dc:creator "Agency for Digital Italy - AgID"@en ,
-                                            "Institute of Cognitive Sciences and Technologies of the Italian Research Council (CNR) - Semantic Technology Laboratory (STLab)"@en ,
-                                            "Italian Digital Transformation Team"@en ;
-                                 
-                                 rdfs:comment "This is the ontology of the Italian application profile for time"@en ;
-                                 
-                                 owl:versionInfo "Version 0.4 - 21 November 2017"@en ;
-                                 
-                                 rdfs:comment "Questa è l'ontologia del profilo applicativo italiano sul tempo"@it ;
-                                 
-                                 owl:versionInfo "Versione 0.4 - 21 Novembre 2017"@it ;
-                                 
-                                 owl:imports l0: ,
-                                             <http://dati.gov.it/onto/muapit/0.1> ;
-                                 
-                                 rdfs:isDefinedBy : ;
-                                 
-                                 owl:versionIRI <http://dati.gov.it/onto/tiapit/0.4> ;
-                                 
-                                 dct:license <https://creativecommons.org/licenses/by/4.0/> .
+                                  owl:versionIRI : ;
+                                  owl:imports l0: ,
+                                              muapit: ;
+                                  dct:modified "2017-11-21" ;
+                                  dc:creator "Institute of Cognitive Sciences and Technologies of the Italian Research Council (CNR) - Semantic Technology Laboratory (STLab)"@en ;
+                                  rdfs:comment "This is the ontology of the Italian application profile for time"@en ;
+                                  dct:issued "2017-09-25"^^xsd:date ;
+                                  dc:creator "Italian Digital Transformation Team"@en ;
+                                  owl:versionInfo "Versione 0.4 - 21 Novembre 2017"@it ;
+                                  rdfs:isDefinedBy : ;
+                                  dct:license <https://creativecommons.org/licenses/by/4.0/> ;
+                                  rdfs:comment "Questa è l'ontologia del profilo applicativo italiano sul tempo"@it ;
+                                  owl:versionInfo "Version 0.4 - 21 November 2017"@en ;
+                                  dc:creator "Agency for Digital Italy - AgID"@en ;
+                                  rdfs:label "Time ontology"@en ,
+                                             "Ontologia del tempo"@it .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://purl.org/dc/terms/modified
+dct:modified rdf:type owl:AnnotationProperty .
 
 
 #################################################################
-#
 #    Datatypes
-#
 #################################################################
-
 
 ###  http://www.w3.org/2001/XMLSchema#duration
-
 xsd:duration rdf:type rdfs:Datatype .
 
 
-
 ###  http://www.w3.org/2001/XMLSchema#gDay
-
 xsd:gDay rdf:type rdfs:Datatype .
 
 
-
 ###  http://www.w3.org/2001/XMLSchema#gMonth
-
 xsd:gMonth rdf:type rdfs:Datatype .
 
 
-
 ###  http://www.w3.org/2001/XMLSchema#gYear
-
 xsd:gYear rdf:type rdfs:Datatype .
 
 
-
-
-
 #################################################################
-#
 #    Object Properties
-#
 #################################################################
-
 
 ###  http://dati.gov.it/onto/tiapit/atTime
-
 :atTime rdf:type owl:ObjectProperty ;
-        
-        rdfs:label "at time"@en ,
-                   "al tempo"@it ;
-        
+        rdfs:subPropertyOf :hasTemporalEntity ;
+        rdfs:domain :TimeIndexedEvent ;
+        rdfs:range :TimeInterval ;
         rdfs:comment "Relation between any thing and time interval"@en ,
                      "Relazione tra qualsiasi cosa e intervallo di tempo."@it ;
-        
-        rdfs:domain :TimeIndexedEvent ;
-        
-        rdfs:range :TimeInterval ;
-        
-        rdfs:subPropertyOf :hasTemporalEntity .
-
+        rdfs:label "al tempo"@it ,
+                   "at time"@en .
 
 
 ###  http://dati.gov.it/onto/tiapit/hasDayOfWeek
-
 :hasDayOfWeek rdf:type owl:ObjectProperty ;
-              
-              rdfs:label "has day of week"@en ,
-                         "ha giorno della settimana"@it ;
-              
-              rdfs:comment "This property relates any object to particular day of the week."@en ,
-                           "Questa proprietà è utilizzata per associare un oggetto che può essere collocato nel tempo ai giorni della settimana."@it ;
-              
-              rdfs:range :DayOfWeek ;
-              
+              rdfs:subPropertyOf :hasTemporalEntity ;
+              owl:inverseOf :isDayOfWeekOf ;
               rdfs:domain :TimeIndexedEvent ;
-              
-              rdfs:subPropertyOf :hasTemporalEntity .
-
+              rdfs:range :DayOfWeek ;
+              rdfs:comment "Questa proprietà è utilizzata per associare un oggetto che può essere collocato nel tempo ai giorni della settimana."@it ,
+                           "This property relates any object to particular day of the week."@en ;
+              rdfs:label "ha giorno della settimana"@it ,
+                         "has day of week"@en .
 
 
 ###  http://dati.gov.it/onto/tiapit/hasDuration
-
 :hasDuration rdf:type owl:ObjectProperty ;
-             
-             rdfs:label "has duration"@en ,
-                        "ha durata"@it ;
-             
-             rdfs:comment "This property is used to specify the temporal duration of the validity."@en ,
-                          "Questa proprietà è utilizzata per specificare il periodo temporale di validità."@it ;
-             
-             rdfs:isDefinedBy <http://dati.gov.it/onto/tiapit> ;
-             
-             rdfs:range :Duration ;
-             
+             rdfs:subPropertyOf :hasTemporalEntity ;
+             owl:inverseOf :isDurationOf ;
              rdfs:domain :TimeIndexedEvent ;
-             
-             rdfs:subPropertyOf :hasTemporalEntity .
-
+             rdfs:range :Duration ;
+             rdfs:comment "Questa proprietà è utilizzata per specificare il periodo temporale di validità."@it ,
+                          "This property is used to specify the temporal duration of the validity."@en ;
+             rdfs:isDefinedBy <http://dati.gov.it/onto/tiapit> ;
+             rdfs:label "ha durata"@it ,
+                        "has duration"@en .
 
 
 ###  http://dati.gov.it/onto/tiapit/hasMonthOfYear
-
 :hasMonthOfYear rdf:type owl:ObjectProperty ;
-                
-                rdfs:label "has month of the year"@en ,
-                           "ha mese dell'anno"@it ;
-                
+                rdfs:subPropertyOf :hasTemporalEntity ;
+                owl:inverseOf :isMonthOfYearOf ;
+                rdfs:domain :TimeIndexedEvent ;
+                rdfs:range :MonthOfYear ;
                 rdfs:comment "Property that links a time indexed event to a month of the year."@en ,
                              "Proprietà che collega un evento nel tempo ad un mese dell'anno."@it ;
-                
                 rdfs:isDefinedBy <http://dati.gov.it/onto/tiapit> ;
-                
-                rdfs:range :MonthOfYear ;
-                
-                rdfs:domain :TimeIndexedEvent ;
-                
-                rdfs:subPropertyOf :hasTemporalEntity .
-
+                rdfs:label "ha mese dell'anno"@it ,
+                           "has month of the year"@en .
 
 
 ###  http://dati.gov.it/onto/tiapit/hasTemporalEntity
-
 :hasTemporalEntity rdf:type owl:ObjectProperty ;
-                   
-                   rdfs:label "has temporal entity"@en ,
-                              "ha entità temporale"@it ;
-                   
+                   owl:inverseOf :isTemporalEntityOf ;
+                   rdfs:domain :TimeIndexedEvent ;
+                   rdfs:range :TemporalEntity ;
                    rdfs:comment "Property that links a time indexed event to a temporal entity."@en ,
                                 "Proprietà che collega un evento nel tempo ad un entità temporale."@it ;
-                   
                    rdfs:isDefinedBy <http://dati.gov.it/onto/tiapit> ;
-                   
-                   rdfs:range :TemporalEntity ;
-                   
-                   rdfs:domain :TimeIndexedEvent .
-
+                   rdfs:label "ha entità temporale"@it ,
+                              "has temporal entity"@en .
 
 
 ###  http://dati.gov.it/onto/tiapit/hasYear
-
 :hasYear rdf:type owl:ObjectProperty ;
-         
-         rdfs:label "has year"@en ,
-                    "ha anno"@it ;
-         
+         rdfs:subPropertyOf :hasTemporalEntity ;
+         owl:inverseOf :isYearOf ;
+         rdfs:domain :TimeIndexedEvent ;
+         rdfs:range :Year ;
          rdfs:comment "Property that links a time indexed event to its year."@en ,
                       "Proprietà che collega un evento nel tempo al suo anno."@it ;
-         
          rdfs:isDefinedBy <http://dati.gov.it/onto/tiapit> ;
-         
-         rdfs:domain :TimeIndexedEvent ;
-         
-         rdfs:range :Year ;
-         
-         rdfs:subPropertyOf :hasTemporalEntity .
-
+         rdfs:label "ha anno"@it ,
+                    "has year"@en .
 
 
 ###  http://dati.gov.it/onto/tiapit/isDayOfWeekOf
-
 :isDayOfWeekOf rdf:type owl:ObjectProperty ;
-               
-               rdfs:label "is day of week of"@en ,
-                          "è giorno della settimana di"@it ;
-               
+               rdfs:subPropertyOf :isTemporalEntityOf ;
+               rdfs:domain :DayOfWeek ;
+               rdfs:range :TimeIndexedEvent ;
                rdfs:comment "Inverse property of has day of week."@en ,
                             "Proprietà inversa di \"ha giorno della settimana\"."@it ;
-               
-               rdfs:domain :DayOfWeek ;
-               
-               rdfs:range :TimeIndexedEvent ;
-               
-               owl:inverseOf :hasDayOfWeek ;
-               
-               rdfs:subPropertyOf :isTemporalEntityOf .
-
+               rdfs:label "is day of week of"@en ,
+                          "è giorno della settimana di"@it .
 
 
 ###  http://dati.gov.it/onto/tiapit/isDurationOf
-
 :isDurationOf rdf:type owl:ObjectProperty ;
-              
-              rdfs:label "is duration of"@en ,
-                         "è durata di"@it ;
-              
+              rdfs:subPropertyOf :isTemporalEntityOf ;
+              rdfs:domain :Duration ;
+              rdfs:range :TimeIndexedEvent ;
               rdfs:comment "Inverse object property of hasDuration. It associates a duration with a time indexed event."@en ,
                            "Proprietà inversa di hasDuration. Associa una durata ad una evento."@it ;
-              
               rdfs:isDefinedBy <http://dati.gov.it/onto/tiapit> ;
-              
-              rdfs:domain :Duration ;
-              
-              rdfs:range :TimeIndexedEvent ;
-              
-              owl:inverseOf :hasDuration ;
-              
-              rdfs:subPropertyOf :isTemporalEntityOf .
-
+              rdfs:label "is duration of"@en ,
+                         "è durata di"@it .
 
 
 ###  http://dati.gov.it/onto/tiapit/isMonthOfYearOf
-
 :isMonthOfYearOf rdf:type owl:ObjectProperty ;
-                 
-                 rdfs:label "is month of the year of"@en ,
-                            "è mese dell'anno di"@it ;
-                 
+                 rdfs:subPropertyOf :isTemporalEntityOf ;
+                 rdfs:domain :MonthOfYear ;
+                 rdfs:range :TimeIndexedEvent ;
                  rdfs:comment "Property that links a month of the year to a time indexed event."@en ,
                               "Proprietà che collega un mese dell'anno ad un evento nel tempo."@it ;
-                 
                  rdfs:isDefinedBy <http://dati.gov.it/onto/tiapit> ;
-                 
-                 rdfs:domain :MonthOfYear ;
-                 
-                 rdfs:range :TimeIndexedEvent ;
-                 
-                 owl:inverseOf :hasMonthOfYear ;
-                 
-                 rdfs:subPropertyOf :isTemporalEntityOf .
-
+                 rdfs:label "is month of the year of"@en ,
+                            "è mese dell'anno di"@it .
 
 
 ###  http://dati.gov.it/onto/tiapit/isTemporalEntityOf
-
 :isTemporalEntityOf rdf:type owl:ObjectProperty ;
-                    
-                    rdfs:label "is temporal entity of"@en ,
-                               "è entità temporale di"@it ;
-                    
+                    rdfs:domain :TemporalEntity ;
+                    rdfs:range :TimeIndexedEvent ;
                     rdfs:comment "Property that links a temporal entity to a time indexed event."@en ,
                                  "Proprietà che collega un entità temporale ad un evento nel tempo."@it ;
-                    
                     rdfs:isDefinedBy <http://dati.gov.it/onto/tiapit> ;
-                    
-                    rdfs:domain :TemporalEntity ;
-                    
-                    rdfs:range :TimeIndexedEvent ;
-                    
-                    owl:inverseOf :hasTemporalEntity .
-
+                    rdfs:label "is temporal entity of"@en ,
+                               "è entità temporale di"@it .
 
 
 ###  http://dati.gov.it/onto/tiapit/isYearOf
-
 :isYearOf rdf:type owl:ObjectProperty ;
-          
-          rdfs:label "is year of"@en ,
-                     "è anno di"@it ;
-          
+          rdfs:subPropertyOf :isTemporalEntityOf ;
+          rdfs:domain :Year ;
+          rdfs:range :TimeIndexedEvent ;
           rdfs:comment "Property that links a year to a time indexed event."@en ,
                        "Proprietà che collega un anno ad un evento nel tempo."@it ;
-          
           rdfs:isDefinedBy <http://dati.gov.it/onto/tiapit> ;
-          
-          rdfs:range :TimeIndexedEvent ;
-          
-          rdfs:domain :Year ;
-          
-          owl:inverseOf :hasYear ;
-          
-          rdfs:subPropertyOf :isTemporalEntityOf .
-
-
-
+          rdfs:label "is year of"@en ,
+                     "è anno di"@it .
 
 
 #################################################################
-#
 #    Data properties
-#
 #################################################################
-
 
 ###  http://dati.gov.it/onto/tiapit/day
-
 :day rdf:type owl:DatatypeProperty ;
-     
-     rdfs:comment "Property defined for linking an instance of the class DayOfWeed to its literal representation expressed as xsd:gDay."@en ,
-                  "day"@en ,
-                  "Proprietà definita per associare un valore letterale di tipo xsd:gDay ad un'istanza della classe DayOfWeek."@it ,
-                  "giorno"@it ;
-     
-     rdfs:isDefinedBy <http://dati.gov.it/onto/tiapit> ;
-     
-     rdfs:domain :DayOfWeek ;
-     
      rdfs:subPropertyOf :time ;
-     
-     rdfs:range xsd:gDay .
-
+     rdfs:domain :DayOfWeek ;
+     rdfs:range xsd:gDay ;
+     rdfs:comment "Property defined for linking an instance of the class DayOfWeed to its literal representation expressed as xsd:gDay."@en ,
+                  "Proprietà definita per associare un valore letterale di tipo xsd:gDay ad un'istanza della classe DayOfWeek."@it ,
+                  "day"@en ,
+                  "giorno"@it ;
+     rdfs:isDefinedBy <http://dati.gov.it/onto/tiapit> .
 
 
 ###  http://dati.gov.it/onto/tiapit/duration
-
 :duration rdf:type owl:DatatypeProperty ;
-          
-          rdfs:label "duration"@en ,
-                     "durata"@it ;
-          
+          rdfs:subPropertyOf :time ;
+          rdfs:domain :Duration ;
+          rdfs:range xsd:duration ;
           rdfs:comment "Property that associates a duratin value with a time interval."@en ,
                        "Proprietà che associa un valore di durata ad un intervallo di tempo."@it ;
-          
           rdfs:isDefinedBy <http://dati.gov.it/onto/tiapit> ;
-          
-          rdfs:domain :Duration ;
-          
-          rdfs:subPropertyOf :time ;
-          
-          rdfs:range xsd:duration .
-
+          rdfs:label "durata"@it ,
+                     "duration"@en .
 
 
 ###  http://dati.gov.it/onto/tiapit/endTime
-
 :endTime rdf:type owl:DatatypeProperty ;
-         
-         rdfs:label "end date"@en ,
-                    "data di fine"@it ;
-         
-         rdfs:comment "This property represents the end date of a time interval."@en ,
-                      "Questa proprietà rappresenta la data di fine di un intervallo temporale."@it ;
-         
-         rdfs:domain :TimeInterval ;
-         
          rdfs:subPropertyOf :time ;
-         
-         rdfs:range xsd:dateTime .
-
+         rdfs:domain :TimeInterval ;
+         rdfs:range xsd:dateTime ;
+         rdfs:comment "Questa proprietà rappresenta la data di fine di un intervallo temporale."@it ,
+                      "This property represents the end date of a time interval."@en ;
+         rdfs:label "data di fine"@it ,
+                    "end date"@en .
 
 
 ###  http://dati.gov.it/onto/tiapit/month
-
 :month rdf:type owl:DatatypeProperty ;
-       
-       rdfs:comment "Property defined for linking an individual of the class MonthOfTheYear to its literal representation expressed as xsd:gMonth."@en ,
-                    "month"@en ,
-                    "Proprietà definita per collegare un oggetto di tipo MonthOfTheYear al suo valore letterale espresso come xsd:gMonth."@it ,
-                    "mese"@it ;
-       
-       rdfs:isDefinedBy <http://dati.gov.it/onto/tiapit> ;
-       
-       rdfs:domain :MonthOfYear ;
-       
        rdfs:subPropertyOf :time ;
-       
-       rdfs:range xsd:gMonth .
-
+       rdfs:domain :MonthOfYear ;
+       rdfs:range xsd:gMonth ;
+       rdfs:comment "Property defined for linking an individual of the class MonthOfTheYear to its literal representation expressed as xsd:gMonth."@en ,
+                    "Proprietà definita per collegare un oggetto di tipo MonthOfTheYear al suo valore letterale espresso come xsd:gMonth."@it ,
+                    "mese"@it ,
+                    "month"@en ;
+       rdfs:isDefinedBy <http://dati.gov.it/onto/tiapit> .
 
 
 ###  http://dati.gov.it/onto/tiapit/startTime
-
 :startTime rdf:type owl:DatatypeProperty ;
-           
-           rdfs:label "start date"@en ,
-                      "data di inizio"@it ;
-           
-           rdfs:comment "This property represents the start date of the time interval."@en ,
-                        "Questa proprietà rappresenta la data di inizio di un intervallo temporale."@it ;
-           
-           rdfs:domain :TimeInterval ;
-           
            rdfs:subPropertyOf :time ;
-           
-           rdfs:range xsd:dateTime .
-
+           rdfs:domain :TimeInterval ;
+           rdfs:range xsd:dateTime ;
+           rdfs:comment "Questa proprietà rappresenta la data di inizio di un intervallo temporale."@it ,
+                        "This property represents the start date of the time interval."@en ;
+           rdfs:label "data di inizio"@it ,
+                      "start date"@en .
 
 
 ###  http://dati.gov.it/onto/tiapit/time
-
 :time rdf:type owl:DatatypeProperty ;
-      
-      rdfs:label "time"@en ,
-                 "tempo"@it ;
-      
-      rdfs:comment "Abstract property used to represent the time as literal."@en ,
-                   "Proprietà astratta per rappresentare il tempo come literal."@it ,
-                   <http://dati.gov.it/onto/tiapit> ;
-      
       rdfs:domain :TemporalEntity ;
-      
-      rdfs:range rdfs:Literal .
-
+      rdfs:range rdfs:Literal ;
+      rdfs:comment <http://dati.gov.it/onto/tiapit> ,
+                   "Abstract property used to represent the time as literal."@en ,
+                   "Proprietà astratta per rappresentare il tempo come literal."@it ;
+      rdfs:label "tempo"@it ,
+                 "time"@en .
 
 
 ###  http://dati.gov.it/onto/tiapit/year
-
 :year rdf:type owl:DatatypeProperty ;
-      
-      rdfs:label "Datatype property for linking a year to its literal representation as xsd:gYear."@en ,
-                 "year"@en ,
-                 "Properietà definita per collegare un individuo di tipo Year alla sua rappresentazione letterale con datatype xsd:gYear."@it ,
-                 "anno"@it ;
-      
-      rdfs:isDefinedBy <http://dati.gov.it/onto/tiapit> ;
-      
-      rdfs:domain :Year ;
-      
       rdfs:subPropertyOf :time ;
-      
-      rdfs:range xsd:gYear .
-
-
-
+      rdfs:domain :Year ;
+      rdfs:range xsd:gYear ;
+      rdfs:isDefinedBy <http://dati.gov.it/onto/tiapit> ;
+      rdfs:label "Datatype property for linking a year to its literal representation as xsd:gYear."@en ,
+                 "Properietà definita per collegare un individuo di tipo Year alla sua rappresentazione letterale con datatype xsd:gYear."@it ,
+                 "anno"@it ,
+                 "year"@en .
 
 
 #################################################################
-#
 #    Classes
-#
 #################################################################
+
+###  http://dati.gov.it/onto/l0/Characteristic
+l0:Characteristic rdf:type owl:Class .
 
 
 ###  http://dati.gov.it/onto/l0/Entity
-
 l0:Entity rdf:type owl:Class .
 
 
+###  http://dati.gov.it/onto/l0/Event
+l0:Event rdf:type owl:Class .
+
+
+###  http://dati.gov.it/onto/muapit/Value
+muapit:Value rdf:type owl:Class .
+
 
 ###  http://dati.gov.it/onto/tiapit/DayOfWeek
-
 :DayOfWeek rdf:type owl:Class ;
-           
-           rdfs:label "Day of the Week"@en ,
-                      "Giorno della settimana"@it ;
-           
            rdfs:subClassOf :TemporalEntity ;
-           
            owl:disjointWith :MonthOfYear ,
                             :Year ;
-           
-           rdfs:comment "This class represents the set of all the days of the week."@en ,
-                        "Classe che rappresenta l'insieme dei giorni della settimana."@it ;
-           
-           rdfs:isDefinedBy <http://dati.gov.it/onto/tiapit> .
-
+           rdfs:comment "Classe che rappresenta l'insieme dei giorni della settimana."@it ,
+                        "This class represents the set of all the days of the week."@en ;
+           rdfs:isDefinedBy <http://dati.gov.it/onto/tiapit> ;
+           rdfs:label "Day of the Week"@en ,
+                      "Giorno della settimana"@it .
 
 
 ###  http://dati.gov.it/onto/tiapit/Duration
-
 :Duration rdf:type owl:Class ;
-          
-          rdfs:label "Duration"@en ,
-                     "Durata"@it ;
-          
           rdfs:subClassOf :TemporalEntity ,
                           [ rdf:type owl:Class ;
                             owl:unionOf ( muapit:Value
                                           :TimeInterval
                                         )
                           ] ;
-          
-          rdfs:comment "The class for representing duration."@en ,
-                       "La classe che rappresenta la durata."@it ;
-          
-          rdfs:isDefinedBy <http://dati.gov.it/onto/tiapit> .
-
+          rdfs:comment "La classe che rappresenta la durata."@it ,
+                       "The class for representing duration."@en ;
+          rdfs:isDefinedBy <http://dati.gov.it/onto/tiapit> ;
+          rdfs:label "Durata"@it ,
+                     "Duration"@en .
 
 
 ###  http://dati.gov.it/onto/tiapit/MonthOfYear
-
 :MonthOfYear rdf:type owl:Class ;
-             
-             rdfs:label "Month of the year"@en ,
-                        "Mese dell'anno"@it ;
-             
              rdfs:subClassOf :TemporalEntity ;
-             
              owl:disjointWith :Year ;
-             
-             rdfs:comment "This class represents a month of the year."@en ,
-                          "Questa classe rappresenta un mese dell'anno."@it ;
-             
-             rdfs:isDefinedBy <http://dati.gov.it/onto/tiapit> .
-
+             rdfs:comment "Questa classe rappresenta un mese dell'anno."@it ,
+                          "This class represents a month of the year."@en ;
+             rdfs:isDefinedBy <http://dati.gov.it/onto/tiapit> ;
+             rdfs:label "Mese dell'anno"@it ,
+                        "Month of the year"@en .
 
 
 ###  http://dati.gov.it/onto/tiapit/TemporalEntity
-
 :TemporalEntity rdf:type owl:Class ;
-                
-                rdfs:label "Temporal entity"@en ,
-                           "Entità temporale"@it ;
-                
                 rdfs:subClassOf l0:Entity ;
-                
-                rdfs:comment "This class represents a temporal entity."@en ,
-                             "Questa classe rappresenta un'entità di natura temporale."@it ;
-                
-                rdfs:isDefinedBy <http://dati.gov.it/onto/tiapit> .
-
+                rdfs:comment "Questa classe rappresenta un'entità di natura temporale."@it ,
+                             "This class represents a temporal entity."@en ;
+                rdfs:isDefinedBy <http://dati.gov.it/onto/tiapit> ;
+                rdfs:label "Entità temporale"@it ,
+                           "Temporal entity"@en .
 
 
 ###  http://dati.gov.it/onto/tiapit/TimeIndexedEvent
-
 :TimeIndexedEvent rdf:type owl:Class ;
-                  
-                  rdfs:label "Time indexed event"@en ,
-                             "Evento indicizzato nel tempo"@it ;
-                  
                   rdfs:subClassOf l0:Event ;
-                  
                   rdfs:comment "A time indexed event."@en ,
                                "Un evento indicizzato nel tempo."@it ;
-                  
-                  rdfs:isDefinedBy <http://dati.gov.it/onto/tiapit> .
-
+                  rdfs:isDefinedBy <http://dati.gov.it/onto/tiapit> ;
+                  rdfs:label "Evento indicizzato nel tempo"@it ,
+                             "Time indexed event"@en .
 
 
 ###  http://dati.gov.it/onto/tiapit/TimeInterval
-
 :TimeInterval rdf:type owl:Class ;
-              
-              rdfs:label "Time interval"@en ,
-                         "Intervallo di tempo"@it ;
-              
               rdfs:subClassOf l0:Characteristic ,
                               :TemporalEntity ;
-              
               rdfs:comment "A time interval"@en ,
                            "Rappresentazione di intervallo di tempo."@it ;
-              
-              rdfs:isDefinedBy <http://dati.gov.it/onto/tiapit> .
-
+              rdfs:isDefinedBy <http://dati.gov.it/onto/tiapit> ;
+              rdfs:label "Intervallo di tempo"@it ,
+                         "Time interval"@en .
 
 
 ###  http://dati.gov.it/onto/tiapit/Year
-
 :Year rdf:type owl:Class ;
-      
-      rdfs:label "Year"@en ,
-                 "Anno"@it ;
-      
       rdfs:subClassOf :TemporalEntity ;
-      
       rdfs:comment "Class for representing a year as individual."@en ,
                    "Classe che rappresenta un anno."@it ;
-      
-      rdfs:isDefinedBy <http://dati.gov.it/onto/tiapit> .
-
-
-
+      rdfs:isDefinedBy <http://dati.gov.it/onto/tiapit> ;
+      rdfs:label "Anno"@it ,
+                 "Year"@en .
 
 
 #################################################################
-#
 #    Individuals
-#
 #################################################################
-
 
 ###  http://dati.gov.it/onto/tiapit/April
-
-:April rdf:type :MonthOfYear ,
-                owl:NamedIndividual ;
-       
+:April rdf:type owl:NamedIndividual ,
+                :MonthOfYear ;
        rdfs:label "April"@en ,
                   "Aprile"@it .
 
 
-
 ###  http://dati.gov.it/onto/tiapit/August
-
-:August rdf:type :MonthOfYear ,
-                 owl:NamedIndividual ;
-        
-        rdfs:label "August"@en ,
-                   "Agosto"@it .
-
+:August rdf:type owl:NamedIndividual ,
+                 :MonthOfYear ;
+        rdfs:label "Agosto"@it ,
+                   "August"@en .
 
 
 ###  http://dati.gov.it/onto/tiapit/December
-
-:December rdf:type :MonthOfYear ,
-                   owl:NamedIndividual ;
-          
+:December rdf:type owl:NamedIndividual ,
+                   :MonthOfYear ;
           rdfs:label "December"@en ,
                      "Dicembre"@it .
 
 
-
 ###  http://dati.gov.it/onto/tiapit/February
-
-:February rdf:type :MonthOfYear ,
-                   owl:NamedIndividual ;
-          
-          rdfs:label "February"@en ,
-                     "Febbraio"@it .
-
+:February rdf:type owl:NamedIndividual ,
+                   :MonthOfYear ;
+          rdfs:label "Febbraio"@it ,
+                     "February"@en .
 
 
 ###  http://dati.gov.it/onto/tiapit/Friday
-
-:Friday rdf:type :DayOfWeek ,
-                 owl:NamedIndividual ;
-        
+:Friday rdf:type owl:NamedIndividual ,
+                 :DayOfWeek ;
         rdfs:label "Friday"@en ,
                    "Venerdì"@it .
 
 
-
 ###  http://dati.gov.it/onto/tiapit/January
-
-:January rdf:type :MonthOfYear ,
-                  owl:NamedIndividual ;
-         
-         rdfs:label "January"@en ,
-                    "Gennaio"@it .
-
+:January rdf:type owl:NamedIndividual ,
+                  :MonthOfYear ;
+         rdfs:label "Gennaio"@it ,
+                    "January"@en .
 
 
 ###  http://dati.gov.it/onto/tiapit/July
-
-:July rdf:type :MonthOfYear ,
-               owl:NamedIndividual ;
-      
+:July rdf:type owl:NamedIndividual ,
+               :MonthOfYear ;
       rdfs:label "July"@en ,
                  "Luglio"@it .
 
 
-
 ###  http://dati.gov.it/onto/tiapit/June
-
-:June rdf:type :MonthOfYear ,
-               owl:NamedIndividual ;
-      
-      rdfs:label "June"@en ,
-                 "Giugno"@it .
-
+:June rdf:type owl:NamedIndividual ,
+               :MonthOfYear ;
+      rdfs:label "Giugno"@it ,
+                 "June"@en .
 
 
 ###  http://dati.gov.it/onto/tiapit/March
-
-:March rdf:type :MonthOfYear ,
-                owl:NamedIndividual ;
-       
+:March rdf:type owl:NamedIndividual ,
+                :MonthOfYear ;
        rdfs:label "March"@en ,
                   "Marzo"@it .
 
 
-
 ###  http://dati.gov.it/onto/tiapit/May
-
-:May rdf:type :MonthOfYear ,
-              owl:NamedIndividual ;
-     
+:May rdf:type owl:NamedIndividual ,
+              :MonthOfYear ;
      rdfs:label "Maggio"@it ,
                 "May"@it .
 
 
-
 ###  http://dati.gov.it/onto/tiapit/Monday
-
-:Monday rdf:type :DayOfWeek ,
-                 owl:NamedIndividual ;
-        
-        rdfs:label "Monday"@en ,
-                   "Lunedì"@it .
-
+:Monday rdf:type owl:NamedIndividual ,
+                 :DayOfWeek ;
+        rdfs:label "Lunedì"@it ,
+                   "Monday"@en .
 
 
 ###  http://dati.gov.it/onto/tiapit/November
-
-:November rdf:type :MonthOfYear ,
-                   owl:NamedIndividual ;
-          
+:November rdf:type owl:NamedIndividual ,
+                   :MonthOfYear ;
           rdfs:label "November"@en ,
                      "Novembre"@it .
 
 
-
 ###  http://dati.gov.it/onto/tiapit/October
-
-:October rdf:type :MonthOfYear ,
-                  owl:NamedIndividual ;
-         
+:October rdf:type owl:NamedIndividual ,
+                  :MonthOfYear ;
          rdfs:label "October"@en ,
                     "Ottobre"@it .
 
 
-
 ###  http://dati.gov.it/onto/tiapit/Saturday
-
-:Saturday rdf:type :DayOfWeek ,
-                   owl:NamedIndividual ;
-          
-          rdfs:label "Satruday"@en ,
-                     "Sabato"@it .
-
+:Saturday rdf:type owl:NamedIndividual ,
+                   :DayOfWeek ;
+          rdfs:label "Sabato"@it ,
+                     "Satruday"@en .
 
 
 ###  http://dati.gov.it/onto/tiapit/September
-
-:September rdf:type :MonthOfYear ,
-                    owl:NamedIndividual ;
-           
+:September rdf:type owl:NamedIndividual ,
+                    :MonthOfYear ;
            rdfs:label "September"@en ,
                       "Settembre"@it .
 
 
-
 ###  http://dati.gov.it/onto/tiapit/Sunday
-
-:Sunday rdf:type :DayOfWeek ,
-                 owl:NamedIndividual ;
-        
-        rdfs:label "Sunday"@en ,
-                   "Domenica"@it .
-
+:Sunday rdf:type owl:NamedIndividual ,
+                 :DayOfWeek ;
+        rdfs:label "Domenica"@it ,
+                   "Sunday"@en .
 
 
 ###  http://dati.gov.it/onto/tiapit/Thursday
-
-:Thursday rdf:type :DayOfWeek ,
-                   owl:NamedIndividual ;
-          
-          rdfs:label "Thursday"@en ,
-                     "Giovedì"@it .
-
+:Thursday rdf:type owl:NamedIndividual ,
+                   :DayOfWeek ;
+          rdfs:label "Giovedì"@it ,
+                     "Thursday"@en .
 
 
 ###  http://dati.gov.it/onto/tiapit/Tuesday
-
-:Tuesday rdf:type :DayOfWeek ,
-                  owl:NamedIndividual ;
-         
-         rdfs:label "Tuesday"@en ,
-                    "Martedì"@it .
-
+:Tuesday rdf:type owl:NamedIndividual ,
+                  :DayOfWeek ;
+         rdfs:label "Martedì"@it ,
+                    "Tuesday"@en .
 
 
 ###  http://dati.gov.it/onto/tiapit/Wednesday
-
-:Wednesday rdf:type :DayOfWeek ,
-                    owl:NamedIndividual ;
-           
-           rdfs:label "Wednesday"@en ,
-                      "Mercoledì"@it .
+:Wednesday rdf:type owl:NamedIndividual ,
+                    :DayOfWeek ;
+           rdfs:label "Mercoledì"@it ,
+                      "Wednesday"@en .
 
 
-
-
-###  Generated by the OWL API (version 3.5.1) http://owlapi.sourceforge.net
-
+###  Generated by the OWL API (version 4.2.8.20170104-2310) https://github.com/owlcs/owlapi

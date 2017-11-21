@@ -16,19 +16,16 @@
     {
       "@id": "ti:atTime",
       "@type": "owl:ObjectProperty",
-      "rdfs:domain": {
-        "@id": "owl:Thing"
-      },
       "rdfs:isDefinedBy": {
         "@id": "ti:"
-      },
-      "rdfs:range": {
-        "@id": "ti:TimeInterval"
       }
     },
     {
-      "@id": "http://dati.gov.it/onto/poiapit#PointOfInterest",
-      "@type": "owl:Class",
+      "@id": "http://dati.gov.it/onto/poiapit#POIcategoryIdentifier",
+      "@type": "owl:DatatypeProperty",
+      "l0:controlledVocabulary": {
+        "@id": "http://dati.gov.it/onto/controlledvocabulary/POICategoryClassification"
+      },
       "owl:versionInfo": [
         {
           "@language": "en",
@@ -39,94 +36,25 @@
           "@value": "stabile"
         }
       ],
-      "rdfs:comment": [
-        {
-          "@language": "en",
-          "@value": "This class represents a point of interest, which is a particular point that someone finds useful or interesting. It may be a parking , an accommodation, a bus stop, a pharmacy, a shopping centre, a crossroads, etc. This class represents a \"superstructure\" used to model things of some kind of interest; however, at the same time it can be viewed as a location or place or feature (it is indeed a subclass of Entity in the top level ontology L0 which can be in turn a Location or an Object). This kind of modelling allows users to get information if they search for both a location and things to which they are interested in."
-        },
-        {
-          "@language": "it",
-          "@value": "Questa classe rappresenta un punto di interesse, ovvero un particolare punto che qualcuno trova utile o di interesse. Esso può essere un parcheggio, una struttura ricettiva, una feramta dell'autobus, una farmacia, un centro commerciale, un incrocio, ecc. E' da notare che questa classe rappresenta di fatto una sovrastruttura utile per modellare cose di interesse ma allo stesso tempo è anche accettato considerarla come luogo (infatti la classe è definita come sotto classe di \"Entity-Entità\" dell'ontologia L0 che a sua volta può essere un oggetto o un luogo). Questo tipo di modellazione quindi consente a utenti di poter cercare oggetti di interesse ma anche fare query su punti di interessse intesi come luoghi."
-        }
-      ],
+      "rdfs:comment": {
+        "@language": "it",
+        "@value": "Questa proprietà è l'identificativo nel vocabolario controllato della categoria dei punti di interesse. E' equivalente a dct:identifier e skos:notation utilizzati nel vocabolario controllato stesso."
+      },
       "rdfs:isDefinedBy": {
         "@id": "http://dati.gov.it/onto/poiapit"
       },
       "rdfs:label": [
         {
           "@language": "en",
-          "@value": "Point of Interest"
+          "@value": "POI category identifier"
         },
         {
           "@language": "it",
-          "@value": "Punto di Interesse"
+          "@value": "identificativo categoria punto di interesse"
         }
       ],
-      "rdfs:subClassOf": [
-        {
-          "@id": "_:ub226bL455C34"
-        },
-        {
-          "@id": "_:ub226bL487C34"
-        },
-        {
-          "@id": "l0:Entity"
-        },
-        {
-          "@id": "_:ub226bL447C34"
-        },
-        {
-          "@id": "_:ub226bL459C34"
-        },
-        {
-          "@id": "_:ub226bL464C34"
-        },
-        {
-          "@id": "_:ub226bL479C34"
-        },
-        {
-          "@id": "_:ub226bL443C34"
-        },
-        {
-          "@id": "_:ub226bL469C34"
-        },
-        {
-          "@id": "_:ub226bL451C34"
-        },
-        {
-          "@id": "_:ub226bL483C34"
-        },
-        {
-          "@id": "_:ub226bL474C34"
-        }
-      ]
-    },
-    {
-      "@id": "_:ub226bL464C34",
-      "@type": "owl:Restriction",
-      "owl:maxQualifiedCardinality": {
-        "@type": "xsd:nonNegativeInteger",
-        "@value": "1"
-      },
-      "owl:onClass": {
-        "@id": "clvapit:Address"
-      },
-      "owl:onProperty": {
-        "@id": "clvapit:hasAddress"
-      }
-    },
-    {
-      "@id": "_:ub226bL459C34",
-      "@type": "owl:Restriction",
-      "owl:onClass": {
-        "@id": "clvapit:Geometry"
-      },
-      "owl:onProperty": {
-        "@id": "clvapit:hasGeometry"
-      },
-      "owl:qualifiedCardinality": {
-        "@type": "xsd:nonNegativeInteger",
-        "@value": "1"
+      "rdfs:subPropertyOf": {
+        "@id": "l0:identifier"
       }
     },
     {
@@ -137,22 +65,22 @@
       },
       "owl:versionInfo": [
         {
-          "@language": "it",
-          "@value": "stabile"
-        },
-        {
           "@language": "en",
           "@value": "stable"
+        },
+        {
+          "@language": "it",
+          "@value": "stabile"
         }
       ],
       "rdfs:comment": [
         {
-          "@language": "it",
-          "@value": "Questa proprietà lega il punto di inreresse alla sua categoria generale."
-        },
-        {
           "@language": "en",
           "@value": "This property links the point of interest to its general cateogry."
+        },
+        {
+          "@language": "it",
+          "@value": "Questa proprietà lega il punto di inreresse alla sua categoria generale."
         }
       ],
       "rdfs:domain": {
@@ -163,16 +91,26 @@
       },
       "rdfs:label": [
         {
-          "@language": "en",
-          "@value": "has point of interest category"
-        },
-        {
           "@language": "it",
           "@value": "ha categoria del punto di interesse"
+        },
+        {
+          "@language": "en",
+          "@value": "has point of interest category"
         }
       ],
       "rdfs:range": {
         "@id": "http://dati.gov.it/onto/poiapit#PointOfInterestCategory"
+      }
+    },
+    {
+      "@id": "_:ub199bL439C27",
+      "@type": "owl:Restriction",
+      "owl:allValuesFrom": {
+        "@id": "http://dati.gov.it/onto/poiapit#PointOfInterest"
+      },
+      "owl:onProperty": {
+        "@id": "http://dati.gov.it/onto/poiapit#isPOIStateFor"
       }
     },
     {
@@ -219,6 +157,9 @@
       ],
       "rdfs:range": {
         "@id": "rdfs:Literal"
+      },
+      "rdfs:subPropertyOf": {
+        "@id": "l0:name"
       }
     },
     {
@@ -226,22 +167,22 @@
       "@type": "owl:ObjectProperty",
       "owl:versionInfo": [
         {
-          "@language": "it",
-          "@value": "stabile"
-        },
-        {
           "@language": "en",
           "@value": "stable"
+        },
+        {
+          "@language": "it",
+          "@value": "stabile"
         }
       ],
       "rdfs:comment": [
         {
-          "@language": "it",
-          "@value": "Proprietà inversa di \"ha categoria del punto di interesse\"."
-        },
-        {
           "@language": "en",
           "@value": "This is the inverse property of \"has point of interest category\"."
+        },
+        {
+          "@language": "it",
+          "@value": "Proprietà inversa di \"ha categoria del punto di interesse\"."
         }
       ],
       "rdfs:domain": {
@@ -265,30 +206,58 @@
       }
     },
     {
-      "@id": "_:ub226bL474C34",
-      "@type": "owl:Restriction",
-      "owl:maxQualifiedCardinality": {
-        "@type": "xsd:nonNegativeInteger",
-        "@value": "1"
+      "@id": "http://dati.gov.it/onto/poiapit#POIState",
+      "@type": "owl:Class",
+      "owl:versionInfo": [
+        {
+          "@language": "en",
+          "@value": "stable"
+        },
+        {
+          "@language": "it",
+          "@value": "stabile"
+        }
+      ],
+      "rdfs:comment": [
+        {
+          "@language": "it",
+          "@value": "Questa classe rappresenta lo stato del punto di interesse. I suoi valori possono essere fissati per tipologia di punto di interesse. Per esempio, essi possono essere \"di turno\", \"aperta\", \"chiusa\", ecc. per le farmacie oppure \"libero\", \"occupato\" per i parcheggi, oppure \"aperto\", \"chiuso\", \"in ristrutturazione\" nel caso di strutture ricettive, ecc."
+        },
+        {
+          "@language": "en",
+          "@value": "This class represents the status of the point of interest. Its values can be fixed but vary according to the type of point of interest. For example, they may be \"on duty\",\"open\",\"closed\", etc. for pharmacies or \"free\",\"occupied\" for parking, or \"open\",\"closed\",\"under renovation\" in the case of accommodation facilities, etc."
+        }
+      ],
+      "rdfs:isDefinedBy": {
+        "@id": "http://dati.gov.it/onto/poiapit"
       },
-      "owl:onClass": {
-        "@id": "http://dati.gov.it/onto/poiapit#MultiplePointOfInterest"
-      },
-      "owl:onProperty": {
-        "@id": "http://dati.gov.it/onto/poiapit#isIncludedInPOI"
-      }
+      "rdfs:label": [
+        {
+          "@language": "en",
+          "@value": "Point of Interest Status"
+        },
+        {
+          "@language": "it",
+          "@value": "Stato del Punto di Interesse"
+        }
+      ],
+      "rdfs:subClassOf": [
+        {
+          "@id": "l0:Characteristic"
+        },
+        {
+          "@id": "_:ub199bL443C27"
+        },
+        {
+          "@id": "_:ub199bL439C27"
+        }
+      ]
     },
     {
       "@id": "clvapit:hasGeometry",
       "@type": "owl:ObjectProperty",
-      "rdfs:domain": {
-        "@id": "owl:Thing"
-      },
       "rdfs:isDefinedBy": {
         "@id": "http://dati.gov.it/onto/clvapit"
-      },
-      "rdfs:range": {
-        "@id": "clvapit:Geometry"
       }
     },
     {
@@ -299,26 +268,20 @@
       }
     },
     {
-      "@id": "_:ub226bL479C34",
-      "@type": "owl:Restriction",
-      "owl:onProperty": {
-        "@id": "http://dati.gov.it/onto/poiapit#POIofficialName"
-      },
-      "owl:someValuesFrom": {
-        "@id": "rdfs:Literal"
-      }
-    },
-    {
       "@id": "http://dati.gov.it/onto/poiapit",
       "@type": "owl:Ontology",
       "dc:creator": [
         {
+          "@language": "it",
+          "@value": "Agenzia per l'Italia Digitale - AgID"
+        },
+        {
           "@language": "en",
-          "@value": "Agency for Digital Italy - AgID"
+          "@value": "Institute of Cognitive Sciences and Technologies of the Italian Research Council (CNR) - Semantic Technology Laboratory (STLab)"
         },
         {
           "@language": "it",
-          "@value": "Agenzia per l'Italia Digitale - AgID"
+          "@value": "Istituto di Scienze e Tecnologie della Cognizione del CNR - Laboratorio di Tecnologie Semantiche (STLab)"
         },
         {
           "@language": "it",
@@ -326,31 +289,30 @@
         },
         {
           "@language": "en",
-          "@value": "Italian Digital Transformation Team"
-        },
-        {
-          "@language": "it",
-          "@value": "Istituto di Scienze e Tecnologie della Cognizione del CNR - Laboratorio di Tecnologie Semantiche (STLab)"
+          "@value": "Agency for Digital Italy - AgID"
         },
         {
           "@language": "en",
-          "@value": "Institute of Cognitive Sciences and Technologies of the Italian Research Council (CNR) - Semantic Technology Laboratory (STLab)"
+          "@value": "Italian Digital Transformation Team"
         }
       ],
       "dcterms:issued": {
         "@type": "xsd:date",
         "@value": "2017-10-16"
       },
-      "dcterms:modified": "2017-11-3",
+      "dcterms:license": {
+        "@id": "https://creativecommons.org/licenses/by/4.0/"
+      },
+      "dcterms:modified": "2017-11-21",
       "owl:imports": [
-        {
-          "@id": "clvapit:"
-        },
         {
           "@id": "ti:"
         },
         {
           "@id": "l0:"
+        },
+        {
+          "@id": "clvapit:"
         }
       ],
       "owl:versionIRI": {
@@ -368,12 +330,12 @@
       ],
       "rdfs:comment": [
         {
-          "@language": "it",
-          "@value": "Questa è l'ontologia del profilo  italiano sui Punti di Interesse (Point of Interest - Italian Application Profile - POI-AP_IT)"
-        },
-        {
           "@language": "en",
           "@value": "This is the ontology of the Italian application profile for Points of Interest"
+        },
+        {
+          "@language": "it",
+          "@value": "Questa è l'ontologia del profilo  italiano sui Punti di Interesse (Point of Interest - Italian Application Profile - POI-AP_IT)"
         }
       ],
       "rdfs:isDefinedBy": {
@@ -381,12 +343,12 @@
       },
       "rdfs:label": [
         {
-          "@language": "it",
-          "@value": "Punti di Interesse"
-        },
-        {
           "@language": "en",
           "@value": "Point of Interest"
+        },
+        {
+          "@language": "it",
+          "@value": "Punti di Interesse"
         }
       ]
     },
@@ -398,12 +360,12 @@
       },
       "owl:versionInfo": [
         {
-          "@language": "en",
-          "@value": "unstable"
-        },
-        {
           "@language": "it",
           "@value": "provvisoria"
+        },
+        {
+          "@language": "en",
+          "@value": "unstable"
         }
       ],
       "rdfs:comment": [
@@ -437,13 +399,27 @@
       }
     },
     {
-      "@id": "_:ub226bL451C34",
+      "@id": "_:ub199bL406C32",
       "@type": "owl:Restriction",
-      "owl:allValuesFrom": {
-        "@id": "http://dati.gov.it/onto/smapit/Image"
+      "owl:onClass": {
+        "@id": "http://dati.gov.it/onto/poiapit#PointOfInterest"
       },
       "owl:onProperty": {
-        "@id": "http://dati.gov.it/onto/smapit/hasImage"
+        "@id": "http://dati.gov.it/onto/poiapit#isPOINameInTimeFor"
+      },
+      "owl:qualifiedCardinality": {
+        "@type": "xsd:nonNegativeInteger",
+        "@value": "1"
+      }
+    },
+    {
+      "@id": "_:ub199bL387C42",
+      "@type": "owl:Restriction",
+      "owl:allValuesFrom": {
+        "@id": "http://dati.gov.it/onto/poiapit#PointOfInterest"
+      },
+      "owl:onProperty": {
+        "@id": "http://dati.gov.it/onto/poiapit#includesPOI"
       }
     },
     {
@@ -467,12 +443,12 @@
       ],
       "rdfs:comment": [
         {
-          "@language": "en",
-          "@value": "This property links the point of interest to its status."
-        },
-        {
           "@language": "it",
           "@value": "Questa proprietà lega il punto di interesse al suo stato."
+        },
+        {
+          "@language": "en",
+          "@value": "This property links the point of interest to its status."
         }
       ],
       "rdfs:domain": {
@@ -483,16 +459,30 @@
       },
       "rdfs:label": [
         {
-          "@language": "en",
-          "@value": "has point of interest status"
-        },
-        {
           "@language": "it",
           "@value": "ha stato del punto di interesse"
+        },
+        {
+          "@language": "en",
+          "@value": "has point of interest status"
         }
       ],
       "rdfs:range": {
         "@id": "http://dati.gov.it/onto/poiapit#POIState"
+      }
+    },
+    {
+      "@id": "_:ub199bL316C30",
+      "@type": "owl:Class",
+      "owl:unionOf": {
+        "@list": [
+          {
+            "@id": "http://dati.gov.it/onto/poiapit#POINameInTime"
+          },
+          {
+            "@id": "http://dati.gov.it/onto/poiapit#PointOfInterest"
+          }
+        ]
       }
     },
     {
@@ -507,31 +497,33 @@
       "@type": "owl:AnnotationProperty"
     },
     {
-      "@id": "_:ub226bL387C32",
+      "@id": "_:ub199bL470C34",
       "@type": "owl:Restriction",
-      "owl:onClass": {
-        "@id": "http://dati.gov.it/onto/poiapit#PointOfInterest"
+      "owl:allValuesFrom": {
+        "@id": "http://dati.gov.it/onto/smapit/Image"
       },
       "owl:onProperty": {
-        "@id": "http://dati.gov.it/onto/poiapit#isPOINameInTimeFor"
-      },
-      "owl:qualifiedCardinality": {
-        "@type": "xsd:nonNegativeInteger",
-        "@value": "1"
+        "@id": "http://dati.gov.it/onto/smapit/hasImage"
       }
     },
     {
-      "@id": "_:ub226bL469C34",
+      "@id": "_:ub199bL420C32",
       "@type": "owl:Restriction",
-      "owl:maxQualifiedCardinality": {
-        "@type": "xsd:nonNegativeInteger",
-        "@value": "1"
-      },
-      "owl:onClass": {
-        "@id": "http://dati.gov.it/onto/poiapit#POIState"
+      "owl:allValuesFrom": {
+        "@id": "rdfs:Literal"
       },
       "owl:onProperty": {
-        "@id": "http://dati.gov.it/onto/poiapit#hasPOIState"
+        "@id": "http://dati.gov.it/onto/poiapit#POIalternativeName"
+      }
+    },
+    {
+      "@id": "_:ub199bL443C27",
+      "@type": "owl:Restriction",
+      "owl:onProperty": {
+        "@id": "http://dati.gov.it/onto/poiapit#POIstate"
+      },
+      "owl:someValuesFrom": {
+        "@id": "rdfs:Literal"
       }
     },
     {
@@ -549,12 +541,12 @@
       ],
       "rdfs:comment": [
         {
-          "@language": "it",
-          "@value": "Questa proprietà rappresenta l'etichetta (stringa) dello stato del punto di interesse."
-        },
-        {
           "@language": "en",
           "@value": "This property is the preferred label for the status of the point of interest."
+        },
+        {
+          "@language": "it",
+          "@value": "Questa proprietà rappresenta l'etichetta (stringa) dello stato del punto di interesse."
         }
       ],
       "rdfs:domain": {
@@ -565,12 +557,12 @@
       },
       "rdfs:label": [
         {
-          "@language": "en",
-          "@value": "status"
-        },
-        {
           "@language": "it",
           "@value": "stato"
+        },
+        {
+          "@language": "en",
+          "@value": "status"
         }
       ],
       "rdfs:range": {
@@ -578,57 +570,62 @@
       }
     },
     {
-      "@id": "http://dati.gov.it/onto/poiapit#isIncludedInPOI",
-      "@type": "owl:ObjectProperty",
-      "owl:versionInfo": [
-        {
-          "@language": "en",
-          "@value": "stable"
-        },
-        {
-          "@language": "it",
-          "@value": "stabile"
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@language": "it",
-          "@value": "Proprietà inversa di \"include punto di interesse\"."
-        },
-        {
-          "@language": "en",
-          "@value": "Inverse property of \"includes point of interest\"."
-        },
-        {
-          "@id": "http://dati.gov.it/onto/poiapit"
-        }
-      ],
-      "rdfs:domain": {
-        "@id": "http://dati.gov.it/onto/poiapit#PointOfInterest"
+      "@id": "_:ub199bL478C34",
+      "@type": "owl:Restriction",
+      "owl:onClass": {
+        "@id": "clvapit:Geometry"
       },
-      "rdfs:label": [
-        {
-          "@language": "it",
-          "@value": "è incluso nel punto di interesse"
-        },
-        {
-          "@language": "en",
-          "@value": "is included in point of interest"
-        }
-      ],
-      "rdfs:range": {
-        "@id": "http://dati.gov.it/onto/poiapit#MultiplePointOfInterest"
+      "owl:onProperty": {
+        "@id": "clvapit:hasGeometry"
+      },
+      "owl:qualifiedCardinality": {
+        "@type": "xsd:nonNegativeInteger",
+        "@value": "1"
       }
     },
     {
-      "@id": "_:ub226bL487C34",
+      "@id": "_:ub199bL488C34",
       "@type": "owl:Restriction",
-      "owl:cardinality": {
+      "owl:maxQualifiedCardinality": {
         "@type": "xsd:nonNegativeInteger",
         "@value": "1"
       },
+      "owl:onClass": {
+        "@id": "http://dati.gov.it/onto/poiapit#POIState"
+      },
       "owl:onProperty": {
-        "@id": "http://dati.gov.it/onto/poiapit#POIID"
+        "@id": "http://dati.gov.it/onto/poiapit#hasPOIState"
+      }
+    },
+    {
+      "@id": "dcterms:license",
+      "@type": "owl:AnnotationProperty"
+    },
+    {
+      "@id": "_:ub199bL462C34",
+      "@type": "owl:Restriction",
+      "owl:onProperty": {
+        "@id": "http://dati.gov.it/onto/poiapit#hasPOICategory"
+      },
+      "owl:someValuesFrom": {
+        "@id": "http://dati.gov.it/onto/poiapit#PointOfInterestCategory"
+      }
+    },
+    {
+      "@id": "_:ub199bL502C34",
+      "@type": "owl:Restriction",
+      "owl:allValuesFrom": {
+        "@id": "rdfs:Literal"
+      },
+      "owl:onProperty": {
+        "@id": "http://dati.gov.it/onto/poiapit#POIdescription"
+      }
+    },
+    {
+      "@id": "l0:name",
+      "@type": "owl:DatatypeProperty",
+      "rdfs:isDefinedBy": {
+        "@id": "l0:"
       }
     },
     {
@@ -641,14 +638,22 @@
     {
       "@id": "http://dati.gov.it/onto/smapit/hasImage",
       "@type": "owl:ObjectProperty",
-      "rdfs:domain": {
-        "@id": "owl:Thing"
-      },
       "rdfs:isDefinedBy": {
         "@id": "http://dati.gov.it/onto/smapit/"
+      }
+    },
+    {
+      "@id": "_:ub199bL493C34",
+      "@type": "owl:Restriction",
+      "owl:maxQualifiedCardinality": {
+        "@type": "xsd:nonNegativeInteger",
+        "@value": "1"
       },
-      "rdfs:range": {
-        "@id": "http://dati.gov.it/onto/smapit/Image"
+      "owl:onClass": {
+        "@id": "http://dati.gov.it/onto/poiapit#MultiplePointOfInterest"
+      },
+      "owl:onProperty": {
+        "@id": "http://dati.gov.it/onto/poiapit#isIncludedInPOI"
       }
     },
     {
@@ -695,10 +700,30 @@
       }
     },
     {
+      "@id": "_:ub199bL498C34",
+      "@type": "owl:Restriction",
+      "owl:onProperty": {
+        "@id": "http://dati.gov.it/onto/poiapit#POIofficialName"
+      },
+      "owl:someValuesFrom": {
+        "@id": "rdfs:Literal"
+      }
+    },
+    {
       "@id": "l0:Event",
       "@type": "owl:Class",
       "rdfs:isDefinedBy": {
         "@id": "l0:"
+      }
+    },
+    {
+      "@id": "_:ub199bL416C32",
+      "@type": "owl:Restriction",
+      "owl:onProperty": {
+        "@id": "http://dati.gov.it/onto/poiapit#POIofficialName"
+      },
+      "owl:someValuesFrom": {
+        "@id": "rdfs:Literal"
       }
     },
     {
@@ -709,8 +734,8 @@
       }
     },
     {
-      "@id": "http://dati.gov.it/onto/poiapit#POIState",
-      "@type": "owl:Class",
+      "@id": "http://dati.gov.it/onto/poiapit#POIalternativeName",
+      "@type": "owl:DatatypeProperty",
       "owl:versionInfo": [
         {
           "@language": "it",
@@ -723,38 +748,36 @@
       ],
       "rdfs:comment": [
         {
-          "@language": "en",
-          "@value": "This class represents the status of the point of interest. Its values can be fixed but vary according to the type of point of interest. For example, they may be \"on duty\",\"open\",\"closed\", etc. for pharmacies or \"free\",\"occupied\" for parking, or \"open\",\"closed\",\"under renovation\" in the case of accommodation facilities, etc."
+          "@language": "it",
+          "@value": "Questa proprietà rappresenta un nome alternativo (acrononimo, o altro nome) con cui è conosciuto il punto di interesse."
         },
         {
-          "@language": "it",
-          "@value": "Questa classe rappresenta lo stato del punto di interesse. I suoi valori possono essere fissati per tipologia di punto di interesse. Per esempio, essi possono essere \"di turno\", \"aperta\", \"chiusa\", ecc. per le farmacie oppure \"libero\", \"occupato\" per i parcheggi, oppure \"aperto\", \"chiuso\", \"in ristrutturazione\" nel caso di strutture ricettive, ecc."
+          "@language": "en",
+          "@value": "This property represents an alternative name (acronym, or any other name) with which the point of interest is known."
         }
       ],
+      "rdfs:domain": {
+        "@id": "http://dati.gov.it/onto/poiapit#POINameInTime"
+      },
       "rdfs:isDefinedBy": {
         "@id": "http://dati.gov.it/onto/poiapit"
       },
       "rdfs:label": [
         {
-          "@language": "en",
-          "@value": "Point of Interest Status"
+          "@language": "it",
+          "@value": "nome alternativo del punto di interesse"
         },
         {
-          "@language": "it",
-          "@value": "Stato del Punto di Interesse"
+          "@language": "en",
+          "@value": "point of interest alternative name"
         }
       ],
-      "rdfs:subClassOf": [
-        {
-          "@id": "_:ub226bL424C27"
-        },
-        {
-          "@id": "_:ub226bL420C27"
-        },
-        {
-          "@id": "l0:Characteristic"
-        }
-      ]
+      "rdfs:range": {
+        "@id": "rdfs:Literal"
+      },
+      "rdfs:subPropertyOf": {
+        "@id": "l0:name"
+      }
     },
     {
       "@id": "http://dati.gov.it/onto/poiapit#POIdescription",
@@ -771,12 +794,12 @@
       ],
       "rdfs:comment": [
         {
-          "@language": "en",
-          "@value": "This property represents a generic description of the point of interest."
-        },
-        {
           "@language": "it",
           "@value": "Questa proprietà rappresenta una generica descrizione del punto di interesse."
+        },
+        {
+          "@language": "en",
+          "@value": "This property represents a generic description of the point of interest."
         }
       ],
       "rdfs:domain": {
@@ -787,16 +810,19 @@
       },
       "rdfs:label": [
         {
-          "@language": "en",
-          "@value": "point of interest description"
-        },
-        {
           "@language": "it",
           "@value": "descrizione del punto di interesse"
+        },
+        {
+          "@language": "en",
+          "@value": "point of interest description"
         }
       ],
       "rdfs:range": {
         "@id": "rdfs:Literal"
+      },
+      "rdfs:subPropertyOf": {
+        "@id": "l0:description"
       }
     },
     {
@@ -807,16 +833,6 @@
       }
     },
     {
-      "@id": "_:ub226bL424C27",
-      "@type": "owl:Restriction",
-      "owl:onProperty": {
-        "@id": "http://dati.gov.it/onto/poiapit#POIstate"
-      },
-      "owl:someValuesFrom": {
-        "@id": "rdfs:Literal"
-      }
-    },
-    {
       "@id": "http://dati.gov.it/onto/poiapit#POIID",
       "@type": [
         "owl:DatatypeProperty",
@@ -824,12 +840,12 @@
       ],
       "owl:versionInfo": [
         {
-          "@language": "it",
-          "@value": "stabile"
-        },
-        {
           "@language": "en",
           "@value": "stable"
+        },
+        {
+          "@language": "it",
+          "@value": "stabile"
         }
       ],
       "rdfs:comment": [
@@ -860,44 +876,27 @@
       ],
       "rdfs:range": {
         "@id": "rdfs:Literal"
+      },
+      "rdfs:subPropertyOf": {
+        "@id": "l0:identifier"
       }
     },
     {
-      "@id": "_:ub226bL455C34",
+      "@id": "_:ub199bL483C34",
       "@type": "owl:Restriction",
-      "owl:allValuesFrom": {
-        "@id": "ti:TimeInterval"
+      "owl:maxQualifiedCardinality": {
+        "@type": "xsd:nonNegativeInteger",
+        "@value": "1"
+      },
+      "owl:onClass": {
+        "@id": "clvapit:Address"
       },
       "owl:onProperty": {
-        "@id": "ti:atTime"
+        "@id": "clvapit:hasAddress"
       }
     },
     {
-      "@id": "_:ub226bL297C30",
-      "@type": "owl:Class",
-      "owl:unionOf": {
-        "@list": [
-          {
-            "@id": "http://dati.gov.it/onto/poiapit#POINameInTime"
-          },
-          {
-            "@id": "http://dati.gov.it/onto/poiapit#PointOfInterest"
-          }
-        ]
-      }
-    },
-    {
-      "@id": "_:ub226bL483C34",
-      "@type": "owl:Restriction",
-      "owl:allValuesFrom": {
-        "@id": "rdfs:Literal"
-      },
-      "owl:onProperty": {
-        "@id": "http://dati.gov.it/onto/poiapit#POIdescription"
-      }
-    },
-    {
-      "@id": "_:ub226bL447C34",
+      "@id": "_:ub199bL466C34",
       "@type": "owl:Restriction",
       "owl:allValuesFrom": {
         "@id": "http://dati.gov.it/onto/poiapit#POINameInTime"
@@ -907,26 +906,33 @@
       }
     },
     {
+      "@id": "l0:identifier",
+      "@type": "owl:DatatypeProperty",
+      "rdfs:isDefinedBy": {
+        "@id": "l0:"
+      }
+    },
+    {
       "@id": "http://dati.gov.it/onto/poiapit#MultiplePointOfInterest",
       "@type": "owl:Class",
       "owl:versionInfo": [
         {
-          "@language": "en",
-          "@value": "stable"
-        },
-        {
           "@language": "it",
           "@value": "stabile"
+        },
+        {
+          "@language": "en",
+          "@value": "stable"
         }
       ],
       "rdfs:comment": [
         {
-          "@language": "en",
-          "@value": "This class represents a collection of points of interest."
-        },
-        {
           "@language": "it",
           "@value": "Questa classe rappresenta una collezione di punti di interesse. Per esempio un centro commerciale è un punto di interesse ma a sua volta una collezioni di tanti punti di interesse (farmacia, negozi, ristoranti, cinema, ecc.)"
+        },
+        {
+          "@language": "en",
+          "@value": "This class represents a collection of points of interest."
         }
       ],
       "rdfs:isDefinedBy": {
@@ -944,7 +950,7 @@
       ],
       "rdfs:subClassOf": [
         {
-          "@id": "_:ub226bL368C42"
+          "@id": "_:ub199bL387C42"
         },
         {
           "@id": "http://dati.gov.it/onto/poiapit#PointOfInterest"
@@ -952,16 +958,73 @@
       ]
     },
     {
+      "@id": "_:ub199bL411C32",
+      "@type": "owl:Restriction",
+      "owl:onClass": {
+        "@id": "ti:TimeInterval"
+      },
+      "owl:onProperty": {
+        "@id": "ti:atTime"
+      },
+      "owl:qualifiedCardinality": {
+        "@type": "xsd:nonNegativeInteger",
+        "@value": "1"
+      }
+    },
+    {
+      "@id": "http://dati.gov.it/onto/poiapit#isIncludedInPOI",
+      "@type": "owl:ObjectProperty",
+      "owl:versionInfo": [
+        {
+          "@language": "en",
+          "@value": "stable"
+        },
+        {
+          "@language": "it",
+          "@value": "stabile"
+        }
+      ],
+      "rdfs:comment": [
+        {
+          "@id": "http://dati.gov.it/onto/poiapit"
+        },
+        {
+          "@language": "en",
+          "@value": "Inverse property of \"includes point of interest\"."
+        },
+        {
+          "@language": "it",
+          "@value": "Proprietà inversa di \"include punto di interesse\"."
+        }
+      ],
+      "rdfs:domain": {
+        "@id": "http://dati.gov.it/onto/poiapit#PointOfInterest"
+      },
+      "rdfs:label": [
+        {
+          "@language": "en",
+          "@value": "is included in point of interest"
+        },
+        {
+          "@language": "it",
+          "@value": "è incluso nel punto di interesse"
+        }
+      ],
+      "rdfs:range": {
+        "@id": "http://dati.gov.it/onto/poiapit#MultiplePointOfInterest"
+      }
+    },
+    {
       "@id": "http://dati.gov.it/onto/poiapit#POINameInTime",
       "@type": "owl:Class",
       "owl:versionInfo": [
         {
-          "@language": "it",
-          "@value": "provvisoria"
-        },
-        {
           "@language": "en",
           "@value": "unstable"
+        },
+        {
+          "@language": "it",
+          "@value": "provvisoria"
         }
       ],
       "rdfs:comment": [
@@ -989,64 +1052,21 @@
       ],
       "rdfs:subClassOf": [
         {
-          "@id": "_:ub226bL387C32"
+          "@id": "_:ub199bL416C32"
         },
         {
-          "@id": "_:ub226bL392C32"
+          "@id": "_:ub199bL406C32"
         },
         {
-          "@id": "_:ub226bL397C32"
-        },
-        {
-          "@id": "_:ub226bL401C32"
+          "@id": "_:ub199bL420C32"
         },
         {
           "@id": "l0:Event"
+        },
+        {
+          "@id": "_:ub199bL411C32"
         }
       ]
-    },
-    {
-      "@id": "http://dati.gov.it/onto/poiapit#POIalternativeName",
-      "@type": "owl:DatatypeProperty",
-      "owl:versionInfo": [
-        {
-          "@language": "en",
-          "@value": "stable"
-        },
-        {
-          "@language": "it",
-          "@value": "stabile"
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@language": "en",
-          "@value": "This property represents an alternative name (acronym, or any other name) with which the point of interest is known."
-        },
-        {
-          "@language": "it",
-          "@value": "Questa proprietà rappresenta un nome alternativo (acrononimo, o altro nome) con cui è conosciuto il punto di interesse."
-        }
-      ],
-      "rdfs:domain": {
-        "@id": "http://dati.gov.it/onto/poiapit#POINameInTime"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "http://dati.gov.it/onto/poiapit"
-      },
-      "rdfs:label": [
-        {
-          "@language": "it",
-          "@value": "nome alternativo del punto di interesse"
-        },
-        {
-          "@language": "en",
-          "@value": "point of interest alternative name"
-        }
-      ],
-      "rdfs:range": {
-        "@id": "rdfs:Literal"
-      }
     },
     {
       "@id": "clvapit:Geometry",
@@ -1056,26 +1076,17 @@
       }
     },
     {
-      "@id": "clvapit:hasAddress",
-      "@type": "owl:ObjectProperty",
-      "rdfs:domain": {
-        "@id": "owl:Thing"
-      },
+      "@id": "l0:description",
+      "@type": "owl:DatatypeProperty",
       "rdfs:isDefinedBy": {
-        "@id": "http://dati.gov.it/onto/clvapit"
-      },
-      "rdfs:range": {
-        "@id": "clvapit:Address"
+        "@id": "l0:"
       }
     },
     {
-      "@id": "_:ub226bL397C32",
-      "@type": "owl:Restriction",
-      "owl:onProperty": {
-        "@id": "http://dati.gov.it/onto/poiapit#POIofficialName"
-      },
-      "owl:someValuesFrom": {
-        "@id": "rdfs:Literal"
+      "@id": "clvapit:hasAddress",
+      "@type": "owl:ObjectProperty",
+      "rdfs:isDefinedBy": {
+        "@id": "http://dati.gov.it/onto/clvapit"
       }
     },
     {
@@ -1096,12 +1107,12 @@
       ],
       "rdfs:comment": [
         {
-          "@language": "en",
-          "@value": "This property links a multiple point of interest with all the points of interest included in it."
-        },
-        {
           "@language": "it",
           "@value": "Questa proprietà lega un punto di interesse multiplo a tutti i  punti di interesse in esso contenuti."
+        },
+        {
+          "@language": "en",
+          "@value": "This property links a multiple point of interest with all the points of interest included in it."
         }
       ],
       "rdfs:domain": {
@@ -1112,12 +1123,12 @@
       },
       "rdfs:label": [
         {
-          "@language": "it",
-          "@value": "include punto di interesse"
-        },
-        {
           "@language": "en",
           "@value": "includes point of interest"
+        },
+        {
+          "@language": "it",
+          "@value": "include punto di interesse"
         }
       ],
       "rdfs:range": {
@@ -1125,53 +1136,105 @@
       }
     },
     {
-      "@id": "_:ub226bL368C42",
+      "@id": "_:ub199bL506C34",
       "@type": "owl:Restriction",
-      "owl:allValuesFrom": {
-        "@id": "http://dati.gov.it/onto/poiapit#PointOfInterest"
-      },
-      "owl:onProperty": {
-        "@id": "http://dati.gov.it/onto/poiapit#includesPOI"
-      }
-    },
-    {
-      "@id": "_:ub226bL392C32",
-      "@type": "owl:Restriction",
-      "owl:onClass": {
-        "@id": "ti:TimeInterval"
-      },
-      "owl:onProperty": {
-        "@id": "ti:atTime"
-      },
-      "owl:qualifiedCardinality": {
+      "owl:cardinality": {
         "@type": "xsd:nonNegativeInteger",
         "@value": "1"
+      },
+      "owl:onProperty": {
+        "@id": "http://dati.gov.it/onto/poiapit#POIID"
       }
     },
     {
-      "@id": "_:ub226bL506C42",
-      "@type": "owl:Restriction",
-      "owl:onProperty": {
-        "@id": "http://dati.gov.it/onto/poiapit#POIcategoryName"
+      "@id": "http://dati.gov.it/onto/poiapit#PointOfInterest",
+      "@type": "owl:Class",
+      "owl:versionInfo": [
+        {
+          "@language": "en",
+          "@value": "stable"
+        },
+        {
+          "@language": "it",
+          "@value": "stabile"
+        }
+      ],
+      "rdfs:comment": [
+        {
+          "@language": "it",
+          "@value": "Questa classe rappresenta un punto di interesse, ovvero un particolare punto che qualcuno trova utile o di interesse. Esso può essere un parcheggio, una struttura ricettiva, una feramta dell'autobus, una farmacia, un centro commerciale, un incrocio, ecc. E' da notare che questa classe rappresenta di fatto una sovrastruttura utile per modellare cose di interesse ma allo stesso tempo è anche accettato considerarla come luogo (infatti la classe è definita come sotto classe di \"Entity-Entità\" dell'ontologia L0 che a sua volta può essere un oggetto o un luogo). Questo tipo di modellazione quindi consente a utenti di poter cercare oggetti di interesse ma anche fare query su punti di interessse intesi come luoghi."
+        },
+        {
+          "@language": "en",
+          "@value": "This class represents a point of interest, which is a particular point that someone finds useful or interesting. It may be a parking , an accommodation, a bus stop, a pharmacy, a shopping centre, a crossroads, etc. This class represents a \"superstructure\" used to model things of some kind of interest; however, at the same time it can be viewed as a location or place or feature (it is indeed a subclass of Entity in the top level ontology L0 which can be in turn a Location or an Object). This kind of modelling allows users to get information if they search for both a location and things to which they are interested in."
+        }
+      ],
+      "rdfs:isDefinedBy": {
+        "@id": "http://dati.gov.it/onto/poiapit"
       },
-      "owl:someValuesFrom": {
-        "@id": "rdfs:Literal"
-      }
+      "rdfs:label": [
+        {
+          "@language": "it",
+          "@value": "Punto di Interesse"
+        },
+        {
+          "@language": "en",
+          "@value": "Point of Interest"
+        }
+      ],
+      "rdfs:subClassOf": [
+        {
+          "@id": "_:ub199bL506C34"
+        },
+        {
+          "@id": "_:ub199bL462C34"
+        },
+        {
+          "@id": "_:ub199bL478C34"
+        },
+        {
+          "@id": "_:ub199bL493C34"
+        },
+        {
+          "@id": "_:ub199bL466C34"
+        },
+        {
+          "@id": "_:ub199bL483C34"
+        },
+        {
+          "@id": "_:ub199bL502C34"
+        },
+        {
+          "@id": "_:ub199bL470C34"
+        },
+        {
+          "@id": "_:ub199bL488C34"
+        },
+        {
+          "@id": "_:ub199bL474C34"
+        },
+        {
+          "@id": "_:ub199bL498C34"
+        },
+        {
+          "@id": "l0:Entity"
+        }
+      ]
     },
     {
       "@id": "http://dati.gov.it/onto/poiapit#isPOINameInTimeFor",
       "@type": [
-        "owl:FunctionalProperty",
-        "owl:ObjectProperty"
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
       ],
       "owl:versionInfo": [
         {
-          "@language": "it",
-          "@value": "provvisoria"
-        },
-        {
           "@language": "en",
           "@value": "unstable"
+        },
+        {
+          "@language": "it",
+          "@value": "provvisoria"
         }
       ],
       "rdfs:comment": [
@@ -1192,12 +1255,12 @@
       },
       "rdfs:label": [
         {
-          "@language": "en",
-          "@value": "is point of interest name in time for"
-        },
-        {
           "@language": "it",
           "@value": "è nome nel tempo del punto di interesse per"
+        },
+        {
+          "@language": "en",
+          "@value": "is point of interest name in time for"
         }
       ],
       "rdfs:range": {
@@ -1205,23 +1268,13 @@
       }
     },
     {
-      "@id": "_:ub226bL420C27",
+      "@id": "_:ub199bL474C34",
       "@type": "owl:Restriction",
       "owl:allValuesFrom": {
-        "@id": "http://dati.gov.it/onto/poiapit#PointOfInterest"
+        "@id": "ti:TimeInterval"
       },
       "owl:onProperty": {
-        "@id": "http://dati.gov.it/onto/poiapit#isPOIStateFor"
-      }
-    },
-    {
-      "@id": "_:ub226bL401C32",
-      "@type": "owl:Restriction",
-      "owl:allValuesFrom": {
-        "@id": "rdfs:Literal"
-      },
-      "owl:onProperty": {
-        "@id": "http://dati.gov.it/onto/poiapit#POIalternativeName"
+        "@id": "ti:atTime"
       }
     },
     {
@@ -1229,12 +1282,12 @@
       "@type": "owl:Class",
       "owl:versionInfo": [
         {
-          "@language": "en",
-          "@value": "stable"
-        },
-        {
           "@language": "it",
           "@value": "stabile"
+        },
+        {
+          "@language": "en",
+          "@value": "stable"
         }
       ],
       "rdfs:comment": [
@@ -1265,95 +1318,64 @@
           "@id": "l0:Topic"
         },
         {
-          "@id": "_:ub226bL506C42"
+          "@id": "_:ub199bL525C42"
         }
       ]
     },
     {
-      "@id": "_:ub226bL443C34",
+      "@id": "_:ub199bL525C42",
       "@type": "owl:Restriction",
       "owl:onProperty": {
-        "@id": "http://dati.gov.it/onto/poiapit#hasPOICategory"
+        "@id": "http://dati.gov.it/onto/poiapit#POIcategoryName"
       },
       "owl:someValuesFrom": {
-        "@id": "http://dati.gov.it/onto/poiapit#PointOfInterestCategory"
+        "@id": "rdfs:Literal"
       }
-    },
-    {
-      "@id": "http://dati.gov.it/onto/poiapit#POIcategoryIdentifier",
-      "@type": "owl:DatatypeProperty",
-      "l0:controlledVocabulary": {
-        "@id": "http://dati.gov.it/onto/controlledvocabulary/POICategoryClassification"
-      },
-      "owl:versionInfo": [
-        {
-          "@language": "it",
-          "@value": "stabile"
-        },
-        {
-          "@language": "en",
-          "@value": "stable"
-        }
-      ],
-      "rdfs:comment": {
-        "@language": "it",
-        "@value": "Questa proprietà è l'identificativo nel vocabolario controllato della categoria dei punti di interesse. E' equivalente a dct:identifier e skos:notation utilizzati nel vocabolario controllato stesso."
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "http://dati.gov.it/onto/poiapit"
-      },
-      "rdfs:label": [
-        {
-          "@language": "en",
-          "@value": "POI category identifier"
-        },
-        {
-          "@language": "it",
-          "@value": "identificativo categoria punto di interesse"
-        }
-      ]
     },
     {
       "@id": "http://dati.gov.it/onto/poiapit#POIofficialName",
       "@type": "owl:DatatypeProperty",
       "owl:versionInfo": [
         {
-          "@language": "en",
-          "@value": "stable"
-        },
-        {
           "@language": "it",
           "@value": "stabile"
+        },
+        {
+          "@language": "en",
+          "@value": "stable"
         }
       ],
       "rdfs:comment": [
         {
-          "@language": "en",
-          "@value": "This property represents the official name of the point of interest."
-        },
-        {
           "@language": "it",
           "@value": "Questa proprietà rappresenta il nome ufficiale del punto di interesse."
+        },
+        {
+          "@language": "en",
+          "@value": "This property represents the official name of the point of interest."
         }
       ],
       "rdfs:domain": {
-        "@id": "_:ub226bL297C30"
+        "@id": "_:ub199bL316C30"
       },
       "rdfs:isDefinedBy": {
         "@id": "http://dati.gov.it/onto/poiapit"
       },
       "rdfs:label": [
         {
-          "@language": "en",
-          "@value": "point of interest official name"
-        },
-        {
           "@language": "it",
           "@value": "nome ufficiale del punto di interesse"
+        },
+        {
+          "@language": "en",
+          "@value": "point of interest official name"
         }
       ],
       "rdfs:range": {
         "@id": "rdfs:Literal"
+      },
+      "rdfs:subPropertyOf": {
+        "@id": "l0:name"
       }
     },
     {

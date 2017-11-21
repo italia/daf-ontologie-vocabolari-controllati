@@ -7,14 +7,16 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix clvapit: <http://dati.gov.it/onto/clvapit#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @base <http://dati.gov.it/onto/cpvapit/> .
 
 <http://dati.gov.it/onto/cpvapit/> rdf:type owl:Ontology ;
-                                    owl:versionIRI : ;
-                                    owl:imports l0: ;
+                                    owl:versionIRI <http://dati.gov.it/onto/cpvapit/> ;
+                                    owl:imports clvapit: ,
+                                                l0: ;
+                                    dcterms:modified "2017-11-21" ;
                                     prov:wasDerivedFrom <http://dati.gov.it/onto/person/0.1> ;
-                                    dcterms:modified "2017-08-08" ;
                                     dc:creator "Institute of Cognitive Sciences and Technologies of the Italian Research Council (CNR) - Semantic Technology Laboratory (STLab)"@en ;
                                     rdfs:isDefinedBy <http://dati.gov.it/onto/person/> ;
                                     owl:versionInfo "Versione 0.2 - 08 Agosto 2017 - separata la parte luoghi dall'ontologia persone"@it ;
@@ -43,19 +45,13 @@ xsd:date rdf:type rdfs:Datatype .
 #    Object Properties
 #################################################################
 
-###  http://dati.gov.it/onto/cpvapit/hasAddress
-:hasAddress rdf:type owl:ObjectProperty ;
-            rdfs:subPropertyOf owl:topObjectProperty ;
-            rdfs:domain :Person ;
-            rdfs:range l0:Location ;
-            rdfs:label "L'indirizzo associato ad una persona."@it ,
-                       "The address associated with a person."@en ,
-                       "ha indirizzo"@it ,
-                       "has address"@en .
+###  http://dati.gov.it/onto/clvapit#hasAddress
+clvapit:hasAddress rdf:type owl:ObjectProperty ;
+                   rdfs:isDefinedBy <http://dati.gov.it/onto/clvapit> .
 
 
-###  http://dati.gov.it/onto/cpvapit/hasBirthPalce
-:hasBirthPalce rdf:type owl:ObjectProperty ;
+###  http://dati.gov.it/onto/cpvapit/hasBirthPlace
+:hasBirthPlace rdf:type owl:ObjectProperty ;
                owl:inverseOf :isBirthPlaceOf ;
                rdfs:domain :Person ;
                rdfs:range l0:Location ;
@@ -185,6 +181,7 @@ xsd:date rdf:type rdfs:Datatype .
 
 ###  http://dati.gov.it/onto/cpvapit/altName
 :altName rdf:type owl:DatatypeProperty ;
+         rdfs:subPropertyOf l0:name ;
          rdfs:domain owl:Thing ;
          rdfs:range xsd:string .
 
@@ -197,6 +194,7 @@ xsd:date rdf:type rdfs:Datatype .
 
 ###  http://dati.gov.it/onto/cpvapit/familyName
 :familyName rdf:type owl:DatatypeProperty ;
+            rdfs:subPropertyOf l0:name ;
             rdfs:domain :Person ;
             rdfs:range xsd:string ;
             rdfs:comment "Il cognome di una persona. Ex. 'Rossi' è il cognome della persona 'Mario Rossi'"@it ,
@@ -207,6 +205,7 @@ xsd:date rdf:type rdfs:Datatype .
 
 ###  http://dati.gov.it/onto/cpvapit/givenName
 :givenName rdf:type owl:DatatypeProperty ;
+           rdfs:subPropertyOf l0:name ;
            rdfs:domain :Person ;
            rdfs:range xsd:string ;
            rdfs:comment "Il nome di una persona. Ex. 'Mario' è il nome della persona 'Mario Rossi'."@it ,
@@ -215,31 +214,9 @@ xsd:date rdf:type rdfs:Datatype .
                       "nome"@it .
 
 
-###  http://dati.gov.it/onto/cpvapit/identifier
-:identifier rdf:type owl:DatatypeProperty ;
-            rdfs:domain owl:Thing ;
-            rdfs:range rdfs:Literal ;
-            rdfs:comment "An identifier for a person"@en ,
-                         "Un identificativo per la persona."@it ;
-            rdfs:isDefinedBy <http://dati.gov.it/onto/cpvapit> ;
-            rdfs:label "identificativo"@it ,
-                       "identifier"@en ;
-            owl:versionInfo "stabile"@it ,
-                            "stable"@en .
-
-
-###  http://dati.gov.it/onto/cpvapit/name
-:name rdf:type owl:DatatypeProperty ;
-      rdfs:range xsd:string ;
-      rdfs:comment "Il nome con cui ci si referisce ad un individiduo della classe Agent. Ex. 'Mario Rossi' è il nome della persona 'Mario Rossi' oppure 'CNR' è uno dei possibili nomi con cui ci si riferisce al Consiglio Nazionale delle Ricerche."@it ,
-                   "The name used for referencing any individual of the class Agent. E.g. 'Mario Rossi' is the name of the person 'Mario Rossi' or 'CNR' is one of the possible alternatives used for referencing the National Italian Council for Research."@en ;
-      rdfs:label "name"@en ,
-                 "nome"@it .
-
-
 ###  http://dati.gov.it/onto/cpvapit/taxCode
 :taxCode rdf:type owl:DatatypeProperty ;
-         rdfs:subPropertyOf :identifier ;
+         rdfs:subPropertyOf l0:identifier ;
          rdfs:domain :Person ;
          rdfs:range rdfs:Literal ;
          rdfs:comment "Questa proprietà consente di modellare il codice fiscale, uno specifico identificativo, per una persona."@it ,
@@ -251,13 +228,27 @@ xsd:date rdf:type rdfs:Datatype .
                          "stable"@en .
 
 
+###  http://dati.gov.it/onto/l0/identifier
+l0:identifier rdf:type owl:DatatypeProperty ;
+              rdfs:isDefinedBy l0: .
+
+
+###  http://dati.gov.it/onto/l0/name
+l0:name rdf:type owl:DatatypeProperty ;
+        rdfs:isDefinedBy l0: .
+
+
 #################################################################
 #    Classes
 #################################################################
 
 ###  http://dati.gov.it/onto/cpvapit/Person
 :Person rdf:type owl:Class ;
-        rdfs:subClassOf l0:Agent ;
+        rdfs:subClassOf l0:Agent ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty clvapit:hasAddress ;
+                          owl:someValuesFrom l0:Location
+                        ] ;
         rdfs:comment "A natural person"@en ,
                      "Una persona naturale"@it ;
         rdfs:label "Person"@en ,

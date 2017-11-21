@@ -15,13 +15,14 @@
                                    owl:versionIRI <http://dati.gov.it/onto/clvapit/0.7> ;
                                    owl:imports <http://dati.gov.it/onto/tiapit/> ,
                                                l0: ;
+                                   dct:modified "2017-11-21" ;
                                    dc:creator "Institute of Cognitive Sciences and Technologies of the Italian Research Council (CNR) - Semantic Technology Laboratory (STLab)"@en ;
                                    owl:versionInfo "Version 0.6 - 27 October 2017 - Refactoring of organization class based on the COV-AP_IT ontology; some labels were corrected."@en ;
                                    dc:creator "Italian Digital Transformation Team"@en ;
                                    rdfs:label "Address(Location)"@en ;
                                    dct:issued "2017-08-07"^^xsd:date ;
                                    owl:versionInfo "Versione 0.6 - 27 Ottobre 2017 - Rifattorizzazione della classe Organizzazione per allineamento con l'ontologia COV-AP_IT; sono state corrette alcune label"@it ;
-                                   dct:modified "2017-10-27" ;
+                                   dct:license <https://creativecommons.org/licenses/by/4.0/> ;
                                    prov:wasDerivedFrom <http://dati.gov.it/onto/clvapit/0.6> ;
                                    rdfs:isDefinedBy <http://dati.gov.it/onto/clvapit> ;
                                    dc:creator "Agency for Digital Italy - AgID"@en ;
@@ -34,7 +35,13 @@
 #################################################################
 
 ###  http://dati.gov.it/onto/clvapit#hasRankOrder
-:hasRankOrder rdf:type owl:AnnotationProperty .
+:hasRankOrder rdf:type owl:AnnotationProperty ;
+              rdfs:range xsd:int ;
+              rdfs:domain owl:Thing .
+
+
+###  http://purl.org/dc/terms/license
+dct:license rdf:type owl:AnnotationProperty .
 
 
 ###  http://www.w3.org/ns/prov#wasDerivedFrom
@@ -471,13 +478,14 @@ ti:atTime rdf:type owl:ObjectProperty .
 
 ###  http://dati.gov.it/onto/clvapit#acronym
 :acronym rdf:type owl:DatatypeProperty ;
+         rdfs:subPropertyOf l0:name ;
          rdfs:domain :Province ;
          rdfs:range rdfs:Literal ;
          rdfs:comment "La sigla automobilistica con cui viene indicata la provincia."@it ,
                       "The acronym of the province that is typically used over the Italian territory for the license plate."@en ;
          rdfs:isDefinedBy <http://dati.gov.it/onto/clvapit> ;
          rdfs:label "acronym"@en ,
-                    "sigla automobilistica"@it ;
+                    "sigla provincia"@it ;
          owl:versionInfo "stabile"@it ,
                          "stable"@en .
 
@@ -507,6 +515,19 @@ ti:atTime rdf:type owl:ObjectProperty .
                      "edificio"@it ;
           owl:versionInfo "stabile"@it ,
                           "stable"@en .
+
+
+###  http://dati.gov.it/onto/clvapit#coordinate
+:coordinate rdf:type owl:DatatypeProperty ;
+            rdfs:domain :Geometry ;
+            rdfs:range rdfs:Literal ;
+            rdfs:comment "Questa proprietà rappresenta le coordinate geografiche della Geometria."@it ,
+                         "This property represents the geographical coordinate of the Geometry"@en ;
+            rdfs:isDefinedBy <http://dati.gov.it/onto/clvapit> ;
+            rdfs:label "coordinata geografica"@it ,
+                       "geographical coordinate"@en ;
+            owl:versionInfo "stabile"@it ,
+                            "stable"@en .
 
 
 ###  http://dati.gov.it/onto/clvapit#exponent
@@ -574,23 +595,7 @@ ti:atTime rdf:type owl:ObjectProperty .
 
 
 ###  http://dati.gov.it/onto/clvapit#hasRankOrder
-:hasRankOrder rdf:type owl:DatatypeProperty ;
-              rdfs:domain owl:Thing ;
-              rdfs:range xsd:int .
-
-
-###  http://dati.gov.it/onto/clvapit#identifier
-:identifier rdf:type owl:DatatypeProperty ,
-                     owl:FunctionalProperty ;
-            rdfs:domain :Identifier ;
-            rdfs:range rdfs:Literal ;
-            rdfs:comment "Valore dell'identificativo (codice) univoco."@it ,
-                         "Value of the unique identifier."@en ;
-            rdfs:isDefinedBy <http://dati.gov.it/onto/clvapit> ;
-            rdfs:label "identificativo"@it ,
-                       "identifier"@en ;
-            owl:versionInfo "stabile"@it ,
-                            "stable"@en .
+:hasRankOrder rdf:type owl:DatatypeProperty .
 
 
 ###  http://dati.gov.it/onto/clvapit#identifierType
@@ -607,8 +612,9 @@ ti:atTime rdf:type owl:ObjectProperty .
 
 
 ###  http://dati.gov.it/onto/clvapit#lat
-:lat rdf:type owl:DatatypeProperty ,
-              owl:FunctionalProperty ;
+:lat rdf:type owl:DatatypeProperty ;
+     rdfs:subPropertyOf :coordinate ;
+     rdf:type owl:FunctionalProperty ;
      rdfs:domain :Geometry ;
      rdfs:range rdfs:Literal ;
      rdfs:comment "Questa proprietà consente di specificare la latitudine. E' associata alla geometria. Nel caso dell'ANNCSU è espressa nel Sistema di riferimento geodetico nazionale, costituito dalla realizzazione ETRF2000 – all’epoca 2008.0 – del Sistema di riferimento geodetico Europeo ETRS89"@it ,
@@ -621,8 +627,9 @@ ti:atTime rdf:type owl:ObjectProperty .
 
 
 ###  http://dati.gov.it/onto/clvapit#long
-:long rdf:type owl:DatatypeProperty ,
-               owl:FunctionalProperty ;
+:long rdf:type owl:DatatypeProperty ;
+      rdfs:subPropertyOf :coordinate ;
+      rdf:type owl:FunctionalProperty ;
       rdfs:domain :Geometry ;
       rdfs:range rdfs:Literal ;
       rdfs:comment "Questa proprietà rappresenta la longitudine ed è associata alla geometria. Nell'ambito dell'ANNCSU la longitudine dell'accesso è espressa nel Sistema di riferimento geodetico nazionale, costituito dalla realizzazione ETRF2000 – all’epoca 2008.0 – del Sistema di riferimento geodetico Europeo ETRS89"@it ,
@@ -657,19 +664,6 @@ ti:atTime rdf:type owl:ObjectProperty .
                      "date of last update"@en ;
           owl:versionInfo "stabile"@it ,
                           "stable"@en .
-
-
-###  http://dati.gov.it/onto/clvapit#name
-:name rdf:type owl:DatatypeProperty ;
-      rdfs:domain :NamedAddressComponent ;
-      rdfs:range rdfs:Literal ;
-      rdfs:comment "La proprietà rappresenta il nome associato a tutte quelle componenti dell'indirizzo che possono essere individuate da un nome (e.g., il nome della città, il nome della regione, ecc.)."@it ,
-                   "The name associated with the named address components."@en ;
-      rdfs:isDefinedBy <http://dati.gov.it/onto/clvapit> ;
-      rdfs:label "name"@en ,
-                 "nome"@it ;
-      owl:versionInfo "stabile"@it ,
-                      "stable"@en .
 
 
 ###  http://dati.gov.it/onto/clvapit#peculiarity
@@ -747,6 +741,17 @@ ti:atTime rdf:type owl:ObjectProperty .
                  "yard"@en ;
       owl:versionInfo "stabile"@it ,
                       "stable"@en .
+
+
+###  http://dati.gov.it/onto/l0/identifier
+l0:identifier rdf:type owl:DatatypeProperty ,
+                       owl:FunctionalProperty ;
+              rdfs:isDefinedBy l0: .
+
+
+###  http://dati.gov.it/onto/l0/name
+l0:name rdf:type owl:DatatypeProperty ;
+        rdfs:isDefinedBy l0: .
 
 
 #################################################################
@@ -1002,6 +1007,10 @@ ti:atTime rdf:type owl:ObjectProperty .
                             owl:maxCardinality "1"^^xsd:nonNegativeInteger
                           ] ,
                           [ rdf:type owl:Restriction ;
+                            owl:onProperty :coordinate ;
+                            owl:maxCardinality "1"^^xsd:nonNegativeInteger
+                          ] ,
+                          [ rdf:type owl:Restriction ;
                             owl:onProperty :geographicPositionMethod ;
                             owl:maxCardinality "1"^^xsd:nonNegativeInteger
                           ] ,
@@ -1040,7 +1049,7 @@ ti:atTime rdf:type owl:ObjectProperty .
                               owl:allValuesFrom <http://dati.gov.it/onto/covapit#Organization>
                             ] ,
                             [ rdf:type owl:Restriction ;
-                              owl:onProperty :identifier ;
+                              owl:onProperty l0:identifier ;
                               owl:cardinality "1"^^xsd:nonNegativeInteger
                             ] ,
                             [ rdf:type owl:Restriction ;
@@ -1098,7 +1107,7 @@ ti:atTime rdf:type owl:ObjectProperty .
 :NamedAddressComponent rdf:type owl:Class ;
                        rdfs:subClassOf :AddressComponent ,
                                        [ rdf:type owl:Restriction ;
-                                         owl:onProperty :name ;
+                                         owl:onProperty l0:name ;
                                          owl:someValuesFrom rdfs:Literal
                                        ] ;
                        rdfs:comment "Abstract class used to for modelling reason in order to identify all those components of the address that are associated with a name."@en ,

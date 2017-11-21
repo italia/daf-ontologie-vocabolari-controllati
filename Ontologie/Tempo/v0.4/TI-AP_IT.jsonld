@@ -1,6 +1,7 @@
 {
   "@context": {
     "dc": "http://purl.org/dc/elements/1.1/",
+    "dct": "http://purl.org/dc/terms/",
     "dcterms": "http://purl.org/dc/terms/",
     "l0": "http://dati.gov.it/onto/l0/",
     "muapit": "http://dati.gov.it/onto/muapit/",
@@ -18,18 +19,21 @@
       ],
       "rdfs:label": [
         {
-          "@language": "en",
-          "@value": "Wednesday"
-        },
-        {
           "@language": "it",
           "@value": "Mercoledì"
+        },
+        {
+          "@language": "en",
+          "@value": "Wednesday"
         }
       ]
     },
     {
       "@id": "http://dati.gov.it/onto/tiapit/hasYear",
       "@type": "owl:ObjectProperty",
+      "owl:inverseOf": {
+        "@id": "http://dati.gov.it/onto/tiapit/isYearOf"
+      },
       "rdfs:comment": [
         {
           "@language": "it",
@@ -48,12 +52,12 @@
       },
       "rdfs:label": [
         {
-          "@language": "en",
-          "@value": "has year"
-        },
-        {
           "@language": "it",
           "@value": "ha anno"
+        },
+        {
+          "@language": "en",
+          "@value": "has year"
         }
       ],
       "rdfs:range": {
@@ -70,6 +74,9 @@
     {
       "@id": "http://dati.gov.it/onto/tiapit/hasMonthOfYear",
       "@type": "owl:ObjectProperty",
+      "owl:inverseOf": {
+        "@id": "http://dati.gov.it/onto/tiapit/isMonthOfYearOf"
+      },
       "rdfs:comment": [
         {
           "@language": "it",
@@ -106,8 +113,8 @@
     {
       "@id": "http://dati.gov.it/onto/tiapit/May",
       "@type": [
-        "owl:NamedIndividual",
-        "http://dati.gov.it/onto/tiapit/MonthOfYear"
+        "http://dati.gov.it/onto/tiapit/MonthOfYear",
+        "owl:NamedIndividual"
       ],
       "rdfs:label": [
         {
@@ -121,33 +128,49 @@
       ]
     },
     {
-      "@id": "http://dati.gov.it/onto/tiapit/August",
-      "@type": [
-        "owl:NamedIndividual",
-        "http://dati.gov.it/onto/tiapit/MonthOfYear"
-      ],
-      "rdfs:label": [
+      "@id": "http://dati.gov.it/onto/tiapit/TemporalEntity",
+      "@type": "owl:Class",
+      "rdfs:comment": [
         {
           "@language": "it",
-          "@value": "Agosto"
+          "@value": "Questa classe rappresenta un'entità di natura temporale."
         },
         {
           "@language": "en",
-          "@value": "August"
+          "@value": "This class represents a temporal entity."
         }
-      ]
+      ],
+      "rdfs:isDefinedBy": {
+        "@id": "http://dati.gov.it/onto/tiapit"
+      },
+      "rdfs:label": [
+        {
+          "@language": "en",
+          "@value": "Temporal entity"
+        },
+        {
+          "@language": "it",
+          "@value": "Entità temporale"
+        }
+      ],
+      "rdfs:subClassOf": {
+        "@id": "l0:Entity"
+      }
     },
     {
       "@id": "http://dati.gov.it/onto/tiapit/hasDuration",
       "@type": "owl:ObjectProperty",
+      "owl:inverseOf": {
+        "@id": "http://dati.gov.it/onto/tiapit/isDurationOf"
+      },
       "rdfs:comment": [
-        {
-          "@language": "it",
-          "@value": "Questa proprietà è utilizzata per specificare il periodo temporale di validità."
-        },
         {
           "@language": "en",
           "@value": "This property is used to specify the temporal duration of the validity."
+        },
+        {
+          "@language": "it",
+          "@value": "Questa proprietà è utilizzata per specificare il periodo temporale di validità."
         }
       ],
       "rdfs:domain": {
@@ -207,33 +230,39 @@
       }
     },
     {
-      "@id": "http://dati.gov.it/onto/tiapit/TimeIndexedEvent",
-      "@type": "owl:Class",
+      "@id": "http://dati.gov.it/onto/tiapit/hasDayOfWeek",
+      "@type": "owl:ObjectProperty",
+      "owl:inverseOf": {
+        "@id": "http://dati.gov.it/onto/tiapit/isDayOfWeekOf"
+      },
       "rdfs:comment": [
         {
-          "@language": "en",
-          "@value": "A time indexed event."
+          "@language": "it",
+          "@value": "Questa proprietà è utilizzata per associare un oggetto che può essere collocato nel tempo ai giorni della settimana."
         },
         {
-          "@language": "it",
-          "@value": "Un evento indicizzato nel tempo."
+          "@language": "en",
+          "@value": "This property relates any object to particular day of the week."
         }
       ],
-      "rdfs:isDefinedBy": {
-        "@id": "http://dati.gov.it/onto/tiapit"
+      "rdfs:domain": {
+        "@id": "http://dati.gov.it/onto/tiapit/TimeIndexedEvent"
       },
       "rdfs:label": [
         {
           "@language": "en",
-          "@value": "Time indexed event"
+          "@value": "has day of week"
         },
         {
           "@language": "it",
-          "@value": "Evento indicizzato nel tempo"
+          "@value": "ha giorno della settimana"
         }
       ],
-      "rdfs:subClassOf": {
-        "@id": "l0:Event"
+      "rdfs:range": {
+        "@id": "http://dati.gov.it/onto/tiapit/DayOfWeek"
+      },
+      "rdfs:subPropertyOf": {
+        "@id": "http://dati.gov.it/onto/tiapit/hasTemporalEntity"
       }
     },
     {
@@ -241,14 +270,31 @@
       "@type": "owl:Class"
     },
     {
+      "@id": "http://dati.gov.it/onto/tiapit/February",
+      "@type": [
+        "http://dati.gov.it/onto/tiapit/MonthOfYear",
+        "owl:NamedIndividual"
+      ],
+      "rdfs:label": [
+        {
+          "@language": "en",
+          "@value": "February"
+        },
+        {
+          "@language": "it",
+          "@value": "Febbraio"
+        }
+      ]
+    },
+    {
       "@id": "http://dati.gov.it/onto/tiapit/DayOfWeek",
       "@type": "owl:Class",
       "owl:disjointWith": [
         {
-          "@id": "http://dati.gov.it/onto/tiapit/Year"
+          "@id": "http://dati.gov.it/onto/tiapit/MonthOfYear"
         },
         {
-          "@id": "http://dati.gov.it/onto/tiapit/MonthOfYear"
+          "@id": "http://dati.gov.it/onto/tiapit/Year"
         }
       ],
       "rdfs:comment": [
@@ -266,12 +312,12 @@
       },
       "rdfs:label": [
         {
-          "@language": "it",
-          "@value": "Giorno della settimana"
-        },
-        {
           "@language": "en",
           "@value": "Day of the Week"
+        },
+        {
+          "@language": "it",
+          "@value": "Giorno della settimana"
         }
       ],
       "rdfs:subClassOf": {
@@ -281,34 +327,45 @@
     {
       "@id": "http://dati.gov.it/onto/tiapit/September",
       "@type": [
-        "owl:NamedIndividual",
-        "http://dati.gov.it/onto/tiapit/MonthOfYear"
+        "http://dati.gov.it/onto/tiapit/MonthOfYear",
+        "owl:NamedIndividual"
       ],
       "rdfs:label": [
         {
-          "@language": "en",
-          "@value": "September"
-        },
-        {
           "@language": "it",
           "@value": "Settembre"
+        },
+        {
+          "@language": "en",
+          "@value": "September"
         }
       ]
     },
     {
+      "@id": "_:ub204bL357C27",
+      "@type": "owl:Class",
+      "owl:unionOf": {
+        "@list": [
+          {
+            "@id": "muapit:Value"
+          },
+          {
+            "@id": "http://dati.gov.it/onto/tiapit/TimeInterval"
+          }
+        ]
+      }
+    },
+    {
       "@id": "http://dati.gov.it/onto/tiapit/isMonthOfYearOf",
       "@type": "owl:ObjectProperty",
-      "owl:inverseOf": {
-        "@id": "http://dati.gov.it/onto/tiapit/hasMonthOfYear"
-      },
       "rdfs:comment": [
-        {
-          "@language": "en",
-          "@value": "Property that links a month of the year to a time indexed event."
-        },
         {
           "@language": "it",
           "@value": "Proprietà che collega un mese dell'anno ad un evento nel tempo."
+        },
+        {
+          "@language": "en",
+          "@value": "Property that links a month of the year to a time indexed event."
         }
       ],
       "rdfs:domain": {
@@ -335,20 +392,6 @@
       }
     },
     {
-      "@id": "_:N0ad6a6f4983e4f349576953f1c5f621f",
-      "@type": "owl:Class",
-      "owl:unionOf": {
-        "@list": [
-          {
-            "@id": "muapit:Value"
-          },
-          {
-            "@id": "http://dati.gov.it/onto/tiapit/TimeInterval"
-          }
-        ]
-      }
-    },
-    {
       "@id": "http://dati.gov.it/onto/tiapit/endTime",
       "@type": "owl:DatatypeProperty",
       "rdfs:comment": [
@@ -366,12 +409,12 @@
       },
       "rdfs:label": [
         {
-          "@language": "it",
-          "@value": "data di fine"
-        },
-        {
           "@language": "en",
           "@value": "end date"
+        },
+        {
+          "@language": "it",
+          "@value": "data di fine"
         }
       ],
       "rdfs:range": {
@@ -382,21 +425,37 @@
       }
     },
     {
-      "@id": "http://dati.gov.it/onto/tiapit/Tuesday",
-      "@type": [
-        "http://dati.gov.it/onto/tiapit/DayOfWeek",
-        "owl:NamedIndividual"
-      ],
-      "rdfs:label": [
+      "@id": "http://dati.gov.it/onto/tiapit/isTemporalEntityOf",
+      "@type": "owl:ObjectProperty",
+      "rdfs:comment": [
         {
           "@language": "it",
-          "@value": "Martedì"
+          "@value": "Proprietà che collega un entità temporale ad un evento nel tempo."
         },
         {
           "@language": "en",
-          "@value": "Tuesday"
+          "@value": "Property that links a temporal entity to a time indexed event."
         }
-      ]
+      ],
+      "rdfs:domain": {
+        "@id": "http://dati.gov.it/onto/tiapit/TemporalEntity"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "http://dati.gov.it/onto/tiapit"
+      },
+      "rdfs:label": [
+        {
+          "@language": "en",
+          "@value": "is temporal entity of"
+        },
+        {
+          "@language": "it",
+          "@value": "è entità temporale di"
+        }
+      ],
+      "rdfs:range": {
+        "@id": "http://dati.gov.it/onto/tiapit/TimeIndexedEvent"
+      }
     },
     {
       "@id": "http://dati.gov.it/onto/tiapit/startTime",
@@ -434,96 +493,84 @@
     {
       "@id": "http://dati.gov.it/onto/tiapit/Saturday",
       "@type": [
-        "http://dati.gov.it/onto/tiapit/DayOfWeek",
+        "owl:NamedIndividual",
+        "http://dati.gov.it/onto/tiapit/DayOfWeek"
+      ],
+      "rdfs:label": [
+        {
+          "@language": "en",
+          "@value": "Satruday"
+        },
+        {
+          "@language": "it",
+          "@value": "Sabato"
+        }
+      ]
+    },
+    {
+      "@id": "http://dati.gov.it/onto/tiapit/August",
+      "@type": [
+        "http://dati.gov.it/onto/tiapit/MonthOfYear",
         "owl:NamedIndividual"
       ],
       "rdfs:label": [
         {
           "@language": "it",
-          "@value": "Sabato"
+          "@value": "Agosto"
         },
         {
           "@language": "en",
-          "@value": "Satruday"
+          "@value": "August"
         }
       ]
-    },
-    {
-      "@id": "http://dati.gov.it/onto/tiapit/TemporalEntity",
-      "@type": "owl:Class",
-      "rdfs:comment": [
-        {
-          "@language": "en",
-          "@value": "This class represents a temporal entity."
-        },
-        {
-          "@language": "it",
-          "@value": "Questa classe rappresenta un'entità di natura temporale."
-        }
-      ],
-      "rdfs:isDefinedBy": {
-        "@id": "http://dati.gov.it/onto/tiapit"
-      },
-      "rdfs:label": [
-        {
-          "@language": "it",
-          "@value": "Entità temporale"
-        },
-        {
-          "@language": "en",
-          "@value": "Temporal entity"
-        }
-      ],
-      "rdfs:subClassOf": {
-        "@id": "l0:Entity"
-      }
     },
     {
       "@id": "xsd:gDay",
       "@type": "rdfs:Datatype"
     },
     {
-      "@id": "http://dati.gov.it/onto/tiapit/Duration",
-      "@type": "owl:Class",
+      "@id": "http://dati.gov.it/onto/tiapit/isYearOf",
+      "@type": "owl:ObjectProperty",
       "rdfs:comment": [
         {
           "@language": "it",
-          "@value": "La classe che rappresenta la durata."
+          "@value": "Proprietà che collega un anno ad un evento nel tempo."
         },
         {
           "@language": "en",
-          "@value": "The class for representing duration."
+          "@value": "Property that links a year to a time indexed event."
         }
       ],
+      "rdfs:domain": {
+        "@id": "http://dati.gov.it/onto/tiapit/Year"
+      },
       "rdfs:isDefinedBy": {
         "@id": "http://dati.gov.it/onto/tiapit"
       },
       "rdfs:label": [
         {
-          "@language": "en",
-          "@value": "Duration"
+          "@language": "it",
+          "@value": "è anno di"
         },
         {
-          "@language": "it",
-          "@value": "Durata"
+          "@language": "en",
+          "@value": "is year of"
         }
       ],
-      "rdfs:subClassOf": [
-        {
-          "@id": "_:N0ad6a6f4983e4f349576953f1c5f621f"
-        },
-        {
-          "@id": "http://dati.gov.it/onto/tiapit/TemporalEntity"
-        }
-      ]
+      "rdfs:range": {
+        "@id": "http://dati.gov.it/onto/tiapit/TimeIndexedEvent"
+      },
+      "rdfs:subPropertyOf": {
+        "@id": "http://dati.gov.it/onto/tiapit/isTemporalEntityOf"
+      }
     },
     {
       "@id": "http://dati.gov.it/onto/tiapit/month",
       "@type": "owl:DatatypeProperty",
       "rdfs:comment": [
         {
-          "@language": "it",
-          "@value": "mese"
+          "@language": "en",
+          "@value": "Property defined for linking an individual of the class MonthOfTheYear to its literal representation expressed as xsd:gMonth."
         },
         {
           "@language": "en",
@@ -534,8 +581,8 @@
           "@value": "Proprietà definita per collegare un oggetto di tipo MonthOfTheYear al suo valore letterale espresso come xsd:gMonth."
         },
         {
-          "@language": "en",
-          "@value": "Property defined for linking an individual of the class MonthOfTheYear to its literal representation expressed as xsd:gMonth."
+          "@language": "it",
+          "@value": "mese"
         }
       ],
       "rdfs:domain": {
@@ -552,29 +599,42 @@
       }
     },
     {
-      "@id": "http://dati.gov.it/onto/tiapit/April",
-      "@type": [
-        "owl:NamedIndividual",
-        "http://dati.gov.it/onto/tiapit/MonthOfYear"
-      ],
-      "rdfs:label": [
+      "@id": "http://dati.gov.it/onto/tiapit/MonthOfYear",
+      "@type": "owl:Class",
+      "owl:disjointWith": {
+        "@id": "http://dati.gov.it/onto/tiapit/Year"
+      },
+      "rdfs:comment": [
         {
           "@language": "en",
-          "@value": "April"
+          "@value": "This class represents a month of the year."
         },
         {
           "@language": "it",
-          "@value": "Aprile"
+          "@value": "Questa classe rappresenta un mese dell'anno."
         }
-      ]
+      ],
+      "rdfs:isDefinedBy": {
+        "@id": "http://dati.gov.it/onto/tiapit"
+      },
+      "rdfs:label": [
+        {
+          "@language": "en",
+          "@value": "Month of the year"
+        },
+        {
+          "@language": "it",
+          "@value": "Mese dell'anno"
+        }
+      ],
+      "rdfs:subClassOf": {
+        "@id": "http://dati.gov.it/onto/tiapit/TemporalEntity"
+      }
     },
     {
       "@id": "http://dati.gov.it/onto/tiapit/time",
       "@type": "owl:DatatypeProperty",
       "rdfs:comment": [
-        {
-          "@id": "http://dati.gov.it/onto/tiapit"
-        },
         {
           "@language": "en",
           "@value": "Abstract property used to represent the time as literal."
@@ -582,6 +642,9 @@
         {
           "@language": "it",
           "@value": "Proprietà astratta per rappresentare il tempo come literal."
+        },
+        {
+          "@id": "http://dati.gov.it/onto/tiapit"
         }
       ],
       "rdfs:domain": {
@@ -589,12 +652,12 @@
       },
       "rdfs:label": [
         {
-          "@language": "it",
-          "@value": "tempo"
-        },
-        {
           "@language": "en",
           "@value": "time"
+        },
+        {
+          "@language": "it",
+          "@value": "tempo"
         }
       ],
       "rdfs:range": {
@@ -639,12 +702,12 @@
       },
       "rdfs:label": [
         {
-          "@language": "en",
-          "@value": "duration"
-        },
-        {
           "@language": "it",
           "@value": "durata"
+        },
+        {
+          "@language": "en",
+          "@value": "duration"
         }
       ],
       "rdfs:range": {
@@ -657,17 +720,34 @@
     {
       "@id": "http://dati.gov.it/onto/tiapit/October",
       "@type": [
-        "owl:NamedIndividual",
-        "http://dati.gov.it/onto/tiapit/MonthOfYear"
+        "http://dati.gov.it/onto/tiapit/MonthOfYear",
+        "owl:NamedIndividual"
+      ],
+      "rdfs:label": [
+        {
+          "@language": "en",
+          "@value": "October"
+        },
+        {
+          "@language": "it",
+          "@value": "Ottobre"
+        }
+      ]
+    },
+    {
+      "@id": "http://dati.gov.it/onto/tiapit/July",
+      "@type": [
+        "http://dati.gov.it/onto/tiapit/MonthOfYear",
+        "owl:NamedIndividual"
       ],
       "rdfs:label": [
         {
           "@language": "it",
-          "@value": "Ottobre"
+          "@value": "Luglio"
         },
         {
           "@language": "en",
-          "@value": "October"
+          "@value": "July"
         }
       ]
     },
@@ -689,34 +769,37 @@
       },
       "rdfs:label": [
         {
-          "@language": "en",
-          "@value": "Time interval"
-        },
-        {
           "@language": "it",
           "@value": "Intervallo di tempo"
+        },
+        {
+          "@language": "en",
+          "@value": "Time interval"
         }
       ],
       "rdfs:subClassOf": [
         {
-          "@id": "l0:Characteristic"
+          "@id": "http://dati.gov.it/onto/tiapit/TemporalEntity"
         },
         {
-          "@id": "http://dati.gov.it/onto/tiapit/TemporalEntity"
+          "@id": "l0:Characteristic"
         }
       ]
     },
     {
       "@id": "http://dati.gov.it/onto/tiapit/hasTemporalEntity",
       "@type": "owl:ObjectProperty",
+      "owl:inverseOf": {
+        "@id": "http://dati.gov.it/onto/tiapit/isTemporalEntityOf"
+      },
       "rdfs:comment": [
-        {
-          "@language": "it",
-          "@value": "Proprietà che collega un evento nel tempo ad un entità temporale."
-        },
         {
           "@language": "en",
           "@value": "Property that links a time indexed event to a temporal entity."
+        },
+        {
+          "@language": "it",
+          "@value": "Proprietà che collega un evento nel tempo ad un entità temporale."
         }
       ],
       "rdfs:domain": {
@@ -742,9 +825,6 @@
     {
       "@id": "http://dati.gov.it/onto/tiapit/isDayOfWeekOf",
       "@type": "owl:ObjectProperty",
-      "owl:inverseOf": {
-        "@id": "http://dati.gov.it/onto/tiapit/hasDayOfWeek"
-      },
       "rdfs:comment": [
         {
           "@language": "it",
@@ -776,21 +856,29 @@
       }
     },
     {
-      "@id": "http://dati.gov.it/onto/tiapit/March",
+      "@id": "http://dati.gov.it/onto/tiapit/June",
       "@type": [
-        "http://dati.gov.it/onto/tiapit/MonthOfYear",
-        "owl:NamedIndividual"
+        "owl:NamedIndividual",
+        "http://dati.gov.it/onto/tiapit/MonthOfYear"
       ],
       "rdfs:label": [
         {
           "@language": "en",
-          "@value": "March"
+          "@value": "June"
         },
         {
           "@language": "it",
-          "@value": "Marzo"
+          "@value": "Giugno"
         }
       ]
+    },
+    {
+      "@id": "l0:Characteristic",
+      "@type": "owl:Class"
+    },
+    {
+      "@id": "muapit:Value",
+      "@type": "owl:Class"
     },
     {
       "@id": "http://dati.gov.it/onto/tiapit/December",
@@ -820,16 +908,16 @@
       },
       "rdfs:label": [
         {
-          "@language": "it",
-          "@value": "anno"
-        },
-        {
           "@language": "en",
           "@value": "year"
         },
         {
           "@language": "en",
           "@value": "Datatype property for linking a year to its literal representation as xsd:gYear."
+        },
+        {
+          "@language": "it",
+          "@value": "anno"
         },
         {
           "@language": "it",
@@ -844,28 +932,78 @@
       }
     },
     {
-      "@id": "http://dati.gov.it/onto/tiapit/Monday",
-      "@type": [
-        "owl:NamedIndividual",
-        "http://dati.gov.it/onto/tiapit/DayOfWeek"
-      ],
-      "rdfs:label": [
+      "@id": "http://dati.gov.it/onto/tiapit",
+      "@type": "owl:Ontology",
+      "dc:creator": [
         {
           "@language": "en",
-          "@value": "Monday"
+          "@value": "Italian Digital Transformation Team"
+        },
+        {
+          "@language": "en",
+          "@value": "Agency for Digital Italy - AgID"
+        },
+        {
+          "@language": "en",
+          "@value": "Institute of Cognitive Sciences and Technologies of the Italian Research Council (CNR) - Semantic Technology Laboratory (STLab)"
+        }
+      ],
+      "dcterms:issued": {
+        "@type": "xsd:date",
+        "@value": "2017-09-25"
+      },
+      "dcterms:license": {
+        "@id": "https://creativecommons.org/licenses/by/4.0/"
+      },
+      "dcterms:modified": "2017-11-21",
+      "owl:imports": [
+        {
+          "@id": "l0:"
+        },
+        {
+          "@id": "muapit:"
+        }
+      ],
+      "owl:versionIRI": {
+        "@id": "http://dati.gov.it/onto/tiapit/"
+      },
+      "owl:versionInfo": [
+        {
+          "@language": "it",
+          "@value": "Versione 0.4 - 21 Novembre 2017"
+        },
+        {
+          "@language": "en",
+          "@value": "Version 0.4 - 21 November 2017"
+        }
+      ],
+      "rdfs:comment": [
+        {
+          "@language": "en",
+          "@value": "This is the ontology of the Italian application profile for time"
         },
         {
           "@language": "it",
-          "@value": "Lunedì"
+          "@value": "Questa è l'ontologia del profilo applicativo italiano sul tempo"
+        }
+      ],
+      "rdfs:isDefinedBy": {
+        "@id": "http://dati.gov.it/onto/tiapit/"
+      },
+      "rdfs:label": [
+        {
+          "@language": "en",
+          "@value": "Time ontology"
+        },
+        {
+          "@language": "it",
+          "@value": "Ontologia del tempo"
         }
       ]
     },
     {
       "@id": "http://dati.gov.it/onto/tiapit/isDurationOf",
       "@type": "owl:ObjectProperty",
-      "owl:inverseOf": {
-        "@id": "http://dati.gov.it/onto/tiapit/hasDuration"
-      },
       "rdfs:comment": [
         {
           "@language": "en",
@@ -900,79 +1038,56 @@
       }
     },
     {
-      "@id": "http://dati.gov.it/onto/tiapit/isTemporalEntityOf",
-      "@type": "owl:ObjectProperty",
-      "owl:inverseOf": {
-        "@id": "http://dati.gov.it/onto/tiapit/hasTemporalEntity"
-      },
-      "rdfs:comment": [
-        {
-          "@language": "it",
-          "@value": "Proprietà che collega un entità temporale ad un evento nel tempo."
-        },
-        {
-          "@language": "en",
-          "@value": "Property that links a temporal entity to a time indexed event."
-        }
+      "@id": "http://dati.gov.it/onto/tiapit/Tuesday",
+      "@type": [
+        "http://dati.gov.it/onto/tiapit/DayOfWeek",
+        "owl:NamedIndividual"
       ],
-      "rdfs:domain": {
-        "@id": "http://dati.gov.it/onto/tiapit/TemporalEntity"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "http://dati.gov.it/onto/tiapit"
-      },
       "rdfs:label": [
         {
           "@language": "en",
-          "@value": "is temporal entity of"
+          "@value": "Tuesday"
         },
         {
           "@language": "it",
-          "@value": "è entità temporale di"
+          "@value": "Martedì"
         }
-      ],
-      "rdfs:range": {
-        "@id": "http://dati.gov.it/onto/tiapit/TimeIndexedEvent"
-      }
+      ]
     },
     {
-      "@id": "http://dati.gov.it/onto/tiapit/isYearOf",
-      "@type": "owl:ObjectProperty",
-      "owl:inverseOf": {
-        "@id": "http://dati.gov.it/onto/tiapit/hasYear"
-      },
+      "@id": "http://dati.gov.it/onto/tiapit/Duration",
+      "@type": "owl:Class",
       "rdfs:comment": [
         {
-          "@language": "en",
-          "@value": "Property that links a year to a time indexed event."
+          "@language": "it",
+          "@value": "La classe che rappresenta la durata."
         },
         {
-          "@language": "it",
-          "@value": "Proprietà che collega un anno ad un evento nel tempo."
+          "@language": "en",
+          "@value": "The class for representing duration."
         }
       ],
-      "rdfs:domain": {
-        "@id": "http://dati.gov.it/onto/tiapit/Year"
-      },
       "rdfs:isDefinedBy": {
         "@id": "http://dati.gov.it/onto/tiapit"
       },
       "rdfs:label": [
         {
-          "@language": "en",
-          "@value": "is year of"
+          "@language": "it",
+          "@value": "Durata"
         },
         {
-          "@language": "it",
-          "@value": "è anno di"
+          "@language": "en",
+          "@value": "Duration"
         }
       ],
-      "rdfs:range": {
-        "@id": "http://dati.gov.it/onto/tiapit/TimeIndexedEvent"
-      },
-      "rdfs:subPropertyOf": {
-        "@id": "http://dati.gov.it/onto/tiapit/isTemporalEntityOf"
-      }
+      "rdfs:subClassOf": [
+        {
+          "@id": "_:ub204bL357C27"
+        },
+        {
+          "@id": "http://dati.gov.it/onto/tiapit/TemporalEntity"
+        }
+      ]
     },
     {
       "@id": "http://dati.gov.it/onto/tiapit/Friday",
@@ -1014,6 +1129,10 @@
       "rdfs:comment": [
         {
           "@language": "en",
+          "@value": "Property defined for linking an instance of the class DayOfWeed to its literal representation expressed as xsd:gDay."
+        },
+        {
+          "@language": "en",
           "@value": "day"
         },
         {
@@ -1023,10 +1142,6 @@
         {
           "@language": "it",
           "@value": "giorno"
-        },
-        {
-          "@language": "en",
-          "@value": "Property defined for linking an instance of the class DayOfWeed to its literal representation expressed as xsd:gDay."
         }
       ],
       "rdfs:domain": {
@@ -1043,88 +1158,36 @@
       }
     },
     {
-      "@id": "http://dati.gov.it/onto/tiapit/June",
+      "@id": "http://dati.gov.it/onto/tiapit/March",
       "@type": [
-        "owl:NamedIndividual",
-        "http://dati.gov.it/onto/tiapit/MonthOfYear"
+        "http://dati.gov.it/onto/tiapit/MonthOfYear",
+        "owl:NamedIndividual"
       ],
       "rdfs:label": [
         {
-          "@language": "en",
-          "@value": "June"
+          "@language": "it",
+          "@value": "Marzo"
         },
         {
-          "@language": "it",
-          "@value": "Giugno"
+          "@language": "en",
+          "@value": "March"
         }
       ]
     },
     {
-      "@id": "http://dati.gov.it/onto/tiapit",
-      "@type": "owl:Ontology",
-      "dc:creator": [
-        {
-          "@language": "en",
-          "@value": "Italian Digital Transformation Team"
-        },
-        {
-          "@language": "en",
-          "@value": "Institute of Cognitive Sciences and Technologies of the Italian Research Council (CNR) - Semantic Technology Laboratory (STLab)"
-        },
-        {
-          "@language": "en",
-          "@value": "Agency for Digital Italy - AgID"
-        }
+      "@id": "http://dati.gov.it/onto/tiapit/Monday",
+      "@type": [
+        "http://dati.gov.it/onto/tiapit/DayOfWeek",
+        "owl:NamedIndividual"
       ],
-      "dcterms:issued": {
-        "@type": "xsd:date",
-        "@value": "2017-09-25"
-      },
-      "dcterms:license": {
-        "@id": "https://creativecommons.org/licenses/by/4.0/"
-      },
-      "owl:imports": [
-        {
-          "@id": "muapit:0.1"
-        },
-        {
-          "@id": "l0:"
-        }
-      ],
-      "owl:versionIRI": {
-        "@id": "http://dati.gov.it/onto/tiapit/0.4"
-      },
-      "owl:versionInfo": [
-        {
-          "@language": "it",
-          "@value": "Versione 0.4 - 21 Novembre 2017"
-        },
-        {
-          "@language": "en",
-          "@value": "Version 0.4 - 21 November 2017"
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@language": "en",
-          "@value": "This is the ontology of the Italian application profile for time"
-        },
-        {
-          "@language": "it",
-          "@value": "Questa è l'ontologia del profilo applicativo italiano sul tempo"
-        }
-      ],
-      "rdfs:isDefinedBy": {
-        "@id": "http://dati.gov.it/onto/tiapit/"
-      },
       "rdfs:label": [
         {
           "@language": "it",
-          "@value": "Ontologia del tempo"
+          "@value": "Lunedì"
         },
         {
           "@language": "en",
-          "@value": "Time ontology"
+          "@value": "Monday"
         }
       ]
     },
@@ -1133,36 +1196,16 @@
       "@type": "rdfs:Datatype"
     },
     {
-      "@id": "http://dati.gov.it/onto/tiapit/February",
-      "@type": [
-        "owl:NamedIndividual",
-        "http://dati.gov.it/onto/tiapit/MonthOfYear"
-      ],
-      "rdfs:label": [
-        {
-          "@language": "en",
-          "@value": "February"
-        },
-        {
-          "@language": "it",
-          "@value": "Febbraio"
-        }
-      ]
-    },
-    {
-      "@id": "http://dati.gov.it/onto/tiapit/MonthOfYear",
+      "@id": "http://dati.gov.it/onto/tiapit/TimeIndexedEvent",
       "@type": "owl:Class",
-      "owl:disjointWith": {
-        "@id": "http://dati.gov.it/onto/tiapit/Year"
-      },
       "rdfs:comment": [
         {
-          "@language": "en",
-          "@value": "This class represents a month of the year."
+          "@language": "it",
+          "@value": "Un evento indicizzato nel tempo."
         },
         {
-          "@language": "it",
-          "@value": "Questa classe rappresenta un mese dell'anno."
+          "@language": "en",
+          "@value": "A time indexed event."
         }
       ],
       "rdfs:isDefinedBy": {
@@ -1170,17 +1213,21 @@
       },
       "rdfs:label": [
         {
-          "@language": "en",
-          "@value": "Month of the year"
+          "@language": "it",
+          "@value": "Evento indicizzato nel tempo"
         },
         {
-          "@language": "it",
-          "@value": "Mese dell'anno"
+          "@language": "en",
+          "@value": "Time indexed event"
         }
       ],
       "rdfs:subClassOf": {
-        "@id": "http://dati.gov.it/onto/tiapit/TemporalEntity"
+        "@id": "l0:Event"
       }
+    },
+    {
+      "@id": "l0:Event",
+      "@type": "owl:Class"
     },
     {
       "@id": "http://dati.gov.it/onto/tiapit/November",
@@ -1190,12 +1237,12 @@
       ],
       "rdfs:label": [
         {
-          "@language": "it",
-          "@value": "Novembre"
-        },
-        {
           "@language": "en",
           "@value": "November"
+        },
+        {
+          "@language": "it",
+          "@value": "Novembre"
         }
       ]
     },
@@ -1208,12 +1255,12 @@
       "@type": "owl:Class",
       "rdfs:comment": [
         {
-          "@language": "en",
-          "@value": "Class for representing a year as individual."
-        },
-        {
           "@language": "it",
           "@value": "Classe che rappresenta un anno."
+        },
+        {
+          "@language": "en",
+          "@value": "Class for representing a year as individual."
         }
       ],
       "rdfs:isDefinedBy": {
@@ -1234,69 +1281,40 @@
       }
     },
     {
-      "@id": "http://dati.gov.it/onto/tiapit/hasDayOfWeek",
-      "@type": "owl:ObjectProperty",
-      "rdfs:comment": [
-        {
-          "@language": "it",
-          "@value": "Questa proprietà è utilizzata per associare un oggetto che può essere collocato nel tempo ai giorni della settimana."
-        },
-        {
-          "@language": "en",
-          "@value": "This property relates any object to particular day of the week."
-        }
-      ],
-      "rdfs:domain": {
-        "@id": "http://dati.gov.it/onto/tiapit/TimeIndexedEvent"
-      },
-      "rdfs:label": [
-        {
-          "@language": "en",
-          "@value": "has day of week"
-        },
-        {
-          "@language": "it",
-          "@value": "ha giorno della settimana"
-        }
-      ],
-      "rdfs:range": {
-        "@id": "http://dati.gov.it/onto/tiapit/DayOfWeek"
-      },
-      "rdfs:subPropertyOf": {
-        "@id": "http://dati.gov.it/onto/tiapit/hasTemporalEntity"
-      }
-    },
-    {
-      "@id": "http://dati.gov.it/onto/tiapit/July",
+      "@id": "http://dati.gov.it/onto/tiapit/April",
       "@type": [
         "owl:NamedIndividual",
         "http://dati.gov.it/onto/tiapit/MonthOfYear"
       ],
       "rdfs:label": [
         {
-          "@language": "en",
-          "@value": "July"
+          "@language": "it",
+          "@value": "Aprile"
         },
         {
-          "@language": "it",
-          "@value": "Luglio"
+          "@language": "en",
+          "@value": "April"
         }
       ]
     },
     {
+      "@id": "dcterms:modified",
+      "@type": "owl:AnnotationProperty"
+    },
+    {
       "@id": "http://dati.gov.it/onto/tiapit/January",
       "@type": [
-        "http://dati.gov.it/onto/tiapit/MonthOfYear",
-        "owl:NamedIndividual"
+        "owl:NamedIndividual",
+        "http://dati.gov.it/onto/tiapit/MonthOfYear"
       ],
       "rdfs:label": [
         {
-          "@language": "en",
-          "@value": "January"
-        },
-        {
           "@language": "it",
           "@value": "Gennaio"
+        },
+        {
+          "@language": "en",
+          "@value": "January"
         }
       ]
     }

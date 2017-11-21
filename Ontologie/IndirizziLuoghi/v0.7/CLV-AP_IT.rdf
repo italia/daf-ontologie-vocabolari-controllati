@@ -15,13 +15,14 @@
         <owl:versionIRI rdf:resource="http://dati.gov.it/onto/clvapit/0.7"/>
         <owl:imports rdf:resource="http://dati.gov.it/onto/tiapit/"/>
         <owl:imports rdf:resource="http://dati.gov.it/onto/l0/"/>
+        <dct:modified>2017-11-21</dct:modified>
         <dc:creator xml:lang="en">Institute of Cognitive Sciences and Technologies of the Italian Research Council (CNR) - Semantic Technology Laboratory (STLab)</dc:creator>
         <owl:versionInfo xml:lang="en">Version 0.6 - 27 October 2017 - Refactoring of organization class based on the COV-AP_IT ontology; some labels were corrected.</owl:versionInfo>
         <dc:creator xml:lang="en">Italian Digital Transformation Team</dc:creator>
         <rdfs:label xml:lang="en">Address(Location)</rdfs:label>
         <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2017-08-07</dct:issued>
         <owl:versionInfo xml:lang="it">Versione 0.6 - 27 Ottobre 2017 - Rifattorizzazione della classe Organizzazione per allineamento con l&apos;ontologia COV-AP_IT; sono state corrette alcune label</owl:versionInfo>
-        <dct:modified>2017-10-27</dct:modified>
+        <dct:license rdf:resource="https://creativecommons.org/licenses/by/4.0/"/>
         <prov:wasDerivedFrom rdf:resource="http://dati.gov.it/onto/clvapit/0.6"/>
         <rdfs:isDefinedBy rdf:resource="http://dati.gov.it/onto/clvapit"/>
         <dc:creator xml:lang="en">Agency for Digital Italy - AgID</dc:creator>
@@ -45,7 +46,16 @@
 
     <!-- http://dati.gov.it/onto/clvapit#hasRankOrder -->
 
-    <owl:AnnotationProperty rdf:about="http://dati.gov.it/onto/clvapit#hasRankOrder"/>
+    <owl:AnnotationProperty rdf:about="http://dati.gov.it/onto/clvapit#hasRankOrder">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+        <rdfs:domain rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://purl.org/dc/terms/license -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/license"/>
     
 
 
@@ -597,13 +607,14 @@
     <!-- http://dati.gov.it/onto/clvapit#acronym -->
 
     <owl:DatatypeProperty rdf:about="http://dati.gov.it/onto/clvapit#acronym">
+        <rdfs:subPropertyOf rdf:resource="http://dati.gov.it/onto/l0/name"/>
         <rdfs:domain rdf:resource="http://dati.gov.it/onto/clvapit#Province"/>
         <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
         <rdfs:comment xml:lang="it">La sigla automobilistica con cui viene indicata la provincia.</rdfs:comment>
         <rdfs:comment xml:lang="en">The acronym of the province that is typically used over the Italian territory for the license plate.</rdfs:comment>
         <rdfs:isDefinedBy rdf:resource="http://dati.gov.it/onto/clvapit"/>
         <rdfs:label xml:lang="en">acronym</rdfs:label>
-        <rdfs:label xml:lang="it">sigla automobilistica</rdfs:label>
+        <rdfs:label xml:lang="it">sigla provincia</rdfs:label>
         <owl:versionInfo xml:lang="it">stabile</owl:versionInfo>
         <owl:versionInfo xml:lang="en">stable</owl:versionInfo>
     </owl:DatatypeProperty>
@@ -637,6 +648,22 @@
         <rdfs:isDefinedBy rdf:resource="http://dati.gov.it/onto/clvapit"/>
         <rdfs:label xml:lang="en">building</rdfs:label>
         <rdfs:label xml:lang="it">edificio</rdfs:label>
+        <owl:versionInfo xml:lang="it">stabile</owl:versionInfo>
+        <owl:versionInfo xml:lang="en">stable</owl:versionInfo>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://dati.gov.it/onto/clvapit#coordinate -->
+
+    <owl:DatatypeProperty rdf:about="http://dati.gov.it/onto/clvapit#coordinate">
+        <rdfs:domain rdf:resource="http://dati.gov.it/onto/clvapit#Geometry"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+        <rdfs:comment xml:lang="it">Questa proprietà rappresenta le coordinate geografiche della Geometria.</rdfs:comment>
+        <rdfs:comment xml:lang="en">This property represents the geographical coordinate of the Geometry</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://dati.gov.it/onto/clvapit"/>
+        <rdfs:label xml:lang="it">coordinata geografica</rdfs:label>
+        <rdfs:label xml:lang="en">geographical coordinate</rdfs:label>
         <owl:versionInfo xml:lang="it">stabile</owl:versionInfo>
         <owl:versionInfo xml:lang="en">stable</owl:versionInfo>
     </owl:DatatypeProperty>
@@ -724,27 +751,7 @@
 
     <!-- http://dati.gov.it/onto/clvapit#hasRankOrder -->
 
-    <owl:DatatypeProperty rdf:about="http://dati.gov.it/onto/clvapit#hasRankOrder">
-        <rdfs:domain rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://dati.gov.it/onto/clvapit#identifier -->
-
-    <owl:DatatypeProperty rdf:about="http://dati.gov.it/onto/clvapit#identifier">
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:domain rdf:resource="http://dati.gov.it/onto/clvapit#Identifier"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
-        <rdfs:comment xml:lang="it">Valore dell&apos;identificativo (codice) univoco.</rdfs:comment>
-        <rdfs:comment xml:lang="en">Value of the unique identifier.</rdfs:comment>
-        <rdfs:isDefinedBy rdf:resource="http://dati.gov.it/onto/clvapit"/>
-        <rdfs:label xml:lang="it">identificativo</rdfs:label>
-        <rdfs:label xml:lang="en">identifier</rdfs:label>
-        <owl:versionInfo xml:lang="it">stabile</owl:versionInfo>
-        <owl:versionInfo xml:lang="en">stable</owl:versionInfo>
-    </owl:DatatypeProperty>
+    <owl:DatatypeProperty rdf:about="http://dati.gov.it/onto/clvapit#hasRankOrder"/>
     
 
 
@@ -767,6 +774,7 @@
     <!-- http://dati.gov.it/onto/clvapit#lat -->
 
     <owl:DatatypeProperty rdf:about="http://dati.gov.it/onto/clvapit#lat">
+        <rdfs:subPropertyOf rdf:resource="http://dati.gov.it/onto/clvapit#coordinate"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
         <rdfs:domain rdf:resource="http://dati.gov.it/onto/clvapit#Geometry"/>
         <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
@@ -784,6 +792,7 @@
     <!-- http://dati.gov.it/onto/clvapit#long -->
 
     <owl:DatatypeProperty rdf:about="http://dati.gov.it/onto/clvapit#long">
+        <rdfs:subPropertyOf rdf:resource="http://dati.gov.it/onto/clvapit#coordinate"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
         <rdfs:domain rdf:resource="http://dati.gov.it/onto/clvapit#Geometry"/>
         <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
@@ -823,22 +832,6 @@
         <rdfs:isDefinedBy rdf:resource="http://dati.gov.it/onto/clvapit"/>
         <rdfs:label xml:lang="it">data di ultimo aggiornamento</rdfs:label>
         <rdfs:label xml:lang="en">date of last update</rdfs:label>
-        <owl:versionInfo xml:lang="it">stabile</owl:versionInfo>
-        <owl:versionInfo xml:lang="en">stable</owl:versionInfo>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://dati.gov.it/onto/clvapit#name -->
-
-    <owl:DatatypeProperty rdf:about="http://dati.gov.it/onto/clvapit#name">
-        <rdfs:domain rdf:resource="http://dati.gov.it/onto/clvapit#NamedAddressComponent"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
-        <rdfs:comment xml:lang="it">La proprietà rappresenta il nome associato a tutte quelle componenti dell&apos;indirizzo che possono essere individuate da un nome (e.g., il nome della città, il nome della regione, ecc.).</rdfs:comment>
-        <rdfs:comment xml:lang="en">The name associated with the named address components.</rdfs:comment>
-        <rdfs:isDefinedBy rdf:resource="http://dati.gov.it/onto/clvapit"/>
-        <rdfs:label xml:lang="en">name</rdfs:label>
-        <rdfs:label xml:lang="it">nome</rdfs:label>
         <owl:versionInfo xml:lang="it">stabile</owl:versionInfo>
         <owl:versionInfo xml:lang="en">stable</owl:versionInfo>
     </owl:DatatypeProperty>
@@ -936,6 +929,23 @@
         <rdfs:label xml:lang="en">yard</rdfs:label>
         <owl:versionInfo xml:lang="it">stabile</owl:versionInfo>
         <owl:versionInfo xml:lang="en">stable</owl:versionInfo>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://dati.gov.it/onto/l0/identifier -->
+
+    <owl:DatatypeProperty rdf:about="http://dati.gov.it/onto/l0/identifier">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:isDefinedBy rdf:resource="http://dati.gov.it/onto/l0/"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://dati.gov.it/onto/l0/name -->
+
+    <owl:DatatypeProperty rdf:about="http://dati.gov.it/onto/l0/name">
+        <rdfs:isDefinedBy rdf:resource="http://dati.gov.it/onto/l0/"/>
     </owl:DatatypeProperty>
     
 
@@ -1286,6 +1296,12 @@
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
+                <owl:onProperty rdf:resource="http://dati.gov.it/onto/clvapit#coordinate"/>
+                <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
                 <owl:onProperty rdf:resource="http://dati.gov.it/onto/clvapit#geographicPositionMethod"/>
                 <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
             </owl:Restriction>
@@ -1336,7 +1352,7 @@
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://dati.gov.it/onto/clvapit#identifier"/>
+                <owl:onProperty rdf:resource="http://dati.gov.it/onto/l0/identifier"/>
                 <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -1416,7 +1432,7 @@
         <rdfs:subClassOf rdf:resource="http://dati.gov.it/onto/clvapit#AddressComponent"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://dati.gov.it/onto/clvapit#name"/>
+                <owl:onProperty rdf:resource="http://dati.gov.it/onto/l0/name"/>
                 <owl:someValuesFrom rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
             </owl:Restriction>
         </rdfs:subClassOf>

@@ -32,6 +32,7 @@
                                     rdfs:comment "Questa è l'ontologia del profilo  italiano sulle Strutture Ricettive (Accomodation Facility - Italian Application Profile - ACCO-AP_IT)"@it ;
                                     prov:wasDerivedFrom <http://dati.gov.it/onto/accoapit/0.1> ;
                                     owl:versionInfo "Version 0.2 - 19 Novembre 2017 - Rifattorizzazione dell'ontologia sulla base delle due nuove ontologie POT-AP_IT (biglietti, offerte e biglietti) e MU-AP_IT (unità di misura)"@it ;
+                                    dct:license <https://creativecommons.org/licenses/by/4.0/> ;
                                     dc:creator "Team per la Trasformazione Digitale"@it ;
                                     rdfs:comment "This is the ontology of the Italian application profile for Accomodation Facilities"@en ;
                                     dc:creator "Agency for Digital Italy - AgID"@en ;
@@ -44,6 +45,10 @@
 #################################################################
 #    Annotation properties
 #################################################################
+
+###  http://purl.org/dc/terms/license
+dct:license rdf:type owl:AnnotationProperty .
+
 
 ###  http://www.w3.org/ns/prov#wasDerivedFrom
 prov:wasDerivedFrom rdf:type owl:AnnotationProperty .
@@ -296,6 +301,7 @@ smapit:hasOnlineContactPoint rdf:type owl:ObjectProperty ;
 
 ###  http://dati.gov.it/onto/accoapit#featureDescription
 :featureDescription rdf:type owl:DatatypeProperty ;
+                    rdfs:subPropertyOf l0:description ;
                     rdfs:domain :OSDFeature ;
                     rdfs:range rdfs:Literal ;
                     rdfs:comment "Questa proprietà consente di specificare una descrizione complessiva testuale della caratteristica della descrizione dei servizi offerti"@it ,
@@ -309,6 +315,7 @@ smapit:hasOnlineContactPoint rdf:type owl:ObjectProperty ;
 
 ###  http://dati.gov.it/onto/accoapit#featureName
 :featureName rdf:type owl:DatatypeProperty ;
+             rdfs:subPropertyOf l0:name ;
              rdfs:domain :OSDFeature ;
              rdfs:range rdfs:Literal ;
              rdfs:comment "Questa proprietà rappresenta il nome della caratteristica associata alla classe Caratteristica della Descrizione Servizi Offerti"@it ,
@@ -364,6 +371,7 @@ smapit:hasOnlineContactPoint rdf:type owl:ObjectProperty ;
 
 ###  http://dati.gov.it/onto/accoapit#roomName
 :roomName rdf:type owl:DatatypeProperty ;
+          rdfs:subPropertyOf l0:name ;
           rdfs:domain :AccommodationRoom ;
           rdfs:range rdfs:Literal ;
           rdfs:comment <http://dati.gov.it/onto/accoapit> ,
@@ -425,6 +433,16 @@ smapit:hasOnlineContactPoint rdf:type owl:ObjectProperty ;
                        "valore totale"@it ;
             owl:versionInfo "provvisoria"@it ,
                             "unstable"@en .
+
+
+###  http://dati.gov.it/onto/l0/description
+l0:description rdf:type owl:DatatypeProperty ;
+               rdfs:isDefinedBy l0: .
+
+
+###  http://dati.gov.it/onto/l0/name
+l0:name rdf:type owl:DatatypeProperty ;
+        rdfs:isDefinedBy l0: .
 
 
 #################################################################
@@ -776,11 +794,6 @@ poiapit:PointOfInterest rdf:type owl:Class ;
 ###  http://dati.gov.it/onto/potapit/Offer
 potapit:Offer rdf:type owl:Class ;
               rdfs:isDefinedBy potapit: .
-
-
-###  http://dati.gov.it/onto/potapit/PriceSpecification
-potapit:PriceSpecification rdf:type owl:Class ;
-                           rdfs:isDefinedBy potapit: .
 
 
 ###  http://dati.gov.it/onto/smapit/OnlineContactPoint
