@@ -21,6 +21,7 @@ Il contenuto della directory Ontologie è attualmente il seguente:
   + **Strutture Ricettive (Accommodation)**: Ontologia del profilo applicativo italiano sulle strutture ricettive (Accommodation Italian Application Profile - ACCO-AP_IT).
   + **Unità Di Misura (Measurement Unit)**: Ontologia di supporto per la modellazione delle unità di misura.
   + **Prezzi Offerte e Biglietti (Prices Offers and Tickets)**: Ontologia del profilo applicativo italiano per i prezzi, le offerte i biglietti (Price Offer Ticket - Italian Application Profile -POT-AP_IT. E' un'ontologia di supporto che consente di rappresentare offerte, prezzi e biglietti. Essa può essere utilizzata in svariati contesti come per esempio nell'ambito dei luoghi ed eventi della cultura, nell'ambito delle strutture ricettive o nell'ambito del trasporto, ecc.
+  + **Ruoli (Roles)**+: Ontologia del profilo italiano per la specifica dei ruoli (Role - Italian Application Profile - RO-AP_IT);
   + **Livello0 (L0) (Level0)**: E' un'ontologia top-level che consente di collegare tutte le ontologie sopra elencate abilitando così la network di ontologie.
 
 

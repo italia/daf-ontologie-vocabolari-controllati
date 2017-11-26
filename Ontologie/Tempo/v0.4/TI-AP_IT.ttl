@@ -12,21 +12,21 @@
 
 <http://dati.gov.it/onto/tiapit> rdf:type owl:Ontology ;
                                   owl:versionIRI : ;
-                                  owl:imports l0: ,
-                                              muapit: ;
-                                  dct:modified "2017-11-21" ;
+                                  owl:imports muapit: ,
+                                              l0: ;
                                   dc:creator "Institute of Cognitive Sciences and Technologies of the Italian Research Council (CNR) - Semantic Technology Laboratory (STLab)"@en ;
                                   rdfs:comment "This is the ontology of the Italian application profile for time"@en ;
                                   dct:issued "2017-09-25"^^xsd:date ;
+                                  rdfs:label "Ontologia del tempo - profilo applicativo italiano"@it ;
                                   dc:creator "Italian Digital Transformation Team"@en ;
+                                  dct:modified "2017-11-26" ;
                                   owl:versionInfo "Versione 0.4 - 21 Novembre 2017"@it ;
                                   rdfs:isDefinedBy : ;
                                   dct:license <https://creativecommons.org/licenses/by/4.0/> ;
                                   rdfs:comment "Questa è l'ontologia del profilo applicativo italiano sul tempo"@it ;
+                                  rdfs:label "Time ontology - Italian Application Profile"@en ;
                                   owl:versionInfo "Version 0.4 - 21 November 2017"@en ;
-                                  dc:creator "Agency for Digital Italy - AgID"@en ;
-                                  rdfs:label "Time ontology"@en ,
-                                             "Ontologia del tempo"@it .
+                                  dc:creator "Agency for Digital Italy - AgID"@en .
 
 #################################################################
 #    Annotation properties
@@ -39,6 +39,10 @@ dct:modified rdf:type owl:AnnotationProperty .
 #################################################################
 #    Datatypes
 #################################################################
+
+###  http://www.w3.org/2001/XMLSchema#date
+xsd:date rdf:type rdfs:Datatype .
+
 
 ###  http://www.w3.org/2001/XMLSchema#duration
 xsd:duration rdf:type rdfs:Datatype .
@@ -54,6 +58,10 @@ xsd:gMonth rdf:type rdfs:Datatype .
 
 ###  http://www.w3.org/2001/XMLSchema#gYear
 xsd:gYear rdf:type rdfs:Datatype .
+
+
+###  http://www.w3.org/2001/XMLSchema#time
+xsd:time rdf:type rdfs:Datatype .
 
 
 #################################################################
@@ -196,6 +204,19 @@ xsd:gYear rdf:type rdfs:Datatype .
 #    Data properties
 #################################################################
 
+###  http://dati.gov.it/onto/tiapit/date
+:date rdf:type owl:DatatypeProperty ;
+      rdfs:domain owl:Thing ;
+      rdfs:range xsd:dateTime ;
+      rdfs:comment "Questa proprietà rappresenta una generica data / istante di tempo"@it ,
+                   "This property represents a generic date / time instant."@en ;
+      rdfs:isDefinedBy : ;
+      rdfs:label "data"@it ,
+                 "date"@en ;
+      owl:versionInfo "provvisoria"@it ,
+                      "unstable"@en .
+
+
 ###  http://dati.gov.it/onto/tiapit/day
 :day rdf:type owl:DatatypeProperty ;
      rdfs:subPropertyOf :time ;
@@ -231,6 +252,42 @@ xsd:gYear rdf:type rdfs:Datatype .
                     "end date"@en .
 
 
+###  http://dati.gov.it/onto/tiapit/issued
+:issued rdf:type owl:DatatypeProperty ;
+        rdfs:domain owl:Thing ;
+        rdfs:range [ rdf:type rdfs:Datatype ;
+                     owl:unionOf ( xsd:date
+                                   xsd:dateTime
+                                   xsd:time
+                                 )
+                   ] ;
+        rdfs:comment "La proprietà rappresenta l'istante di tempo che può coincidere con un tempo di generazione o con la data di inizio dell'intervallo di tempo."@it ,
+                     "This property represents the istant of time that can coincide with a generation time or the startTime of an interval."@en ;
+        rdfs:isDefinedBy : ;
+        rdfs:label "istante di tempo (generazione)"@it ,
+                   "time of issuance"@en ;
+        owl:versionInfo "stabile"@it ,
+                        "stable"@en .
+
+
+###  http://dati.gov.it/onto/tiapit/modified
+:modified rdf:type owl:DatatypeProperty ;
+          rdfs:domain owl:Thing ;
+          rdfs:range [ rdf:type rdfs:Datatype ;
+                       owl:unionOf ( xsd:date
+                                     xsd:dateTime
+                                     xsd:time
+                                   )
+                     ] ;
+          rdfs:comment "Questa proprietà è utilizzata per modellare la data di ultima modifica (o il tempo di aggiornamento)"@it ,
+                       "This property  is used in order to model the update time."@en ;
+          rdfs:isDefinedBy : ;
+          rdfs:label "data ultima modifica (tempo di aggiornamento)"@it ,
+                     "update time"@en ;
+          owl:versionInfo "stabile"@it ,
+                          "stable"@en .
+
+
 ###  http://dati.gov.it/onto/tiapit/month
 :month rdf:type owl:DatatypeProperty ;
        rdfs:subPropertyOf :time ;
@@ -262,7 +319,9 @@ xsd:gYear rdf:type rdfs:Datatype .
                    "Abstract property used to represent the time as literal."@en ,
                    "Proprietà astratta per rappresentare il tempo come literal."@it ;
       rdfs:label "tempo"@it ,
-                 "time"@en .
+                 "time"@en ;
+      owl:versionInfo "stabile"@it ,
+                      "stable"@en .
 
 
 ###  http://dati.gov.it/onto/tiapit/year
@@ -358,7 +417,21 @@ muapit:Value rdf:type owl:Class .
 ###  http://dati.gov.it/onto/tiapit/TimeInterval
 :TimeInterval rdf:type owl:Class ;
               rdfs:subClassOf l0:Characteristic ,
-                              :TemporalEntity ;
+                              :TemporalEntity ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :date ;
+                                owl:allValuesFrom xsd:date
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :endTime ;
+                                owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                owl:onDataRange xsd:dateTime
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :startTime ;
+                                owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                owl:onDataRange xsd:dateTime
+                              ] ;
               rdfs:comment "A time interval"@en ,
                            "Rappresentazione di intervallo di tempo."@it ;
               rdfs:isDefinedBy <http://dati.gov.it/onto/tiapit> ;

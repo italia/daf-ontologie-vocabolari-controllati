@@ -1,31 +1,72 @@
 <?xml version="1.0"?>
-
-
-<!DOCTYPE rdf:RDF [
-    <!ENTITY l0 "http://dati.gov.it/onto/l0/" >
-    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
-    <!ENTITY tiapit "http://dati.gov.it/onto/tiapit/" >
-    <!ENTITY muapit "http://dati.gov.it/onto/muapit/" >
-    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
-    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
-    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
-]>
-
-
 <rdf:RDF xmlns="http://dati.gov.it/onto/roapit/"
      xml:base="http://dati.gov.it/onto/roapit/"
      xmlns:l0="http://dati.gov.it/onto/l0/"
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:terms="http://purl.org/dc/terms/"
      xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
      xmlns:tiapit="http://dati.gov.it/onto/tiapit/"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
-     xmlns:muapit="http://dati.gov.it/onto/muapit/">
-    <owl:Ontology rdf:about="http://dati.gov.it/onto/roapit/">
+     xmlns:muapit="http://dati.gov.it/onto/muapit/"
+     xmlns:dc="http://purl.org/dc/elements/1.1/">
+    <owl:Ontology rdf:about="http://dati.gov.it/onto/tiapit/">
+        <owl:versionIRI rdf:resource="http://dati.gov.it/onto/roapit/"/>
+        <owl:imports rdf:resource="http://dati.gov.it/onto/tiapit/"/>
         <owl:imports rdf:resource="http://dati.gov.it/onto/l0/"/>
-        <owl:versionIRI rdf:resource="http://dati.gov.it/onto/roapit/0.1"/>
-        <owl:imports rdf:resource="&tiapit;0.4"/>
+        <terms:modified>2017-11-21</terms:modified>
+        <dc:creator xml:lang="en">Institute of Cognitive Sciences and Technologies of the Italian Research Council (CNR) - Semantic Technology Laboratory (STLab)</dc:creator>
+        <rdfs:comment xml:lang="en">This is the ontology used to represent roles</rdfs:comment>
+        <terms:issued xml:lang="en">2017-11-21</terms:issued>
+        <rdfs:label xml:lang="it">Ontologia dei Ruoli</rdfs:label>
+        <rdfs:isDefinedBy rdf:resource="http://dati.gov.it/onto/roapit/"/>
+        <dc:creator xml:lang="it">Istituto di Scienze e Tecnologie della Cognizione del CNR - Semantic Technology Lab (STLab)</dc:creator>
+        <owl:versionInfo xml:lang="en">Version 0.1 - November 21 2017 - creation of the ontology</owl:versionInfo>
+        <dc:creator xml:lang="en">Italian Digital Transformation Team</dc:creator>
+        <rdfs:label xml:lang="en">Role Ontology</rdfs:label>
+        <rdfs:comment xml:lang="it">Questa è l&apos;ontologia per la modellazione dei ruoli</rdfs:comment>
+        <terms:license rdf:resource="https://creativecommons.org/licenses/by/4.0/"/>
+        <dc:creator xml:lang="it">Team per la Trasformazione Digitale</dc:creator>
+        <dc:creator xml:lang="en">Agency for Digital Italy - AgID</dc:creator>
+        <dc:creator xml:lang="it">Agenzia per l&apos;Italia Digitale - AgID</dc:creator>
+        <owl:versionInfo xml:lang="it">Versione 0.1 - 21 Novembre 2017 - creazione dell&apos;ontologia</owl:versionInfo>
     </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/dc/elements/1.1/creator -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/creator"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/issued -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/issued"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/license -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/license"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/modified -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/modified"/>
     
 
 
@@ -43,13 +84,13 @@
     <!-- http://dati.gov.it/onto/roapit/forAgent -->
 
     <owl:ObjectProperty rdf:about="http://dati.gov.it/onto/roapit/forAgent">
-        <rdfs:label xml:lang="en">for agent</rdfs:label>
-        <rdfs:label xml:lang="it">per agente</rdfs:label>
+        <rdfs:domain rdf:resource="http://dati.gov.it/onto/roapit/TimeIndexedRole"/>
+        <rdfs:range rdf:resource="http://dati.gov.it/onto/l0/Agent"/>
         <rdfs:comment xml:lang="en">Property that links a time indexed role with the agent holding such a role.</rdfs:comment>
         <rdfs:comment xml:lang="it">Proprietà che collega un ruolo a tempo con l&apos;agente che lo ricopre.</rdfs:comment>
-        <rdfs:range rdf:resource="&l0;Agent"/>
         <rdfs:isDefinedBy rdf:resource="http://dati.gov.it/onto/roapit/"/>
-        <rdfs:domain rdf:resource="http://dati.gov.it/onto/roapit/TimeIndexedRole"/>
+        <rdfs:label xml:lang="en">for agent</rdfs:label>
+        <rdfs:label xml:lang="it">per agente</rdfs:label>
     </owl:ObjectProperty>
     
 
@@ -57,13 +98,14 @@
     <!-- http://dati.gov.it/onto/roapit/holdsRole -->
 
     <owl:ObjectProperty rdf:about="http://dati.gov.it/onto/roapit/holdsRole">
+        <owl:inverseOf rdf:resource="http://dati.gov.it/onto/roapit/isRoleOf"/>
+        <rdfs:domain rdf:resource="http://dati.gov.it/onto/l0/Agent"/>
+        <rdfs:range rdf:resource="http://dati.gov.it/onto/roapit/Role"/>
+        <rdfs:comment xml:lang="it">La relazione tra un agente ed un ruolo.</rdfs:comment>
+        <rdfs:comment xml:lang="en">The relation existing between an agent and a role.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://dati.gov.it/onto/roapit/"/>
         <rdfs:label xml:lang="en">holds role</rdfs:label>
         <rdfs:label xml:lang="it">ricopre ruolo</rdfs:label>
-        <rdfs:comment xml:lang="en">The relation existing between an agent and a role.</rdfs:comment>
-        <rdfs:comment xml:lang="it">La relazione tra un agente ed un ruolo.</rdfs:comment>
-        <rdfs:domain rdf:resource="&l0;Agent"/>
-        <rdfs:isDefinedBy rdf:resource="http://dati.gov.it/onto/roapit/"/>
-        <rdfs:range rdf:resource="http://dati.gov.it/onto/roapit/Role"/>
     </owl:ObjectProperty>
     
 
@@ -71,14 +113,13 @@
     <!-- http://dati.gov.it/onto/roapit/isRoleOf -->
 
     <owl:ObjectProperty rdf:about="http://dati.gov.it/onto/roapit/isRoleOf">
+        <rdfs:domain rdf:resource="http://dati.gov.it/onto/l0/Agent"/>
+        <rdfs:range rdf:resource="http://dati.gov.it/onto/roapit/Role"/>
+        <rdfs:comment xml:lang="it">La relazione tra un ruolo ed una persona. E&apos; la proprietà inversa di holdsRole.</rdfs:comment>
+        <rdfs:comment xml:lang="en">The relation existing between a role and an agent. This is the inverse property of holdsRole.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://dati.gov.it/onto/roapit/"/>
         <rdfs:label xml:lang="en">is role of</rdfs:label>
         <rdfs:label xml:lang="it">è ruolo di</rdfs:label>
-        <rdfs:comment xml:lang="en">The relation existing between a role and an agent. This is the inverse property of holdsRole.</rdfs:comment>
-        <rdfs:comment xml:lang="it">La relazione tra un ruolo ed una persona. E&apos; la proprietà inversa di holdsRole.</rdfs:comment>
-        <rdfs:domain rdf:resource="&l0;Agent"/>
-        <rdfs:isDefinedBy rdf:resource="http://dati.gov.it/onto/roapit/"/>
-        <rdfs:range rdf:resource="http://dati.gov.it/onto/roapit/Role"/>
-        <owl:inverseOf rdf:resource="http://dati.gov.it/onto/roapit/holdsRole"/>
     </owl:ObjectProperty>
     
 
@@ -86,14 +127,39 @@
     <!-- http://dati.gov.it/onto/roapit/withRole -->
 
     <owl:ObjectProperty rdf:about="http://dati.gov.it/onto/roapit/withRole">
-        <rdfs:label xml:lang="en">with role</rdfs:label>
-        <rdfs:label xml:lang="it">con ruolo</rdfs:label>
+        <rdfs:domain rdf:resource="http://dati.gov.it/onto/roapit/TimeIndexedRole"/>
+        <rdfs:range rdf:resource="http://dati.gov.it/onto/roapit/Role"/>
         <rdfs:comment xml:lang="en">Association between a TimeIndexedRole and a Role.</rdfs:comment>
         <rdfs:comment xml:lang="it">Associazione tra un TimeIndexedRole ed un Role.</rdfs:comment>
         <rdfs:isDefinedBy rdf:resource="http://dati.gov.it/onto/roapit/"/>
-        <rdfs:range rdf:resource="http://dati.gov.it/onto/roapit/Role"/>
-        <rdfs:domain rdf:resource="http://dati.gov.it/onto/roapit/TimeIndexedRole"/>
+        <rdfs:label xml:lang="it">con ruolo</rdfs:label>
+        <rdfs:label xml:lang="en">with role</rdfs:label>
     </owl:ObjectProperty>
+    
+
+
+    <!-- http://dati.gov.it/onto/tiapit/hasTemporalEntity -->
+
+    <owl:ObjectProperty rdf:about="http://dati.gov.it/onto/tiapit/hasTemporalEntity"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://dati.gov.it/onto/l0/name -->
+
+    <owl:DatatypeProperty rdf:about="http://dati.gov.it/onto/l0/name">
+        <rdfs:isDefinedBy rdf:resource="http://dati.gov.it/onto/l0/"/>
+    </owl:DatatypeProperty>
     
 
 
@@ -108,15 +174,39 @@
     
 
 
+    <!-- http://dati.gov.it/onto/l0/Agent -->
+
+    <owl:Class rdf:about="http://dati.gov.it/onto/l0/Agent"/>
+    
+
+
+    <!-- http://dati.gov.it/onto/l0/Event -->
+
+    <owl:Class rdf:about="http://dati.gov.it/onto/l0/Event"/>
+    
+
+
+    <!-- http://dati.gov.it/onto/l0/Object -->
+
+    <owl:Class rdf:about="http://dati.gov.it/onto/l0/Object"/>
+    
+
+
     <!-- http://dati.gov.it/onto/roapit/Role -->
 
     <owl:Class rdf:about="http://dati.gov.it/onto/roapit/Role">
-        <rdfs:label xml:lang="en">Role</rdfs:label>
-        <rdfs:label xml:lang="it">Ruolo</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&l0;Object"/>
+        <rdfs:subClassOf rdf:resource="http://dati.gov.it/onto/l0/Object"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://dati.gov.it/onto/l0/name"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <rdfs:comment xml:lang="en">A role.</rdfs:comment>
         <rdfs:comment xml:lang="it">Un ruolo.</rdfs:comment>
         <rdfs:isDefinedBy rdf:resource="http://dati.gov.it/onto/roapit/"/>
+        <rdfs:label xml:lang="en">Role</rdfs:label>
+        <rdfs:label xml:lang="it">Ruolo</rdfs:label>
     </owl:Class>
     
 
@@ -124,19 +214,11 @@
     <!-- http://dati.gov.it/onto/roapit/TimeIndexedRole -->
 
     <owl:Class rdf:about="http://dati.gov.it/onto/roapit/TimeIndexedRole">
-        <rdfs:label xml:lang="en">Time indexed role</rdfs:label>
-        <rdfs:label xml:lang="it">Ruolo nel tempo</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&tiapit;TimeIndexedEvent"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&tiapit;hasTemporalEntity"/>
-                <owl:someValuesFrom rdf:resource="&tiapit;TemporalEntity"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
+        <rdfs:subClassOf rdf:resource="http://dati.gov.it/onto/tiapit/TimeIndexedEvent"/>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://dati.gov.it/onto/roapit/forAgent"/>
-                <owl:someValuesFrom rdf:resource="&l0;Agent"/>
+                <owl:someValuesFrom rdf:resource="http://dati.gov.it/onto/l0/Agent"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -145,13 +227,35 @@
                 <owl:someValuesFrom rdf:resource="http://dati.gov.it/onto/roapit/Role"/>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <rdfs:comment xml:lang="en">Representation of Role with a clearly defined time extension.</rdfs:comment>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://dati.gov.it/onto/tiapit/hasTemporalEntity"/>
+                <owl:someValuesFrom rdf:resource="http://dati.gov.it/onto/tiapit/TemporalEntity"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <rdfs:comment xml:lang="it">Rappresentazione di un ruolo associato ad un intervallo temporale determinato.</rdfs:comment>
+        <rdfs:comment xml:lang="en">Representation of Role with a clearly defined time extension.</rdfs:comment>
         <rdfs:isDefinedBy rdf:resource="http://dati.gov.it/onto/roapit/"/>
+        <rdfs:label xml:lang="it">Ruolo nel tempo</rdfs:label>
+        <rdfs:label xml:lang="en">Time indexed role</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://dati.gov.it/onto/tiapit/TemporalEntity -->
+
+    <owl:Class rdf:about="http://dati.gov.it/onto/tiapit/TemporalEntity"/>
+    
+
+
+    <!-- http://dati.gov.it/onto/tiapit/TimeIndexedEvent -->
+
+    <owl:Class rdf:about="http://dati.gov.it/onto/tiapit/TimeIndexedEvent">
+        <rdfs:subClassOf rdf:resource="http://dati.gov.it/onto/l0/Event"/>
     </owl:Class>
 </rdf:RDF>
 
 
 
-<!-- Generated by the OWL API (version 3.5.1) http://owlapi.sourceforge.net -->
+<!-- Generated by the OWL API (version 4.2.8.20170104-2310) https://github.com/owlcs/owlapi -->
 

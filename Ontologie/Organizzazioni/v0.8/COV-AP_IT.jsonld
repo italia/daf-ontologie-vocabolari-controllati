@@ -10,6 +10,7 @@
     "prov": "http://www.w3.org/ns/prov#",
     "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
     "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "roapit": "http://dati.gov.it/onto/roapit/",
     "schema": "http://schema.org/",
     "skos": "http://www.w3.org/2004/02/skos/core#",
     "smapit": "http://dati.gov.it/onto/smapit/",
@@ -17,16 +18,6 @@
     "xsd": "http://www.w3.org/2001/XMLSchema#"
   },
   "@graph": [
-    {
-      "@id": "_:ub267bL1151C31",
-      "@type": "owl:Restriction",
-      "owl:allValuesFrom": {
-        "@id": "http://dati.gov.it/onto/covapit#ChangeEvent"
-      },
-      "owl:onProperty": {
-        "@id": "http://dati.gov.it/onto/covapit#resultedFrom"
-      }
-    },
     {
       "@id": "http://dati.gov.it/onto/covapit#UnderRegistration",
       "@type": [
@@ -39,12 +30,12 @@
       "@type": "owl:ObjectProperty",
       "owl:versionInfo": [
         {
-          "@language": "en",
-          "@value": "stable"
-        },
-        {
           "@language": "it",
           "@value": "stabile"
+        },
+        {
+          "@language": "en",
+          "@value": "stable"
         }
       ],
       "rdfs:comment": [
@@ -65,23 +56,16 @@
       },
       "rdfs:label": [
         {
-          "@language": "it",
-          "@value": "è unità di supporto di"
-        },
-        {
           "@language": "en",
           "@value": "is support unit of"
+        },
+        {
+          "@language": "it",
+          "@value": "è unità di supporto di"
         }
       ],
       "rdfs:range": {
         "@id": "http://dati.gov.it/onto/covapit#Organization"
-      }
-    },
-    {
-      "@id": "_:ub267bL1581C1",
-      "owl:maxQualifiedCardinality": {
-        "@type": "xsd:nonNegativeInteger",
-        "@value": "1"
       }
     },
     {
@@ -99,12 +83,12 @@
       ],
       "rdfs:comment": [
         {
-          "@language": "it",
-          "@value": "Questa proprietà lega un'organizzazione a uno o più bilanci."
-        },
-        {
           "@language": "en",
           "@value": "This property links the Organization with one or more balance sheets."
+        },
+        {
+          "@language": "it",
+          "@value": "Questa proprietà lega un'organizzazione a uno o più bilanci."
         }
       ],
       "rdfs:domain": {
@@ -115,30 +99,16 @@
       },
       "rdfs:label": [
         {
-          "@language": "it",
-          "@value": "ha bilancio"
-        },
-        {
           "@language": "en",
           "@value": "has balance sheet"
+        },
+        {
+          "@language": "it",
+          "@value": "ha bilancio"
         }
       ],
       "rdfs:range": {
         "@id": "http://dati.gov.it/onto/covapit#BalanceSheet"
-      }
-    },
-    {
-      "@id": "_:ub267bL1328C37",
-      "@type": "owl:Restriction",
-      "owl:onClass": {
-        "@id": "http://dati.gov.it/onto/covapit#PublicOrganizationCategory"
-      },
-      "owl:onProperty": {
-        "@id": "http://dati.gov.it/onto/covapit#hasCategory"
-      },
-      "owl:qualifiedCardinality": {
-        "@type": "xsd:nonNegativeInteger",
-        "@value": "1"
       }
     },
     {
@@ -156,12 +126,12 @@
       ],
       "rdfs:comment": [
         {
-          "@language": "it",
-          "@value": "Questa classe rappresenta un evento di sostituzione per un'organizzazione. Come la sostituzione di una pubblica amministrazioe con un'altra."
-        },
-        {
           "@language": "en",
           "@value": "This class represents a replacement event for an organization."
+        },
+        {
+          "@language": "it",
+          "@value": "Questa classe rappresenta un evento di sostituzione per un'organizzazione. Come la sostituzione di una pubblica amministrazioe con un'altra."
         }
       ],
       "rdfs:isDefinedBy": {
@@ -169,12 +139,12 @@
       },
       "rdfs:label": [
         {
-          "@language": "en",
-          "@value": "Replacement"
-        },
-        {
           "@language": "it",
           "@value": "Sostituzione"
+        },
+        {
+          "@language": "en",
+          "@value": "Replacement"
         }
       ],
       "rdfs:subClassOf": {
@@ -182,7 +152,221 @@
       }
     },
     {
-      "@id": "_:ub267bL1199C31",
+      "@id": "http://dati.gov.it/onto/covapit#orginalOrganization",
+      "@type": "owl:ObjectProperty",
+      "owl:versionInfo": [
+        {
+          "@language": "en",
+          "@value": "stable"
+        },
+        {
+          "@language": "it",
+          "@value": "stabile"
+        }
+      ],
+      "rdfs:comment": [
+        {
+          "@language": "it",
+          "@value": "Questa proprietà collega un evento del cambiamento all'organizzazione che esisteva prima del cambiamento. Sebbene la classe Costituzione sia sotto classe di Evento del Cambiamento, è inappropriato utilizzare tale classe con questa proprietà."
+        },
+        {
+          "@language": "en",
+          "@value": "The property links a Change Event to the organization that existed before the change. Although the Foundation Event class is defined as a sub class of Change Event, it is inappropriate to use this property with the Foundation Event class."
+        }
+      ],
+      "rdfs:domain": {
+        "@id": "http://dati.gov.it/onto/covapit#ChangeEvent"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "http://dati.gov.it/onto/covapit"
+      },
+      "rdfs:label": [
+        {
+          "@language": "en",
+          "@value": "original organization"
+        },
+        {
+          "@language": "it",
+          "@value": "organizzazione di origine"
+        }
+      ],
+      "rdfs:range": {
+        "@id": "http://dati.gov.it/onto/covapit#Organization"
+      }
+    },
+    {
+      "@id": "http://dati.gov.it/onto/covapit#Direct",
+      "@type": [
+        "owl:NamedIndividual",
+        "http://dati.gov.it/onto/covapit#ParticipationType"
+      ]
+    },
+    {
+      "@id": "http://dati.gov.it/onto/covapit#participationPercentage",
+      "@type": "owl:DatatypeProperty",
+      "owl:versionInfo": [
+        {
+          "@language": "it",
+          "@value": "stabile"
+        },
+        {
+          "@language": "en",
+          "@value": "stable"
+        }
+      ],
+      "rdfs:comment": [
+        {
+          "@language": "it",
+          "@value": "Questa proprietà rappresenta la percentuale (quota) di partecipazione di un'organizzazione in un'altra in un certo lasso temporale. Esempio \"2.38\"). La proprietà è molto utile nei casi di descrizione di società partecipate per esempio."
+        },
+        {
+          "@language": "en",
+          "@value": "This property represents the percentage of participation (share) of an organization in another during a time period."
+        }
+      ],
+      "rdfs:domain": {
+        "@id": "http://dati.gov.it/onto/covapit#Participation"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "http://dati.gov.it/onto/covapit"
+      },
+      "rdfs:label": [
+        {
+          "@language": "en",
+          "@value": "participation percentage"
+        },
+        {
+          "@language": "it",
+          "@value": "percentuale partecipazione"
+        }
+      ],
+      "rdfs:range": {
+        "@id": "xsd:float"
+      }
+    },
+    {
+      "@id": "_:ub50bL1170C31",
+      "@type": "owl:Restriction",
+      "owl:onProperty": {
+        "@id": "http://dati.gov.it/onto/covapit#legalName"
+      },
+      "owl:someValuesFrom": {
+        "@id": "rdfs:Literal"
+      }
+    },
+    {
+      "@id": "owl:maxQualifiedCardinality",
+      "@type": "owl:AnnotationProperty"
+    },
+    {
+      "@id": "http://dati.gov.it/onto/covapit#altName",
+      "@type": "owl:DatatypeProperty",
+      "owl:versionInfo": [
+        {
+          "@language": "en",
+          "@value": "stable"
+        },
+        {
+          "@language": "it",
+          "@value": "Questa proprietà rappresenta un nome alternativo dell'organizzazione (e.g., un nome colloquiale)."
+        },
+        {
+          "@language": "it",
+          "@value": "stabile"
+        }
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "This property represents an alternative name for the organization such as a colloquial name."
+      },
+      "rdfs:domain": {
+        "@id": "http://dati.gov.it/onto/covapit#Organization"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "http://dati.gov.it/onto/covapit"
+      },
+      "rdfs:label": [
+        {
+          "@language": "en",
+          "@value": "alternative name"
+        },
+        {
+          "@language": "it",
+          "@value": "nome alternativo"
+        }
+      ],
+      "rdfs:range": {
+        "@id": "rdfs:Literal"
+      },
+      "rdfs:subPropertyOf": {
+        "@id": "l0:name"
+      }
+    },
+    {
+      "@id": "http://dati.gov.it/onto/covapit#businessObjective",
+      "@type": "owl:DatatypeProperty",
+      "owl:versionInfo": [
+        {
+          "@language": "it",
+          "@value": "provvisoria"
+        },
+        {
+          "@language": "en",
+          "@value": "unstable"
+        }
+      ],
+      "rdfs:comment": [
+        {
+          "@language": "en",
+          "@value": "This property represents the business objectives or the corporate purpose of the private organization."
+        },
+        {
+          "@language": "it",
+          "@value": "Questa proprietà rappresenta l'oggetto sociale dell'organizzazione privata (impresa)."
+        }
+      ],
+      "rdfs:domain": {
+        "@id": "http://dati.gov.it/onto/covapit#PrivateOrganization"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "http://dati.gov.it/onto/covapit"
+      },
+      "rdfs:label": [
+        {
+          "@language": "it",
+          "@value": "oggetto sociale"
+        },
+        {
+          "@language": "en",
+          "@value": "business objective"
+        }
+      ],
+      "rdfs:range": {
+        "@id": "rdfs:Literal"
+      }
+    },
+    {
+      "@id": "_:ub50bL941C30",
+      "@type": "owl:Restriction",
+      "owl:allValuesFrom": {
+        "@id": "http://dati.gov.it/onto/covapit#Organization"
+      },
+      "owl:onProperty": {
+        "@id": "http://dati.gov.it/onto/covapit#resultingOrganization"
+      }
+    },
+    {
+      "@id": "_:ub50bL1178C31",
+      "@type": "owl:Restriction",
+      "owl:allValuesFrom": {
+        "@id": "rdfs:Literal"
+      },
+      "owl:onProperty": {
+        "@id": "http://dati.gov.it/onto/covapit#mainFunction"
+      }
+    },
+    {
+      "@id": "_:ub50bL1199C31",
       "@type": "owl:Restriction",
       "owl:maxQualifiedCardinality": {
         "@type": "xsd:nonNegativeInteger",
@@ -196,8 +380,93 @@
       }
     },
     {
-      "@id": "http://dati.gov.it/onto/covapit#Closing",
+      "@id": "http://dati.gov.it/onto/covapit#GooglePlus",
+      "@type": "owl:NamedIndividual",
+      "rdfs:isDefinedBy": {
+        "@id": "http://dati.gov.it/onto/covapit/"
+      }
+    },
+    {
+      "@id": "_:ub50bL1328C37",
+      "@type": "owl:Restriction",
+      "owl:onClass": {
+        "@id": "http://dati.gov.it/onto/covapit#PublicOrganizationCategory"
+      },
+      "owl:onProperty": {
+        "@id": "http://dati.gov.it/onto/covapit#hasCategory"
+      },
+      "owl:qualifiedCardinality": {
+        "@type": "xsd:nonNegativeInteger",
+        "@value": "1"
+      }
+    },
+    {
+      "@id": "http://dati.gov.it/onto/covapit#ActivityType",
       "@type": "owl:Class",
+      "owl:versionInfo": [
+        {
+          "@language": "it",
+          "@value": "provvisoria"
+        },
+        {
+          "@language": "en",
+          "@value": "unstable"
+        }
+      ],
+      "prov:wasDerivedFrom": {
+        "@id": "skos:Concept"
+      },
+      "rdfs:comment": [
+        {
+          "@language": "en",
+          "@value": "This class represents the type of activities carried out  by the organization. The instances of this class can be modelled as skos concepts of a controlled vocabulary. In the case of private organization, this class is represented by the ATECO 2007 classification. In the case of public organizations, the COFOG classification can be used."
+        },
+        {
+          "@language": "it",
+          "@value": "Questa classe rappresenta il tipo di attiità svolta dall'organizzazione. Le istanze di questa classe possono essere rappresentate come concetti dello standard skos di un vocabolario controllato. Nel caso di organizzazioni private (impresa) è necessario utilizzare la classificazione delle attività ATECO. Nel caso di organizzazioni pubbliche si può utilizzare la classificazione COFOG."
+        }
+      ],
+      "rdfs:isDefinedBy": {
+        "@id": "http://dati.gov.it/onto/covapit"
+      },
+      "rdfs:label": [
+        {
+          "@language": "en",
+          "@value": "Activity Type"
+        },
+        {
+          "@language": "it",
+          "@value": "Tipo attività"
+        }
+      ],
+      "rdfs:subClassOf": {
+        "@id": "l0:Characteristic"
+      }
+    },
+    {
+      "@id": "ti:TimeInterval",
+      "@type": "owl:Class",
+      "rdfs:isDefinedBy": {
+        "@id": "ti:"
+      }
+    },
+    {
+      "@id": "_:ub50bL1155C31",
+      "@type": "owl:Restriction",
+      "owl:onClass": {
+        "@id": "http://dati.gov.it/onto/covapit#OrganizationTypology"
+      },
+      "owl:onProperty": {
+        "@id": "http://dati.gov.it/onto/covapit#hasTypology"
+      },
+      "owl:qualifiedCardinality": {
+        "@type": "xsd:nonNegativeInteger",
+        "@value": "1"
+      }
+    },
+    {
+      "@id": "http://dati.gov.it/onto/covapit#accreditationDate",
+      "@type": "owl:DatatypeProperty",
       "owl:versionInfo": [
         {
           "@language": "en",
@@ -206,6 +475,260 @@
         {
           "@language": "it",
           "@value": "stabile"
+        }
+      ],
+      "rdfs:comment": [
+        {
+          "@language": "it",
+          "@value": "Questa proprietà rappresenta la data di accreditamento dell'organizzazione nel pubblico registro (e.g., in \"IPA\" nel caso di pubbliche amministrazioni, in \"Registro Imprese\" nel caso di organizzazioni private)."
+        },
+        {
+          "@language": "en",
+          "@value": "This property represents the accreditation date of the organization in the public registry (e.g., in Italy in  \"IPA\" registry for public administrations, and in the \"Registro Imprese\" for private organizations)."
+        }
+      ],
+      "rdfs:domain": {
+        "@id": "http://dati.gov.it/onto/covapit#Organization"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "http://dati.gov.it/onto/covapit"
+      },
+      "rdfs:label": [
+        {
+          "@language": "it",
+          "@value": "data di accreditamento"
+        },
+        {
+          "@language": "en",
+          "@value": "accreditation date"
+        }
+      ],
+      "rdfs:range": {
+        "@id": "xsd:dateTime"
+      },
+      "rdfs:subPropertyOf": {
+        "@id": "ti:date"
+      }
+    },
+    {
+      "@id": "http://dati.gov.it/onto/covpit",
+      "@type": "owl:Ontology",
+      "dc:creator": [
+        {
+          "@language": "en",
+          "@value": "Institute of Cognitive Sciences and Technologies of the Italian Research Council (CNR) - Semantic Technology Laboratory (STLab)"
+        },
+        {
+          "@language": "en",
+          "@value": "Agency for Digital Italy - AgID"
+        },
+        {
+          "@language": "en",
+          "@value": "Italian Digital Transformation Team"
+        }
+      ],
+      "dct:issued": {
+        "@type": "xsd:date",
+        "@value": "2017-07-20"
+      },
+      "dct:license": {
+        "@id": "https://creativecommons.org/licenses/by/4.0/"
+      },
+      "dct:modified": "2017-10-25",
+      "owl:imports": [
+        {
+          "@id": "l0:"
+        },
+        {
+          "@id": "roapit:"
+        },
+        {
+          "@id": "clvapit:"
+        },
+        {
+          "@id": "ti:"
+        },
+        {
+          "@id": "smapit:"
+        }
+      ],
+      "owl:versionIRI": {
+        "@id": "http://dati.gov.it/onto/covapit/0.8"
+      },
+      "owl:versionInfo": [
+        {
+          "@language": "en",
+          "@value": "Version 0.8 - 25  October 2017 - updated refactorisation changes to Social Media ontology used in this one."
+        },
+        {
+          "@language": "it",
+          "@value": "Versione 0.8 - 25 October 2017 - Aggiornamento della rifattorizzazione basata sui cambiamenti dell'ontologia Social Media."
+        }
+      ],
+      "prov:wasDerivedFrom": {
+        "@id": "http://dati.gov.it/onto/covapit/0.7"
+      },
+      "rdfs:comment": [
+        {
+          "@language": "en",
+          "@value": "This is the ontology of the Italian application profile for Organizations (Public and Private)"
+        },
+        {
+          "@language": "en",
+          "@value": "Questa è l'ontologia del profilo applicativo italiano sulle organizzazioni (pubbliche e private)"
+        }
+      ],
+      "rdfs:isDefinedBy": {
+        "@id": "http://dati.gov.it/onto/covapit"
+      },
+      "rdfs:label": [
+        {
+          "@language": "it",
+          "@value": "Organizzazioni (Pubbliche e Private)"
+        },
+        {
+          "@language": "en",
+          "@value": "Organization (Private & Public)"
+        }
+      ]
+    },
+    {
+      "@id": "http://dati.gov.it/onto/covapit#foundationDate",
+      "@type": "owl:DatatypeProperty",
+      "owl:versionInfo": [
+        {
+          "@language": "it",
+          "@value": "stabile"
+        },
+        {
+          "@language": "en",
+          "@value": "stable"
+        }
+      ],
+      "rdfs:comment": [
+        {
+          "@language": "it",
+          "@value": "Questa proprietà rappresenta la data di costituzione dell'organizzazione privata (impresa)."
+        },
+        {
+          "@language": "en",
+          "@value": "This property represents the date in which the organization was founded."
+        }
+      ],
+      "rdfs:domain": {
+        "@id": "http://dati.gov.it/onto/covapit#PrivateOrganization"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "http://dati.gov.it/onto/covapit"
+      },
+      "rdfs:label": [
+        {
+          "@language": "it",
+          "@value": "data di costituzione"
+        },
+        {
+          "@language": "en",
+          "@value": "foundation  date"
+        }
+      ],
+      "rdfs:range": {
+        "@id": "xsd:dateTime"
+      },
+      "rdfs:subPropertyOf": {
+        "@id": "ti:date"
+      }
+    },
+    {
+      "@id": "_:ub50bL1294C38",
+      "@type": "owl:Restriction",
+      "owl:onProperty": {
+        "@id": "http://dati.gov.it/onto/covapit#REANumber"
+      },
+      "owl:someValuesFrom": {
+        "@id": "rdfs:Literal"
+      }
+    },
+    {
+      "@id": "ti:date",
+      "@type": "owl:DatatypeProperty",
+      "rdfs:isDefinedBy": {
+        "@id": "htto://dati.gov.it/onto/tiapit/"
+      }
+    },
+    {
+      "@id": "smapit:OnlineContactPoint",
+      "@type": "owl:Class",
+      "rdfs:isDefinedBy": {
+        "@id": "smapit:"
+      }
+    },
+    {
+      "@id": "_:ub50bL996C29",
+      "@type": "owl:Restriction",
+      "owl:maxQualifiedCardinality": {
+        "@type": "xsd:nonNegativeInteger",
+        "@value": "1"
+      },
+      "owl:onDataRange": {
+        "@id": "xsd:double"
+      },
+      "owl:onProperty": {
+        "@id": "http://dati.gov.it/onto/covapit#remuneration"
+      }
+    },
+    {
+      "@id": "_:ub50bL1190C31",
+      "@type": "owl:Restriction",
+      "owl:maxQualifiedCardinality": {
+        "@type": "xsd:nonNegativeInteger",
+        "@value": "1"
+      },
+      "owl:onDataRange": {
+        "@id": "xsd:dateTime"
+      },
+      "owl:onProperty": {
+        "@id": "http://dati.gov.it/onto/covapit#accreditationDate"
+      }
+    },
+    {
+      "@id": "_:ub50bL910C31",
+      "@type": "owl:Restriction",
+      "owl:onDataRange": {
+        "@id": "xsd:float"
+      },
+      "owl:onProperty": {
+        "@id": "http://dati.gov.it/onto/covapit#totalAmount"
+      },
+      "owl:qualifiedCardinality": {
+        "@type": "xsd:nonNegativeInteger",
+        "@value": "1"
+      }
+    },
+    {
+      "@id": "_:ub50bL981C29",
+      "@type": "owl:Restriction",
+      "owl:onClass": {
+        "@id": "http://dati.gov.it/onto/covapit#Organization"
+      },
+      "owl:onProperty": {
+        "@id": "http://dati.gov.it/onto/covapit#employmentFor"
+      },
+      "owl:qualifiedCardinality": {
+        "@type": "xsd:nonNegativeInteger",
+        "@value": "1"
+      }
+    },
+    {
+      "@id": "http://dati.gov.it/onto/covapit#Closing",
+      "@type": "owl:Class",
+      "owl:versionInfo": [
+        {
+          "@language": "it",
+          "@value": "stabile"
+        },
+        {
+          "@language": "en",
+          "@value": "stable"
         }
       ],
       "rdfs:comment": [
@@ -236,11 +759,116 @@
       }
     },
     {
-      "@id": "http://dati.gov.it/onto/covapit#Direct",
+      "@id": "_:ub50bL1238C32",
+      "@type": "owl:Restriction",
+      "owl:onClass": {
+        "@id": "http://dati.gov.it/onto/covapit#Organization"
+      },
+      "owl:onProperty": {
+        "@id": "http://dati.gov.it/onto/covapit#participated"
+      },
+      "owl:qualifiedCardinality": {
+        "@type": "xsd:nonNegativeInteger",
+        "@value": "1"
+      }
+    },
+    {
+      "@id": "http://dati.gov.it/onto/covapit#Cancelled",
       "@type": [
-        "http://dati.gov.it/onto/covapit#ParticipationType",
-        "owl:NamedIndividual"
+        "owl:NamedIndividual",
+        "http://dati.gov.it/onto/covapit#Status"
       ]
+    },
+    {
+      "@id": "_:ub50bL1143C31",
+      "@type": "owl:Restriction",
+      "owl:allValuesFrom": {
+        "@id": "http://dati.gov.it/onto/covapit#ActivityType"
+      },
+      "owl:onProperty": {
+        "@id": "http://dati.gov.it/onto/covapit#hasActivityType"
+      }
+    },
+    {
+      "@id": "http://dati.gov.it/onto/covapit#hasParticipationType",
+      "@type": "owl:ObjectProperty",
+      "owl:versionInfo": [
+        {
+          "@language": "it",
+          "@value": "stabile"
+        },
+        {
+          "@language": "en",
+          "@value": "stable"
+        }
+      ],
+      "rdfs:comment": [
+        {
+          "@language": "en",
+          "@value": "This property links the Participation to its type (i.e., direct or indirect)."
+        },
+        {
+          "@language": "it",
+          "@value": "Questa proprietà collega la partecipazione al suo tipo (diretta o indiretta)."
+        }
+      ],
+      "rdfs:domain": {
+        "@id": "http://dati.gov.it/onto/covapit#Participation"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "http://dati.gov.it/onto/covapit"
+      },
+      "rdfs:label": [
+        {
+          "@language": "it",
+          "@value": "ha tipo di partecipazione"
+        },
+        {
+          "@language": "en",
+          "@value": "has participation type"
+        }
+      ],
+      "rdfs:range": {
+        "@id": "http://dati.gov.it/onto/covapit#ParticipationType"
+      }
+    },
+    {
+      "@id": "_:ub50bL1174C31",
+      "@type": "owl:Restriction",
+      "owl:onProperty": {
+        "@id": "l0:description"
+      },
+      "owl:someValuesFrom": {
+        "@id": "rdfs:Literal"
+      }
+    },
+    {
+      "@id": "_:ub50bL1248C32",
+      "@type": "owl:Restriction",
+      "owl:maxQualifiedCardinality": {
+        "@type": "xsd:nonNegativeInteger",
+        "@value": "1"
+      },
+      "owl:onClass": {
+        "@id": "http://dati.gov.it/onto/covapit#ParticipationType"
+      },
+      "owl:onProperty": {
+        "@id": "http://dati.gov.it/onto/covapit#hasParticipationType"
+      }
+    },
+    {
+      "@id": "_:ub50bL919C31",
+      "@type": "owl:Restriction",
+      "owl:maxQualifiedCardinality": {
+        "@type": "xsd:nonNegativeInteger",
+        "@value": "1"
+      },
+      "owl:onDataRange": {
+        "@id": "xsd:float"
+      },
+      "owl:onProperty": {
+        "@id": "http://dati.gov.it/onto/covapit#totalTaxBurden"
+      }
     },
     {
       "@id": "http://dati.gov.it/onto/covapit#hasSubOrganization",
@@ -276,669 +904,16 @@
       },
       "rdfs:label": [
         {
-          "@language": "it",
-          "@value": "ha sotto-organizzazione"
-        },
-        {
           "@language": "en",
           "@value": "has sub-organization"
+        },
+        {
+          "@language": "it",
+          "@value": "ha sotto-organizzazione"
         }
       ],
       "rdfs:range": {
         "@id": "http://dati.gov.it/onto/covapit#Organization"
-      }
-    },
-    {
-      "@id": "http://dati.gov.it/onto/covapit#participationPercentage",
-      "@type": "owl:DatatypeProperty",
-      "owl:versionInfo": [
-        {
-          "@language": "en",
-          "@value": "stable"
-        },
-        {
-          "@language": "it",
-          "@value": "stabile"
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@language": "en",
-          "@value": "This property represents the percentage of participation (share) of an organization in another during a time period."
-        },
-        {
-          "@language": "it",
-          "@value": "Questa proprietà rappresenta la percentuale (quota) di partecipazione di un'organizzazione in un'altra in un certo lasso temporale. Esempio \"2.38\"). La proprietà è molto utile nei casi di descrizione di società partecipate per esempio."
-        }
-      ],
-      "rdfs:domain": {
-        "@id": "http://dati.gov.it/onto/covapit#Participation"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "http://dati.gov.it/onto/covapit"
-      },
-      "rdfs:label": [
-        {
-          "@language": "it",
-          "@value": "percentuale partecipazione"
-        },
-        {
-          "@language": "en",
-          "@value": "participation percentage"
-        }
-      ],
-      "rdfs:range": {
-        "@id": "xsd:float"
-      }
-    },
-    {
-      "@id": "owl:maxQualifiedCardinality",
-      "@type": "owl:AnnotationProperty"
-    },
-    {
-      "@id": "http://dati.gov.it/onto/covapit#businessObjective",
-      "@type": "owl:DatatypeProperty",
-      "owl:versionInfo": [
-        {
-          "@language": "it",
-          "@value": "provvisoria"
-        },
-        {
-          "@language": "en",
-          "@value": "unstable"
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@language": "en",
-          "@value": "This property represents the business objectives or the corporate purpose of the private organization."
-        },
-        {
-          "@language": "it",
-          "@value": "Questa proprietà rappresenta l'oggetto sociale dell'organizzazione privata (impresa)."
-        }
-      ],
-      "rdfs:domain": {
-        "@id": "http://dati.gov.it/onto/covapit#PrivateOrganization"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "http://dati.gov.it/onto/covapit"
-      },
-      "rdfs:label": [
-        {
-          "@language": "en",
-          "@value": "business objective"
-        },
-        {
-          "@language": "it",
-          "@value": "oggetto sociale"
-        }
-      ],
-      "rdfs:range": {
-        "@id": "rdfs:Literal"
-      }
-    },
-    {
-      "@id": "http://dati.gov.it/onto/covapit#GooglePlus",
-      "@type": "owl:NamedIndividual",
-      "rdfs:isDefinedBy": {
-        "@id": "http://dati.gov.it/onto/covapit/"
-      }
-    },
-    {
-      "@id": "clvapit:hasSpatialCoverage",
-      "@type": "owl:ObjectProperty",
-      "rdfs:isDefinedBy": {
-        "@id": "http://dati.gov.it/onto/clvapit"
-      }
-    },
-    {
-      "@id": "_:ub267bL924C31",
-      "@type": "owl:Restriction",
-      "owl:maxQualifiedCardinality": {
-        "@type": "xsd:nonNegativeInteger",
-        "@value": "1"
-      },
-      "owl:onDataRange": {
-        "@id": "xsd:float"
-      },
-      "owl:onProperty": {
-        "@id": "http://dati.gov.it/onto/covapit#totalTaxBurden"
-      }
-    },
-    {
-      "@id": "http://dati.gov.it/onto/covapit#ActivityType",
-      "@type": "owl:Class",
-      "owl:versionInfo": [
-        {
-          "@language": "it",
-          "@value": "provvisoria"
-        },
-        {
-          "@language": "en",
-          "@value": "unstable"
-        }
-      ],
-      "prov:wasDerivedFrom": {
-        "@id": "skos:Concept"
-      },
-      "rdfs:comment": [
-        {
-          "@language": "it",
-          "@value": "Questa classe rappresenta il tipo di attiità svolta dall'organizzazione. Le istanze di questa classe possono essere rappresentate come concetti dello standard skos di un vocabolario controllato. Nel caso di organizzazioni private (impresa) è necessario utilizzare la classificazione delle attività ATECO. Nel caso di organizzazioni pubbliche si può utilizzare la classificazione COFOG."
-        },
-        {
-          "@language": "en",
-          "@value": "This class represents the type of activities carried out  by the organization. The instances of this class can be modelled as skos concepts of a controlled vocabulary. In the case of private organization, this class is represented by the ATECO 2007 classification. In the case of public organizations, the COFOG classification can be used."
-        }
-      ],
-      "rdfs:isDefinedBy": {
-        "@id": "http://dati.gov.it/onto/covapit"
-      },
-      "rdfs:label": [
-        {
-          "@language": "it",
-          "@value": "Tipo attività"
-        },
-        {
-          "@language": "en",
-          "@value": "Activity Type"
-        }
-      ],
-      "rdfs:subClassOf": {
-        "@id": "l0:Characteristic"
-      }
-    },
-    {
-      "@id": "_:ub267bL1466C34",
-      "@type": "owl:Restriction",
-      "owl:onDataRange": {
-        "@id": "xsd:dateTime"
-      },
-      "owl:onProperty": {
-        "@id": "http://dati.gov.it/onto/covapit#eInvoiceServiceStartingDate"
-      },
-      "owl:qualifiedCardinality": {
-        "@type": "xsd:nonNegativeInteger",
-        "@value": "1"
-      }
-    },
-    {
-      "@id": "http://dati.gov.it/onto/covapit#accreditationDate",
-      "@type": "owl:DatatypeProperty",
-      "owl:versionInfo": [
-        {
-          "@language": "en",
-          "@value": "stable"
-        },
-        {
-          "@language": "it",
-          "@value": "stabile"
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@language": "en",
-          "@value": "This property represents the accreditation date of the organization in the public registry (e.g., in Italy in  \"IPA\" registry for public administrations, and in the \"Registro Imprese\" for private organizations)."
-        },
-        {
-          "@language": "it",
-          "@value": "Questa proprietà rappresenta la data di accreditamento dell'organizzazione nel pubblico registro (e.g., in \"IPA\" nel caso di pubbliche amministrazioni, in \"Registro Imprese\" nel caso di organizzazioni private)."
-        }
-      ],
-      "rdfs:domain": {
-        "@id": "http://dati.gov.it/onto/covapit#Organization"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "http://dati.gov.it/onto/covapit"
-      },
-      "rdfs:label": [
-        {
-          "@language": "it",
-          "@value": "data di accreditamento"
-        },
-        {
-          "@language": "en",
-          "@value": "accreditation date"
-        }
-      ],
-      "rdfs:range": {
-        "@id": "xsd:dateTime"
-      }
-    },
-    {
-      "@id": "http://dati.gov.it/onto/covpit",
-      "@type": "owl:Ontology",
-      "dc:creator": [
-        {
-          "@language": "en",
-          "@value": "Italian Digital Transformation Team"
-        },
-        {
-          "@language": "en",
-          "@value": "Agency for Digital Italy - AgID"
-        },
-        {
-          "@language": "en",
-          "@value": "Institute of Cognitive Sciences and Technologies of the Italian Research Council (CNR) - Semantic Technology Laboratory (STLab)"
-        }
-      ],
-      "dcterms:issued": {
-        "@type": "xsd:date",
-        "@value": "2017-07-20"
-      },
-      "dcterms:license": {
-        "@id": "https://creativecommons.org/licenses/by/4.0/"
-      },
-      "dcterms:modified": "2017-10-25",
-      "owl:imports": [
-        {
-          "@id": "clvapit:"
-        },
-        {
-          "@id": "ti:"
-        },
-        {
-          "@id": "smapit:"
-        },
-        {
-          "@id": "l0:"
-        }
-      ],
-      "owl:versionIRI": {
-        "@id": "http://dati.gov.it/onto/covapit/0.8"
-      },
-      "owl:versionInfo": [
-        {
-          "@language": "it",
-          "@value": "Versione 0.8 - 25 October 2017 - Aggiornamento della rifattorizzazione basata sui cambiamenti dell'ontologia Social Media."
-        },
-        {
-          "@language": "en",
-          "@value": "Version 0.8 - 25  October 2017 - updated refactorisation changes to Social Media ontology used in this one."
-        }
-      ],
-      "prov:wasDerivedFrom": {
-        "@id": "http://dati.gov.it/onto/covapit/0.7"
-      },
-      "rdfs:comment": [
-        {
-          "@language": "en",
-          "@value": "This is the ontology of the Italian application profile for Organizations (Public and Private)"
-        },
-        {
-          "@language": "en",
-          "@value": "Questa è l'ontologia del profilo applicativo italiano sulle organizzazioni (pubbliche e private)"
-        }
-      ],
-      "rdfs:isDefinedBy": {
-        "@id": "http://dati.gov.it/onto/covapit"
-      },
-      "rdfs:label": [
-        {
-          "@language": "it",
-          "@value": "Organizzazioni (Pubbliche e Private)"
-        },
-        {
-          "@language": "en",
-          "@value": "Organization (Private & Public)"
-        }
-      ]
-    },
-    {
-      "@id": "http://dati.gov.it/onto/covapit#foundationDate",
-      "@type": "owl:DatatypeProperty",
-      "owl:versionInfo": [
-        {
-          "@language": "en",
-          "@value": "stable"
-        },
-        {
-          "@language": "it",
-          "@value": "stabile"
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@language": "it",
-          "@value": "Questa proprietà rappresenta la data di costituzione dell'organizzazione privata (impresa)."
-        },
-        {
-          "@language": "en",
-          "@value": "This property represents the date in which the organization was founded."
-        }
-      ],
-      "rdfs:domain": {
-        "@id": "http://dati.gov.it/onto/covapit#PrivateOrganization"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "http://dati.gov.it/onto/covapit"
-      },
-      "rdfs:label": [
-        {
-          "@language": "it",
-          "@value": "data di costituzione"
-        },
-        {
-          "@language": "en",
-          "@value": "foundation  date"
-        }
-      ],
-      "rdfs:range": {
-        "@id": "xsd:dateTime"
-      }
-    },
-    {
-      "@id": "smapit:OnlineContactPoint",
-      "@type": "owl:Class",
-      "rdfs:isDefinedBy": {
-        "@id": "smapit:"
-      }
-    },
-    {
-      "@id": "_:ub267bL995C29",
-      "@type": "owl:Restriction",
-      "owl:onClass": {
-        "@id": "http://dati.gov.it/onto/covapit#Role"
-      },
-      "owl:onProperty": {
-        "@id": "http://dati.gov.it/onto/covapit#withRole"
-      },
-      "owl:qualifiedCardinality": {
-        "@type": "xsd:nonNegativeInteger",
-        "@value": "1"
-      }
-    },
-    {
-      "@id": "_:ub267bL1294C38",
-      "@type": "owl:Restriction",
-      "owl:onProperty": {
-        "@id": "http://dati.gov.it/onto/covapit#REANumber"
-      },
-      "owl:someValuesFrom": {
-        "@id": "rdfs:Literal"
-      }
-    },
-    {
-      "@id": "http://dati.gov.it/onto/covapit#follows",
-      "@type": [
-        "owl:ObjectProperty",
-        "owl:TransitiveProperty"
-      ],
-      "owl:versionInfo": [
-        {
-          "@language": "en",
-          "@value": "stable"
-        },
-        {
-          "@language": "it",
-          "@value": "stabile"
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@language": "it",
-          "@value": "Questa proprietà modella una sequenza ordinata di organizzazioni that precedono o si susseguono le un con le altre.  Nello specifico questa proprietà rappresenta un'organizzazione che segue un'altra."
-        },
-        {
-          "@language": "en",
-          "@value": "This property models an ordered sequence of organizations that precede and succeed each other.. In particular this property represents the organization that follows another."
-        }
-      ],
-      "rdfs:domain": {
-        "@id": "http://dati.gov.it/onto/covapit#Organization"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "http://dati.gov.it/onto/covapit"
-      },
-      "rdfs:label": [
-        {
-          "@language": "it",
-          "@value": "segue"
-        },
-        {
-          "@language": "en",
-          "@value": "follows"
-        }
-      ],
-      "rdfs:range": {
-        "@id": "http://dati.gov.it/onto/covapit#Organization"
-      }
-    },
-    {
-      "@id": "http://dati.gov.it/onto/covapit#orginalOrganization",
-      "@type": "owl:ObjectProperty",
-      "owl:versionInfo": [
-        {
-          "@language": "it",
-          "@value": "stabile"
-        },
-        {
-          "@language": "en",
-          "@value": "stable"
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@language": "it",
-          "@value": "Questa proprietà collega un evento del cambiamento all'organizzazione che esisteva prima del cambiamento. Sebbene la classe Costituzione sia sotto classe di Evento del Cambiamento, è inappropriato utilizzare tale classe con questa proprietà."
-        },
-        {
-          "@language": "en",
-          "@value": "The property links a Change Event to the organization that existed before the change. Although the Foundation Event class is defined as a sub class of Change Event, it is inappropriate to use this property with the Foundation Event class."
-        }
-      ],
-      "rdfs:domain": {
-        "@id": "http://dati.gov.it/onto/covapit#ChangeEvent"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "http://dati.gov.it/onto/covapit"
-      },
-      "rdfs:label": [
-        {
-          "@language": "it",
-          "@value": "organizzazione di origine"
-        },
-        {
-          "@language": "en",
-          "@value": "original organization"
-        }
-      ],
-      "rdfs:range": {
-        "@id": "http://dati.gov.it/onto/covapit#Organization"
-      }
-    },
-    {
-      "@id": "http://dati.gov.it/onto/covapit#Cancelled",
-      "@type": [
-        "http://dati.gov.it/onto/covapit#Status",
-        "owl:NamedIndividual"
-      ]
-    },
-    {
-      "@id": "_:ub267bL1401C23",
-      "@type": "owl:Restriction",
-      "owl:onProperty": {
-        "@id": "http://dati.gov.it/onto/covapit#prefLabel"
-      },
-      "owl:someValuesFrom": {
-        "@id": "rdfs:Literal"
-      }
-    },
-    {
-      "@id": "_:ub267bL1135C31",
-      "@type": "owl:Restriction",
-      "owl:onProperty": {
-        "@id": "clvapit:hasSpatialCoverage"
-      },
-      "owl:someValuesFrom": {
-        "@id": "l0:Location"
-      }
-    },
-    {
-      "@id": "_:ub267bL1111C25",
-      "@type": "owl:Restriction",
-      "owl:maxQualifiedCardinality": {
-        "@type": "xsd:nonNegativeInteger",
-        "@value": "1"
-      },
-      "owl:onClass": {
-        "@id": "http://dati.gov.it/onto/covapit#HomogeneousOrganizationalArea"
-      },
-      "owl:onProperty": {
-        "@id": "http://dati.gov.it/onto/covapit#isPartOf"
-      }
-    },
-    {
-      "@id": "http://dati.gov.it/onto/covapit#remuneration",
-      "@type": "owl:DatatypeProperty",
-      "owl:versionInfo": [
-        {
-          "@language": "it",
-          "@value": "stabile"
-        },
-        {
-          "@language": "en",
-          "@value": "stable"
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@language": "en",
-          "@value": "This property represents the remuneration of a member with a specific role on the organization."
-        },
-        {
-          "@language": "it",
-          "@value": "Questa proprietà rappresenta il compenso di un membro con uno specifico ruolo nell'organizzazione."
-        }
-      ],
-      "rdfs:domain": {
-        "@id": "http://dati.gov.it/onto/covapit#Employment"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "http://dati.gov.it/onto/covapit"
-      },
-      "rdfs:label": [
-        {
-          "@language": "it",
-          "@value": "compenso"
-        },
-        {
-          "@language": "en",
-          "@value": "remuneration"
-        }
-      ],
-      "rdfs:range": {
-        "@id": "xsd:double"
-      }
-    },
-    {
-      "@id": "_:ub267bL1584C1",
-      "owl:maxQualifiedCardinality": {
-        "@type": "xsd:nonNegativeInteger",
-        "@value": "1"
-      }
-    },
-    {
-      "@id": "http://dati.gov.it/onto/covapit#Role",
-      "@type": "owl:Class",
-      "owl:versionInfo": [
-        {
-          "@language": "it",
-          "@value": "provvisoria"
-        },
-        {
-          "@language": "en",
-          "@value": "unstable"
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@language": "en",
-          "@value": "This class represents the Role in the n-ary relationship involving the Employment, the Agent and the Organization. It is used to model the Role of a member of the organization in a certain time interval."
-        },
-        {
-          "@language": "it",
-          "@value": "Questa classe rappresenta il ruolo nella relazione ennaria con l'Agente, l'Organizzazione, e la situazione di Appartenenza. Essa è utilizzata per modellare il Ruolo di un membro dell'organizzazione in un certo intervallo temporale."
-        }
-      ],
-      "rdfs:isDefinedBy": {
-        "@id": "http://dati.gov.it/onto/covapit"
-      },
-      "rdfs:label": [
-        {
-          "@language": "it",
-          "@value": "Ruolo"
-        },
-        {
-          "@language": "en",
-          "@value": "Role"
-        }
-      ],
-      "rdfs:subClassOf": [
-        {
-          "@id": "_:ub267bL1401C23"
-        },
-        {
-          "@id": "l0:Object"
-        }
-      ]
-    },
-    {
-      "@id": "_:ub267bL1116C25",
-      "@type": "owl:Restriction",
-      "owl:cardinality": {
-        "@type": "xsd:nonNegativeInteger",
-        "@value": "1"
-      },
-      "owl:onProperty": {
-        "@id": "http://dati.gov.it/onto/covapit#officeIdentifier"
-      }
-    },
-    {
-      "@id": "http://dati.gov.it/onto/covapit#hasSupportUnit",
-      "@type": "owl:ObjectProperty",
-      "owl:inverseOf": {
-        "@id": "http://dati.gov.it/onto/covapit#isSupportUnitOf"
-      },
-      "owl:versionInfo": [
-        {
-          "@language": "it",
-          "@value": "stabile"
-        },
-        {
-          "@language": "en",
-          "@value": "stable"
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@language": "en",
-          "@value": "This property links an organization to its support units (or dividision or departments) that can be homogeneous organizational areas or offices."
-        },
-        {
-          "@language": "it",
-          "@value": "Questa proprietà lega un'organizzazione alle sue unità di supporto (o divisioni o dipartimenti) che possono essere areee organizzative omogenee o uffici"
-        }
-      ],
-      "rdfs:domain": {
-        "@id": "http://dati.gov.it/onto/covapit#Organization"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "http://dati.gov.it/onto/covapit"
-      },
-      "rdfs:label": [
-        {
-          "@language": "it",
-          "@value": "ha unità di supperto (dipartimento)"
-        },
-        {
-          "@language": "en",
-          "@value": "has support unit"
-        }
-      ],
-      "rdfs:range": {
-        "@id": "http://dati.gov.it/onto/covapit#SupportUnit"
       }
     },
     {
@@ -1002,12 +977,12 @@
       },
       "rdfs:comment": [
         {
-          "@language": "en",
-          "@value": "This class represents a generic support unit/division of an organization. An alternative name can be department. In the italian context there are two main types of support unit; namely, the homogeneous organizational area and the office. This is an astract class that is instantitate with the two above two types."
-        },
-        {
           "@language": "it",
           "@value": "Questa classe rappresenta una generica unità di supporto o unità/divisione dell'organizzazione. Un nome alternativo potrebbe essere anche Dipartimento. Essa, nel contesto italiano, si suddivide in due tipologie di unità di supporto: Area Organizzativa Omogena e Ufficio (unità organizzativa). Questa è una classe astratta istanziata nei dati con i due precedenti tipi."
+        },
+        {
+          "@language": "en",
+          "@value": "This class represents a generic support unit/division of an organization. An alternative name can be department. In the italian context there are two main types of support unit; namely, the homogeneous organizational area and the office. This is an astract class that is instantitate with the two above two types."
         }
       ],
       "rdfs:isDefinedBy": {
@@ -1028,29 +1003,18 @@
       }
     },
     {
-      "@id": "_:ub267bL1475C34",
-      "@type": "owl:Restriction",
-      "owl:onDataRange": {
-        "@id": "xsd:dateTime"
-      },
-      "owl:onProperty": {
-        "@id": "http://dati.gov.it/onto/covapit#taxCodeValidationDate"
-      },
-      "owl:qualifiedCardinality": {
-        "@type": "xsd:nonNegativeInteger",
-        "@value": "1"
-      }
-    },
-    {
       "@id": "http://dati.gov.it/onto/covapit#Indirect",
       "@type": [
-        "http://dati.gov.it/onto/covapit#ParticipationType",
-        "owl:NamedIndividual"
+        "owl:NamedIndividual",
+        "http://dati.gov.it/onto/covapit#ParticipationType"
       ]
     },
     {
-      "@id": "http://dati.gov.it/onto/covapit#Merger",
-      "@type": "owl:Class",
+      "@id": "http://dati.gov.it/onto/covapit#IPAcode",
+      "@type": [
+        "owl:FunctionalProperty",
+        "owl:DatatypeProperty"
+      ],
       "owl:versionInfo": [
         {
           "@language": "it",
@@ -1064,28 +1028,34 @@
       "rdfs:comment": [
         {
           "@language": "en",
-          "@value": "This class represents the merger event for an organization."
+          "@value": "This property represents the unique identifier of a public organization assigned when it is registered in the Italian national registry of Public Administrations (IPA)."
         },
         {
           "@language": "it",
-          "@value": "Questa classe rappresenta un evento di fusione per un'organizzazione."
+          "@value": "Questa proprietà rappresenta il codice IPA, il codice univoco, assegnato all'organizzazione pubblica in fase di accreditamento presso l'indice nazionale PA (IPA). Il Codice IPA viene comunicato tramite e-mail dal Gestore dell'IPA al referente dell'Ente."
         }
       ],
+      "rdfs:domain": {
+        "@id": "http://dati.gov.it/onto/covapit#PublicOrganization"
+      },
       "rdfs:isDefinedBy": {
         "@id": "http://dati.gov.it/onto/covapit"
       },
       "rdfs:label": [
         {
           "@language": "en",
-          "@value": "Merger"
+          "@value": "IPA code"
         },
         {
           "@language": "it",
-          "@value": "Fusione"
+          "@value": "codice IPA (codice Indice PA)"
         }
       ],
-      "rdfs:subClassOf": {
-        "@id": "http://dati.gov.it/onto/covapit#ChangeEvent"
+      "rdfs:range": {
+        "@id": "rdfs:Literal"
+      },
+      "rdfs:subPropertyOf": {
+        "@id": "l0:identifier"
       }
     },
     {
@@ -1119,17 +1089,17 @@
       },
       "rdfs:label": [
         {
-          "@language": "it",
-          "@value": "Area Organizzativa Omogenea (AOO)"
-        },
-        {
           "@language": "en",
           "@value": "Homogeneous Organizational Area"
+        },
+        {
+          "@language": "it",
+          "@value": "Area Organizzativa Omogenea (AOO)"
         }
       ],
       "rdfs:subClassOf": [
         {
-          "@id": "_:ub267bL1055C48"
+          "@id": "_:ub50bL1051C48"
         },
         {
           "@id": "http://dati.gov.it/onto/covapit#SupportUnit"
@@ -1137,16 +1107,30 @@
       ]
     },
     {
+      "@id": "_:ub50bL1165C31",
+      "@type": "owl:Restriction",
+      "owl:maxQualifiedCardinality": {
+        "@type": "xsd:nonNegativeInteger",
+        "@value": "1"
+      },
+      "owl:onClass": {
+        "@id": "smapit:Image"
+      },
+      "owl:onProperty": {
+        "@id": "http://dati.gov.it/onto/covapit#hasLogo"
+      }
+    },
+    {
       "@id": "http://dati.gov.it/onto/covapit#totalTaxBurden",
       "@type": "owl:DatatypeProperty",
       "owl:versionInfo": [
         {
-          "@language": "it",
-          "@value": "provvisoria"
-        },
-        {
           "@language": "en",
           "@value": "unstable"
+        },
+        {
+          "@language": "it",
+          "@value": "provvisoria"
         }
       ],
       "rdfs:comment": [
@@ -1187,7 +1171,32 @@
       }
     },
     {
-      "@id": "_:ub267bL1302C38",
+      "@id": "_:ub50bL915C31",
+      "@type": "owl:Restriction",
+      "owl:cardinality": {
+        "@type": "xsd:nonNegativeInteger",
+        "@value": "1"
+      },
+      "owl:onProperty": {
+        "@id": "http://dati.gov.it/onto/covapit#yearOfReference"
+      }
+    },
+    {
+      "@id": "_:ub50bL986C29",
+      "@type": "owl:Restriction",
+      "owl:onClass": {
+        "@id": "roapit:Role"
+      },
+      "owl:onProperty": {
+        "@id": "roapit:withRole"
+      },
+      "owl:qualifiedCardinality": {
+        "@type": "xsd:nonNegativeInteger",
+        "@value": "1"
+      }
+    },
+    {
+      "@id": "_:ub50bL1302C38",
       "@type": "owl:Restriction",
       "owl:cardinality": {
         "@type": "xsd:nonNegativeInteger",
@@ -1195,34 +1204,6 @@
       },
       "owl:onProperty": {
         "@id": "http://dati.gov.it/onto/covapit#VATnumber"
-      }
-    },
-    {
-      "@id": "_:ub267bL1106C25",
-      "@type": "owl:Restriction",
-      "owl:maxQualifiedCardinality": {
-        "@type": "xsd:nonNegativeInteger",
-        "@value": "1"
-      },
-      "owl:onClass": {
-        "@id": "http://dati.gov.it/onto/covapit#eInvoiceService"
-      },
-      "owl:onProperty": {
-        "@id": "http://dati.gov.it/onto/covapit#hasEInvoiceService"
-      }
-    },
-    {
-      "@id": "_:ub267bL1248C32",
-      "@type": "owl:Restriction",
-      "owl:maxQualifiedCardinality": {
-        "@type": "xsd:nonNegativeInteger",
-        "@value": "1"
-      },
-      "owl:onClass": {
-        "@id": "http://dati.gov.it/onto/covapit#ParticipationType"
-      },
-      "owl:onProperty": {
-        "@id": "http://dati.gov.it/onto/covapit#hasParticipationType"
       }
     },
     {
@@ -1240,12 +1221,12 @@
       ],
       "rdfs:comment": [
         {
-          "@language": "en",
-          "@value": "This property links a Change Event  to the organization that resulted from it."
-        },
-        {
           "@language": "it",
           "@value": "Questa proprietà lega un evento di cambiamento alla organizzazione che risultante al termine del cambiamento."
+        },
+        {
+          "@language": "en",
+          "@value": "This property links a Change Event  to the organization that resulted from it."
         }
       ],
       "rdfs:domain": {
@@ -1299,16 +1280,19 @@
       },
       "rdfs:label": [
         {
-          "@language": "it",
-          "@value": "data di avivo del servizio"
-        },
-        {
           "@language": "en",
           "@value": "eInvoice service starting date"
+        },
+        {
+          "@language": "it",
+          "@value": "data di avivo del servizio"
         }
       ],
       "rdfs:range": {
         "@id": "xsd:dateTime"
+      },
+      "rdfs:subPropertyOf": {
+        "@id": "ti:date"
       }
     },
     {
@@ -1345,26 +1329,26 @@
       },
       "rdfs:label": [
         {
-          "@language": "it",
-          "@value": "Evento di cambiamento"
-        },
-        {
           "@language": "en",
           "@value": "Change Event"
+        },
+        {
+          "@language": "it",
+          "@value": "Evento di cambiamento"
         }
       ],
       "rdfs:subClassOf": [
         {
-          "@id": "_:ub267bL950C30"
-        },
-        {
-          "@id": "_:ub267bL946C30"
-        },
-        {
-          "@id": "_:ub267bL942C30"
-        },
-        {
           "@id": "l0:Event"
+        },
+        {
+          "@id": "_:ub50bL941C30"
+        },
+        {
+          "@id": "_:ub50bL945C30"
+        },
+        {
+          "@id": "_:ub50bL937C30"
         }
       ]
     },
@@ -1373,12 +1357,12 @@
       "@type": "owl:ObjectProperty",
       "owl:versionInfo": [
         {
-          "@language": "en",
-          "@value": "stable"
-        },
-        {
           "@language": "it",
           "@value": "stabile"
+        },
+        {
+          "@language": "en",
+          "@value": "stable"
         }
       ],
       "rdfs:comment": [
@@ -1399,12 +1383,12 @@
       },
       "rdfs:label": [
         {
-          "@language": "en",
-          "@value": "membership for"
-        },
-        {
           "@language": "it",
           "@value": "appartenenza per"
+        },
+        {
+          "@language": "en",
+          "@value": "membership for"
         }
       ],
       "rdfs:range": {
@@ -1412,30 +1396,16 @@
       }
     },
     {
-      "@id": "_:ub267bL727C24",
-      "@type": "owl:Class",
-      "owl:unionOf": {
-        "@list": [
-          {
-            "@id": "http://dati.gov.it/onto/covapit#Organization"
-          },
-          {
-            "@id": "http://dati.gov.it/onto/covapit#Role"
-          }
-        ]
-      }
-    },
-    {
       "@id": "http://dati.gov.it/onto/covapit#PublicPrivateOrganization",
       "@type": "owl:Class",
       "owl:versionInfo": [
         {
-          "@language": "en",
-          "@value": "unstable"
-        },
-        {
           "@language": "it",
           "@value": "provvisoria"
+        },
+        {
+          "@language": "en",
+          "@value": "unstable"
         }
       ],
       "rdfs:comment": [
@@ -1483,12 +1453,12 @@
       ],
       "rdfs:comment": [
         {
-          "@language": "it",
-          "@value": "Questa proprietà rappresenta l'acronimo dell'organizzazione."
-        },
-        {
           "@language": "en",
           "@value": "This property represents the acronym of the organization."
+        },
+        {
+          "@language": "it",
+          "@value": "Questa proprietà rappresenta l'acronimo dell'organizzazione."
         }
       ],
       "rdfs:domain": {
@@ -1499,12 +1469,12 @@
       },
       "rdfs:label": [
         {
-          "@language": "it",
-          "@value": "acronimo"
-        },
-        {
           "@language": "en",
           "@value": "acronym"
+        },
+        {
+          "@language": "it",
+          "@value": "acronimo"
         }
       ],
       "rdfs:range": {
@@ -1515,57 +1485,30 @@
       }
     },
     {
-      "@id": "_:ub267bL1139C31",
-      "@type": "owl:Restriction",
-      "owl:allValuesFrom": {
-        "@id": "http://dati.gov.it/onto/covapit#ChangeEvent"
-      },
-      "owl:onProperty": {
-        "@id": "http://dati.gov.it/onto/covapit#changedBy"
-      }
-    },
-    {
-      "@id": "_:ub267bL1182C31",
-      "@type": "owl:Restriction",
-      "owl:cardinality": {
-        "@type": "xsd:nonNegativeInteger",
-        "@value": "1"
-      },
-      "owl:onProperty": {
-        "@id": "http://dati.gov.it/onto/covapit#acronym"
-      }
-    },
-    {
-      "@id": "_:ub267bL1170C31",
-      "@type": "owl:Restriction",
-      "owl:onProperty": {
-        "@id": "http://dati.gov.it/onto/covapit#prefLabel"
-      },
-      "owl:someValuesFrom": {
-        "@id": "rdfs:Literal"
-      }
+      "@id": "prov:wasInfluencedBy",
+      "@type": "owl:AnnotationProperty"
     },
     {
       "@id": "http://dati.gov.it/onto/covapit#yearOfReference",
       "@type": "owl:DatatypeProperty",
       "owl:versionInfo": [
         {
-          "@language": "en",
-          "@value": "stable"
-        },
-        {
           "@language": "it",
           "@value": "stabile"
+        },
+        {
+          "@language": "en",
+          "@value": "stable"
         }
       ],
       "rdfs:comment": [
         {
-          "@language": "it",
-          "@value": "Questa proprietà rappresenta l'anno di riferimento per il bilancio di un'organizzazione."
-        },
-        {
           "@language": "en",
           "@value": "This property represents the year of reference for an organization."
+        },
+        {
+          "@language": "it",
+          "@value": "Questa proprietà rappresenta l'anno di riferimento per il bilancio di un'organizzazione."
         }
       ],
       "rdfs:domain": {
@@ -1576,16 +1519,16 @@
       },
       "rdfs:label": [
         {
-          "@language": "it",
-          "@value": "anno di riferimento"
-        },
-        {
           "@language": "en",
           "@value": "year of reference"
+        },
+        {
+          "@language": "it",
+          "@value": "anno di riferimento"
         }
       ],
       "rdfs:range": {
-        "@id": "rdfs:Literal"
+        "@id": "xsd:gYear"
       }
     },
     {
@@ -1593,22 +1536,22 @@
       "@type": "owl:DatatypeProperty",
       "owl:versionInfo": [
         {
-          "@language": "en",
-          "@value": "stable"
-        },
-        {
           "@language": "it",
           "@value": "stabile"
+        },
+        {
+          "@language": "en",
+          "@value": "stable"
         }
       ],
       "rdfs:comment": [
         {
-          "@language": "en",
-          "@value": "This property represents a general description of the main functions of the organization."
-        },
-        {
           "@language": "it",
           "@value": "Questa proprietà raappresenta una descrizione generale delle principali funzioni dell'organizzazione."
+        },
+        {
+          "@language": "en",
+          "@value": "This property represents a general description of the main functions of the organization."
         }
       ],
       "rdfs:domain": {
@@ -1619,12 +1562,12 @@
       },
       "rdfs:label": [
         {
-          "@language": "en",
-          "@value": "main function"
-        },
-        {
           "@language": "it",
           "@value": "funzione principale"
+        },
+        {
+          "@language": "en",
+          "@value": "main function"
         }
       ],
       "rdfs:range": {
@@ -1663,13 +1606,13 @@
       ],
       "rdfs:subClassOf": [
         {
-          "@id": "_:ub267bL915C31"
+          "@id": "_:ub50bL910C31"
         },
         {
-          "@id": "_:ub267bL924C31"
+          "@id": "_:ub50bL915C31"
         },
         {
-          "@id": "_:ub267bL920C31"
+          "@id": "_:ub50bL919C31"
         },
         {
           "@id": "l0:Object"
@@ -1677,70 +1620,26 @@
       ]
     },
     {
-      "@id": "http://dati.gov.it/onto/covapit#altLabel",
-      "@type": "owl:DatatypeProperty",
-      "owl:versionInfo": [
-        {
-          "@language": "it",
-          "@value": "Questa proprietà rappresenta un nome alternativo dell'organizzazione (e.g., un nome colloquiale)."
-        },
-        {
-          "@language": "en",
-          "@value": "stable"
-        },
-        {
-          "@language": "it",
-          "@value": "stabile"
-        }
-      ],
-      "rdfs:comment": {
-        "@language": "en",
-        "@value": "This property represents an alternative name for the organization such as a colloquial name."
-      },
-      "rdfs:domain": {
-        "@id": "http://dati.gov.it/onto/covapit#Organization"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "http://dati.gov.it/onto/covapit"
-      },
-      "rdfs:label": [
-        {
-          "@language": "en",
-          "@value": "alternative name"
-        },
-        {
-          "@language": "it",
-          "@value": "nome alternativo"
-        }
-      ],
-      "rdfs:range": {
-        "@id": "rdfs:Literal"
-      },
-      "rdfs:subPropertyOf": {
-        "@id": "l0:name"
-      }
-    },
-    {
       "@id": "http://dati.gov.it/onto/covapit#Status",
       "@type": "owl:Class",
       "owl:versionInfo": [
         {
-          "@language": "en",
-          "@value": "unstable"
-        },
-        {
           "@language": "it",
           "@value": "provvisoria"
+        },
+        {
+          "@language": "en",
+          "@value": "unstable"
         }
       ],
       "rdfs:comment": [
         {
-          "@language": "en",
-          "@value": "This class is used to represent the status of a private organization. This class assumes the following values: \"registered\" \"cancelled\" and \"under registration\"."
-        },
-        {
           "@language": "it",
           "@value": "Questa classe rappresenta lo stato di un'organizzazione privata (impresa). Essa assume i seguenti valori predefiniti: \"registrata\" \"cancellata\" \"in fase di registrazione\"."
+        },
+        {
+          "@language": "en",
+          "@value": "This class is used to represent the status of a private organization. This class assumes the following values: \"registered\" \"cancelled\" and \"under registration\"."
         }
       ],
       "rdfs:isDefinedBy": {
@@ -1761,27 +1660,34 @@
       }
     },
     {
-      "@id": "_:ub267bL1000C29",
+      "@id": "_:ub50bL1160C31",
       "@type": "owl:Restriction",
-      "owl:maxQualifiedCardinality": {
-        "@type": "xsd:nonNegativeInteger",
-        "@value": "1"
-      },
-      "owl:onDataRange": {
-        "@id": "xsd:double"
+      "owl:onClass": {
+        "@id": "smapit:OnlineContactPoint"
       },
       "owl:onProperty": {
-        "@id": "http://dati.gov.it/onto/covapit#remuneration"
+        "@id": "smapit:hasOnlineContactPoint"
+      },
+      "owl:qualifiedCardinality": {
+        "@type": "xsd:nonNegativeInteger",
+        "@value": "1"
       }
     },
     {
-      "@id": "_:ub267bL1174C31",
+      "@id": "_:ub50bL1139C31",
       "@type": "owl:Restriction",
-      "owl:onProperty": {
-        "@id": "l0:description"
+      "owl:allValuesFrom": {
+        "@id": "http://dati.gov.it/onto/covapit#ChangeEvent"
       },
-      "owl:someValuesFrom": {
-        "@id": "rdfs:Literal"
+      "owl:onProperty": {
+        "@id": "http://dati.gov.it/onto/covapit#changedBy"
+      }
+    },
+    {
+      "@id": "ti:modified",
+      "@type": "owl:DatatypeProperty",
+      "rdfs:isDefinedBy": {
+        "@id": "ti:"
       }
     },
     {
@@ -1799,12 +1705,12 @@
       ],
       "rdfs:comment": [
         {
-          "@language": "it",
-          "@value": "Questa proprietà lega un agente alla sitauzione di appartenenza a un'organizzazione."
-        },
-        {
           "@language": "en",
           "@value": "This property links an Agent to the situation Membership in an organization."
+        },
+        {
+          "@language": "it",
+          "@value": "Questa proprietà lega un agente alla sitauzione di appartenenza a un'organizzazione."
         }
       ],
       "rdfs:domain": {
@@ -1832,22 +1738,22 @@
       "@type": "owl:Class",
       "owl:versionInfo": [
         {
-          "@language": "en",
-          "@value": "stable"
-        },
-        {
           "@language": "it",
           "@value": "stabile"
+        },
+        {
+          "@language": "en",
+          "@value": "stable"
         }
       ],
       "rdfs:comment": [
         {
-          "@language": "it",
-          "@value": "Questa classe rappresenta il servizio di fatturazione elettronica così come definito nell'ambito dell'indice della pubblica amministrazione (IPA)."
-        },
-        {
           "@language": "en",
           "@value": "This class represents the Italian references for the eInvoice service, as defined in the national registry of public administrations named IPA."
+        },
+        {
+          "@language": "it",
+          "@value": "Questa classe rappresenta il servizio di fatturazione elettronica così come definito nell'ambito dell'indice della pubblica amministrazione (IPA)."
         }
       ],
       "rdfs:isDefinedBy": {
@@ -1865,30 +1771,24 @@
       ],
       "rdfs:subClassOf": [
         {
-          "@id": "_:ub267bL1466C34"
+          "@id": "_:ub50bL1447C34"
         },
         {
-          "@id": "_:ub267bL1475C34"
+          "@id": "_:ub50bL1452C34"
+        },
+        {
+          "@id": "_:ub50bL1456C34"
         },
         {
           "@id": "l0:Object"
-        },
-        {
-          "@id": "_:ub267bL1471C34"
         }
       ]
     },
     {
       "@id": "smapit:hasOnlineContactPoint",
       "@type": "owl:ObjectProperty",
-      "rdfs:domain": {
-        "@id": "owl:Thing"
-      },
       "rdfs:isDefinedBy": {
         "@id": "smapit:"
-      },
-      "rdfs:range": {
-        "@id": "smapit:OnlineContactPoint"
       }
     },
     {
@@ -1903,12 +1803,12 @@
       "@type": "owl:ObjectProperty",
       "owl:versionInfo": [
         {
-          "@language": "en",
-          "@value": "stable"
-        },
-        {
           "@language": "it",
           "@value": "stabile"
+        },
+        {
+          "@language": "en",
+          "@value": "stable"
         }
       ],
       "rdfs:comment": [
@@ -1929,12 +1829,12 @@
       },
       "rdfs:label": [
         {
-          "@language": "it",
-          "@value": "ha categoria"
-        },
-        {
           "@language": "en",
           "@value": "has category"
+        },
+        {
+          "@language": "it",
+          "@value": "ha categoria"
         }
       ],
       "rdfs:range": {
@@ -1963,10 +1863,10 @@
       }
     },
     {
-      "@id": "_:ub267bL1587C1",
-      "owl:maxQualifiedCardinality": {
-        "@type": "xsd:nonNegativeInteger",
-        "@value": "1"
+      "@id": "roapit:TimeIndexedRole",
+      "@type": "owl:Class",
+      "rdfs:isDefinedBy": {
+        "@id": "roapit:"
       }
     },
     {
@@ -1974,12 +1874,12 @@
       "@type": "owl:Class",
       "owl:versionInfo": [
         {
-          "@language": "en",
-          "@value": "stable"
-        },
-        {
           "@language": "it",
           "@value": "stabile"
+        },
+        {
+          "@language": "en",
+          "@value": "stable"
         }
       ],
       "rdfs:comment": [
@@ -1997,12 +1897,12 @@
       },
       "rdfs:label": [
         {
-          "@language": "en",
-          "@value": "Participation Type"
-        },
-        {
           "@language": "it",
           "@value": "Tipo Partecipazione"
+        },
+        {
+          "@language": "en",
+          "@value": "Participation Type"
         }
       ],
       "rdfs:subClassOf": {
@@ -2040,12 +1940,12 @@
       },
       "rdfs:label": [
         {
-          "@language": "en",
-          "@value": "acts on behalf of"
-        },
-        {
           "@language": "it",
           "@value": "agisce per conto di"
+        },
+        {
+          "@language": "en",
+          "@value": "acts on behalf of"
         }
       ],
       "rdfs:range": {
@@ -2100,22 +2000,22 @@
       "@type": "owl:DatatypeProperty",
       "owl:versionInfo": [
         {
-          "@language": "it",
-          "@value": "provvisoria"
-        },
-        {
           "@language": "en",
           "@value": "unstable"
+        },
+        {
+          "@language": "it",
+          "@value": "provvisoria"
         }
       ],
       "rdfs:comment": [
         {
-          "@language": "en",
-          "@value": "This property represents the date of the starting of the activity for a private organization."
-        },
-        {
           "@language": "it",
           "@value": "Questa proprietà rappresenta la data di inizio di attività per un'organizzazione privata (impresa)."
+        },
+        {
+          "@language": "en",
+          "@value": "This property represents the date of the starting of the activity for a private organization."
         }
       ],
       "rdfs:domain": {
@@ -2126,44 +2026,53 @@
       },
       "rdfs:label": [
         {
-          "@language": "en",
-          "@value": "starting activity date"
-        },
-        {
           "@language": "it",
           "@value": "data inizio attività impresa"
+        },
+        {
+          "@language": "en",
+          "@value": "starting activity date"
         }
       ],
       "rdfs:range": {
         "@id": "xsd:dateTime"
+      },
+      "rdfs:subPropertyOf": {
+        "@id": "ti:date"
       }
     },
     {
-      "@id": "_:ub267bL915C31",
+      "@id": "_:ub50bL1107C25",
       "@type": "owl:Restriction",
-      "owl:onDataRange": {
-        "@id": "xsd:float"
-      },
-      "owl:onProperty": {
-        "@id": "http://dati.gov.it/onto/covapit#totalAmount"
-      },
-      "owl:qualifiedCardinality": {
+      "owl:maxQualifiedCardinality": {
         "@type": "xsd:nonNegativeInteger",
         "@value": "1"
-      }
-    },
-    {
-      "@id": "_:ub267bL1155C31",
-      "@type": "owl:Restriction",
+      },
       "owl:onClass": {
-        "@id": "http://dati.gov.it/onto/covapit#OrganizationTypology"
+        "@id": "http://dati.gov.it/onto/covapit#HomogeneousOrganizationalArea"
       },
       "owl:onProperty": {
-        "@id": "http://dati.gov.it/onto/covapit#hasTypology"
+        "@id": "http://dati.gov.it/onto/covapit#isPartOf"
+      }
+    },
+    {
+      "@id": "_:ub50bL1298C38",
+      "@type": "owl:Restriction",
+      "owl:allValuesFrom": {
+        "@id": "rdfs:Literal"
       },
-      "owl:qualifiedCardinality": {
-        "@type": "xsd:nonNegativeInteger",
-        "@value": "1"
+      "owl:onProperty": {
+        "@id": "http://dati.gov.it/onto/covapit#businessObjective"
+      }
+    },
+    {
+      "@id": "_:ub50bL945C30",
+      "@type": "owl:Restriction",
+      "owl:onProperty": {
+        "@id": "l0:description"
+      },
+      "owl:someValuesFrom": {
+        "@id": "rdfs:Literal"
       }
     },
     {
@@ -2174,22 +2083,22 @@
       ],
       "owl:versionInfo": [
         {
-          "@language": "it",
-          "@value": "stabile"
-        },
-        {
           "@language": "en",
           "@value": "stable"
+        },
+        {
+          "@language": "it",
+          "@value": "stabile"
         }
       ],
       "rdfs:comment": [
         {
-          "@language": "it",
-          "@value": "Questa proprietà rappresenta il codice univoco che viene assegnato alle AOO dall'organizzazione pubblica."
-        },
-        {
           "@language": "en",
           "@value": "This property represents the unique code assigned to the homogeneous organizational area of a public organization."
+        },
+        {
+          "@language": "it",
+          "@value": "Questa proprietà rappresenta il codice univoco che viene assegnato alle AOO dall'organizzazione pubblica."
         }
       ],
       "rdfs:domain": {
@@ -2200,12 +2109,12 @@
       },
       "rdfs:label": [
         {
-          "@language": "it",
-          "@value": "codice AOO"
-        },
-        {
           "@language": "en",
           "@value": "homegeneous organizational area identifier"
+        },
+        {
+          "@language": "it",
+          "@value": "codice AOO"
         }
       ],
       "rdfs:range": {
@@ -2230,12 +2139,12 @@
       ],
       "rdfs:comment": [
         {
-          "@language": "en",
-          "@value": "This property represents the total amount of the balance sheet of an organization."
-        },
-        {
           "@language": "it",
           "@value": "Questa proprietà rappresenta l'ammontare totale del bilancio di un'organizzazione."
+        },
+        {
+          "@language": "en",
+          "@value": "This property represents the total amount of the balance sheet of an organization."
         }
       ],
       "rdfs:domain": {
@@ -2273,12 +2182,12 @@
       ],
       "rdfs:comment": [
         {
-          "@language": "en",
-          "@value": "This property represents the last validation date for the tax code associated with the eInvoiceService."
-        },
-        {
           "@language": "it",
           "@value": "Questa proprietà rappresenta l'utima data di validazione del codice fiscale per il servizio di fatturazione elettronica."
+        },
+        {
+          "@language": "en",
+          "@value": "This property represents the last validation date for the tax code associated with the eInvoiceService."
         }
       ],
       "rdfs:domain": {
@@ -2289,72 +2198,48 @@
       },
       "rdfs:label": [
         {
-          "@language": "it",
-          "@value": "ultima data validazione codice fiscale"
-        },
-        {
           "@language": "en",
           "@value": "tax code validation date"
+        },
+        {
+          "@language": "it",
+          "@value": "ultima data validazione codice fiscale"
         }
       ],
       "rdfs:range": {
         "@id": "xsd:dateTime"
-      }
-    },
-    {
-      "@id": "_:ub267bL986C29",
-      "@type": "owl:Restriction",
-      "owl:onProperty": {
-        "@id": "http://dati.gov.it/onto/covapit#holdEmployment"
       },
-      "owl:someValuesFrom": {
-        "@id": "http://dati.gov.it/onto/covapit#Employment"
+      "rdfs:subPropertyOf": {
+        "@id": "ti:modified"
       }
     },
     {
-      "@id": "http://dati.gov.it/onto/covapit#resultedFrom",
+      "@id": "ti:atTime",
       "@type": "owl:ObjectProperty",
-      "owl:inverseOf": {
-        "@id": "http://dati.gov.it/onto/covapit#resultingOrganization"
+      "rdfs:comment": {
+        "@id": "ti:"
+      }
+    },
+    {
+      "@id": "_:ub50bL1112C25",
+      "@type": "owl:Restriction",
+      "owl:cardinality": {
+        "@type": "xsd:nonNegativeInteger",
+        "@value": "1"
       },
-      "owl:versionInfo": [
-        {
-          "@language": "en",
-          "@value": "stable"
-        },
-        {
-          "@language": "it",
-          "@value": "stabile"
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@language": "it",
-          "@value": "Questa proprietà è l'inversa di organizzazione risultante e lega un'organizzazione all'evento di cambiameno attraverso cui l'organizzazione si è originata."
-        },
-        {
-          "@language": "en",
-          "@value": "This property is the inverse of resulting organization and links an organization to the change event through which the organization has been created."
-        }
-      ],
-      "rdfs:domain": {
-        "@id": "http://dati.gov.it/onto/covapit#Organization"
+      "owl:onProperty": {
+        "@id": "http://dati.gov.it/onto/covapit#officeIdentifier"
+      }
+    },
+    {
+      "@id": "_:ub50bL1051C48",
+      "@type": "owl:Restriction",
+      "owl:cardinality": {
+        "@type": "xsd:nonNegativeInteger",
+        "@value": "1"
       },
-      "rdfs:isDefinedBy": {
-        "@id": "http://dati.gov.it/onto/covapit"
-      },
-      "rdfs:label": [
-        {
-          "@language": "en",
-          "@value": "resulted from"
-        },
-        {
-          "@language": "it",
-          "@value": "risultante da"
-        }
-      ],
-      "rdfs:range": {
-        "@id": "http://dati.gov.it/onto/covapit#ChangeEvent"
+      "owl:onProperty": {
+        "@id": "http://dati.gov.it/onto/covapit#AOOIdentifier"
       }
     },
     {
@@ -2362,12 +2247,12 @@
       "@type": "owl:Class",
       "owl:versionInfo": [
         {
-          "@language": "it",
-          "@value": "provvisoria"
-        },
-        {
           "@language": "en",
           "@value": "unstable"
+        },
+        {
+          "@language": "it",
+          "@value": "provvisoria"
         }
       ],
       "prov:wasDerivedFrom": {
@@ -2388,12 +2273,12 @@
       },
       "rdfs:label": [
         {
-          "@language": "en",
-          "@value": "Organization Typology"
-        },
-        {
           "@language": "it",
           "@value": "Tipologia Organizzazione"
+        },
+        {
+          "@language": "en",
+          "@value": "Organization Typology"
         }
       ],
       "rdfs:subClassOf": {
@@ -2403,18 +2288,19 @@
     {
       "@id": "http://dati.gov.it/onto/covapit#Registered",
       "@type": [
-        "http://dati.gov.it/onto/covapit#Status",
-        "owl:NamedIndividual"
+        "owl:NamedIndividual",
+        "http://dati.gov.it/onto/covapit#Status"
       ]
     },
     {
-      "@id": "_:ub267bL1178C31",
-      "@type": "owl:Restriction",
-      "owl:allValuesFrom": {
-        "@id": "rdfs:Literal"
-      },
-      "owl:onProperty": {
-        "@id": "http://dati.gov.it/onto/covapit#mainFunction"
+      "@id": "xsd:gYear",
+      "@type": "rdfs:Datatype"
+    },
+    {
+      "@id": "clvapit:hasSpatialCoverage",
+      "@type": "owl:ObjectProperty",
+      "rdfs:isDefinedBy": {
+        "@id": "http://dati.gov.it/onto/clvapit"
       }
     },
     {
@@ -2472,22 +2358,22 @@
       ],
       "owl:versionInfo": [
         {
-          "@language": "en",
-          "@value": "stable"
-        },
-        {
           "@language": "it",
           "@value": "stabile"
+        },
+        {
+          "@language": "en",
+          "@value": "stable"
         }
       ],
       "rdfs:comment": [
         {
-          "@language": "en",
-          "@value": "This property models an ordered sequence of organizations that precede and succeed each other.. In particular this property represents the organization that precedes another."
-        },
-        {
           "@language": "it",
           "@value": "Questa proprietà modella una sequenza ordinata di organizzazioni that precedono o si susseguono le un con le altre.  Nello specifico questa proprietà rappresenta un'organizzazione che precede un'altra."
+        },
+        {
+          "@language": "en",
+          "@value": "This property models an ordered sequence of organizations that precede and succeed each other.. In particular this property represents the organization that precedes another."
         }
       ],
       "rdfs:domain": {
@@ -2511,25 +2397,60 @@
       }
     },
     {
-      "@id": "_:ub267bL1238C32",
-      "@type": "owl:Restriction",
-      "owl:onClass": {
-        "@id": "http://dati.gov.it/onto/covapit#Organization"
+      "@id": "http://dati.gov.it/onto/covapit#taxCodeEInvoiceService",
+      "@type": [
+        "owl:FunctionalProperty",
+        "owl:DatatypeProperty"
+      ],
+      "owl:versionInfo": [
+        {
+          "@language": "it",
+          "@value": "stabile"
+        },
+        {
+          "@language": "en",
+          "@value": "stable"
+        }
+      ],
+      "rdfs:comment": [
+        {
+          "@language": "it",
+          "@value": "Questa proprietà rappresenta il codice fiscale del servizio di fatturazione elettronica."
+        },
+        {
+          "@language": "en",
+          "@value": "This property represents the tax code of the einvoice service."
+        }
+      ],
+      "rdfs:domain": {
+        "@id": "http://dati.gov.it/onto/covapit#eInvoiceService"
       },
-      "owl:onProperty": {
-        "@id": "http://dati.gov.it/onto/covapit#participated"
+      "rdfs:isDefinedBy": {
+        "@id": "http://dati.gov.it/onto/covapit"
       },
-      "owl:qualifiedCardinality": {
-        "@type": "xsd:nonNegativeInteger",
-        "@value": "1"
+      "rdfs:label": [
+        {
+          "@language": "en",
+          "@value": "tax code of the eInvoice service"
+        },
+        {
+          "@language": "it",
+          "@value": "codice fiscale servizio di fatturazione elettronica"
+        }
+      ],
+      "rdfs:range": {
+        "@id": "rdfs:Literal"
+      },
+      "rdfs:subPropertyOf": {
+        "@id": "l0:identifier"
       }
     },
     {
-      "@id": "http://dati.gov.it/onto/covapit#taxCodeEInvoiceService",
-      "@type": [
-        "owl:DatatypeProperty",
-        "owl:FunctionalProperty"
-      ],
+      "@id": "http://dati.gov.it/onto/covapit#resultedFrom",
+      "@type": "owl:ObjectProperty",
+      "owl:inverseOf": {
+        "@id": "http://dati.gov.it/onto/covapit#resultingOrganization"
+      },
       "owl:versionInfo": [
         {
           "@language": "en",
@@ -2543,55 +2464,45 @@
       "rdfs:comment": [
         {
           "@language": "en",
-          "@value": "This property represents the tax code of the einvoice service."
+          "@value": "This property is the inverse of resulting organization and links an organization to the change event through which the organization has been created."
         },
         {
           "@language": "it",
-          "@value": "Questa proprietà rappresenta il codice fiscale del servizio di fatturazione elettronica."
+          "@value": "Questa proprietà è l'inversa di organizzazione risultante e lega un'organizzazione all'evento di cambiameno attraverso cui l'organizzazione si è originata."
         }
       ],
       "rdfs:domain": {
-        "@id": "http://dati.gov.it/onto/covapit#eInvoiceService"
+        "@id": "http://dati.gov.it/onto/covapit#Organization"
       },
       "rdfs:isDefinedBy": {
         "@id": "http://dati.gov.it/onto/covapit"
       },
       "rdfs:label": [
         {
-          "@language": "it",
-          "@value": "codice fiscale servizio di fatturazione elettronica"
+          "@language": "en",
+          "@value": "resulted from"
         },
         {
-          "@language": "en",
-          "@value": "tax code of the eInvoice service"
+          "@language": "it",
+          "@value": "risultante da"
         }
       ],
       "rdfs:range": {
-        "@id": "rdfs:Literal"
-      },
-      "rdfs:subPropertyOf": {
-        "@id": "l0:identifier"
+        "@id": "http://dati.gov.it/onto/covapit#ChangeEvent"
       }
     },
     {
-      "@id": "_:ub267bL942C30",
+      "@id": "_:ub50bL1289C38",
       "@type": "owl:Restriction",
-      "owl:allValuesFrom": {
-        "@id": "http://dati.gov.it/onto/covapit#Organization"
+      "owl:onClass": {
+        "@id": "http://dati.gov.it/onto/covapit#LegalStatus"
       },
       "owl:onProperty": {
-        "@id": "http://dati.gov.it/onto/covapit#orginalOrganization"
-      }
-    },
-    {
-      "@id": "_:ub267bL1195C31",
-      "@type": "owl:Restriction",
-      "owl:maxCardinality": {
+        "@id": "http://dati.gov.it/onto/covapit#hasLegalStatus"
+      },
+      "owl:qualifiedCardinality": {
         "@type": "xsd:nonNegativeInteger",
         "@value": "1"
-      },
-      "owl:onProperty": {
-        "@id": "http://dati.gov.it/onto/covapit#altLabel"
       }
     },
     {
@@ -2622,12 +2533,12 @@
       },
       "rdfs:comment": [
         {
-          "@language": "it",
-          "@value": "Questa classe rappresenta un gruppo ossia una collezione di agenti individuatli. Il concetto è volutamente ampio per poter rappresentare gruppi informale ma anche gruppi formati ad-hoc, comunità, ecc."
-        },
-        {
           "@language": "en",
           "@value": "This class represents a group, a collection of individual agents. This concept is intentionally quite broad, covering informal and ad-hoc groups, long-lived communities, organizational groups within a workplace, etc."
+        },
+        {
+          "@language": "it",
+          "@value": "Questa classe rappresenta un gruppo ossia una collezione di agenti individuatli. Il concetto è volutamente ampio per poter rappresentare gruppi informale ma anche gruppi formati ad-hoc, comunità, ecc."
         }
       ],
       "rdfs:isDefinedBy": {
@@ -2635,12 +2546,12 @@
       },
       "rdfs:label": [
         {
-          "@language": "en",
-          "@value": "Group"
-        },
-        {
           "@language": "it",
           "@value": "Gruppo"
+        },
+        {
+          "@language": "en",
+          "@value": "Group"
         }
       ],
       "rdfs:subClassOf": {
@@ -2648,16 +2559,40 @@
       }
     },
     {
+      "@id": "_:ub50bL1306C38",
+      "@type": "owl:Restriction",
+      "owl:maxQualifiedCardinality": {
+        "@type": "xsd:nonNegativeInteger",
+        "@value": "1"
+      },
+      "owl:onDataRange": {
+        "@id": "xsd:dateTime"
+      },
+      "owl:onProperty": {
+        "@id": "http://dati.gov.it/onto/covapit#startingActivityDate"
+      }
+    },
+    {
+      "@id": "_:ub50bL1147C31",
+      "@type": "owl:Restriction",
+      "owl:allValuesFrom": {
+        "@id": "http://dati.gov.it/onto/covapit#BalanceSheet"
+      },
+      "owl:onProperty": {
+        "@id": "http://dati.gov.it/onto/covapit#hasBalanceSheet"
+      }
+    },
+    {
       "@id": "http://dati.gov.it/onto/covapit#participating",
       "@type": "owl:ObjectProperty",
       "owl:versionInfo": [
         {
-          "@language": "it",
-          "@value": "provvisoria"
-        },
-        {
           "@language": "en",
           "@value": "unstable"
+        },
+        {
+          "@language": "it",
+          "@value": "provvisoria"
         }
       ],
       "rdfs:comment": [
@@ -2705,12 +2640,12 @@
       ],
       "rdfs:comment": [
         {
-          "@language": "en",
-          "@value": "This property links the private organization to its legal status"
-        },
-        {
           "@language": "it",
           "@value": "Questa proprietà lega l'organizzazione privata alla sua forma giuridica."
+        },
+        {
+          "@language": "en",
+          "@value": "This property links the private organization to its legal status"
         }
       ],
       "rdfs:domain": {
@@ -2734,29 +2669,36 @@
       }
     },
     {
-      "@id": "_:ub267bL946C30",
-      "@type": "owl:Restriction",
-      "owl:allValuesFrom": {
-        "@id": "http://dati.gov.it/onto/covapit#Organization"
-      },
-      "owl:onProperty": {
-        "@id": "http://dati.gov.it/onto/covapit#resultingOrganization"
+      "@id": "roapit:Role",
+      "@type": "owl:Class",
+      "rdfs:comment": [
+        {
+          "@language": "it",
+          "@value": "Questa classe è definita in http://dati.gov.it/onto/roapit/ e, in questa ontologia, rappresenta il ruolo nella relazione ennaria con l'Agente, l'Organizzazione, e la situazione di Appartenenza. Essa è utilizzata per modellare il Ruolo di un membro dell'organizzazione in un certo intervallo temporale."
+        },
+        {
+          "@language": "en",
+          "@value": "This class is defined in http://dati.gov.it/onto/roapit/ and, in this ontology,  is used in the n-ary relationship involving the Employment, the Agent and the Organization. It is used to model the Role of a member of the organization in a certain time interval."
+        }
+      ],
+      "rdfs:isDefinedBy": {
+        "@id": "roapit:"
       }
     },
     {
       "@id": "http://dati.gov.it/onto/covapit#taxCode",
       "@type": [
-        "owl:FunctionalProperty",
-        "owl:DatatypeProperty"
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
       ],
       "owl:versionInfo": [
         {
-          "@language": "it",
-          "@value": "stabile"
-        },
-        {
           "@language": "en",
           "@value": "stable"
+        },
+        {
+          "@language": "it",
+          "@value": "stabile"
         }
       ],
       "rdfs:comment": [
@@ -2777,12 +2719,12 @@
       },
       "rdfs:label": [
         {
-          "@language": "it",
-          "@value": "codice fiscale"
-        },
-        {
           "@language": "en",
           "@value": "tax code"
+        },
+        {
+          "@language": "it",
+          "@value": "codice fiscale"
         }
       ],
       "rdfs:range": {
@@ -2807,21 +2749,21 @@
       ],
       "owl:versionInfo": [
         {
-          "@language": "en",
-          "@value": "stable"
-        },
-        {
           "@language": "it",
           "@value": "stabile"
+        },
+        {
+          "@language": "en",
+          "@value": "stable"
         }
       ],
       "rdfs:comment": [
         {
-          "@language": "it",
-          "@value": "Questa proprietà rappresenta il numero di Partita IVA di un'organizzazione privata (impresa)."
+          "@id": "http://dati.gov.it/onto/covapit"
         },
         {
-          "@id": "http://dati.gov.it/onto/covapit"
+          "@language": "it",
+          "@value": "Questa proprietà rappresenta il numero di Partita IVA di un'organizzazione privata (impresa)."
         },
         {
           "@language": "en",
@@ -2833,12 +2775,12 @@
       },
       "rdfs:label": [
         {
-          "@language": "it",
-          "@value": "Partita Iva"
-        },
-        {
           "@language": "en",
           "@value": "VAT number"
+        },
+        {
+          "@language": "it",
+          "@value": "Partita Iva"
         }
       ],
       "rdfs:range": {
@@ -2846,16 +2788,6 @@
       },
       "rdfs:subPropertyOf": {
         "@id": "l0:identifier"
-      }
-    },
-    {
-      "@id": "_:ub267bL1298C38",
-      "@type": "owl:Restriction",
-      "owl:allValuesFrom": {
-        "@id": "rdfs:Literal"
-      },
-      "owl:onProperty": {
-        "@id": "http://dati.gov.it/onto/covapit#businessObjective"
       }
     },
     {
@@ -2876,12 +2808,12 @@
       },
       "rdfs:comment": [
         {
-          "@language": "it",
-          "@value": "Questa classe rappresenta un'organizzazione pubblica. Una pubblica amministrazione e qualsiasi altra organizzazione di nautra pubblica può essere modellata utilizzando questa classe. In generale,  individui di questa classe sono organizzazioni registrate presso l'Indice della PA (IPA).\nQuesta classe deriva dall'analoga classe del Core Public Organization Vocabulary."
-        },
-        {
           "@language": "en",
           "@value": "This class represents a public organization. Thus, a public administration is a public organization. Any other organization that is defined public can be modelled using this class.\nThis class is derived from the Core Public Organization Vocabulary."
+        },
+        {
+          "@language": "it",
+          "@value": "Questa classe rappresenta un'organizzazione pubblica. Una pubblica amministrazione e qualsiasi altra organizzazione di nautra pubblica può essere modellata utilizzando questa classe. In generale,  individui di questa classe sono organizzazioni registrate presso l'Indice della PA (IPA).\nQuesta classe deriva dall'analoga classe del Core Public Organization Vocabulary."
         }
       ],
       "rdfs:isDefinedBy": {
@@ -2899,25 +2831,32 @@
       ],
       "rdfs:subClassOf": [
         {
-          "@id": "_:ub267bL1328C37"
-        },
-        {
-          "@id": "_:ub267bL1333C37"
-        },
-        {
           "@id": "http://dati.gov.it/onto/covapit#Organization"
+        },
+        {
+          "@id": "_:ub50bL1333C37"
+        },
+        {
+          "@id": "_:ub50bL1328C37"
         }
       ]
     },
     {
-      "@id": "_:ub267bL1055C48",
+      "@id": "_:ub50bL1182C31",
       "@type": "owl:Restriction",
       "owl:cardinality": {
         "@type": "xsd:nonNegativeInteger",
         "@value": "1"
       },
       "owl:onProperty": {
-        "@id": "http://dati.gov.it/onto/covapit#AOOIdentifier"
+        "@id": "http://dati.gov.it/onto/covapit#acronym"
+      }
+    },
+    {
+      "@id": "_:ub50bL1580C1",
+      "owl:maxQualifiedCardinality": {
+        "@type": "xsd:nonNegativeInteger",
+        "@value": "1"
       }
     },
     {
@@ -2942,11 +2881,11 @@
       ],
       "rdfs:comment": [
         {
-          "@language": "it",
-          "@value": "Questa proprietà rappresenta il numero REA (Repertorio Economico Amministrativo) associato a un'impresa.  Il numero REA è costituito da un numero decimale progressivo ed è sempre associato ad una codifica, che precede il numero progressivo, della provincia/CCIAA che lo ha assegnato e, nella prassi, comprende anche tale codifica (ad es. RM-123456). Ogni soggetto/impresa obbligato per legge all´iscrizione al REA riceve un numero REA diverso per ogni provincia/CCIAA in cui apre Sede/Unità Locali."
+          "@id": "http://dati.gov.it/onto/covapit"
         },
         {
-          "@id": "http://dati.gov.it/onto/covapit"
+          "@language": "it",
+          "@value": "Questa proprietà rappresenta il numero REA (Repertorio Economico Amministrativo) associato a un'impresa.  Il numero REA è costituito da un numero decimale progressivo ed è sempre associato ad una codifica, che precede il numero progressivo, della provincia/CCIAA che lo ha assegnato e, nella prassi, comprende anche tale codifica (ad es. RM-123456). Ogni soggetto/impresa obbligato per legge all´iscrizione al REA riceve un numero REA diverso per ogni provincia/CCIAA in cui apre Sede/Unità Locali."
         },
         {
           "@language": "en",
@@ -2974,34 +2913,10 @@
       }
     },
     {
-      "@id": "_:ub267bL1143C31",
-      "@type": "owl:Restriction",
-      "owl:allValuesFrom": {
-        "@id": "http://dati.gov.it/onto/covapit#ActivityType"
-      },
-      "owl:onProperty": {
-        "@id": "http://dati.gov.it/onto/covapit#hasActivityType"
-      }
-    },
-    {
       "@id": "l0:Agent",
       "@type": "owl:Class",
       "rdfs:isDefinedBy": {
         "@id": "l0:"
-      }
-    },
-    {
-      "@id": "_:ub267bL990C29",
-      "@type": "owl:Restriction",
-      "owl:onClass": {
-        "@id": "http://dati.gov.it/onto/covapit#Organization"
-      },
-      "owl:onProperty": {
-        "@id": "http://dati.gov.it/onto/covapit#employmentFor"
-      },
-      "owl:qualifiedCardinality": {
-        "@type": "xsd:nonNegativeInteger",
-        "@value": "1"
       }
     },
     {
@@ -3019,12 +2934,12 @@
       ],
       "rdfs:comment": [
         {
-          "@language": "it",
-          "@value": "Organizzazioni sono spesso grandi e complesse e possono essere viste come una collezione di organizzazioni più piccole, ognuna delle quali con una specifica identità legamente definita. Questa proprietà, insieme alla sua inversa ha sotto-organizzazione, consente di modellare una struttura gerarchica tra organizzazioni. Si pensi per esempio ai concetti di holding per organizazioni private."
-        },
-        {
           "@language": "en",
           "@value": "Organizations are often large and complex and may be a collection of smaller organizations, each of which has a specific identity that may be legally defined.  This property, together with its inverse hasSubOrganization allows one to model a hierarchical structure between organizations."
+        },
+        {
+          "@language": "it",
+          "@value": "Organizzazioni sono spesso grandi e complesse e possono essere viste come una collezione di organizzazioni più piccole, ognuna delle quali con una specifica identità legamente definita. Questa proprietà, insieme alla sua inversa ha sotto-organizzazione, consente di modellare una struttura gerarchica tra organizzazioni. Si pensi per esempio ai concetti di holding per organizazioni private."
         }
       ],
       "rdfs:domain": {
@@ -3048,31 +2963,14 @@
       }
     },
     {
-      "@id": "_:ub267bL1190C31",
+      "@id": "_:ub50bL1186C31",
       "@type": "owl:Restriction",
-      "owl:maxQualifiedCardinality": {
+      "owl:cardinality": {
         "@type": "xsd:nonNegativeInteger",
         "@value": "1"
       },
-      "owl:onDataRange": {
-        "@id": "xsd:dateTime"
-      },
       "owl:onProperty": {
-        "@id": "http://dati.gov.it/onto/covapit#accreditationDate"
-      }
-    },
-    {
-      "@id": "_:ub267bL1165C31",
-      "@type": "owl:Restriction",
-      "owl:maxQualifiedCardinality": {
-        "@type": "xsd:nonNegativeInteger",
-        "@value": "1"
-      },
-      "owl:onClass": {
-        "@id": "smapit:Image"
-      },
-      "owl:onProperty": {
-        "@id": "http://dati.gov.it/onto/covapit#hasLogo"
+        "@id": "http://dati.gov.it/onto/covapit#taxCode"
       }
     },
     {
@@ -3093,12 +2991,12 @@
       },
       "rdfs:comment": [
         {
-          "@language": "en",
-          "@value": "This class represents the foundation event for an organization."
-        },
-        {
           "@language": "it",
           "@value": "Questa classe rappresenta un evento di costituzione di un'organizzazione."
+        },
+        {
+          "@language": "en",
+          "@value": "This class represents the foundation event for an organization."
         }
       ],
       "rdfs:isDefinedBy": {
@@ -3119,28 +3017,56 @@
       }
     },
     {
-      "@id": "_:ub267bL1289C38",
-      "@type": "owl:Restriction",
-      "owl:onClass": {
-        "@id": "http://dati.gov.it/onto/covapit#LegalStatus"
-      },
-      "owl:onProperty": {
-        "@id": "http://dati.gov.it/onto/covapit#hasLegalStatus"
-      },
-      "owl:qualifiedCardinality": {
+      "@id": "_:ub50bL1586C1",
+      "owl:maxQualifiedCardinality": {
         "@type": "xsd:nonNegativeInteger",
         "@value": "1"
       }
     },
     {
-      "@id": "_:ub267bL1471C34",
-      "@type": "owl:Restriction",
-      "owl:cardinality": {
-        "@type": "xsd:nonNegativeInteger",
-        "@value": "1"
+      "@id": "http://dati.gov.it/onto/covapit#changedBy",
+      "@type": "owl:ObjectProperty",
+      "owl:inverseOf": {
+        "@id": "http://dati.gov.it/onto/covapit#orginalOrganization"
       },
-      "owl:onProperty": {
-        "@id": "http://dati.gov.it/onto/covapit#taxCodeEInvoiceService"
+      "owl:versionInfo": [
+        {
+          "@language": "en",
+          "@value": "stable"
+        },
+        {
+          "@language": "it",
+          "@value": "stabile"
+        }
+      ],
+      "rdfs:comment": [
+        {
+          "@language": "en",
+          "@value": "This property is the inverse of orginal organization and it is used to link the organization with the change event."
+        },
+        {
+          "@language": "it",
+          "@value": "Questa proprietà è l'inversa di organizzazione d'origine e collega un'organizzazione a un evento di cambiamento."
+        }
+      ],
+      "rdfs:domain": {
+        "@id": "http://dati.gov.it/onto/covapit#Organization"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "http://dati.gov.it/onto/covapit"
+      },
+      "rdfs:label": [
+        {
+          "@language": "it",
+          "@value": "cambiata da"
+        },
+        {
+          "@language": "en",
+          "@value": "changed by"
+        }
+      ],
+      "rdfs:range": {
+        "@id": "http://dati.gov.it/onto/covapit#ChangeEvent"
       }
     },
     {
@@ -3151,48 +3077,40 @@
       }
     },
     {
-      "@id": "_:ub267bL1253C32",
+      "@id": "_:ub50bL1456C34",
       "@type": "owl:Restriction",
-      "owl:maxQualifiedCardinality": {
-        "@type": "xsd:nonNegativeInteger",
-        "@value": "1"
-      },
       "owl:onDataRange": {
-        "@id": "xsd:float"
+        "@id": "xsd:dateTime"
       },
       "owl:onProperty": {
-        "@id": "http://dati.gov.it/onto/covapit#participationPercentage"
+        "@id": "http://dati.gov.it/onto/covapit#taxCodeValidationDate"
+      },
+      "owl:qualifiedCardinality": {
+        "@type": "xsd:nonNegativeInteger",
+        "@value": "1"
       }
     },
     {
-      "@id": "http://dati.gov.it/onto/covapit#modified",
+      "@id": "http://dati.gov.it/onto/covapit#legalName",
       "@type": "owl:DatatypeProperty",
       "owl:versionInfo": [
         {
           "@language": "it",
-          "@value": "provvisoria"
+          "@value": "stabile"
         },
         {
           "@language": "en",
-          "@value": "last modified"
-        },
-        {
-          "@language": "it",
-          "@value": "data di ultimo aggiornamento"
-        },
-        {
-          "@language": "en",
-          "@value": "unstable"
+          "@value": "stable"
         }
       ],
       "rdfs:comment": [
         {
           "@language": "en",
-          "@value": "This property represents the date in which the organization information is changed."
+          "@value": "This is the primary or legal name for the organization or it can be used to indicate the primary label of a role."
         },
         {
           "@language": "it",
-          "@value": "Questa proprietà rappresenta la data di ultima modifica delle informazioni sull'organizzazione."
+          "@value": "Questa proprietà rappresenta il nome primario o il nome legale dell'organizzazione oppure può essere utilizzata per rappresentare l'etichetta primaria per il ruolo."
         }
       ],
       "rdfs:domain": {
@@ -3201,29 +3119,35 @@
       "rdfs:isDefinedBy": {
         "@id": "http://dati.gov.it/onto/covapit"
       },
+      "rdfs:label": [
+        {
+          "@language": "it",
+          "@value": "nome legale"
+        },
+        {
+          "@language": "en",
+          "@value": "legal name"
+        }
+      ],
       "rdfs:range": {
-        "@id": "xsd:dateTime"
+        "@id": "rdfs:Literal"
+      },
+      "rdfs:subPropertyOf": {
+        "@id": "l0:name"
       }
     },
     {
-      "@id": "_:ub267bL1333C37",
+      "@id": "_:ub50bL1102C25",
       "@type": "owl:Restriction",
-      "owl:cardinality": {
+      "owl:maxQualifiedCardinality": {
         "@type": "xsd:nonNegativeInteger",
         "@value": "1"
       },
-      "owl:onProperty": {
-        "@id": "http://dati.gov.it/onto/covapit#IPAcode"
-      }
-    },
-    {
-      "@id": "_:ub267bL1147C31",
-      "@type": "owl:Restriction",
-      "owl:allValuesFrom": {
-        "@id": "http://dati.gov.it/onto/covapit#BalanceSheet"
+      "owl:onClass": {
+        "@id": "http://dati.gov.it/onto/covapit#eInvoiceService"
       },
       "owl:onProperty": {
-        "@id": "http://dati.gov.it/onto/covapit#hasBalanceSheet"
+        "@id": "http://dati.gov.it/onto/covapit#hasEInvoiceService"
       }
     },
     {
@@ -3244,12 +3168,12 @@
       ],
       "rdfs:comment": [
         {
-          "@language": "it",
-          "@value": "Questa proprietà rappresenta il codice univoco dell'ufficio dell'organizzazione."
-        },
-        {
           "@language": "en",
           "@value": "This property represents the unique code used to identify the office of the organization."
+        },
+        {
+          "@language": "it",
+          "@value": "Questa proprietà rappresenta il codice univoco dell'ufficio dell'organizzazione."
         }
       ],
       "rdfs:domain": {
@@ -3260,12 +3184,12 @@
       },
       "rdfs:label": [
         {
-          "@language": "it",
-          "@value": "codice univoco ufficio"
-        },
-        {
           "@language": "en",
           "@value": "office identifier"
+        },
+        {
+          "@language": "it",
+          "@value": "codice univoco ufficio"
         }
       ],
       "rdfs:range": {
@@ -3283,49 +3207,31 @@
       }
     },
     {
-      "@id": "http://dati.gov.it/onto/covapit#withRole",
-      "@type": [
-        "owl:ObjectProperty",
-        "owl:FunctionalProperty"
-      ],
-      "owl:versionInfo": [
-        {
-          "@language": "en",
-          "@value": "stable"
-        },
-        {
-          "@language": "it",
-          "@value": "stabile"
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@language": "en",
-          "@value": "This property links the situation membership with the related Role."
-        },
-        {
-          "@language": "it",
-          "@value": "Questa proprietà lega la situazione Appartenenza al relativo Ruolo. E' utilizzata per specificare il ruolo di un membro in una situazione di appartenenza dello stesso a un'organizzazione."
-        }
-      ],
-      "rdfs:domain": {
-        "@id": "http://dati.gov.it/onto/covapit#Employment"
+      "@id": "_:ub50bL991C29",
+      "@type": "owl:Restriction",
+      "owl:onClass": {
+        "@id": "ti:TimeInterval"
       },
-      "rdfs:isDefinedBy": {
-        "@id": "http://dati.gov.it/onto/covapit"
+      "owl:onProperty": {
+        "@id": "ti:atTime"
       },
-      "rdfs:label": [
-        {
-          "@language": "en",
-          "@value": "with role"
-        },
-        {
-          "@language": "it",
-          "@value": "con ruolo"
-        }
-      ],
-      "rdfs:range": {
-        "@id": "http://dati.gov.it/onto/covapit#Role"
+      "owl:qualifiedCardinality": {
+        "@type": "xsd:nonNegativeInteger",
+        "@value": "1"
+      }
+    },
+    {
+      "@id": "_:ub50bL1253C32",
+      "@type": "owl:Restriction",
+      "owl:maxQualifiedCardinality": {
+        "@type": "xsd:nonNegativeInteger",
+        "@value": "1"
+      },
+      "owl:onDataRange": {
+        "@id": "xsd:float"
+      },
+      "owl:onProperty": {
+        "@id": "http://dati.gov.it/onto/covapit#participationPercentage"
       }
     },
     {
@@ -3346,12 +3252,12 @@
       },
       "rdfs:comment": [
         {
-          "@language": "it",
-          "@value": "Questa classe rappresenta la situazione di partecipazione di un'organizzazione in un'altra. E? quindi una relazione ennaria tra organizazzioni in un certo lasso temporale. La partecipazione può essere di un certo tipo. Esempio: la classe può essere utilizzata per rappresentare le informazioni di partecipazione (e.g., quote) di comuni in società controllate/partecipate (società dei trasporti pubblici, società di gestione dell'acqua, ecc.)"
-        },
-        {
           "@language": "en",
           "@value": "This class represents a participation of an organization in another. It is a n-ary relationship (situation) between organizations in a certain time interval. The participation can be of a specific type. Example is the participation of a municipality in a controlled enterprise that provides public services such as water management or public transportation."
+        },
+        {
+          "@language": "it",
+          "@value": "Questa classe rappresenta la situazione di partecipazione di un'organizzazione in un'altra. E? quindi una relazione ennaria tra organizazzioni in un certo lasso temporale. La partecipazione può essere di un certo tipo. Esempio: la classe può essere utilizzata per rappresentare le informazioni di partecipazione (e.g., quote) di comuni in società controllate/partecipate (società dei trasporti pubblici, società di gestione dell'acqua, ecc.)"
         }
       ],
       "rdfs:isDefinedBy": {
@@ -3369,24 +3275,70 @@
       ],
       "rdfs:subClassOf": [
         {
-          "@id": "_:ub267bL1243C32"
+          "@id": "_:ub50bL1243C32"
         },
         {
           "@id": "l0:Event"
         },
         {
-          "@id": "_:ub267bL1238C32"
+          "@id": "_:ub50bL1248C32"
         },
         {
-          "@id": "_:ub267bL1253C32"
+          "@id": "_:ub50bL1238C32"
         },
         {
-          "@id": "_:ub267bL1248C32"
+          "@id": "_:ub50bL1253C32"
         }
       ]
     },
     {
-      "@id": "http://dati.gov.it/onto/covapit#prefLabel",
+      "@id": "_:ub50bL1135C31",
+      "@type": "owl:Restriction",
+      "owl:onProperty": {
+        "@id": "http://dati.gov.it/onto/covapit#holdEmployment"
+      },
+      "owl:someValuesFrom": {
+        "@id": "http://dati.gov.it/onto/covapit#Employment"
+      }
+    },
+    {
+      "@id": "_:ub50bL1583C1",
+      "owl:maxQualifiedCardinality": {
+        "@type": "xsd:nonNegativeInteger",
+        "@value": "1"
+      }
+    },
+    {
+      "@id": "_:ub50bL1195C31",
+      "@type": "owl:Restriction",
+      "owl:maxCardinality": {
+        "@type": "xsd:nonNegativeInteger",
+        "@value": "1"
+      },
+      "owl:onProperty": {
+        "@id": "http://dati.gov.it/onto/covapit#altName"
+      }
+    },
+    {
+      "@id": "http://dati.gov.it/onto/covapit#YouTube",
+      "@type": "owl:NamedIndividual",
+      "rdfs:isDefinedBy": {
+        "@id": "http://dati.gov.it/onto/covapit/"
+      }
+    },
+    {
+      "@id": "_:ub50bL1333C37",
+      "@type": "owl:Restriction",
+      "owl:cardinality": {
+        "@type": "xsd:nonNegativeInteger",
+        "@value": "1"
+      },
+      "owl:onProperty": {
+        "@id": "http://dati.gov.it/onto/covapit#IPAcode"
+      }
+    },
+    {
+      "@id": "http://dati.gov.it/onto/covapit#remuneration",
       "@type": "owl:DatatypeProperty",
       "owl:versionInfo": [
         {
@@ -3401,15 +3353,15 @@
       "rdfs:comment": [
         {
           "@language": "it",
-          "@value": "Questa proprietà rappresenta il nome primario o il nome legale dell'organizzazione oppure può essere utilizzata per rappresentare l'etichetta primaria per il ruolo."
+          "@value": "Questa proprietà rappresenta il compenso di un membro con uno specifico ruolo nell'organizzazione."
         },
         {
           "@language": "en",
-          "@value": "This is the primary or legal name for the organization or it can be used to indicate the primary label of a role."
+          "@value": "This property represents the remuneration of a member with a specific role on the organization."
         }
       ],
       "rdfs:domain": {
-        "@id": "_:ub267bL727C24"
+        "@id": "http://dati.gov.it/onto/covapit#Employment"
       },
       "rdfs:isDefinedBy": {
         "@id": "http://dati.gov.it/onto/covapit"
@@ -3417,47 +3369,30 @@
       "rdfs:label": [
         {
           "@language": "it",
-          "@value": "nome legale"
+          "@value": "compenso"
         },
         {
           "@language": "en",
-          "@value": "preferred label"
+          "@value": "remuneration"
         }
       ],
       "rdfs:range": {
-        "@id": "rdfs:Literal"
-      },
-      "rdfs:subPropertyOf": {
-        "@id": "l0:name"
+        "@id": "xsd:double"
       }
     },
     {
-      "@id": "_:ub267bL1160C31",
+      "@id": "_:ub50bL1151C31",
       "@type": "owl:Restriction",
-      "owl:onClass": {
-        "@id": "smapit:OnlineContactPoint"
+      "owl:allValuesFrom": {
+        "@id": "http://dati.gov.it/onto/covapit#ChangeEvent"
       },
       "owl:onProperty": {
-        "@id": "smapit:hasOnlineContactPoint"
-      },
-      "owl:qualifiedCardinality": {
-        "@type": "xsd:nonNegativeInteger",
-        "@value": "1"
+        "@id": "http://dati.gov.it/onto/covapit#resultedFrom"
       }
     },
     {
-      "@id": "http://dati.gov.it/onto/covapit#YouTube",
-      "@type": "owl:NamedIndividual",
-      "rdfs:isDefinedBy": {
-        "@id": "http://dati.gov.it/onto/covapit/"
-      }
-    },
-    {
-      "@id": "http://dati.gov.it/onto/covapit#PrivateOrganization",
+      "@id": "http://dati.gov.it/onto/covapit#Merger",
       "@type": "owl:Class",
-      "owl:disjointWith": {
-        "@id": "http://dati.gov.it/onto/covapit#PublicOrganization"
-      },
       "owl:versionInfo": [
         {
           "@language": "it",
@@ -3468,17 +3403,14 @@
           "@value": "stable"
         }
       ],
-      "prov:wasInfluencedBy": {
-        "@id": "http://www.w3.org/ns/regorg#RegisteredOrganization"
-      },
       "rdfs:comment": [
         {
           "@language": "en",
-          "@value": "This class represents a private organization as registered in a national public registry."
+          "@value": "This class represents the merger event for an organization."
         },
         {
           "@language": "it",
-          "@value": "Questa classe rappresenta un'organizzazione privata ufficialmente registrata presso un registro nazionale (registro imprese)."
+          "@value": "Questa classe rappresenta un evento di fusione per un'organizzazione."
         }
       ],
       "rdfs:isDefinedBy": {
@@ -3486,90 +3418,16 @@
       },
       "rdfs:label": [
         {
-          "@language": "it",
-          "@value": "Organizzazione Privata"
-        },
-        {
           "@language": "en",
-          "@value": "Private Organization"
-        }
-      ],
-      "rdfs:subClassOf": [
-        {
-          "@id": "_:ub267bL1289C38"
-        },
-        {
-          "@id": "_:ub267bL1294C38"
-        },
-        {
-          "@id": "_:ub267bL1298C38"
-        },
-        {
-          "@id": "_:ub267bL1302C38"
-        },
-        {
-          "@id": "http://dati.gov.it/onto/covapit#Organization"
-        },
-        {
-          "@id": "_:ub267bL1306C38"
-        }
-      ]
-    },
-    {
-      "@id": "http://dati.gov.it/onto/covapit#hasParticipationType",
-      "@type": "owl:ObjectProperty",
-      "owl:versionInfo": [
-        {
-          "@language": "en",
-          "@value": "stable"
+          "@value": "Merger"
         },
         {
           "@language": "it",
-          "@value": "stabile"
+          "@value": "Fusione"
         }
       ],
-      "rdfs:comment": [
-        {
-          "@language": "it",
-          "@value": "Questa proprietà collega la partecipazione al suo tipo (diretta o indiretta)."
-        },
-        {
-          "@language": "en",
-          "@value": "This property links the Participation to its type (i.e., direct or indirect)."
-        }
-      ],
-      "rdfs:domain": {
-        "@id": "http://dati.gov.it/onto/covapit#Participation"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "http://dati.gov.it/onto/covapit"
-      },
-      "rdfs:label": [
-        {
-          "@language": "it",
-          "@value": "ha tipo di partecipazione"
-        },
-        {
-          "@language": "en",
-          "@value": "has participation type"
-        }
-      ],
-      "rdfs:range": {
-        "@id": "http://dati.gov.it/onto/covapit#ParticipationType"
-      }
-    },
-    {
-      "@id": "_:ub267bL1243C32",
-      "@type": "owl:Restriction",
-      "owl:onClass": {
-        "@id": "http://dati.gov.it/onto/covapit#Organization"
-      },
-      "owl:onProperty": {
-        "@id": "http://dati.gov.it/onto/covapit#participating"
-      },
-      "owl:qualifiedCardinality": {
-        "@type": "xsd:nonNegativeInteger",
-        "@value": "1"
+      "rdfs:subClassOf": {
+        "@id": "http://dati.gov.it/onto/covapit#ChangeEvent"
       }
     },
     {
@@ -3577,20 +3435,20 @@
       "@type": "owl:Class",
       "owl:versionInfo": [
         {
-          "@language": "en",
-          "@value": "stable"
-        },
-        {
           "@language": "it",
           "@value": "stabile"
+        },
+        {
+          "@language": "en",
+          "@value": "stable"
         }
       ],
       "prov:wasDerivedFrom": [
         {
-          "@id": "http://www.w3.org/ns/org#Organization"
+          "@id": "schema:Organization"
         },
         {
-          "@id": "schema:Organization"
+          "@id": "http://www.w3.org/ns/org#Organization"
         }
       ],
       "prov:wasInfluencedBy": {
@@ -3598,12 +3456,12 @@
       },
       "rdfs:comment": [
         {
-          "@language": "en",
-          "@value": "This class represents an organization, be it public or private, usually registrated in a national public registry (e.g. in Italy \"indice delle PA\" for the public administrations, \"Registro imprese\" for the private organizations. Examples: \"Agenzia per l'Italia Digitale\", \"Comune di Roma\", \"TELECOM ITALIA SPA o TIM S.P.A.\""
-        },
-        {
           "@language": "it",
           "@value": "Questa è la classe che rappresenta un'organizzazione, sia essa pubblica che privata, tipicamente registrata all'interno di un registro pubblico (e.g., indice della PA per le pubbliche amministrazioni, registro imprese per le organizzazioni private). Esempio \"Agenzia per l'Ialia Digitale\", \"Comune di Bologna\", \"TELECOM ITALIA SPA O TIM S.P.A.\""
+        },
+        {
+          "@language": "en",
+          "@value": "This class represents an organization, be it public or private, usually registrated in a national public registry (e.g. in Italy \"indice delle PA\" for the public administrations, \"Registro imprese\" for the private organizations. Examples: \"Agenzia per l'Italia Digitale\", \"Comune di Roma\", \"TELECOM ITALIA SPA o TIM S.P.A.\""
         }
       ],
       "rdfs:isDefinedBy": {
@@ -3621,101 +3479,90 @@
       ],
       "rdfs:subClassOf": [
         {
-          "@id": "_:ub267bL1186C31"
+          "@id": "_:ub50bL1165C31"
         },
         {
-          "@id": "_:ub267bL1135C31"
+          "@id": "_:ub50bL1170C31"
         },
         {
-          "@id": "_:ub267bL1182C31"
+          "@id": "_:ub50bL1199C31"
         },
         {
-          "@id": "_:ub267bL1199C31"
+          "@id": "_:ub50bL1139C31"
         },
         {
-          "@id": "_:ub267bL1195C31"
+          "@id": "_:ub50bL1147C31"
         },
         {
-          "@id": "_:ub267bL1143C31"
+          "@id": "_:ub50bL1174C31"
         },
         {
-          "@id": "_:ub267bL1174C31"
+          "@id": "_:ub50bL1151C31"
         },
         {
-          "@id": "_:ub267bL1151C31"
+          "@id": "_:ub50bL1143C31"
         },
         {
-          "@id": "_:ub267bL1155C31"
+          "@id": "_:ub50bL1178C31"
         },
         {
-          "@id": "_:ub267bL1170C31"
-        },
-        {
-          "@id": "_:ub267bL1190C31"
-        },
-        {
-          "@id": "_:ub267bL1147C31"
-        },
-        {
-          "@id": "_:ub267bL1139C31"
+          "@id": "_:ub50bL1195C31"
         },
         {
           "@id": "l0:Agent"
         },
         {
-          "@id": "_:ub267bL1178C31"
+          "@id": "_:ub50bL1182C31"
         },
         {
-          "@id": "_:ub267bL1165C31"
+          "@id": "_:ub50bL1190C31"
         },
         {
-          "@id": "_:ub267bL1160C31"
+          "@id": "_:ub50bL1135C31"
+        },
+        {
+          "@id": "_:ub50bL1131C31"
+        },
+        {
+          "@id": "_:ub50bL1155C31"
+        },
+        {
+          "@id": "_:ub50bL1186C31"
+        },
+        {
+          "@id": "_:ub50bL1160C31"
         }
       ]
-    },
-    {
-      "@id": "_:ub267bL1306C38",
-      "@type": "owl:Restriction",
-      "owl:maxQualifiedCardinality": {
-        "@type": "xsd:nonNegativeInteger",
-        "@value": "1"
-      },
-      "owl:onDataRange": {
-        "@id": "xsd:dateTime"
-      },
-      "owl:onProperty": {
-        "@id": "http://dati.gov.it/onto/covapit#startingActivityDate"
-      }
     },
     {
       "@id": "http://dati.gov.it/onto/covapit#Employment",
       "@type": "owl:Class",
       "owl:versionInfo": [
         {
-          "@language": "it",
-          "@value": "stabile"
-        },
-        {
           "@language": "en",
           "@value": "stable"
+        },
+        {
+          "@language": "it",
+          "@value": "stabile"
         }
       ],
       "prov:wasInfluencedBy": [
         {
-          "@id": "http://www.w3.org/ns/org#Membership"
+          "@id": "http://www.ontologydesignpatterns.org/cp/owl/timeindexedsituation.owl"
         },
         {
-          "@id": "http://www.ontologydesignpatterns.org/cp/owl/timeindexedsituation.owl"
+          "@id": "http://www.w3.org/ns/org#Membership"
         }
       ],
       "rdfs:comment": [
         {
-          "@language": "en",
-          "@value": "This class represents the nature of an Agent's membership of an organization. In particular, the class is an n-ary relationship (a situation) that involves an Agent, an Organization, a Role and a Time Period."
-        },
-        {
           "@language": "it",
           "@value": "Questa classe rappresenta la natura di appartenenza di un agente di un'organizzazione. In particolare, la classe è una relazione ennaria che rappresenta una situazione che coinvolge un agente, un'organizzazione, i l ruolo che l'agente ricopre nell'organizzazione ed eventualment eil lasso temporale in cui quel ruolo è svolto. Esempio: la classe consente di rappresentare il ruolo di amministratore delegato  di un'impresa in un certo lasso temporale oppure il ruolo di consigliere in una società partecipata di una pubblica amministrazione in un certo intervallo temporale."
+        },
+        {
+          "@language": "en",
+          "@value": "This class represents the nature of an Agent's membership of an organization. In particular, the class is an n-ary relationship (a situation) that involves an Agent, an Organization, a Role and a Time Period."
         }
       ],
       "rdfs:isDefinedBy": {
@@ -3723,29 +3570,29 @@
       },
       "rdfs:label": [
         {
-          "@language": "en",
-          "@value": "Employment"
-        },
-        {
           "@language": "it",
           "@value": "Appartenenza"
+        },
+        {
+          "@language": "en",
+          "@value": "Employment"
         }
       ],
       "rdfs:subClassOf": [
         {
-          "@id": "_:ub267bL995C29"
+          "@id": "_:ub50bL981C29"
         },
         {
-          "@id": "_:ub267bL1000C29"
+          "@id": "_:ub50bL986C29"
         },
         {
-          "@id": "l0:Event"
+          "@id": "roapit:TimeIndexedRole"
         },
         {
-          "@id": "_:ub267bL990C29"
+          "@id": "_:ub50bL991C29"
         },
         {
-          "@id": "_:ub267bL986C29"
+          "@id": "_:ub50bL996C29"
         }
       ]
     },
@@ -3757,24 +3604,59 @@
       }
     },
     {
-      "@id": "_:ub267bL1186C31",
-      "@type": "owl:Restriction",
-      "owl:cardinality": {
-        "@type": "xsd:nonNegativeInteger",
-        "@value": "1"
+      "@id": "http://dati.gov.it/onto/covapit#follows",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:TransitiveProperty"
+      ],
+      "owl:versionInfo": [
+        {
+          "@language": "en",
+          "@value": "stable"
+        },
+        {
+          "@language": "it",
+          "@value": "stabile"
+        }
+      ],
+      "rdfs:comment": [
+        {
+          "@language": "en",
+          "@value": "This property models an ordered sequence of organizations that precede and succeed each other.. In particular this property represents the organization that follows another."
+        },
+        {
+          "@language": "it",
+          "@value": "Questa proprietà modella una sequenza ordinata di organizzazioni that precedono o si susseguono le un con le altre.  Nello specifico questa proprietà rappresenta un'organizzazione che segue un'altra."
+        }
+      ],
+      "rdfs:domain": {
+        "@id": "http://dati.gov.it/onto/covapit#Organization"
       },
-      "owl:onProperty": {
-        "@id": "http://dati.gov.it/onto/covapit#taxCode"
+      "rdfs:isDefinedBy": {
+        "@id": "http://dati.gov.it/onto/covapit"
+      },
+      "rdfs:label": [
+        {
+          "@language": "en",
+          "@value": "follows"
+        },
+        {
+          "@language": "it",
+          "@value": "segue"
+        }
+      ],
+      "rdfs:range": {
+        "@id": "http://dati.gov.it/onto/covapit#Organization"
       }
     },
     {
-      "@id": "_:ub267bL950C30",
+      "@id": "_:ub50bL937C30",
       "@type": "owl:Restriction",
-      "owl:onProperty": {
-        "@id": "l0:description"
+      "owl:allValuesFrom": {
+        "@id": "http://dati.gov.it/onto/covapit#Organization"
       },
-      "owl:someValuesFrom": {
-        "@id": "rdfs:Literal"
+      "owl:onProperty": {
+        "@id": "http://dati.gov.it/onto/covapit#orginalOrganization"
       }
     },
     {
@@ -3782,12 +3664,12 @@
       "@type": "owl:Class",
       "owl:versionInfo": [
         {
-          "@language": "it",
-          "@value": "provvisoria"
-        },
-        {
           "@language": "en",
           "@value": "unstable"
+        },
+        {
+          "@language": "it",
+          "@value": "provvisoria"
         }
       ],
       "prov:wasDerivedFrom": {
@@ -3795,12 +3677,12 @@
       },
       "rdfs:comment": [
         {
-          "@language": "en",
-          "@value": "This class represents the category of the public organization. The instances of this class can be modelled as concept of the skos standard of a controlled vocabulary."
-        },
-        {
           "@language": "it",
           "@value": "Questa classe rappresenta la cateogoria dell'organizzazione pubblica. Le istanze di questa classe possono essere modellate come concetti dello standard skos di un vocabolario controllato. Esempi includono: \"Agenzie ed Enti per il Turismo\", \"Città Metropolitane\", \"Presidenza del Consiglio, Minsiteri e Avvocatura dello Stato\"."
+        },
+        {
+          "@language": "en",
+          "@value": "This class represents the category of the public organization. The instances of this class can be modelled as concept of the skos standard of a controlled vocabulary."
         }
       ],
       "rdfs:isDefinedBy": {
@@ -3821,6 +3703,20 @@
       }
     },
     {
+      "@id": "_:ub50bL1447C34",
+      "@type": "owl:Restriction",
+      "owl:onDataRange": {
+        "@id": "xsd:dateTime"
+      },
+      "owl:onProperty": {
+        "@id": "http://dati.gov.it/onto/covapit#eInvoiceServiceStartingDate"
+      },
+      "owl:qualifiedCardinality": {
+        "@type": "xsd:nonNegativeInteger",
+        "@value": "1"
+      }
+    },
+    {
       "@id": "http://dati.gov.it/onto/covapit#Office",
       "@type": "owl:Class",
       "owl:versionInfo": [
@@ -3835,12 +3731,12 @@
       ],
       "rdfs:comment": [
         {
-          "@language": "it",
-          "@value": "Questa classe rappresenta un ufficio dell'organizzazione (nell'ambito delle organizzazioni pubbliche è anche detto unità organizzativa)."
-        },
-        {
           "@language": "en",
           "@value": "This class represents a specific office of an organization. In the public organization sector it can be also known as Organizational Unit."
+        },
+        {
+          "@language": "it",
+          "@value": "Questa classe rappresenta un ufficio dell'organizzazione (nell'ambito delle organizzazioni pubbliche è anche detto unità organizzativa)."
         }
       ],
       "rdfs:isDefinedBy": {
@@ -3861,15 +3757,26 @@
           "@id": "http://dati.gov.it/onto/covapit#SupportUnit"
         },
         {
-          "@id": "_:ub267bL1116C25"
+          "@id": "_:ub50bL1107C25"
         },
         {
-          "@id": "_:ub267bL1106C25"
+          "@id": "_:ub50bL1102C25"
         },
         {
-          "@id": "_:ub267bL1111C25"
+          "@id": "_:ub50bL1112C25"
         }
       ]
+    },
+    {
+      "@id": "_:ub50bL1452C34",
+      "@type": "owl:Restriction",
+      "owl:cardinality": {
+        "@type": "xsd:nonNegativeInteger",
+        "@value": "1"
+      },
+      "owl:onProperty": {
+        "@id": "http://dati.gov.it/onto/covapit#taxCodeEInvoiceService"
+      }
     },
     {
       "@id": "l0:Location",
@@ -3922,30 +3829,26 @@
       }
     },
     {
-      "@id": "prov:wasInfluencedBy",
-      "@type": "owl:AnnotationProperty"
-    },
-    {
       "@id": "http://dati.gov.it/onto/covapit#Scission",
       "@type": "owl:Class",
       "owl:versionInfo": [
         {
-          "@language": "en",
-          "@value": "stable"
-        },
-        {
           "@language": "it",
           "@value": "stabile"
+        },
+        {
+          "@language": "en",
+          "@value": "stable"
         }
       ],
       "rdfs:comment": [
         {
-          "@language": "it",
-          "@value": "Questa classe rappresenta una scissione per un'organizzaizone."
-        },
-        {
           "@language": "en",
           "@value": "This class represents a scission event for an organization."
+        },
+        {
+          "@language": "it",
+          "@value": "Questa classe rappresenta una scissione per un'organizzaizone."
         }
       ],
       "rdfs:isDefinedBy": {
@@ -3953,12 +3856,12 @@
       },
       "rdfs:label": [
         {
-          "@language": "it",
-          "@value": "Scissione"
-        },
-        {
           "@language": "en",
           "@value": "Scission"
+        },
+        {
+          "@language": "it",
+          "@value": "Scissione"
         }
       ],
       "rdfs:subClassOf": {
@@ -3996,12 +3899,12 @@
       },
       "rdfs:label": [
         {
-          "@language": "it",
-          "@value": "ha tipo di attività"
-        },
-        {
           "@language": "en",
           "@value": "has activity type"
+        },
+        {
+          "@language": "it",
+          "@value": "ha tipo di attività"
         }
       ],
       "rdfs:range": {
@@ -4009,49 +3912,17 @@
       }
     },
     {
-      "@id": "http://dati.gov.it/onto/covapit#changedBy",
-      "@type": "owl:ObjectProperty",
-      "owl:inverseOf": {
-        "@id": "http://dati.gov.it/onto/covapit#orginalOrganization"
-      },
-      "owl:versionInfo": [
-        {
-          "@language": "en",
-          "@value": "stable"
-        },
-        {
-          "@language": "it",
-          "@value": "stabile"
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@language": "en",
-          "@value": "This property is the inverse of orginal organization and it is used to link the organization with the change event."
-        },
-        {
-          "@language": "it",
-          "@value": "Questa proprietà è l'inversa di organizzazione d'origine e collega un'organizzazione a un evento di cambiamento."
-        }
-      ],
-      "rdfs:domain": {
+      "@id": "_:ub50bL1243C32",
+      "@type": "owl:Restriction",
+      "owl:onClass": {
         "@id": "http://dati.gov.it/onto/covapit#Organization"
       },
-      "rdfs:isDefinedBy": {
-        "@id": "http://dati.gov.it/onto/covapit"
+      "owl:onProperty": {
+        "@id": "http://dati.gov.it/onto/covapit#participating"
       },
-      "rdfs:label": [
-        {
-          "@language": "it",
-          "@value": "cambiata da"
-        },
-        {
-          "@language": "en",
-          "@value": "changed by"
-        }
-      ],
-      "rdfs:range": {
-        "@id": "http://dati.gov.it/onto/covapit#ChangeEvent"
+      "owl:qualifiedCardinality": {
+        "@type": "xsd:nonNegativeInteger",
+        "@value": "1"
       }
     },
     {
@@ -4069,12 +3940,12 @@
       ],
       "rdfs:comment": [
         {
-          "@language": "en",
-          "@value": "This property links the organization to the Image object representing the logo of the organization."
-        },
-        {
           "@language": "it",
           "@value": "Questa proprietà collega un'organizzazione a un oggetto immagine e rappresenta il logo dell'organizzazione."
+        },
+        {
+          "@language": "en",
+          "@value": "This property links the organization to the Image object representing the logo of the organization."
         }
       ],
       "rdfs:domain": {
@@ -4101,33 +3972,113 @@
       }
     },
     {
-      "@id": "http://dati.gov.it/onto/covapit#IPAcode",
-      "@type": [
-        "owl:DatatypeProperty",
-        "owl:FunctionalProperty"
-      ],
+      "@id": "_:ub50bL1131C31",
+      "@type": "owl:Restriction",
+      "owl:onProperty": {
+        "@id": "clvapit:hasSpatialCoverage"
+      },
+      "owl:someValuesFrom": {
+        "@id": "l0:Location"
+      }
+    },
+    {
+      "@id": "http://dati.gov.it/onto/covapit#PrivateOrganization",
+      "@type": "owl:Class",
+      "owl:disjointWith": {
+        "@id": "http://dati.gov.it/onto/covapit#PublicOrganization"
+      },
       "owl:versionInfo": [
-        {
-          "@language": "it",
-          "@value": "stabile"
-        },
         {
           "@language": "en",
           "@value": "stable"
+        },
+        {
+          "@language": "it",
+          "@value": "stabile"
+        }
+      ],
+      "prov:wasInfluencedBy": {
+        "@id": "http://www.w3.org/ns/regorg#RegisteredOrganization"
+      },
+      "rdfs:comment": [
+        {
+          "@language": "it",
+          "@value": "Questa classe rappresenta un'organizzazione privata ufficialmente registrata presso un registro nazionale (registro imprese)."
+        },
+        {
+          "@language": "en",
+          "@value": "This class represents a private organization as registered in a national public registry."
+        }
+      ],
+      "rdfs:isDefinedBy": {
+        "@id": "http://dati.gov.it/onto/covapit"
+      },
+      "rdfs:label": [
+        {
+          "@language": "it",
+          "@value": "Organizzazione Privata"
+        },
+        {
+          "@language": "en",
+          "@value": "Private Organization"
+        }
+      ],
+      "rdfs:subClassOf": [
+        {
+          "@id": "_:ub50bL1298C38"
+        },
+        {
+          "@id": "http://dati.gov.it/onto/covapit#Organization"
+        },
+        {
+          "@id": "_:ub50bL1302C38"
+        },
+        {
+          "@id": "_:ub50bL1294C38"
+        },
+        {
+          "@id": "_:ub50bL1289C38"
+        },
+        {
+          "@id": "_:ub50bL1306C38"
+        }
+      ]
+    },
+    {
+      "@id": "roapit:withRole",
+      "@type": "owl:ObjectProperty",
+      "rdfs:isDefinedBy": {
+        "@id": "roapit:"
+      }
+    },
+    {
+      "@id": "http://dati.gov.it/onto/covapit#hasSupportUnit",
+      "@type": "owl:ObjectProperty",
+      "owl:inverseOf": {
+        "@id": "http://dati.gov.it/onto/covapit#isSupportUnitOf"
+      },
+      "owl:versionInfo": [
+        {
+          "@language": "en",
+          "@value": "stable"
+        },
+        {
+          "@language": "it",
+          "@value": "stabile"
         }
       ],
       "rdfs:comment": [
         {
           "@language": "it",
-          "@value": "Questa proprietà rappresenta il codice IPA, il codice univoco, assegnato all'organizzazione pubblica in fase di accreditamento presso l'indice nazionale PA (IPA). Il Codice IPA viene comunicato tramite e-mail dal Gestore dell'IPA al referente dell'Ente."
+          "@value": "Questa proprietà lega un'organizzazione alle sue unità di supporto (o divisioni o dipartimenti) che possono essere areee organizzative omogenee o uffici"
         },
         {
           "@language": "en",
-          "@value": "This property represents the unique identifier of a public organization assigned when it is registered in the Italian national registry of Public Administrations (IPA)."
+          "@value": "This property links an organization to its support units (or dividision or departments) that can be homogeneous organizational areas or offices."
         }
       ],
       "rdfs:domain": {
-        "@id": "http://dati.gov.it/onto/covapit#PublicOrganization"
+        "@id": "http://dati.gov.it/onto/covapit#Organization"
       },
       "rdfs:isDefinedBy": {
         "@id": "http://dati.gov.it/onto/covapit"
@@ -4135,29 +4086,15 @@
       "rdfs:label": [
         {
           "@language": "it",
-          "@value": "codice IPA (codice Indice PA)"
+          "@value": "ha unità di supperto (dipartimento)"
         },
         {
           "@language": "en",
-          "@value": "IPA code"
+          "@value": "has support unit"
         }
       ],
       "rdfs:range": {
-        "@id": "rdfs:Literal"
-      },
-      "rdfs:subPropertyOf": {
-        "@id": "l0:identifier"
-      }
-    },
-    {
-      "@id": "_:ub267bL920C31",
-      "@type": "owl:Restriction",
-      "owl:cardinality": {
-        "@type": "xsd:nonNegativeInteger",
-        "@value": "1"
-      },
-      "owl:onProperty": {
-        "@id": "http://dati.gov.it/onto/covapit#yearOfReference"
+        "@id": "http://dati.gov.it/onto/covapit#SupportUnit"
       }
     },
     {
@@ -4165,22 +4102,22 @@
       "@type": "owl:ObjectProperty",
       "owl:versionInfo": [
         {
-          "@language": "en",
-          "@value": "unstable"
-        },
-        {
           "@language": "it",
           "@value": "provvisoria"
+        },
+        {
+          "@language": "en",
+          "@value": "unstable"
         }
       ],
       "rdfs:comment": [
         {
-          "@language": "it",
-          "@value": "Questa proprietà collega la situazione partecipazione di un'organizzazione all0organizzazione. In particolare, questa proprietà modella il fatto che un'organizzazione è partecipata dall'altra."
-        },
-        {
           "@language": "en",
           "@value": "This property links the situation of participation of an organization to an organization. Specifically this property models the fact that an organization is participated by another one."
+        },
+        {
+          "@language": "it",
+          "@value": "Questa proprietà collega la situazione partecipazione di un'organizzazione all0organizzazione. In particolare, questa proprietà modella il fatto che un'organizzazione è partecipata dall'altra."
         }
       ],
       "rdfs:domain": {
@@ -4191,12 +4128,12 @@
       },
       "rdfs:label": [
         {
-          "@language": "it",
-          "@value": "partecipata"
-        },
-        {
           "@language": "en",
           "@value": "participated"
+        },
+        {
+          "@language": "it",
+          "@value": "partecipata"
         }
       ],
       "rdfs:range": {

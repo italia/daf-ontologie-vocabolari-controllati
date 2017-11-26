@@ -2,6 +2,7 @@
 <rdf:RDF xmlns="http://dati.gov.it/onto/covapit#"
      xml:base="http://dati.gov.it/onto/covapit"
      xmlns:l0="http://dati.gov.it/onto/l0/"
+     xmlns:roapit="http://dati.gov.it/onto/roapit/"
      xmlns:owl="http://www.w3.org/2002/07/owl#"
      xmlns:clvapit="http://dati.gov.it/onto/clvapit#"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
@@ -18,6 +19,7 @@
         <owl:imports rdf:resource="http://dati.gov.it/onto/tiapit/"/>
         <owl:imports rdf:resource="http://dati.gov.it/onto/clvapit#"/>
         <owl:imports rdf:resource="http://dati.gov.it/onto/l0/"/>
+        <owl:imports rdf:resource="http://dati.gov.it/onto/roapit/"/>
         <owl:imports rdf:resource="http://dati.gov.it/onto/smapit/"/>
         <rdfs:comment xml:lang="en">Questa è l&apos;ontologia del profilo applicativo italiano sulle organizzazioni (pubbliche e private)</rdfs:comment>
         <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2017-07-20</dct:issued>
@@ -63,6 +65,23 @@
     <!-- http://www.w3.org/ns/prov#wasInfluencedBy -->
 
     <owl:AnnotationProperty rdf:about="http://www.w3.org/ns/prov#wasInfluencedBy"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Datatypes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.w3.org/2001/XMLSchema#gYear -->
+
+    <rdfs:Datatype rdf:about="http://www.w3.org/2001/XMLSchema#gYear"/>
     
 
 
@@ -476,19 +495,10 @@
     
 
 
-    <!-- http://dati.gov.it/onto/covapit#withRole -->
+    <!-- http://dati.gov.it/onto/roapit/withRole -->
 
-    <owl:ObjectProperty rdf:about="http://dati.gov.it/onto/covapit#withRole">
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:domain rdf:resource="http://dati.gov.it/onto/covapit#Employment"/>
-        <rdfs:range rdf:resource="http://dati.gov.it/onto/covapit#Role"/>
-        <rdfs:comment xml:lang="it">Questa proprietà lega la situazione Appartenenza al relativo Ruolo. E&apos; utilizzata per specificare il ruolo di un membro in una situazione di appartenenza dello stesso a un&apos;organizzazione.</rdfs:comment>
-        <rdfs:comment xml:lang="en">This property links the situation membership with the related Role.</rdfs:comment>
-        <rdfs:isDefinedBy rdf:resource="http://dati.gov.it/onto/covapit"/>
-        <rdfs:label xml:lang="it">con ruolo</rdfs:label>
-        <rdfs:label xml:lang="en">with role</rdfs:label>
-        <owl:versionInfo xml:lang="it">stabile</owl:versionInfo>
-        <owl:versionInfo xml:lang="en">stable</owl:versionInfo>
+    <owl:ObjectProperty rdf:about="http://dati.gov.it/onto/roapit/withRole">
+        <rdfs:isDefinedBy rdf:resource="http://dati.gov.it/onto/roapit/"/>
     </owl:ObjectProperty>
     
 
@@ -504,9 +514,15 @@
     <!-- http://dati.gov.it/onto/smapit/hasOnlineContactPoint -->
 
     <owl:ObjectProperty rdf:about="http://dati.gov.it/onto/smapit/hasOnlineContactPoint">
-        <rdfs:domain rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
-        <rdfs:range rdf:resource="http://dati.gov.it/onto/smapit/OnlineContactPoint"/>
         <rdfs:isDefinedBy rdf:resource="http://dati.gov.it/onto/smapit/"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://dati.gov.it/onto/tiapit/atTime -->
+
+    <owl:ObjectProperty rdf:about="http://dati.gov.it/onto/tiapit/atTime">
+        <rdfs:comment rdf:resource="http://dati.gov.it/onto/tiapit/"/>
     </owl:ObjectProperty>
     
 
@@ -596,6 +612,7 @@
     <!-- http://dati.gov.it/onto/covapit#accreditationDate -->
 
     <owl:DatatypeProperty rdf:about="http://dati.gov.it/onto/covapit#accreditationDate">
+        <rdfs:subPropertyOf rdf:resource="http://dati.gov.it/onto/tiapit/date"/>
         <rdfs:domain rdf:resource="http://dati.gov.it/onto/covapit#Organization"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
         <rdfs:comment xml:lang="it">Questa proprietà rappresenta la data di accreditamento dell&apos;organizzazione nel pubblico registro (e.g., in &quot;IPA&quot; nel caso di pubbliche amministrazioni, in &quot;Registro Imprese&quot; nel caso di organizzazioni private).</rdfs:comment>
@@ -627,9 +644,9 @@
     
 
 
-    <!-- http://dati.gov.it/onto/covapit#altLabel -->
+    <!-- http://dati.gov.it/onto/covapit#altName -->
 
-    <owl:DatatypeProperty rdf:about="http://dati.gov.it/onto/covapit#altLabel">
+    <owl:DatatypeProperty rdf:about="http://dati.gov.it/onto/covapit#altName">
         <rdfs:subPropertyOf rdf:resource="http://dati.gov.it/onto/l0/name"/>
         <rdfs:domain rdf:resource="http://dati.gov.it/onto/covapit#Organization"/>
         <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
@@ -663,6 +680,7 @@
     <!-- http://dati.gov.it/onto/covapit#eInvoiceServiceStartingDate -->
 
     <owl:DatatypeProperty rdf:about="http://dati.gov.it/onto/covapit#eInvoiceServiceStartingDate">
+        <rdfs:subPropertyOf rdf:resource="http://dati.gov.it/onto/tiapit/date"/>
         <rdfs:domain rdf:resource="http://dati.gov.it/onto/covapit#eInvoiceService"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
         <rdfs:comment xml:lang="it">Questa proprietà è utilizzata per modellare la data di avvio del servizio di fatturazione elettronica.</rdfs:comment>
@@ -679,6 +697,7 @@
     <!-- http://dati.gov.it/onto/covapit#foundationDate -->
 
     <owl:DatatypeProperty rdf:about="http://dati.gov.it/onto/covapit#foundationDate">
+        <rdfs:subPropertyOf rdf:resource="http://dati.gov.it/onto/tiapit/date"/>
         <rdfs:domain rdf:resource="http://dati.gov.it/onto/covapit#PrivateOrganization"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
         <rdfs:comment xml:lang="it">Questa proprietà rappresenta la data di costituzione dell&apos;organizzazione privata (impresa).</rdfs:comment>
@@ -686,6 +705,23 @@
         <rdfs:isDefinedBy rdf:resource="http://dati.gov.it/onto/covapit"/>
         <rdfs:label xml:lang="it">data di costituzione</rdfs:label>
         <rdfs:label xml:lang="en">foundation  date</rdfs:label>
+        <owl:versionInfo xml:lang="it">stabile</owl:versionInfo>
+        <owl:versionInfo xml:lang="en">stable</owl:versionInfo>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://dati.gov.it/onto/covapit#legalName -->
+
+    <owl:DatatypeProperty rdf:about="http://dati.gov.it/onto/covapit#legalName">
+        <rdfs:subPropertyOf rdf:resource="http://dati.gov.it/onto/l0/name"/>
+        <rdfs:domain rdf:resource="http://dati.gov.it/onto/covapit#Organization"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+        <rdfs:comment xml:lang="it">Questa proprietà rappresenta il nome primario o il nome legale dell&apos;organizzazione oppure può essere utilizzata per rappresentare l&apos;etichetta primaria per il ruolo.</rdfs:comment>
+        <rdfs:comment xml:lang="en">This is the primary or legal name for the organization or it can be used to indicate the primary label of a role.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://dati.gov.it/onto/covapit"/>
+        <rdfs:label xml:lang="en">legal name</rdfs:label>
+        <rdfs:label xml:lang="it">nome legale</rdfs:label>
         <owl:versionInfo xml:lang="it">stabile</owl:versionInfo>
         <owl:versionInfo xml:lang="en">stable</owl:versionInfo>
     </owl:DatatypeProperty>
@@ -704,22 +740,6 @@
         <rdfs:label xml:lang="en">main function</rdfs:label>
         <owl:versionInfo xml:lang="it">stabile</owl:versionInfo>
         <owl:versionInfo xml:lang="en">stable</owl:versionInfo>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://dati.gov.it/onto/covapit#modified -->
-
-    <owl:DatatypeProperty rdf:about="http://dati.gov.it/onto/covapit#modified">
-        <rdfs:domain rdf:resource="http://dati.gov.it/onto/covapit#Organization"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
-        <rdfs:comment xml:lang="it">Questa proprietà rappresenta la data di ultima modifica delle informazioni sull&apos;organizzazione.</rdfs:comment>
-        <rdfs:comment xml:lang="en">This property represents the date in which the organization information is changed.</rdfs:comment>
-        <rdfs:isDefinedBy rdf:resource="http://dati.gov.it/onto/covapit"/>
-        <owl:versionInfo xml:lang="it">data di ultimo aggiornamento</owl:versionInfo>
-        <owl:versionInfo xml:lang="en">last modified</owl:versionInfo>
-        <owl:versionInfo xml:lang="it">provvisoria</owl:versionInfo>
-        <owl:versionInfo xml:lang="en">unstable</owl:versionInfo>
     </owl:DatatypeProperty>
     
 
@@ -758,30 +778,6 @@
     
 
 
-    <!-- http://dati.gov.it/onto/covapit#prefLabel -->
-
-    <owl:DatatypeProperty rdf:about="http://dati.gov.it/onto/covapit#prefLabel">
-        <rdfs:subPropertyOf rdf:resource="http://dati.gov.it/onto/l0/name"/>
-        <rdfs:domain>
-            <owl:Class>
-                <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="http://dati.gov.it/onto/covapit#Organization"/>
-                    <rdf:Description rdf:about="http://dati.gov.it/onto/covapit#Role"/>
-                </owl:unionOf>
-            </owl:Class>
-        </rdfs:domain>
-        <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
-        <rdfs:comment xml:lang="it">Questa proprietà rappresenta il nome primario o il nome legale dell&apos;organizzazione oppure può essere utilizzata per rappresentare l&apos;etichetta primaria per il ruolo.</rdfs:comment>
-        <rdfs:comment xml:lang="en">This is the primary or legal name for the organization or it can be used to indicate the primary label of a role.</rdfs:comment>
-        <rdfs:isDefinedBy rdf:resource="http://dati.gov.it/onto/covapit"/>
-        <rdfs:label xml:lang="it">nome legale</rdfs:label>
-        <rdfs:label xml:lang="en">preferred label</rdfs:label>
-        <owl:versionInfo xml:lang="it">stabile</owl:versionInfo>
-        <owl:versionInfo xml:lang="en">stable</owl:versionInfo>
-    </owl:DatatypeProperty>
-    
-
-
     <!-- http://dati.gov.it/onto/covapit#remuneration -->
 
     <owl:DatatypeProperty rdf:about="http://dati.gov.it/onto/covapit#remuneration">
@@ -801,6 +797,7 @@
     <!-- http://dati.gov.it/onto/covapit#startingActivityDate -->
 
     <owl:DatatypeProperty rdf:about="http://dati.gov.it/onto/covapit#startingActivityDate">
+        <rdfs:subPropertyOf rdf:resource="http://dati.gov.it/onto/tiapit/date"/>
         <rdfs:domain rdf:resource="http://dati.gov.it/onto/covapit#PrivateOrganization"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
         <rdfs:comment xml:lang="it">Questa proprietà rappresenta la data di inizio di attività per un&apos;organizzazione privata (impresa).</rdfs:comment>
@@ -853,6 +850,7 @@
     <!-- http://dati.gov.it/onto/covapit#taxCodeValidationDate -->
 
     <owl:DatatypeProperty rdf:about="http://dati.gov.it/onto/covapit#taxCodeValidationDate">
+        <rdfs:subPropertyOf rdf:resource="http://dati.gov.it/onto/tiapit/modified"/>
         <rdfs:domain rdf:resource="http://dati.gov.it/onto/covapit#eInvoiceService"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
         <rdfs:comment xml:lang="it">Questa proprietà rappresenta l&apos;utima data di validazione del codice fiscale per il servizio di fatturazione elettronica.</rdfs:comment>
@@ -902,7 +900,7 @@
 
     <owl:DatatypeProperty rdf:about="http://dati.gov.it/onto/covapit#yearOfReference">
         <rdfs:domain rdf:resource="http://dati.gov.it/onto/covapit#BalanceSheet"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#gYear"/>
         <rdfs:comment xml:lang="it">Questa proprietà rappresenta l&apos;anno di riferimento per il bilancio di un&apos;organizzazione.</rdfs:comment>
         <rdfs:comment xml:lang="en">This property represents the year of reference for an organization.</rdfs:comment>
         <rdfs:isDefinedBy rdf:resource="http://dati.gov.it/onto/covapit"/>
@@ -934,6 +932,22 @@
 
     <owl:DatatypeProperty rdf:about="http://dati.gov.it/onto/l0/name">
         <rdfs:isDefinedBy rdf:resource="http://dati.gov.it/onto/l0/"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://dati.gov.it/onto/tiapit/date -->
+
+    <owl:DatatypeProperty rdf:about="http://dati.gov.it/onto/tiapit/date">
+        <rdfs:isDefinedBy rdf:resource="htto://dati.gov.it/onto/tiapit/"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://dati.gov.it/onto/tiapit/modified -->
+
+    <owl:DatatypeProperty rdf:about="http://dati.gov.it/onto/tiapit/modified">
+        <rdfs:isDefinedBy rdf:resource="http://dati.gov.it/onto/tiapit/"/>
     </owl:DatatypeProperty>
     
 
@@ -1052,13 +1066,7 @@
     <!-- http://dati.gov.it/onto/covapit#Employment -->
 
     <owl:Class rdf:about="http://dati.gov.it/onto/covapit#Employment">
-        <rdfs:subClassOf rdf:resource="http://dati.gov.it/onto/l0/Event"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://dati.gov.it/onto/covapit#holdEmployment"/>
-                <owl:someValuesFrom rdf:resource="http://dati.gov.it/onto/covapit#Employment"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
+        <rdfs:subClassOf rdf:resource="http://dati.gov.it/onto/roapit/TimeIndexedRole"/>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://dati.gov.it/onto/covapit#employmentFor"/>
@@ -1068,9 +1076,16 @@
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://dati.gov.it/onto/covapit#withRole"/>
+                <owl:onProperty rdf:resource="http://dati.gov.it/onto/roapit/withRole"/>
                 <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onClass rdf:resource="http://dati.gov.it/onto/covapit#Role"/>
+                <owl:onClass rdf:resource="http://dati.gov.it/onto/roapit/Role"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://dati.gov.it/onto/tiapit/atTime"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="http://dati.gov.it/onto/tiapit/TimeInterval"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -1226,6 +1241,12 @@
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
+                <owl:onProperty rdf:resource="http://dati.gov.it/onto/covapit#holdEmployment"/>
+                <owl:someValuesFrom rdf:resource="http://dati.gov.it/onto/covapit#Employment"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
                 <owl:onProperty rdf:resource="http://dati.gov.it/onto/covapit#changedBy"/>
                 <owl:allValuesFrom rdf:resource="http://dati.gov.it/onto/covapit#ChangeEvent"/>
             </owl:Restriction>
@@ -1271,7 +1292,7 @@
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://dati.gov.it/onto/covapit#prefLabel"/>
+                <owl:onProperty rdf:resource="http://dati.gov.it/onto/covapit#legalName"/>
                 <owl:someValuesFrom rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -1308,7 +1329,7 @@
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://dati.gov.it/onto/covapit#altLabel"/>
+                <owl:onProperty rdf:resource="http://dati.gov.it/onto/covapit#altName"/>
                 <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -1534,27 +1555,6 @@ This class is derived from the Core Public Organization Vocabulary.</rdfs:commen
     
 
 
-    <!-- http://dati.gov.it/onto/covapit#Role -->
-
-    <owl:Class rdf:about="http://dati.gov.it/onto/covapit#Role">
-        <rdfs:subClassOf rdf:resource="http://dati.gov.it/onto/l0/Object"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://dati.gov.it/onto/covapit#prefLabel"/>
-                <owl:someValuesFrom rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:comment xml:lang="it">Questa classe rappresenta il ruolo nella relazione ennaria con l&apos;Agente, l&apos;Organizzazione, e la situazione di Appartenenza. Essa è utilizzata per modellare il Ruolo di un membro dell&apos;organizzazione in un certo intervallo temporale.</rdfs:comment>
-        <rdfs:comment xml:lang="en">This class represents the Role in the n-ary relationship involving the Employment, the Agent and the Organization. It is used to model the Role of a member of the organization in a certain time interval.</rdfs:comment>
-        <rdfs:isDefinedBy rdf:resource="http://dati.gov.it/onto/covapit"/>
-        <rdfs:label xml:lang="en">Role</rdfs:label>
-        <rdfs:label xml:lang="it">Ruolo</rdfs:label>
-        <owl:versionInfo xml:lang="it">provvisoria</owl:versionInfo>
-        <owl:versionInfo xml:lang="en">unstable</owl:versionInfo>
-    </owl:Class>
-    
-
-
     <!-- http://dati.gov.it/onto/covapit#Scission -->
 
     <owl:Class rdf:about="http://dati.gov.it/onto/covapit#Scission">
@@ -1676,6 +1676,24 @@ This class is derived from the Core Public Organization Vocabulary.</rdfs:commen
     
 
 
+    <!-- http://dati.gov.it/onto/roapit/Role -->
+
+    <owl:Class rdf:about="http://dati.gov.it/onto/roapit/Role">
+        <rdfs:comment xml:lang="it">Questa classe è definita in http://dati.gov.it/onto/roapit/ e, in questa ontologia, rappresenta il ruolo nella relazione ennaria con l&apos;Agente, l&apos;Organizzazione, e la situazione di Appartenenza. Essa è utilizzata per modellare il Ruolo di un membro dell&apos;organizzazione in un certo intervallo temporale.</rdfs:comment>
+        <rdfs:comment xml:lang="en">This class is defined in http://dati.gov.it/onto/roapit/ and, in this ontology,  is used in the n-ary relationship involving the Employment, the Agent and the Organization. It is used to model the Role of a member of the organization in a certain time interval.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://dati.gov.it/onto/roapit/"/>
+    </owl:Class>
+    
+
+
+    <!-- http://dati.gov.it/onto/roapit/TimeIndexedRole -->
+
+    <owl:Class rdf:about="http://dati.gov.it/onto/roapit/TimeIndexedRole">
+        <rdfs:isDefinedBy rdf:resource="http://dati.gov.it/onto/roapit/"/>
+    </owl:Class>
+    
+
+
     <!-- http://dati.gov.it/onto/smapit/Image -->
 
     <owl:Class rdf:about="http://dati.gov.it/onto/smapit/Image">
@@ -1688,6 +1706,14 @@ This class is derived from the Core Public Organization Vocabulary.</rdfs:commen
 
     <owl:Class rdf:about="http://dati.gov.it/onto/smapit/OnlineContactPoint">
         <rdfs:isDefinedBy rdf:resource="http://dati.gov.it/onto/smapit/"/>
+    </owl:Class>
+    
+
+
+    <!-- http://dati.gov.it/onto/tiapit/TimeInterval -->
+
+    <owl:Class rdf:about="http://dati.gov.it/onto/tiapit/TimeInterval">
+        <rdfs:isDefinedBy rdf:resource="http://dati.gov.it/onto/tiapit/"/>
     </owl:Class>
     
 

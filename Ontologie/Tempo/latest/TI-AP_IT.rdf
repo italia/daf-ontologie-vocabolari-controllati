@@ -11,22 +11,22 @@
      xmlns:muapit="http://dati.gov.it/onto/muapit/"
      xmlns:dc="http://purl.org/dc/elements/1.1/">
     <owl:Ontology rdf:about="http://dati.gov.it/onto/tiapit">
-        <owl:versionIRI rdf:resource="http://dati.gov.it/onto/tiapit/0.4"/>
+        <owl:versionIRI rdf:resource="http://dati.gov.it/onto/tiapit/"/>
+        <owl:imports rdf:resource="http://dati.gov.it/onto/muapit/"/>
         <owl:imports rdf:resource="http://dati.gov.it/onto/l0/"/>
-        <owl:imports rdf:resource="http://dati.gov.it/onto/muapit/0.1"/>
-        <dct:modified>2017-11-21</dct:modified>
         <dc:creator xml:lang="en">Institute of Cognitive Sciences and Technologies of the Italian Research Council (CNR) - Semantic Technology Laboratory (STLab)</dc:creator>
         <rdfs:comment xml:lang="en">This is the ontology of the Italian application profile for time</rdfs:comment>
         <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2017-09-25</dct:issued>
+        <rdfs:label xml:lang="it">Ontologia del tempo - profilo applicativo italiano</rdfs:label>
         <dc:creator xml:lang="en">Italian Digital Transformation Team</dc:creator>
+        <dct:modified>2017-11-26</dct:modified>
         <owl:versionInfo xml:lang="it">Versione 0.4 - 21 Novembre 2017</owl:versionInfo>
         <rdfs:isDefinedBy rdf:resource="http://dati.gov.it/onto/tiapit/"/>
         <dct:license rdf:resource="https://creativecommons.org/licenses/by/4.0/"/>
         <rdfs:comment xml:lang="it">Questa è l&apos;ontologia del profilo applicativo italiano sul tempo</rdfs:comment>
+        <rdfs:label xml:lang="en">Time ontology - Italian Application Profile</rdfs:label>
         <owl:versionInfo xml:lang="en">Version 0.4 - 21 November 2017</owl:versionInfo>
         <dc:creator xml:lang="en">Agency for Digital Italy - AgID</dc:creator>
-        <rdfs:label xml:lang="en">Time ontology</rdfs:label>
-        <rdfs:label xml:lang="it">Ontologia del tempo</rdfs:label>
     </owl:Ontology>
     
 
@@ -59,6 +59,12 @@
     
 
 
+    <!-- http://www.w3.org/2001/XMLSchema#date -->
+
+    <rdfs:Datatype rdf:about="http://www.w3.org/2001/XMLSchema#date"/>
+    
+
+
     <!-- http://www.w3.org/2001/XMLSchema#duration -->
 
     <rdfs:Datatype rdf:about="http://www.w3.org/2001/XMLSchema#duration"/>
@@ -80,6 +86,12 @@
     <!-- http://www.w3.org/2001/XMLSchema#gYear -->
 
     <rdfs:Datatype rdf:about="http://www.w3.org/2001/XMLSchema#gYear"/>
+    
+
+
+    <!-- http://www.w3.org/2001/XMLSchema#time -->
+
+    <rdfs:Datatype rdf:about="http://www.w3.org/2001/XMLSchema#time"/>
     
 
 
@@ -270,6 +282,22 @@
     
 
 
+    <!-- http://dati.gov.it/onto/tiapit/date -->
+
+    <owl:DatatypeProperty rdf:about="http://dati.gov.it/onto/tiapit/date">
+        <rdfs:domain rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+        <rdfs:comment xml:lang="it">Questa proprietà rappresenta una generica data / istante di tempo</rdfs:comment>
+        <rdfs:comment xml:lang="en">This property represents a generic date / time instant.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://dati.gov.it/onto/tiapit/"/>
+        <rdfs:label xml:lang="it">data</rdfs:label>
+        <rdfs:label xml:lang="en">date</rdfs:label>
+        <owl:versionInfo xml:lang="it">provvisoria</owl:versionInfo>
+        <owl:versionInfo xml:lang="en">unstable</owl:versionInfo>
+    </owl:DatatypeProperty>
+    
+
+
     <!-- http://dati.gov.it/onto/tiapit/day -->
 
     <owl:DatatypeProperty rdf:about="http://dati.gov.it/onto/tiapit/day">
@@ -314,6 +342,54 @@
     
 
 
+    <!-- http://dati.gov.it/onto/tiapit/issued -->
+
+    <owl:DatatypeProperty rdf:about="http://dati.gov.it/onto/tiapit/issued">
+        <rdfs:domain rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <rdfs:range>
+            <rdfs:Datatype>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.w3.org/2001/XMLSchema#date"/>
+                    <rdf:Description rdf:about="http://www.w3.org/2001/XMLSchema#dateTime"/>
+                    <rdf:Description rdf:about="http://www.w3.org/2001/XMLSchema#time"/>
+                </owl:unionOf>
+            </rdfs:Datatype>
+        </rdfs:range>
+        <rdfs:comment xml:lang="it">La proprietà rappresenta l&apos;istante di tempo che può coincidere con un tempo di generazione o con la data di inizio dell&apos;intervallo di tempo.</rdfs:comment>
+        <rdfs:comment xml:lang="en">This property represents the istant of time that can coincide with a generation time or the startTime of an interval.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://dati.gov.it/onto/tiapit/"/>
+        <rdfs:label xml:lang="it">istante di tempo (generazione)</rdfs:label>
+        <rdfs:label xml:lang="en">time of issuance</rdfs:label>
+        <owl:versionInfo xml:lang="it">stabile</owl:versionInfo>
+        <owl:versionInfo xml:lang="en">stable</owl:versionInfo>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://dati.gov.it/onto/tiapit/modified -->
+
+    <owl:DatatypeProperty rdf:about="http://dati.gov.it/onto/tiapit/modified">
+        <rdfs:domain rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <rdfs:range>
+            <rdfs:Datatype>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.w3.org/2001/XMLSchema#date"/>
+                    <rdf:Description rdf:about="http://www.w3.org/2001/XMLSchema#dateTime"/>
+                    <rdf:Description rdf:about="http://www.w3.org/2001/XMLSchema#time"/>
+                </owl:unionOf>
+            </rdfs:Datatype>
+        </rdfs:range>
+        <rdfs:comment xml:lang="it">Questa proprietà è utilizzata per modellare la data di ultima modifica (o il tempo di aggiornamento)</rdfs:comment>
+        <rdfs:comment xml:lang="en">This property  is used in order to model the update time.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://dati.gov.it/onto/tiapit/"/>
+        <rdfs:label xml:lang="it">data ultima modifica (tempo di aggiornamento)</rdfs:label>
+        <rdfs:label xml:lang="en">update time</rdfs:label>
+        <owl:versionInfo xml:lang="it">stabile</owl:versionInfo>
+        <owl:versionInfo xml:lang="en">stable</owl:versionInfo>
+    </owl:DatatypeProperty>
+    
+
+
     <!-- http://dati.gov.it/onto/tiapit/month -->
 
     <owl:DatatypeProperty rdf:about="http://dati.gov.it/onto/tiapit/month">
@@ -353,6 +429,8 @@
         <rdfs:comment xml:lang="it">Proprietà astratta per rappresentare il tempo come literal.</rdfs:comment>
         <rdfs:label xml:lang="it">tempo</rdfs:label>
         <rdfs:label xml:lang="en">time</rdfs:label>
+        <owl:versionInfo xml:lang="it">stabile</owl:versionInfo>
+        <owl:versionInfo xml:lang="en">stable</owl:versionInfo>
     </owl:DatatypeProperty>
     
 
@@ -488,6 +566,26 @@
     <owl:Class rdf:about="http://dati.gov.it/onto/tiapit/TimeInterval">
         <rdfs:subClassOf rdf:resource="http://dati.gov.it/onto/l0/Characteristic"/>
         <rdfs:subClassOf rdf:resource="http://dati.gov.it/onto/tiapit/TemporalEntity"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://dati.gov.it/onto/tiapit/date"/>
+                <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://dati.gov.it/onto/tiapit/endTime"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://dati.gov.it/onto/tiapit/startTime"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <rdfs:comment xml:lang="en">A time interval</rdfs:comment>
         <rdfs:comment xml:lang="it">Rappresentazione di intervallo di tempo.</rdfs:comment>
         <rdfs:isDefinedBy rdf:resource="http://dati.gov.it/onto/tiapit"/>

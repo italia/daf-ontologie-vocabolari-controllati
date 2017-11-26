@@ -11,6 +11,7 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix smapit: <http://dati.gov.it/onto/smapit/> .
 @prefix clvapit: <http://dati.gov.it/onto/clvapit#> .
+@prefix roapit: <http://dati.gov.it/onto/roapit/> .
 @base <http://dati.gov.it/onto/covpit> .
 
 <http://dati.gov.it/onto/covpit> rdf:type owl:Ontology ;
@@ -18,7 +19,8 @@
                                   owl:imports ti: ,
                                               clvapit: ,
                                               l0: ,
-                                              smapit: ;
+                                              smapit: ,
+                                              roapit: ;
                                   rdfs:comment "Questa è l'ontologia del profilo applicativo italiano sulle organizzazioni (pubbliche e private)"@en ;
                                   dct:issued "2017-07-20"^^xsd:date ;
                                   dc:creator "Institute of Cognitive Sciences and Technologies of the Italian Research Council (CNR) - Semantic Technology Laboratory (STLab)"@en ;
@@ -48,6 +50,14 @@ prov:wasDerivedFrom rdf:type owl:AnnotationProperty .
 
 ###  http://www.w3.org/ns/prov#wasInfluencedBy
 prov:wasInfluencedBy rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Datatypes
+#################################################################
+
+###  http://www.w3.org/2001/XMLSchema#gYear
+xsd:gYear rdf:type rdfs:Datatype .
 
 
 #################################################################
@@ -378,18 +388,9 @@ clvapit:hasSpatialCoverage rdf:type owl:ObjectProperty ;
                                    "stable"@en .
 
 
-###  http://dati.gov.it/onto/covapit#withRole
-:withRole rdf:type owl:ObjectProperty ,
-                   owl:FunctionalProperty ;
-          rdfs:domain :Employment ;
-          rdfs:range :Role ;
-          rdfs:comment "Questa proprietà lega la situazione Appartenenza al relativo Ruolo. E' utilizzata per specificare il ruolo di un membro in una situazione di appartenenza dello stesso a un'organizzazione."@it ,
-                       "This property links the situation membership with the related Role."@en ;
-          rdfs:isDefinedBy <http://dati.gov.it/onto/covapit> ;
-          rdfs:label "con ruolo"@it ,
-                     "with role"@en ;
-          owl:versionInfo "stabile"@it ,
-                          "stable"@en .
+###  http://dati.gov.it/onto/roapit/withRole
+<http://dati.gov.it/onto/roapit/withRole> rdf:type owl:ObjectProperty ;
+                                          rdfs:isDefinedBy <http://dati.gov.it/onto/roapit/> .
 
 
 ###  http://dati.gov.it/onto/smapit/hasImage
@@ -399,9 +400,12 @@ smapit:hasImage rdf:type owl:ObjectProperty ;
 
 ###  http://dati.gov.it/onto/smapit/hasOnlineContactPoint
 smapit:hasOnlineContactPoint rdf:type owl:ObjectProperty ;
-                             rdfs:domain owl:Thing ;
-                             rdfs:range smapit:OnlineContactPoint ;
                              rdfs:isDefinedBy smapit: .
+
+
+###  http://dati.gov.it/onto/tiapit/atTime
+ti:atTime rdf:type owl:ObjectProperty ;
+          rdfs:comment ti: .
 
 
 #################################################################
@@ -469,6 +473,7 @@ smapit:hasOnlineContactPoint rdf:type owl:ObjectProperty ;
 
 ###  http://dati.gov.it/onto/covapit#accreditationDate
 :accreditationDate rdf:type owl:DatatypeProperty ;
+                   rdfs:subPropertyOf ti:date ;
                    rdfs:domain :Organization ;
                    rdfs:range xsd:dateTime ;
                    rdfs:comment "Questa proprietà rappresenta la data di accreditamento dell'organizzazione nel pubblico registro (e.g., in \"IPA\" nel caso di pubbliche amministrazioni, in \"Registro Imprese\" nel caso di organizzazioni private)."@it ,
@@ -495,18 +500,18 @@ smapit:hasOnlineContactPoint rdf:type owl:ObjectProperty ;
                          "stable"@en .
 
 
-###  http://dati.gov.it/onto/covapit#altLabel
-:altLabel rdf:type owl:DatatypeProperty ;
-          rdfs:subPropertyOf l0:name ;
-          rdfs:domain :Organization ;
-          rdfs:range rdfs:Literal ;
-          rdfs:comment "This property represents an alternative name for the organization such as a colloquial name."@en ;
-          rdfs:isDefinedBy <http://dati.gov.it/onto/covapit> ;
-          rdfs:label "alternative name"@en ,
-                     "nome alternativo"@it ;
-          owl:versionInfo "Questa proprietà rappresenta un nome alternativo dell'organizzazione (e.g., un nome colloquiale)."@it ,
-                          "stabile"@it ,
-                          "stable"@en .
+###  http://dati.gov.it/onto/covapit#altName
+:altName rdf:type owl:DatatypeProperty ;
+         rdfs:subPropertyOf l0:name ;
+         rdfs:domain :Organization ;
+         rdfs:range rdfs:Literal ;
+         rdfs:comment "This property represents an alternative name for the organization such as a colloquial name."@en ;
+         rdfs:isDefinedBy <http://dati.gov.it/onto/covapit> ;
+         rdfs:label "alternative name"@en ,
+                    "nome alternativo"@it ;
+         owl:versionInfo "Questa proprietà rappresenta un nome alternativo dell'organizzazione (e.g., un nome colloquiale)."@it ,
+                         "stabile"@it ,
+                         "stable"@en .
 
 
 ###  http://dati.gov.it/onto/covapit#businessObjective
@@ -524,6 +529,7 @@ smapit:hasOnlineContactPoint rdf:type owl:ObjectProperty ;
 
 ###  http://dati.gov.it/onto/covapit#eInvoiceServiceStartingDate
 :eInvoiceServiceStartingDate rdf:type owl:DatatypeProperty ;
+                             rdfs:subPropertyOf ti:date ;
                              rdfs:domain :eInvoiceService ;
                              rdfs:range xsd:dateTime ;
                              rdfs:comment "Questa proprietà è utilizzata per modellare la data di avvio del servizio di fatturazione elettronica."@it ,
@@ -537,6 +543,7 @@ smapit:hasOnlineContactPoint rdf:type owl:ObjectProperty ;
 
 ###  http://dati.gov.it/onto/covapit#foundationDate
 :foundationDate rdf:type owl:DatatypeProperty ;
+                rdfs:subPropertyOf ti:date ;
                 rdfs:domain :PrivateOrganization ;
                 rdfs:range xsd:dateTime ;
                 rdfs:comment "Questa proprietà rappresenta la data di costituzione dell'organizzazione privata (impresa)."@it ,
@@ -546,6 +553,20 @@ smapit:hasOnlineContactPoint rdf:type owl:ObjectProperty ;
                            "foundation  date"@en ;
                 owl:versionInfo "stabile"@it ,
                                 "stable"@en .
+
+
+###  http://dati.gov.it/onto/covapit#legalName
+:legalName rdf:type owl:DatatypeProperty ;
+           rdfs:subPropertyOf l0:name ;
+           rdfs:domain :Organization ;
+           rdfs:range rdfs:Literal ;
+           rdfs:comment "Questa proprietà rappresenta il nome primario o il nome legale dell'organizzazione oppure può essere utilizzata per rappresentare l'etichetta primaria per il ruolo."@it ,
+                        "This is the primary or legal name for the organization or it can be used to indicate the primary label of a role."@en ;
+           rdfs:isDefinedBy <http://dati.gov.it/onto/covapit> ;
+           rdfs:label "legal name"@en ,
+                      "nome legale"@it ;
+           owl:versionInfo "stabile"@it ,
+                           "stable"@en .
 
 
 ###  http://dati.gov.it/onto/covapit#mainFunction
@@ -559,19 +580,6 @@ smapit:hasOnlineContactPoint rdf:type owl:ObjectProperty ;
                          "main function"@en ;
               owl:versionInfo "stabile"@it ,
                               "stable"@en .
-
-
-###  http://dati.gov.it/onto/covapit#modified
-:modified rdf:type owl:DatatypeProperty ;
-          rdfs:domain :Organization ;
-          rdfs:range xsd:dateTime ;
-          rdfs:comment "Questa proprietà rappresenta la data di ultima modifica delle informazioni sull'organizzazione."@it ,
-                       "This property represents the date in which the organization information is changed."@en ;
-          rdfs:isDefinedBy <http://dati.gov.it/onto/covapit> ;
-          owl:versionInfo "data di ultimo aggiornamento"@it ,
-                          "last modified"@en ,
-                          "provvisoria"@it ,
-                          "unstable"@en .
 
 
 ###  http://dati.gov.it/onto/covapit#officeIdentifier
@@ -602,24 +610,6 @@ smapit:hasOnlineContactPoint rdf:type owl:ObjectProperty ;
                                          "stable"@en .
 
 
-###  http://dati.gov.it/onto/covapit#prefLabel
-:prefLabel rdf:type owl:DatatypeProperty ;
-           rdfs:subPropertyOf l0:name ;
-           rdfs:domain [ rdf:type owl:Class ;
-                         owl:unionOf ( :Organization
-                                       :Role
-                                     )
-                       ] ;
-           rdfs:range rdfs:Literal ;
-           rdfs:comment "Questa proprietà rappresenta il nome primario o il nome legale dell'organizzazione oppure può essere utilizzata per rappresentare l'etichetta primaria per il ruolo."@it ,
-                        "This is the primary or legal name for the organization or it can be used to indicate the primary label of a role."@en ;
-           rdfs:isDefinedBy <http://dati.gov.it/onto/covapit> ;
-           rdfs:label "nome legale"@it ,
-                      "preferred label"@en ;
-           owl:versionInfo "stabile"@it ,
-                           "stable"@en .
-
-
 ###  http://dati.gov.it/onto/covapit#remuneration
 :remuneration rdf:type owl:DatatypeProperty ;
               rdfs:domain :Employment ;
@@ -635,6 +625,7 @@ smapit:hasOnlineContactPoint rdf:type owl:ObjectProperty ;
 
 ###  http://dati.gov.it/onto/covapit#startingActivityDate
 :startingActivityDate rdf:type owl:DatatypeProperty ;
+                      rdfs:subPropertyOf ti:date ;
                       rdfs:domain :PrivateOrganization ;
                       rdfs:range xsd:dateTime ;
                       rdfs:comment "Questa proprietà rappresenta la data di inizio di attività per un'organizzazione privata (impresa)."@it ,
@@ -678,6 +669,7 @@ smapit:hasOnlineContactPoint rdf:type owl:ObjectProperty ;
 
 ###  http://dati.gov.it/onto/covapit#taxCodeValidationDate
 :taxCodeValidationDate rdf:type owl:DatatypeProperty ;
+                       rdfs:subPropertyOf ti:modified ;
                        rdfs:domain :eInvoiceService ;
                        rdfs:range xsd:dateTime ;
                        rdfs:comment "Questa proprietà rappresenta l'utima data di validazione del codice fiscale per il servizio di fatturazione elettronica."@it ,
@@ -718,7 +710,7 @@ smapit:hasOnlineContactPoint rdf:type owl:ObjectProperty ;
 ###  http://dati.gov.it/onto/covapit#yearOfReference
 :yearOfReference rdf:type owl:DatatypeProperty ;
                  rdfs:domain :BalanceSheet ;
-                 rdfs:range rdfs:Literal ;
+                 rdfs:range xsd:gYear ;
                  rdfs:comment "Questa proprietà rappresenta l'anno di riferimento per il bilancio di un'organizzazione."@it ,
                               "This property represents the year of reference for an organization."@en ;
                  rdfs:isDefinedBy <http://dati.gov.it/onto/covapit> ;
@@ -741,6 +733,16 @@ l0:identifier rdf:type owl:DatatypeProperty ;
 ###  http://dati.gov.it/onto/l0/name
 l0:name rdf:type owl:DatatypeProperty ;
         rdfs:isDefinedBy l0: .
+
+
+###  http://dati.gov.it/onto/tiapit/date
+ti:date rdf:type owl:DatatypeProperty ;
+        rdfs:isDefinedBy <htto://dati.gov.it/onto/tiapit/> .
+
+
+###  http://dati.gov.it/onto/tiapit/modified
+ti:modified rdf:type owl:DatatypeProperty ;
+            rdfs:isDefinedBy ti: .
 
 
 #################################################################
@@ -825,20 +827,21 @@ l0:name rdf:type owl:DatatypeProperty ;
 
 ###  http://dati.gov.it/onto/covapit#Employment
 :Employment rdf:type owl:Class ;
-            rdfs:subClassOf l0:Event ,
-                            [ rdf:type owl:Restriction ;
-                              owl:onProperty :holdEmployment ;
-                              owl:someValuesFrom :Employment
-                            ] ,
+            rdfs:subClassOf <http://dati.gov.it/onto/roapit/TimeIndexedRole> ,
                             [ rdf:type owl:Restriction ;
                               owl:onProperty :employmentFor ;
                               owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                               owl:onClass :Organization
                             ] ,
                             [ rdf:type owl:Restriction ;
-                              owl:onProperty :withRole ;
+                              owl:onProperty <http://dati.gov.it/onto/roapit/withRole> ;
                               owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                              owl:onClass :Role
+                              owl:onClass <http://dati.gov.it/onto/roapit/Role>
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty ti:atTime ;
+                              owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                              owl:onClass ti:TimeInterval
                             ] ,
                             [ rdf:type owl:Restriction ;
                               owl:onProperty :remuneration ;
@@ -959,6 +962,10 @@ l0:name rdf:type owl:DatatypeProperty ;
                                 owl:someValuesFrom l0:Location
                               ] ,
                               [ rdf:type owl:Restriction ;
+                                owl:onProperty :holdEmployment ;
+                                owl:someValuesFrom :Employment
+                              ] ,
+                              [ rdf:type owl:Restriction ;
                                 owl:onProperty :changedBy ;
                                 owl:allValuesFrom :ChangeEvent
                               ] ,
@@ -990,7 +997,7 @@ l0:name rdf:type owl:DatatypeProperty ;
                                 owl:onClass smapit:Image
                               ] ,
                               [ rdf:type owl:Restriction ;
-                                owl:onProperty :prefLabel ;
+                                owl:onProperty :legalName ;
                                 owl:someValuesFrom rdfs:Literal
                               ] ,
                               [ rdf:type owl:Restriction ;
@@ -1015,7 +1022,7 @@ l0:name rdf:type owl:DatatypeProperty ;
                                 owl:onDataRange xsd:dateTime
                               ] ,
                               [ rdf:type owl:Restriction ;
-                                owl:onProperty :altLabel ;
+                                owl:onProperty :altName ;
                                 owl:maxCardinality "1"^^xsd:nonNegativeInteger
                               ] ,
                               [ rdf:type owl:Restriction ;
@@ -1190,22 +1197,6 @@ This class is derived from the Core Public Organization Vocabulary."""@en ;
                              "stable"@en .
 
 
-###  http://dati.gov.it/onto/covapit#Role
-:Role rdf:type owl:Class ;
-      rdfs:subClassOf l0:Object ,
-                      [ rdf:type owl:Restriction ;
-                        owl:onProperty :prefLabel ;
-                        owl:someValuesFrom rdfs:Literal
-                      ] ;
-      rdfs:comment "Questa classe rappresenta il ruolo nella relazione ennaria con l'Agente, l'Organizzazione, e la situazione di Appartenenza. Essa è utilizzata per modellare il Ruolo di un membro dell'organizzazione in un certo intervallo temporale."@it ,
-                   "This class represents the Role in the n-ary relationship involving the Employment, the Agent and the Organization. It is used to model the Role of a member of the organization in a certain time interval."@en ;
-      rdfs:isDefinedBy <http://dati.gov.it/onto/covapit> ;
-      rdfs:label "Role"@en ,
-                 "Ruolo"@it ;
-      owl:versionInfo "provvisoria"@it ,
-                      "unstable"@en .
-
-
 ###  http://dati.gov.it/onto/covapit#Scission
 :Scission rdf:type owl:Class ;
           rdfs:subClassOf :ChangeEvent ;
@@ -1294,6 +1285,18 @@ l0:Object rdf:type owl:Class ;
           rdfs:isDefinedBy l0: .
 
 
+###  http://dati.gov.it/onto/roapit/Role
+<http://dati.gov.it/onto/roapit/Role> rdf:type owl:Class ;
+                                      rdfs:comment "Questa classe è definita in http://dati.gov.it/onto/roapit/ e, in questa ontologia, rappresenta il ruolo nella relazione ennaria con l'Agente, l'Organizzazione, e la situazione di Appartenenza. Essa è utilizzata per modellare il Ruolo di un membro dell'organizzazione in un certo intervallo temporale."@it ,
+                                                   "This class is defined in http://dati.gov.it/onto/roapit/ and, in this ontology,  is used in the n-ary relationship involving the Employment, the Agent and the Organization. It is used to model the Role of a member of the organization in a certain time interval."@en ;
+                                      rdfs:isDefinedBy <http://dati.gov.it/onto/roapit/> .
+
+
+###  http://dati.gov.it/onto/roapit/TimeIndexedRole
+<http://dati.gov.it/onto/roapit/TimeIndexedRole> rdf:type owl:Class ;
+                                                 rdfs:isDefinedBy <http://dati.gov.it/onto/roapit/> .
+
+
 ###  http://dati.gov.it/onto/smapit/Image
 smapit:Image rdf:type owl:Class ;
              rdfs:isDefinedBy smapit: .
@@ -1302,6 +1305,11 @@ smapit:Image rdf:type owl:Class ;
 ###  http://dati.gov.it/onto/smapit/OnlineContactPoint
 smapit:OnlineContactPoint rdf:type owl:Class ;
                           rdfs:isDefinedBy smapit: .
+
+
+###  http://dati.gov.it/onto/tiapit/TimeInterval
+ti:TimeInterval rdf:type owl:Class ;
+                rdfs:isDefinedBy ti: .
 
 
 #################################################################
