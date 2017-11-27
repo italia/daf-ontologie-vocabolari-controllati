@@ -19,6 +19,7 @@
     <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
     <!ENTITY tiapit "http://dati.gov.it/onto/tiapit/" >
     <!ENTITY muapit "http://dati.gov.it/onto/muapit/" >
+    <!ENTITY roapit "http://dati.gov.it/onto/roapit/" >
     <!ENTITY smapit "http://dati.gov.it/onto/smapit/" >
     <!ENTITY clvapit "http://dati.gov.it/onto/clvapit#" >
     <!ENTITY cpvapit "http://dati.gov.it/onto/cpvapit/" >
@@ -44,6 +45,7 @@
      xml:base="http://dati.beniculturali.it/cis/"
      xmlns:schema="http://schema.org/"
      xmlns:l0="http://dati.gov.it/onto/l0/"
+     xmlns:roapit="http://dati.gov.it/onto/roapit/"
      xmlns:owl="http://www.w3.org/2002/07/owl#"
      xmlns:clvapit="http://dati.gov.it/onto/clvapit#"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
@@ -116,6 +118,7 @@ The alignment_xml.owl complements the ontology with the alignments with external
         <owl:imports rdf:resource="&potapit;0.1"/>
         <owl:imports rdf:resource="&smapit;0.2/"/>
         <owl:imports rdf:resource="https://dati.gov.it/onto/clvapit"/>
+        <owl:imports rdf:resource="https://dati.gov.it/onto/roapit"/>
         <owl:imports rdf:resource="https://dati.gov.it/onto/tiapit"/>
     </owl:Ontology>
     
@@ -570,22 +573,6 @@ The alignment_xml.owl complements the ontology with the alignments with external
     
 
 
-    <!-- http://dati.beniculturali.it/cis/holdsRoleInTime -->
-
-    <owl:ObjectProperty rdf:about="http://dati.beniculturali.it/cis/holdsRoleInTime">
-        <rdfs:label xml:lang="en">holds role in time</rdfs:label>
-        <rdfs:label xml:lang="it">detiene un ruolo nel tempo</rdfs:label>
-        <rdfs:comment xml:lang="en">Property used to associate an agent with the situation role in time the agent can play</rdfs:comment>
-        <rdfs:comment xml:lang="it">Proprietà utilizzata per associare un agente alla situazione &quot;ruolo nel tempo&quot;, ovvero ad un determinato ruolo ricoperto dall&apos;agente stesso in un deteminato arco temporale</rdfs:comment>
-        <owl:versionInfo xml:lang="it">stabile</owl:versionInfo>
-        <owl:versionInfo>stable</owl:versionInfo>
-        <rdfs:isDefinedBy rdf:resource="http://dati.beniculturali.it/cis/"/>
-        <rdfs:range rdf:resource="http://dati.beniculturali.it/cis/RoleInTime"/>
-        <rdfs:domain rdf:resource="&l0;Agent"/>
-    </owl:ObjectProperty>
-    
-
-
     <!-- http://dati.beniculturali.it/cis/hosts -->
 
     <owl:ObjectProperty rdf:about="http://dati.beniculturali.it/cis/hosts">
@@ -623,10 +610,10 @@ The alignment_xml.owl complements the ontology with the alignments with external
     <owl:ObjectProperty rdf:about="http://dati.beniculturali.it/cis/isAbout">
         <rdfs:label xml:lang="en">is about</rdfs:label>
         <rdfs:label xml:lang="it">tratta di</rdfs:label>
-        <owl:versionInfo>stable</owl:versionInfo>
-        <rdfs:comment xml:lang="en">Property used to associate a creative work with a cultural entity. The same property is used in a similar way to associate the creative work with an event or site</rdfs:comment>
         <rdfs:comment xml:lang="it">Proprietà che consente di associare un lavoro creativo a un&apos;entità culturale. La stessa proprietà può essere utilizzata in maniera analoga per associare un lavoro creativo a un evento o a un sito.</rdfs:comment>
         <owl:versionInfo xml:lang="it">stabile</owl:versionInfo>
+        <owl:versionInfo>stable</owl:versionInfo>
+        <rdfs:comment xml:lang="en">Property used to associate a creative work with a cultural entity. The same property is used in a similar way to associate the creative work with an event or site</rdfs:comment>
         <rdfs:isDefinedBy rdf:resource="http://dati.beniculturali.it/cis/"/>
         <rdfs:domain rdf:resource="http://dati.beniculturali.it/cis/CreativeWork"/>
         <rdfs:range>
@@ -670,21 +657,6 @@ The alignment_xml.owl complements the ontology with the alignments with external
         <rdfs:range rdf:resource="http://dati.beniculturali.it/cis/Catalogue"/>
         <rdfs:domain rdf:resource="http://dati.beniculturali.it/cis/CollectionOfCulturalEntities"/>
         <owl:inverseOf rdf:resource="http://dati.beniculturali.it/cis/describes"/>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- http://dati.beniculturali.it/cis/isHeldBy -->
-
-    <owl:ObjectProperty rdf:about="http://dati.beniculturali.it/cis/isHeldBy">
-        <rdfs:label xml:lang="en">is held by</rdfs:label>
-        <rdfs:label xml:lang="it">è svolto da</rdfs:label>
-        <rdfs:comment xml:lang="en">Inverse property of &quot;holds a role in time&quot;</rdfs:comment>
-        <rdfs:comment xml:lang="it">Proprietà inversa di &quot;ha un ruolo nel tempo&quot;</rdfs:comment>
-        <rdfs:isDefinedBy rdf:resource="http://dati.beniculturali.it/cis/"/>
-        <rdfs:domain rdf:resource="http://dati.beniculturali.it/cis/RoleInTime"/>
-        <owl:inverseOf rdf:resource="http://dati.beniculturali.it/cis/holdsRoleInTime"/>
-        <rdfs:range rdf:resource="&l0;Agent"/>
     </owl:ObjectProperty>
     
 
@@ -804,8 +776,8 @@ The alignment_xml.owl complements the ontology with the alignments with external
         <rdfs:comment xml:lang="en">inverse property for &quot;roleFor&quot;</rdfs:comment>
         <rdfs:comment xml:lang="it">proprietà inversa di &quot;ruolo per&quot;</rdfs:comment>
         <rdfs:isDefinedBy rdf:resource="http://dati.beniculturali.it/cis/"/>
-        <rdfs:range rdf:resource="http://dati.beniculturali.it/cis/RoleInTime"/>
         <owl:inverseOf rdf:resource="http://dati.beniculturali.it/cis/roleFor"/>
+        <rdfs:range rdf:resource="&roapit;TimeIndexedRole"/>
         <rdfs:domain>
             <owl:Class>
                 <owl:unionOf rdf:parseType="Collection">
@@ -814,21 +786,6 @@ The alignment_xml.owl complements the ontology with the alignments with external
                 </owl:unionOf>
             </owl:Class>
         </rdfs:domain>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- http://dati.beniculturali.it/cis/isRoleIn -->
-
-    <owl:ObjectProperty rdf:about="http://dati.beniculturali.it/cis/isRoleIn">
-        <rdfs:label xml:lang="en">is role in</rdfs:label>
-        <rdfs:label xml:lang="it">è ruolo in</rdfs:label>
-        <rdfs:comment xml:lang="en">Inverse property of &quot;with role&quot;</rdfs:comment>
-        <rdfs:comment xml:lang="it">Proprietà inversa di &quot;con ruolo&quot;</rdfs:comment>
-        <rdfs:isDefinedBy rdf:resource="http://dati.beniculturali.it/cis/"/>
-        <rdfs:domain rdf:resource="http://dati.beniculturali.it/cis/Role"/>
-        <rdfs:range rdf:resource="http://dati.beniculturali.it/cis/RoleInTime"/>
-        <owl:inverseOf rdf:resource="http://dati.beniculturali.it/cis/withRole"/>
     </owl:ObjectProperty>
     
 
@@ -966,7 +923,7 @@ The alignment_xml.owl complements the ontology with the alignments with external
         <owl:versionInfo xml:lang="it">stabile</owl:versionInfo>
         <owl:versionInfo>stable</owl:versionInfo>
         <rdfs:isDefinedBy rdf:resource="http://dati.beniculturali.it/cis/"/>
-        <rdfs:domain rdf:resource="http://dati.beniculturali.it/cis/RoleInTime"/>
+        <rdfs:domain rdf:resource="&roapit;TimeIndexedRole"/>
         <rdfs:range>
             <owl:Class>
                 <owl:unionOf rdf:parseType="Collection">
@@ -1005,20 +962,27 @@ The alignment_xml.owl complements the ontology with the alignments with external
     
 
 
-    <!-- http://dati.beniculturali.it/cis/withRole -->
+    <!-- http://dati.gov.it/onto/cpvapit/hasAddress -->
 
-    <owl:ObjectProperty rdf:about="http://dati.beniculturali.it/cis/withRole">
-        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
-        <rdfs:label xml:lang="en">with Role</rdfs:label>
-        <rdfs:label xml:lang="it">con ruolo</rdfs:label>
-        <owl:versionInfo>stable</owl:versionInfo>
-        <rdfs:comment xml:lang="en">Property used to associate the situation role in time with the role itself</rdfs:comment>
-        <rdfs:comment xml:lang="it">Proprietà che consente di associare la situazione ruolo nel tempo con il ruolo stesso.</rdfs:comment>
-        <owl:versionInfo xml:lang="it">stabile</owl:versionInfo>
-        <rdfs:isDefinedBy rdf:resource="http://dati.beniculturali.it/cis/"/>
-        <rdfs:range rdf:resource="http://dati.beniculturali.it/cis/Role"/>
-        <rdfs:domain rdf:resource="http://dati.beniculturali.it/cis/RoleInTime"/>
-    </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="&cpvapit;hasAddress"/>
+    
+
+
+    <!-- http://dati.gov.it/onto/potapit/forAccessTo -->
+
+    <owl:ObjectProperty rdf:about="&potapit;forAccessTo"/>
+    
+
+
+    <!-- http://dati.gov.it/onto/potapit/hasTicket -->
+
+    <owl:ObjectProperty rdf:about="&potapit;hasTicket"/>
+    
+
+
+    <!-- http://dati.gov.it/onto/smapit/hasOnlineContactPoint -->
+
+    <owl:ObjectProperty rdf:about="&smapit;hasOnlineContactPoint"/>
     
 
 
@@ -1319,6 +1283,12 @@ The alignment_xml.owl complements the ontology with the alignments with external
     
 
 
+    <!-- http://dati.gov.it/onto/l0/description -->
+
+    <owl:DatatypeProperty rdf:about="&l0;description"/>
+    
+
+
     <!-- 
     ///////////////////////////////////////////////////////////////////////////////////////
     //
@@ -1399,14 +1369,14 @@ cis_access_condition a Access ;
         <rdfs:subClassOf rdf:resource="&l0;Characteristic"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&l0;description"/>
-                <owl:allValuesFrom rdf:resource="&rdfs;Literal"/>
+                <owl:onProperty rdf:resource="&l0;name"/>
+                <owl:someValuesFrom rdf:resource="&rdfs;Literal"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&l0;name"/>
-                <owl:someValuesFrom rdf:resource="&rdfs;Literal"/>
+                <owl:onProperty rdf:resource="&l0;description"/>
+                <owl:allValuesFrom rdf:resource="&rdfs;Literal"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <dc:description xml:lang="en">Individuals of this class identify the possible admission types (in terms of access policies) that can be applied to the opening hours specifications of a Cultural Institute or Site (CIS).
@@ -1505,13 +1475,13 @@ admissionType:Tipo_di_apertura_al_pubblico
         <rdfs:subClassOf rdf:resource="&l0;Characteristic"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&l0;name"/>
+                <owl:onProperty rdf:resource="&l0;description"/>
                 <owl:allValuesFrom rdf:resource="&rdfs;Literal"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&l0;description"/>
+                <owl:onProperty rdf:resource="&l0;name"/>
                 <owl:allValuesFrom rdf:resource="&rdfs;Literal"/>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -1605,14 +1575,14 @@ audio:Audio_Tour_Parco_archeologico_di_Liternum
         <rdfs:subClassOf rdf:resource="http://dati.beniculturali.it/cis/AccessCondition"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&l0;description"/>
-                <owl:allValuesFrom rdf:resource="&rdfs;Literal"/>
+                <owl:onProperty rdf:resource="&l0;name"/>
+                <owl:someValuesFrom rdf:resource="&rdfs;Literal"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&l0;name"/>
-                <owl:someValuesFrom rdf:resource="&rdfs;Literal"/>
+                <owl:onProperty rdf:resource="&l0;description"/>
+                <owl:allValuesFrom rdf:resource="&rdfs;Literal"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <dc:description xml:lang="en">An example of usage of the class cis:Booking is the following:
@@ -1714,26 +1684,26 @@ event:Vincenzo_Gemito_al_Museo_di_Capodimonte
         <rdfs:subClassOf rdf:resource="&l0;Object"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://dati.beniculturali.it/cis/hasWebSite"/>
-                <owl:allValuesFrom rdf:resource="&xsd;anyURI"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
                 <owl:onProperty rdf:resource="&l0;description"/>
                 <owl:allValuesFrom rdf:resource="&rdfs;Literal"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://dati.beniculturali.it/cis/describes"/>
-                <owl:allValuesFrom rdf:resource="http://dati.beniculturali.it/cis/CollectionOfCulturalEntities"/>
+                <owl:onProperty rdf:resource="http://dati.beniculturali.it/cis/hasWebSite"/>
+                <owl:allValuesFrom rdf:resource="&xsd;anyURI"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&l0;name"/>
                 <owl:someValuesFrom rdf:resource="&rdfs;Literal"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://dati.beniculturali.it/cis/describes"/>
+                <owl:allValuesFrom rdf:resource="http://dati.beniculturali.it/cis/CollectionOfCulturalEntities"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -1860,20 +1830,14 @@ caa:Diocesi_di_San_Marco_Argentano-Scalea
         <rdfs:subClassOf rdf:resource="&l0;Collection"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&l0;name"/>
-                <owl:someValuesFrom rdf:resource="&rdfs;Literal"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
                 <owl:onProperty rdf:resource="&l0;description"/>
                 <owl:allValuesFrom rdf:resource="&rdfs;Literal"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://dati.beniculturali.it/cis/isDescribedBy"/>
-                <owl:allValuesFrom rdf:resource="http://dati.beniculturali.it/cis/Catalogue"/>
+                <owl:onProperty rdf:resource="&tiapit;atTime"/>
+                <owl:allValuesFrom rdf:resource="&tiapit;TimeInterval"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -1891,8 +1855,14 @@ caa:Diocesi_di_San_Marco_Argentano-Scalea
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&tiapit;atTime"/>
-                <owl:allValuesFrom rdf:resource="&tiapit;TimeInterval"/>
+                <owl:onProperty rdf:resource="http://dati.beniculturali.it/cis/isDescribedBy"/>
+                <owl:allValuesFrom rdf:resource="http://dati.beniculturali.it/cis/Catalogue"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&l0;name"/>
+                <owl:someValuesFrom rdf:resource="&rdfs;Literal"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <dc:description xml:lang="en">Individuals of this class represent cultural heritage included in a Cultural Institute or Site.
@@ -2044,14 +2014,32 @@ collezioni:Fondo_Ceccarius
         <rdfs:subClassOf rdf:resource="&l0;Event"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://dati.beniculturali.it/cis/isHostedBy"/>
-                <owl:someValuesFrom rdf:resource="http://dati.beniculturali.it/cis/Site"/>
+                <owl:onProperty rdf:resource="&smapit;hasOnlineContactPoint"/>
+                <owl:allValuesFrom rdf:resource="&smapit;OnlineContactPoint"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://dati.beniculturali.it/cis/isSubEventOf"/>
                 <owl:allValuesFrom rdf:resource="http://dati.beniculturali.it/cis/CulturalEvent"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://dati.beniculturali.it/cis/isRelatedToRiT"/>
+                <owl:someValuesFrom rdf:resource="&roapit;TimeIndexedRole"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://dati.beniculturali.it/cis/isHostedBy"/>
+                <owl:someValuesFrom rdf:resource="http://dati.beniculturali.it/cis/Site"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&l0;name"/>
+                <owl:someValuesFrom rdf:resource="&rdfs;Literal"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -2064,24 +2052,6 @@ collezioni:Fondo_Ceccarius
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&potapit;hasTicket"/>
                 <owl:allValuesFrom rdf:resource="&potapit;Ticket"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&l0;name"/>
-                <owl:someValuesFrom rdf:resource="&rdfs;Literal"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://dati.beniculturali.it/cis/isRelatedToRiT"/>
-                <owl:someValuesFrom rdf:resource="http://dati.beniculturali.it/cis/RoleInTime"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&smapit;hasOnlineContactPoint"/>
-                <owl:allValuesFrom rdf:resource="&smapit;OnlineContactPoint"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <dc:description xml:lang="en">An example of usage of the class cis:Event is the following:
@@ -2238,56 +2208,8 @@ culturalheritageobject:Nascita_di_Venere
         <rdfs:subClassOf rdf:resource="&covapit;Organization"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://dati.beniculturali.it/cis/catalogue"/>
-                <owl:allValuesFrom rdf:resource="http://dati.beniculturali.it/cis/Catalogue"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://dati.beniculturali.it/cis/hasSite"/>
-                <owl:someValuesFrom rdf:resource="http://dati.beniculturali.it/cis/Site"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://dati.beniculturali.it/cis/providesService"/>
-                <owl:allValuesFrom rdf:resource="http://dati.beniculturali.it/cis/Service"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://dati.beniculturali.it/cis/hasDiscipline"/>
-                <owl:allValuesFrom rdf:resource="http://dati.beniculturali.it/cis/SubjectDiscipline"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&potapit;hasTicket"/>
-                <owl:allValuesFrom rdf:resource="&potapit;Ticket"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://dati.beniculturali.it/cis/isPartOf"/>
-                <owl:allValuesFrom rdf:resource="http://dati.beniculturali.it/cis/CulturalInstituteOrSite"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://dati.beniculturali.it/cis/ISILIdentifier"/>
-                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&l0;description"/>
-                <owl:allValuesFrom rdf:resource="&rdfs;Literal"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://dati.beniculturali.it/cis/institutionalName"/>
-                <owl:someValuesFrom rdf:resource="&rdfs;Literal"/>
+                <owl:onProperty rdf:resource="http://dati.beniculturali.it/cis/makesAvailableEquipment"/>
+                <owl:allValuesFrom rdf:resource="http://dati.beniculturali.it/cis/Equipment"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -2298,26 +2220,8 @@ culturalheritageobject:Nascita_di_Venere
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://dati.beniculturali.it/cis/isSubjectOf"/>
-                <owl:allValuesFrom rdf:resource="http://dati.beniculturali.it/cis/CreativeWork"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://dati.beniculturali.it/cis/isInvolvedInProject"/>
-                <owl:allValuesFrom rdf:resource="http://dati.beniculturali.it/cis/Project"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://dati.beniculturali.it/cis/hasCISType"/>
-                <owl:someValuesFrom rdf:resource="http://dati.beniculturali.it/cis/CISType"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&smapit;hasOnlineContactPoint"/>
-                <owl:allValuesFrom rdf:resource="&smapit;OnlineContactPoint"/>
+                <owl:onProperty rdf:resource="&potapit;hasTicket"/>
+                <owl:allValuesFrom rdf:resource="&potapit;Ticket"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -2328,8 +2232,14 @@ culturalheritageobject:Nascita_di_Venere
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://dati.beniculturali.it/cis/makesAvailableEquipment"/>
-                <owl:allValuesFrom rdf:resource="http://dati.beniculturali.it/cis/Equipment"/>
+                <owl:onProperty rdf:resource="&smapit;hasOnlineContactPoint"/>
+                <owl:allValuesFrom rdf:resource="&smapit;OnlineContactPoint"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://dati.beniculturali.it/cis/ISILIdentifier"/>
+                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -2340,8 +2250,68 @@ culturalheritageobject:Nascita_di_Venere
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
+                <owl:onProperty rdf:resource="http://dati.beniculturali.it/cis/hasSite"/>
+                <owl:someValuesFrom rdf:resource="http://dati.beniculturali.it/cis/Site"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://dati.beniculturali.it/cis/hasCISType"/>
+                <owl:someValuesFrom rdf:resource="http://dati.beniculturali.it/cis/CISType"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
                 <owl:onProperty rdf:resource="http://dati.beniculturali.it/cis/isRelatedToRiT"/>
-                <owl:someValuesFrom rdf:resource="http://dati.beniculturali.it/cis/RoleInTime"/>
+                <owl:someValuesFrom rdf:resource="&roapit;TimeIndexedRole"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://dati.beniculturali.it/cis/isSubjectOf"/>
+                <owl:allValuesFrom rdf:resource="http://dati.beniculturali.it/cis/CreativeWork"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://dati.beniculturali.it/cis/hasDiscipline"/>
+                <owl:allValuesFrom rdf:resource="http://dati.beniculturali.it/cis/SubjectDiscipline"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://dati.beniculturali.it/cis/catalogue"/>
+                <owl:allValuesFrom rdf:resource="http://dati.beniculturali.it/cis/Catalogue"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://dati.beniculturali.it/cis/isPartOf"/>
+                <owl:allValuesFrom rdf:resource="http://dati.beniculturali.it/cis/CulturalInstituteOrSite"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://dati.beniculturali.it/cis/institutionalName"/>
+                <owl:someValuesFrom rdf:resource="&rdfs;Literal"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://dati.beniculturali.it/cis/isInvolvedInProject"/>
+                <owl:allValuesFrom rdf:resource="http://dati.beniculturali.it/cis/Project"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&l0;description"/>
+                <owl:allValuesFrom rdf:resource="&rdfs;Literal"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://dati.beniculturali.it/cis/providesService"/>
+                <owl:allValuesFrom rdf:resource="http://dati.beniculturali.it/cis/Service"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <dc:description xml:lang="en">An example of usage of the class &apos;Cultural Institute or Site&apos; is the following:
@@ -2731,6 +2701,12 @@ image:Poster_Evento_Vincenzo_Gemito_al_Museo_di_Capodimonte
         <rdfs:subClassOf rdf:resource="&l0;Event"/>
         <rdfs:subClassOf>
             <owl:Restriction>
+                <owl:onProperty rdf:resource="http://dati.beniculturali.it/cis/altLabel"/>
+                <owl:allValuesFrom rdf:resource="&rdfs;Literal"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
                 <owl:onProperty rdf:resource="http://dati.beniculturali.it/cis/isValidDuring"/>
                 <owl:someValuesFrom rdf:resource="&tiapit;TimeInterval"/>
             </owl:Restriction>
@@ -2739,12 +2715,6 @@ image:Poster_Evento_Vincenzo_Gemito_al_Museo_di_Capodimonte
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://dati.beniculturali.it/cis/institutionalName"/>
                 <owl:someValuesFrom rdf:resource="&rdfs;Literal"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://dati.beniculturali.it/cis/altLabel"/>
-                <owl:allValuesFrom rdf:resource="&rdfs;Literal"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <dc:description xml:lang="en">An example of usage of the class cis:NameInTime is the following:
@@ -2833,12 +2803,6 @@ ti:Intervallo_di_tempo_per_denominazione_nel_tempo_Museo_di_Capodimonte
         <rdfs:subClassOf rdf:resource="http://dati.beniculturali.it/cis/AccessCondition"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://dati.beniculturali.it/cis/closes"/>
-                <owl:allValuesFrom rdf:resource="&xsd;time"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
                 <owl:onProperty rdf:resource="http://dati.beniculturali.it/cis/hasAdmissionType"/>
                 <owl:allValuesFrom rdf:resource="http://dati.beniculturali.it/cis/AdmissionType"/>
             </owl:Restriction>
@@ -2846,6 +2810,12 @@ ti:Intervallo_di_tempo_per_denominazione_nel_tempo_Museo_di_Capodimonte
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://dati.beniculturali.it/cis/opens"/>
+                <owl:allValuesFrom rdf:resource="&xsd;time"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://dati.beniculturali.it/cis/closes"/>
                 <owl:allValuesFrom rdf:resource="&xsd;time"/>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -2931,14 +2901,14 @@ admissionType:Tipo_di_apertura_al_pubblico
         <rdfs:subClassOf rdf:resource="&l0;Activity"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://dati.beniculturali.it/cis/hasWebSite"/>
-                <owl:allValuesFrom rdf:resource="&xsd;anyURI"/>
+                <owl:onProperty rdf:resource="&l0;name"/>
+                <owl:someValuesFrom rdf:resource="&rdfs;Literal"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&l0;name"/>
-                <owl:someValuesFrom rdf:resource="&rdfs;Literal"/>
+                <owl:onProperty rdf:resource="http://dati.beniculturali.it/cis/hasWebSite"/>
+                <owl:allValuesFrom rdf:resource="&xsd;anyURI"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <dc:description xml:lang="en">An example of usage of the class cis:Project is the following:
@@ -2999,20 +2969,14 @@ project:ProgettoEsempio
         <rdfs:subClassOf rdf:resource="&l0;Object"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&l0;name"/>
-                <owl:someValuesFrom rdf:resource="&rdfs;Literal"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
                 <owl:onProperty rdf:resource="&l0;description"/>
                 <owl:allValuesFrom rdf:resource="&rdfs;Literal"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://dati.beniculturali.it/cis/isRoleIn"/>
-                <owl:allValuesFrom rdf:resource="http://dati.beniculturali.it/cis/RoleInTime"/>
+                <owl:onProperty rdf:resource="&l0;name"/>
+                <owl:someValuesFrom rdf:resource="&rdfs;Literal"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <dc:description xml:lang="en">An example of usage of the class cis:Role is the following:
@@ -3056,25 +3020,6 @@ role:Director
         <rdfs:subClassOf rdf:resource="&l0;Event"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&tiapit;atTime"/>
-                <owl:someValuesFrom rdf:resource="&tiapit;TimeInterval"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://dati.beniculturali.it/cis/isHeldBy"/>
-                <owl:onClass rdf:resource="&l0;Agent"/>
-                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://dati.beniculturali.it/cis/withRole"/>
-                <owl:someValuesFrom rdf:resource="http://dati.beniculturali.it/cis/Role"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
                 <owl:onProperty rdf:resource="http://dati.beniculturali.it/cis/roleFor"/>
                 <owl:someValuesFrom>
                     <owl:Class>
@@ -3084,6 +3029,12 @@ role:Director
                         </owl:unionOf>
                     </owl:Class>
                 </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&tiapit;atTime"/>
+                <owl:someValuesFrom rdf:resource="&tiapit;TimeInterval"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <dc:description xml:lang="en">An example of usage of the class cis:RoleInTime is the following:
@@ -3168,14 +3119,14 @@ role:Director
         <rdfs:subClassOf rdf:resource="&l0;Characteristic"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&l0;name"/>
-                <owl:someValuesFrom rdf:resource="&rdfs;Literal"/>
+                <owl:onProperty rdf:resource="&smapit;hasOnlineContactPoint"/>
+                <owl:allValuesFrom rdf:resource="&smapit;OnlineContactPoint"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://dati.beniculturali.it/cis/isProvidedBy"/>
-                <owl:allValuesFrom rdf:resource="http://dati.beniculturali.it/cis/CulturalInstituteOrSite"/>
+                <owl:onProperty rdf:resource="&l0;name"/>
+                <owl:someValuesFrom rdf:resource="&rdfs;Literal"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -3186,8 +3137,8 @@ role:Director
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&smapit;hasOnlineContactPoint"/>
-                <owl:allValuesFrom rdf:resource="&smapit;OnlineContactPoint"/>
+                <owl:onProperty rdf:resource="http://dati.beniculturali.it/cis/isProvidedBy"/>
+                <owl:allValuesFrom rdf:resource="http://dati.beniculturali.it/cis/CulturalInstituteOrSite"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <dc:description xml:lang="en">A Cultural Institute or Site (CIS) might offer a variety of services (e.g., Wi-Fi Handicapped access, cafeteria, etc.).
@@ -3253,38 +3204,14 @@ cissite:Biblioteca_nazionale_centrale
         <rdfs:subClassOf rdf:resource="&clvapit;SpatialObject"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://dati.beniculturali.it/cis/isSiteOf"/>
-                <owl:someValuesFrom rdf:resource="http://dati.beniculturali.it/cis/CulturalInstituteOrSite"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://dati.beniculturali.it/cis/hasGeographicalLocation"/>
-                <owl:someValuesFrom rdf:resource="http://dati.beniculturali.it/cis/GeographicalFeature"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&l0;description"/>
-                <owl:allValuesFrom rdf:resource="&rdfs;Literal"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
                 <owl:onProperty rdf:resource="&l0;name"/>
                 <owl:someValuesFrom rdf:resource="&rdfs;Literal"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://dati.beniculturali.it/cis/hasSiteDescription"/>
-                <owl:someValuesFrom rdf:resource="http://dati.beniculturali.it/cis/SiteDescription"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&smapit;hasOnlineContactPoint"/>
-                <owl:allValuesFrom rdf:resource="&smapit;OnlineContactPoint"/>
+                <owl:onProperty rdf:resource="&l0;description"/>
+                <owl:allValuesFrom rdf:resource="&rdfs;Literal"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -3297,6 +3224,30 @@ cissite:Biblioteca_nazionale_centrale
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&clvapit;hasGeometry"/>
                 <owl:allValuesFrom rdf:resource="&clvapit;Geometry"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://dati.beniculturali.it/cis/hasGeographicalLocation"/>
+                <owl:someValuesFrom rdf:resource="http://dati.beniculturali.it/cis/GeographicalFeature"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://dati.beniculturali.it/cis/isSiteOf"/>
+                <owl:someValuesFrom rdf:resource="http://dati.beniculturali.it/cis/CulturalInstituteOrSite"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&smapit;hasOnlineContactPoint"/>
+                <owl:allValuesFrom rdf:resource="&smapit;OnlineContactPoint"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://dati.beniculturali.it/cis/hasSiteDescription"/>
+                <owl:someValuesFrom rdf:resource="http://dati.beniculturali.it/cis/SiteDescription"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <dc:description xml:lang="en">A site is always associated with an individual of the class &apos;Cultural Institute or Site&apos; (CIS) by means of the object property hasSite.
@@ -3540,20 +3491,8 @@ lasciato architetture, manufatti, resti biologici e umani&quot;@it .
         <rdfs:subClassOf rdf:resource="http://dati.beniculturali.it/cis/AccessCondition"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://dati.beniculturali.it/cis/hasReason"/>
-                <owl:allValuesFrom rdf:resource="&rdfs;Literal"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
                 <owl:onProperty rdf:resource="http://dati.beniculturali.it/cis/hasTemporaryClosureType"/>
                 <owl:allValuesFrom rdf:resource="http://dati.beniculturali.it/cis/TemporaryClosureType"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&l0;description"/>
-                <owl:allValuesFrom rdf:resource="&rdfs;Literal"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -3567,6 +3506,18 @@ lasciato architetture, manufatti, resti biologici e umani&quot;@it .
                         </owl:unionOf>
                     </rdfs:Datatype>
                 </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://dati.beniculturali.it/cis/hasReason"/>
+                <owl:allValuesFrom rdf:resource="&rdfs;Literal"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&l0;description"/>
+                <owl:allValuesFrom rdf:resource="&rdfs;Literal"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <owl:versionInfo>stable</owl:versionInfo>
@@ -3743,14 +3694,14 @@ tct:Renovation
     <rdf:Description rdf:about="&clvapit;Address">
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://dati.beniculturali.it/cis/adminUnitL1"/>
-                <owl:allValuesFrom rdf:resource="&rdfs;Literal"/>
+                <owl:onProperty rdf:resource="http://dati.beniculturali.it/cis/adminUnitL2"/>
+                <owl:someValuesFrom rdf:resource="&rdfs;Literal"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://dati.beniculturali.it/cis/addressID"/>
-                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+                <owl:onProperty rdf:resource="http://dati.beniculturali.it/cis/adminUnitL1"/>
+                <owl:allValuesFrom rdf:resource="&rdfs;Literal"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -3761,11 +3712,17 @@ tct:Renovation
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://dati.beniculturali.it/cis/adminUnitL2"/>
-                <owl:someValuesFrom rdf:resource="&rdfs;Literal"/>
+                <owl:onProperty rdf:resource="http://dati.beniculturali.it/cis/addressID"/>
+                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
     </rdf:Description>
+    
+
+
+    <!-- http://dati.gov.it/onto/l0/Activity -->
+
+    <owl:Class rdf:about="&l0;Activity"/>
     
 
 
@@ -3774,14 +3731,14 @@ tct:Renovation
     <rdf:Description rdf:about="&l0;Agent">
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://dati.beniculturali.it/cis/holdsRoleInTime"/>
-                <owl:allValuesFrom rdf:resource="http://dati.beniculturali.it/cis/RoleInTime"/>
+                <owl:onProperty rdf:resource="&l0;name"/>
+                <owl:someValuesFrom rdf:resource="&rdfs;Literal"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&cpvapit;name"/>
-                <owl:someValuesFrom rdf:resource="&rdfs;Literal"/>
+                <owl:onProperty rdf:resource="&roapit;holdsRoleInTime"/>
+                <owl:allValuesFrom rdf:resource="&roapit;TimeIndexedRole"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -3800,15 +3757,33 @@ tct:Renovation
     
 
 
+    <!-- http://dati.gov.it/onto/l0/Description -->
+
+    <owl:Class rdf:about="&l0;Description"/>
+    
+
+
     <!-- http://dati.gov.it/onto/l0/Topic -->
 
     <owl:Class rdf:about="&l0;Topic"/>
     
 
 
+    <!-- http://dati.gov.it/onto/muapit/MeasurementUnit -->
+
+    <owl:Class rdf:about="&muapit;MeasurementUnit"/>
+    
+
+
     <!-- http://dati.gov.it/onto/potapit/Ticket -->
 
-    <rdf:Description rdf:about="&potapit;Ticket">
+    <owl:Class rdf:about="&potapit;Ticket">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&l0;description"/>
+                <owl:allValuesFrom rdf:resource="&rdfs;Literal"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&potapit;forAccessTo"/>
@@ -3824,17 +3799,17 @@ tct:Renovation
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&l0;description"/>
-                <owl:allValuesFrom rdf:resource="&rdfs;Literal"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
                 <owl:onProperty rdf:resource="&l0;name"/>
                 <owl:someValuesFrom rdf:resource="&rdfs;Literal"/>
             </owl:Restriction>
         </rdfs:subClassOf>
-    </rdf:Description>
+    </owl:Class>
+    
+
+
+    <!-- http://dati.gov.it/onto/smapit/OnlineContactPoint -->
+
+    <owl:Class rdf:about="&smapit;OnlineContactPoint"/>
     
 
 
@@ -4050,37 +4025,6 @@ cissite:COMPLESSO_MONUMENTALE_DI_VICOPISANO_ROCCA_DEL_BRUNELLESCHI_E_PALAZZO_PRE
         <owl:versionInfo xml:lang="it">stabile</owl:versionInfo>
         <rdfs:isDefinedBy rdf:resource="http://dati.beniculturali.it/cis/"/>
     </rdf:Description>
-    <rdf:Description rdf:about="http://dati.beniculturali.it/cis/CulturalLandscapeAsset">
-        <rdfs:label xml:lang="en">Cultural Landscape Asset</rdfs:label>
-        <rdfs:label xml:lang="it">Bene Paesaggistico</rdfs:label>
-        <dc:description xml:lang="en">An example of usage of the class cis:CulturalLandscapeAsset is the following:
-
-&lt;pre&gt;
-
-cissite:Costiera_Amalfitana
- a cis:CulturalInstituteOrSite, cis:CulturalLandscapeAsset ; 
-    rdfs:label &quot;Costiera Amalfitana&quot;@it ;
-    cis:institutionalName &quot;Costiera Amalfitana&quot;@en ;
-    cis:ISILIdentifier &quot;IT-EX0004&quot; .
-
-&lt;/pre&gt;</dc:description>
-        <rdfs:comment xml:lang="en">This class represents a specific types of cultural institute or site, i.e., the cultural landscape asset.</rdfs:comment>
-        <owl:versionInfo xml:lang="en">unstable</owl:versionInfo>
-        <rdfs:comment xml:lang="it">Questa classe rappresenta uno specifico tipo di istituto e luogo della cultura, i.e., il bene paessaggistico così come definito dall&apos;art. 136 del Codice dei Beni Culturali.</rdfs:comment>
-        <dc:description xml:lang="it">Un esempio di utilizzo della classe cis:CulturalLandscapeAsset è il seguente:
-
-&lt;pre&gt;
-
-cissite:Costiera_Amalfitana
- a cis:CulturalInstituteOrSite, cis:CulturalLandscapeAsset ; 
-    rdfs:label &quot;Costiera Amalfitana&quot;@it ;
-    cis:institutionalName &quot;Costiera Amalfitana&quot;@en ;
-    cis:ISILIdentifier &quot;IT-EX0004&quot; .
-
-&lt;/pre&gt;</dc:description>
-        <owl:versionInfo xml:lang="it">versione non definitiva</owl:versionInfo>
-        <rdfs:isDefinedBy rdf:resource="http://dati.beniculturali.it/cis/"/>
-    </rdf:Description>
     <rdf:Description rdf:about="http://dati.beniculturali.it/cis/ArchaeologicalArea">
         <rdfs:label xml:lang="en">Archaeological Area</rdfs:label>
         <rdfs:label xml:lang="it">Area Archeologica</rdfs:label>
@@ -4112,13 +4056,35 @@ cissite:Museo_delle_navi_romane_di_Nemi
         <owl:versionInfo xml:lang="it">stabile</owl:versionInfo>
         <rdfs:isDefinedBy rdf:resource="http://dati.beniculturali.it/cis/"/>
     </rdf:Description>
-    <rdf:Description rdf:about="http://dati.beniculturali.it/cis/Library">
-        <rdfs:label xml:lang="en">Library</rdfs:label>
-        <rdfs:label xml:lang="it">Biblioteca</rdfs:label>
-        <rdfs:comment xml:lang="en">It represents a specific type of Cultural Institute or Site; that is, Library</rdfs:comment>
-        <owl:versionInfo xml:lang="en">stable</owl:versionInfo>
-        <rdfs:comment xml:lang="it">Rappresenta uno specifico tipo di Istituto e Luogo della Cultura, ovvero Biblioteca.</rdfs:comment>
-        <owl:versionInfo xml:lang="it">stabile</owl:versionInfo>
+    <rdf:Description rdf:about="http://dati.beniculturali.it/cis/CulturalLandscapeAsset">
+        <rdfs:label xml:lang="en">Cultural Landscape Asset</rdfs:label>
+        <rdfs:label xml:lang="it">Bene Paesaggistico</rdfs:label>
+        <dc:description xml:lang="en">An example of usage of the class cis:CulturalLandscapeAsset is the following:
+
+&lt;pre&gt;
+
+cissite:Costiera_Amalfitana
+ a cis:CulturalInstituteOrSite, cis:CulturalLandscapeAsset ; 
+    rdfs:label &quot;Costiera Amalfitana&quot;@it ;
+    cis:institutionalName &quot;Costiera Amalfitana&quot;@en ;
+    cis:ISILIdentifier &quot;IT-EX0004&quot; .
+
+&lt;/pre&gt;</dc:description>
+        <rdfs:comment xml:lang="en">This class represents a specific types of cultural institute or site, i.e., the cultural landscape asset.</rdfs:comment>
+        <owl:versionInfo xml:lang="en">unstable</owl:versionInfo>
+        <rdfs:comment xml:lang="it">Questa classe rappresenta uno specifico tipo di istituto e luogo della cultura, i.e., il bene paessaggistico così come definito dall&apos;art. 136 del Codice dei Beni Culturali.</rdfs:comment>
+        <dc:description xml:lang="it">Un esempio di utilizzo della classe cis:CulturalLandscapeAsset è il seguente:
+
+&lt;pre&gt;
+
+cissite:Costiera_Amalfitana
+ a cis:CulturalInstituteOrSite, cis:CulturalLandscapeAsset ; 
+    rdfs:label &quot;Costiera Amalfitana&quot;@it ;
+    cis:institutionalName &quot;Costiera Amalfitana&quot;@en ;
+    cis:ISILIdentifier &quot;IT-EX0004&quot; .
+
+&lt;/pre&gt;</dc:description>
+        <owl:versionInfo xml:lang="it">versione non definitiva</owl:versionInfo>
         <rdfs:isDefinedBy rdf:resource="http://dati.beniculturali.it/cis/"/>
     </rdf:Description>
     <rdf:Description rdf:about="http://dati.beniculturali.it/cis/ArchaeologicalPark">
@@ -4149,6 +4115,15 @@ cissite:Parco_archeologico_di_Liternum
     cis:ISILIdentifier &quot;IT-EX0002&quot; .
 
 &lt;/pre&gt;</dc:description>
+        <owl:versionInfo xml:lang="it">stabile</owl:versionInfo>
+        <rdfs:isDefinedBy rdf:resource="http://dati.beniculturali.it/cis/"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://dati.beniculturali.it/cis/Library">
+        <rdfs:label xml:lang="en">Library</rdfs:label>
+        <rdfs:label xml:lang="it">Biblioteca</rdfs:label>
+        <rdfs:comment xml:lang="en">It represents a specific type of Cultural Institute or Site; that is, Library</rdfs:comment>
+        <owl:versionInfo xml:lang="en">stable</owl:versionInfo>
+        <rdfs:comment xml:lang="it">Rappresenta uno specifico tipo di Istituto e Luogo della Cultura, ovvero Biblioteca.</rdfs:comment>
         <owl:versionInfo xml:lang="it">stabile</owl:versionInfo>
         <rdfs:isDefinedBy rdf:resource="http://dati.beniculturali.it/cis/"/>
     </rdf:Description>
