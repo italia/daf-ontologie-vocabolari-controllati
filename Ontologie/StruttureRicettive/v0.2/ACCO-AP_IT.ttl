@@ -46,6 +46,10 @@
 #    Annotation properties
 #################################################################
 
+###  http://dati.gov.it/onto/l0/controlledVocabulary
+l0:controlledVocabulary rdf:type owl:AnnotationProperty .
+
+
 ###  http://purl.org/dc/terms/license
 dct:license rdf:type owl:AnnotationProperty .
 
@@ -246,9 +250,40 @@ smapit:hasOnlineContactPoint rdf:type owl:ObjectProperty ;
 #    Data properties
 #################################################################
 
+###  http://dati.gov.it/onto/accoapit#accoStarRatingID
+:accoStarRatingID rdf:type owl:DatatypeProperty ;
+                  rdfs:subPropertyOf l0:identifier ;
+                  rdfs:domain :AccommodationStarRating ;
+                  rdfs:range rdfs:Literal ;
+                  l0:controlledVocabulary <http://dati.gov.it/onto/controlledvocabulary/AccoStarRating> ;
+                  rdfs:comment "Questa proprietà rappresenta l'identificativo usato per ciascun elemento della classificazione a stelle delle strutture ricettive. E' equivalente a skos:notaiton e dct:identifier di skos e dublin core rispettivamente."@it ,
+                               "This property represents the identifier used for each element of the star classification of accommodation facilities. It is equivalent to skos:notation and dct:identifier of skos and dublin core ontologies, respectively."@en ;
+                  rdfs:isDefinedBy <http://dati.gov.it/onto/accoapit> ;
+                  rdfs:label "accomodation star rating code"@en ,
+                             "codice classificazione stelle strutture ricettive"@it ;
+                  owl:versionInfo "stabile"@it ,
+                                  "stable"@en .
+
+
+###  http://dati.gov.it/onto/accoapit#accoStarRatingLabel
+:accoStarRatingLabel rdf:type owl:DatatypeProperty ;
+                     rdfs:subPropertyOf l0:name ;
+                     rdfs:domain :AccommodationStarRating ;
+                     rdfs:range rdfs:Literal ;
+                     l0:controlledVocabulary <http://dati.gov.it/onto/controlledvocabulary/AccoStarRating> ;
+                     rdfs:comment "Questa proprietà rappresenta la label principale dell'elemento della classificazione delle stelle delle strutture ricettive. E' equivalente a skos:prefLabel dell'ontologia skos."@it ,
+                                  "This property represents the preferred label of the elements of the accommodation star rating classification. It is equivalent to skos:prefLabel."@en ;
+                     rdfs:isDefinedBy <http://dati.gov.it/onto/accoapit> ;
+                     rdfs:label "accommodation star rating preferred label"@en ,
+                                "etichetta classificazione stelle strutture ricettive"@it ;
+                     owl:versionInfo "stabile"@it ,
+                                     "stable"@en .
+
+
 ###  http://dati.gov.it/onto/accoapit#accommodationCode
-:accommodationCode rdf:type owl:DatatypeProperty ,
-                            owl:FunctionalProperty ;
+:accommodationCode rdf:type owl:DatatypeProperty ;
+                   rdfs:subPropertyOf l0:identifier ;
+                   rdf:type owl:FunctionalProperty ;
                    rdfs:domain :Accommodation ;
                    rdfs:range rdfs:Literal ;
                    rdfs:isDefinedBy <http://dati.gov.it/onto/accoapit> ,
@@ -438,6 +473,11 @@ smapit:hasOnlineContactPoint rdf:type owl:ObjectProperty ;
 ###  http://dati.gov.it/onto/l0/description
 l0:description rdf:type owl:DatatypeProperty ;
                rdfs:isDefinedBy l0: .
+
+
+###  http://dati.gov.it/onto/l0/identifier
+l0:identifier rdf:type owl:DatatypeProperty ;
+              rdfs:isDefinedBy l0: .
 
 
 ###  http://dati.gov.it/onto/l0/name

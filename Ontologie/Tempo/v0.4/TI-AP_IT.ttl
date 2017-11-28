@@ -19,7 +19,7 @@
                                   dct:issued "2017-09-25"^^xsd:date ;
                                   rdfs:label "Ontologia del tempo - profilo applicativo italiano"@it ;
                                   dc:creator "Italian Digital Transformation Team"@en ;
-                                  dct:modified "2017-11-26" ;
+                                  dct:modified "2017-11-28" ;
                                   owl:versionInfo "Versione 0.4 - 21 Novembre 2017"@it ;
                                   rdfs:isDefinedBy : ;
                                   dct:license <https://creativecommons.org/licenses/by/4.0/> ;
@@ -207,7 +207,11 @@ xsd:time rdf:type rdfs:Datatype .
 ###  http://dati.gov.it/onto/tiapit/date
 :date rdf:type owl:DatatypeProperty ;
       rdfs:domain owl:Thing ;
-      rdfs:range xsd:dateTime ;
+      rdfs:range [ rdf:type rdfs:Datatype ;
+                   owl:unionOf ( xsd:date
+                                 xsd:dateTime
+                               )
+                 ] ;
       rdfs:comment "Questa proprietà rappresenta una generica data / istante di tempo"@it ,
                    "This property represents a generic date / time instant."@en ;
       rdfs:isDefinedBy : ;

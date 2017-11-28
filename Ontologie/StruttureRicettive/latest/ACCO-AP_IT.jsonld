@@ -19,17 +19,23 @@
   },
   "@graph": [
     {
-      "@id": "_:ub202bL565C32",
+      "@id": "_:ub174bL844C44",
       "@type": "owl:Restriction",
-      "owl:maxQualifiedCardinality": {
-        "@type": "xsd:nonNegativeInteger",
-        "@value": "1"
-      },
-      "owl:onClass": {
-        "@id": "smapit:OnlineContactPoint"
+      "owl:allValuesFrom": {
+        "@id": "xsd:int"
       },
       "owl:onProperty": {
-        "@id": "smapit:hasOnlineContactPoint"
+        "@id": "http://dati.gov.it/onto/accoapit#minValue"
+      }
+    },
+    {
+      "@id": "_:ub174bL731C40",
+      "@type": "owl:Restriction",
+      "owl:allValuesFrom": {
+        "@id": "http://dati.gov.it/onto/accoapit#Accommodation"
+      },
+      "owl:onProperty": {
+        "@id": "http://dati.gov.it/onto/accoapit#isAccommodationTypologyOf"
       }
     },
     {
@@ -47,30 +53,30 @@
       ],
       "prov:wasDerivedFrom": [
         {
-          "@id": "http://purl.org/acco/ns#HotelRoom"
+          "@id": "schema:HotelRoom"
         },
         {
-          "@id": "schema:HotelRoom"
+          "@id": "http://purl.org/acco/ns#HotelRoom"
         }
       ],
       "rdfs:comment": [
         {
-          "@language": "en",
-          "@value": "This class is used to model a meeting room, a conference room, or a conference hall where singular events such as business conferences and meetings happen."
-        },
-        {
           "@language": "it",
           "@value": "Questa classe è utilizzata per modellare una sala riunioni, un centro congressi di una struttura ricettiva"
+        },
+        {
+          "@language": "en",
+          "@value": "This class is used to model a meeting room, a conference room, or a conference hall where singular events such as business conferences and meetings happen."
         }
       ],
       "rdfs:label": [
         {
-          "@language": "en",
-          "@value": "Meeting Room"
-        },
-        {
           "@language": "it",
           "@value": "Sala riunioni"
+        },
+        {
+          "@language": "en",
+          "@value": "Meeting Room"
         }
       ],
       "rdfs:subClassOf": {
@@ -78,15 +84,25 @@
       }
     },
     {
+      "@id": "_:ub174bL797C31",
+      "@type": "owl:Restriction",
+      "owl:onProperty": {
+        "@id": "http://dati.gov.it/onto/accoapit#criterion"
+      },
+      "owl:someValuesFrom": {
+        "@id": "rdfs:Literal"
+      }
+    },
+    {
       "@id": "http://dati.gov.it/onto/accoapit#roomName",
       "@type": "owl:DatatypeProperty",
       "owl:versionInfo": [
         {
-          "@language": "it",
+          "@language": "en",
           "@value": "stable"
         },
         {
-          "@language": "en",
+          "@language": "it",
           "@value": "stable"
         }
       ],
@@ -108,12 +124,12 @@
       },
       "rdfs:label": [
         {
-          "@language": "it",
-          "@value": "nome della camera"
-        },
-        {
           "@language": "en",
           "@value": "room name"
+        },
+        {
+          "@language": "it",
+          "@value": "nome della camera"
         }
       ],
       "rdfs:range": {
@@ -121,6 +137,20 @@
       },
       "rdfs:subPropertyOf": {
         "@id": "l0:name"
+      }
+    },
+    {
+      "@id": "_:ub174bL611C32",
+      "@type": "owl:Restriction",
+      "owl:maxQualifiedCardinality": {
+        "@type": "xsd:nonNegativeInteger",
+        "@value": "1"
+      },
+      "owl:onClass": {
+        "@id": "smapit:OnlineContactPoint"
+      },
+      "owl:onProperty": {
+        "@id": "smapit:hasOnlineContactPoint"
       }
     },
     {
@@ -138,12 +168,12 @@
       ],
       "rdfs:comment": [
         {
-          "@language": "en",
-          "@value": "This is the feature name associated with the class Offered Service Description Feature"
-        },
-        {
           "@language": "it",
           "@value": "Questa proprietà rappresenta il nome della caratteristica associata alla classe Caratteristica della Descrizione Servizi Offerti"
+        },
+        {
+          "@language": "en",
+          "@value": "This is the feature name associated with the class Offered Service Description Feature"
         }
       ],
       "rdfs:domain": {
@@ -208,44 +238,24 @@
       }
     },
     {
-      "@id": "_:ub202bL802C44",
-      "@type": "owl:Restriction",
-      "owl:allValuesFrom": {
-        "@id": "xsd:int"
-      },
-      "owl:onProperty": {
-        "@id": "http://dati.gov.it/onto/accoapit#totalValue"
-      }
-    },
-    {
-      "@id": "_:ub202bL770C29",
-      "@type": "owl:Restriction",
-      "owl:onProperty": {
-        "@id": "http://dati.gov.it/onto/accoapit#featureName"
-      },
-      "owl:someValuesFrom": {
-        "@id": "rdfs:Literal"
-      }
-    },
-    {
       "@id": "http://dati.gov.it/onto/accoapit#Accommodation",
       "@type": "owl:Class",
       "owl:versionInfo": [
         {
-          "@language": "en",
-          "@value": "stable"
-        },
-        {
           "@language": "it",
           "@value": "stabile"
+        },
+        {
+          "@language": "en",
+          "@value": "stable"
         }
       ],
       "prov:wasDerivedFrom": [
         {
-          "@id": "http://purl.org/acco/ns#Accommodation"
+          "@id": "schema:Accommodation"
         },
         {
-          "@id": "schema:Accommodation"
+          "@id": "http://purl.org/acco/ns#Accommodation"
         }
       ],
       "rdfs:comment": [
@@ -263,58 +273,68 @@
       },
       "rdfs:label": [
         {
-          "@language": "it",
-          "@value": "Struttura ricettiva"
-        },
-        {
           "@language": "en",
           "@value": "Accommodation Facility"
+        },
+        {
+          "@language": "it",
+          "@value": "Struttura ricettiva"
         }
       ],
       "rdfs:subClassOf": [
         {
-          "@id": "_:ub202bL547C32"
+          "@id": "_:ub174bL593C32"
         },
         {
-          "@id": "_:ub202bL539C32"
+          "@id": "_:ub174bL601C32"
         },
         {
-          "@id": "_:ub202bL580C32"
+          "@id": "_:ub174bL585C32"
         },
         {
-          "@id": "_:ub202bL575C32"
+          "@id": "_:ub174bL581C32"
         },
         {
-          "@id": "_:ub202bL535C32"
+          "@id": "_:ub174bL606C32"
         },
         {
-          "@id": "_:ub202bL565C32"
+          "@id": "_:ub174bL597C32"
         },
         {
-          "@id": "_:ub202bL551C32"
+          "@id": "_:ub174bL626C32"
         },
         {
-          "@id": "_:ub202bL560C32"
+          "@id": "_:ub174bL616C32"
+        },
+        {
+          "@id": "_:ub174bL589C32"
+        },
+        {
+          "@id": "_:ub174bL636C32"
+        },
+        {
+          "@id": "_:ub174bL621C32"
         },
         {
           "@id": "poiapit:PointOfInterest"
         },
         {
-          "@id": "_:ub202bL570C32"
+          "@id": "_:ub174bL611C32"
         },
         {
-          "@id": "_:ub202bL543C32"
-        },
-        {
-          "@id": "_:ub202bL585C32"
-        },
-        {
-          "@id": "_:ub202bL590C32"
-        },
-        {
-          "@id": "_:ub202bL555C32"
+          "@id": "_:ub174bL631C32"
         }
       ]
+    },
+    {
+      "@id": "_:ub174bL711C42",
+      "@type": "owl:Restriction",
+      "owl:allValuesFrom": {
+        "@id": "http://dati.gov.it/onto/accoapit#Accommodation"
+      },
+      "owl:onProperty": {
+        "@id": "http://dati.gov.it/onto/accoapit#isAccommodationClassificationOf"
+      }
     },
     {
       "@id": "l0:name",
@@ -328,22 +348,22 @@
       "@type": "owl:DatatypeProperty",
       "owl:priorVersion": [
         {
-          "@language": "en",
-          "@value": "stable"
-        },
-        {
           "@language": "it",
           "@value": "stabile"
+        },
+        {
+          "@language": "en",
+          "@value": "stable"
         }
       ],
       "rdfs:comment": [
         {
-          "@language": "en",
-          "@value": "This property represents the total number of toilets of the accommodation facility"
-        },
-        {
           "@language": "it",
           "@value": "Questa proprietà rappresenta il numero totale di bagni della struttura ricettiva."
+        },
+        {
+          "@language": "en",
+          "@value": "This property represents the total number of toilets of the accommodation facility"
         }
       ],
       "rdfs:domain": {
@@ -354,12 +374,12 @@
       },
       "rdfs:label": [
         {
-          "@language": "it",
-          "@value": "numero totale di bagni"
-        },
-        {
           "@language": "en",
           "@value": "total number of toilets"
+        },
+        {
+          "@language": "it",
+          "@value": "numero totale di bagni"
         }
       ],
       "rdfs:range": {
@@ -382,12 +402,12 @@
       },
       "rdfs:comment": [
         {
-          "@language": "it",
-          "@value": "Questa classe rappresenta la descrizine dei servizi offerti. Essa è l'implementazione del pattern descrizione ed è utilizzata quando specifiche caratteristiche dei servizi offerti non sono note in anticipo."
-        },
-        {
           "@language": "en",
           "@value": "This class allows one to model a description of the offered services. It is the implementation of the ontology design pattern description that can be used when specific features of the offered services are not known in advanced."
+        },
+        {
+          "@language": "it",
+          "@value": "Questa classe rappresenta la descrizine dei servizi offerti. Essa è l'implementazione del pattern descrizione ed è utilizzata quando specifiche caratteristiche dei servizi offerti non sono note in anticipo."
         }
       ],
       "rdfs:isDefinedBy": {
@@ -408,16 +428,16 @@
           "@id": "l0:Object"
         },
         {
-          "@id": "_:ub202bL806C44"
+          "@id": "_:ub174bL848C44"
         },
         {
-          "@id": "_:ub202bL798C44"
+          "@id": "_:ub174bL852C44"
         },
         {
-          "@id": "_:ub202bL794C44"
+          "@id": "_:ub174bL840C44"
         },
         {
-          "@id": "_:ub202bL802C44"
+          "@id": "_:ub174bL844C44"
         }
       ]
     },
@@ -440,11 +460,11 @@
       "@type": "owl:ObjectProperty",
       "owl:versionInfo": [
         {
-          "@language": "it",
+          "@language": "en",
           "@value": "stable"
         },
         {
-          "@language": "en",
+          "@language": "it",
           "@value": "stable"
         }
       ],
@@ -459,7 +479,7 @@
         }
       ],
       "rdfs:domain": {
-        "@id": "_:ub202bL166C43"
+        "@id": "_:ub174bL170C43"
       },
       "rdfs:isDefinedBy": {
         "@id": "http://dati.gov.it/onto/accoapit"
@@ -479,59 +499,17 @@
       }
     },
     {
-      "@id": "_:ub202bL636C36",
+      "@id": "_:ub174bL606C32",
       "@type": "owl:Restriction",
-      "owl:allValuesFrom": {
-        "@id": "potapit:Offer"
+      "owl:maxQualifiedCardinality": {
+        "@type": "xsd:nonNegativeInteger",
+        "@value": "1"
+      },
+      "owl:onClass": {
+        "@id": "covapit:Organization"
       },
       "owl:onProperty": {
-        "@id": "potapit:hasOffer"
-      }
-    },
-    {
-      "@id": "http://dati.gov.it/onto/accoapit#maxValue",
-      "@type": [
-        "owl:FunctionalProperty",
-        "owl:DatatypeProperty"
-      ],
-      "owl:versionInfo": [
-        {
-          "@language": "en",
-          "@value": "unstable"
-        },
-        {
-          "@language": "it",
-          "@value": "provvisoria"
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@language": "it",
-          "@value": "Questa proprietà è utilizzata per specificare un valore massimo intero. Nell'ambito dell'ontologia delle strutture ricettive essa è associata alla descrizione dei servizi offerti"
-        },
-        {
-          "@language": "en",
-          "@value": "This property is used to represent a maximum integer value. In the context of the ontology on accommodation facilities, it is associates with the Offered Service Description class"
-        }
-      ],
-      "rdfs:domain": {
-        "@id": "http://dati.gov.it/onto/accoapit#OfferedServiceDescription"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "http://dati.gov.it/onto/accoapit"
-      },
-      "rdfs:label": [
-        {
-          "@language": "en",
-          "@value": "maximum value"
-        },
-        {
-          "@language": "it",
-          "@value": "valore massimo"
-        }
-      ],
-      "rdfs:range": {
-        "@id": "xsd:int"
+        "@id": "http://dati.gov.it/onto/accoapit#hasAccommodationOwner"
       }
     },
     {
@@ -539,6 +517,20 @@
       "@type": "owl:ObjectProperty",
       "rdfs:isDefinedBy": {
         "@id": "http://dati.gov.it/onto/poiapit"
+      }
+    },
+    {
+      "@id": "_:ub174bL616C32",
+      "@type": "owl:Restriction",
+      "owl:onDataRange": {
+        "@id": "xsd:int"
+      },
+      "owl:onProperty": {
+        "@id": "http://dati.gov.it/onto/accoapit#totalBed"
+      },
+      "owl:qualifiedCardinality": {
+        "@type": "xsd:nonNegativeInteger",
+        "@value": "1"
       }
     },
     {
@@ -570,11 +562,11 @@
       },
       "rdfs:label": [
         {
-          "@language": "en",
+          "@language": "it",
           "@value": "Suite"
         },
         {
-          "@language": "it",
+          "@language": "en",
           "@value": "Suite"
         }
       ],
@@ -585,6 +577,98 @@
     {
       "@id": "http://dati.gov.it/onto/accoapit#QuadrupleRoom",
       "@type": "owl:Class",
+      "owl:versionInfo": [
+        {
+          "@language": "it",
+          "@value": "stabile"
+        },
+        {
+          "@language": "en",
+          "@value": "stable"
+        }
+      ],
+      "rdfs:comment": [
+        {
+          "@language": "it",
+          "@value": "Questa classe è usata per modellare una camera quadrupla della struttura ricettiva."
+        },
+        {
+          "@language": "en",
+          "@value": "This class is used to model a quadruple room of an accommodation facility."
+        }
+      ],
+      "rdfs:isDefinedBy": {
+        "@id": "http://dati.gov.it/onto/accoapit"
+      },
+      "rdfs:label": [
+        {
+          "@language": "it",
+          "@value": "Camera quadrupla"
+        },
+        {
+          "@language": "en",
+          "@value": "Quadruple Room"
+        }
+      ],
+      "rdfs:subClassOf": {
+        "@id": "http://dati.gov.it/onto/accoapit#Bedroom"
+      }
+    },
+    {
+      "@id": "http://dati.gov.it/onto/accoapit#accoStarRatingLabel",
+      "@type": "owl:DatatypeProperty",
+      "l0:controlledVocabulary": {
+        "@id": "http://dati.gov.it/onto/controlledvocabulary/AccoStarRating"
+      },
+      "owl:versionInfo": [
+        {
+          "@language": "it",
+          "@value": "stabile"
+        },
+        {
+          "@language": "en",
+          "@value": "stable"
+        }
+      ],
+      "rdfs:comment": [
+        {
+          "@language": "en",
+          "@value": "This property represents the preferred label of the elements of the accommodation star rating classification. It is equivalent to skos:prefLabel."
+        },
+        {
+          "@language": "it",
+          "@value": "Questa proprietà rappresenta la label principale dell'elemento della classificazione delle stelle delle strutture ricettive. E' equivalente a skos:prefLabel dell'ontologia skos."
+        }
+      ],
+      "rdfs:domain": {
+        "@id": "http://dati.gov.it/onto/accoapit#AccommodationStarRating"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "http://dati.gov.it/onto/accoapit"
+      },
+      "rdfs:label": [
+        {
+          "@language": "en",
+          "@value": "accommodation star rating preferred label"
+        },
+        {
+          "@language": "it",
+          "@value": "etichetta classificazione stelle strutture ricettive"
+        }
+      ],
+      "rdfs:range": {
+        "@id": "rdfs:Literal"
+      },
+      "rdfs:subPropertyOf": {
+        "@id": "l0:name"
+      }
+    },
+    {
+      "@id": "http://dati.gov.it/onto/accoapit#accoStarRatingID",
+      "@type": "owl:DatatypeProperty",
+      "l0:controlledVocabulary": {
+        "@id": "http://dati.gov.it/onto/controlledvocabulary/AccoStarRating"
+      },
       "owl:versionInfo": [
         {
           "@language": "en",
@@ -598,35 +682,41 @@
       "rdfs:comment": [
         {
           "@language": "en",
-          "@value": "This class is used to model a quadruple room of an accommodation facility."
+          "@value": "This property represents the identifier used for each element of the star classification of accommodation facilities. It is equivalent to skos:notation and dct:identifier of skos and dublin core ontologies, respectively."
         },
         {
           "@language": "it",
-          "@value": "Questa classe è usata per modellare una camera quadrupla della struttura ricettiva."
+          "@value": "Questa proprietà rappresenta l'identificativo usato per ciascun elemento della classificazione a stelle delle strutture ricettive. E' equivalente a skos:notaiton e dct:identifier di skos e dublin core rispettivamente."
         }
       ],
+      "rdfs:domain": {
+        "@id": "http://dati.gov.it/onto/accoapit#AccommodationStarRating"
+      },
       "rdfs:isDefinedBy": {
         "@id": "http://dati.gov.it/onto/accoapit"
       },
       "rdfs:label": [
         {
           "@language": "en",
-          "@value": "Quadruple Room"
+          "@value": "accomodation star rating code"
         },
         {
           "@language": "it",
-          "@value": "Camera quadrupla"
+          "@value": "codice classificazione stelle strutture ricettive"
         }
       ],
-      "rdfs:subClassOf": {
-        "@id": "http://dati.gov.it/onto/accoapit#Bedroom"
+      "rdfs:range": {
+        "@id": "rdfs:Literal"
+      },
+      "rdfs:subPropertyOf": {
+        "@id": "l0:identifier"
       }
     },
     {
       "@id": "http://dati.gov.it/onto/accoapit#accommodationCode",
       "@type": [
-        "owl:DatatypeProperty",
-        "owl:FunctionalProperty"
+        "owl:FunctionalProperty",
+        "owl:DatatypeProperty"
       ],
       "owl:priorVersion": [
         {
@@ -643,29 +733,32 @@
       },
       "rdfs:isDefinedBy": [
         {
-          "@id": "http://dati.gov.it/onto/accoapit"
+          "@language": "en",
+          "@value": "A code associated with the accommodation facility"
         },
         {
           "@language": "it",
           "@value": "Un codice associato alla struttura ricettiva."
         },
         {
-          "@language": "en",
-          "@value": "A code associated with the accommodation facility"
+          "@id": "http://dati.gov.it/onto/accoapit"
         }
       ],
       "rdfs:label": [
         {
-          "@language": "en",
-          "@value": "accommodation code"
-        },
-        {
           "@language": "it",
           "@value": "codice struttura ricettiva"
+        },
+        {
+          "@language": "en",
+          "@value": "accommodation code"
         }
       ],
       "rdfs:range": {
         "@id": "rdfs:Literal"
+      },
+      "rdfs:subPropertyOf": {
+        "@id": "l0:identifier"
       }
     },
     {
@@ -673,22 +766,22 @@
       "@type": "owl:Class",
       "owl:versionInfo": [
         {
-          "@language": "en",
-          "@value": "stable"
-        },
-        {
           "@language": "it",
           "@value": "stabile"
+        },
+        {
+          "@language": "en",
+          "@value": "stable"
         }
       ],
       "rdfs:comment": [
         {
-          "@language": "en",
-          "@value": "This class represents a chain of accommodation facilities that in turn is an accommodation facility."
-        },
-        {
           "@language": "it",
           "@value": "Questa classe rappresenta una catena di strutture ricettive che a sua volta è una struttura ricettiva."
+        },
+        {
+          "@language": "en",
+          "@value": "This class represents a chain of accommodation facilities that in turn is an accommodation facility."
         }
       ],
       "rdfs:isDefinedBy": {
@@ -706,13 +799,13 @@
       ],
       "rdfs:subClassOf": [
         {
-          "@id": "http://dati.gov.it/onto/accoapit#Accommodation"
-        },
-        {
-          "@id": "_:ub202bL613C37"
+          "@id": "_:ub174bL659C37"
         },
         {
           "@id": "poiapit:MultiplePointOfInterest"
+        },
+        {
+          "@id": "http://dati.gov.it/onto/accoapit#Accommodation"
         }
       ]
     },
@@ -721,12 +814,12 @@
       "@type": "owl:Class",
       "owl:versionInfo": [
         {
-          "@language": "it",
-          "@value": "provvisoria"
-        },
-        {
           "@language": "en",
           "@value": "unstable"
+        },
+        {
+          "@language": "it",
+          "@value": "provvisoria"
         }
       ],
       "rdfs:comment": [
@@ -754,18 +847,31 @@
       ],
       "rdfs:subClassOf": [
         {
-          "@id": "l0:Characteristic"
+          "@id": "_:ub174bL797C31"
         },
         {
-          "@id": "_:ub202bL751C31"
+          "@id": "l0:Characteristic"
         }
       ]
     },
     {
-      "@id": "potapit:Offer",
-      "@type": "owl:Class",
-      "rdfs:isDefinedBy": {
-        "@id": "potapit:"
+      "@id": "_:ub174bL682C36",
+      "@type": "owl:Restriction",
+      "owl:allValuesFrom": {
+        "@id": "potapit:Offer"
+      },
+      "owl:onProperty": {
+        "@id": "potapit:hasOffer"
+      }
+    },
+    {
+      "@id": "_:ub174bL816C29",
+      "@type": "owl:Restriction",
+      "owl:onProperty": {
+        "@id": "http://dati.gov.it/onto/accoapit#featureName"
+      },
+      "owl:someValuesFrom": {
+        "@id": "rdfs:Literal"
       }
     },
     {
@@ -780,22 +886,22 @@
       "@type": "owl:Class",
       "owl:versionInfo": [
         {
-          "@language": "it",
-          "@value": "stabile"
-        },
-        {
           "@language": "en",
           "@value": "stable"
+        },
+        {
+          "@language": "it",
+          "@value": "stabile"
         }
       ],
       "rdfs:comment": [
         {
-          "@language": "it",
-          "@value": "Questa classe rappresenta la tipologia di Struttura ricettiva. Gli elementi di questa classe sono concetti del vocabolario skos (skos:Concept) e devono essere definiti sulla base del vocabolario controllato disponibile in http://dati.gov.it/onto/controlledvcoabulary/AccommodationTypology. Questo vocabolario controllato definisce le tipologie di strutture ricettive così come identificate nel Decreto legislativo n°79 del 23 maggio 2011."
-        },
-        {
           "@language": "en",
           "@value": "This class represents the typology of accommodation facility. The elements of this class are skos:Concept and must be defined according to the controlled vocabulary available at http://dati.gov.it/onto/controlledvocabulary/AccommodationTypology"
+        },
+        {
+          "@language": "it",
+          "@value": "Questa classe rappresenta la tipologia di Struttura ricettiva. Gli elementi di questa classe sono concetti del vocabolario skos (skos:Concept) e devono essere definiti sulla base del vocabolario controllato disponibile in http://dati.gov.it/onto/controlledvcoabulary/AccommodationTypology. Questo vocabolario controllato definisce le tipologie di strutture ricettive così come identificate nel Decreto legislativo n°79 del 23 maggio 2011."
         }
       ],
       "rdfs:isDefinedBy": {
@@ -813,31 +919,25 @@
       ],
       "rdfs:subClassOf": [
         {
-          "@id": "_:ub202bL685C40"
+          "@id": "l0:Topic"
         },
         {
-          "@id": "l0:Topic"
+          "@id": "_:ub174bL731C40"
         }
       ]
     },
     {
-      "@id": "_:ub202bL798C44",
+      "@id": "_:ub174bL631C32",
       "@type": "owl:Restriction",
-      "owl:allValuesFrom": {
-        "@id": "xsd:int"
+      "owl:maxQualifiedCardinality": {
+        "@type": "xsd:nonNegativeInteger",
+        "@value": "1"
+      },
+      "owl:onDataRange": {
+        "@id": "xsd:dateTime"
       },
       "owl:onProperty": {
-        "@id": "http://dati.gov.it/onto/accoapit#minValue"
-      }
-    },
-    {
-      "@id": "_:ub202bL751C31",
-      "@type": "owl:Restriction",
-      "owl:onProperty": {
-        "@id": "http://dati.gov.it/onto/accoapit#criterion"
-      },
-      "owl:someValuesFrom": {
-        "@id": "rdfs:Literal"
+        "@id": "http://dati.gov.it/onto/accoapit#checkIn"
       }
     },
     {
@@ -845,12 +945,12 @@
       "@type": "owl:DatatypeProperty",
       "owl:priorVersion": [
         {
-          "@language": "en",
-          "@value": "stable"
-        },
-        {
           "@language": "it",
           "@value": "stabile"
+        },
+        {
+          "@language": "en",
+          "@value": "stable"
         }
       ],
       "rdfs:comment": [
@@ -884,16 +984,26 @@
       }
     },
     {
+      "@id": "_:ub174bL840C44",
+      "@type": "owl:Restriction",
+      "owl:allValuesFrom": {
+        "@id": "xsd:int"
+      },
+      "owl:onProperty": {
+        "@id": "http://dati.gov.it/onto/accoapit#maxValue"
+      }
+    },
+    {
       "@id": "http://dati.gov.it/onto/accoapit#DoubleRoom",
       "@type": "owl:Class",
       "owl:versionInfo": [
         {
-          "@language": "en",
-          "@value": "stable"
-        },
-        {
           "@language": "it",
           "@value": "stabile"
+        },
+        {
+          "@language": "en",
+          "@value": "stable"
         }
       ],
       "rdfs:comment": [
@@ -911,12 +1021,12 @@
       },
       "rdfs:label": [
         {
-          "@language": "it",
-          "@value": "Camera Doppia"
-        },
-        {
           "@language": "en",
           "@value": "Double Room"
+        },
+        {
+          "@language": "it",
+          "@value": "Camera Doppia"
         }
       ],
       "rdfs:subClassOf": {
@@ -931,6 +1041,16 @@
       }
     },
     {
+      "@id": "_:ub174bL589C32",
+      "@type": "owl:Restriction",
+      "owl:allValuesFrom": {
+        "@id": "http://dati.gov.it/onto/accoapit#OfferedServiceDescription"
+      },
+      "owl:onProperty": {
+        "@id": "http://dati.gov.it/onto/accoapit#hasOfferedServiceDescription"
+      }
+    },
+    {
       "@id": "http://dati.gov.it/onto/accoapit#hasAccommodationClassification",
       "@type": "owl:ObjectProperty",
       "owl:inverseOf": {
@@ -938,12 +1058,12 @@
       },
       "owl:versionInfo": [
         {
-          "@language": "it",
-          "@value": "stabile"
-        },
-        {
           "@language": "en",
           "@value": "stable"
+        },
+        {
+          "@language": "it",
+          "@value": "stabile"
         }
       ],
       "rdfs:comment": [
@@ -964,30 +1084,16 @@
       },
       "rdfs:label": [
         {
-          "@language": "en",
-          "@value": "has accommodation classification"
-        },
-        {
           "@language": "it",
           "@value": "ha classificazione struttura ricettiva"
+        },
+        {
+          "@language": "en",
+          "@value": "has accommodation classification"
         }
       ],
       "rdfs:range": {
         "@id": "http://dati.gov.it/onto/accoapit#AccommodationStarRating"
-      }
-    },
-    {
-      "@id": "_:ub202bL570C32",
-      "@type": "owl:Restriction",
-      "owl:onDataRange": {
-        "@id": "xsd:int"
-      },
-      "owl:onProperty": {
-        "@id": "http://dati.gov.it/onto/accoapit#totalBed"
-      },
-      "owl:qualifiedCardinality": {
-        "@type": "xsd:nonNegativeInteger",
-        "@value": "1"
       }
     },
     {
@@ -1005,12 +1111,12 @@
       ],
       "rdfs:comment": [
         {
-          "@language": "en",
-          "@value": "The checkin time of the accommodation facility"
-        },
-        {
           "@language": "it",
           "@value": "Il checkin previsto dalla struttura ricettiva"
+        },
+        {
+          "@language": "en",
+          "@value": "The checkin time of the accommodation facility"
         }
       ],
       "rdfs:domain": {
@@ -1034,26 +1140,40 @@
       }
     },
     {
+      "@id": "l0:controlledVocabulary",
+      "@type": "owl:AnnotationProperty"
+    },
+    {
+      "@id": "_:ub174bL593C32",
+      "@type": "owl:Restriction",
+      "owl:allValuesFrom": {
+        "@id": "http://dati.gov.it/onto/accoapit#AccommodationChain"
+      },
+      "owl:onProperty": {
+        "@id": "http://dati.gov.it/onto/accoapit#isIncludedInAccommodation"
+      }
+    },
+    {
       "@id": "http://dati.gov.it/onto/accoapit#featureDescription",
       "@type": "owl:DatatypeProperty",
       "owl:versionInfo": [
         {
-          "@language": "it",
-          "@value": "stabile"
-        },
-        {
           "@language": "en",
           "@value": "stable"
+        },
+        {
+          "@language": "it",
+          "@value": "stabile"
         }
       ],
       "rdfs:comment": [
         {
-          "@language": "en",
-          "@value": "This property allows one to specify a textual description of the feature of the offered services description"
-        },
-        {
           "@language": "it",
           "@value": "Questa proprietà consente di specificare una descrizione complessiva testuale della caratteristica della descrizione dei servizi offerti"
+        },
+        {
+          "@language": "en",
+          "@value": "This property allows one to specify a textual description of the feature of the offered services description"
         }
       ],
       "rdfs:domain": {
@@ -1080,17 +1200,17 @@
       }
     },
     {
-      "@id": "_:ub202bL555C32",
-      "@type": "owl:Restriction",
-      "owl:onClass": {
-        "@id": "http://dati.gov.it/onto/accoapit#AccommodationStarRating"
-      },
-      "owl:onProperty": {
-        "@id": "http://dati.gov.it/onto/accoapit#hasAccommodationClassification"
-      },
-      "owl:qualifiedCardinality": {
-        "@type": "xsd:nonNegativeInteger",
-        "@value": "1"
+      "@id": "_:ub174bL170C43",
+      "@type": "owl:Class",
+      "owl:unionOf": {
+        "@list": [
+          {
+            "@id": "http://dati.gov.it/onto/accoapit#Accommodation"
+          },
+          {
+            "@id": "http://dati.gov.it/onto/accoapit#AccommodationRoom"
+          }
+        ]
       }
     },
     {
@@ -1137,7 +1257,7 @@
           "@id": "l0:Characteristic"
         },
         {
-          "@id": "_:ub202bL665C42"
+          "@id": "_:ub174bL711C42"
         }
       ]
     },
@@ -1146,23 +1266,17 @@
       "@type": "owl:AnnotationProperty"
     },
     {
-      "@id": "_:ub202bL613C37",
+      "@id": "_:ub174bL636C32",
       "@type": "owl:Restriction",
-      "owl:onProperty": {
-        "@id": "http://dati.gov.it/onto/accoapit#includesAccommodation"
+      "owl:maxQualifiedCardinality": {
+        "@type": "xsd:nonNegativeInteger",
+        "@value": "1"
       },
-      "owl:someValuesFrom": {
-        "@id": "http://dati.gov.it/onto/accoapit#Accommodation"
-      }
-    },
-    {
-      "@id": "_:ub202bL539C32",
-      "@type": "owl:Restriction",
-      "owl:allValuesFrom": {
-        "@id": "http://dati.gov.it/onto/accoapit#AccommodationRoom"
+      "owl:onDataRange": {
+        "@id": "xsd:dateTime"
       },
       "owl:onProperty": {
-        "@id": "http://dati.gov.it/onto/accoapit#hasAccommodationRoom"
+        "@id": "http://dati.gov.it/onto/accoapit#checkOut"
       }
     },
     {
@@ -1170,6 +1284,13 @@
       "@type": "owl:ObjectProperty",
       "rdfs:isDefinedBy": {
         "@id": "smapit:"
+      }
+    },
+    {
+      "@id": "l0:identifier",
+      "@type": "owl:DatatypeProperty",
+      "rdfs:isDefinedBy": {
+        "@id": "l0:"
       }
     },
     {
@@ -1203,12 +1324,12 @@
       },
       "rdfs:label": [
         {
-          "@language": "en",
-          "@value": "has offered service description criterion"
-        },
-        {
           "@language": "it",
           "@value": "ha criterio per descrizione servizi offerti"
+        },
+        {
+          "@language": "en",
+          "@value": "has offered service description criterion"
         }
       ],
       "rdfs:range": {
@@ -1220,12 +1341,12 @@
       "@type": "owl:Class",
       "owl:versionInfo": [
         {
-          "@language": "en",
-          "@value": "stable"
-        },
-        {
           "@language": "it",
           "@value": "stabile"
+        },
+        {
+          "@language": "en",
+          "@value": "stable"
         }
       ],
       "prov:wasDerivedFrom": {
@@ -1256,19 +1377,19 @@
       ],
       "rdfs:subClassOf": [
         {
-          "@id": "_:ub202bL640C36"
+          "@id": "_:ub174bL682C36"
         },
         {
-          "@id": "_:ub202bL636C36"
+          "@id": "_:ub174bL678C36"
         },
         {
-          "@id": "_:ub202bL645C36"
+          "@id": "_:ub174bL691C36"
         },
         {
           "@id": "http://dati.gov.it/onto/accoapit#OSDFeature"
         },
         {
-          "@id": "_:ub202bL632C36"
+          "@id": "_:ub174bL686C36"
         }
       ]
     },
@@ -1277,6 +1398,13 @@
       "@type": "owl:DatatypeProperty",
       "rdfs:isDefinedBy": {
         "@id": "l0:"
+      }
+    },
+    {
+      "@id": "potapit:Offer",
+      "@type": "owl:Class",
+      "rdfs:isDefinedBy": {
+        "@id": "potapit:"
       }
     },
     {
@@ -1313,12 +1441,12 @@
       },
       "rdfs:label": [
         {
-          "@language": "it",
-          "@value": "include struttura ricettiva"
-        },
-        {
           "@language": "en",
           "@value": "includes accommodation"
+        },
+        {
+          "@language": "it",
+          "@value": "include struttura ricettiva"
         }
       ],
       "rdfs:range": {
@@ -1326,40 +1454,6 @@
       },
       "rdfs:subPropertyOf": {
         "@id": "poiapit:includesPOI"
-      }
-    },
-    {
-      "@id": "_:ub202bL580C32",
-      "@type": "owl:Restriction",
-      "owl:onDataRange": {
-        "@id": "xsd:int"
-      },
-      "owl:onProperty": {
-        "@id": "http://dati.gov.it/onto/accoapit#totalToilet"
-      },
-      "owl:qualifiedCardinality": {
-        "@type": "xsd:nonNegativeInteger",
-        "@value": "1"
-      }
-    },
-    {
-      "@id": "_:ub202bL551C32",
-      "@type": "owl:Restriction",
-      "owl:allValuesFrom": {
-        "@id": "potapit:Offer"
-      },
-      "owl:onProperty": {
-        "@id": "potapit:hasOffer"
-      }
-    },
-    {
-      "@id": "_:ub202bL665C42",
-      "@type": "owl:Restriction",
-      "owl:allValuesFrom": {
-        "@id": "http://dati.gov.it/onto/accoapit#Accommodation"
-      },
-      "owl:onProperty": {
-        "@id": "http://dati.gov.it/onto/accoapit#isAccommodationClassificationOf"
       }
     },
     {
@@ -1380,12 +1474,12 @@
       ],
       "rdfs:comment": [
         {
-          "@language": "en",
-          "@value": "This property links an accommodation with at least one typology (hotel, motel, camping, etc.)."
-        },
-        {
           "@language": "it",
           "@value": "Questa proprietà collega una struttura ricettiva con almeno una tipologia (hotel, motel, campeggio, albergo diffuso, ecc.)"
+        },
+        {
+          "@language": "en",
+          "@value": "This property links an accommodation with at least one typology (hotel, motel, camping, etc.)."
         }
       ],
       "rdfs:domain": {
@@ -1396,12 +1490,12 @@
       },
       "rdfs:label": [
         {
-          "@language": "it",
-          "@value": "ha tipologia struttura ricettiva"
-        },
-        {
           "@language": "en",
           "@value": "has accommodation typology"
+        },
+        {
+          "@language": "it",
+          "@value": "ha tipologia struttura ricettiva"
         }
       ],
       "rdfs:range": {
@@ -1423,12 +1517,12 @@
       ],
       "rdfs:comment": [
         {
-          "@language": "en",
-          "@value": "Inverse property of \"has accommodation classification\" that links the star rating to the accommodation facility"
-        },
-        {
           "@language": "it",
           "@value": "Proprietà inversa di \"ha classificazione struttura ricettiva\" e collega il rating a stelle alla struttura ricettiva"
+        },
+        {
+          "@language": "en",
+          "@value": "Inverse property of \"has accommodation classification\" that links the star rating to the accommodation facility"
         }
       ],
       "rdfs:domain": {
@@ -1439,12 +1533,12 @@
       },
       "rdfs:label": [
         {
-          "@language": "it",
-          "@value": "è classificazione di struttura ricettiva"
-        },
-        {
           "@language": "en",
           "@value": "is accommodation classification of"
+        },
+        {
+          "@language": "it",
+          "@value": "è classificazione di struttura ricettiva"
         }
       ],
       "rdfs:range": {
@@ -1482,12 +1576,12 @@
       },
       "rdfs:label": [
         {
-          "@language": "en",
-          "@value": "is accommodation typology of"
-        },
-        {
           "@language": "it",
           "@value": "è tipologia di struttura ricettiva"
+        },
+        {
+          "@language": "en",
+          "@value": "is accommodation typology of"
         }
       ],
       "rdfs:range": {
@@ -1502,51 +1596,59 @@
       }
     },
     {
-      "@id": "_:ub202bL632C36",
+      "@id": "_:ub174bL585C32",
       "@type": "owl:Restriction",
       "owl:allValuesFrom": {
-        "@id": "http://dati.gov.it/onto/accoapit#OfferedServiceDescription"
+        "@id": "http://dati.gov.it/onto/accoapit#AccommodationRoom"
       },
       "owl:onProperty": {
-        "@id": "http://dati.gov.it/onto/accoapit#hasOfferedServiceDescription"
+        "@id": "http://dati.gov.it/onto/accoapit#hasAccommodationRoom"
       }
     },
     {
-      "@id": "http://dati.gov.it/onto/accoapit#TripleRoom",
-      "@type": "owl:Class",
-      "owl:priorVersion": {
-        "@language": "en",
-        "@value": "stable"
-      },
-      "owl:versionInfo": {
-        "@language": "it",
-        "@value": "stabile"
-      },
+      "@id": "http://dati.gov.it/onto/accoapit#minValue",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "owl:versionInfo": [
+        {
+          "@language": "it",
+          "@value": "provvisoria"
+        },
+        {
+          "@language": "en",
+          "@value": "unstable"
+        }
+      ],
       "rdfs:comment": [
         {
           "@language": "en",
-          "@value": "This class is used to model a triple room of an accommodation facility."
+          "@value": "This property represents a minumun integer value. In the modelled domain it is associated with the description of the offered services."
         },
         {
           "@language": "it",
-          "@value": "Questa classe è usata per modellare una camera tripla della struttura ricettiva."
+          "@value": "Questa proprietà rappresenta un valore minimo intero. Nel dominio modellato è associato con la descrizione dei servizi offerti"
         }
       ],
+      "rdfs:domain": {
+        "@id": "http://dati.gov.it/onto/accoapit#OfferedServiceDescription"
+      },
       "rdfs:isDefinedBy": {
         "@id": "http://dati.gov.it/onto/accoapit"
       },
       "rdfs:label": [
         {
           "@language": "it",
-          "@value": "Camera Tripla"
+          "@value": "valore minimo"
         },
         {
           "@language": "en",
-          "@value": "Triple Room"
+          "@value": "minimum value"
         }
       ],
-      "rdfs:subClassOf": {
-        "@id": "http://dati.gov.it/onto/accoapit#Bedroom"
+      "rdfs:range": {
+        "@id": "xsd:int"
       }
     },
     {
@@ -1565,12 +1667,12 @@
       "@type": "owl:ObjectProperty",
       "owl:versionInfo": [
         {
-          "@language": "en",
-          "@value": "stable"
-        },
-        {
           "@language": "it",
           "@value": "stabile"
+        },
+        {
+          "@language": "en",
+          "@value": "stable"
         }
       ],
       "rdfs:comment": [
@@ -1601,6 +1703,27 @@
       ],
       "rdfs:range": {
         "@id": "http://dati.gov.it/onto/accoapit#Accommodation"
+      }
+    },
+    {
+      "@id": "_:ub174bL678C36",
+      "@type": "owl:Restriction",
+      "owl:allValuesFrom": {
+        "@id": "http://dati.gov.it/onto/accoapit#OfferedServiceDescription"
+      },
+      "owl:onProperty": {
+        "@id": "http://dati.gov.it/onto/accoapit#hasOfferedServiceDescription"
+      }
+    },
+    {
+      "@id": "_:ub174bL852C44",
+      "@type": "owl:Restriction",
+      "owl:maxCardinality": {
+        "@type": "xsd:nonNegativeInteger",
+        "@value": "1"
+      },
+      "owl:onProperty": {
+        "@id": "http://dati.gov.it/onto/accoapit#genericValue"
       }
     },
     {
@@ -1654,22 +1777,22 @@
       "@type": "owl:DatatypeProperty",
       "owl:versionInfo": [
         {
-          "@language": "en",
-          "@value": "unstable"
-        },
-        {
           "@language": "it",
           "@value": "provvisoria"
+        },
+        {
+          "@language": "en",
+          "@value": "unstable"
         }
       ],
       "rdfs:comment": [
         {
-          "@language": "en",
-          "@value": "This property allows one to specify a generic criterion for the class \"Offered Service Description Criterion\". Example: square meters"
-        },
-        {
           "@language": "it",
           "@value": "Questa proprietà consente di specificare un generico criterio per la classe \"Criterio per Descrizione Servizi Offerti\". Esempio: metri quadrati"
+        },
+        {
+          "@language": "en",
+          "@value": "This property allows one to specify a generic criterion for the class \"Offered Service Description Criterion\". Example: square meters"
         }
       ],
       "rdfs:domain": {
@@ -1697,13 +1820,13 @@
       "@type": "owl:AnnotationProperty"
     },
     {
-      "@id": "_:ub202bL547C32",
+      "@id": "_:ub174bL691C36",
       "@type": "owl:Restriction",
       "owl:allValuesFrom": {
-        "@id": "http://dati.gov.it/onto/accoapit#AccommodationChain"
+        "@id": "rdfs:Literal"
       },
       "owl:onProperty": {
-        "@id": "http://dati.gov.it/onto/accoapit#isIncludedInAccommodation"
+        "@id": "http://dati.gov.it/onto/accoapit#roomName"
       }
     },
     {
@@ -1728,12 +1851,12 @@
       ],
       "rdfs:comment": [
         {
-          "@language": "it",
-          "@value": "Questa proprietà rappresenta un valore totale (intero). Nel dominio modellato delle strutture ricettive essa è associata alal descrizione dei servizi offerti"
-        },
-        {
           "@language": "en",
           "@value": "This property represents a total value (integer). In the modelled domain it is associated with the description of the offered services."
+        },
+        {
+          "@language": "it",
+          "@value": "Questa proprietà rappresenta un valore totale (intero). Nel dominio modellato delle strutture ricettive essa è associata alal descrizione dei servizi offerti"
         }
       ],
       "rdfs:domain": {
@@ -1787,12 +1910,12 @@
       },
       "rdfs:label": [
         {
-          "@language": "en",
-          "@value": "total number of beds"
-        },
-        {
           "@language": "it",
           "@value": "numero totale di letti"
+        },
+        {
+          "@language": "en",
+          "@value": "total number of beds"
         }
       ],
       "rdfs:range": {
@@ -1804,22 +1927,22 @@
       "@type": "owl:DatatypeProperty",
       "owl:priorVersion": [
         {
-          "@language": "it",
-          "@value": "stabile"
-        },
-        {
           "@language": "en",
           "@value": "stable"
+        },
+        {
+          "@language": "it",
+          "@value": "stabile"
         }
       ],
       "rdfs:comment": [
         {
-          "@language": "it",
-          "@value": "Questa proprietà rappresenta il numero totale di camere della struttura ricettiva."
-        },
-        {
           "@language": "en",
           "@value": "This property represents the total number of rooms of the accommodation facility."
+        },
+        {
+          "@language": "it",
+          "@value": "Questa proprietà rappresenta il numero totale di camere della struttura ricettiva."
         }
       ],
       "rdfs:domain": {
@@ -1843,37 +1966,16 @@
       }
     },
     {
-      "@id": "_:ub202bL794C44",
-      "@type": "owl:Restriction",
-      "owl:allValuesFrom": {
-        "@id": "xsd:int"
-      },
-      "owl:onProperty": {
-        "@id": "http://dati.gov.it/onto/accoapit#maxValue"
-      }
-    },
-    {
-      "@id": "_:ub202bL806C44",
-      "@type": "owl:Restriction",
-      "owl:maxCardinality": {
-        "@type": "xsd:nonNegativeInteger",
-        "@value": "1"
-      },
-      "owl:onProperty": {
-        "@id": "http://dati.gov.it/onto/accoapit#genericValue"
-      }
-    },
-    {
       "@id": "http://dati.gov.it/onto/accoapit#OSDFeature",
       "@type": "owl:Class",
       "owl:versionInfo": [
         {
-          "@language": "it",
-          "@value": "stabile"
-        },
-        {
           "@language": "en",
           "@value": "stable"
+        },
+        {
+          "@language": "it",
+          "@value": "stabile"
         }
       ],
       "prov:wasInfluencedBy": {
@@ -1894,38 +1996,38 @@
       },
       "rdfs:label": [
         {
-          "@language": "en",
-          "@value": "Offered Service Description Feature"
-        },
-        {
           "@language": "it",
           "@value": "Caratteristica della Descrizione dei Servizi Offerti"
+        },
+        {
+          "@language": "en",
+          "@value": "Offered Service Description Feature"
         }
       ],
       "rdfs:subClassOf": [
         {
-          "@id": "_:ub202bL774C29"
-        },
-        {
-          "@id": "_:ub202bL770C29"
-        },
-        {
           "@id": "l0:Entity"
+        },
+        {
+          "@id": "_:ub174bL820C29"
+        },
+        {
+          "@id": "_:ub174bL816C29"
         }
       ]
     },
     {
-      "@id": "_:ub202bL590C32",
+      "@id": "_:ub174bL601C32",
       "@type": "owl:Restriction",
-      "owl:maxQualifiedCardinality": {
-        "@type": "xsd:nonNegativeInteger",
-        "@value": "1"
-      },
-      "owl:onDataRange": {
-        "@id": "xsd:dateTime"
+      "owl:onClass": {
+        "@id": "http://dati.gov.it/onto/accoapit#AccommodationStarRating"
       },
       "owl:onProperty": {
-        "@id": "http://dati.gov.it/onto/accoapit#checkOut"
+        "@id": "http://dati.gov.it/onto/accoapit#hasAccommodationClassification"
+      },
+      "owl:qualifiedCardinality": {
+        "@type": "xsd:nonNegativeInteger",
+        "@value": "1"
       }
     },
     {
@@ -1933,11 +2035,11 @@
       "@type": "owl:ObjectProperty",
       "owl:versionInfo": [
         {
-          "@language": "en",
+          "@language": "it",
           "@value": "stable"
         },
         {
-          "@language": "it",
+          "@language": "en",
           "@value": "stable"
         }
       ],
@@ -1979,17 +2081,13 @@
       }
     },
     {
-      "@id": "_:ub202bL585C32",
+      "@id": "_:ub174bL597C32",
       "@type": "owl:Restriction",
-      "owl:maxQualifiedCardinality": {
-        "@type": "xsd:nonNegativeInteger",
-        "@value": "1"
-      },
-      "owl:onDataRange": {
-        "@id": "xsd:dateTime"
+      "owl:allValuesFrom": {
+        "@id": "potapit:Offer"
       },
       "owl:onProperty": {
-        "@id": "http://dati.gov.it/onto/accoapit#checkIn"
+        "@id": "potapit:hasOffer"
       }
     },
     {
@@ -2002,8 +2100,8 @@
     {
       "@id": "http://dati.gov.it/onto/accoapit#genericValue",
       "@type": [
-        "owl:DatatypeProperty",
-        "owl:FunctionalProperty"
+        "owl:FunctionalProperty",
+        "owl:DatatypeProperty"
       ],
       "owl:versionInfo": [
         {
@@ -2046,16 +2144,6 @@
       }
     },
     {
-      "@id": "_:ub202bL685C40",
-      "@type": "owl:Restriction",
-      "owl:allValuesFrom": {
-        "@id": "http://dati.gov.it/onto/accoapit#Accommodation"
-      },
-      "owl:onProperty": {
-        "@id": "http://dati.gov.it/onto/accoapit#isAccommodationTypologyOf"
-      }
-    },
-    {
       "@id": "http://dati.gov.it/onto/accoapit#Bedroom",
       "@type": "owl:Class",
       "owl:versionInfo": [
@@ -2076,22 +2164,22 @@
       },
       "rdfs:comment": [
         {
-          "@language": "it",
-          "@value": "Questa è una classe astratta utilizzata per modellare una camera da letto di una struttura ricettiva"
-        },
-        {
           "@language": "en",
           "@value": "This is an abstract class used to model a bed room of an accommodation facility"
+        },
+        {
+          "@language": "it",
+          "@value": "Questa è una classe astratta utilizzata per modellare una camera da letto di una struttura ricettiva"
         }
       ],
       "rdfs:label": [
         {
-          "@language": "en",
-          "@value": "Bedroom"
-        },
-        {
           "@language": "it",
           "@value": "Camera da Letto"
+        },
+        {
+          "@language": "en",
+          "@value": "Bedroom"
         }
       ],
       "rdfs:subClassOf": {
@@ -2099,15 +2187,25 @@
       }
     },
     {
+      "@id": "_:ub174bL848C44",
+      "@type": "owl:Restriction",
+      "owl:allValuesFrom": {
+        "@id": "xsd:int"
+      },
+      "owl:onProperty": {
+        "@id": "http://dati.gov.it/onto/accoapit#totalValue"
+      }
+    },
+    {
       "@id": "http://dati.gov.it/onto/accoapit#hasAccommodationOwner",
       "@type": "owl:ObjectProperty",
       "owl:versionInfo": [
         {
-          "@language": "en",
+          "@language": "it",
           "@value": "stable"
         },
         {
-          "@language": "it",
+          "@language": "en",
           "@value": "stable"
         }
       ],
@@ -2129,12 +2227,12 @@
       },
       "rdfs:label": [
         {
-          "@language": "en",
-          "@value": "has accommodation owner"
-        },
-        {
           "@language": "it",
           "@value": "ha proprietario struttura ricettiva"
+        },
+        {
+          "@language": "en",
+          "@value": "has accommodation owner"
         }
       ],
       "rdfs:range": {
@@ -2146,20 +2244,8 @@
       "@type": "owl:Ontology",
       "dc:creator": [
         {
-          "@language": "it",
-          "@value": "Istituto di Scienze e Tecnologie della Cognizione del CNR - Laboratorio di Tecnologie Semantiche (STLab)"
-        },
-        {
-          "@language": "it",
-          "@value": "Agenzia per l'Italia Digitale - AgID"
-        },
-        {
           "@language": "en",
-          "@value": "Italian Digital Transformation Team"
-        },
-        {
-          "@language": "en",
-          "@value": "Institute of Cognitive Sciences and Technologies of the Italian Research Council (CNR) - Semantic Technology Laboratory (STLab)"
+          "@value": "Agency for Digital Italy - AgID"
         },
         {
           "@language": "it",
@@ -2167,7 +2253,19 @@
         },
         {
           "@language": "en",
-          "@value": "Agency for Digital Italy - AgID"
+          "@value": "Institute of Cognitive Sciences and Technologies of the Italian Research Council (CNR) - Semantic Technology Laboratory (STLab)"
+        },
+        {
+          "@language": "it",
+          "@value": "Istituto di Scienze e Tecnologie della Cognizione del CNR - Laboratorio di Tecnologie Semantiche (STLab)"
+        },
+        {
+          "@language": "en",
+          "@value": "Italian Digital Transformation Team"
+        },
+        {
+          "@language": "it",
+          "@value": "Agenzia per l'Italia Digitale - AgID"
         }
       ],
       "dcterms:issued": "2017-10-23",
@@ -2177,22 +2275,22 @@
       "dcterms:modified": "2017-11-19",
       "owl:imports": [
         {
+          "@id": "poiapit:"
+        },
+        {
+          "@id": "smapit:"
+        },
+        {
+          "@id": "tiapit:"
+        },
+        {
           "@id": "potapit:"
         },
         {
           "@id": "l0:"
         },
         {
-          "@id": "poiapit:"
-        },
-        {
           "@id": "covapit:"
-        },
-        {
-          "@id": "tiapit:"
-        },
-        {
-          "@id": "smapit:"
         }
       ],
       "owl:versionIRI": {
@@ -2226,23 +2324,23 @@
       },
       "rdfs:label": [
         {
-          "@language": "en",
-          "@value": "Accommodation Facilities"
-        },
-        {
           "@language": "it",
           "@value": "Strutture ricettive"
+        },
+        {
+          "@language": "en",
+          "@value": "Accommodation Facilities"
         }
       ]
     },
     {
-      "@id": "_:ub202bL640C36",
+      "@id": "_:ub174bL621C32",
       "@type": "owl:Restriction",
-      "owl:onClass": {
-        "@id": "http://dati.gov.it/onto/accoapit#Accommodation"
+      "owl:onDataRange": {
+        "@id": "xsd:int"
       },
       "owl:onProperty": {
-        "@id": "http://dati.gov.it/onto/accoapit#isAccommodationRoomOf"
+        "@id": "http://dati.gov.it/onto/accoapit#totalRoom"
       },
       "owl:qualifiedCardinality": {
         "@type": "xsd:nonNegativeInteger",
@@ -2280,12 +2378,12 @@
       },
       "rdfs:label": [
         {
-          "@language": "en",
-          "@value": "is included in accommodation"
-        },
-        {
           "@language": "it",
           "@value": "è inclusa in struttura ricettiva"
+        },
+        {
+          "@language": "en",
+          "@value": "is included in accommodation"
         }
       ],
       "rdfs:range": {
@@ -2293,13 +2391,13 @@
       }
     },
     {
-      "@id": "_:ub202bL575C32",
+      "@id": "_:ub174bL686C36",
       "@type": "owl:Restriction",
-      "owl:onDataRange": {
-        "@id": "xsd:int"
+      "owl:onClass": {
+        "@id": "http://dati.gov.it/onto/accoapit#Accommodation"
       },
       "owl:onProperty": {
-        "@id": "http://dati.gov.it/onto/accoapit#totalRoom"
+        "@id": "http://dati.gov.it/onto/accoapit#isAccommodationRoomOf"
       },
       "owl:qualifiedCardinality": {
         "@type": "xsd:nonNegativeInteger",
@@ -2307,17 +2405,23 @@
       }
     },
     {
-      "@id": "_:ub202bL560C32",
+      "@id": "_:ub174bL659C37",
       "@type": "owl:Restriction",
-      "owl:maxQualifiedCardinality": {
-        "@type": "xsd:nonNegativeInteger",
-        "@value": "1"
+      "owl:onProperty": {
+        "@id": "http://dati.gov.it/onto/accoapit#includesAccommodation"
       },
-      "owl:onClass": {
-        "@id": "covapit:Organization"
+      "owl:someValuesFrom": {
+        "@id": "http://dati.gov.it/onto/accoapit#Accommodation"
+      }
+    },
+    {
+      "@id": "_:ub174bL820C29",
+      "@type": "owl:Restriction",
+      "owl:allValuesFrom": {
+        "@id": "rdfs:Literal"
       },
       "owl:onProperty": {
-        "@id": "http://dati.gov.it/onto/accoapit#hasAccommodationOwner"
+        "@id": "http://dati.gov.it/onto/accoapit#featureDescription"
       }
     },
     {
@@ -2328,29 +2432,77 @@
       }
     },
     {
-      "@id": "http://dati.gov.it/onto/accoapit#minValue",
-      "@type": [
-        "owl:DatatypeProperty",
-        "owl:FunctionalProperty"
-      ],
-      "owl:versionInfo": [
+      "@id": "http://dati.gov.it/onto/accoapit#TripleRoom",
+      "@type": "owl:Class",
+      "owl:priorVersion": {
+        "@language": "en",
+        "@value": "stable"
+      },
+      "owl:versionInfo": {
+        "@language": "it",
+        "@value": "stabile"
+      },
+      "rdfs:comment": [
+        {
+          "@language": "it",
+          "@value": "Questa classe è usata per modellare una camera tripla della struttura ricettiva."
+        },
         {
           "@language": "en",
-          "@value": "unstable"
+          "@value": "This class is used to model a triple room of an accommodation facility."
+        }
+      ],
+      "rdfs:isDefinedBy": {
+        "@id": "http://dati.gov.it/onto/accoapit"
+      },
+      "rdfs:label": [
+        {
+          "@language": "en",
+          "@value": "Triple Room"
         },
         {
           "@language": "it",
+          "@value": "Camera Tripla"
+        }
+      ],
+      "rdfs:subClassOf": {
+        "@id": "http://dati.gov.it/onto/accoapit#Bedroom"
+      }
+    },
+    {
+      "@id": "_:ub174bL581C32",
+      "@type": "owl:Restriction",
+      "owl:onProperty": {
+        "@id": "http://dati.gov.it/onto/accoapit#hasAccommodationTypology"
+      },
+      "owl:someValuesFrom": {
+        "@id": "http://dati.gov.it/onto/accoapit#AccommodationTypology"
+      }
+    },
+    {
+      "@id": "http://dati.gov.it/onto/accoapit#maxValue",
+      "@type": [
+        "owl:FunctionalProperty",
+        "owl:DatatypeProperty"
+      ],
+      "owl:versionInfo": [
+        {
+          "@language": "it",
           "@value": "provvisoria"
+        },
+        {
+          "@language": "en",
+          "@value": "unstable"
         }
       ],
       "rdfs:comment": [
         {
-          "@language": "it",
-          "@value": "Questa proprietà rappresenta un valore minimo intero. Nel dominio modellato è associato con la descrizione dei servizi offerti"
+          "@language": "en",
+          "@value": "This property is used to represent a maximum integer value. In the context of the ontology on accommodation facilities, it is associates with the Offered Service Description class"
         },
         {
-          "@language": "en",
-          "@value": "This property represents a minumun integer value. In the modelled domain it is associated with the description of the offered services."
+          "@language": "it",
+          "@value": "Questa proprietà è utilizzata per specificare un valore massimo intero. Nell'ambito dell'ontologia delle strutture ricettive essa è associata alla descrizione dei servizi offerti"
         }
       ],
       "rdfs:domain": {
@@ -2361,12 +2513,12 @@
       },
       "rdfs:label": [
         {
-          "@language": "it",
-          "@value": "valore minimo"
+          "@language": "en",
+          "@value": "maximum value"
         },
         {
-          "@language": "en",
-          "@value": "minimum value"
+          "@language": "it",
+          "@value": "valore massimo"
         }
       ],
       "rdfs:range": {
@@ -2374,57 +2526,17 @@
       }
     },
     {
-      "@id": "_:ub202bL535C32",
+      "@id": "_:ub174bL626C32",
       "@type": "owl:Restriction",
-      "owl:onProperty": {
-        "@id": "http://dati.gov.it/onto/accoapit#hasAccommodationTypology"
-      },
-      "owl:someValuesFrom": {
-        "@id": "http://dati.gov.it/onto/accoapit#AccommodationTypology"
-      }
-    },
-    {
-      "@id": "_:ub202bL645C36",
-      "@type": "owl:Restriction",
-      "owl:allValuesFrom": {
-        "@id": "rdfs:Literal"
+      "owl:onDataRange": {
+        "@id": "xsd:int"
       },
       "owl:onProperty": {
-        "@id": "http://dati.gov.it/onto/accoapit#roomName"
-      }
-    },
-    {
-      "@id": "_:ub202bL774C29",
-      "@type": "owl:Restriction",
-      "owl:allValuesFrom": {
-        "@id": "rdfs:Literal"
+        "@id": "http://dati.gov.it/onto/accoapit#totalToilet"
       },
-      "owl:onProperty": {
-        "@id": "http://dati.gov.it/onto/accoapit#featureDescription"
-      }
-    },
-    {
-      "@id": "_:ub202bL166C43",
-      "@type": "owl:Class",
-      "owl:unionOf": {
-        "@list": [
-          {
-            "@id": "http://dati.gov.it/onto/accoapit#Accommodation"
-          },
-          {
-            "@id": "http://dati.gov.it/onto/accoapit#AccommodationRoom"
-          }
-        ]
-      }
-    },
-    {
-      "@id": "_:ub202bL543C32",
-      "@type": "owl:Restriction",
-      "owl:allValuesFrom": {
-        "@id": "http://dati.gov.it/onto/accoapit#OfferedServiceDescription"
-      },
-      "owl:onProperty": {
-        "@id": "http://dati.gov.it/onto/accoapit#hasOfferedServiceDescription"
+      "owl:qualifiedCardinality": {
+        "@type": "xsd:nonNegativeInteger",
+        "@value": "1"
       }
     }
   ]

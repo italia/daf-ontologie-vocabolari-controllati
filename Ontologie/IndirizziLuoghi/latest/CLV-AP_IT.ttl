@@ -15,7 +15,7 @@
                                    owl:versionIRI <http://dati.gov.it/onto/clvapit/0.7> ;
                                    owl:imports <http://dati.gov.it/onto/tiapit/> ,
                                                l0: ;
-                                   dct:modified "2017-11-21" ;
+                                   dct:modified "2017-11-28" ;
                                    dc:creator "Institute of Cognitive Sciences and Technologies of the Italian Research Council (CNR) - Semantic Technology Laboratory (STLab)"@en ;
                                    owl:versionInfo "Version 0.6 - 27 October 2017 - Refactoring of organization class based on the COV-AP_IT ontology; some labels were corrected."@en ;
                                    dc:creator "Italian Digital Transformation Team"@en ;
@@ -38,6 +38,10 @@
 :hasRankOrder rdf:type owl:AnnotationProperty ;
               rdfs:range xsd:int ;
               rdfs:domain owl:Thing .
+
+
+###  http://dati.gov.it/onto/l0/controlledVocabulary
+l0:controlledVocabulary rdf:type owl:AnnotationProperty .
 
 
 ###  http://purl.org/dc/terms/license
@@ -481,6 +485,7 @@ ti:atTime rdf:type owl:ObjectProperty .
          rdfs:subPropertyOf l0:name ;
          rdfs:domain :Province ;
          rdfs:range rdfs:Literal ;
+         l0:controlledVocabulary <http://dati.gov.it/onto/controlledVocabulary/Territory> ;
          rdfs:comment "La sigla automobilistica con cui viene indicata la provincia."@it ,
                       "The acronym of the province that is typically used over the Italian territory for the license plate."@en ;
          rdfs:isDefinedBy <http://dati.gov.it/onto/clvapit> ;
@@ -746,12 +751,28 @@ ti:atTime rdf:type owl:ObjectProperty .
 ###  http://dati.gov.it/onto/l0/identifier
 l0:identifier rdf:type owl:DatatypeProperty ,
                        owl:FunctionalProperty ;
+              l0:controlledVocabulary <htto://dati.gov.it/onto/controlledVocabulary/Territory> ;
               rdfs:isDefinedBy l0: .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource l0:identifier ;
+   owl:annotatedProperty l0:controlledVocabulary ;
+   owl:annotatedTarget <htto://dati.gov.it/onto/controlledVocabulary/Territory> ;
+   prov:wasDerivedFrom <http://dati.gov.it/onto/clvapit>
+ ] .
 
 
 ###  http://dati.gov.it/onto/l0/name
 l0:name rdf:type owl:DatatypeProperty ;
+        l0:controlledVocabulary <http://dati.gov.it/onto/controlledVocabulary/Territory> ;
         rdfs:isDefinedBy l0: .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource l0:name ;
+   owl:annotatedProperty l0:controlledVocabulary ;
+   owl:annotatedTarget <http://dati.gov.it/onto/controlledVocabulary/Territory> ;
+   prov:wasDerivedFrom <http://dati.gov.it/onto/clvapit>
+ ] .
 
 
 #################################################################
