@@ -19,10 +19,10 @@
                                   dct:issued "2017-09-25"^^xsd:date ;
                                   rdfs:label "Ontologia del tempo - profilo applicativo italiano"@it ;
                                   dc:creator "Italian Digital Transformation Team"@en ;
-                                  dct:modified "2017-11-28" ;
                                   owl:versionInfo "Versione 0.4 - 21 Novembre 2017"@it ;
                                   rdfs:isDefinedBy : ;
                                   dct:license <https://creativecommons.org/licenses/by/4.0/> ;
+                                  dct:modified "2017-11-28" ;
                                   rdfs:comment "Questa è l'ontologia del profilo applicativo italiano sul tempo"@it ;
                                   rdfs:label "Time ontology - Italian Application Profile"@en ;
                                   owl:versionInfo "Version 0.4 - 21 November 2017"@en ;
@@ -410,7 +410,11 @@ muapit:Value rdf:type owl:Class .
 
 ###  http://dati.gov.it/onto/tiapit/TimeIndexedEvent
 :TimeIndexedEvent rdf:type owl:Class ;
-                  rdfs:subClassOf l0:Event ;
+                  rdfs:subClassOf l0:Event ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty :atTime ;
+                                    owl:someValuesFrom :TimeInterval
+                                  ] ;
                   rdfs:comment "A time indexed event."@en ,
                                "Un evento indicizzato nel tempo."@it ;
                   rdfs:isDefinedBy <http://dati.gov.it/onto/tiapit> ;

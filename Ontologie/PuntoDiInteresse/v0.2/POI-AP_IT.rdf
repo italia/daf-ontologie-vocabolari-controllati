@@ -17,16 +17,15 @@
         <owl:imports rdf:resource="http://dati.gov.it/onto/tiapit/"/>
         <owl:imports rdf:resource="http://dati.gov.it/onto/clvapit#"/>
         <owl:imports rdf:resource="http://dati.gov.it/onto/l0/"/>
-        <dct:modified>2017-11-21</dct:modified>
         <dc:creator xml:lang="en">Institute of Cognitive Sciences and Technologies of the Italian Research Council (CNR) - Semantic Technology Laboratory (STLab)</dc:creator>
         <dc:creator xml:lang="en">Italian Digital Transformation Team</dc:creator>
         <owl:versionInfo xml:lang="en">Version 0.2 - 03 November 2017 - Added associated with the controlled vocabiulary</owl:versionInfo>
         <rdfs:isDefinedBy rdf:resource="http://dati.gov.it/onto/poiapit/"/>
         <dc:creator xml:lang="it">Istituto di Scienze e Tecnologie della Cognizione del CNR - Laboratorio di Tecnologie Semantiche (STLab)</dc:creator>
-        <dct:license rdf:resource="https://creativecommons.org/licenses/by/4.0/"/>
         <owl:versionInfo xml:lang="it">Versione 0.2 - 03 Novembre 2017 - Aggiunta associazione con i core vocabulary</owl:versionInfo>
         <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2017-10-16</dct:issued>
         <dc:creator xml:lang="it">Team per la Trasformazione Digitale</dc:creator>
+        <dct:modified>2017-11-3</dct:modified>
         <dc:creator xml:lang="en">Agency for Digital Italy - AgID</dc:creator>
         <rdfs:label xml:lang="it">Punti di Interesse</rdfs:label>
         <rdfs:comment xml:lang="en">This is the ontology of the Italian application profile for Points of Interest</rdfs:comment>
@@ -54,12 +53,6 @@
     
 
 
-    <!-- http://purl.org/dc/terms/license -->
-
-    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/license"/>
-    
-
-
     <!-- 
     ///////////////////////////////////////////////////////////////////////////////////////
     //
@@ -74,6 +67,8 @@
     <!-- http://dati.gov.it/onto/clvapit#hasAddress -->
 
     <owl:ObjectProperty rdf:about="http://dati.gov.it/onto/clvapit#hasAddress">
+        <rdfs:domain rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <rdfs:range rdf:resource="http://dati.gov.it/onto/clvapit#Address"/>
         <rdfs:isDefinedBy rdf:resource="http://dati.gov.it/onto/clvapit"/>
     </owl:ObjectProperty>
     
@@ -82,6 +77,8 @@
     <!-- http://dati.gov.it/onto/clvapit#hasGeometry -->
 
     <owl:ObjectProperty rdf:about="http://dati.gov.it/onto/clvapit#hasGeometry">
+        <rdfs:domain rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <rdfs:range rdf:resource="http://dati.gov.it/onto/clvapit#Geometry"/>
         <rdfs:isDefinedBy rdf:resource="http://dati.gov.it/onto/clvapit"/>
     </owl:ObjectProperty>
     
@@ -224,6 +221,8 @@
     <!-- http://dati.gov.it/onto/smapit/hasImage -->
 
     <owl:ObjectProperty rdf:about="http://dati.gov.it/onto/smapit/hasImage">
+        <rdfs:domain rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <rdfs:range rdf:resource="http://dati.gov.it/onto/smapit/Image"/>
         <rdfs:isDefinedBy rdf:resource="http://dati.gov.it/onto/smapit/"/>
     </owl:ObjectProperty>
     
@@ -232,6 +231,8 @@
     <!-- http://dati.gov.it/onto/tiapit/atTime -->
 
     <owl:ObjectProperty rdf:about="http://dati.gov.it/onto/tiapit/atTime">
+        <rdfs:domain rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <rdfs:range rdf:resource="http://dati.gov.it/onto/tiapit/TimeInterval"/>
         <rdfs:isDefinedBy rdf:resource="http://dati.gov.it/onto/tiapit/"/>
     </owl:ObjectProperty>
     
@@ -248,34 +249,9 @@
     
 
 
-    <!-- http://dati.gov.it/onto/l0/description -->
-
-    <owl:DatatypeProperty rdf:about="http://dati.gov.it/onto/l0/description">
-        <rdfs:isDefinedBy rdf:resource="http://dati.gov.it/onto/l0/"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://dati.gov.it/onto/l0/identifier -->
-
-    <owl:DatatypeProperty rdf:about="http://dati.gov.it/onto/l0/identifier">
-        <rdfs:isDefinedBy rdf:resource="http://dati.gov.it/onto/l0/"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://dati.gov.it/onto/l0/name -->
-
-    <owl:DatatypeProperty rdf:about="http://dati.gov.it/onto/l0/name">
-        <rdfs:isDefinedBy rdf:resource="http://dati.gov.it/onto/l0/"/>
-    </owl:DatatypeProperty>
-    
-
-
     <!-- http://dati.gov.it/onto/poiapit#POIID -->
 
     <owl:DatatypeProperty rdf:about="http://dati.gov.it/onto/poiapit#POIID">
-        <rdfs:subPropertyOf rdf:resource="http://dati.gov.it/onto/l0/identifier"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
         <rdfs:domain rdf:resource="http://dati.gov.it/onto/poiapit#PointOfInterest"/>
         <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
@@ -293,7 +269,6 @@
     <!-- http://dati.gov.it/onto/poiapit#POIalternativeName -->
 
     <owl:DatatypeProperty rdf:about="http://dati.gov.it/onto/poiapit#POIalternativeName">
-        <rdfs:subPropertyOf rdf:resource="http://dati.gov.it/onto/l0/name"/>
         <rdfs:domain rdf:resource="http://dati.gov.it/onto/poiapit#POINameInTime"/>
         <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
         <rdfs:comment xml:lang="it">Questa proprietà rappresenta un nome alternativo (acrononimo, o altro nome) con cui è conosciuto il punto di interesse.</rdfs:comment>
@@ -310,7 +285,6 @@
     <!-- http://dati.gov.it/onto/poiapit#POIcategoryIdentifier -->
 
     <owl:DatatypeProperty rdf:about="http://dati.gov.it/onto/poiapit#POIcategoryIdentifier">
-        <rdfs:subPropertyOf rdf:resource="http://dati.gov.it/onto/l0/identifier"/>
         <l0:controlledVocabulary rdf:resource="http://dati.gov.it/onto/controlledvocabulary/POICategoryClassification"/>
         <rdfs:comment xml:lang="it">Questa proprietà è l&apos;identificativo nel vocabolario controllato della categoria dei punti di interesse. E&apos; equivalente a dct:identifier e skos:notation utilizzati nel vocabolario controllato stesso.</rdfs:comment>
         <rdfs:isDefinedBy rdf:resource="http://dati.gov.it/onto/poiapit"/>
@@ -325,7 +299,6 @@
     <!-- http://dati.gov.it/onto/poiapit#POIcategoryName -->
 
     <owl:DatatypeProperty rdf:about="http://dati.gov.it/onto/poiapit#POIcategoryName">
-        <rdfs:subPropertyOf rdf:resource="http://dati.gov.it/onto/l0/name"/>
         <rdfs:domain rdf:resource="http://dati.gov.it/onto/poiapit#PointOfInterestCategory"/>
         <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
         <l0:controlledVocabulary rdf:resource="http://dati.gov.it/onto/controlledvocabulary/POICategoryClassification"/>
@@ -343,7 +316,6 @@
     <!-- http://dati.gov.it/onto/poiapit#POIdescription -->
 
     <owl:DatatypeProperty rdf:about="http://dati.gov.it/onto/poiapit#POIdescription">
-        <rdfs:subPropertyOf rdf:resource="http://dati.gov.it/onto/l0/description"/>
         <rdfs:domain rdf:resource="http://dati.gov.it/onto/poiapit#PointOfInterest"/>
         <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
         <rdfs:comment xml:lang="it">Questa proprietà rappresenta una generica descrizione del punto di interesse.</rdfs:comment>
@@ -360,7 +332,6 @@
     <!-- http://dati.gov.it/onto/poiapit#POIofficialName -->
 
     <owl:DatatypeProperty rdf:about="http://dati.gov.it/onto/poiapit#POIofficialName">
-        <rdfs:subPropertyOf rdf:resource="http://dati.gov.it/onto/l0/name"/>
         <rdfs:domain>
             <owl:Class>
                 <owl:unionOf rdf:parseType="Collection">
@@ -557,6 +528,12 @@
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
+                <owl:onProperty rdf:resource="http://dati.gov.it/onto/clvapit#hasAddress"/>
+                <owl:allValuesFrom rdf:resource="http://dati.gov.it/onto/clvapit#Address"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
                 <owl:onProperty rdf:resource="http://dati.gov.it/onto/poiapit#hasPOINameInITime"/>
                 <owl:allValuesFrom rdf:resource="http://dati.gov.it/onto/poiapit#POINameInTime"/>
             </owl:Restriction>
@@ -578,13 +555,6 @@
                 <owl:onProperty rdf:resource="http://dati.gov.it/onto/clvapit#hasGeometry"/>
                 <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
                 <owl:onClass rdf:resource="http://dati.gov.it/onto/clvapit#Geometry"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://dati.gov.it/onto/clvapit#hasAddress"/>
-                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
-                <owl:onClass rdf:resource="http://dati.gov.it/onto/clvapit#Address"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>

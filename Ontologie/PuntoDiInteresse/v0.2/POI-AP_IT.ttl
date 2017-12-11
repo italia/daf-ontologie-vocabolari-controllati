@@ -17,17 +17,16 @@
                                    owl:imports ti: ,
                                                clvapit: ,
                                                l0: ;
-                                   dct:modified "2017-11-21" ;
                                    dc:creator "Institute of Cognitive Sciences and Technologies of the Italian Research Council (CNR) - Semantic Technology Laboratory (STLab)"@en ,
                                               "Italian Digital Transformation Team"@en ;
                                    owl:versionInfo "Version 0.2 - 03 November 2017 - Added associated with the controlled vocabiulary"@en ;
                                    rdfs:isDefinedBy <http://dati.gov.it/onto/poiapit/> ;
                                    dc:creator "Istituto di Scienze e Tecnologie della Cognizione del CNR - Laboratorio di Tecnologie Semantiche (STLab)"@it ;
-                                   dct:license <https://creativecommons.org/licenses/by/4.0/> ;
                                    owl:versionInfo "Versione 0.2 - 03 Novembre 2017 - Aggiunta associazione con i core vocabulary"@it ;
                                    dct:issued "2017-10-16"^^xsd:date ;
-                                   dc:creator "Team per la Trasformazione Digitale"@it ,
-                                              "Agency for Digital Italy - AgID"@en ;
+                                   dc:creator "Team per la Trasformazione Digitale"@it ;
+                                   dct:modified "2017-11-3" ;
+                                   dc:creator "Agency for Digital Italy - AgID"@en ;
                                    rdfs:label "Punti di Interesse"@it ;
                                    rdfs:comment "This is the ontology of the Italian application profile for Points of Interest"@en ,
                                                 "Questa è l'ontologia del profilo  italiano sui Punti di Interesse (Point of Interest - Italian Application Profile - POI-AP_IT)"@it ;
@@ -42,21 +41,21 @@
 l0:controlledVocabulary rdf:type owl:AnnotationProperty .
 
 
-###  http://purl.org/dc/terms/license
-dct:license rdf:type owl:AnnotationProperty .
-
-
 #################################################################
 #    Object Properties
 #################################################################
 
 ###  http://dati.gov.it/onto/clvapit#hasAddress
 clvapit:hasAddress rdf:type owl:ObjectProperty ;
+                   rdfs:domain owl:Thing ;
+                   rdfs:range clvapit:Address ;
                    rdfs:isDefinedBy <http://dati.gov.it/onto/clvapit> .
 
 
 ###  http://dati.gov.it/onto/clvapit#hasGeometry
 clvapit:hasGeometry rdf:type owl:ObjectProperty ;
+                    rdfs:domain owl:Thing ;
+                    rdfs:range clvapit:Geometry ;
                     rdfs:isDefinedBy <http://dati.gov.it/onto/clvapit> .
 
 
@@ -172,11 +171,15 @@ clvapit:hasGeometry rdf:type owl:ObjectProperty ;
 
 ###  http://dati.gov.it/onto/smapit/hasImage
 <http://dati.gov.it/onto/smapit/hasImage> rdf:type owl:ObjectProperty ;
+                                          rdfs:domain owl:Thing ;
+                                          rdfs:range <http://dati.gov.it/onto/smapit/Image> ;
                                           rdfs:isDefinedBy <http://dati.gov.it/onto/smapit/> .
 
 
 ###  http://dati.gov.it/onto/tiapit/atTime
 ti:atTime rdf:type owl:ObjectProperty ;
+          rdfs:domain owl:Thing ;
+          rdfs:range ti:TimeInterval ;
           rdfs:isDefinedBy ti: .
 
 
@@ -184,25 +187,9 @@ ti:atTime rdf:type owl:ObjectProperty ;
 #    Data properties
 #################################################################
 
-###  http://dati.gov.it/onto/l0/description
-l0:description rdf:type owl:DatatypeProperty ;
-               rdfs:isDefinedBy l0: .
-
-
-###  http://dati.gov.it/onto/l0/identifier
-l0:identifier rdf:type owl:DatatypeProperty ;
-              rdfs:isDefinedBy l0: .
-
-
-###  http://dati.gov.it/onto/l0/name
-l0:name rdf:type owl:DatatypeProperty ;
-        rdfs:isDefinedBy l0: .
-
-
 ###  http://dati.gov.it/onto/poiapit#POIID
-:POIID rdf:type owl:DatatypeProperty ;
-       rdfs:subPropertyOf l0:identifier ;
-       rdf:type owl:FunctionalProperty ;
+:POIID rdf:type owl:DatatypeProperty ,
+                owl:FunctionalProperty ;
        rdfs:domain :PointOfInterest ;
        rdfs:range rdfs:Literal ;
        rdfs:comment "Questa proprietà rappresenta l'identificativo univoco del punto di interesse."@it ,
@@ -216,7 +203,6 @@ l0:name rdf:type owl:DatatypeProperty ;
 
 ###  http://dati.gov.it/onto/poiapit#POIalternativeName
 :POIalternativeName rdf:type owl:DatatypeProperty ;
-                    rdfs:subPropertyOf l0:name ;
                     rdfs:domain :POINameInTime ;
                     rdfs:range rdfs:Literal ;
                     rdfs:comment "Questa proprietà rappresenta un nome alternativo (acrononimo, o altro nome) con cui è conosciuto il punto di interesse."@it ,
@@ -230,7 +216,6 @@ l0:name rdf:type owl:DatatypeProperty ;
 
 ###  http://dati.gov.it/onto/poiapit#POIcategoryIdentifier
 :POIcategoryIdentifier rdf:type owl:DatatypeProperty ;
-                       rdfs:subPropertyOf l0:identifier ;
                        l0:controlledVocabulary <http://dati.gov.it/onto/controlledvocabulary/POICategoryClassification> ;
                        rdfs:comment "Questa proprietà è l'identificativo nel vocabolario controllato della categoria dei punti di interesse. E' equivalente a dct:identifier e skos:notation utilizzati nel vocabolario controllato stesso."@it ;
                        rdfs:isDefinedBy <http://dati.gov.it/onto/poiapit> ;
@@ -242,7 +227,6 @@ l0:name rdf:type owl:DatatypeProperty ;
 
 ###  http://dati.gov.it/onto/poiapit#POIcategoryName
 :POIcategoryName rdf:type owl:DatatypeProperty ;
-                 rdfs:subPropertyOf l0:name ;
                  rdfs:domain :PointOfInterestCategory ;
                  rdfs:range rdfs:Literal ;
                  l0:controlledVocabulary <http://dati.gov.it/onto/controlledvocabulary/POICategoryClassification> ;
@@ -257,7 +241,6 @@ l0:name rdf:type owl:DatatypeProperty ;
 
 ###  http://dati.gov.it/onto/poiapit#POIdescription
 :POIdescription rdf:type owl:DatatypeProperty ;
-                rdfs:subPropertyOf l0:description ;
                 rdfs:domain :PointOfInterest ;
                 rdfs:range rdfs:Literal ;
                 rdfs:comment "Questa proprietà rappresenta una generica descrizione del punto di interesse."@it ,
@@ -271,7 +254,6 @@ l0:name rdf:type owl:DatatypeProperty ;
 
 ###  http://dati.gov.it/onto/poiapit#POIofficialName
 :POIofficialName rdf:type owl:DatatypeProperty ;
-                 rdfs:subPropertyOf l0:name ;
                  rdfs:domain [ rdf:type owl:Class ;
                                owl:unionOf ( :POINameInTime
                                              :PointOfInterest
@@ -408,6 +390,10 @@ l0:Topic rdf:type owl:Class ;
                                    owl:someValuesFrom :PointOfInterestCategory
                                  ] ,
                                  [ rdf:type owl:Restriction ;
+                                   owl:onProperty clvapit:hasAddress ;
+                                   owl:allValuesFrom clvapit:Address
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
                                    owl:onProperty :hasPOINameInITime ;
                                    owl:allValuesFrom :POINameInTime
                                  ] ,
@@ -423,11 +409,6 @@ l0:Topic rdf:type owl:Class ;
                                    owl:onProperty clvapit:hasGeometry ;
                                    owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                                    owl:onClass clvapit:Geometry
-                                 ] ,
-                                 [ rdf:type owl:Restriction ;
-                                   owl:onProperty clvapit:hasAddress ;
-                                   owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                   owl:onClass clvapit:Address
                                  ] ,
                                  [ rdf:type owl:Restriction ;
                                    owl:onProperty :hasPOIState ;
