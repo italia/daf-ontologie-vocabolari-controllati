@@ -7,10 +7,21 @@
     "owl": "http://www.w3.org/2002/07/owl#",
     "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
     "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "terms": "http://purl.org/dc/terms/",
     "tiapit": "http://dati.gov.it/onto/tiapit/",
     "xsd": "http://www.w3.org/2001/XMLSchema#"
   },
   "@graph": [
+    {
+      "@id": "_:ub2bL226C34",
+      "@type": "owl:Restriction",
+      "owl:onProperty": {
+        "@id": "http://dati.gov.it/onto/roapit/withRole"
+      },
+      "owl:someValuesFrom": {
+        "@id": "http://dati.gov.it/onto/roapit/Role"
+      }
+    },
     {
       "@id": "http://dati.gov.it/onto/roapit/holdsRole",
       "@type": "owl:ObjectProperty",
@@ -19,12 +30,12 @@
       },
       "rdfs:comment": [
         {
-          "@language": "it",
-          "@value": "La relazione tra un agente ed un ruolo."
-        },
-        {
           "@language": "en",
           "@value": "The relation existing between an agent and a role."
+        },
+        {
+          "@language": "it",
+          "@value": "La relazione tra un agente ed un ruolo."
         }
       ],
       "rdfs:domain": {
@@ -48,20 +59,30 @@
       }
     },
     {
-      "@id": "http://dati.gov.it/onto/roapit/withRole",
+      "@id": "tiapit:isRoleIn",
       "@type": "owl:ObjectProperty",
-      "rdfs:comment": [
+      "owl:versionInfo": [
         {
           "@language": "it",
-          "@value": "Associazione tra un TimeIndexedRole ed un Role."
+          "@value": "stabile"
         },
         {
           "@language": "en",
-          "@value": "Association between a TimeIndexedRole and a Role."
+          "@value": "stable"
+        }
+      ],
+      "rdfs:comment": [
+        {
+          "@language": "it",
+          "@value": "Proprietà inversa di \"con ruolo\""
+        },
+        {
+          "@language": "en",
+          "@value": "Inverse property of \"with role\""
         }
       ],
       "rdfs:domain": {
-        "@id": "http://dati.gov.it/onto/roapit/TimeIndexedRole"
+        "@id": "http://dati.gov.it/onto/roapit/Role"
       },
       "rdfs:isDefinedBy": {
         "@id": "http://dati.gov.it/onto/roapit/"
@@ -69,15 +90,15 @@
       "rdfs:label": [
         {
           "@language": "en",
-          "@value": "with role"
+          "@value": "is role in"
         },
         {
           "@language": "it",
-          "@value": "con ruolo"
+          "@value": "è ruolo in"
         }
       ],
       "rdfs:range": {
-        "@id": "http://dati.gov.it/onto/roapit/Role"
+        "@id": "http://dati.gov.it/onto/roapit/TimeIndexedRole"
       }
     },
     {
@@ -85,12 +106,12 @@
       "@type": "owl:ObjectProperty",
       "rdfs:comment": [
         {
-          "@language": "it",
-          "@value": "Proprietà che collega un ruolo a tempo con l'agente che lo ricopre."
-        },
-        {
           "@language": "en",
           "@value": "Property that links a time indexed role with the agent holding such a role."
+        },
+        {
+          "@language": "it",
+          "@value": "Proprietà che collega un ruolo a tempo con l'agente che lo ricopre."
         }
       ],
       "rdfs:domain": {
@@ -118,12 +139,12 @@
       "@type": "owl:Class",
       "rdfs:comment": [
         {
-          "@language": "it",
-          "@value": "Un ruolo."
-        },
-        {
           "@language": "en",
           "@value": "A role."
+        },
+        {
+          "@language": "it",
+          "@value": "Un ruolo."
         }
       ],
       "rdfs:isDefinedBy": {
@@ -141,30 +162,124 @@
       ],
       "rdfs:subClassOf": [
         {
-          "@id": "l0:Object"
+          "@id": "_:ub2bL193C23"
         },
         {
-          "@id": "_:N4991ae83ed5349a9ae3eb80431da8ef7"
+          "@id": "l0:Object"
         }
       ]
     },
     {
-      "@id": "_:Ndd89cc5dec5e4e9197dc8a8736336e13",
+      "@id": "_:ub2bL172C26",
       "@type": "owl:Restriction",
-      "owl:onProperty": {
-        "@id": "http://dati.gov.it/onto/roapit/hasTemporalEntity"
+      "owl:allValuesFrom": {
+        "@id": "http://dati.gov.it/onto/roapit/TimeIndexedRole"
       },
-      "owl:someValuesFrom": {
-        "@id": "http://dati.gov.it/onto/roapit/TemporalEntity"
+      "owl:onProperty": {
+        "@id": "http://dati.gov.it/onto/roapit/holdsRoleInTime"
       }
     },
     {
-      "@id": "http://dati.gov.it/onto/roapit/",
+      "@id": "dc:creator",
+      "@type": "owl:AnnotationProperty"
+    },
+    {
+      "@id": "http://dati.gov.it/onto/roapit/isRoleInTimeOf",
+      "@type": "owl:ObjectProperty",
+      "rdfs:domain": {
+        "@id": "http://dati.gov.it/onto/roapit/TimeIndexedRole"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "http://dati.gov.it/onto/roapit/"
+      },
+      "rdfs:range": {
+        "@id": "l0:Entity"
+      }
+    },
+    {
+      "@id": "http://dati.gov.it/onto/roapit/TemporalEntity",
+      "@type": "owl:Class"
+    },
+    {
+      "@id": "l0:name",
+      "@type": "owl:DatatypeProperty",
+      "rdfs:isDefinedBy": {
+        "@id": "l0:"
+      }
+    },
+    {
+      "@id": "_:ub2bL218C34",
+      "@type": "owl:Restriction",
+      "owl:onProperty": {
+        "@id": "http://dati.gov.it/onto/roapit/forAgent"
+      },
+      "owl:someValuesFrom": {
+        "@id": "l0:Agent"
+      }
+    },
+    {
+      "@id": "http://dati.gov.it/onto/roapit/hasTemporalEntity",
+      "@type": "owl:ObjectProperty"
+    },
+    {
+      "@id": "http://dati.gov.it/onto/roapit/holdsRoleInTime",
+      "@type": "owl:ObjectProperty",
+      "owl:inverseOf": {
+        "@id": "http://dati.gov.it/onto/roapit/isRoleInTimeOf"
+      },
+      "rdfs:comment": [
+        {
+          "@language": "en",
+          "@value": "The relation between an entity and a role in time."
+        },
+        {
+          "@language": "it",
+          "@value": "Relazione tra un'entità generica ed un ruolo nel tempo."
+        }
+      ],
+      "rdfs:domain": {
+        "@id": "l0:Entity"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "http://dati.gov.it/onto/roapit/"
+      },
+      "rdfs:label": [
+        {
+          "@language": "en",
+          "@value": "holds role in time"
+        },
+        {
+          "@language": "it",
+          "@value": "possiede ruolo nel tempo"
+        }
+      ],
+      "rdfs:range": {
+        "@id": "http://dati.gov.it/onto/roapit/TimeIndexedRole"
+      }
+    },
+    {
+      "@id": "l0:Event",
+      "@type": "owl:Class"
+    },
+    {
+      "@id": "dcterms:license",
+      "@type": "owl:AnnotationProperty"
+    },
+    {
+      "@id": "tiapit:",
       "@type": "owl:Ontology",
       "dc:creator": [
         {
-          "@language": "it",
-          "@value": "Istituto di Scienze e Tecnologie della Cognizione del CNR - Semantic Technology Lab (STLab)"
+          "@language": "en",
+          "@value": "Italian Digital Transformation Team"
+        },
+        {
+          "@language": "en",
+          "@value": "Institute of Cognitive Sciences and Technologies of the Italian Research Council (CNR) - Semantic Technology Laboratory (STLab)"
+        },
+        {
+          "@language": "en",
+          "@value": "Agency for Digital Italy - AgID"
         },
         {
           "@language": "it",
@@ -175,16 +290,8 @@
           "@value": "Team per la Trasformazione Digitale"
         },
         {
-          "@language": "en",
-          "@value": "Institute of Cognitive Sciences and Technologies of the Italian Research Council (CNR) - Semantic Technology Laboratory (STLab)"
-        },
-        {
-          "@language": "en",
-          "@value": "Italian Digital Transformation Team"
-        },
-        {
-          "@language": "en",
-          "@value": "Agency for Digital Italy - AgID"
+          "@language": "it",
+          "@value": "Istituto di Scienze e Tecnologie della Cognizione del CNR - Semantic Technology Lab (STLab)"
         }
       ],
       "dcterms:issued": {
@@ -241,95 +348,113 @@
       ]
     },
     {
-      "@id": "dc:creator",
-      "@type": "owl:AnnotationProperty"
+      "@id": "_:ub2bL222C34",
+      "@type": "owl:Restriction",
+      "owl:onProperty": {
+        "@id": "http://dati.gov.it/onto/roapit/hasTemporalEntity"
+      },
+      "owl:someValuesFrom": {
+        "@id": "http://dati.gov.it/onto/roapit/TemporalEntity"
+      }
     },
     {
-      "@id": "http://dati.gov.it/onto/roapit/isRoleInTimeOf",
-      "@type": "owl:ObjectProperty",
-      "owl:inverseOf": {
-        "@id": "http://dati.gov.it/onto/roapit/holdsRoleInTime"
-      },
-      "rdfs:domain": {
-        "@id": "http://dati.gov.it/onto/roapit/TimeIndexedRole"
-      },
+      "@id": "http://dati.gov.it/onto/roapit/TimeIndexedRole",
+      "@type": "owl:Class",
+      "rdfs:comment": [
+        {
+          "@language": "it",
+          "@value": "Rappresentazione di un ruolo associato ad un intervallo temporale determinato."
+        },
+        {
+          "@language": "en",
+          "@value": "Representation of Role with a clearly defined time extension."
+        }
+      ],
       "rdfs:isDefinedBy": {
         "@id": "http://dati.gov.it/onto/roapit/"
       },
-      "rdfs:range": {
-        "@id": "l0:Entity"
-      }
-    },
-    {
-      "@id": "http://dati.gov.it/onto/roapit/TemporalEntity",
-      "@type": "owl:Class"
-    },
-    {
-      "@id": "l0:name",
-      "@type": "owl:DatatypeProperty",
-      "rdfs:isDefinedBy": {
-        "@id": "l0:"
-      }
-    },
-    {
-      "@id": "_:N54df05a83dd546fd9c55a7f75e6d77ee",
-      "@type": "owl:Restriction",
-      "owl:onProperty": {
-        "@id": "http://dati.gov.it/onto/roapit/forAgent"
-      },
-      "owl:someValuesFrom": {
-        "@id": "l0:Agent"
-      }
-    },
-    {
-      "@id": "http://dati.gov.it/onto/roapit/holdsRoleInTime",
-      "@type": "owl:ObjectProperty",
-      "rdfs:comment": [
-        {
-          "@language": "en",
-          "@value": "The relation between an entity and a role in time."
-        },
+      "rdfs:label": [
         {
           "@language": "it",
-          "@value": "Relazione tra un'entità generica ed un ruolo nel tempo."
+          "@value": "Ruolo nel tempo"
+        },
+        {
+          "@language": "en",
+          "@value": "Time indexed role"
+        }
+      ],
+      "rdfs:subClassOf": [
+        {
+          "@id": "_:ub2bL226C34"
+        },
+        {
+          "@id": "_:ub2bL222C34"
+        },
+        {
+          "@id": "_:ub2bL218C34"
+        },
+        {
+          "@id": "http://dati.gov.it/onto/roapit/TimeIndexedEvent"
+        }
+      ]
+    },
+    {
+      "@id": "http://dati.gov.it/onto/roapit/withRole",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "owl:inverseOf": {
+        "@id": "tiapit:isRoleIn"
+      },
+      "rdfs:comment": [
+        {
+          "@language": "it",
+          "@value": "Associazione tra un TimeIndexedRole ed un Role."
+        },
+        {
+          "@language": "en",
+          "@value": "Association between a TimeIndexedRole and a Role."
         }
       ],
       "rdfs:domain": {
-        "@id": "l0:Entity"
+        "@id": "http://dati.gov.it/onto/roapit/TimeIndexedRole"
       },
       "rdfs:isDefinedBy": {
         "@id": "http://dati.gov.it/onto/roapit/"
       },
       "rdfs:label": [
         {
-          "@language": "en",
-          "@value": "holds role in time"
+          "@language": "it",
+          "@value": "con ruolo"
         },
         {
-          "@language": "it",
-          "@value": "possiede ruolo nel tempo"
+          "@language": "en",
+          "@value": "with role"
         }
       ],
       "rdfs:range": {
-        "@id": "http://dati.gov.it/onto/roapit/TimeIndexedRole"
-      }
-    },
-    {
-      "@id": "dcterms:license",
-      "@type": "owl:AnnotationProperty"
-    },
-    {
-      "@id": "_:Ndccdd6944e1f40f58fff55aa9c3d0193",
-      "@type": "owl:Restriction",
-      "owl:onProperty": {
-        "@id": "http://dati.gov.it/onto/roapit/withRole"
-      },
-      "owl:someValuesFrom": {
         "@id": "http://dati.gov.it/onto/roapit/Role"
       }
     },
     {
-      "@id": "_:N4991ae83ed5349a9ae3eb80431da8ef7",
+      "@id": "dcterms:issued",
+      "@type": "owl:AnnotationProperty"
+    },
+    {
+      "@id": "l0:Agent",
+      "@type": "owl:Class",
+      "rdfs:subClassOf": [
+        {
+          "@id": "l0:Entity"
+        },
+        {
+          "@id": "_:ub2bL172C26"
+        }
+      ]
+    },
+    {
+      "@id": "_:ub2bL193C23",
       "@type": "owl:Restriction",
       "owl:onProperty": {
         "@id": "l0:name"
@@ -339,59 +464,6 @@
       }
     },
     {
-      "@id": "http://dati.gov.it/onto/roapit/TimeIndexedRole",
-      "@type": "owl:Class",
-      "rdfs:comment": [
-        {
-          "@language": "en",
-          "@value": "Representation of Role with a clearly defined time extension."
-        },
-        {
-          "@language": "it",
-          "@value": "Rappresentazione di un ruolo associato ad un intervallo temporale determinato."
-        }
-      ],
-      "rdfs:isDefinedBy": {
-        "@id": "http://dati.gov.it/onto/roapit/"
-      },
-      "rdfs:label": [
-        {
-          "@language": "en",
-          "@value": "Time indexed role"
-        },
-        {
-          "@language": "it",
-          "@value": "Ruolo nel tempo"
-        }
-      ],
-      "rdfs:subClassOf": [
-        {
-          "@id": "_:Ndd89cc5dec5e4e9197dc8a8736336e13"
-        },
-        {
-          "@id": "_:N54df05a83dd546fd9c55a7f75e6d77ee"
-        },
-        {
-          "@id": "http://dati.gov.it/onto/roapit/TimeIndexedEvent"
-        },
-        {
-          "@id": "_:Ndccdd6944e1f40f58fff55aa9c3d0193"
-        }
-      ]
-    },
-    {
-      "@id": "http://dati.gov.it/onto/roapit/hasTemporalEntity",
-      "@type": "owl:ObjectProperty"
-    },
-    {
-      "@id": "dcterms:issued",
-      "@type": "owl:AnnotationProperty"
-    },
-    {
-      "@id": "l0:Agent",
-      "@type": "owl:Class"
-    },
-    {
       "@id": "http://dati.gov.it/onto/roapit/TimeIndexedEvent",
       "@type": "owl:Class",
       "rdfs:subClassOf": {
@@ -399,7 +471,7 @@
       }
     },
     {
-      "@id": "l0:Event",
+      "@id": "l0:Entity",
       "@type": "owl:Class"
     },
     {
@@ -407,12 +479,12 @@
       "@type": "owl:ObjectProperty",
       "rdfs:comment": [
         {
-          "@language": "it",
-          "@value": "La relazione tra un ruolo ed una persona. E' la proprietà inversa di holdsRole."
-        },
-        {
           "@language": "en",
           "@value": "The relation existing between a role and an agent. This is the inverse property of holdsRole."
+        },
+        {
+          "@language": "it",
+          "@value": "La relazione tra un ruolo ed una persona. E' la proprietà inversa di holdsRole."
         }
       ],
       "rdfs:domain": {
@@ -423,12 +495,12 @@
       },
       "rdfs:label": [
         {
-          "@language": "it",
-          "@value": "è ruolo di"
-        },
-        {
           "@language": "en",
           "@value": "is role of"
+        },
+        {
+          "@language": "it",
+          "@value": "è ruolo di"
         }
       ],
       "rdfs:range": {

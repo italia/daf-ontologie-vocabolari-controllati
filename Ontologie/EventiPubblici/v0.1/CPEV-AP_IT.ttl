@@ -93,6 +93,20 @@ xsd:gYear rdf:type rdfs:Datatype .
                              "stable"@en .
 
 
+###  http://dati.gov.it/onto/cpevapit#hosts
+:hosts rdf:type owl:ObjectProperty ;
+       owl:inverseOf :takesPlaceIn ;
+       rdfs:domain <http://dati.gov.it/onto/poiapit#PointOfInterest> ;
+       rdfs:range :PublicEvent ;
+       rdfs:comment "Property used to represent that a Point of Interest hosts a public event"@en ,
+                    "Proprietà utilizzata per indicare che un certo punto di interesse ospita un evento pubblico"@it ;
+       rdfs:isDefinedBy <http://dati.gov.it/onto/cpevapit> ;
+       rdfs:label "hosts"@en ,
+                  "ospita"@it ;
+       owl:versionInfo "stabile"@it ,
+                       "stable"@en .
+
+
 ###  http://dati.gov.it/onto/cpevapit#isPublicEventTypologyOf
 :isPublicEventTypologyOf rdf:type owl:ObjectProperty ;
                          rdfs:domain :PublicEventTypology ;
@@ -281,6 +295,10 @@ l0:Topic rdf:type owl:Class .
 
 ###  http://dati.gov.it/onto/poiapit#PointOfInterest
 <http://dati.gov.it/onto/poiapit#PointOfInterest> rdf:type owl:Class ;
+                                                  rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                                                    owl:onProperty :hosts ;
+                                                                    owl:allValuesFrom :PublicEvent
+                                                                  ] ;
                                                   rdfs:isDefinedBy <http://dati.gov.it/onto/poiapit> .
 
 

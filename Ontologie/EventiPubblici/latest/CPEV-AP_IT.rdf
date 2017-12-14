@@ -133,6 +133,23 @@
     
 
 
+    <!-- http://dati.gov.it/onto/cpevapit#hosts -->
+
+    <owl:ObjectProperty rdf:about="http://dati.gov.it/onto/cpevapit#hosts">
+        <owl:inverseOf rdf:resource="http://dati.gov.it/onto/cpevapit#takesPlaceIn"/>
+        <rdfs:domain rdf:resource="http://dati.gov.it/onto/poiapit#PointOfInterest"/>
+        <rdfs:range rdf:resource="http://dati.gov.it/onto/cpevapit#PublicEvent"/>
+        <rdfs:comment xml:lang="en">Property used to represent that a Point of Interest hosts a public event</rdfs:comment>
+        <rdfs:comment xml:lang="it">Proprietà utilizzata per indicare che un certo punto di interesse ospita un evento pubblico</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://dati.gov.it/onto/cpevapit"/>
+        <rdfs:label xml:lang="en">hosts</rdfs:label>
+        <rdfs:label xml:lang="it">ospita</rdfs:label>
+        <owl:versionInfo xml:lang="it">stabile</owl:versionInfo>
+        <owl:versionInfo xml:lang="en">stable</owl:versionInfo>
+    </owl:ObjectProperty>
+    
+
+
     <!-- http://dati.gov.it/onto/cpevapit#isPublicEventTypologyOf -->
 
     <owl:ObjectProperty rdf:about="http://dati.gov.it/onto/cpevapit#isPublicEventTypologyOf">
@@ -404,6 +421,12 @@
     <!-- http://dati.gov.it/onto/poiapit#PointOfInterest -->
 
     <owl:Class rdf:about="http://dati.gov.it/onto/poiapit#PointOfInterest">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://dati.gov.it/onto/cpevapit#hosts"/>
+                <owl:allValuesFrom rdf:resource="http://dati.gov.it/onto/cpevapit#PublicEvent"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <rdfs:isDefinedBy rdf:resource="http://dati.gov.it/onto/poiapit"/>
     </owl:Class>
     
