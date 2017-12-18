@@ -68,7 +68,16 @@ terms:modified rdf:type owl:AnnotationProperty .
 
 
 ###  http://dati.gov.it/onto/roapit/hasTemporalEntity
-:hasTemporalEntity rdf:type owl:ObjectProperty .
+:hasTemporalEntity rdf:type owl:ObjectProperty ;
+                   rdfs:domain :TimeIndexedRole ;
+                   rdfs:range :TemporalEntity ;
+                   rdfs:comment "Property that links the situation represented by the TimeIndexedRole to a temporal entity"@en ,
+                                "Proprietà che lega la situazione del ruolo che evolve nel tempo a un'entità temporale."@it ;
+                   rdfs:isDefinedBy : ;
+                   rdfs:label "ha entità temporale"@it ,
+                              "has temporal entity"@en ;
+                   owl:versionInfo "stabile"@it ,
+                                   "stable"@en .
 
 
 ###  http://dati.gov.it/onto/roapit/holdsRole
@@ -96,7 +105,8 @@ terms:modified rdf:type owl:AnnotationProperty .
 
 
 ###  http://dati.gov.it/onto/roapit/isRoleInTimeOf
-:isRoleInTimeOf rdf:type owl:ObjectProperty ;
+:isRoleInTimeOf rdf:type owl:ObjectProperty ,
+                         owl:FunctionalProperty ;
                 rdfs:domain :TimeIndexedRole ;
                 rdfs:range l0:Entity ;
                 rdfs:isDefinedBy : .
