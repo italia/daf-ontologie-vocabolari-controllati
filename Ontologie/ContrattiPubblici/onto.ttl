@@ -13,8 +13,9 @@
   rdfs:domain <http://purl.org/procurement/public-contracts#Contract> ;
   rdfs:range <http://contrattipubblici.org/csi/FrameworkAgreement> ;
   rdfs:label "tipo di Aggiudicazione"@it ;
-  rdfs:comment "The property that determines the type of award of the announcement."@en ;
-  owl:equivalentProperty <http://purl.org/procurement/public-contracts#frameworkAgreement> .
+  rdfs:label "type of Award" @en ;
+  rdfs:comment "La proprietà che determina il tipo di aggiudicazione del bando."@it ;
+  rdfs:comment "The property that determines the type of award of the announcement."@en .
 
 csi:payment   rdfs:domain csi:Contract ;
   rdfs:range <http://contrattipubblici.org/csi/Conto> .
@@ -35,38 +36,55 @@ csi:payment   rdfs:domain csi:Contract ;
   rdfs:domain <http://purl.org/procurement/public-contracts#Contract> ;
   rdfs:range <http://contrattipubblici.org/csi/Cpv> .
 
-<http://purl.org/procurement/public-contracts#contractingAutority>
+<http://contrattipubblici.org/csi/contractingAuthority>
   rdfs:domain <http://purl.org/procurement/public-contracts#Contract> ;
   rdfs:range gr:BusinessEntity .
+  rdfs:label "stazione appaltante"@it ;
+  rdfs:label "contracting Authority"@en ;
+  rdfs:comment "La proprietà che indica l'istituzione che emette il contratto pubblico, riceve le offerte e sceglie il fornitore idoneo sulla base delle condizioni definite dal contratto."@it ;
+  rdfs:comment "Institution which issues a public contract, receives tenders to the contract and chooses a suitable supplier on the base of the conditions given by the contract."@en .
 
 <http://contrattipubblici.org/csi/haBando>
   rdfs:domain <http://purl.org/procurement/public-contracts#Contract> ;
   rdfs:range <http://contrattipubblici.org/csi/Bando>, xsd:string ;
-  rdfs:label "haBando" ;
+  rdfs:label "ha bando" @it ;
+  rdfs:label "has announcement" @en ;
+  rdfs:comment "La proprietà che indica se il contratto appartiene a un bando."@it ;
   rdfs:comment "The property that determines if the related contract belongs to an announcement."@en .
 
 
 <http://contrattipubblici.org/csi/opera>
   rdfs:domain <http://purl.org/procurement/public-contracts#Contract> ;
   rdfs:range <http://contrattipubblici.org/csi/Opera> ;
-  rdfs:label "opera" ;
+  rdfs:label "ha Opera" @it;
+  rdfs:label "has Opera" @en;
+  rdfs:comment "La proprietà che collega il contratto alla relativa 'Opera'."@it ;
   rdfs:comment "The property that link the contract with the related 'Opera'."@en .
 
 <http://contrattipubblici.org/csi/tipContratto>
   rdfs:domain <http://purl.org/procurement/public-contracts#Contract>, <http://contrattipubblici.org/csi/Soglia> ;
   rdfs:range <http://contrattipubblici.org/csi/TipContratto> ;
-  rdfs:label "tipContratto" ;
+  rdfs:label "ha tipo di contratto"@it ;
+  rdfs:label "has type of contract"@en ;
+  rdfs:comment "La proprietà che indica il tipo di contratto."@it ;
   rdfs:comment "The property for declaring the type of contract (work service or supply)."@en .
 
 <http://contrattipubblici.org/csi/sceltaContr>
   rdfs:domain <http://purl.org/procurement/public-contracts#Contract>, <http://contrattipubblici.org/csi/Bando> ;
   rdfs:range <http://contrattipubblici.org/csi/SceltaContraente> ;
-  rdfs:label "sceltaContr" ;
-  owl:equivalentProperty <http://purl.org/procurement/public-contracts#procedureType> .
+  rdfs:label "ha scelta contraente"@it ;
+  rdfs:label "has type of procedure"@en ;
+  rdfs:comment "La proprietà che specifica i criteri applicati per la pubblicazione del contratto e per la scelta del contraente."@it ;
+  rdfs:comment "Type of procedure of a public contract specifies a procedure which is applied to publish information about the contract and choose a supplier."@en .
 
-<http://purl.org/procurement/public-contracts#awardedTender>
+<http://contrattipubblici.org/csi/awardedTender>
   rdfs:domain <http://purl.org/procurement/public-contracts#Contract> ;
-  rdfs:range <http://purl.org/procurement/public-contracts#Tender> .
+  rdfs:range <http://purl.org/procurement/public-contracts#Tender> ;
+  rdfs:label "ha offerta aggiudicataria"@it ;
+  rdfs:label "has awarded tender"@en ;
+  rdfs:comment "La proprietà che indica l'offerta aggiudicataria presentata da un offerente."@it ;
+  rdfs:comment "Property for awarded tender submitted by a bidder."@en .
+
 
 <http://contrattipubblici.org/csi/haVariante>
   rdfs:domain <http://purl.org/procurement/public-contracts#Contract> ;
@@ -88,12 +106,12 @@ csi:payment   rdfs:domain csi:Contract ;
   owl:equivalentProperty <http://purl.org/procurement/public-contracts#awardCriterion> .
 
 
-  
+
 #################################################################
 #    Data properties
 #################################################################
- 
- 
+
+
 
 <http://contrattipubblici/csi/agreedPrice>
    rdfs:label "Prezzo concordato"@it ;
@@ -131,7 +149,7 @@ csi:date   rdfs:domain csi:Contract, <http://contrattipubblici.org/csi/Conto> ;
   rdfs:range xsd:float ;
   rdfs:label "percRibasso" ;
   rdfs:comment "The property that determines the declared percentage of price cut."@en .
- 
+
 
 <http://purl.org/procurement/public-contracts#startDate>
   rdfs:domain <http://purl.org/procurement/public-contracts#Contract>, <http://contrattipubblici.org/csi/Soglia> ;
@@ -164,7 +182,7 @@ csi:date   rdfs:domain csi:Contract, <http://contrattipubblici.org/csi/Conto> ;
   rdfs:range xsd:string ;
   rdfs:label "previstoSubappalto" ;
   rdfs:comment "The property that determines if a subcontract if expected in the Contract."@en .
-  
+
 <http://contrattipubblici.org/csi/ID>
   rdfs:domain <http://purl.org/procurement/public-contracts#Contract> ;
   rdfs:range xsd:int .
@@ -172,7 +190,7 @@ csi:date   rdfs:domain csi:Contract, <http://contrattipubblici.org/csi/Conto> ;
 <http://purl.org/dc/terms#identifier>
   rdfs:domain <http://purl.org/procurement/public-contracts#Contract>, <http://contrattipubblici.org/csi/Cpv> ;
   rdfs:range xsd:string .
-  
+
 <http://contrattipubblici.org/csi/importoBaseAsta>
   rdfs:domain <http://purl.org/procurement/public-contracts#Contract> ;
   rdfs:range xsd:float ;
@@ -184,7 +202,7 @@ csi:date   rdfs:domain csi:Contract, <http://contrattipubblici.org/csi/Conto> ;
   rdfs:range xsd:float ;
   rdfs:label "congruenzaCPV" ;
   rdfs:comment "The property that determines if the declared CPV code is compatible with the declared contract type (work service or supply)."@en .
-  
+
 <http://contrattipubblici.org/csi/importoSicurezza>
   rdfs:domain <http://purl.org/procurement/public-contracts#Contract>, <http://contrattipubblici.org/csi/Bando> ;
   rdfs:range xsd:float ;
@@ -228,7 +246,7 @@ csi:date   rdfs:domain csi:Contract, <http://contrattipubblici.org/csi/Conto> ;
   rdfs:range xsd:date ;
     rdfs:comment "Property for actual end date of public contract's realization."@en ,
    "Questa proprietà indica la data di effettiva realizzazione del contratto pubblico"@it ;
-rdfs:label "Data effettiva termine lavoro"@it , 
+rdfs:label "Data effettiva termine lavoro"@it ,
  "Property for actual end date of public contract's realization."@en .
 
 
@@ -399,5 +417,4 @@ gr:BusinessEntity a owl:Class .
   rdfs:label "giorni aggiuntivi" @it ;
   rdfs:label "additional days" @en ;
   rdfs:comment "The property that determines additional days needed in the variation."@en .
-  rdfs:comment "Questa proprietà indica i giorni aggiuntivi necessari per la variante." @it.
-
+  rdfs:comment "Questa proprietà indica i giorni aggiuntivi necessari per la variante."@it.
