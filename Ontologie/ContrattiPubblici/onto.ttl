@@ -1,9 +1,27 @@
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix l0: <http://dati.gov.it/onto/l0/> .
-@prefix l0: <http://dati.gov.it/onto/tiapit> .
+@prefix ti: <http://dati.gov.it/onto/tiapit> .
 @prefix : <http://contrattipublici.org/csi/> .
+@base <http://contrattipublici.org/csi/> .
+
+<http://contrattipublici.org/csi> a owl:Ontology ;
+                                  owl:versionIRI : ;
+                                  owl:imports ti: ,
+                                              l0: ;
+                                  dc:creator "Synapta srl"@en ;
+                                  dc:creator "CSI Piemonte"@en ;
+                                  rdfs:comment "This is the ontology of the Italian public contracts"@en ;
+                                  dct:issued "2018-02-07"^^xsd:date ;
+                                  rdfs:label "Ontologia dei contratti pubblici"@it ;
+                                  owl:versionInfo "Versione 0.1 - 02 Febbraio 2018"@it ;
+                                  rdfs:isDefinedBy : ;
+                                  dct:license <https://creativecommons.org/licenses/by/4.0/> . # Da definirsi
+
 
 #################################################################
 #    Annotation properties
@@ -11,6 +29,26 @@
 
 ###  http://dati.gov.it/onto/l0/controlledVocabulary
 l0:controlledVocabulary a owl:AnnotationProperty .
+
+
+#################################################################
+#    Datatypes
+#################################################################
+
+###  http://www.w3.org/2001/XMLSchema#date
+xsd:date a rdfs:Datatype .
+
+
+###  http://www.w3.org/2001/XMLSchema#string
+xsd:string a rdfs:Datatype .
+
+
+###  http://www.w3.org/2001/XMLSchema#float
+xsd:float a rdfs:Datatype .
+
+
+###  http://www.w3.org/2001/XMLSchema#boolean
+xsd:boolean a rdfs:Datatype .
 
 
 
@@ -37,7 +75,7 @@ l0:controlledVocabulary a owl:AnnotationProperty .
 
 :hasLot a owl:ObjectProperty ;
   rdfs:domain :Contract ;
-  rdfs:range :Lot .
+  rdfs:range :Lot ;
   rdfs:label "ha Lotto"@it ;
   rdfs:label "has Lot" @en ;
   rdfs:comment "La proprietà che determina il legame tra un contratto e il relativo lotto."@it ;
@@ -132,8 +170,16 @@ l0:controlledVocabulary a owl:AnnotationProperty .
   rdfs:range :BusinessEntity ;
   rdfs:label "ha subappaltatrice"@it ;
   rdfs:label "has subcontractor"@en ;
-  rdfs:comment "The property che indica la business entity che sottoscrive il subappalto."@it ;
+  rdfs:comment "La proprietà che indica la business entity che sottoscrive il subappalto."@it ;
   rdfs:comment "The property that determines the business entity that sign the subcontract."@en .
+
+:hasSubcontract a owl:ObjectProperty ;
+  rdfs:domain :Contract ;
+  rdfs:range :Subcontract ;
+  rdfs:label "ha subappalto"@it ;
+  rdfs:label "has subcontract"@en ;
+  rdfs:comment "La proprietà che lega un contratto ad un subappalto."@it ;
+  rdfs:comment "The property that links a contract to a subcontract."@en .
 
 :bidder
   rdfs:domain :Tender ;
@@ -152,22 +198,22 @@ l0:controlledVocabulary a owl:AnnotationProperty .
   rdfs:range :Opera .
 
 ###  http://dati.gov.it/onto/l0/description
-l0:description rdf:type owl:DatatypeProperty ;
+l0:description a owl:DatatypeProperty ;
                rdfs:isDefinedBy l0: .
 
 
 ###  http://dati.gov.it/onto/l0/identifier
-l0:identifier rdf:type owl:DatatypeProperty ;
+l0:identifier a owl:DatatypeProperty ;
               rdfs:isDefinedBy l0: .
 
 
 ###  http://dati.gov.it/onto/l0/name
-l0:name rdf:type owl:DatatypeProperty ;
+l0:name a owl:DatatypeProperty ;
         rdfs:isDefinedBy l0: .
 
 
 ###  http://dati.gov.it/onto/tiapit/date
-ti:date rdf:type owl:DatatypeProperty ;
+ti:date a owl:DatatypeProperty ;
         rdfs:isDefinedBy <htto://dati.gov.it/onto/tiapit/> .
 
 
@@ -291,7 +337,7 @@ rdfs:comment "The property that determines the final amount of money to be paid"
   rdfs:comment "The property that determines the declared percentage of price cut."@en .
 
 :auctionBaseAmount a owl:DatatypeProperty ;
-  rdfs:domain :Contract ;
+  rdfs:domain :Lot ;
   rdfs:range xsd:float ;
   rdfs:label "importo base asta"@it ;
   rdfs:label "auction base amount"@en ;
@@ -402,9 +448,9 @@ rdfs:comment "The property that determines the final amount of money to be paid"
   rdfs:comment "The property that determines the net amount of the payment."@en ;
   rdfs:comment "La proprietà che determina l'ammontare netto del pagamento."@it .
 
-:IPAcode rdf:type owl:DatatypeProperty ;
+:IPAcode a owl:DatatypeProperty ;
          rdfs:subPropertyOf l0:identifier ;
-         rdf:type owl:FunctionalProperty ;
+         a owl:FunctionalProperty ;
          rdfs:domain :PublicOrganization ;
          rdfs:range rdfs:Literal ;
          rdfs:comment "Questa proprietà rappresenta il codice IPA, il codice univoco, assegnato all'organizzazione pubblica in fase di accreditamento presso l'indice nazionale PA (IPA). Il Codice IPA viene comunicato tramite e-mail dal Gestore dell'IPA al referente dell'Ente."@it ,
@@ -503,7 +549,7 @@ rdfs:label "Lotto"@it ;
   rdfs:comment "An instance of this class rapresents a tender of a lot"@en ;
     rdfs:comment "Una istanza di questa classe rappresenta una offerta relativa ad un lotto."@it .
 
-l0:Location rdf:type owl:Class ;
+l0:Location a owl:Class ;
             rdfs:isDefinedBy l0: .
 
 
