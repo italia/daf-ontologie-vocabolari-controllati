@@ -1,4 +1,4 @@
-@prefix owl: <http://www.w3.org/2002/07/owl#> .
+
 @prefix dc: <http://purl.org/dc/elements/1.1/> .
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -99,8 +99,8 @@ xsd:boolean a rdfs:Datatype .
   rdfs:comment "The property that determines if the related contract belongs to an announcement."@en .
 
 
-:opera a owl:ObjectProperty ;
-  rdfs:domain :Contract ;
+:hasOpera a owl:ObjectProperty ;
+  rdfs:domain :Lot ;
   rdfs:range :Opera ;
   rdfs:label "ha Opera" @it;
   rdfs:label "has Opera" @en;
@@ -197,6 +197,15 @@ xsd:boolean a rdfs:Datatype .
   rdfs:comment "The property that determines the relation of :Opera and :Programmazione."@en ;
   rdfs:range :Opera .
 
+:hasCUP
+  rdfs:domain :Opera ;
+  rdfs:range xsd:string ;
+  rdfs:label "CUP"@en ;
+  rdfs:label "CUP"@it ;
+  rdfs:comment "The property that determines the cup (codice unico di procedura) code."@en ;
+  rdfs:comment "La proprietà che determina il CUP (codice unico di procedura)."@it .
+
+
 ###  http://dati.gov.it/onto/l0/description
 l0:description a owl:DatatypeProperty ;
                rdfs:isDefinedBy l0: .
@@ -215,7 +224,6 @@ l0:name a owl:DatatypeProperty ;
 ###  http://dati.gov.it/onto/tiapit/date
 ti:date a owl:DatatypeProperty ;
         rdfs:isDefinedBy <htto://dati.gov.it/onto/tiapit/> .
-
 
 
 #################################################################
@@ -460,6 +468,8 @@ rdfs:comment "The property that determines the final amount of money to be paid"
                     "codice IPA (codice Indice PA)"@it ;
          owl:versionInfo "stabile"@it ,
                          "stable"@en .
+
+
 #################################################################
 #    Classes
 #################################################################
@@ -471,8 +481,8 @@ rdfs:label "Contratto"@it ;
   rdfs:comment "Una istanza di questa classe rappresenta un contratto realizzato tra una stazione appaltante e un fornitore."@it .
 
 :Lot a owl:Class ;
-rdfs:label "Lot"@en;
-rdfs:label "Lotto"@it ;
+  rdfs:label "Lot"@en;
+  rdfs:label "Lotto"@it ;
   rdfs:comment "An instance of this class is an abstract information entity about a public contract. It consists of all currently known information about a contract, e.g., a contracting authority, services or supplies which shall be purchased, and contract conditions (e.g., important dates, expected price, etc.). It also informs about tenders received from particular bidders and about an accepted tender. If the contract has already been realized it also informs about an actual price of realization, etc."@en ;
   rdfs:comment "Una istanza di questa classe rappresenta un contratto pubblico."@it .
 
@@ -480,7 +490,7 @@ rdfs:label "Lotto"@it ;
   rdfs:label "Bando/Avviso"@it ;
   rdfs:label "Announcement"@en ;
   rdfs:comment "La classe che rappresenta un tipo di annuncio di uno o più lotti, sia esso un bando o un avviso."@it ;
-    rdfs:comment "The class that represents an announcement of one or more lots. That is either a notice or an announcement."@en .
+  rdfs:comment "The class that represents an announcement of one or more lots. That is either a notice or an announcement."@en .
 
 :AnnouncementType a owl:Class ;
   rdfs:subClassOf l0:Characteristic ;
@@ -556,10 +566,11 @@ l0:Location a owl:Class ;
 
 
 #Fuori da questa onto
-#:Programmazione
- # a owl:Class ;
-  #rdfs:label "Programmazione" ;
-  #rdfs:comment "The class that represents the group of :Opera that belongs to the same 'programmazione'."@en .
+:Opera a owl:Class ;
+  rdfs:label "Opera"@en ;
+  rdfs:label "Opera"@it ;
+#  rdfs:comment "An instance of this class rapresents a tender of a lot"@en ;
+#  rdfs:comment "Una istanza di questa classe rappresenta una offerta relativa ad un lotto."@it .
 
 
 
