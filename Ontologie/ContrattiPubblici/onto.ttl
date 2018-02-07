@@ -60,7 +60,7 @@ xsd:boolean a rdfs:Datatype .
   rdfs:range :Bill .
 
 :CPV rdfs:subPropertyOf l0:identifier ;
-  rdfs:domain :Lot, :subappalto ;
+  rdfs:domain :Lot , :Subcontract ;
   rdfs:range :Cpv ;
   rdfs:label "CPV" ;
   rdfs:comment "CPV (Common Procurement Vocabulary) code describing the main object of a public contract."@en .
@@ -108,7 +108,7 @@ xsd:boolean a rdfs:Datatype .
   rdfs:comment "The property that link the contract with the related 'Opera'."@en .
 
 :contractType a owl:ObjectProperty ;
-  rdfs:domain :Contract, :Soglia ;
+  rdfs:domain :Contract , :Threshold ;
   rdfs:range :ProcedureType ;
   rdfs:label "ha tipo di contratto"@it ;
   rdfs:label "has type of contract"@en ;
@@ -136,9 +136,9 @@ xsd:boolean a rdfs:Datatype .
   rdfs:domain :Contract ;
   rdfs:range :Variant ;
   rdfs:label "ha variante"@it ;
-  rdfs:label "has variation"@en ;
+  rdfs:label "has variant"@en ;
   rdfs:comment "La proprietà che determina la variazione del contratto."@it ;
-  rdfs:comment "The property that determines the contract variation."@en .
+  rdfs:comment "The property that determines the contract variant."@en .
 
 
 :announcementType a owl:ObjectProperty ;
@@ -149,13 +149,13 @@ xsd:boolean a rdfs:Datatype .
   rdfs:comment "La proprietà che indica il tipo di bando."@it ;
   rdfs:comment "The property that determines the announcement type."@en .
 
-:announcementType a owl:ObjectProperty ;
-  rdfs:domain :Announcement ;
-  rdfs:range :AnnouncementType ;
-  rdfs:label "ha tipo di aggiudicazione"@it ;
-  rdfs:label "has award criterion"@en ;
-  rdfs:comment "La proprietà che definisce un criterio di valutazione dell'offerta."@it ;
-  rdfs:comment "Property for setting a criterion for tender evaluation."@en .
+#:announcementType a owl:ObjectProperty ;
+#  rdfs:domain :Announcement ;
+#  rdfs:range :AnnouncementType ;
+#  rdfs:label "ha tipo di aggiudicazione"@it ;
+#  rdfs:label "has award criterion"@en ;
+#  rdfs:comment "La proprietà che definisce un criterio di valutazione dell'offerta."@it ;
+#  rdfs:comment "Property for setting a criterion for tender evaluation."@en .
 
 :hasReason a owl:ObjectProperty ;
   rdfs:domain :Variant ;
@@ -163,7 +163,7 @@ xsd:boolean a rdfs:Datatype .
   rdfs:label "ha motivazione"@it ;
   rdfs:label "has motivation"@it ;
   rdfs:comment "La proprietà che collega la variante del contratto alla relativa motivazione."@it ;
-  rdfs:comment "The property that links the contract variation and the related motivation."@en .
+  rdfs:comment "The property that links the contract variant and the related motivation."@en .
 
 :hasSubcontractor a owl:ObjectProperty ;
   rdfs:domain :Subcontract ;
@@ -394,23 +394,23 @@ rdfs:comment "The property that determines the final amount of money to be paid"
   rdfs:range xsd:float ;
   rdfs:label "giorni aggiuntivi" @it ;
   rdfs:label "additional days" @en ;
-  rdfs:comment "The property that determines additional days needed in the variation."@en ;
+  rdfs:comment "The property that determines additional days needed in the variant."@en ;
   rdfs:comment "Questa proprietà indica i giorni aggiuntivi necessari per la variante."@it.
 
 
-:variationType a owl:DatatypeProperty ;
+:variantType a owl:DatatypeProperty ;
   rdfs:domain :Variant ;
   rdfs:range xsd:string ;
   rdfs:label "tipo variante" @it ;
-  rdfs:label "variation type" @en ;
+  rdfs:label "variant type" @en ;
   rdfs:comment "La proprietà che determina il tipo di variante del contratto."@it ;
-  rdfs:comment "The property that determines contract variation type."@en .
+  rdfs:comment "The property that determines contract variant type."@en .
 
 
 
 
 :estimatedAmount a owl:DatatypeProperty ;
-  rdfs:domain :SubContract ;
+  rdfs:domain :Subcontract ;
   rdfs:label "importo Presunto"@it ;
   rdfs:label "Estimated Amount"@it ;
   rdfs:comment "The property that determines the estimated amount of money of a subcontract."@en ;
@@ -496,10 +496,12 @@ rdfs:label "Lotto"@it ;
   rdfs:comment "The class that represents the type of procedure."@en ;
   rdfs:comment "La  Classe che rappresenta la procedura di scelta del contraente."@it .
 
-:MotivazioneVariante
+:VariantReason
   a owl:Class ;
-  rdfs:label "MotivazioneVariante" ;
-  rdfs:comment "The class that represents the motivation of the variation of the contract."@en .
+  rdfs:label "Variant reason"@en ;
+  rdfs:label "Motivazione variante"@it ;
+  rdfs:comment "The class that represents the motivation of the variant of the contract."@en ;
+  rdfs:comment "La Classe che rappresenta la motivazione della Variante del Contratto."@it .
 
 :FrameworkAgreement a owl:Class ;
   rdfs:subClassOf l0:Characteristic ;
@@ -586,6 +588,5 @@ l0:Location a owl:Class ;
 :Variant a owl:Class ;
   rdfs:label "Variante"@it ;
   rdfs:label "Variant"@en ;
-  rdfs:comment "The class that represents a contract variation."@en ;
+  rdfs:comment "The class that represents a contract variant."@en ;
   rdfs:comment "La classe che rappresenta la variazione di un contratto."@it .
-
