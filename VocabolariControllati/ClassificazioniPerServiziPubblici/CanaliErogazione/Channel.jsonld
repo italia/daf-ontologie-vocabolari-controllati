@@ -2,21 +2,243 @@
   "@context": {
     "adms": "http://www.w3.org/ns/adms#",
     "clvapit": "http://dati.gov.it/onto/clvapit#",
+    "dcat": "http://www.w3.org/ns/dcat#",
+    "dcatapit": "http://dati.gov.it/onto/dcatapit#",
     "dct": "http://purl.org/dc/terms/",
     "dcterms": "http://purl.org/dc/terms/",
+    "foaf": "http://xmlns.com/foaf/0.1/",
     "owl": "http://www.w3.org/2002/07/owl#",
     "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
     "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
     "skos": "http://www.w3.org/2004/02/skos/core#",
+    "vcard": "http://www.w3.org/2006/vcard/ns#",
     "xkos": "http://rdf-vocabulary.ddialliance.org/xkos#",
     "xsd": "http://www.w3.org/2001/XMLSchema#"
   },
   "@graph": [
     {
+      "@id": "skos:ConceptScheme",
+      "@type": "rdfs:Class"
+    },
+    {
+      "@id": "http://spcdata.digitpa.gov.it/browse/page/Amministrazione/agid",
+      "@type": [
+        "foaf:Agent",
+        "dcatapit:Agent"
+      ],
+      "dct:identifier": "agid",
+      "foaf:name": [
+        {
+          "@language": "it",
+          "@value": "Agenzia per l'Italia Digitale"
+        },
+        {
+          "@language": "en",
+          "@value": "Italian Digital Agency"
+        }
+      ]
+    },
+    {
+      "@id": "dct:license",
+      "@type": "rdfs:Property"
+    },
+    {
+      "@id": "skos:prefLabel",
+      "@type": "rdfs:Property"
+    },
+    {
+      "@id": "dct:type",
+      "@type": "rdfs:Property"
+    },
+    {
+      "@id": "dcat:downloadURL",
+      "@type": "rdfs:Property"
+    },
+    {
+      "@id": "http://dati.gov.it/data/resource/Distribution/Channel_XLSX",
+      "@type": "dcatapit:Distribution",
+      "dcat:accessURL": {
+        "@id": "https://github.com/italia/daf-ontologie-vocabolari-controllati/tree/master/VocabolariControllati/ClassificazioniPerServiziPubblici/CanaliErogazione"
+      },
+      "dcat:downloadURL": {
+        "@id": "https://github.com/italia/daf-ontologie-vocabolari-controllati/blob/master/VocabolariControllati/ClassificazioniPerServiziPubblici/CanaliErogazione/Channel.xlsx"
+      },
+      "dct:description": [
+        {
+          "@language": "en",
+          "@value": "This is the distribution in XLSX of the Linked Open Dataset of the controlled vocabulary related to the channels for public services"
+        },
+        {
+          "@language": "it",
+          "@value": "Questa è la distribuzione XLSX del dataset Linked Open Data del vocabolario controllato sulla classificazione dei canali di erogazione per i servizi pubblici"
+        }
+      ],
+      "dct:format": {
+        "@id": "http://publications.europa.eu/resource/authority/file-type/XLSX"
+      },
+      "dct:license": {
+        "@id": "http://dati.gov.it/onto/controlledvocabulary/License/A21_CCBY40"
+      },
+      "dct:title": [
+        {
+          "@language": "en",
+          "@value": "XLSX distribution channels for public services"
+        },
+        {
+          "@language": "it",
+          "@value": "Distribuzione XLSX canali erogazione servizi pubblici"
+        }
+      ]
+    },
+    {
+      "@id": "dcat:theme",
+      "@type": "rdfs:Property"
+    },
+    {
+      "@id": "dct:conformsTo",
+      "@type": "rdfs:Property"
+    },
+    {
+      "@id": "http://dati.gov.it/data/resource/ContactPoint/voc_AgID",
+      "@type": [
+        "vcard:Kind",
+        "dcatapit:Organization",
+        "vcard:Organization"
+      ],
+      "vcard:fn": "banche dati e open data",
+      "vcard:hasEmail": {
+        "@id": "mailto:info@dati.gov.it"
+      }
+    },
+    {
+      "@id": "vcard:fn",
+      "@type": "rdfs:Property"
+    },
+    {
+      "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/011",
+      "@type": "skos:Concept",
+      "clvapit:hasRankOrder": "2",
+      "dct:identifier": "01.1",
+      "skos:broader": {
+        "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/01"
+      },
+      "skos:definition": [
+        {
+          "@language": "en",
+          "@value": "There is a direct face-to-face contact between the end-user and the PA"
+        },
+        {
+          "@language": "it",
+          "@value": "Vi è un contatto diretto face-to-face tra utente finale e PA"
+        }
+      ],
+      "skos:inScheme": {
+        "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel"
+      },
+      "skos:narrower": [
+        {
+          "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/0112"
+        },
+        {
+          "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/0111"
+        },
+        {
+          "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/0113"
+        }
+      ],
+      "skos:notation": "01.1",
+      "skos:prefLabel": [
+        {
+          "@language": "it",
+          "@value": "Non telematico diretto"
+        },
+        {
+          "@language": "en",
+          "@value": "Direct non-electronic"
+        }
+      ]
+    },
+    {
+      "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/012",
+      "@type": "skos:Concept",
+      "clvapit:hasRankOrder": "2",
+      "dct:identifier": "01.2",
+      "skos:broader": {
+        "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/01"
+      },
+      "skos:inScheme": {
+        "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel"
+      },
+      "skos:narrower": [
+        {
+          "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/0122"
+        },
+        {
+          "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/0121"
+        },
+        {
+          "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/0123"
+        },
+        {
+          "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/0125"
+        },
+        {
+          "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/0124"
+        }
+      ],
+      "skos:notation": "01.2",
+      "skos:prefLabel": [
+        {
+          "@language": "en",
+          "@value": "Direct non-electronic with mediator"
+        },
+        {
+          "@language": "it",
+          "@value": "Non telematico con intermediario"
+        }
+      ]
+    },
+    {
+      "@id": "clvapit:hasRankOrder",
+      "@type": "rdfs:Property"
+    },
+    {
+      "@id": "foaf:name",
+      "@type": "rdfs:Property"
+    },
+    {
+      "@id": "skos:narrower",
+      "@type": "rdfs:Property"
+    },
+    {
+      "@id": "dct:language",
+      "@type": "rdfs:Property"
+    },
+    {
+      "@id": "vcard:Organization",
+      "@type": "rdfs:Class"
+    },
+    {
+      "@id": "dcat:keyword",
+      "@type": "rdfs:Property"
+    },
+    {
+      "@id": "dct:issued",
+      "@type": "rdfs:Property"
+    },
+    {
+      "@id": "dcat:accessURL",
+      "@type": "rdfs:Property"
+    },
+    {
+      "@id": "dct:identifier",
+      "@type": "rdfs:Property"
+    },
+    {
       "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/032",
       "@type": "skos:Concept",
       "clvapit:hasRankOrder": "2",
-      "dcterms:identifier": "03.2",
+      "dct:identifier": "03.2",
       "owl:sameAs": {
         "@id": "http://id.esd.org.uk/channel/15"
       },
@@ -42,7 +264,7 @@
       "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/033",
       "@type": "skos:Concept",
       "clvapit:hasRankOrder": "2",
-      "dcterms:identifier": "03.3",
+      "dct:identifier": "03.3",
       "owl:sameAs": {
         "@id": "http://id.esd.org.uk/channel/16"
       },
@@ -65,44 +287,10 @@
       ]
     },
     {
-      "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel",
-      "@type": [
-        "adms:SemanticAsset",
-        "skos:ConceptScheme"
-      ],
-      "adms:representationTechnique": {
-        "@id": "http://purl.org/adms/representationtechnique/SKOS"
-      },
-      "dcterms:type": {
-        "@id": "http://purl.org/adms/assettype/Taxonomy"
-      },
-      "rdfs:comment": [
-        {
-          "@language": "it",
-          "@value": "Classificazione dei canali"
-        },
-        {
-          "@language": "en",
-          "@value": "Classification of the channel"
-        }
-      ],
-      "rdfs:label": [
-        {
-          "@language": "it",
-          "@value": "Canale di erogazione servizio pubblico"
-        },
-        {
-          "@language": "en",
-          "@value": "Channel"
-        }
-      ],
-      "xkos:numberOfLevels": "3"
-    },
-    {
       "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/031",
       "@type": "skos:Concept",
       "clvapit:hasRankOrder": "2",
-      "dcterms:identifier": "03.1",
+      "dct:identifier": "03.1",
       "owl:sameAs": {
         "@id": "http://id.esd.org.uk/channel/17"
       },
@@ -115,18 +303,14 @@
       "skos:notation": "03.1",
       "skos:prefLabel": [
         {
-          "@language": "it",
-          "@value": "Numero dedicato - Voce"
-        },
-        {
           "@language": "en",
           "@value": "Voice"
+        },
+        {
+          "@language": "it",
+          "@value": "Numero dedicato - Voce"
         }
       ]
-    },
-    {
-      "@id": "skos:ConceptScheme",
-      "@type": "rdfs:Class"
     },
     {
       "@id": "skos:inScheme",
@@ -136,7 +320,7 @@
       "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/0561",
       "@type": "skos:Concept",
       "clvapit:hasRankOrder": "3",
-      "dcterms:identifier": "05.6.1",
+      "dct:identifier": "05.6.1",
       "owl:sameAs": {
         "@id": "http://id.esd.org.uk/channel/30"
       },
@@ -165,7 +349,7 @@
       "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/0563",
       "@type": "skos:Concept",
       "clvapit:hasRankOrder": "3",
-      "dcterms:identifier": "05.6.3",
+      "dct:identifier": "05.6.3",
       "skos:broader": {
         "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/056"
       },
@@ -191,7 +375,7 @@
       "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/0562",
       "@type": "skos:Concept",
       "clvapit:hasRankOrder": "3",
-      "dcterms:identifier": "05.6.2",
+      "dct:identifier": "05.6.2",
       "owl:sameAs": {
         "@id": "http://id.esd.org.uk/channel/28"
       },
@@ -207,12 +391,12 @@
       "skos:notation": "05.6.2",
       "skos:prefLabel": [
         {
-          "@language": "en",
-          "@value": "Direct debit"
-        },
-        {
           "@language": "it",
           "@value": "Addebito diretto - SEPA"
+        },
+        {
+          "@language": "en",
+          "@value": "Direct debit"
         }
       ]
     },
@@ -220,7 +404,7 @@
       "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/0565",
       "@type": "skos:Concept",
       "clvapit:hasRankOrder": "3",
-      "dcterms:identifier": "05.6.5",
+      "dct:identifier": "05.6.5",
       "skos:broader": {
         "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/056"
       },
@@ -233,12 +417,12 @@
       "skos:notation": "05.6.5",
       "skos:prefLabel": [
         {
-          "@language": "it",
-          "@value": "Modello F24"
-        },
-        {
           "@language": "en",
           "@value": "Payment form F24"
+        },
+        {
+          "@language": "it",
+          "@value": "Modello F24"
         }
       ]
     },
@@ -246,7 +430,7 @@
       "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/0564",
       "@type": "skos:Concept",
       "clvapit:hasRankOrder": "3",
-      "dcterms:identifier": "05.6.4",
+      "dct:identifier": "05.6.4",
       "skos:broader": {
         "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/056"
       },
@@ -259,12 +443,12 @@
       "skos:notation": "05.6.4",
       "skos:prefLabel": [
         {
-          "@language": "en",
-          "@value": "Payment against notice"
-        },
-        {
           "@language": "it",
           "@value": "MAV/RAV"
+        },
+        {
+          "@language": "en",
+          "@value": "Payment against notice"
         }
       ]
     },
@@ -272,7 +456,7 @@
       "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/0566",
       "@type": "skos:Concept",
       "clvapit:hasRankOrder": "3",
-      "dcterms:identifier": "05.6.6",
+      "dct:identifier": "05.6.6",
       "skos:broader": {
         "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/056"
       },
@@ -295,18 +479,58 @@
       ]
     },
     {
+      "@id": "vcard:Kind",
+      "@type": "rdfs:Class"
+    },
+    {
       "@id": "xkos:numberOfLevels",
       "@type": "rdfs:Property"
     },
     {
-      "@id": "skos:narrowerTransitive",
-      "@type": "rdfs:Property"
+      "@id": "dcatapit:Organization",
+      "@type": "rdfs:Class"
+    },
+    {
+      "@id": "http://dati.gov.it/data/resource/Distribution/Channel_CSV",
+      "@type": "dcatapit:Distribution",
+      "dcat:accessURL": {
+        "@id": "https://github.com/italia/daf-ontologie-vocabolari-controllati/tree/master/VocabolariControllati/ClassificazioniPerServiziPubblici/CanaliErogazione"
+      },
+      "dcat:downloadURL": {
+        "@id": "https://github.com/italia/daf-ontologie-vocabolari-controllati/blob/master/VocabolariControllati/ClassificazioniPerServiziPubblici/CanaliErogazione/Channel.csv"
+      },
+      "dct:description": [
+        {
+          "@language": "it",
+          "@value": "Questa è la distribuzione CSV del dataset Linked Open Data del vocabolario controllato sulla classificazione dei canali di erogazione per i servizi pubblici"
+        },
+        {
+          "@language": "en",
+          "@value": "This is the distribution in CSV of the Linked Open Dataset of the controlled vocabulary related to the channels for public services"
+        }
+      ],
+      "dct:format": {
+        "@id": "http://publications.europa.eu/resource/authority/file-type/CSV"
+      },
+      "dct:license": {
+        "@id": "http://dati.gov.it/onto/controlledvocabulary/License/A21_CCBY40"
+      },
+      "dct:title": [
+        {
+          "@language": "it",
+          "@value": "Distribuzione CSV canali erogazione servizi pubblici"
+        },
+        {
+          "@language": "en",
+          "@value": "CSV distribution channels for public services"
+        }
+      ]
     },
     {
       "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/0111",
       "@type": "skos:Concept",
       "clvapit:hasRankOrder": "3",
-      "dcterms:identifier": "01.1.1",
+      "dct:identifier": "01.1.1",
       "skos:broader": {
         "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/011"
       },
@@ -332,7 +556,7 @@
       "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/0112",
       "@type": "skos:Concept",
       "clvapit:hasRankOrder": "3",
-      "dcterms:identifier": "01.1.2",
+      "dct:identifier": "01.1.2",
       "skos:broader": {
         "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/011"
       },
@@ -358,7 +582,7 @@
       "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/0113",
       "@type": "skos:Concept",
       "clvapit:hasRankOrder": "3",
-      "dcterms:identifier": "01.1.3",
+      "dct:identifier": "01.1.3",
       "skos:broader": {
         "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/011"
       },
@@ -381,269 +605,22 @@
       ]
     },
     {
-      "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/054",
-      "@type": "skos:Concept",
-      "clvapit:hasRankOrder": "2",
-      "dcterms:identifier": "05.4",
-      "owl:sameAs": {
-        "@id": "http://id.esd.org.uk/channel/14"
-      },
-      "skos:broader": {
-        "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/05"
-      },
-      "skos:inScheme": {
-        "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel"
-      },
-      "skos:notation": "05.4",
-      "skos:prefLabel": [
-        {
-          "@language": "it",
-          "@value": "Video conferenza"
-        },
-        {
-          "@language": "en",
-          "@value": "Video conferencing"
-        }
-      ]
+      "@id": "dct:modified",
+      "@type": "rdfs:Property"
     },
     {
-      "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/055",
-      "@type": "skos:Concept",
-      "clvapit:hasRankOrder": "2",
-      "dcterms:identifier": "05.5",
-      "skos:broader": {
-        "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/05"
-      },
-      "skos:inScheme": {
-        "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel"
-      },
-      "skos:narrower": [
-        {
-          "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/0551"
-        },
-        {
-          "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/0552"
-        },
-        {
-          "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/0553"
-        }
-      ],
-      "skos:notation": "05.5",
-      "skos:prefLabel": [
-        {
-          "@language": "it",
-          "@value": "Piattaforma PAGOPA"
-        },
-        {
-          "@language": "en",
-          "@value": "Italian National Payment Platform PAGOPA"
-        }
-      ]
+      "@id": "skos:Concept",
+      "@type": "rdfs:Class"
     },
     {
-      "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/056",
-      "@type": "skos:Concept",
-      "clvapit:hasRankOrder": "2",
-      "dcterms:identifier": "05.6",
-      "owl:sameAs": {
-        "@id": "http://id.esd.org.uk/channel/24"
-      },
-      "skos:broader": {
-        "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/05"
-      },
-      "skos:inScheme": {
-        "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel"
-      },
-      "skos:narrower": [
-        {
-          "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/0563"
-        },
-        {
-          "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/0565"
-        },
-        {
-          "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/0561"
-        },
-        {
-          "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/0566"
-        },
-        {
-          "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/0562"
-        },
-        {
-          "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/0564"
-        }
-      ],
-      "skos:notation": "05.6",
-      "skos:prefLabel": [
-        {
-          "@language": "en",
-          "@value": "Automated bank payment"
-        },
-        {
-          "@language": "it",
-          "@value": "Pagamenti bancari automatici"
-        }
-      ]
-    },
-    {
-      "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/051",
-      "@type": "skos:Concept",
-      "clvapit:hasRankOrder": "2",
-      "dcterms:identifier": "05.1",
-      "skos:broader": {
-        "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/05"
-      },
-      "skos:inScheme": {
-        "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel"
-      },
-      "skos:notation": "05.1",
-      "skos:prefLabel": [
-        {
-          "@language": "it",
-          "@value": "App mobile"
-        },
-        {
-          "@language": "en",
-          "@value": "Mobile app"
-        }
-      ]
-    },
-    {
-      "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/052",
-      "@type": "skos:Concept",
-      "clvapit:hasRankOrder": "2",
-      "dcterms:identifier": "05.2",
-      "skos:broader": {
-        "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/05"
-      },
-      "skos:inScheme": {
-        "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel"
-      },
-      "skos:notation": "05.2",
-      "skos:prefLabel": [
-        {
-          "@language": "it",
-          "@value": "TV on demand"
-        },
-        {
-          "@language": "en",
-          "@value": "TV on demand"
-        }
-      ]
-    },
-    {
-      "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/053",
-      "@type": "skos:Concept",
-      "clvapit:hasRankOrder": "2",
-      "dcterms:identifier": "05.3",
-      "skos:broader": {
-        "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/05"
-      },
-      "skos:inScheme": {
-        "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel"
-      },
-      "skos:notation": "05.3",
-      "skos:prefLabel": [
-        {
-          "@language": "it",
-          "@value": "Totem"
-        },
-        {
-          "@language": "en",
-          "@value": "Computer kiosk"
-        }
-      ]
-    },
-    {
-      "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/011",
-      "@type": "skos:Concept",
-      "clvapit:hasRankOrder": "2",
-      "dcterms:identifier": "01.1",
-      "skos:broader": {
-        "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/01"
-      },
-      "skos:definition": [
-        {
-          "@language": "en",
-          "@value": "There is a direct face-to-face contact between the end-user and the PA"
-        },
-        {
-          "@language": "it",
-          "@value": "Vi è un contatto diretto face-to-face tra utente finale e PA"
-        }
-      ],
-      "skos:inScheme": {
-        "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel"
-      },
-      "skos:narrower": [
-        {
-          "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/0111"
-        },
-        {
-          "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/0113"
-        },
-        {
-          "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/0112"
-        }
-      ],
-      "skos:notation": "01.1",
-      "skos:prefLabel": [
-        {
-          "@language": "en",
-          "@value": "Direct non-electronic"
-        },
-        {
-          "@language": "it",
-          "@value": "Non telematico diretto"
-        }
-      ]
-    },
-    {
-      "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/012",
-      "@type": "skos:Concept",
-      "clvapit:hasRankOrder": "2",
-      "dcterms:identifier": "01.2",
-      "skos:broader": {
-        "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/01"
-      },
-      "skos:inScheme": {
-        "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel"
-      },
-      "skos:narrower": [
-        {
-          "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/0122"
-        },
-        {
-          "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/0125"
-        },
-        {
-          "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/0123"
-        },
-        {
-          "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/0124"
-        },
-        {
-          "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/0121"
-        }
-      ],
-      "skos:notation": "01.2",
-      "skos:prefLabel": [
-        {
-          "@language": "it",
-          "@value": "Non telematico con intermediario"
-        },
-        {
-          "@language": "en",
-          "@value": "Direct non-electronic with mediator"
-        }
-      ]
+      "@id": "foaf:Agent",
+      "@type": "rdfs:Class"
     },
     {
       "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/021",
       "@type": "skos:Concept",
       "clvapit:hasRankOrder": "2",
-      "dcterms:identifier": "02.1",
+      "dct:identifier": "02.1",
       "owl:sameAs": {
         "@id": "http://id.esd.org.uk/channel/19"
       },
@@ -676,21 +653,25 @@
       ]
     },
     {
+      "@id": "dcat:contactPoint",
+      "@type": "rdfs:Property"
+    },
+    {
       "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/022",
       "@type": "skos:Concept",
       "clvapit:hasRankOrder": "2",
-      "dcterms:identifier": "02.2",
+      "dct:identifier": "02.2",
       "skos:broader": {
         "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/02"
       },
       "skos:definition": [
         {
-          "@language": "it",
-          "@value": "Almeno un campo del modulo è compilato automaticamente, senza la necessità per l'utente di inserire un qualsiasi valore"
-        },
-        {
           "@language": "en",
           "@value": "At least one field of the online form is filled in automatically without the need for the user to insert any value"
+        },
+        {
+          "@language": "it",
+          "@value": "Almeno un campo del modulo è compilato automaticamente, senza la necessità per l'utente di inserire un qualsiasi valore"
         }
       ],
       "skos:inScheme": {
@@ -709,22 +690,546 @@
       ]
     },
     {
-      "@id": "skos:Concept",
+      "@id": "dct:title",
+      "@type": "rdfs:Property"
+    },
+    {
+      "@id": "http://dati.gov.it/data/resource/Distribution/Channel_RDF_Turtle",
+      "@type": "dcatapit:Distribution",
+      "dcat:accessURL": {
+        "@id": "https://github.com/italia/daf-ontologie-vocabolari-controllati/tree/master/VocabolariControllati/ClassificazioniPerServiziPubblici/CanaliErogazione"
+      },
+      "dcat:downloadURL": {
+        "@id": "https://github.com/italia/daf-ontologie-vocabolari-controllati/blob/master/VocabolariControllati/ClassificazioniPerServiziPubblici/CanaliErogazione/Channel.ttl"
+      },
+      "dct:description": [
+        {
+          "@language": "en",
+          "@value": "This is the distribution in RDF/Turtle of the Linked Open Dataset of the controlled vocabulary related to the channels for public services"
+        },
+        {
+          "@language": "it",
+          "@value": "Questa è la distribuzione RDF/Turtle del dataset Linked Open Data del vocabolario controllato sulla classificazione dei canali di erogazione per i servizi pubblici"
+        }
+      ],
+      "dct:format": {
+        "@id": "http://publications.europa.eu/resource/authority/file-type/RDF_TURTLE"
+      },
+      "dct:license": {
+        "@id": "http://dati.gov.it/onto/controlledvocabulary/License/A21_CCBY40"
+      },
+      "dct:title": [
+        {
+          "@language": "en",
+          "@value": "RDF/Turtle distribution channels for public services"
+        },
+        {
+          "@language": "it",
+          "@value": "Distribuzione RDF/Turtle canali erogazione servizi pubblici"
+        }
+      ]
+    },
+    {
+      "@id": "skos:broader",
+      "@type": "rdfs:Property"
+    },
+    {
+      "@id": "skos:notation",
+      "@type": "rdfs:Property"
+    },
+    {
+      "@id": "dct:creator",
+      "@type": "rdfs:Property"
+    },
+    {
+      "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/04",
+      "@type": "skos:Concept",
+      "clvapit:hasRankOrder": "1",
+      "dct:identifier": "04",
+      "owl:sameAs": {
+        "@id": "http://id.esd.org.uk/channel/10"
+      },
+      "skos:inScheme": {
+        "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel"
+      },
+      "skos:narrower": [
+        {
+          "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/041"
+        },
+        {
+          "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/042"
+        }
+      ],
+      "skos:notation": "04",
+      "skos:prefLabel": [
+        {
+          "@language": "it",
+          "@value": "Email"
+        },
+        {
+          "@language": "en",
+          "@value": "Email"
+        }
+      ]
+    },
+    {
+      "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/05",
+      "@type": "skos:Concept",
+      "clvapit:hasRankOrder": "1",
+      "dct:identifier": "05",
+      "owl:sameAs": {
+        "@id": "http://id.esd.org.uk/channel/4"
+      },
+      "skos:inScheme": {
+        "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel"
+      },
+      "skos:narrower": [
+        {
+          "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/052"
+        },
+        {
+          "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/051"
+        },
+        {
+          "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/056"
+        },
+        {
+          "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/054"
+        },
+        {
+          "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/053"
+        },
+        {
+          "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/055"
+        }
+      ],
+      "skos:narrowerTransitive": [
+        {
+          "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/0561"
+        },
+        {
+          "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/0562"
+        },
+        {
+          "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/0564"
+        },
+        {
+          "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/0565"
+        },
+        {
+          "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/0566"
+        },
+        {
+          "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/0551"
+        },
+        {
+          "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/0553"
+        },
+        {
+          "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/0563"
+        },
+        {
+          "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/0552"
+        }
+      ],
+      "skos:notation": "05",
+      "skos:prefLabel": [
+        {
+          "@language": "en",
+          "@value": "Other electronic"
+        },
+        {
+          "@language": "it",
+          "@value": "Altro telematico"
+        }
+      ]
+    },
+    {
+      "@id": "skos:definition",
+      "@type": "rdfs:Property"
+    },
+    {
+      "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/01",
+      "@type": "skos:Concept",
+      "clvapit:hasRankOrder": "1",
+      "dct:identifier": "01",
+      "owl:sameAs": {
+        "@id": "http://id.esd.org.uk/channel/5"
+      },
+      "skos:inScheme": {
+        "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel"
+      },
+      "skos:narrower": [
+        {
+          "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/012"
+        },
+        {
+          "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/011"
+        }
+      ],
+      "skos:narrowerTransitive": [
+        {
+          "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/0122"
+        },
+        {
+          "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/0124"
+        },
+        {
+          "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/0111"
+        },
+        {
+          "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/0121"
+        },
+        {
+          "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/0112"
+        },
+        {
+          "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/0113"
+        },
+        {
+          "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/0125"
+        },
+        {
+          "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/0123"
+        }
+      ],
+      "skos:notation": "01",
+      "skos:prefLabel": [
+        {
+          "@language": "en",
+          "@value": "Non-electronic"
+        },
+        {
+          "@language": "it",
+          "@value": "Non Telematico"
+        }
+      ]
+    },
+    {
+      "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/02",
+      "@type": "skos:Concept",
+      "clvapit:hasRankOrder": "1",
+      "dct:identifier": "02",
+      "owl:sameAs": {
+        "@id": "http://id.esd.org.uk/channel/1"
+      },
+      "skos:inScheme": {
+        "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel"
+      },
+      "skos:narrower": [
+        {
+          "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/021"
+        },
+        {
+          "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/022"
+        }
+      ],
+      "skos:notation": "02",
+      "skos:prefLabel": [
+        {
+          "@language": "it",
+          "@value": "Sito Web"
+        },
+        {
+          "@language": "en",
+          "@value": "Web Site"
+        }
+      ]
+    },
+    {
+      "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/03",
+      "@type": "skos:Concept",
+      "clvapit:hasRankOrder": "1",
+      "dct:identifier": "03",
+      "owl:sameAs": {
+        "@id": "http://id.esd.org.uk/channel/2"
+      },
+      "skos:inScheme": {
+        "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel"
+      },
+      "skos:narrower": [
+        {
+          "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/031"
+        },
+        {
+          "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/033"
+        },
+        {
+          "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/032"
+        }
+      ],
+      "skos:notation": "03",
+      "skos:prefLabel": [
+        {
+          "@language": "en",
+          "@value": "Telephone"
+        },
+        {
+          "@language": "it",
+          "@value": "Telefono"
+        }
+      ]
+    },
+    {
+      "@id": "dct:description",
+      "@type": "rdfs:Property"
+    },
+    {
+      "@id": "skos:broaderTransitive",
+      "@type": "rdfs:Property"
+    },
+    {
+      "@id": "dct:format",
+      "@type": "rdfs:Property"
+    },
+    {
+      "@id": "dct:accrualPeriodicity",
+      "@type": "rdfs:Property"
+    },
+    {
+      "@id": "dct:rightsHolder",
+      "@type": "rdfs:Property"
+    },
+    {
+      "@id": "dcat:distribution",
+      "@type": "rdfs:Property"
+    },
+    {
+      "@id": "dct:publisher",
+      "@type": "rdfs:Property"
+    },
+    {
+      "@id": "skos:narrowerTransitive",
+      "@type": "rdfs:Property"
+    },
+    {
+      "@id": "dcatapit:Distribution",
       "@type": "rdfs:Class"
     },
     {
-      "@id": "clvapit:hasRankOrder",
+      "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/054",
+      "@type": "skos:Concept",
+      "clvapit:hasRankOrder": "2",
+      "dct:identifier": "05.4",
+      "owl:sameAs": {
+        "@id": "http://id.esd.org.uk/channel/14"
+      },
+      "skos:broader": {
+        "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/05"
+      },
+      "skos:inScheme": {
+        "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel"
+      },
+      "skos:notation": "05.4",
+      "skos:prefLabel": [
+        {
+          "@language": "it",
+          "@value": "Video conferenza"
+        },
+        {
+          "@language": "en",
+          "@value": "Video conferencing"
+        }
+      ]
+    },
+    {
+      "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/055",
+      "@type": "skos:Concept",
+      "clvapit:hasRankOrder": "2",
+      "dct:identifier": "05.5",
+      "skos:broader": {
+        "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/05"
+      },
+      "skos:inScheme": {
+        "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel"
+      },
+      "skos:narrower": [
+        {
+          "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/0552"
+        },
+        {
+          "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/0553"
+        },
+        {
+          "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/0551"
+        }
+      ],
+      "skos:notation": "05.5",
+      "skos:prefLabel": [
+        {
+          "@language": "en",
+          "@value": "Italian National Payment Platform PAGOPA"
+        },
+        {
+          "@language": "it",
+          "@value": "Piattaforma PAGOPA"
+        }
+      ]
+    },
+    {
+      "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/056",
+      "@type": "skos:Concept",
+      "clvapit:hasRankOrder": "2",
+      "dct:identifier": "05.6",
+      "owl:sameAs": {
+        "@id": "http://id.esd.org.uk/channel/24"
+      },
+      "skos:broader": {
+        "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/05"
+      },
+      "skos:inScheme": {
+        "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel"
+      },
+      "skos:narrower": [
+        {
+          "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/0565"
+        },
+        {
+          "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/0563"
+        },
+        {
+          "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/0566"
+        },
+        {
+          "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/0564"
+        },
+        {
+          "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/0562"
+        },
+        {
+          "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/0561"
+        }
+      ],
+      "skos:notation": "05.6",
+      "skos:prefLabel": [
+        {
+          "@language": "it",
+          "@value": "Pagamenti bancari automatici"
+        },
+        {
+          "@language": "en",
+          "@value": "Automated bank payment"
+        }
+      ]
+    },
+    {
+      "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/051",
+      "@type": "skos:Concept",
+      "clvapit:hasRankOrder": "2",
+      "dct:identifier": "05.1",
+      "skos:broader": {
+        "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/05"
+      },
+      "skos:inScheme": {
+        "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel"
+      },
+      "skos:notation": "05.1",
+      "skos:prefLabel": [
+        {
+          "@language": "en",
+          "@value": "Mobile app"
+        },
+        {
+          "@language": "it",
+          "@value": "App mobile"
+        }
+      ]
+    },
+    {
+      "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/052",
+      "@type": "skos:Concept",
+      "clvapit:hasRankOrder": "2",
+      "dct:identifier": "05.2",
+      "skos:broader": {
+        "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/05"
+      },
+      "skos:inScheme": {
+        "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel"
+      },
+      "skos:notation": "05.2",
+      "skos:prefLabel": [
+        {
+          "@language": "en",
+          "@value": "TV on demand"
+        },
+        {
+          "@language": "it",
+          "@value": "TV on demand"
+        }
+      ]
+    },
+    {
+      "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/053",
+      "@type": "skos:Concept",
+      "clvapit:hasRankOrder": "2",
+      "dct:identifier": "05.3",
+      "skos:broader": {
+        "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/05"
+      },
+      "skos:inScheme": {
+        "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel"
+      },
+      "skos:notation": "05.3",
+      "skos:prefLabel": [
+        {
+          "@language": "en",
+          "@value": "Computer kiosk"
+        },
+        {
+          "@language": "it",
+          "@value": "Totem"
+        }
+      ]
+    },
+    {
+      "@id": "dct:Standard",
+      "@type": "rdfs:Class"
+    },
+    {
+      "@id": "dct:subject",
       "@type": "rdfs:Property"
     },
     {
-      "@id": "dcterms:identifier",
-      "@type": "rdfs:Property"
+      "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/0551",
+      "@type": "skos:Concept",
+      "clvapit:hasRankOrder": "3",
+      "dct:identifier": "05.5.1",
+      "skos:broader": {
+        "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/055"
+      },
+      "skos:broaderTransitive": {
+        "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/05"
+      },
+      "skos:definition": [
+        {
+          "@language": "it",
+          "@value": "Pagamento contestuale all’erogazione del servizio da parte della PA tramite il suo portale"
+        },
+        {
+          "@language": "en",
+          "@value": "Payment immediately executed when the service is used through the PA portal"
+        }
+      ],
+      "skos:inScheme": {
+        "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel"
+      },
+      "skos:notation": "05.5.1",
+      "skos:prefLabel": [
+        {
+          "@language": "it",
+          "@value": "Pagamento in tempo reale"
+        },
+        {
+          "@language": "en",
+          "@value": "Real time payment"
+        }
+      ]
     },
     {
       "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/0552",
       "@type": "skos:Concept",
       "clvapit:hasRankOrder": "3",
-      "dcterms:identifier": "05.5.2",
+      "dct:identifier": "05.5.2",
       "skos:broader": {
         "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/055"
       },
@@ -757,22 +1262,276 @@
       ]
     },
     {
-      "@id": "skos:broader",
+      "@id": "owl:versionInfo",
       "@type": "rdfs:Property"
     },
     {
-      "@id": "skos:notation",
+      "@id": "dcatapit:Standard",
+      "@type": "rdfs:Class"
+    },
+    {
+      "@id": "http://dati.gov.it/data/resource/Standard/SKOS",
+      "@type": [
+        "dcatapit:Standard",
+        "dct:Standard"
+      ],
+      "dct:description": "The Simple Knowledge Organization System (SKOS) is a common data model for sharing and linking knowledge organization systems via the Web",
+      "dct:identifier": "SKOS",
+      "dct:title": "Simple Knowledge Organization System - SKOS"
+    },
+    {
+      "@id": "dcatapit:Dataset",
+      "@type": "rdfs:Class"
+    },
+    {
+      "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/042",
+      "@type": "skos:Concept",
+      "clvapit:hasRankOrder": "2",
+      "dct:identifier": "04.2",
+      "owl:sameAs": {
+        "@id": "http://id.esd.org.uk/channel/10"
+      },
+      "skos:broader": {
+        "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/04"
+      },
+      "skos:inScheme": {
+        "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel"
+      },
+      "skos:notation": "04.2",
+      "skos:prefLabel": [
+        {
+          "@language": "en",
+          "@value": "E-mail"
+        },
+        {
+          "@language": "it",
+          "@value": "Email tradizionale"
+        }
+      ]
+    },
+    {
+      "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/041",
+      "@type": "skos:Concept",
+      "clvapit:hasRankOrder": "2",
+      "dct:identifier": "04.1",
+      "skos:broader": {
+        "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/04"
+      },
+      "skos:inScheme": {
+        "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel"
+      },
+      "skos:notation": "04.1",
+      "skos:prefLabel": [
+        {
+          "@language": "en",
+          "@value": "Certified Electronic Mail"
+        },
+        {
+          "@language": "it",
+          "@value": "Posta Elettronica Certificata - PEC"
+        }
+      ]
+    },
+    {
+      "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel",
+      "@type": [
+        "adms:SemanticAsset",
+        "dcatapit:Dataset",
+        "skos:ConceptScheme"
+      ],
+      "adms:representationTechnique": {
+        "@id": "http://purl.org/adms/representationtechnique/SKOS"
+      },
+      "dcat:contactPoint": {
+        "@id": "http://dati.gov.it/data/resource/ContactPoint/voc_AgID"
+      },
+      "dcat:distribution": [
+        {
+          "@id": "http://dati.gov.it/data/resource/Distribution/Channel_RDF_Turtle"
+        },
+        {
+          "@id": "http://dati.gov.it/data/resource/Distribution/Channel_JSON_LD"
+        },
+        {
+          "@id": "http://dati.gov.it/data/resource/Distribution/Channel_CSV"
+        },
+        {
+          "@id": "http://dati.gov.it/data/resource/Distribution/Channel_RDF_XML"
+        },
+        {
+          "@id": "http://dati.gov.it/data/resource/Distribution/Channel_XLSX"
+        }
+      ],
+      "dcat:keyword": [
+        {
+          "@language": "it",
+          "@value": "servizio pubblico"
+        },
+        {
+          "@language": "en",
+          "@value": "channel"
+        },
+        {
+          "@language": "en",
+          "@value": "public service"
+        },
+        {
+          "@language": "it",
+          "@value": "pagopa"
+        },
+        {
+          "@language": "en",
+          "@value": "web site"
+        },
+        {
+          "@language": "it",
+          "@value": "canale erogazione"
+        },
+        {
+          "@language": "en",
+          "@value": "mail service"
+        },
+        {
+          "@language": "en",
+          "@value": "pagopa"
+        },
+        {
+          "@language": "en",
+          "@value": "email"
+        },
+        {
+          "@language": "it",
+          "@value": "sito web"
+        },
+        {
+          "@language": "en",
+          "@value": "information desk"
+        },
+        {
+          "@language": "it",
+          "@value": "posta"
+        },
+        {
+          "@language": "it",
+          "@value": "email"
+        },
+        {
+          "@language": "it",
+          "@value": "sportello pa"
+        }
+      ],
+      "dcat:theme": {
+        "@id": "http://publications.europa.eu/resource/authority/data-theme/GOVE"
+      },
+      "dct:accrualPeriodicity": {
+        "@id": "http://publications.europa.eu/resource/authority/frequency/IRREG"
+      },
+      "dct:conformsTo": {
+        "@id": "http://dati.gov.it/data/resource/Standard/SKOS"
+      },
+      "dct:creator": {
+        "@id": "http://spcdata.digitpa.gov.it/browse/page/Amministrazione/agid"
+      },
+      "dct:description": [
+        {
+          "@language": "it",
+          "@value": "Vocabolario controllato della classificazione dei canali di erogazione per i servizi pubblici"
+        },
+        {
+          "@language": "en",
+          "@value": "Controlled Vocabulary on the classification of channels for public services"
+        }
+      ],
+      "dct:identifier": "agid:D.5",
+      "dct:issued": {
+        "@type": "xsd:date",
+        "@value": "2017-10-20"
+      },
+      "dct:language": [
+        {
+          "@id": "http://publications.europa.eu/resource/authority/language/ITA"
+        },
+        {
+          "@id": "http://publications.europa.eu/resource/authority/language/ENG"
+        }
+      ],
+      "dct:modified": {
+        "@type": "xsd:date",
+        "@value": "2018-02-12"
+      },
+      "dct:publisher": {
+        "@id": "http://spcdata.digitpa.gov.it/browse/page/Amministrazione/agid"
+      },
+      "dct:rightsHolder": {
+        "@id": "http://spcdata.digitpa.gov.it/browse/page/Amministrazione/agid"
+      },
+      "dct:subject": [
+        {
+          "@id": "http://eurovoc.europa.eu/100169"
+        },
+        {
+          "@id": "http://eurovoc.europa.eu/246146"
+        },
+        {
+          "@id": "http://eurovoc.europa.eu/246051"
+        }
+      ],
+      "dct:title": [
+        {
+          "@language": "en",
+          "@value": "Channels for Public Services"
+        },
+        {
+          "@language": "it",
+          "@value": "Canali di erogazione per servizi pubblici"
+        }
+      ],
+      "dct:type": {
+        "@id": "http://purl.org/adms/assettype/Taxonomy"
+      },
+      "owl:versionInfo": "0.1",
+      "rdfs:comment": [
+        {
+          "@language": "it",
+          "@value": "Classificazione dei canali"
+        },
+        {
+          "@language": "en",
+          "@value": "Classification of the channel"
+        }
+      ],
+      "rdfs:isDefinedBy": {
+        "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel"
+      },
+      "rdfs:label": [
+        {
+          "@language": "it",
+          "@value": "Canale di erogazione servizio pubblico"
+        },
+        {
+          "@language": "en",
+          "@value": "Channel"
+        }
+      ],
+      "xkos:numberOfLevels": "3"
+    },
+    {
+      "@id": "dcatapit:Agent",
+      "@type": "rdfs:Class"
+    },
+    {
+      "@id": "vcard:hasEmail",
       "@type": "rdfs:Property"
     },
     {
-      "@id": "skos:prefLabel",
+      "@id": "adms:representationTechnique",
       "@type": "rdfs:Property"
     },
     {
       "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/0121",
       "@type": "skos:Concept",
       "clvapit:hasRankOrder": "3",
-      "dcterms:identifier": "01.2.1",
+      "dct:identifier": "01.2.1",
       "owl:sameAs": {
         "@id": "http://id.esd.org.uk/channel/9"
       },
@@ -801,7 +1560,7 @@
       "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/0123",
       "@type": "skos:Concept",
       "clvapit:hasRankOrder": "3",
-      "dcterms:identifier": "01.2.3",
+      "dct:identifier": "01.2.3",
       "skos:broader": {
         "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/012"
       },
@@ -814,12 +1573,12 @@
       "skos:notation": "01.2.3",
       "skos:prefLabel": [
         {
-          "@language": "it",
-          "@value": "GDO - Grande Distribuzione Organizzata"
-        },
-        {
           "@language": "en",
           "@value": "Large scale distribution"
+        },
+        {
+          "@language": "it",
+          "@value": "GDO - Grande Distribuzione Organizzata"
         }
       ]
     },
@@ -827,7 +1586,7 @@
       "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/0122",
       "@type": "skos:Concept",
       "clvapit:hasRankOrder": "3",
-      "dcterms:identifier": "01.2.2",
+      "dct:identifier": "01.2.2",
       "skos:broader": {
         "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/012"
       },
@@ -853,7 +1612,7 @@
       "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/0125",
       "@type": "skos:Concept",
       "clvapit:hasRankOrder": "3",
-      "dcterms:identifier": "01.2.5",
+      "dct:identifier": "01.2.5",
       "skos:broader": {
         "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/012"
       },
@@ -879,7 +1638,7 @@
       "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/0124",
       "@type": "skos:Concept",
       "clvapit:hasRankOrder": "3",
-      "dcterms:identifier": "01.2.4",
+      "dct:identifier": "01.2.4",
       "skos:broader": {
         "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/012"
       },
@@ -892,326 +1651,84 @@
       "skos:notation": "01.2.4",
       "skos:prefLabel": [
         {
-          "@language": "it",
-          "@value": "CAF/Patronato"
-        },
-        {
           "@language": "en",
           "@value": "Assistance Centre"
+        },
+        {
+          "@language": "it",
+          "@value": "CAF/Patronato"
         }
       ]
     },
     {
-      "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/0551",
-      "@type": "skos:Concept",
-      "clvapit:hasRankOrder": "3",
-      "dcterms:identifier": "05.5.1",
-      "skos:broader": {
-        "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/055"
+      "@id": "http://dati.gov.it/data/resource/Distribution/Channel_RDF_XML",
+      "@type": "dcatapit:Distribution",
+      "dcat:accessURL": {
+        "@id": "https://github.com/italia/daf-ontologie-vocabolari-controllati/tree/master/VocabolariControllati/ClassificazioniPerServiziPubblici/CanaliErogazione"
       },
-      "skos:broaderTransitive": {
-        "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/05"
+      "dcat:downloadURL": {
+        "@id": "https://github.com/italia/daf-ontologie-vocabolari-controllati/blob/master/VocabolariControllati/ClassificazioniPerServiziPubblici/CanaliErogazione/Channel.rdf"
       },
-      "skos:definition": [
+      "dct:description": [
         {
           "@language": "it",
-          "@value": "Pagamento contestuale all’erogazione del servizio da parte della PA tramite il suo portale"
+          "@value": "Questa è la distribuzione RDF/XML del dataset Linked Open Data del vocabolario controllato sulla classificazione dei canali di erogazione per i servizi pubblici"
         },
         {
           "@language": "en",
-          "@value": "Payment immediately executed when the service is used through the PA portal"
+          "@value": "This is the distribution in RDF/XML of the Linked Open Dataset of the controlled vocabulary related to the channels for public services"
         }
       ],
-      "skos:inScheme": {
-        "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel"
+      "dct:format": {
+        "@id": "http://publications.europa.eu/resource/authority/file-type/RDF_XML"
       },
-      "skos:notation": "05.5.1",
-      "skos:prefLabel": [
+      "dct:license": {
+        "@id": "http://dati.gov.it/onto/controlledvocabulary/License/A21_CCBY40"
+      },
+      "dct:title": [
         {
           "@language": "en",
-          "@value": "Real time payment"
+          "@value": "RDF/XML distribution channels for public services"
         },
         {
           "@language": "it",
-          "@value": "Pagamento in tempo reale"
+          "@value": "Distribuzione RDF/XML canali erogazione servizi pubblici"
         }
       ]
     },
     {
-      "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/04",
-      "@type": "skos:Concept",
-      "clvapit:hasRankOrder": "1",
-      "dcterms:identifier": "04",
-      "owl:sameAs": {
-        "@id": "http://id.esd.org.uk/channel/10"
+      "@id": "http://dati.gov.it/data/resource/Distribution/Channel_JSON_LD",
+      "@type": "dcatapit:Distribution",
+      "dcat:accessURL": {
+        "@id": "https://github.com/italia/daf-ontologie-vocabolari-controllati/tree/master/VocabolariControllati/ClassificazioniPerServiziPubblici/CanaliErogazione"
       },
-      "skos:inScheme": {
-        "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel"
+      "dcat:downloadURL": {
+        "@id": "https://github.com/italia/daf-ontologie-vocabolari-controllati/blob/master/VocabolariControllati/ClassificazioniPerServiziPubblici/CanaliErogazione/Channel.jsonld"
       },
-      "skos:narrower": [
-        {
-          "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/041"
-        },
-        {
-          "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/042"
-        }
-      ],
-      "skos:notation": "04",
-      "skos:prefLabel": [
-        {
-          "@language": "en",
-          "@value": "Email"
-        },
+      "dct:description": [
         {
           "@language": "it",
-          "@value": "Email"
-        }
-      ]
-    },
-    {
-      "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/05",
-      "@type": "skos:Concept",
-      "clvapit:hasRankOrder": "1",
-      "dcterms:identifier": "05",
-      "owl:sameAs": {
-        "@id": "http://id.esd.org.uk/channel/4"
-      },
-      "skos:inScheme": {
-        "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel"
-      },
-      "skos:narrower": [
-        {
-          "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/052"
-        },
-        {
-          "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/054"
-        },
-        {
-          "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/053"
-        },
-        {
-          "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/056"
-        },
-        {
-          "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/055"
-        },
-        {
-          "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/051"
-        }
-      ],
-      "skos:narrowerTransitive": [
-        {
-          "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/0562"
-        },
-        {
-          "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/0552"
-        },
-        {
-          "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/0564"
-        },
-        {
-          "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/0566"
-        },
-        {
-          "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/0565"
-        },
-        {
-          "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/0563"
-        },
-        {
-          "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/0551"
-        },
-        {
-          "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/0553"
-        },
-        {
-          "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/0561"
-        }
-      ],
-      "skos:notation": "05",
-      "skos:prefLabel": [
-        {
-          "@language": "en",
-          "@value": "Other electronic"
-        },
-        {
-          "@language": "it",
-          "@value": "Altro telematico"
-        }
-      ]
-    },
-    {
-      "@id": "skos:definition",
-      "@type": "rdfs:Property"
-    },
-    {
-      "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/01",
-      "@type": "skos:Concept",
-      "clvapit:hasRankOrder": "1",
-      "dcterms:identifier": "01",
-      "owl:sameAs": {
-        "@id": "http://id.esd.org.uk/channel/5"
-      },
-      "skos:inScheme": {
-        "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel"
-      },
-      "skos:narrower": [
-        {
-          "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/012"
-        },
-        {
-          "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/011"
-        }
-      ],
-      "skos:narrowerTransitive": [
-        {
-          "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/0112"
-        },
-        {
-          "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/0125"
-        },
-        {
-          "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/0111"
-        },
-        {
-          "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/0123"
-        },
-        {
-          "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/0121"
-        },
-        {
-          "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/0124"
-        },
-        {
-          "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/0113"
-        },
-        {
-          "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/0122"
-        }
-      ],
-      "skos:notation": "01",
-      "skos:prefLabel": [
-        {
-          "@language": "en",
-          "@value": "Non-electronic"
-        },
-        {
-          "@language": "it",
-          "@value": "Non Telematico"
-        }
-      ]
-    },
-    {
-      "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/02",
-      "@type": "skos:Concept",
-      "clvapit:hasRankOrder": "1",
-      "dcterms:identifier": "02",
-      "owl:sameAs": {
-        "@id": "http://id.esd.org.uk/channel/1"
-      },
-      "skos:inScheme": {
-        "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel"
-      },
-      "skos:narrower": [
-        {
-          "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/021"
-        },
-        {
-          "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/022"
-        }
-      ],
-      "skos:notation": "02",
-      "skos:prefLabel": [
-        {
-          "@language": "it",
-          "@value": "Sito Web"
+          "@value": "Questa è la distribuzione JSON_LD del dataset Linked Open Data del vocabolario controllato sulla classificazione dei canali di erogazione per i servizi pubblici"
         },
         {
           "@language": "en",
-          "@value": "Web Site"
-        }
-      ]
-    },
-    {
-      "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/03",
-      "@type": "skos:Concept",
-      "clvapit:hasRankOrder": "1",
-      "dcterms:identifier": "03",
-      "owl:sameAs": {
-        "@id": "http://id.esd.org.uk/channel/2"
-      },
-      "skos:inScheme": {
-        "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel"
-      },
-      "skos:narrower": [
-        {
-          "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/031"
-        },
-        {
-          "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/033"
-        },
-        {
-          "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/032"
+          "@value": "This is the distribution in JSON_LD of the Linked Open Dataset of the controlled vocabulary related to the channels for public services"
         }
       ],
-      "skos:notation": "03",
-      "skos:prefLabel": [
+      "dct:format": {
+        "@id": "http://publications.europa.eu/resource/authority/file-type/JSON_LD"
+      },
+      "dct:license": {
+        "@id": "http://dati.gov.it/onto/controlledvocabulary/License/A21_CCBY40"
+      },
+      "dct:title": [
         {
           "@language": "en",
-          "@value": "Telephone"
+          "@value": "JSON_LD distribution channels for public services"
         },
         {
           "@language": "it",
-          "@value": "Telefono"
-        }
-      ]
-    },
-    {
-      "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/042",
-      "@type": "skos:Concept",
-      "clvapit:hasRankOrder": "2",
-      "dcterms:identifier": "04.2",
-      "owl:sameAs": {
-        "@id": "http://id.esd.org.uk/channel/10"
-      },
-      "skos:broader": {
-        "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/04"
-      },
-      "skos:inScheme": {
-        "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel"
-      },
-      "skos:notation": "04.2",
-      "skos:prefLabel": [
-        {
-          "@language": "it",
-          "@value": "Email tradizionale"
-        },
-        {
-          "@language": "en",
-          "@value": "E-mail"
-        }
-      ]
-    },
-    {
-      "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/041",
-      "@type": "skos:Concept",
-      "clvapit:hasRankOrder": "2",
-      "dcterms:identifier": "04.1",
-      "skos:broader": {
-        "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/04"
-      },
-      "skos:inScheme": {
-        "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel"
-      },
-      "skos:notation": "04.1",
-      "skos:prefLabel": [
-        {
-          "@language": "en",
-          "@value": "Certified Electronic Mail"
-        },
-        {
-          "@language": "it",
-          "@value": "Posta Elettronica Certificata - PEC"
+          "@value": "Distribuzione JSON_LD canali erogazione servizi pubblici"
         }
       ]
     },
@@ -1219,7 +1736,7 @@
       "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/0553",
       "@type": "skos:Concept",
       "clvapit:hasRankOrder": "3",
-      "dcterms:identifier": "05.5.3",
+      "dct:identifier": "05.5.3",
       "skos:broader": {
         "@id": "http://dati.gov.it/onto/controlledvocabulary/Channel/055"
       },
@@ -1242,22 +1759,14 @@
       "skos:notation": "05.5.3",
       "skos:prefLabel": [
         {
-          "@language": "en",
-          "@value": "Payment carried out through Service Payment Provider"
-        },
-        {
           "@language": "it",
           "@value": "Pagamento attivo presso PSP - Prestatore di Servizio di Pagamento"
+        },
+        {
+          "@language": "en",
+          "@value": "Payment carried out through Service Payment Provider"
         }
       ]
-    },
-    {
-      "@id": "skos:narrower",
-      "@type": "rdfs:Property"
-    },
-    {
-      "@id": "skos:broaderTransitive",
-      "@type": "rdfs:Property"
     }
   ]
 }
