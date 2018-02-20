@@ -1,0 +1,271 @@
+@prefix : <http://dati.gov.it/onto/l0/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://dati.gov.it/onto/l0/> .
+
+<http://dati.gov.it/onto/l0/> rdf:type owl:Ontology ;
+                               owl:versionIRI <http://dati.gov.it/onto/l0/> ;
+                               rdfs:comment "Questa ontologia fornisce il livello fondazionale allo stack ontologico di OntoPiA. Il nome L0 sta per Level-0 ontology poiché essa fornisce le fondamenta concettuali elementari all'intero stack. Questa ontologia è  ispirata da DOLCE zero (http://www.ontologydesignpatterns.org/ont/d0.owl)"@it ;
+                               dct:modified "2018-02-01" ;
+                               dc:creator "Institute of Cognitive Sciences and Technologies of the Italian Research Council (CNR) - Semantic Technology Laboratory (STLab)"@en ;
+                               owl:versionInfo "0.3 - 01 February 2018 - refactoring of the main classes and alignment with DOLCE 0"@en ;
+                               prov:wasDerivedFrom <http://dati.gov.it/onto/l0/> ;
+                               owl:versionInfo "0.3 - 01 Febbraio 2018 - rifattorizzazione della classi principali e allineamento a DOLCE 0"@it ;
+                               prov:wasInfluencedBy <http://www.ontologydesignpatterns.org/ont/d0.owl> ;
+                               dct:issued "2017-09-29" ;
+                               dc:creator "Italian Digital Transformation Team"@en ,
+                                          "Istituto di Scienze e Tecnologie della Cognizione del CNR - Laboratorio di tecnologie semantiche (STLab)"@it ;
+                               rdfs:comment "This ontology provides the foundational level of the ontological stack of OntoPiA. The name L0 stands for Level-0 ontology as it provides the basic conceptual foundations to the whole stack. This ontology is inspired by DOLCE 0 (http://www.ontologydesignpatterns.org/ont/d0.owl)"@en ;
+                               dc:creator "Team per la Trasformazione Digitale"@it ;
+                               rdfs:label "Level-0 ontology"@en ,
+                                          "Ontologia Level-0"@it ;
+                               dc:creator "Agency for Digital Italy - AgID"@en ,
+                                          "Agenzia per l'Italia Digitale"@it .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://dati.gov.it/onto/l0/controlledVocabulary
+:controlledVocabulary rdf:type owl:AnnotationProperty ;
+                      rdfs:comment "Questa proprietà è utilizzata per collegare una proprietà (data type property) di un'ontologia al relativo vocabolario controllato dove si trovano le istanze della proprietà stessa"@it ,
+                                   "This property is used to link a property (data type property) of an ontology to the related controlled vocabulary where the individuals of the property are located"@en ;
+                      rdfs:label "vocabolario controllato"@en ,
+                                 "vocabolario controllato"@it .
+
+
+###  http://www.w3.org/ns/prov#wasDerivedFrom
+prov:wasDerivedFrom rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/ns/prov#wasInfluencedBy
+prov:wasInfluencedBy rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://dati.gov.it/onto/l0/hasDescription
+:hasDescription rdf:type owl:ObjectProperty ;
+                owl:inverseOf :isDescriptionOf ;
+                rdfs:domain owl:Thing ;
+                rdfs:range :Description ;
+                rdfs:comment "Property that associates an entity with its description."@en ,
+                             "Proprietà che associa un'entità alla sua descrizione."@it ;
+                rdfs:isDefinedBy <http://dati.gov.it/onto/l0/> ;
+                rdfs:label "ha descrizione"@it ,
+                           "has description"@en ;
+                owl:versionInfo "stabile"@it ,
+                                "stable"@en .
+
+
+###  http://dati.gov.it/onto/l0/isDescriptionOf
+:isDescriptionOf rdf:type owl:ObjectProperty ;
+                 rdfs:domain :Description ;
+                 rdfs:range owl:Thing ;
+                 rdfs:comment "Inverse property of 'has description'."@en ,
+                              "Proprietà inversa di 'ha descrizione'."@it ;
+                 rdfs:isDefinedBy <http://dati.gov.it/onto/l0/> ;
+                 rdfs:label "is description of"@en ,
+                            "è descrizione di"@it ;
+                 owl:versionInfo "stabile"@it ,
+                                 "stable"@en .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://dati.gov.it/onto/l0/description
+:description rdf:type owl:DatatypeProperty ;
+             rdfs:domain owl:Thing ;
+             rdfs:range rdfs:Literal ;
+             rdfs:comment "Datatype property che associa un valore letterale a una cosa."@it ,
+                          "Datatype property that associates a literal value with a thing"@en ;
+             rdfs:isDefinedBy <http://dati.gov.it/onto/l0/> ;
+             rdfs:label "description"@en ,
+                        "descrizione"@it ;
+             owl:versionInfo "stabile"@it ,
+                             "stable"@en .
+
+
+###  http://dati.gov.it/onto/l0/identifier
+:identifier rdf:type owl:DatatypeProperty ;
+            rdfs:domain owl:Thing ;
+            rdfs:range rdfs:Literal ;
+            rdfs:comment "Questa proprietà è utilizzata per rappresentare un generico identificativo associato a cose del dominio modellato. Essa può essere specializzata in una serie di sottoproprietà che rappresentano codici specifii di alcune entità del dominio modellato."@it ,
+                         "This property is used to represent a generic identifier that is asoociated with things of the modelled domain. the property can be speclalized in subproperties that represent identifier so f specific entities of the modelled domain."@en ;
+            rdfs:isDefinedBy <http://dati.gov.it/onto/l0/> ;
+            rdfs:label "generic identifier"@en ,
+                       "identificativo generico"@it ;
+            owl:versionInfo "stabile"@it ,
+                            "stable"@en .
+
+
+###  http://dati.gov.it/onto/l0/name
+:name rdf:type owl:DatatypeProperty ;
+      rdfs:domain owl:Thing ;
+      rdfs:range rdfs:Literal ;
+      rdfs:comment "Any literal that represents the name of a thing."@en ,
+                   "Un letterale che rappresenta il nome di una cosa."@it ;
+      rdfs:isDefinedBy <http://dati.gov.it/onto/l0/> ;
+      rdfs:label "name"@en ,
+                 "nome"@it ;
+      owl:versionInfo "stabile"@it ,
+                      "stable"@en .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://dati.gov.it/onto/l0/Activity
+:Activity rdf:type owl:Class ;
+          rdfs:subClassOf :Event ;
+          rdfs:comment "La classe delle attività svolte da qualche agente."@it ,
+                       "The class of activities carried out by an agent."@en ;
+          rdfs:isDefinedBy <http://dati.gov.it/onto/l0/> ;
+          rdfs:label "Activity"@en ,
+                     "Attività"@it ;
+          owl:versionInfo "stabile"@it ,
+                          "stable"@en .
+
+
+###  http://dati.gov.it/onto/l0/Agent
+:Agent rdf:type owl:Class ;
+       rdfs:subClassOf :Object ;
+       rdfs:comment "Any agentive Object , either physical (e.g. a person, a robot, an oak), or social (e.g. a corporation, an institution, a community)."@en ,
+                    "Un agente, sia fisico (ex. una persona, un robot, una quercia), o sociale (ex. una società, un'istituzione, una comunità)."@it ;
+       rdfs:isDefinedBy <http://dati.gov.it/onto/l0/> ;
+       rdfs:label "Agent"@en ,
+                  "Agente"@it ;
+       owl:versionInfo "stabile"@it ,
+                       "stable"@en .
+
+
+###  http://dati.gov.it/onto/l0/Characteristic
+:Characteristic rdf:type owl:Class ;
+                rdfs:subClassOf :Entity ;
+                rdfs:comment "La classe delle caratteristiche, intese come aspetti, attributi o qualità di un'entità. Ex. una quantità, qualità estetica, colore, etc."@it ,
+                             "The class of characteristics, intended as any aspect, attribuite, or quality of an entity. E.g. a certain size, aesthetic quality, color, etc."@en ;
+                rdfs:isDefinedBy <http://dati.gov.it/onto/l0/> ;
+                rdfs:label "Caratteristica"@it ,
+                           "Characteristic"@en ;
+                owl:versionInfo "stabile"@it ,
+                                "stable"@en .
+
+
+###  http://dati.gov.it/onto/l0/Collection
+:Collection rdf:type owl:Class ;
+            rdfs:subClassOf :Entity ;
+            rdfs:comment "La classe che include collezioni di qualsiasi cosa, ex. gruppi, raccolte, comunità, etc."@it ,
+                         "The class includes all collections of any entities: e.g. groups, repositories, communities, etc,"@en ;
+            rdfs:isDefinedBy <http://dati.gov.it/onto/l0/> ;
+            rdfs:label "Collection"@en ,
+                       "Collezione"@it ;
+            owl:versionInfo "stabile"@it ,
+                            "stable"@en .
+
+
+###  http://dati.gov.it/onto/l0/Description
+:Description rdf:type owl:Class ;
+             rdfs:subClassOf :Object ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :description ;
+                               owl:someValuesFrom rdfs:Literal
+                             ] ;
+             rdfs:comment """La classe degli oggetti costruiti socialmente (testi, valori, categorie, relazioni, contesti) usati per descrivere qualcos'altro in modo structuratto.
+Gli esempi includono i piani (come descrizioni strutturate di azioni da eseguire ex. in un processo industriale), le diagnosi (come descrizioni strutturate di situazioni osservate ex. clinicamente), le spiegazioni (come testi strutturati per chiarire ex. un concetto in un sistema normativo), osservazioni oggettive (come insiemi di valori strutturati che identificano una situazione rilevante ex. da un sistema di sensori)."""@it ,
+                          """The class of socially-created objects (texts, values, categories, relations, contexts) used to describe something else in a structured way.
+Examples include plans (as structured descriptions of actions to be executed), diagnoses (as structured descriptions of observed situations, explanations (as structured texts clarifying e.g. a concept), objective observations (as structured sets of values that identify a relevant situation)."""@en ;
+             rdfs:isDefinedBy <http://dati.gov.it/onto/l0/> ;
+             rdfs:label "Description"@en ,
+                        "Descrizione"@it ;
+             owl:versionInfo "stabile"@it ,
+                             "stable"@en .
+
+
+###  http://dati.gov.it/onto/l0/Entity
+:Entity rdf:type owl:Class ;
+        rdfs:comment "Anything: real, possible, or imaginary, which some modeller wants to talk about for some purpose."@en ,
+                     "Qualsiasi cosa reale, possibile o immaginaria."@it ;
+        rdfs:isDefinedBy <http://dati.gov.it/onto/l0/> ;
+        rdfs:label "Entity"@en ,
+                   "Entità"@it ;
+        owl:versionInfo "stabile"@it ,
+                        "stable"@en .
+
+
+###  http://dati.gov.it/onto/l0/Event
+:Event rdf:type owl:Class ;
+       rdfs:subClassOf :Entity ;
+       owl:disjointWith :Object ;
+       rdfs:comment """Any entity that typically flows in time, either in the physical or social world. Examples include athmospheric phenomena, concerts, travels, institutional processes, etc. 
+Events are opposable to objects, since events typically flow in time, aggregating multiple objects during their flow, while objects tend to be stable in a certain time interval."""@en ,
+                    """Ogni entità che tipicamente scorre nel tempo, sia nel mondo fisico sia sociale. Gli esempi includono fenomeni atmosferici, concerti, viaggi, processi istituzionali, etc.
+Gli eventi si oppongono agli oggetti, poiché, mentre gli eventi scorrono nel tempo e aggregano uno o più oggetti nel loro scorrerre, gli oggetti tendono a essere stabili in un intervallo di tempo."""@it ;
+       rdfs:isDefinedBy <http://dati.gov.it/onto/l0/> ;
+       rdfs:label "Event"@en ,
+                  "Evento"@it ;
+       owl:versionInfo "stabile"@it ,
+                       "stable"@en .
+
+
+###  http://dati.gov.it/onto/l0/Location
+:Location rdf:type owl:Class ;
+          rdfs:subClassOf :Entity ;
+          rdfs:comment "Classe che rappresenta il concetto di luogo. Le istanze di questa classe possono essere entità di qualsiasi tipo intese come luogo di qualcos'altro: luoghi geografici, coordinate, contenitori, etc."@it ,
+                       "The class including locations. Individuals of this class can be anything that is intended as a location for something else, e.g. geographical places, spatial objects, containers, etc."@en ;
+          rdfs:isDefinedBy <http://dati.gov.it/onto/l0/> ;
+          rdfs:label "Location"@en ,
+                     "Luogo"@it ;
+          owl:versionInfo "stabile"@it ,
+                          "stable"@en .
+
+
+###  http://dati.gov.it/onto/l0/Object
+:Object rdf:type owl:Class ;
+        rdfs:subClassOf :Entity ;
+        rdfs:comment """Any entity that tends to be stable in time, either in the physical or social world. Examples include homes, cities, organizations, works of art, natural objects, artifacts, words, ideas, etc.
+Objects are opposable to events, since events typically flow in time, aggregating multiple objects during their flow, as with working, travelling or leisure activities, industrial or athmospheric processes, etc."""@en ,
+                     """Ogni entità che tende a essere stabile in un tempo più o meno lungo, sia nel mondo fisico sia sociale. Gli esempi includono case, città, organizzazioni, opere d'arte, oggetti del mondo naturale, artefatti, parole, idee, etc.
+GLi oggetti si possono contrapporre agli eventi, che invece scorrono nel tempo, aggregando oggetti diversi nel loro scorrere, come accade per esempio nei processi industriali o atmosferici, nelle attività di lavoro, viaggio o divertimento, etc."""@it ;
+        rdfs:isDefinedBy <http://dati.gov.it/onto/l0/> ;
+        rdfs:label "Object"@en ,
+                   "Oggetto"@it ;
+        owl:versionInfo "stabile"@it ,
+                        "stable"@en .
+
+
+###  http://dati.gov.it/onto/l0/System
+:System rdf:type owl:Class ;
+        rdfs:subClassOf :Entity ;
+        rdfs:comment "La classe dei sistemi. Esempi ne sono i sistema politici, fisici o economici."@it ,
+                     "The class including systems. Example include political, economical, physical systems."@en ;
+        rdfs:isDefinedBy <http://dati.gov.it/onto/l0/> ;
+        rdfs:label "Sistema"@it ,
+                   "System"@en ;
+        owl:versionInfo "stabile"@it ,
+                        "stable"@en .
+
+
+###  http://dati.gov.it/onto/l0/Topic
+:Topic rdf:type owl:Class ;
+       rdfs:subClassOf :Object ;
+       rdfs:comment "La classe che include temi, argomenti, categorie, discipline, etc. Per esempio: la matematica, lo svago, le arti marziali, etc., intesi come temi di un discorso o di una categorizzazione."@it ,
+                    "The class of topics, subjects, arguments, categories, domains, etc., intended as topics of a discourse or a categorization."@en ;
+       rdfs:isDefinedBy <http://dati.gov.it/onto/l0/> ;
+       rdfs:label "Tema"@it ,
+                  "Topic"@en ;
+       owl:versionInfo "stabile"@en ,
+                       "stabile"@it .
+
+
+###  Generated by the OWL API (version 4.2.8.20170104-2310) https://github.com/owlcs/owlapi
