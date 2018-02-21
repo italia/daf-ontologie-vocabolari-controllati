@@ -6,13 +6,17 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix l0: <http://dati.gov.it/onto/l0/> .
 @prefix ti: <http://dati.gov.it/onto/tiapit> .
-@prefix : <http://contrattipublici.org/csi/> .
-@base <http://contrattipublici.org/csi/> .
+@prefix covapit: <http://dati.gov.it/onto/covapit/> .
+@prefix : <http://contrattipubblici.org/csi/> .
+@prefix schema: <http://schema.org/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@base <http://contrattipubblici.org/csi/> .
 
-<http://contrattipublici.org/csi> a owl:Ontology ;
+<http://contrattipubblici.org/csi> a owl:Ontology ;
                                   owl:versionIRI : ;
-                                  owl:imports ti: ,
-                                              l0: ;
+                                  #owl:imports ti: ,
+                                  #            l0: ,
+                                  #            covapit: ;
                                   dc:creator "Synapta srl"@en ;
                                   dc:creator "CSI Piemonte"@en ;
                                   rdfs:comment "This is the ontology of the Italian public contracts"@en ;
@@ -66,14 +70,15 @@ xsd:boolean a rdfs:Datatype .
   rdfs:comment "CPV (Common Procurement Vocabulary) code describing the main object of a public contract."@en .
 
 :frameworkAgreement a owl:ObjectProperty ;
-  rdfs:domain :Contract ;
+  rdfs:domain :Lot ;
   rdfs:range :FrameworkAgreement ;
   rdfs:label "tipo di Aggiudicazione"@it ;
   rdfs:label "type of Award" @en ;
   rdfs:comment "La proprietà che determina il tipo di aggiudicazione del bando."@it ;
-  rdfs:comment "The property that determines the type of award of the announcement."@en .
+  rdfs:comment "The property that determines the type of award of the contract notice."@en .
 
 :hasLot a owl:ObjectProperty ;
+  rdfs:subProperty :about ;
   rdfs:domain :Contract ;
   rdfs:range :Lot ;
   rdfs:label "ha Lotto"@it ;
@@ -82,21 +87,48 @@ xsd:boolean a rdfs:Datatype .
   rdfs:comment "The property that determines the link between a contract ad the realtive lot."@en .
 
 
+:hasDeterminaAContrarre a owl:ObjectProperty ;
+  rdfs:subProperty :about ;
+  rdfs:domain :DeterminaAContrarre ;
+  rdfs:range :Lot ;
+  rdfs:label "ha Determina a contrarre"@it ;
+  rdfs:label "has Determina a contrarre" @en ;
+  rdfs:comment "La proprietà che determina il legame tra un Lotto e una Determina a contrarre relativo lotto."@it ;
+  rdfs:comment "The property that determines the link between a Lot and a Determina a contrarre."@en .
+
+
 :contractingAuthority a owl:ObjectProperty ;
   rdfs:domain :Lot ;
-  rdfs:range :BusinessEntity ;
+  rdfs:range covapit:Organization ;
   rdfs:label "stazione appaltante"@it ;
   rdfs:label "contracting Authority"@en ;
   rdfs:comment "La proprietà che indica l'istituzione che emette il contratto pubblico, riceve le offerte e sceglie il fornitore idoneo sulla base delle condizioni definite dal contratto."@it ;
   rdfs:comment "Institution which issues a public contract, receives tenders to the contract and chooses a suitable supplier on the base of the conditions given by the contract."@en .
 
-:hasAnnouncement a owl:ObjectProperty ;
+:hasLotFather
   rdfs:domain :Lot ;
-  rdfs:range :Announcement, xsd:string ;
+  rdfs:range :Lot ;
+  rdfs:label "ha lotto padre" @it ;
+  rdfs:label "has Lot Father" @en ;
+  rdfs:comment "La proprietà che collega un lotto al suo lotto relativo all'assegnazione nell'ambito di un accordo quadro/convenzione"@it ;
+  rdfs:comment "The property that links a lot to the lot relative lot realized in the 'Accordoquadro/convenzione' framework."@en .
+
+#:isPrimaryTopicOf
+#  rdfs:domain l0:Thing ;
+#  rdfs:range :Document ;
+#  rdfs:label "è argomento principale di" @it ;
+#  rdfs:label "is primary topic of" @en ;
+#  rdfs:comment "La proprietà collega qualcosa al documento che riguarda principalmente la cosa stessa."@it ;
+#  rdfs:comment "The isPrimaryTopicOf property relates something to a document that is mainly about it."@en .
+
+:hasContractNotice a owl:ObjectProperty ;
+  rdfs:subPropertyOf :about ;
+  rdfs:domain :Lot ;
+  rdfs:range :ContractNotice ;
   rdfs:label "ha bando" @it ;
-  rdfs:label "has announcement" @en ;
+  rdfs:label "has contract notice" @en ;
   rdfs:comment "La proprietà che indica se il contratto appartiene a un bando."@it ;
-  rdfs:comment "The property that determines if the related contract belongs to an announcement."@en .
+  rdfs:comment "The property that determines if the related contract belongs to a contract notice."@en .
 
 
 :hasOpera a owl:ObjectProperty ;
@@ -116,7 +148,7 @@ xsd:boolean a rdfs:Datatype .
   rdfs:comment "The property for declaring the type of contract (work service or supply)."@en .
 
 :procedureType a owl:ObjectProperty ;
-  rdfs:domain :Lot , :Announcement ;
+  rdfs:domain :Lot , :ContractNotice ;
   rdfs:range :ProcedureType ;
   rdfs:label "ha scelta contraente"@it ;
   rdfs:label "has type of procedure"@en ;
@@ -124,7 +156,7 @@ xsd:boolean a rdfs:Datatype .
   rdfs:comment "Type of procedure of a public contract specifies a procedure which is applied to publish information about the contract and choose a supplier."@en .
 
 :awardedTender a owl:ObjectProperty ;
-  rdfs:domain :Contract ;
+  rdfs:domain :Lot ;
   rdfs:range :Tender ;
   rdfs:label "ha offerta aggiudicataria"@it ;
   rdfs:label "has awarded tender"@en ;
@@ -132,30 +164,22 @@ xsd:boolean a rdfs:Datatype .
   rdfs:comment "Property for awarded tender submitted by a bidder."@en .
 
 
-:hasVariant a owl:ObjectProperty ;
-  rdfs:domain :Contract ;
-  rdfs:range :Variant ;
-  rdfs:label "ha variante"@it ;
-  rdfs:label "has variant"@en ;
-  rdfs:comment "La proprietà che determina la variazione del contratto."@it ;
-  rdfs:comment "The property that determines the contract variant."@en .
+:hasLotChange a owl:ObjectProperty ;
+  rdfs:domain :Lot ;
+  rdfs:range :LotChange ;
+  rdfs:label "ha modifica del Lotto"@it ;
+  rdfs:label "has Lot Change"@en ;
+  rdfs:comment "La proprietà che indica una modifica alle caratteristiche del Lotto."@it ;
+  rdfs:comment "The property that determines the Lot Change."@en .
 
 
-:announcementType a owl:ObjectProperty ;
-  rdfs:domain :Announcement ;
-  rdfs:range :announcementType ;
+:contractNoticeType a owl:ObjectProperty ;
+  rdfs:domain :ContractNotice ;
+  rdfs:range :ContractNoticeType ;
   rdfs:label "ha tipo bando"@it ;
-  rdfs:label "has type announcement"@en ;
+  rdfs:label "has Contract Notice type "@en ;
   rdfs:comment "La proprietà che indica il tipo di bando."@it ;
-  rdfs:comment "The property that determines the announcement type."@en .
-
-#:announcementType a owl:ObjectProperty ;
-#  rdfs:domain :Announcement ;
-#  rdfs:range :AnnouncementType ;
-#  rdfs:label "ha tipo di aggiudicazione"@it ;
-#  rdfs:label "has award criterion"@en ;
-#  rdfs:comment "La proprietà che definisce un criterio di valutazione dell'offerta."@it ;
-#  rdfs:comment "Property for setting a criterion for tender evaluation."@en .
+  rdfs:comment "The property that determines the Contract Notice type."@en .
 
 :hasReason a owl:ObjectProperty ;
   rdfs:domain :Variant ;
@@ -167,11 +191,20 @@ xsd:boolean a rdfs:Datatype .
 
 :hasSubcontractor a owl:ObjectProperty ;
   rdfs:domain :Subcontract ;
-  rdfs:range :BusinessEntity ;
+  rdfs:range covapit:Organization ;
   rdfs:label "ha subappaltatrice"@it ;
   rdfs:label "has subcontractor"@en ;
   rdfs:comment "La proprietà che indica la business entity che sottoscrive il subappalto."@it ;
   rdfs:comment "The property that determines the business entity that sign the subcontract."@en .
+
+
+:haUnSubContratto a owl:ObjectProperty ;
+  rdfs:domain :Contract ;
+  rdfs:range :Subcontratto ;
+  rdfs:label "ha subcontratto"@it ;
+  rdfs:label "has a subcontratto "@en ;
+  rdfs:comment "La proprietà che lega un contratto ad un subcontratto."@it ;
+  rdfs:comment "The property that links a contract to a subcontratto."@en .
 
 :hasSubcontract a owl:ObjectProperty ;
   rdfs:domain :Contract ;
@@ -181,15 +214,48 @@ xsd:boolean a rdfs:Datatype .
   rdfs:comment "La proprietà che lega un contratto ad un subappalto."@it ;
   rdfs:comment "The property that links a contract to a subcontract."@en .
 
-:bidder
+:bidder a owl:ObjectProperty ;
   rdfs:domain :Tender ;
-  rdfs:range :BusinessEntity ;
+  rdfs:range covapit:Organization ;
   rdfs:label "bidder"@en ;
   rdfs:label "Offerente"@it ;
   rdfs:comment "This property represents the bidder of a Tender"@en ;
   rdfs:comment "Questa proprietà rappresenta l'offerente di una offerta."@it .
 
+:isPrimaryTopicOf
+  rdfs:domain :ChangeEvent ;
+  rdfs:range :LotChange ;
+  rdfs:label "è argomento principale di" @it ;
+  rdfs:label "is primary topic of" @en ;
+  rdfs:comment "La proprietà collega qualcosa al documento che riguarda principalmente la cosa stessa."@it ;
+  rdfs:comment "The isPrimaryTopicOf property relates something to a document that is mainly about it."@en .
 
+:hasEconomicalFramework a owl:ObjectProperty ;
+  rdfs:domain :Lot ;
+  rdfs:range :EconomicalFramework ;
+  rdfs:label "has economical framework"@en ;
+  rdfs:label "ha quadro economico"@it ;
+  rdfs:comment "This property represents the economical framework of a Lot"@en ;
+  rdfs:comment "Questa proprietà rappresenta il quadro economico di un Lotto."@it .
+
+:changedBy a owl:ObjectProperty ;
+    rdfs:domain :EconomicalFramework ;
+    rdfs:range  :ChangeEvent ;
+    rdfs:label "changed by"@en;
+    rdfs:label "cambiata da"@it;
+    rdfs:comment "Indicates a Change event which resulted in a change to this Economical Framework."@en ;
+    rdfs:comment "Indica un evento che ha contribuito al cambiamento di questo Quadro economico."@it .
+
+:resultedFrom a owl:ObjectProperty ;
+  rdfs:domain :EconomicalFramework ;
+  rdfs:range :ChangeEvent ;
+  rdfs:label "resulted from"@en ;
+  rdfs:label "risultante da"@it ;
+  rdfs:comment "Indicates an event which resulted in (led to, generated) this Economical Framework. "@en ;
+  rdfs:comment "Indica un evento che ha definito (condotto a, generato) questo quadro economico."@it .
+
+    #rdfs:comment "Indicates a change event which resulted in a change to this organization. Depending on the event the organization may or may not have continued to exist after the event."@en;
+    #rdfs:comment """Indica un evento che ha contribuito al cambiamento di questa organizzazione. A seconda dell'evento, l'organizzazione potrebbe essere esistente dopo l'evento o aver cessato la propria esistenza. Ãˆ l'inverso di `org:originalOrganization`."""@it-
 
 :haOpera a owl:ObjectProperty ;
   rdfs:domain :Programmazione ;
@@ -204,6 +270,14 @@ xsd:boolean a rdfs:Datatype .
   rdfs:label "CUP"@it ;
   rdfs:comment "The property that determines the cup (codice unico di procedura) code."@en ;
   rdfs:comment "La proprietà che determina il CUP (codice unico di procedura)."@it .
+
+:about
+  rdfs:domain :ContractNotice ;
+  rdfs:range :PriorInformationNotice ;
+  rdfs:label "about"@en ;
+  #rdfs:label ""@it ;
+  #rdfs:comment ""@en ;
+  rdfs:comment "Il soggetto di un contenuto"@it .
 
 
 ###  http://dati.gov.it/onto/l0/description
@@ -232,7 +306,7 @@ ti:date a owl:DatatypeProperty ;
 
 :actualEndDate a owl:DatatypeProperty ;
   rdfs:subPropertyOf ti:endTime ;
-  rdfs:domain :Contract ;
+  rdfs:domain :Lot ;
   rdfs:range xsd:date ;
   rdfs:comment "Property for actual end date of public contract's realization."@en ;
   rdfs:comment "Questa proprietà indica la data di effettiva realizzazione del contratto pubblico"@it ;
@@ -240,12 +314,12 @@ ti:date a owl:DatatypeProperty ;
   rdfs:label "Property for actual end date of public contract's realization."@en .
 
 :agreedPrice a owl:DatatypeProperty ;
-  rdfs:domain :Contract , :Announcement;
+  rdfs:domain :Lot , :ContractNotice;
   rdfs:range xsd:float ;
   rdfs:label "Prezzo concordato"@it ;
   rdfs:label "Agreed price"@en ;
   rdfs:comment "La proprietà che determina il prezzo concordato per il Contratto o per il Bando."@it ;
-  rdfs:comment "The Property that determines the price agreed for the Contract or the Announcement."@en .
+  rdfs:comment "The Property that determines the price agreed for the lot or the Contract Notice."@en .
 
 :nonDiscountableSum a owl:DatatypeProperty ;
   rdfs:domain :Lot ;
@@ -253,10 +327,10 @@ ti:date a owl:DatatypeProperty ;
   rdfs:label "Somma non ribassabile"@it ;
   rdfs:label "Sum of non-discountable money"@en ;
   rdfs:comment "The property that determines the amount of the starting price that is not lowerable."@en ;
-  rdfs:comment "La proprietà che determina la somma di nenaro che non è ribassabile relativa ad un Lotto."@it .
+  rdfs:comment "La proprietà che determina la somma di denaro che non è ribassabile relativa ad un Lotto."@it .
 
 :actualPrice a owl:DatatypeProperty ;
-  rdfs:domain :Contract ;
+  rdfs:domain :Lot ;
   rdfs:range xsd:float ;
   rdfs:label "Importo conto finale"@it ;
   rdfs:label "Actual price"@it ;
@@ -276,35 +350,35 @@ rdfs:comment "The property that determines the final amount of money to be paid"
 ### qui vedere se c'è qualcosa già in DAF
 :estimatedEndDate a owl:DatatypeProperty ;
   rdfs:subPropertyOf ti:endTime ;
-  rdfs:domain :Contract ;
+  rdfs:domain :Lot ;
   rdfs:label "Data stimata di fine lavori"@it ;
   rdfs:label "Estimated End Date"@en ;
   rdfs:comment "The property that detemins the estimated end Date."@en ;
   rdfs:comment "La proprietà che determina la data  stimata di fine lavori."@en ;
   rdfs:range xsd:date .
 
-:contractEndDate a owl:DatatypeProperty ;
+:lotEndDate a owl:DatatypeProperty ;
   rdfs:subPropertyOf ti:endTime ;
-  rdfs:domain :Contract ;
+  rdfs:domain :Lot ;
   rdfs:range xsd:float ;
   rdfs:label "data fine Contrattuale"@it ;
-  rdfs:label "Contract end Date"@en ;
-  rdfs:comment "The property that determines the end date declared in the Contract."@en ;
-  rdfs:comment "Questa proprietà determina la fine dei lavori dichiarata nel contratto."@it .
+  rdfs:label "Lot end Date"@en ;
+  rdfs:comment "The property that determines the end date declared in the Lot."@en ;
+  rdfs:comment "Questa proprietà determina la fine dei lavori dichiarata nel lotto."@it .
 
 :importoProgetto a owl:DatatypeProperty ;
-  rdfs:domain :Contract ;
+  rdfs:domain :Lot ;
   rdfs:range xsd:float ;
   rdfs:label "importo progetto"@it ;
   rdfs:label "planning cost"@en ;
   rdfs:comment "La proprietà che determina l'importo per il progetto del contratto."@it ;
-  rdfs:comment "The property that determines the planning cost of the Contract."@en .
+  rdfs:comment "The property that determines the planning cost of the lotto."@en .
 
 
 ### XXX Togliere e mettere solo l0:identifier?
 :identifiers a owl:DatatypeProperty ;
   rdfs:subPropertyOf l0:identifier ;
-  rdfs:domain :Contract, :Cpv, :BusinessEntity ;
+  rdfs:domain :Lot, :Cpv, covapit:Organization ;
   rdfs:range xsd:string ;
   rdfs:label "Identificativo"@it ;
   rdfs:label "Identifier"@en ;
@@ -314,11 +388,11 @@ rdfs:comment "The property that determines the final amount of money to be paid"
   ###
 :codNat a owl:DatatypeProperty ;
   rdfs:subPropertyOf l0:identifier ;
-  rdfs:domain :BusinessEntity ;
+  rdfs:domain covapit:Organization ;
   rdfs:range :NatGiuridica .
 
 :specialSector a owl:DatatypeProperty ;
-  rdfs:domain :Contract, :Threshold ;
+  rdfs:domain :Lot, :Threshold ;
   rdfs:range xsd:boolean ;
   rdfs:label "settore speciale"@it ;
   rdfs:label "special sector"@en ;
@@ -353,25 +427,41 @@ rdfs:comment "The property that determines the final amount of money to be paid"
   rdfs:comment "The property that determines the auction base amount."@en .
 
 :safetyAmount a owl:DatatypeProperty ;
-  rdfs:domain :Lot, :Announcement ;
+  rdfs:domain :Lot, :ContractNotice ;
   rdfs:range xsd:float ;
   rdfs:label "importo sicurezza"@it ;
   rdfs:label "safety amount"@en ;
   rdfs:comment "La proprietà che determina l'importo dedicato alla sicurezza stabilito nel lotto oppure nel bando"@it ;
-  rdfs:comment "The property that determines the amount of money to be spent for safety reason as stated in the lot or in the Announcement."@en .
+  rdfs:comment "The property that determines the amount of money to be spent for safety reason as stated in the lot or in the ContractNotice."@en .
+
+:awardAmount a owl:DatatypeProperty ;
+  rdfs:domain :Lot ;
+  rdfs:range xsd:float ;
+  rdfs:label "importo di aggiudicazione"@it ;
+  rdfs:label "award amount"@en ;
+  rdfs:comment "La proprietà che determina l'importo di aggiudicazione stabilito nel lotto"@it ;
+  rdfs:comment "The property that determines the award amount of money as stated in the Lot."@en .
+
+:currentAmount a owl:DatatypeProperty ;
+  rdfs:domain :Lot ;
+  rdfs:range xsd:float ;
+  rdfs:label "importo attuale"@it ;
+  rdfs:label "current amount"@en ;
+  rdfs:comment "La proprietà che determina l'importo relativo al lotto"@it ;
+  rdfs:comment "The property that determines the current amount of money related to the Lot."@en .
 
 :publicationDate a owl:DatatypeProperty ;
   rdfs:subPropertyOf ti:issued ;
-  rdfs:domain :Announcement , :Lot;
+  rdfs:domain :ContractNotice , :Lot;
   rdfs:range xsd:date ;
     rdfs:label "data pubblicazione"@it ;
   rdfs:label "publication date"@en ;
   rdfs:comment "La proprietà che indica la data di pubblicazione del Bando/Avviso. o del Lotto"@it ;
-  rdfs:comment "The property that determines the publication date of the Announcement or the Lot."@en .
+  rdfs:comment "The property that determines the publication date of the Contract Notice or the Lot."@en .
 
 :winDate a owl:DatatypeProperty ;
   rdfs:subPropertyOf ti:date ;
-  rdfs:domain :Announcement ;
+  rdfs:domain :ContractNotice ;
   rdfs:range xsd:date ;
   rdfs:label "win date"@en ;
   rdfs:label "data di aggiudicazione"@it ;
@@ -380,7 +470,7 @@ rdfs:comment "The property that determines the final amount of money to be paid"
 
 :expireDate a owl:DatatypeProperty ;
   rdfs:subPropertyOf ti:issued ;
-  rdfs:domain :Announcement ;
+  rdfs:domain :ContractNotice ;
   rdfs:range xsd:date ;
   rdfs:label "expire date"@en ;
   rdfs:label "expire date"@it ;
@@ -415,8 +505,6 @@ rdfs:comment "The property that determines the final amount of money to be paid"
   rdfs:comment "The property that determines contract variant type."@en .
 
 
-
-
 :estimatedAmount a owl:DatatypeProperty ;
   rdfs:domain :Subcontract ;
   rdfs:label "importo Presunto"@it ;
@@ -425,11 +513,9 @@ rdfs:comment "The property that determines the final amount of money to be paid"
   rdfs:comment "La proprietà che detemina limporto di denaro presunto relativo ad un Subappalto."@it ;
   rdfs:range xsd:float .
 
-
-
 :municipalityCode a owl:DatatypeProperty ;
   rdfs:subPropertyOf l0:identifier ;
-  rdfs:domain l0:Location , :BusinessEntity ;
+  rdfs:domain l0:Location , covapit:Organization ;
   rdfs:label "Codice identificativo del Comune"@it ;
   rdfs:label "Municipality identifier code"@en ;
   rdfs:comment "The property that determines the municipality code (codice Istat)."@en ;
@@ -459,7 +545,7 @@ rdfs:comment "The property that determines the final amount of money to be paid"
 :IPAcode a owl:DatatypeProperty ;
          rdfs:subPropertyOf l0:identifier ;
          a owl:FunctionalProperty ;
-         rdfs:domain :PublicOrganization ;
+         rdfs:domain covapit:Organization ;
          rdfs:range rdfs:Literal ;
          rdfs:comment "Questa proprietà rappresenta il codice IPA, il codice univoco, assegnato all'organizzazione pubblica in fase di accreditamento presso l'indice nazionale PA (IPA). Il Codice IPA viene comunicato tramite e-mail dal Gestore dell'IPA al referente dell'Ente."@it ,
                       "This property represents the unique identifier of a public organization assigned when it is registered in the Italian national registry of Public Administrations (IPA)."@en ;
@@ -481,23 +567,25 @@ rdfs:label "Contratto"@it ;
   rdfs:comment "Una istanza di questa classe rappresenta un contratto realizzato tra una stazione appaltante e un fornitore."@it .
 
 :Lot a owl:Class ;
+ rdfs:subClassOf l0:Characteristic ;
   rdfs:label "Lot"@en;
   rdfs:label "Lotto"@it ;
   rdfs:comment "An instance of this class is an abstract information entity about a public contract. It consists of all currently known information about a contract, e.g., a contracting authority, services or supplies which shall be purchased, and contract conditions (e.g., important dates, expected price, etc.). It also informs about tenders received from particular bidders and about an accepted tender. If the contract has already been realized it also informs about an actual price of realization, etc."@en ;
   rdfs:comment "Una istanza di questa classe rappresenta un contratto pubblico."@it .
 
-:Announcement a owl:Class ;
+:ContractNotice a owl:Class ;
+  rdfs:subClassOf :DocumentoDiGara ;
   rdfs:label "Bando/Avviso"@it ;
-  rdfs:label "Announcement"@en ;
+  rdfs:label "Contract Notice"@en ;
   rdfs:comment "La classe che rappresenta un tipo di annuncio di uno o più lotti, sia esso un bando o un avviso."@it ;
-  rdfs:comment "The class that represents an announcement of one or more lots. That is either a notice or an announcement."@en .
+  rdfs:comment "The class that represents a contract notice  of one or more lots. That is either a notice or an contract notice."@en .
 
-:AnnouncementType a owl:Class ;
+:ContractNoticeType a owl:Class ;
   rdfs:subClassOf l0:Characteristic ;
-  rdfs:label "Tipopolgia del Bando"@it ;
-  rdfs:label "Announcement Type "@en ;
+  rdfs:label "Tipologia del Bando"@it ;
+  rdfs:label "Contract Notice Type "@en ;
   rdfs:comment "La classe che rappresenta il tipo di bando/avviso."@it ;
-  rdfs:comment "The class that represents the announcement type."@en .
+  rdfs:comment "The class that represents the contract notice type."@en .
 
 :ProcedureType a owl:Class ;
   rdfs:subClassOf l0:Characteristic ;
@@ -524,12 +612,12 @@ rdfs:label "Contratto"@it ;
   rdfs:label "TipContratto" ;
   rdfs:comment "The class that represents the type of the contract (work service or supply)."@en .
 
-:AnnouncementOutcome a owl:Class ;
+:ContractNoticeOutcome a owl:Class ;
   rdfs:subClassOf l0:Characteristic ;
   rdfs:label "Esito del Bando"@it ;
-  rdfs:label "Announcement Outcome"@en ;
+  rdfs:label "Contract Notice Outcome"@en ;
   rdfs:comment "La classe che rappresenta l'esito di un bando/avviso."@it ;
-  rdfs:comment "The class that represents the type final state of the announcement."@en .
+  rdfs:comment "The class that represents the type final state of the Contract Notice."@en .
 
 :LegalNature a owl:Class ;
   rdfs:subClassOf l0:Characteristic ;
@@ -564,6 +652,8 @@ rdfs:label "Contratto"@it ;
 l0:Location a owl:Class ;
             rdfs:isDefinedBy l0: .
 
+covapit:Organization a owl:Class ;
+            rdfs:isDefinedBy covapit: .
 
 #Fuori da questa onto
 :Opera a owl:Class ;
@@ -572,12 +662,16 @@ l0:Location a owl:Class ;
 #  rdfs:comment "An instance of this class rapresents a tender of a lot"@en ;
 #  rdfs:comment "Una istanza di questa classe rappresenta una offerta relativa ad un lotto."@it .
 
-
+:Subcontratto a owl:Class ;
+  rdfs:label "Subcontratto"@it ;
+  rdfs:label "Subcontratto"@en ;
+  rdfs:comment "Una istanza di questa classe rappresenta un subcontratto."@it ;
+  rdfs:comment "An instance of this class represents a subcontract."@en .
 
 :Subcontract a owl:Class ;
   rdfs:label "Subappalto"@it ;
   rdfs:label "Subcontract"@en ;
-  rdfs:comment "Una istanza di questa classe rappresenta un subcontratto."@it ;
+  rdfs:comment "Una istanza di questa classe rappresenta un subappalto."@it ;
   rdfs:comment "An instance of this class represents a subcontract."@en .
 
 :Threshold a owl:Class ;
@@ -586,18 +680,183 @@ l0:Location a owl:Class ;
   rdfs:comment "The class that represents the price threshold of a contract."@en ;
   rdfs:comment "La classe che rappresenta la soglia di prezzo di un Contratto."@it .
 
+:ChangeEvent  rdfs:subClassOf l0:Event ;
+  rdfs:label "Change Event"@en ;
+  rdfs:label "Evento di cambiamento"@it ;
+  rdfs:comment "An instance of this class represents a chenge event"@en ;
+  rdfs:comment "Una istance di questa classe un evento di cambiamento."@it .
 
-:BusinessEntity a owl:Class ;
-  rdfs:subClassOf l0:Agent ;
-  rdfs:label "Entità commerciale"@it ;
-  rdfs:label "BusinessEntity"@en ;
-  rdfs:comment "An instance of this class represents the legal agent making (or seeking) a particular offering. This can be a legal body or a person."@en ;
-  rdfs:comment "Una istance di questa classe rappresenta una entità commerciale che fa o cerca una particolare offerta. Questa può essere una persona fisica o una persona giuridica."@it .
+:EconomicalFramework  rdfs:subClassOf l0:Characteristic;
+  rdfs:label "Quadro Economico"@it ;
+  rdfs:label "Economical Framework"@en ;
+  rdfs:comment "An instance of this class represents the state of the economical framework of a lot"@en ;
+  rdfs:comment "Una istance di questa classe rappresenta lo stato di del uqadro economico di un lotto."@it .
 
+:Extension a owl:Class ;
+ rdfs:subClassOf :LotChange ;
+  rdfs:label "Proroga"@it ;
+  rdfs:label "Extension"@en ;
+  rdfs:comment "The class that represents a lot extension."@en ;
+  rdfs:comment "La classe che rappresenta la proroga di un lotto."@it .
 
+:Suspension a owl:Class ;
+ rdfs:subClassOf :LotChange ;
+  rdfs:label "Sospensione"@it ;
+  rdfs:label "Suspension"@en ;
+  rdfs:comment "The class that represents a lot suspension."@en ;
+  rdfs:comment "La classe che rappresenta la sospensione di un lotto."@it .
+
+  :LotChange a owl:Class ;
+ rdfs:subClassOf :Document ;
+  rdfs:label "Modifica"@it ;
+  rdfs:label "Lot Change"@en ;
+  rdfs:comment "The class that represents a Document that states of the lot characteristic"@en ;
+  rdfs:comment "La classe che rappresenta un Documento che stabilisce una modifica nelle caratteristichedel lotto."@it .
 
 :Variant a owl:Class ;
+ rdfs:subClassOf :LotChange ;
   rdfs:label "Variante"@it ;
   rdfs:label "Variant"@en ;
   rdfs:comment "The class that represents a contract variant."@en ;
   rdfs:comment "La classe che rappresenta la variazione di un contratto."@it .
+
+:Document a owl:Class ;
+ rdfs:subClassOf l0:Object ;
+  rdfs:label "Documento"@it ;
+  rdfs:label "Document"@en ;
+  rdfs:comment "The class that represents a Document."@en ;
+  rdfs:comment "La classe che rappresenta un Documento."@it .
+
+:DeterminaAContrarre a owl:Class ;
+ rdfs:subClassOf :Document ;
+  rdfs:label "Determina a contrarre"@it ;
+  #rdfs:label ""@en ;
+  #rdfs:comment ""@en ;
+  rdfs:comment "La classe che rappresenta l'atto con il quale la stazione appaltante manifesta la propria volontà di stipulare un contratto."@it .
+
+:DocumentoDiGara a owl:Class ;
+ rdfs:subClassOf :Document ;
+  rdfs:label "Documento di gara"@it ;
+  #rdfs:label ""@en ;
+  #rdfs:comment ""@en ;
+  rdfs:comment "La classe che rappresenta l'atto con il quale la stazione appaltante manifesta la propria volontà di stipulare un contratto."@it .
+
+:DocumentoDiGara a owl:Class ;
+ rdfs:subClassOf :Document ;
+  rdfs:label "Documento di gara"@it .
+  #rdfs:label ""@en ;
+  #rdfs:comment ""@en ;
+  #rdfs:comment "La classe che rappresenta l'atto con il quale la stazione appaltante manifesta la propria volontà di stipulare un contratto."@it .
+
+:PriorInformationNotice a owl:Class ;
+ rdfs:subClassOf :DocumentoDiGara ;
+  rdfs:label "Avviso di preinformazione"@it ;
+  rdfs:label "Prior Information Notice"@en .
+  #rdfs:comment ""@en ;
+  #rdfs:comment "La classe che rappresenta l'atto con il quale la stazione appaltante manifesta la propria volontà di stipulare un contratto."@it .
+
+:AvvisoBeniCulturali a owl:Class ;
+ rdfs:subClassOf :Document ;
+  rdfs:label "Avviso di comunicazione sui beni culturali"@it .
+  #rdfs:label "Prior Information Notice"@en ;
+  #rdfs:comment ""@en ;
+  #rdfs:comment "La classe che rappresenta l'atto con il quale la stazione appaltante manifesta la propria volontà di stipulare un contratto."@it .
+
+:AvvisoDiSostituzione a owl:Class ;
+ rdfs:subClassOf :Document ;
+  rdfs:label "Avviso di sostituzione"@it .
+  #rdfs:label "Prior Information Notice"@en ;
+  #rdfs:comment ""@en ;
+  #rdfs:comment "La classe che rappresenta l'atto con il quale la stazione appaltante manifesta la propria volontà di stipulare un contratto."@it .
+
+:AvvisoPeriodico a owl:Class ;
+ rdfs:subClassOf :Document ;
+  rdfs:label "Avviso periodico"@it .
+  #rdfs:label "Prior Information Notice"@en ;
+  #rdfs:comment ""@en ;
+  #rdfs:comment "La classe che rappresenta l'atto con il quale la stazione appaltante manifesta la propria volontà di stipulare un contratto."@it .
+  rdfs:comment "Una istance di questa classe rappresenta lo stato di del uqadro economico di un lotto."@it .
+
+:Extension a owl:Class ;
+ rdfs:subClassOf :LotChange ;
+  rdfs:label "Proroga"@it ;
+  rdfs:label "Extension"@en ;
+  rdfs:comment "The class that represents a lot extension."@en ;
+  rdfs:comment "La classe che rappresenta la proroga di un lotto."@it .
+
+:Suspension a owl:Class ;
+ rdfs:subClassOf :LotChange ;
+  rdfs:label "Sospensione"@it ;
+  rdfs:label "Suspension"@en ;
+  rdfs:comment "The class that represents a lot suspension."@en ;
+  rdfs:comment "La classe che rappresenta la sospensione di un lotto."@it .
+
+  :LotChange a owl:Class ;
+ rdfs:subClassOf :Document ;
+  rdfs:label "Documento"@it ;
+  rdfs:label "Document"@en ;
+  rdfs:comment "The class that represents a document that states of the lot characteristic"@en ;
+  rdfs:comment "La classe che rappresenta un Documento che stabilisce una modifica nelle caratteristichedel lotto."@it .
+
+:Variant a owl:Class ;
+ rdfs:subClassOf :LotChange ;
+  rdfs:label "Variante"@it ;
+  rdfs:label "Variant"@en ;
+  rdfs:comment "The class that represents a contract variant."@en ;
+  rdfs:comment "La classe che rappresenta la variazione di un contratto."@it .
+
+:Document a owl:Class ;
+ rdfs:subClassOf l0:Object ;
+  rdfs:label "Documento"@it ;
+  rdfs:label "Document"@en ;
+  rdfs:comment "The class that represents a Document."@en ;
+  rdfs:comment "La classe che rappresenta un Documento."@it .
+
+:DeterminaAContrarre a owl:Class ;
+ rdfs:subClassOf :Document ;
+  rdfs:label "Determina a contrarre"@it ;
+  #rdfs:label ""@en ;
+  #rdfs:comment ""@en ;
+  rdfs:comment "La classe che rappresenta l'atto con il quale la stazione appaltante manifesta la propria volontà di stipulare un contratto."@it .
+
+:DocumentoDiGara a owl:Class ;
+ rdfs:subClassOf :Document ;
+  rdfs:label "Documento di gara"@it ;
+  #rdfs:label ""@en ;
+  #rdfs:comment ""@en ;
+  rdfs:comment "La classe che rappresenta l'atto con il quale la stazione appaltante manifesta la propria volontà di stipulare un contratto."@it .
+
+:DocumentoDiGara a owl:Class ;
+ rdfs:subClassOf :Document ;
+  rdfs:label "Documento di gara"@it ;
+  #rdfs:label ""@en ;
+  #rdfs:comment ""@en ;
+  #rdfs:comment "La classe che rappresenta l'atto con il quale la stazione appaltante manifesta la propria volontà di stipulare un contratto."@it .
+
+:PriorInformationNotice a owl:Class ;
+ rdfs:subClassOf :DocumentoDiGara ;
+  rdfs:label "Avviso di preinformazione"@it ;
+  rdfs:label "Prior Information Notice"@en ;
+  #rdfs:comment ""@en ;
+  #rdfs:comment "La classe che rappresenta l'atto con il quale la stazione appaltante manifesta la propria volontà di stipulare un contratto."@it .
+
+:AvvisoBeniCulturali a owl:Class ;
+ rdfs:subClassOf :Document ;
+  rdfs:label "Avviso di comunicazione sui beni culturali"@it ;
+  #rdfs:label "Prior Information Notice"@en ;
+  #rdfs:comment ""@en ;
+  #rdfs:comment "La classe che rappresenta l'atto con il quale la stazione appaltante manifesta la propria volontà di stipulare un contratto."@it .
+
+:AvvisoDiSostituzione a owl:Class ;
+ rdfs:subClassOf :Document ;
+  rdfs:label "Avviso di sostituzione"@it ;
+  #rdfs:label "Prior Information Notice"@en ;
+  #rdfs:comment ""@en ;
+  #rdfs:comment "La classe che rappresenta l'atto con il quale la stazione appaltante manifesta la propria volontà di stipulare un contratto."@it .
+
+:AvvisoPeriodico a owl:Class ;
+ rdfs:subClassOf :Document ;
+  rdfs:label "Avviso periodico"@it ;
+  #rdfs:label "Prior Information Notice"@en ;
+  #rdfs:comment ""@en ;
+  #rdfs:comment "La classe che rappresenta l'atto con il quale la stazione appaltante manifesta la propria volontà di stipulare un contratto."@it .
