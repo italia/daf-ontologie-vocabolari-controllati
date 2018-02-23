@@ -1,6 +1,6 @@
 # Ontologie e Vocabolari Controllati
 
-**DOVE NON DIVERSAMENTE SPECIFICATO, LE ONTOLOGIE SI INTENDONO ANCORA INSTABILI. NEL CORSO DELLE PRIME SETTIMANE DI MARZO 2018 SE NE STABILIZZERANNO ALCUNE DI SEGUITO ELENCATE**
+**DOVE DIVERSAMENTE SPECIFICATO, LE ONTOLOGIE SI INTENDONO ANCORA INSTABILI. NEL CORSO DELLE PRIME SETTIMANE DI MARZO 2018 SE NE STABILIZZERANNO ALCUNE DI SEGUITO ELENCATE**
 
 
 Questo è il repository delle ontologie e dei vocabolari controllati sviluppati nell'ambito delle azioni previste dal piano triennale e a supporto del lavoro da svolgere per l'[elenco delle basi di dati chiave](http://elenco-basi-di-dati-chiave.readthedocs.io/it/latest/).
@@ -26,7 +26,7 @@ Il contenuto della directory **Ontologie** è attualmente il seguente:
   + **Ruoli (Roles)**: Ontologia del profilo italiano per la specifica dei ruoli (Role - Italian Application Profile - RO-AP_IT);
   + **Eventi Pubblici (Public Events)**: Ontologia del profilo applicativo italiano per la rappresentazione degli eventi pubblici (Core Public Event Vocabulary - Italian Application Profile - CPEV-AP_IT). **L'attuale versione dell'ontologia è instabile. Essa sarà modificata anche in base ai risultati che verranno pubblicati entro il prossimo aprile 2018 dal gruppo di lavoro europeo per la definizione del Core Public Event Vocabulary**;
   + **Parcheggi (Car Parks)**: Prima bozza dell'ontologia del profilo applicativo italiano per la rappresentazione dei dati sui parcheggi (Parking Italian Application Profile - Parking-AP_IT);
-  + **Livello0 (L0) (Level0)**: E' un'ontologia top-level che consente di collegare tutte le ontologie sopra elencate abilitando così la network di ontologie.
+  + **(L0) (Level0)**: E' un'ontologia top-level che consente di collegare tutte le ontologie sopra elencate abilitando così la network di ontologie.
 
 
 I **Vocabolari Controllati** sono in generale disponibili in RDF (nelle tre serializzazioni RDF/Turtle, RDF/XML, JSON-LD), in CSV (codifica usata **UTF-8** con separatore **,** (comma)) e in excel. Nell'ambito del DAF, i vocabolari controllati sono dataset e come tali includo i relativi metadati conformi a DCAT-AP_IT.
