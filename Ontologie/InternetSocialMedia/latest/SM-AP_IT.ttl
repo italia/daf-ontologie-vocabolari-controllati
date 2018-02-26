@@ -11,479 +11,800 @@
 @base <http://dati.gov.it/onto/smapit/> .
 
 <http://dati.gov.it/onto/smapit/> rdf:type owl:Ontology ;
-                                   owl:versionIRI <http://dati.gov.it/onto/smapit/0.3/> ;
-                                   owl:imports l0: ;
-                                   dct:modified "2017-11-28" ;
-                                   rdfs:comment "The ontology for Social Media. This ontology allows to represents social networks, account, email addresses, logos, etc."@en ;
-                                   dc:creator "Institute of Cognitive Sciences and Technologies of the Italian Research Council (CNR) - Semantic Technology Laboratory (STLab)"@en ;
-                                   rdfs:label "Social Media ontology"@en ;
-                                   prov:wasDerivedFrom <http://dati.gov.it/onto/smapit/0.1/> ;
-                                   dct:issued "2017-09-29" ;
-                                   dc:creator "Italian Digital Transformation Team"@en ;
-                                   rdfs:comment "L'ontologia per i social media e i punti di contatto online. Questa ontologia permette di rappresentare social network, account, indirizzi email, loghi, ecc..."@it ;
-                                   dc:creator "Istituto di Scienze e Tecnologie della Cognizione del CNR - Laboratorio di Tecnologie Semantiche (STLab)"@it ;
-                                   dct:license <https://creativecommons.org/licenses/by/4.0/> ;
-                                   owl:versionInfo "Version 0.3 - aggiunta proprietà per posta certificata"@it ;
-                                   dc:creator "Team per la Trasformazione Digitale"@it ;
-                                   owl:versionInfo "Version 0.3 - added online contact point"@en ;
-                                   rdfs:label "Ontologia per i social media"@it ;
-                                   dc:creator "Agency for Digital Italy - AgID"@en ,
-                                              "Agenzia per l'Italia Digitale - AgID"@it .
+                                  
+                                  rdfs:label "Social Media ontology"@en ,
+                                             "Ontologia per i social media"@it ;
+                                  
+                                  dct:modified "2017-11-28" ;
+                                  
+                                  dct:issued "2017-09-29" ;
+                                  
+                                  dc:creator "Agency for Digital Italy - AgID"@en ,
+                                             "Institute of Cognitive Sciences and Technologies of the Italian Research Council (CNR) - Semantic Technology Laboratory (STLab)"@en ,
+                                             "Italian Digital Transformation Team"@en ;
+                                  
+                                  rdfs:comment "The ontology for Social Media. This ontology allows to represents social networks, account, email addresses, logos, etc."@en ;
+                                  
+                                  owl:versionInfo "Version 0.3 - added online contact point"@en ;
+                                  
+                                  dc:creator "Agenzia per l'Italia Digitale - AgID"@it ,
+                                             "Istituto di Scienze e Tecnologie della Cognizione del CNR - Laboratorio di Tecnologie Semantiche (STLab)"@it ;
+                                  
+                                  rdfs:comment "L'ontologia per i social media e i punti di contatto online. Questa ontologia permette di rappresentare social network, account, indirizzi email, loghi, ecc..."@it ;
+                                  
+                                  dc:creator "Team per la Trasformazione Digitale"@it ;
+                                  
+                                  owl:versionInfo "Version 0.3 - aggiunta proprietà per posta certificata"@it ;
+                                  
+                                  owl:imports l0: ;
+                                  
+                                  prov:wasDerivedFrom <http://dati.gov.it/onto/smapit/0.1/> ;
+                                  
+                                  owl:versionIRI <http://dati.gov.it/onto/smapit/0.3/> ;
+                                  
+                                  dct:license <https://creativecommons.org/licenses/by/4.0/> .
+
 
 #################################################################
+#
 #    Annotation properties
+#
 #################################################################
+
 
 ###  http://purl.org/dc/terms/license
+
 dct:license rdf:type owl:AnnotationProperty .
 
 
+
 ###  http://www.w3.org/ns/prov#wasDerivedFrom
+
 prov:wasDerivedFrom rdf:type owl:AnnotationProperty .
 
 
+
 ###  http://www.w3.org/ns/prov#wasInfluencedBy
+
 prov:wasInfluencedBy rdf:type owl:AnnotationProperty .
 
 
+
+
+
 #################################################################
+#
 #    Object Properties
+#
 #################################################################
 
+
 ###  http://dati.gov.it/onto/smapit/hasCertifiedEmail
+
 :hasCertifiedEmail rdf:type owl:ObjectProperty ;
+                   
                    rdfs:subPropertyOf :hasEmail .
 
 
+
 ###  http://dati.gov.it/onto/smapit/hasCreator
+
 :hasCreator rdf:type owl:ObjectProperty ;
-            rdfs:subPropertyOf owl:topObjectProperty ;
-            owl:inverseOf :isCreatorOf ;
-            rdfs:domain :Post ;
-            rdfs:range :UserAccount ;
-            rdfs:comment "Questa proprietà asserisce che un post è stato creato da un certo account utente."@it ,
-                         "This property states that a post has been created by a certain user account."@en ;
+            
+            rdfs:label "has creator"@en ,
+                       "ha autore"@it ;
+            
+            rdfs:comment "This property states that a post has been created by a certain user account."@en ,
+                         "Questa proprietà asserisce che un post è stato creato da un certo account utente."@it ;
+            
             rdfs:isDefinedBy <http://dati.gov.it/onto/smapit/> ;
-            rdfs:label "ha autore"@it ,
-                       "has creator"@en ;
-            prov:wasInfluencedBy <http://rdfs.org/sioc/ns> .
+            
+            rdfs:domain :Post ;
+            
+            rdfs:range :UserAccount ;
+            
+            owl:inverseOf :isCreatorOf ;
+            
+            prov:wasInfluencedBy <http://rdfs.org/sioc/ns> ;
+            
+            rdfs:subPropertyOf owl:topObjectProperty .
+
 
 
 ###  http://dati.gov.it/onto/smapit/hasEmail
+
 :hasEmail rdf:type owl:ObjectProperty ;
-          owl:inverseOf :isEmailOf ;
-          rdfs:domain :OnlineContactPoint ;
-          rdfs:range :Email ;
-          rdfs:comment "Questa proprietà collega un punto di contatto online con uno o più indirizzi email di vario tipo."@it ,
-                       "This property links an online contact  point with one or more email addresses of various types."@en ;
+          
+          rdfs:label "has email"@en ,
+                     "ha email"@it ;
+          
+          rdfs:comment "This property links an online contact  point with one or more email addresses of various types."@en ,
+                       "Questa proprietà collega un punto di contatto online con uno o più indirizzi email di vario tipo."@it ;
+          
           rdfs:isDefinedBy <http://dati.gov.it/onto/smapit/> ;
-          rdfs:label "ha email"@it ,
-                     "has email"@en .
+          
+          rdfs:range :Email ;
+          
+          rdfs:domain :OnlineContactPoint ;
+          
+          owl:inverseOf :isEmailOf .
+
 
 
 ###  http://dati.gov.it/onto/smapit/hasEmailType
-:hasEmailType rdf:type owl:ObjectProperty ;
-              owl:inverseOf :isEmailTypeOf ;
-              rdf:type owl:FunctionalProperty ;
-              rdfs:domain :Email ;
-              rdfs:range :EmailType ;
-              rdfs:comment "Questa proprietà collega l'email al suo tipo."@it ,
-                           "This property links the Email to its type."@en ;
+
+:hasEmailType rdf:type owl:FunctionalProperty ,
+                       owl:ObjectProperty ;
+              
+              rdfs:label "has email type"@en ,
+                         "ha tipo email"@it ;
+              
+              rdfs:comment "This property links the Email to its type."@en ,
+                           "Questa proprietà collega l'email al suo tipo."@it ;
+              
               rdfs:isDefinedBy <http://dati.gov.it/onto/smapit/> ;
-              rdfs:label "ha tipo email"@it ,
-                         "has email type"@en .
+              
+              rdfs:domain :Email ;
+              
+              rdfs:range :EmailType ;
+              
+              owl:inverseOf :isEmailTypeOf .
+
 
 
 ###  http://dati.gov.it/onto/smapit/hasImage
+
 :hasImage rdf:type owl:ObjectProperty ;
-          owl:inverseOf :isImageOf ;
-          rdfs:domain owl:Thing ;
-          rdfs:range :Image ;
-          rdfs:comment "Questa proprietà collega qualsiasi cosa ad un'immagine."@it ,
-                       "This property links anything to an image."@en ;
+          
+          rdfs:label "has image"@en ,
+                     "ha immagine"@it ;
+          
+          rdfs:comment "This property links anything to an image."@en ,
+                       "Questa proprietà collega qualsiasi cosa ad un'immagine."@it ;
+          
           rdfs:isDefinedBy <http://dati.gov.it/onto/smapit/> ;
-          rdfs:label "ha immagine"@it ,
-                     "has image"@en .
+          
+          rdfs:range :Image ;
+          
+          owl:inverseOf :isImageOf ;
+          
+          rdfs:domain owl:Thing .
+
 
 
 ###  http://dati.gov.it/onto/smapit/hasOnlineContactPoint
+
 :hasOnlineContactPoint rdf:type owl:ObjectProperty ;
-                       owl:inverseOf :isOnlineContactPointOf ;
-                       rdfs:domain owl:Thing ;
-                       rdfs:range :OnlineContactPoint ;
-                       rdfs:comment "Questa proprietà lega qualsiasi cosa del dominio modellato a un punto di contatto online."@it ,
-                                    "This property links any thing of the domain being modelled with the online contact point."@en ;
+                       
+                       rdfs:label "has online contact point"@en ,
+                                  "ha punto di contatto online"@it ;
+                       
+                       rdfs:comment "This property links any thing of the domain being modelled with the online contact point."@en ;
+                       
+                       owl:versionInfo "stable"@en ;
+                       
+                       rdfs:comment "Questa proprietà lega qualsiasi cosa del dominio modellato a un punto di contatto online."@it ;
+                       
+                       owl:versionInfo "stabile"@it ;
+                       
                        rdfs:isDefinedBy <http://dati.gov.it/onto/smapit/> ;
-                       rdfs:label "ha punto di contatto online"@it ,
-                                  "has online contact point"@en ;
-                       owl:versionInfo "stabile"@it ,
-                                       "stable"@en .
+                       
+                       rdfs:range :OnlineContactPoint ;
+                       
+                       owl:inverseOf :isOnlineContactPointOf ;
+                       
+                       rdfs:domain owl:Thing .
+
 
 
 ###  http://dati.gov.it/onto/smapit/hasReply
+
 :hasReply rdf:type owl:ObjectProperty ;
-          rdfs:subPropertyOf owl:topObjectProperty ;
-          owl:inverseOf :isReplyOf ;
-          rdfs:domain :Post ;
-          rdfs:range :Post ;
-          rdfs:comment "La proprietà 'ha risposta' permette di dire che un post ha una risposta, ovvero, permette di creare thread di post ed organizzarla in una struttura ad albero."@it ,
-                       "This property links an Item to other follow-up content Items made on the same topic. Use of this property can result in a single branch of replies from the original Item, or in a tree-like structure with branches forking at different Items along the way."@en ;
+          
+          rdfs:label "has reply"@en ,
+                     "ha risposta"@it ;
+          
+          rdfs:comment "This property links an Item to other follow-up content Items made on the same topic. Use of this property can result in a single branch of replies from the original Item, or in a tree-like structure with branches forking at different Items along the way."@en ,
+                       "La proprietà 'ha risposta' permette di dire che un post ha una risposta, ovvero, permette di creare thread di post ed organizzarla in una struttura ad albero."@it ;
+          
           rdfs:isDefinedBy <http://dati.gov.it/onto/smapit/> ;
-          rdfs:label "ha risposta"@it ,
-                     "has reply"@en ;
-          prov:wasInfluencedBy <http://rdfs.org/sioc/ns#has_reply> .
+          
+          rdfs:domain :Post ;
+          
+          rdfs:range :Post ;
+          
+          owl:inverseOf :isReplyOf ;
+          
+          prov:wasInfluencedBy <http://rdfs.org/sioc/ns#has_reply> ;
+          
+          rdfs:subPropertyOf owl:topObjectProperty .
+
 
 
 ###  http://dati.gov.it/onto/smapit/hasTelephone
+
 :hasTelephone rdf:type owl:ObjectProperty ;
-              owl:inverseOf :isTelephoneOf ;
-              rdfs:domain :OnlineContactPoint ;
-              rdfs:range :Telephone ;
-              rdfs:comment "Questa proprietà collega un punto di contatto online con il telefono."@it ,
-                           "This property links the online contact point with the telephone element"@en ;
+              
+              rdfs:label "has telephone"@en ,
+                         "ha telefono"@it ;
+              
+              rdfs:comment "This property links the online contact point with the telephone element"@en ;
+              
+              owl:versionInfo "stable"@en ;
+              
+              rdfs:comment "Questa proprietà collega un punto di contatto online con il telefono."@it ;
+              
+              owl:versionInfo "stabile"@it ;
+              
               rdfs:isDefinedBy <http://dati.gov.it/onto/smapit/> ;
-              rdfs:label "ha telefono"@it ,
-                         "has telephone"@en ;
-              owl:versionInfo "stabile"@it ,
-                              "stable"@en .
+              
+              rdfs:domain :OnlineContactPoint ;
+              
+              rdfs:range :Telephone ;
+              
+              owl:inverseOf :isTelephoneOf .
+
 
 
 ###  http://dati.gov.it/onto/smapit/hasTelephoneType
-:hasTelephoneType rdf:type owl:ObjectProperty ;
-                  owl:inverseOf :isTelephoneTypeOf ;
-                  rdf:type owl:FunctionalProperty ;
-                  rdfs:domain :Telephone ;
-                  rdfs:range :TelephoneType ;
-                  rdfs:comment "Questa proprietà lega un telefono al suo tipo (voce, fax)."@it ,
-                               "This property links the Telephone to its type (voice, fax)"@en ;
+
+:hasTelephoneType rdf:type owl:FunctionalProperty ,
+                           owl:ObjectProperty ;
+                  
+                  rdfs:label "has telephone type"@en ,
+                             "ha tipo di telefono"@it ;
+                  
+                  rdfs:comment "This property links the Telephone to its type (voice, fax)"@en ;
+                  
+                  owl:versionInfo "stable"@en ;
+                  
+                  rdfs:comment "Questa proprietà lega un telefono al suo tipo (voce, fax)."@it ;
+                  
+                  owl:versionInfo "stabile"@it ;
+                  
                   rdfs:isDefinedBy <http://dati.gov.it/onto/smapit/> ;
-                  rdfs:label "ha tipo di telefono"@it ,
-                             "has telephone type"@en ;
-                  owl:versionInfo "stabile"@it ,
-                                  "stable"@en .
+                  
+                  rdfs:domain :Telephone ;
+                  
+                  rdfs:range :TelephoneType ;
+                  
+                  owl:inverseOf :isTelephoneTypeOf .
+
 
 
 ###  http://dati.gov.it/onto/smapit/hasUserAccount
+
 :hasUserAccount rdf:type owl:ObjectProperty ;
-                rdfs:subPropertyOf owl:topObjectProperty ;
-                owl:inverseOf :isUserAccountOf ;
-                rdfs:domain :OnlineContactPoint ;
-                rdfs:range :UserAccount ;
-                rdfs:comment "Questa proprietà collega un punto di contatto online al suo account utente."@it ,
-                             "This property links an online contactPoint to its user account."@en ;
+                
+                rdfs:label "has user account"@en ,
+                           "ha account utente"@it ;
+                
+                rdfs:comment "This property links an online contactPoint to its user account."@en ,
+                             "Questa proprietà collega un punto di contatto online al suo account utente."@it ;
+                
                 rdfs:isDefinedBy <http://dati.gov.it/onto/smapit/> ;
-                rdfs:label "ha account utente"@it ,
-                           "has user account"@en .
+                
+                rdfs:domain :OnlineContactPoint ;
+                
+                rdfs:range :UserAccount ;
+                
+                owl:inverseOf :isUserAccountOf ;
+                
+                rdfs:subPropertyOf owl:topObjectProperty .
+
 
 
 ###  http://dati.gov.it/onto/smapit/hasWebSite
+
 :hasWebSite rdf:type owl:ObjectProperty ;
-            owl:inverseOf :isWebSiteOf ;
-            rdfs:domain owl:Thing ;
-            rdfs:range :WebSite ;
+            
+            rdfs:label "has Web site"@en ,
+                       "ha pagina Web"@it ;
+            
             rdfs:comment "Relation between anything and its web site."@en ,
                          "Relazione tra una qualsiasi entità e la sua pagina Web."@it ;
+            
             rdfs:isDefinedBy <http://dati.gov.it/onto/smapit/> ;
-            rdfs:label "ha pagina Web"@it ,
-                       "has Web site"@en .
+            
+            rdfs:range :WebSite ;
+            
+            owl:inverseOf :isWebSiteOf ;
+            
+            rdfs:domain owl:Thing .
+
 
 
 ###  http://dati.gov.it/onto/smapit/isAccountIssuedBy
+
 :isAccountIssuedBy rdf:type owl:ObjectProperty ;
-                   owl:inverseOf :issuesAccount ;
-                   rdfs:domain :UserAccount ;
-                   rdfs:range :SocialMedia ;
-                   rdfs:comment "Questa proprietà rappresenta la relazione tra un social media e gli account utenti che sono stati rilasciati su tale media."@it ,
-                                "This property represents the relation between a social media and the user account issued by such a social media."@en ;
-                   rdfs:isDefinedBy <http://dati.gov.it/onto/smapit/> ;
+                   
                    rdfs:label "is accunt issued by"@en ,
-                              "è account rilasciato da"@it .
+                              "è account rilasciato da"@it ;
+                   
+                   rdfs:comment "This property represents the relation between a social media and the user account issued by such a social media."@en ,
+                                "Questa proprietà rappresenta la relazione tra un social media e gli account utenti che sono stati rilasciati su tale media."@it ;
+                   
+                   rdfs:isDefinedBy <http://dati.gov.it/onto/smapit/> ;
+                   
+                   rdfs:range :SocialMedia ;
+                   
+                   rdfs:domain :UserAccount ;
+                   
+                   owl:inverseOf :issuesAccount .
+
 
 
 ###  http://dati.gov.it/onto/smapit/isCreatorOf
+
 :isCreatorOf rdf:type owl:ObjectProperty ;
-             rdfs:domain :UserAccount ;
-             rdfs:range :Post ;
-             rdfs:comment "La relazione che permette di asserire che un account utente ha creato un certo post."@it ,
-                          "The fact that a user account creates a post."@en ;
-             rdfs:isDefinedBy <http://dati.gov.it/onto/smapit/> ;
+             
              rdfs:label "is creator of"@en ,
                         "è autore di"@it ;
+             
+             rdfs:comment "The fact that a user account creates a post."@en ,
+                          "La relazione che permette di asserire che un account utente ha creato un certo post."@it ;
+             
+             rdfs:isDefinedBy <http://dati.gov.it/onto/smapit/> ;
+             
+             rdfs:range :Post ;
+             
+             rdfs:domain :UserAccount ;
+             
              prov:wasInfluencedBy <http://rdfs.org/sioc/ns> .
 
 
+
 ###  http://dati.gov.it/onto/smapit/isEmailOf
+
 :isEmailOf rdf:type owl:ObjectProperty ;
-           rdfs:subPropertyOf owl:topObjectProperty ;
-           rdfs:domain :Email ;
-           rdfs:range :OnlineContactPoint ;
-           rdfs:comment "Inverse Property of \"has email\"."@en ,
-                        "Proprietà inversa di \"ha email\"."@it ;
-           rdfs:isDefinedBy <http://dati.gov.it/onto/smapit/> ;
+           
            rdfs:label "is email of"@en ,
                       "è email di"@it ;
-           owl:versionInfo "stabile"@it ,
-                           "stable"@en .
+           
+           rdfs:comment "Inverse Property of \"has email\"."@en ;
+           
+           owl:versionInfo "stable"@en ;
+           
+           rdfs:comment "Proprietà inversa di \"ha email\"."@it ;
+           
+           owl:versionInfo "stabile"@it ;
+           
+           rdfs:isDefinedBy <http://dati.gov.it/onto/smapit/> ;
+           
+           rdfs:domain :Email ;
+           
+           rdfs:range :OnlineContactPoint ;
+           
+           rdfs:subPropertyOf owl:topObjectProperty .
+
 
 
 ###  http://dati.gov.it/onto/smapit/isEmailTypeOf
+
 :isEmailTypeOf rdf:type owl:ObjectProperty ;
-               rdfs:domain :EmailType ;
-               rdfs:range :Email ;
+               
+               rdfs:label "is email type of"@en ,
+                          "è tipo di email di"@it ;
+               
                rdfs:comment "Inverse property of has email type. Hence, this property links an email type to an email."@en ,
                             "Proprietà inversa di 'ha tipo di email'. Di conseguenza, questa proprietà collega un individuo della classe 'Tipo di email' ad un individuo della classe 'Email'."@it ;
+               
                rdfs:isDefinedBy <http://dati.gov.it/onto/smapit/> ;
-               rdfs:label "is email type of"@en ,
-                          "è tipo di email di"@it .
+               
+               rdfs:range :Email ;
+               
+               rdfs:domain :EmailType .
+
 
 
 ###  http://dati.gov.it/onto/smapit/isImageOf
+
 :isImageOf rdf:type owl:ObjectProperty ;
-           rdfs:domain :Image ;
-           rdfs:range owl:Thing ;
-           rdfs:comment "Questa proprietà collega un'immagine a qualsiasi cosa. E' la proprietà inversa di 'ha immagine'."@it ,
-                        "This property links an image to anything. It is defined as the inverse property of 'has image'."@en ;
-           rdfs:isDefinedBy <http://dati.gov.it/onto/smapit/> ;
+           
            rdfs:label "is image of"@en ,
-                      "è immagine di"@it .
+                      "è immagine di"@it ;
+           
+           rdfs:comment "This property links an image to anything. It is defined as the inverse property of 'has image'."@en ,
+                        "Questa proprietà collega un'immagine a qualsiasi cosa. E' la proprietà inversa di 'ha immagine'."@it ;
+           
+           rdfs:isDefinedBy <http://dati.gov.it/onto/smapit/> ;
+           
+           rdfs:domain :Image ;
+           
+           rdfs:range owl:Thing .
+
 
 
 ###  http://dati.gov.it/onto/smapit/isOnlineContactPointOf
+
 :isOnlineContactPointOf rdf:type owl:ObjectProperty ;
-                        rdfs:domain :OnlineContactPoint ;
-                        rdfs:range owl:Thing ;
-                        rdfs:comment "Questa proprietà è l'inversa di \"ha punto di contatto online\" e collega un punto di contatto online con qualsiasi cosa del dominio modellato."@it ,
-                                     "This property is the inverse one for \"has online contact point\" and links an online contact point to any thing of the modelled domain."@en ;
-                        rdfs:isDefinedBy <http://dati.gov.it/onto/smapit/> ;
+                        
                         rdfs:label "is online contact point of"@en ,
                                    "è punto di contatto online di"@it ;
-                        owl:versionInfo "stabile"@it ,
-                                        "stable"@en .
+                        
+                        rdfs:comment "This property is the inverse one for \"has online contact point\" and links an online contact point to any thing of the modelled domain."@en ;
+                        
+                        owl:versionInfo "stable"@en ;
+                        
+                        rdfs:comment "Questa proprietà è l'inversa di \"ha punto di contatto online\" e collega un punto di contatto online con qualsiasi cosa del dominio modellato."@it ;
+                        
+                        owl:versionInfo "stabile"@it ;
+                        
+                        rdfs:isDefinedBy <http://dati.gov.it/onto/smapit/> ;
+                        
+                        rdfs:domain :OnlineContactPoint ;
+                        
+                        rdfs:range owl:Thing .
+
 
 
 ###  http://dati.gov.it/onto/smapit/isReplyOf
+
 :isReplyOf rdf:type owl:ObjectProperty ;
-           rdfs:domain :Post ;
-           rdfs:range :Post ;
-           rdfs:comment "La proprietà 'è risposta di' permette di asserire che un certo post è la risposta ad un altro post."@it ,
-                        "The property 'is reply of' asserts that a given post is the answer to another post."@en ;
-           rdfs:isDefinedBy <http://dati.gov.it/onto/smapit/> ;
+           
            rdfs:label "is reply of"@en ,
                       "è risposta di"@it ;
+           
+           rdfs:comment "The property 'is reply of' asserts that a given post is the answer to another post."@en ,
+                        "La proprietà 'è risposta di' permette di asserire che un certo post è la risposta ad un altro post."@it ;
+           
+           rdfs:isDefinedBy <http://dati.gov.it/onto/smapit/> ;
+           
+           rdfs:range :Post ;
+           
+           rdfs:domain :Post ;
+           
            prov:wasInfluencedBy <http://rdfs.org/sioc/ns#reply_of> .
 
 
+
 ###  http://dati.gov.it/onto/smapit/isTelephoneOf
+
 :isTelephoneOf rdf:type owl:ObjectProperty ;
-               rdfs:domain :Telephone ;
-               rdfs:range :OnlineContactPoint ;
-               rdfs:comment "Inverse property of \"has telephone\"."@en ,
-                            "Proprietà inversa di \"ha telefono\""@it ;
-               rdfs:isDefinedBy <http://dati.gov.it/onto/smapit/> ;
+               
                rdfs:label "is telephone of"@en ,
                           "è telefono di"@it ;
-               owl:versionInfo "stabile"@it ,
-                               "stable"@en .
+               
+               rdfs:comment "Inverse property of \"has telephone\"."@en ;
+               
+               owl:versionInfo "stable"@en ;
+               
+               rdfs:comment "Proprietà inversa di \"ha telefono\""@it ;
+               
+               owl:versionInfo "stabile"@it ;
+               
+               rdfs:isDefinedBy <http://dati.gov.it/onto/smapit/> ;
+               
+               rdfs:range :OnlineContactPoint ;
+               
+               rdfs:domain :Telephone .
+
 
 
 ###  http://dati.gov.it/onto/smapit/isTelephoneTypeOf
+
 :isTelephoneTypeOf rdf:type owl:ObjectProperty ;
-                   rdfs:domain :TelephoneType ;
-                   rdfs:range :Telephone ;
-                   rdfs:comment "Inverse property of \"has telephone type\"."@en ,
-                                "Proprietà inversa di \"ha tipo di telefono\"."@it ;
-                   rdfs:isDefinedBy <http://dati.gov.it/onto/smapit/> ;
+                   
                    rdfs:label "is telephone type of"@en ,
                               "è tipo di telefono di"@it ;
-                   owl:versionInfo "stabile"@it ,
-                                   "stable"@en .
+                   
+                   rdfs:comment "Inverse property of \"has telephone type\"."@en ;
+                   
+                   owl:versionInfo "stable"@en ;
+                   
+                   rdfs:comment "Proprietà inversa di \"ha tipo di telefono\"."@it ;
+                   
+                   owl:versionInfo "stabile"@it ;
+                   
+                   rdfs:isDefinedBy <http://dati.gov.it/onto/smapit/> ;
+                   
+                   rdfs:range :Telephone ;
+                   
+                   rdfs:domain :TelephoneType .
+
 
 
 ###  http://dati.gov.it/onto/smapit/isUserAccountOf
+
 :isUserAccountOf rdf:type owl:ObjectProperty ;
-                 rdfs:domain :UserAccount ;
-                 rdfs:range :OnlineContactPoint ;
-                 rdfs:comment "Questa proprietà collega un account utente al suo proprietario, che è un istanza di agente. E' la proprietà inversa di 'ha account utente'."@it ,
-                              "This property links a user account to its owner, which, in turn, is an agent. This property is the inverse of 'has user account'."@en ;
-                 rdfs:isDefinedBy <http://dati.gov.it/onto/smapit/> ;
+                 
                  rdfs:label "is user account of"@en ,
-                            "è account utente di"@it .
+                            "è account utente di"@it ;
+                 
+                 rdfs:comment "This property links a user account to its owner, which, in turn, is an agent. This property is the inverse of 'has user account'."@en ,
+                              "Questa proprietà collega un account utente al suo proprietario, che è un istanza di agente. E' la proprietà inversa di 'ha account utente'."@it ;
+                 
+                 rdfs:isDefinedBy <http://dati.gov.it/onto/smapit/> ;
+                 
+                 rdfs:range :OnlineContactPoint ;
+                 
+                 rdfs:domain :UserAccount .
+
 
 
 ###  http://dati.gov.it/onto/smapit/isWebSiteOf
+
 :isWebSiteOf rdf:type owl:ObjectProperty ;
-             rdfs:domain :WebSite ;
-             rdfs:range owl:Thing ;
+             
+             rdfs:label "is Web site of"@en ,
+                        "è sito Web di"@it ;
+             
              rdfs:comment "Relation between a Web site and the entity this Web site is associated with. This property is the inverse of 'has Web site'."@en ,
                           "Relazione tra un sito Web e l'entità a cui il sito Web è associato. Questa proprietà è l'inversa di 'ha sito Web'."@it ;
+             
              rdfs:isDefinedBy <http://dati.gov.it/onto/smapit/> ;
-             rdfs:label "is Web site of"@en ,
-                        "è sito Web di"@it .
+             
+             rdfs:domain :WebSite ;
+             
+             rdfs:range owl:Thing .
+
 
 
 ###  http://dati.gov.it/onto/smapit/issuesAccount
+
 :issuesAccount rdf:type owl:ObjectProperty ;
-               rdfs:domain :SocialMedia ;
-               rdfs:range :UserAccount ;
-               rdfs:comment "Questa proprietà rappresenta il rilascio di un account utente da parte di un social media."@it ,
-                            "This property means that a Social Media issues a user account."@en ;
-               rdfs:isDefinedBy <http://dati.gov.it/onto/smapit/> ;
+               
                rdfs:label "issues account"@en ,
-                          "rilascia account"@it .
+                          "rilascia account"@it ;
+               
+               rdfs:comment "This property means that a Social Media issues a user account."@en ,
+                            "Questa proprietà rappresenta il rilascio di un account utente da parte di un social media."@it ;
+               
+               rdfs:isDefinedBy <http://dati.gov.it/onto/smapit/> ;
+               
+               rdfs:domain :SocialMedia ;
+               
+               rdfs:range :UserAccount .
+
+
+
 
 
 #################################################################
+#
 #    Data properties
+#
 #################################################################
+
 
 ###  http://dati.gov.it/onto/l0/name
+
 l0:name rdf:type owl:DatatypeProperty ;
+        
         rdfs:isDefinedBy l0: .
 
 
+
 ###  http://dati.gov.it/onto/smapit/URL
+
 :URL rdf:type owl:DatatypeProperty ;
-     rdfs:domain owl:Thing ;
-     rdfs:range xsd:anyURI ;
-     rdfs:comment "Questa proprietà rappresenta un URL di una qualsiasi cosa del dominio modellato."@it ,
-                  "This property represents a general URL associated with any thing of the modelled domain."@en ;
-     rdfs:isDefinedBy <http://dati.gov.it/onto/smapit/> ;
+     
      rdfs:label "URL"@en ,
                 "URL"@it ;
-     owl:versionInfo "provvisoria"@it ,
-                     "unstable"@en .
+     
+     rdfs:comment "This property represents a general URL associated with any thing of the modelled domain."@en ;
+     
+     owl:versionInfo "unstable"@en ;
+     
+     rdfs:comment "Questa proprietà rappresenta un URL di una qualsiasi cosa del dominio modellato."@it ;
+     
+     owl:versionInfo "provvisoria"@it ;
+     
+     rdfs:isDefinedBy <http://dati.gov.it/onto/smapit/> ;
+     
+     rdfs:range xsd:anyURI ;
+     
+     rdfs:domain owl:Thing .
+
 
 
 ###  http://dati.gov.it/onto/smapit/emailAddress
+
 :emailAddress rdf:type owl:DatatypeProperty ,
                        owl:FunctionalProperty ;
-              rdfs:domain :Email ;
-              rdfs:range xsd:string ;
-              rdfs:comment "Questa proprietà rappresenta l'indirizzo email che deve essere espresso nella forma mailto:XX@YY.ZZ"@it ,
-                           "This property represents the email address expressed as mailto:XX@YY.ZZ"@en ;
-              rdfs:isDefinedBy <http://dati.gov.it/onto/smapit/> ;
+              
               rdfs:label "email address"@en ,
-                         "indirizzo email"@it .
+                         "indirizzo email"@it ;
+              
+              rdfs:comment "This property represents the email address expressed as mailto:XX@YY.ZZ"@en ,
+                           "Questa proprietà rappresenta l'indirizzo email che deve essere espresso nella forma mailto:XX@YY.ZZ"@it ;
+              
+              rdfs:isDefinedBy <http://dati.gov.it/onto/smapit/> ;
+              
+              rdfs:domain :Email ;
+              
+              rdfs:range xsd:anyURI .
+
 
 
 ###  http://dati.gov.it/onto/smapit/postContent
+
 :postContent rdf:type owl:DatatypeProperty ;
-             rdfs:domain :Post ;
-             rdfs:range rdfs:Literal ;
-             rdfs:comment "Il contenuto di un post."@it ,
-                          "The content of a post."@en ;
+             
+             rdfs:label "post content"@en ,
+                        "contenuto del post"@it ;
+             
+             rdfs:comment "The content of a post."@en ,
+                          "Il contenuto di un post."@it ;
+             
              rdfs:isDefinedBy <http://dati.gov.it/onto/smapit/> ;
-             rdfs:label "contenuto del post"@it ,
-                        "post content"@en .
+             
+             rdfs:domain :Post ;
+             
+             rdfs:range rdfs:Literal .
+
 
 
 ###  http://dati.gov.it/onto/smapit/socialMediaName
-:socialMediaName rdf:type owl:DatatypeProperty ;
+
+:socialMediaName rdf:type owl:DatatypeProperty ,
+                          owl:FunctionalProperty ;
+                 
+                 rdfs:label "social media name"@en ,
+                            "nome di social media"@it ;
+                 
+                 rdfs:comment "The name associated with a social media entity."@en ,
+                              "Il nome associato con un individuo che rappresenta un social media."@it ;
+                 
                  rdfs:subPropertyOf l0:name ;
-                 rdf:type owl:FunctionalProperty ;
-                 rdfs:domain :SocialMedia ;
-                 rdfs:range rdfs:Literal ;
-                 rdfs:comment "Il nome associato con un individuo che rappresenta un social media."@it ,
-                              "The name associated with a social media entity."@en ;
+                 
                  rdfs:isDefinedBy <http://dati.gov.it/onto/smapit/> ;
-                 rdfs:label "nome di social media"@it ,
-                            "social media name"@en .
+                 
+                 rdfs:domain :SocialMedia ;
+                 
+                 rdfs:range rdfs:Literal .
+
 
 
 ###  http://dati.gov.it/onto/smapit/telephoneNumber
+
 :telephoneNumber rdf:type owl:DatatypeProperty ,
                           owl:FunctionalProperty ;
-                 rdfs:domain :Telephone ;
-                 rdfs:range rdfs:Literal ;
-                 rdfs:comment "Questa proprietà consente di rappresentare il numero di telefono."@it ,
-                              "This property represents the telephone number"@en ;
+                 
+                 rdfs:label "telephone number"@en ,
+                            "numero di telefono"@it ;
+                 
+                 rdfs:comment "This property represents the telephone number"@en ;
+                 
+                 owl:versionInfo "stable"@en ;
+                 
+                 rdfs:comment "Questa proprietà consente di rappresentare il numero di telefono."@it ;
+                 
+                 owl:versionInfo "stabile"@it ;
+                 
                  rdfs:isDefinedBy <http://dati.gov.it/onto/smapit/> ;
-                 rdfs:label "numero di telefono"@it ,
-                            "telephone number"@en ;
-                 owl:versionInfo "stabile"@it ,
-                                 "stable"@en .
+                 
+                 rdfs:domain :Telephone ;
+                 
+                 rdfs:range rdfs:Literal .
+
 
 
 ###  http://dati.gov.it/onto/smapit/userAccountName
+
 :userAccountName rdf:type owl:DatatypeProperty ;
+                 
+                 rdfs:label "user account name"@en ,
+                            "nome dell'account utente"@it ;
+                 
+                 rdfs:comment "This property links a user account to its name (i.e. a literal)."@en ,
+                              "Questa proprietà collega un account utente al suo nome (un letterale)."@it ;
+                 
                  rdfs:subPropertyOf l0:name ;
-                 rdfs:domain :UserAccount ;
-                 rdfs:range xsd:string ;
-                 rdfs:comment "Questa proprietà collega un account utente al suo nome (un letterale)."@it ,
-                              "This property links a user account to its name (i.e. a literal)."@en ;
+                 
                  rdfs:isDefinedBy <http://dati.gov.it/onto/smapit/> ;
-                 rdfs:label "nome dell'account utente"@it ,
-                            "user account name"@en .
+                 
+                 rdfs:domain :UserAccount ;
+                 
+                 rdfs:range xsd:string .
+
+
+
 
 
 #################################################################
+#
 #    Classes
+#
 #################################################################
+
 
 ###  http://dati.gov.it/onto/l0/Characteristic
+
 l0:Characteristic rdf:type owl:Class .
 
 
+
 ###  http://dati.gov.it/onto/l0/Object
+
 l0:Object rdf:type owl:Class .
 
 
+
 ###  http://dati.gov.it/onto/smapit/Email
+
 :Email rdf:type owl:Class ;
+       
+       rdfs:label "Email"@en ,
+                  "Email"@it ;
+       
        rdfs:subClassOf l0:Object ,
                        [ rdf:type owl:Restriction ;
-                         owl:onProperty :hasEmailType ;
-                         owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                         owl:onClass :EmailType
+                         owl:onProperty :isEmailOf ;
+                         owl:onClass :OnlineContactPoint ;
+                         owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger
                        ] ,
                        [ rdf:type owl:Restriction ;
-                         owl:onProperty :isEmailOf ;
-                         owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                         owl:onClass :OnlineContactPoint
+                         owl:onProperty :hasEmailType ;
+                         owl:onClass :EmailType ;
+                         owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger
                        ] ,
                        [ rdf:type owl:Restriction ;
                          owl:onProperty :emailAddress ;
                          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                          owl:onDataRange xsd:anyURI
                        ] ;
-       rdfs:comment "Questa classe rappresenta l'indirizzo email del punto di contatto di un'organizzazione. La classe è collegata al tipo di email. Nell'ambito itailano si identificano due tipi principali di email, la PEC e l'email tradizionale."@it ,
-                    "This class represents the Email address of the contact point of an organization. The class is linked to the type of email that can be specified. In the Italian context we identify two types of Emails; namely, Certified Electronic Email and Traditional Email addresses."@en ;
+       
+       rdfs:comment "This class represents the Email address of the contact point of an organization. The class is linked to the type of email that can be specified. In the Italian context we identify two types of Emails; namely, Certified Electronic Email and Traditional Email addresses."@en ,
+                    "Questa classe rappresenta l'indirizzo email del punto di contatto di un'organizzazione. La classe è collegata al tipo di email. Nell'ambito itailano si identificano due tipi principali di email, la PEC e l'email tradizionale."@it ;
+       
        rdfs:isDefinedBy <http://dati.gov.it/onto/smapit/> ;
-       rdfs:label "Email"@en ,
-                  "Email"@it ;
+       
        prov:wasInfluencedBy <http://www.w3.org/2006/vcard/ns#Email> .
 
 
+
 ###  http://dati.gov.it/onto/smapit/EmailType
+
 :EmailType rdf:type owl:Class ;
+           
+           rdfs:label "Email Type"@en ,
+                      "Tipo di email"@it ;
+           
            rdfs:subClassOf l0:Characteristic ,
                            [ rdf:type owl:Restriction ;
                              owl:onProperty :isEmailTypeOf ;
                              owl:allValuesFrom :Email
                            ] ;
-           rdfs:comment "Questa classe rappresenta i tipo di email e può assumere due valori come definiti nel vocabolario controllato dei canali di erogazione dei servizi (http://dati.gov.it/onto/controlledvocabulary/Channel.rdf. Nello specifico le istanze di questa classe sono: http://dati.gov.it/onto/controlledvocabulary/Channel/042 (Email tradizionale) e http://dati.gov.it/onto/controlledvocabulary/Channel/041 (PEC)."@it ,
-                        "This class represents the type of email. It can assume two values that are defined in the Channel controlled vocabulary http://dati.gov.it/onto/controlledvocabulary/Channel.rdf. In particular, the istances of this class are http://dati.gov.it/onto/controlledvocabulary/Channel/041 (Certified Electronic Mail) and http://dati.gov.it/onto/controlledvocabulary/Channel/042 (E-mail)."@en ;
-           rdfs:isDefinedBy <http://dati.gov.it/onto/smapit/> ;
-           rdfs:label "Email Type"@en ,
-                      "Tipo di email"@it ;
-           owl:versionInfo "stabile"@it ,
-                           "stable"@en .
+           
+           rdfs:comment "This class represents the type of email. It can assume two values that are defined in the Channel controlled vocabulary http://dati.gov.it/onto/controlledvocabulary/Channel.rdf. In particular, the istances of this class are http://dati.gov.it/onto/controlledvocabulary/Channel/041 (Certified Electronic Mail) and http://dati.gov.it/onto/controlledvocabulary/Channel/042 (E-mail)."@en ;
+           
+           owl:versionInfo "stable"@en ;
+           
+           rdfs:comment "Questa classe rappresenta i tipo di email e può assumere due valori come definiti nel vocabolario controllato dei canali di erogazione dei servizi (http://dati.gov.it/onto/controlledvocabulary/Channel.rdf. Nello specifico le istanze di questa classe sono: http://dati.gov.it/onto/controlledvocabulary/Channel/042 (Email tradizionale) e http://dati.gov.it/onto/controlledvocabulary/Channel/041 (PEC)."@it ;
+           
+           owl:versionInfo "stabile"@it ;
+           
+           rdfs:isDefinedBy <http://dati.gov.it/onto/smapit/> .
+
 
 
 ###  http://dati.gov.it/onto/smapit/Image
+
 :Image rdf:type owl:Class ;
-       rdfs:subClassOf l0:Object ;
-       rdfs:comment "Questa classe rappresenta le immagini (ex. loghi)."@it ,
-                    "This class represents images."@en ;
-       rdfs:isDefinedBy <http://dati.gov.it/onto/smapit/> ;
+       
        rdfs:label "Image"@en ,
                   "Immagine"@it ;
+       
+       rdfs:subClassOf l0:Object ;
+       
+       rdfs:comment "This class represents images."@en ,
+                    "Questa classe rappresenta le immagini (ex. loghi)."@it ;
+       
+       rdfs:isDefinedBy <http://dati.gov.it/onto/smapit/> ;
+       
        prov:wasInfluencedBy <http://schema.org/ImageObject> ,
                             <http://xmlns.com/foaf/0.1/Image> .
 
 
+
 ###  http://dati.gov.it/onto/smapit/OnlineContactPoint
+
 :OnlineContactPoint rdf:type owl:Class ;
+                    
+                    rdfs:label "Online Contact Point"@en ,
+                               "Punto di Contatto Online"@it ;
+                    
                     rdfs:subClassOf l0:Object ,
                                     [ rdf:type owl:Restriction ;
                                       owl:onProperty :hasEmail ;
@@ -494,154 +815,214 @@ l0:Object rdf:type owl:Class .
                                       owl:allValuesFrom :Telephone
                                     ] ,
                                     [ rdf:type owl:Restriction ;
-                                      owl:onProperty :hasUserAccount ;
-                                      owl:allValuesFrom :UserAccount
-                                    ] ,
-                                    [ rdf:type owl:Restriction ;
                                       owl:onProperty :hasWebSite ;
                                       owl:allValuesFrom :WebSite
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty :hasUserAccount ;
+                                      owl:allValuesFrom :UserAccount
                                     ] ;
-                    rdfs:comment "Questa classe rappresenta un punto di contatto online. Essa raggruppa un insieme di tipi di canali di contatto online come account di social network, email, siti web, ecc."@it ,
-                                 "This class represents an online contact point; that is, an object that groups a set of types of online (social) media channels such as email, social network contacts, web site, ecc."@en ;
+                    
+                    rdfs:comment "This class represents an online contact point; that is, an object that groups a set of types of online (social) media channels such as email, social network contacts, web site, ecc."@en ;
+                    
+                    owl:versionInfo "stable"@en ;
+                    
+                    rdfs:comment "Questa classe rappresenta un punto di contatto online. Essa raggruppa un insieme di tipi di canali di contatto online come account di social network, email, siti web, ecc."@it ;
+                    
+                    owl:versionInfo "stabile"@it ;
+                    
                     rdfs:isDefinedBy <http://dati.gov.it/onto/smapit> ;
-                    rdfs:label "Online Contact Point"@en ,
-                               "Punto di Contatto Online"@it ;
-                    owl:versionInfo "stabile"@it ,
-                                    "stable"@en ;
+                    
                     prov:wasInfluencedBy <http://schema.org/ContactPoint> .
 
 
+
 ###  http://dati.gov.it/onto/smapit/Post
+
 :Post rdf:type owl:Class ;
+      
+      rdfs:label "Post"@en ,
+                 "Post"@it ;
+      
       rdfs:subClassOf l0:Object ,
-                      [ rdf:type owl:Restriction ;
-                        owl:onProperty :hasCreator ;
-                        owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                        owl:onClass :UserAccount
-                      ] ,
                       [ rdf:type owl:Restriction ;
                         owl:onProperty :postContent ;
                         owl:cardinality "1"^^xsd:nonNegativeInteger
+                      ] ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :hasCreator ;
+                        owl:onClass :UserAccount ;
+                        owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger
                       ] ;
+      
       rdfs:comment "A post on a social media."@en ,
                    "Un post su un social media."@it ;
+      
       rdfs:isDefinedBy <http://dati.gov.it/onto/smapit/> ;
-      rdfs:label "Post"@en ,
-                 "Post"@it ;
+      
       prov:wasInfluencedBy <http://rdfs.org/sioc/ns#Post> ,
                            <http://schema.org/SocialMediaPosting> .
 
 
+
 ###  http://dati.gov.it/onto/smapit/SocialMedia
+
 :SocialMedia rdf:type owl:Class ;
+             
+             rdfs:label "Social media"@en ,
+                        "Social media"@it ;
+             
              rdfs:subClassOf l0:Object ,
                              [ rdf:type owl:Restriction ;
                                owl:onProperty :socialMediaName ;
                                owl:cardinality "1"^^xsd:nonNegativeInteger
                              ] ;
-             rdfs:comment "Questa  classe rappresenta un social media come, ad esempio, un social network (ex. Facebook, Twitter, ecc...)."@it ,
-                          "This class represents a social media like a social network (e.g. Facebook, Twitter, etc.)."@en ;
-             rdfs:isDefinedBy <http://dati.gov.it/onto/smapit/> ;
-             rdfs:label "Social media"@en ,
-                        "Social media"@it .
+             
+             rdfs:comment "This class represents a social media like a social network (e.g. Facebook, Twitter, etc.)."@en ,
+                          "Questa  classe rappresenta un social media come, ad esempio, un social network (ex. Facebook, Twitter, ecc...)."@it ;
+             
+             rdfs:isDefinedBy <http://dati.gov.it/onto/smapit/> .
+
 
 
 ###  http://dati.gov.it/onto/smapit/Telephone
+
 :Telephone rdf:type owl:Class ;
+           
+           rdfs:label "Telephone"@en ,
+                      "Telefono"@it ;
+           
            rdfs:subClassOf l0:Object ,
                            [ rdf:type owl:Restriction ;
-                             owl:onProperty :hasTelephoneType ;
-                             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                             owl:onClass :TelephoneType
-                           ] ,
-                           [ rdf:type owl:Restriction ;
                              owl:onProperty :isTelephoneOf ;
-                             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                             owl:onClass :OnlineContactPoint
+                             owl:onClass :OnlineContactPoint ;
+                             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger
                            ] ,
                            [ rdf:type owl:Restriction ;
                              owl:onProperty :telephoneNumber ;
                              owl:cardinality "1"^^xsd:nonNegativeInteger
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :hasTelephoneType ;
+                             owl:onClass :TelephoneType ;
+                             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger
                            ] ;
-           rdfs:comment "Questa classe rappresenta un telefono che a sua volta è caratterizzato da un tipo (Voce, Fax) e da un numero."@it ,
-                        "This class represents the Telephone that is characterized by a type (Voice, Fax) and a telephone number."@en ;
+           
+           rdfs:comment "This class represents the Telephone that is characterized by a type (Voice, Fax) and a telephone number."@en ,
+                        "Questa classe rappresenta un telefono che a sua volta è caratterizzato da un tipo (Voce, Fax) e da un numero."@it ;
+           
            rdfs:isDefinedBy <http://dati.gov.it/onto/smapit/> ;
-           rdfs:label "Telefono"@it ,
-                      "Telephone"@en ;
+           
            prov:wasInfluencedBy <http://www.w3.org/2006/vcard/ns#TelephoneType> .
 
 
+
 ###  http://dati.gov.it/onto/smapit/TelephoneType
+
 :TelephoneType rdf:type owl:Class ;
+               
+               rdfs:label "Telephone Type"@en ,
+                          "Tipo di Telefono"@it ;
+               
                rdfs:subClassOf l0:Characteristic ,
                                [ rdf:type owl:Restriction ;
                                  owl:onProperty :isTelephoneTypeOf ;
                                  owl:allValuesFrom :Telephone
                                ] ;
-               rdfs:comment "Questa classe rappresenta il tipo di telefono. I valori di questa classe sono quelli del vocabolario controllato http://dati.gov.it/onto/controlledvocabulary/Channel e in particolare sono i valori finali della categoria http://dati.gov.it/onto/controlledvocabulary/Channel/03 (telefono) e quindi i seguenti http://dati.gov.it/onto/controlledvocabulary/Channel/031 (Numero Dedicato - Voce), http://dati.gov.it/onto/controlledvocabulary/Channel/032 (Call Center), http://dati.gov.it/onto/controlledvocabulary/Channel/033 (Fax)"@it ,
-                            "This class represents the type of Telephone. The value of this class are those defined in the controlled vocabulary http://dati.gov.it/onto/controlledvocabulary/Channel and in particular the final values of the category telephone (http://dati.gov.it/onto/controlledvocabulary/Channel/03 that are the following: http://dati.gov.it/onto/controlledvocabulary/Channel/031 (Voice) http://dati.gov.it/onto/controlledvocabulary/Channel/032 (Call Center)  http://dati.gov.it/onto/controlledvocabulary/Channel/033 (Fax)"@en ;
+               
+               rdfs:comment "This class represents the type of Telephone. The value of this class are those defined in the controlled vocabulary http://dati.gov.it/onto/controlledvocabulary/Channel and in particular the final values of the category telephone (http://dati.gov.it/onto/controlledvocabulary/Channel/03 that are the following: http://dati.gov.it/onto/controlledvocabulary/Channel/031 (Voice) http://dati.gov.it/onto/controlledvocabulary/Channel/032 (Call Center)  http://dati.gov.it/onto/controlledvocabulary/Channel/033 (Fax)"@en ;
+               
+               owl:versionInfo "stable"@en ;
+               
+               rdfs:comment "Questa classe rappresenta il tipo di telefono. I valori di questa classe sono quelli del vocabolario controllato http://dati.gov.it/onto/controlledvocabulary/Channel e in particolare sono i valori finali della categoria http://dati.gov.it/onto/controlledvocabulary/Channel/03 (telefono) e quindi i seguenti http://dati.gov.it/onto/controlledvocabulary/Channel/031 (Numero Dedicato - Voce), http://dati.gov.it/onto/controlledvocabulary/Channel/032 (Call Center), http://dati.gov.it/onto/controlledvocabulary/Channel/033 (Fax)"@it ;
+               
+               owl:versionInfo "stabile"@it ;
+               
                rdfs:isDefinedBy <http://dati.gov.it/onto/smapit/> ;
-               rdfs:label "Telephone Type"@en ,
-                          "Tipo di Telefono"@it ;
-               owl:versionInfo "stabile"@it ,
-                               "stable"@en ;
+               
                prov:wasInfluencedBy <http://www.w3.org/2006/vcard/ns#TelephoneType> .
 
 
+
 ###  http://dati.gov.it/onto/smapit/UserAccount
+
 :UserAccount rdf:type owl:Class ;
+             
+             rdfs:label "User account"@en ,
+                        "Account utente"@it ;
+             
              rdfs:subClassOf l0:Object ,
                              [ rdf:type owl:Restriction ;
-                               owl:onProperty :isAccountIssuedBy ;
-                               owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                               owl:onClass :SocialMedia
-                             ] ,
-                             [ rdf:type owl:Restriction ;
                                owl:onProperty :isUserAccountOf ;
-                               owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                               owl:onClass :OnlineContactPoint
+                               owl:onClass :OnlineContactPoint ;
+                               owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger
                              ] ,
                              [ rdf:type owl:Restriction ;
                                owl:onProperty :userAccountName ;
                                owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                                owl:onDataRange xsd:string
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :isAccountIssuedBy ;
+                               owl:onClass :SocialMedia ;
+                               owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger
                              ] ;
-             rdfs:comment "Questa classe rappresenta un account come quello che può possedere un utente su un social network."@it ,
-                          "This class represents a user account, such as the account owned by a person on a social network."@en ;
+             
+             rdfs:comment "This class represents a user account, such as the account owned by a person on a social network."@en ,
+                          "Questa classe rappresenta un account come quello che può possedere un utente su un social network."@it ;
+             
              rdfs:isDefinedBy <http://dati.gov.it/onto/smapit/> ;
-             rdfs:label "Account utente"@it ,
-                        "User account"@en ;
+             
              prov:wasInfluencedBy <http://rdfs.org/sioc/ns#> ,
                                   <http://xmlns.com/foaf/0.1/OnlineAccount> .
 
 
+
 ###  http://dati.gov.it/onto/smapit/WebSite
+
 :WebSite rdf:type owl:Class ;
+         
+         rdfs:label "Web site"@en ,
+                    "Sito Web"@it ;
+         
          rdfs:subClassOf l0:Object ,
                          [ rdf:type owl:Restriction ;
                            owl:onProperty :isWebSiteOf ;
-                           owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                           owl:onClass :OnlineContactPoint
+                           owl:onClass :OnlineContactPoint ;
+                           owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger
                          ] ;
-         rdfs:comment "Questa classe rappresenta il sito web di riferimento dell'organizzazione."@it ,
-                      "This class represents the web site of refernce of the organization."@en ;
+         
+         rdfs:comment "This class represents the web site of refernce of the organization."@en ,
+                      "Questa classe rappresenta il sito web di riferimento dell'organizzazione."@it ;
+         
          rdfs:isDefinedBy <http://dati.gov.it/onto/smapit/> ;
-         rdfs:label "Sito Web"@it ,
-                    "Web site"@en ;
+         
          prov:wasInfluencedBy <http://schema.org/WebSite> ,
                               <http://xmlns.com/foaf/0.1/Document> .
 
 
+
+
+
 #################################################################
+#
 #    Individuals
+#
 #################################################################
 
+
 ###  http://dati.gov.it/onto/smapit/PEC
+
 :PEC rdf:type owl:NamedIndividual .
 
 
+
 ###  http://dati.gov.it/onto/smapit/TraditionalEmail
+
 :TraditionalEmail rdf:type owl:NamedIndividual .
 
 
-###  Generated by the OWL API (version 4.2.8.20170104-2310) https://github.com/owlcs/owlapi
+
+
+###  Generated by the OWL API (version 3.5.1) http://owlapi.sourceforge.net
+
