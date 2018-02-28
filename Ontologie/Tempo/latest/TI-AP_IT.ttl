@@ -68,6 +68,14 @@ xsd:time rdf:type rdfs:Datatype .
 #    Object Properties
 #################################################################
 
+###  http://dati.gov.it/onto/tiapit#hasTemporalCoverage
+:hasTemporalCoverage rdf:type owl:ObjectProperty ;
+                     rdfs:domain owl:Thing ;
+                     rdfs:range :TemporalEntity ;
+                     rdfs:label "copertura temporale"@it ,
+                                "temporal coverage"@en .
+
+
 ###  http://dati.gov.it/onto/tiapit/atTime
 :atTime rdf:type owl:ObjectProperty ;
         rdfs:subPropertyOf :hasTemporalEntity ;
@@ -249,7 +257,12 @@ xsd:time rdf:type rdfs:Datatype .
 :endTime rdf:type owl:DatatypeProperty ;
          rdfs:subPropertyOf :time ;
          rdfs:domain :TimeInterval ;
-         rdfs:range xsd:dateTime ;
+         rdfs:range [ rdf:type rdfs:Datatype ;
+                      owl:unionOf ( xsd:date
+                                    xsd:dateTime
+                                    xsd:time
+                                  )
+                    ] ;
          rdfs:comment "Questa proprietà rappresenta la data di fine di un intervallo temporale."@it ,
                       "This property represents the end date of a time interval."@en ;
          rdfs:label "data di fine"@it ,
@@ -308,7 +321,12 @@ xsd:time rdf:type rdfs:Datatype .
 :startTime rdf:type owl:DatatypeProperty ;
            rdfs:subPropertyOf :time ;
            rdfs:domain :TimeInterval ;
-           rdfs:range xsd:dateTime ;
+           rdfs:range [ rdf:type rdfs:Datatype ;
+                        owl:unionOf ( xsd:date
+                                      xsd:dateTime
+                                      xsd:time
+                                    )
+                      ] ;
            rdfs:comment "Questa proprietà rappresenta la data di inizio di un intervallo temporale."@it ,
                         "This property represents the start date of the time interval."@en ;
            rdfs:label "data di inizio"@it ,
