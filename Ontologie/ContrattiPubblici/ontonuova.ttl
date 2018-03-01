@@ -232,46 +232,93 @@ ti:date a owl:DatatypeProperty ;
   rdfs:subPropertyOf ti:endTime ;
   rdfs:domain :ProceduraDiRealizzazione ;
   rdfs:range xsd:date ;
-  rdfs:comment "Property for actual end date of public contract's realization."@en ;
-  rdfs:comment "Questa proprietà indica la data effettiva di chiusura lavori"@it ;
-  rdfs:label "Data chiusura lavori"@it ;
-  rdfs:label "Property for actual end date of public contract's realization."@en .
+  rdfs:comment ""@en ;
+  rdfs:comment "Questa proprietà indica la data effettiva di realizzazione dell'intervento"@it ;
+  rdfs:label "Data realizzazione intervento"@it ;
+  rdfs:label ""@en .
+
+:startDate a owl:DatatypeProperty ;
+  rdfs:subPropertyOf ti:startTime ;
+  rdfs:domain :ProceduraDiRealizzazione ;
+  rdfs:label "Data di inizio"@it ;
+  rdfs:label "Start Date"@en ;
+  rdfs:comment "The property that detemins the beginning date."@en ;
+  rdfs:comment "La proprietà che determina la data effettiva di inizio dell'intervento."@en ;
+  rdfs:range xsd:date .
+
+  :winDate a owl:DatatypeProperty ;
+    rdfs:subPropertyOf ti:date ;
+    rdfs:domain :ProceduraDiRealizzazione ;
+    rdfs:range xsd:date ;
+    rdfs:label "win date"@en ;
+    rdfs:label "data di aggiudicazione"@it ;
+    rdfs:comment "Proprietà che indica la data di aggiudicazione di un contratto a un offerente" @it ;
+    rdfs:comment "Property for date of contract award to a bidder." @en .
+
+  :publicationDate a owl:DatatypeProperty ;
+    rdfs:subPropertyOf ti:issued ;
+    rdfs:domain :ContractNotice ;
+    rdfs:range xsd:date ;
+      rdfs:label "data pubblicazione"@it ;
+    rdfs:label "publication date"@en ;
+    rdfs:comment "La proprietà che indica la data di pubblicazione del Bando/Avviso."@it ;
+    rdfs:comment "The property that determines the publication date of the Contract Notice."@en .
+
+  :expireDate a owl:DatatypeProperty ;
+    rdfs:subPropertyOf ti:issued ;
+    rdfs:domain :ContractNotice ;
+    rdfs:range xsd:date ;
+    rdfs:label "expire date"@en ;
+    rdfs:label "data di scadenza"@it ;
+    rdfs:comment "Proprietà che determina la data di scadenza del Bando/Avviso."@it ;
+   rdfs:comment "The property that determines the expire date."@en .
+
+
+
+
+   :CurrentEstimatedEndDate a owl:DatatypeProperty ;
+     rdfs:subPropertyOf ti:endTime ;
+     rdfs:domain :ProceduraDiRealizzazione ;
+     rdfs:label "data attualmente stimata realizzazione intervento"@it ;
+     rdfs:label ""@en ;
+     rdfs:comment "The property that detemins the estimated end Date."@en ;
+     rdfs:comment "La proprietà che determina la data  stimata di fine lavori."@en ;
+     rdfs:range xsd:date .
+
+   :estimatedEndDate a owl:DatatypeProperty ;
+     rdfs:subPropertyOf ti:endTime ;
+     rdfs:domain :EconomicalFramework ;
+     rdfs:range xsd:float ;
+     rdfs:label "data stimata realizzazione intervento"@it ;
+     rdfs:label ""@en ;
+     rdfs:comment "The property that determines the estimated end date."@en ;
+     rdfs:comment "Questa proprietà determina la data stimata di realizzazione dell'intervento."@it .
+
+  :additionalDays a owl:DatatypeProperty ;
+    rdfs:subPropertyOf ti:duration ;
+    rdfs:domain :VariantDocument;
+    rdfs:range xsd:float ;
+    rdfs:label "giorni aggiuntivi" @it ;
+    rdfs:label "additional days" @en ;
+    rdfs:comment "The property that determines additional days needed in the variant."@en ;
+    rdfs:comment "Questa proprietà indica i giorni aggiuntivi necessari per la variante."@it.
 
 :agreedPrice a owl:DatatypeProperty ;
   rdfs:domain :ProceduraDiRealizzazione, :ContractNotice ;
   rdfs:range xsd:float ;
-  rdfs:label "Prezzo concordato"@it ;
-  rdfs:label "Agreed price"@en ;
-  rdfs:comment "La proprietà che determina il prezzo concordato per il Lotto o per il Bando."@it ;
-  rdfs:comment "The Property that determines the price agreed for the lot or the Contract Notice."@en .
+  rdfs:label "prezzo concordato"@it ;
+  rdfs:label "agreed price"@en ;
+  rdfs:comment "La proprietà che determina il prezzo concordato (o importo di aggiudicazione) per la realizzazione dell'Intervento."@it ;
+  rdfs:comment ""@en .
 
 :nonDiscountableSum a owl:DatatypeProperty ;
   rdfs:domain :ProceduraDiRealizzazione ;
   rdfs:range xsd:float ;
-  rdfs:label "Somma non ribassabile"@it ;
-  rdfs:label "Sum of non-discountable money"@en ;
-  rdfs:comment "The property that determines the amount of the starting price that is not lowerable."@en ;
-  rdfs:comment "La proprietà che determina la somma di denaro che non è ribassabile relativa ad un Lotto."@it .
+  rdfs:label "somma non ribassabile"@it ;
+  rdfs:label "sum of non-discountable money"@en ;
+  rdfs:comment "The property that determines the amount of the starting price that  is not lowerable."@en ;
+  rdfs:comment "La proprietà che determina la somma di denaro che non è ribassabile."@it .
 
-
-
-
-  :startDate a owl:DatatypeProperty ;
-    rdfs:subPropertyOf ti:startTime ;
-    rdfs:domain :ProceduraDiRealizzazione ;
-    rdfs:label "Data di inizio"@it ;
-    rdfs:label "Start Date"@en ;
-    rdfs:comment "The property that detemins the beginning date."@en ;
-    rdfs:comment "La proprietà che determina la data di inizio dei lavori."@en ;
-    rdfs:range xsd:date .
-
-:isSubcontractExpected a owl:DatatypeProperty ;
-  rdfs:domain :ProceduraDiRealizzazione ;
-  rdfs:range xsd:boolean ;
-  rdfs:label "è previsto subappalto"@it ;
-  rdfs:label "is subcontract expected"@en ;
-  rdfs:comment "La proprietà che determina se nel Lotto è previsto un Subappalto."@it ;
-  rdfs:comment "The property that determines if a subcontract if expected in the Lot."@en .
 
 :reductionPercentage a owl:DatatypeProperty ;
   rdfs:domain :ProceduraDiRealizzazione ;
@@ -305,44 +352,10 @@ ti:date a owl:DatatypeProperty ;
   rdfs:comment "La proprietà che determina l'importo di aggiudicazione stabilito nel lotto"@it ;
   rdfs:comment "The property that determines the award amount of money as stated in the Lot."@en .
 
-:winDate a owl:DatatypeProperty ;
-  rdfs:subPropertyOf ti:date ;
-  rdfs:domain :ProceduraDiRealizzazione ;
-  rdfs:range xsd:date ;
-  rdfs:label "win date"@en ;
-  rdfs:label "data di aggiudicazione"@it ;
-  rdfs:comment "Proprietà che indica la data di aggiudicazione di un contratto a un offerente" @it ;
-  rdfs:comment "Property for date of contract award to a bidder." @en .
 
-:publicationDate a owl:DatatypeProperty ;
-  rdfs:subPropertyOf ti:issued ;
-  rdfs:domain :ContractNotice ;
-  rdfs:range xsd:date ;
-    rdfs:label "data pubblicazione"@it ;
-  rdfs:label "publication date"@en ;
-  rdfs:comment "La proprietà che indica la data di pubblicazione del Bando/Avviso."@it ;
-  rdfs:comment "The property that determines the publication date of the Contract Notice."@en .
-
-:expireDate a owl:DatatypeProperty ;
-  rdfs:subPropertyOf ti:issued ;
-  rdfs:domain :ContractNotice ;
-  rdfs:range xsd:date ;
-  rdfs:label "expire date"@en ;
-  rdfs:label "expire date"@it ;
-  rdfs:comment "Proprietà che determina la data di scadenza del Bando/Avviso."@it ;
- rdfs:comment "The property that determines the expire date."@en .
-
-:additionalDays a owl:DatatypeProperty ;
-  rdfs:subPropertyOf ti:duration ;
-  rdfs:domain :Variant ;
-  rdfs:range xsd:float ;
-  rdfs:label "giorni aggiuntivi" @it ;
-  rdfs:label "additional days" @en ;
-  rdfs:comment "The property that determines additional days needed in the variant."@en ;
-  rdfs:comment "Questa proprietà indica i giorni aggiuntivi necessari per la variante."@it.
 
 :variantType a owl:DatatypeProperty ;
-  rdfs:domain :Variant ;
+  rdfs:domain :VariantDocument;
   rdfs:range xsd:string ;
   rdfs:label "tipo variante" @it ;
   rdfs:label "variant type" @en ;
@@ -351,7 +364,7 @@ ti:date a owl:DatatypeProperty ;
 
 :hasReason a owl:DatatypeProperty ;
 #  l0:controlledVocabulary <http://> ;
-  rdfs:domain :Variant ;
+  rdfs:domain :VariantDocument;
   rdfs:range xsd:string ;
   rdfs:label "ha motivazione"@it ;
   rdfs:label "has motivation"@it ;
@@ -389,23 +402,13 @@ ti:date a owl:DatatypeProperty ;
   rdfs:label "modalità di scelta contraente"@it ;
   rdfs:label ""@en .
 
-:estimatedEndDate a owl:DatatypeProperty ;
-  rdfs:subPropertyOf ti:endTime ;
+:isSubcontractExpected a owl:DatatypeProperty ;
   rdfs:domain :ProceduraDiRealizzazione ;
-  rdfs:label "Data attualmente stimata di fine lavori"@it ;
-  rdfs:label ""@en ;
-  rdfs:comment "The property that detemins the estimated end Date."@en ;
-  rdfs:comment "La proprietà che determina la data  stimata di fine lavori."@en ;
-  rdfs:range xsd:date .
-
-:ProceduraEndDate a owl:DatatypeProperty ;
-  rdfs:subPropertyOf ti:endTime ;
-  rdfs:domain :QuadroEconomico ;
-  rdfs:range xsd:float ;
-  rdfs:label "data stimata di fine lavori"@it ;
-  rdfs:label ""@en ;
-  rdfs:comment "The property that determines the end date declared in the Lot."@en ;
-  rdfs:comment "Questa proprietà determina la fine dei lavori dichiarata nel lotto."@it .
+  rdfs:range xsd:boolean ;
+  rdfs:label "è previsto subappalto"@it ;
+  rdfs:label "is subcontract expected"@en ;
+  rdfs:comment "La proprietà che determina se è previsto un Subappalto."@it ;
+  rdfs:comment "The property that determines if a subcontract is expected."@en .
   ########################################################################################################################################
   ########################################################################################################################################
 
@@ -466,9 +469,9 @@ rdfs:comment "The property that determines the final amount of money to be paid"
 #################################################################
 
 :Contract a owl:Class ;
-rdfs:subClassOf l0:Object ;
-rdfs:label "Contract"@en;
-rdfs:label "Contratto"@it ;
+  rdfs:subClassOf l0:Object ;
+  rdfs:label "Contract"@en;
+  rdfs:label "Contratto"@it ;
   rdfs:comment "An instance of this class is an abstract information entity about a realized contract between a contracting authority and their supplier."@en ;
   rdfs:comment "Una istanza di questa classe rappresenta un contratto realizzato tra una stazione appaltante e un fornitore."@it .
 
@@ -476,8 +479,8 @@ rdfs:label "Contratto"@it ;
   rdfs:subClassOf l0:Object ;
   rdfs:label "Bando/Avviso"@it ;
   rdfs:label "Contract Notice"@en ;
-  rdfs:comment "La classe che rappresenta un tipo di annuncio di uno o più lotti, sia esso un bando o un avviso."@it ;
-  rdfs:comment "The class that represents a contract notice  of one or more lots. That is either a notice or an contract notice."@en .
+  rdfs:comment "La classe che rappresenta qualunque tipo di annuncio o avviso relativo ad una procedura di realizzazione di un Intervento. Tipicamente, un bando pubblico o un'altra tipologia di avviso."@it ;
+  rdfs:comment "The class that represents a contract notice of one or more lots. That is either a notice or an contract notice."@en .
 
 :ContractNoticeType a owl:Class ;
   rdfs:subClassOf l0:Characteristic ;
@@ -506,23 +509,16 @@ rdfs:label "Contratto"@it ;
   rdfs:comment "La classe che rappresenta l'esito di un bando/avviso."@it ;
   rdfs:comment "The class that represents the type final state of the Contract Notice."@en .
 
-
-
-
-
 :Tender a owl:Class ;
   rdfs:subClassOf l0:Object ;
   rdfs:label "Tender"@en ;
   rdfs:label "Offerta"@it ;
-  rdfs:comment "An instance of this class rapresents a tender of a lot"@en ;
-    rdfs:comment "Una istanza di questa classe rappresenta una offerta relativa ad un lotto."@it .
-
+  rdfs:comment "An instance of this class rapresents a tender in a call for tenders or other procedure."@en ;
+  rdfs:comment "Una istanza di questa classe rappresenta una offerta relativa ad un bando o altra procedura di realizzazione."@it .
 
 covapit:Organization a owl:Class ;
   rdfs:subClassOf :Agent ;
-            rdfs:isDefinedBy covapit: .
-
-
+  rdfs:isDefinedBy covapit: .
 
 :ChangeEvent  rdfs:subClassOf l0:Event ;
   rdfs:label "Change Event"@en ;
@@ -537,14 +533,14 @@ covapit:Organization a owl:Class ;
   rdfs:comment "Una istance di questa classe rappresenta lo stato di del uqadro economico di un lotto."@it .
 
 :ExtensionDocument a owl:Class ;
- rdfs:subClassOf :DocumentoDiModifica ;
+  rdfs:subClassOf :DocumentoDiModifica ;
   rdfs:label "Documento di Proroga"@it ;
   rdfs:label "Extension Document"@en ;
   rdfs:comment "The class that represents a lot extension."@en ;
   rdfs:comment "La classe che rappresenta la proroga di un lotto."@it .
 
 :SuspensionDocument a owl:Class ;
- rdfs:subClassOf :DocumentoDiModifica ;
+  rdfs:subClassOf :DocumentoDiModifica ;
   rdfs:label "Documento di Sospensione"@it ;
   rdfs:label "Suspension Document"@en ;
   rdfs:comment "The class that represents a lot suspension."@en ;
@@ -558,66 +554,96 @@ covapit:Organization a owl:Class ;
   rdfs:comment "La classe che rappresenta un Documento che stabilisce una modifica nelle caratteristichedel lotto."@it .
 
 :VariantDocument a owl:Class ;
- rdfs:subClassOf :DocumentoDiModifica ;
+  rdfs:subClassOf :DocumentoDiModifica ;
   rdfs:label "Documento di Variante"@it ;
   rdfs:label "Variant Document"@en ;
   rdfs:comment "The class that represents a contract variant."@en ;
   rdfs:comment "La classe che rappresenta la variazione di un contratto."@it .
 
 :DeterminaAContrarre a owl:Class ;
- rdfs:subClassOf l0:Object ;
+  rdfs:subClassOf l0:Object ;
   rdfs:label "Determina a contrarre"@it ;
   #rdfs:label ""@en ;
   #rdfs:comment ""@en ;
   rdfs:comment "La classe che rappresenta l'atto con il quale la stazione appaltante manifesta la propria volontà di stipulare un contratto."@it .
 
 :ProceduraDiRealizzazione a owl:Class ;
- rdfs:subClassOf l0:Activity ;
+  rdfs:subClassOf l0:Activity ;
   rdfs:label "Procedura di realizzazione"@it ;
-  rdfs:label ""@en .
+  rdfs:label ""@en ;
+  rdfs:comment "La classe che comprende le varie attività che una stazione appaltante mette in atto per realizzare un Intervento, ad esempio tramite un contratto di appalto, di concession o attività in amministrazione diretta."@it .
 
 :Appalto a owl:Class ;
- rdfs:subClassOf :ProceduraDiRealizzazione ;
+  rdfs:subClassOf :ProceduraDiRealizzazione ;
   rdfs:label "Appalto"@it ;
-  rdfs:label ""@en .
+  rdfs:label ""@en ;
+  rdfs:comment "La classe che comprende le attività che una stazione appaltante mette in atto per realizzare un Intervento tramite un contratto di appalto."@it .
 
 :Concessione a owl:Class ;
- rdfs:subClassOf :ProceduraDiRealizzazione ;
+  rdfs:subClassOf :ProceduraDiRealizzazione ;
   rdfs:label "Concessione"@it ;
-  rdfs:label ""@en .
+  rdfs:label ""@en ;
+  rdfs:comment "La classe che comprende le attività che una stazione appaltante mette in atto per realizzare un Intervento tramite una concessione."@it .
 
 :AmministrazioneDiretta a owl:Class ;
  rdfs:subClassOf :ProceduraDiRealizzazione ;
   rdfs:label "Amministrazione diretta"@it ;
-  rdfs:label ""@en .
+  rdfs:label ""@en ;
+  rdfs:comment "La classe che comprende le attività che una stazione appaltante mette in atto per realizzare un Intervento in amministrazione diretta."@it .
 
 :AccordoQuadro a owl:Class ;
  rdfs:subClassOf :ProceduraDiRealizzazione ;
   rdfs:label "Accordo quadro"@it ;
-  rdfs:label ""@en .
+  rdfs:label ""@en ;
+  rdfs:comment "La classe che comprende le attività che una stazione appaltante mette in atto per realizzare un Intervento tramite un accordo quadro. Si noti che le attività relative all'adesione all'accordo quadro non rientrano in questa Classe."@it .
 
+# Può essere parte dello scheletro base di ontologia della Programmazione e delle opere.
 :Intervento a owl:Class ;
- rdfs:subClassOf l0:Activity ;
+  rdfs:subClassOf l0:Activity ;
   rdfs:label "Intervento"@it ;
-  rdfs:label ""@en .
+  rdfs:label ""@en ;
+  rdfs:comment "La classe che comprende gli interventi che rispondono ad un fabbisogno individuato da un'amministrazione."@it .
 
+# Può essere parte dello scheletro base di ontologia della Programmazione e delle opere.
 :Lavoro a owl:Class ;
- rdfs:subClassOf :Intervento ;
+  rdfs:subClassOf :Intervento ;
   rdfs:label "Lavoro"@it ;
-  rdfs:label ""@en .
+  rdfs:label ""@en ;
+  rdfs:comment "La classe che comprende gli interventi che consistono nella realizzazione di lavori pubblici."@it .
 
+# Può essere parte dello scheletro base di ontologia della Programmazione e delle opere.
 :ServizioFornitura a owl:Class ;
- rdfs:subClassOf :Intervento ;
+  rdfs:subClassOf :Intervento ;
   rdfs:label "Servizio/Fornitura"@it ;
-  rdfs:label ""@en .
+  rdfs:label ""@en ;
+  rdfs:comment "La classe che comprende gli interventi che consistono nell'acquisto di servizi o forniture."@it .
 
+# Può essere parte dello scheletro base di ontologia della Programmazione e delle opere.
+:Servizio a owl:Class ;
+  rdfs:subClassOf :ServizioFornitura ;
+  rdfs:label "Servizio"@it ;
+  rdfs:label ""@en ;
+  rdfs:comment "La classe che comprende gli interventi che consistono nell'acquisizione di servizi."@it .
+
+# Può essere parte dello scheletro base di ontologia della Programmazione e delle opere.
+:Fornitura a owl:Class ;
+  rdfs:subClassOf :ServizioFornitura ;
+  rdfs:label "Fornitura"@it ;
+  rdfs:label ""@en ;
+  rdfs:comment "La classe che comprende gli interventi che consistono nell'acquisto di forniture."@it .
+
+# Può essere parte dello scheletro base di ontologia della Programmazione e delle opere.
 :InterventoMisto a owl:Class ;
- rdfs:subClassOf :Intervento ;
+  rdfs:subClassOf :Intervento ;
   rdfs:label "Intervento misto"@it ;
-  rdfs:label ""@en .
+  rdfs:label ""@en ;
+  rdfs:comment "La classe che comprende gli interventi la cui realizzazione richiede almeno due attività tra l'acquisto di servizi o forniture e la realizzazione di lavori pubblici."@it .
+  # si valuti se le classi di cui sopra esauriscono i casi di interesse ed i rimanenti possono essere semplicemente "altri interventi", ovvero se serve una classe che comprende, ad es., gli Interventi che si traducono in attività in amministrazione diretta.
 
+# Può essere parte dello scheletro base di ontologia della Programmazione e delle opere.
 :Progetto a owl:Class ;
   rdfs:label "Progetto"@it ;
-  rdfs:label ""@en .
+  rdfs:label ""@en ;
+  rdfs:comment "La classe che comprende i progetti atti a soddisfare un fabbisogno individuato dall'amministrazione tramite la realizzazione di interventi."@it .
 
 #https://espd.github.io/ESPD-EDM/v2.0.0/xml_guide.html#i-introduction
