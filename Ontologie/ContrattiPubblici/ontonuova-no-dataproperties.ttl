@@ -229,9 +229,9 @@ ti:date a owl:DatatypeProperty ;
 #################################################################
 
 :Contract a owl:Class ;
-rdfs:subClassOf l0:Object ;
-rdfs:label "Contract"@en;
-rdfs:label "Contratto"@it ;
+  rdfs:subClassOf l0:Object ;
+  rdfs:label "Contract"@en;
+  rdfs:label "Contratto"@it ;
   rdfs:comment "An instance of this class is an abstract information entity about a realized contract between a contracting authority and their supplier."@en ;
   rdfs:comment "Una istanza di questa classe rappresenta un contratto realizzato tra una stazione appaltante e un fornitore."@it .
 
@@ -239,8 +239,8 @@ rdfs:label "Contratto"@it ;
   rdfs:subClassOf l0:Object ;
   rdfs:label "Bando/Avviso"@it ;
   rdfs:label "Contract Notice"@en ;
-  rdfs:comment "La classe che rappresenta un tipo di annuncio di uno o più lotti, sia esso un bando o un avviso."@it ;
-  rdfs:comment "The class that represents a contract notice  of one or more lots. That is either a notice or an contract notice."@en .
+  rdfs:comment "La classe che rappresenta qualunque tipo di annuncio o avviso relativo ad una procedura di realizzazione di un Intervento. Tipicamente, un bando pubblico o un'altra tipologia di avviso."@it ;
+  rdfs:comment "The class that represents a contract notice of one or more lots. That is either a notice or an contract notice."@en .
 
 :ContractNoticeType a owl:Class ;
   rdfs:subClassOf l0:Characteristic ;
@@ -269,23 +269,16 @@ rdfs:label "Contratto"@it ;
   rdfs:comment "La classe che rappresenta l'esito di un bando/avviso."@it ;
   rdfs:comment "The class that represents the type final state of the Contract Notice."@en .
 
-
-
-
-
 :Tender a owl:Class ;
   rdfs:subClassOf l0:Object ;
   rdfs:label "Tender"@en ;
   rdfs:label "Offerta"@it ;
-  rdfs:comment "An instance of this class rapresents a tender of a lot"@en ;
-    rdfs:comment "Una istanza di questa classe rappresenta una offerta relativa ad un lotto."@it .
-
+  rdfs:comment "An instance of this class rapresents a tender in a call for tenders or other procedure."@en ;
+  rdfs:comment "Una istanza di questa classe rappresenta una offerta relativa ad un bando o altra procedura di realizzazione."@it .
 
 covapit:Organization a owl:Class ;
   rdfs:subClassOf :Agent ;
-            rdfs:isDefinedBy covapit: .
-
-
+  rdfs:isDefinedBy covapit: .
 
 :ChangeEvent  rdfs:subClassOf l0:Event ;
   rdfs:label "Change Event"@en ;
@@ -300,14 +293,14 @@ covapit:Organization a owl:Class ;
   rdfs:comment "Una istance di questa classe rappresenta lo stato di del uqadro economico di un lotto."@it .
 
 :ExtensionDocument a owl:Class ;
- rdfs:subClassOf :DocumentoDiModifica ;
+  rdfs:subClassOf :DocumentoDiModifica ;
   rdfs:label "Documento di Proroga"@it ;
   rdfs:label "Extension Document"@en ;
   rdfs:comment "The class that represents a lot extension."@en ;
   rdfs:comment "La classe che rappresenta la proroga di un lotto."@it .
 
 :SuspensionDocument a owl:Class ;
- rdfs:subClassOf :DocumentoDiModifica ;
+  rdfs:subClassOf :DocumentoDiModifica ;
   rdfs:label "Documento di Sospensione"@it ;
   rdfs:label "Suspension Document"@en ;
   rdfs:comment "The class that represents a lot suspension."@en ;
@@ -321,63 +314,85 @@ covapit:Organization a owl:Class ;
   rdfs:comment "La classe che rappresenta un Documento che stabilisce una modifica nelle caratteristichedel lotto."@it .
 
 :VariantDocument a owl:Class ;
- rdfs:subClassOf :DocumentoDiModifica ;
+  rdfs:subClassOf :DocumentoDiModifica ;
   rdfs:label "Documento di Variante"@it ;
   rdfs:label "Variant Document"@en ;
   rdfs:comment "The class that represents a contract variant."@en ;
   rdfs:comment "La classe che rappresenta la variazione di un contratto."@it .
 
 :DeterminaAContrarre a owl:Class ;
- rdfs:subClassOf l0:Object ;
+  rdfs:subClassOf l0:Object ;
   rdfs:label "Determina a contrarre"@it ;
   #rdfs:label ""@en ;
   #rdfs:comment ""@en ;
   rdfs:comment "La classe che rappresenta l'atto con il quale la stazione appaltante manifesta la propria volontà di stipulare un contratto."@it .
 
 :ProceduraDiRealizzazione a owl:Class ;
- rdfs:subClassOf l0:Activity ;
+  rdfs:subClassOf l0:Activity ;
   rdfs:label "Procedura di realizzazione"@it ;
-  rdfs:label ""@en .
+  rdfs:label ""@en ;
+  rdfs:comment "La classe che comprende le varie attività che una stazione appaltante mette in atto per realizzare un Intervento, ad esempio tramite un contratto di appalto, di concession o attività in amministrazione diretta."@it .
 
 :Appalto a owl:Class ;
- rdfs:subClassOf :ProceduraDiRealizzazione ;
+  rdfs:subClassOf :ProceduraDiRealizzazione ;
   rdfs:label "Appalto"@it ;
-  rdfs:label ""@en .
+  rdfs:label ""@en ;
+  rdfs:comment "La classe che comprende le attività che una stazione appaltante mette in atto per realizzare un Intervento tramite un contratto di appalto."@it .
 
 :Concessione a owl:Class ;
- rdfs:subClassOf :ProceduraDiRealizzazione ;
+  rdfs:subClassOf :ProceduraDiRealizzazione ;
   rdfs:label "Concessione"@it ;
-  rdfs:label ""@en .
+  rdfs:label ""@en ;
+  rdfs:comment "La classe che comprende le attività che una stazione appaltante mette in atto per realizzare un Intervento tramite una concessione."@it .
 
 :AmministrazioneDiretta a owl:Class ;
  rdfs:subClassOf :ProceduraDiRealizzazione ;
   rdfs:label "Amministrazione diretta"@it ;
-  rdfs:label ""@en .
+  rdfs:label ""@en ;
+  rdfs:comment "La classe che comprende le attività che una stazione appaltante mette in atto per realizzare un Intervento in amministrazione diretta."@it .
 
 :AccordoQuadro a owl:Class ;
  rdfs:subClassOf :ProceduraDiRealizzazione ;
   rdfs:label "Accordo quadro"@it ;
-  rdfs:label ""@en .
+  rdfs:label ""@en ;
+  rdfs:comment "La classe che comprende le attività che una stazione appaltante mette in atto per realizzare un Intervento tramite un accordo quadro. Si noti che le attività relative all'adesione all'accordo quadro non rientrano in questa Classe."@it .
 
 :Intervento a owl:Class ;
- rdfs:subClassOf l0:Activity ;
+  rdfs:subClassOf l0:Activity ;
   rdfs:label "Intervento"@it ;
-  rdfs:label ""@en .
+  rdfs:label ""@en ;
+  rdfs:comment "La classe che comprende gli interventi che rispondono ad un fabbisogno individuato da un'amministrazione."@it .
 
 :Lavoro a owl:Class ;
- rdfs:subClassOf :Intervento ;
+  rdfs:subClassOf :Intervento ;
   rdfs:label "Lavoro"@it ;
-  rdfs:label ""@en .
+  rdfs:label ""@en ;
+  rdfs:comment "La classe che comprende gli interventi che consistono nella realizzazione di lavori pubblici."@it .
 
 :ServizioFornitura a owl:Class ;
- rdfs:subClassOf :Intervento ;
+  rdfs:subClassOf :Intervento ;
   rdfs:label "Servizio/Fornitura"@it ;
-  rdfs:label ""@en .
+  rdfs:label ""@en ;
+  rdfs:comment "La classe che comprende gli interventi che consistono nell'acquisto di servizi o forniture."@it .
+
+:Servizio a owl:Class ;
+  rdfs:subClassOf :ServizioFornitura ;
+  rdfs:label "Servizio"@it ;
+  rdfs:label ""@en ;
+  rdfs:comment "La classe che comprende gli interventi che consistono nell'acquisizione di servizi."@it .
+
+:Fornitura a owl:Class ;
+  rdfs:subClassOf :ServizioFornitura ;
+  rdfs:label "Fornitura"@it ;
+  rdfs:label ""@en ;
+  rdfs:comment "La classe che comprende gli interventi che consistono nell'acquisto di forniture."@it .
 
 :InterventoMisto a owl:Class ;
- rdfs:subClassOf :Intervento ;
+  rdfs:subClassOf :Intervento ;
   rdfs:label "Intervento misto"@it ;
-  rdfs:label ""@en .
+  rdfs:label ""@en ;
+  rdfs:comment "La classe che comprende gli interventi la cui realizzazione richiede almeno due attività tra l'acquisto di servizi o forniture e la realizzazione di lavori pubblici."@it .
+  # si valuti se le classi di cui sopra esauriscono i casi di interesse ed i rimanenti possono essere semplicemente "altri interventi", ovvero se serve una classe che comprende, ad es., gli Interventi che si traducono in attività in amministrazione diretta.
 
 :Progetto a owl:Class ;
   rdfs:label "Progetto"@it ;
