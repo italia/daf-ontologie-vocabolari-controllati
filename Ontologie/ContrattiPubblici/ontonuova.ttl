@@ -17,7 +17,7 @@
                                   #owl:imports ti: ,
                                   #            l0: ,
                                   #            covapit: ;
-                                  dc:creator "Synapta srl"@en ;
+                                  dc:creator "Synapta Srl"@en ;
                                   dc:creator "CSI Piemonte"@en ;
                                   rdfs:comment "This is the ontology of the Italian public contracts"@en ;
                                   dct:issued "2018-02-07"^^xsd:date ;
@@ -87,8 +87,8 @@ xsd:boolean a rdfs:Datatype .
   rdfs:range :Contract ;
   rdfs:label "ha Contratto"@it ;
   rdfs:label "" @en ;
-  rdfs:comment "La proprietà che determina il legame tra un contratto e il relativo lotto."@it ;
-  rdfs:comment "The property that determines the link between a contract ad the realtive lot."@en .
+  rdfs:comment "La proprietà che determina il legame tra un contratto e la relativa Procedura di realizzazione."@it ;
+  rdfs:comment "The property that determines the link between a contract ad the realtive Implementation procedure."@en .
 
 
 :hasDeterminaAContrarre a owl:ObjectProperty ;
@@ -96,8 +96,8 @@ xsd:boolean a rdfs:Datatype .
   rdfs:range :DeterminaAContrarre ;
   rdfs:label "ha Determina a contrarre"@it ;
   rdfs:label "has Determina a contrarre" @en ;
-  rdfs:comment "La proprietà che determina il legame tra un Lotto e una Determina a contrarre relativo lotto."@it ;
-  rdfs:comment "The property that determines the link between a Lot and a Determina a contrarre."@en .
+  rdfs:comment "La proprietà che determina il legame tra una Procedura di realizzazione e una Determina a contrarre relativa."@it ;
+  rdfs:comment "The property that determines the link between an Implementation procedure and a Determina a contrarre."@en .
 
 
 :contractingAuthority a owl:ObjectProperty ;
@@ -121,7 +121,7 @@ xsd:boolean a rdfs:Datatype .
   rdfs:range :ProcedureType ;
   rdfs:label "ha scelta contraente"@it ;
   rdfs:label "has type of procedure"@en ;
-  rdfs:comment "La proprietà che specifica i criteri applicati per la pubblicazione di un lotto e per la scelta di un contraente."@it ;
+  rdfs:comment "La proprietà che specifica i criteri che governano la procedura di scelta di un contraente."@it ;
   rdfs:comment "Type of procedure of a public contract specifies a procedure which is applied to publish information about the contract and choose a supplier."@en .
 
 :awardedTender a owl:ObjectProperty ;
@@ -138,7 +138,7 @@ xsd:boolean a rdfs:Datatype .
   rdfs:range :DocumentoDiModifica ;
   rdfs:label "ha documento di modifica"@it ;
   rdfs:label "has Change document"@en ;
-  rdfs:comment "La proprietà che indica una modifica alle caratteristiche del Lotto."@it ;
+  rdfs:comment "La proprietà che indica una modifica alle caratteristiche di un Progetto, Intervento, Procedura di realizzazione, o Contratto."@it ;
   rdfs:comment "The property that determines the Lot Change."@en .
 
 
@@ -171,8 +171,8 @@ xsd:boolean a rdfs:Datatype .
   rdfs:range :EconomicalFramework ;
   rdfs:label "has economical framework"@en ;
   rdfs:label "ha quadro economico"@it ;
-  rdfs:comment "This property represents the economical framework of a Lot"@en ;
-  rdfs:comment "Questa proprietà rappresenta il quadro economico di un Lotto."@it .
+  rdfs:comment "This property represents the economical framework of a Project, Intervention, Realization procedure, or Contract"@en ;
+  rdfs:comment "Questa proprietà rappresenta il quadro economico di un Progetto, Intervento, Procedura di realizzazione, o Contratto."@it .
 
 :changedBy a owl:ObjectProperty ;
     rdfs:domain :EconomicalFramework ;
@@ -454,13 +454,13 @@ ti:date a owl:DatatypeProperty ;
   rdfs:label "Contract"@en;
   rdfs:label "Contratto"@it ;
   rdfs:comment "An instance of this class is an abstract information entity about a realized contract between a contracting authority and their supplier."@en ;
-  rdfs:comment "Una istanza di questa classe rappresenta un contratto realizzato tra una stazione appaltante e un fornitore."@it .
+  rdfs:comment "Una istanza di questa classe rappresenta un contratto realizzato tra due o più agenti: ad esempio, tra una stazione appaltante ed un fornitore, o tra due o più operatori economici (nel caso di contratto di subappalto)."@it .
 
 :ContractNotice a owl:Class ;
   rdfs:subClassOf l0:Object ;
   rdfs:label "Bando/Avviso"@it ;
   rdfs:label "Contract Notice"@en ;
-  rdfs:comment "La classe che rappresenta qualunque tipo di annuncio o avviso relativo ad una procedura di realizzazione di un Intervento. Tipicamente, un bando pubblico o un'altra tipologia di avviso."@it ;
+  rdfs:comment "La classe che rappresenta qualunque tipo di annuncio o avviso relativo ad una procedura di realizzazione di un Intervento. Tipicamente, un bando pubblico o un'altra tipologia di avviso o invito."@it ;
   rdfs:comment "The class that represents a contract notice of one or more lots. That is either a notice or an contract notice."@en .
 
 :ContractNoticeType a owl:Class ;
@@ -511,28 +511,28 @@ covapit:Organization a owl:Class ;
   rdfs:label "Quadro Economico"@it ;
   rdfs:label "Economical Framework"@en ;
   rdfs:comment "An instance of this class represents the state of the economical framework of a lot"@en ;
-  rdfs:comment "Una istance di questa classe rappresenta lo stato di del uqadro economico di un lotto."@it .
+  rdfs:comment "Una istance di questa classe rappresenta lo stato di del quadro economico di un Progetto, Intervento, Procedura di realizzazione, o Contratto."@it .
 
 :ExtensionDocument a owl:Class ;
   rdfs:subClassOf :DocumentoDiModifica ;
   rdfs:label "Documento di Proroga"@it ;
   rdfs:label "Extension Document"@en ;
   rdfs:comment "The class that represents a lot extension."@en ;
-  rdfs:comment "La classe che rappresenta la proroga di un lotto."@it .
+  rdfs:comment "La classe che rappresenta la proroga di un Progetto, Intervento, Procedura di realizzazione, o Contratto."@it .
 
 :SuspensionDocument a owl:Class ;
   rdfs:subClassOf :DocumentoDiModifica ;
   rdfs:label "Documento di Sospensione"@it ;
   rdfs:label "Suspension Document"@en ;
   rdfs:comment "The class that represents a lot suspension."@en ;
-  rdfs:comment "La classe che rappresenta la sospensione di un lotto."@it .
+  rdfs:comment "La classe che rappresenta la sospensione di un Progetto, Intervento, Procedura di realizzazione, o Contratto."@it .
 
   :DocumentoDiModifica a owl:Class ;
  rdfs:subClassOf l0:Object ;
   rdfs:label "Documento di modifica"@it ;
   rdfs:label "Modification document"@en ;
   rdfs:comment "The class that represents a Document that states of the lot characteristic"@en ;
-  rdfs:comment "La classe che rappresenta un Documento che stabilisce una modifica nelle caratteristichedel lotto."@it .
+  rdfs:comment "La classe che rappresenta un Documento che stabilisce una modifica nelle caratteristiche di un Progetto, Intervento, Procedura di realizzazione, o Contratto."@it .
 
 :VariantDocument a owl:Class ;
   rdfs:subClassOf :DocumentoDiModifica ;
@@ -546,13 +546,13 @@ covapit:Organization a owl:Class ;
   rdfs:label "Determina a contrarre"@it ;
   #rdfs:label ""@en ;
   #rdfs:comment ""@en ;
-  rdfs:comment "La classe che rappresenta l'atto con il quale la stazione appaltante manifesta la propria volontà di stipulare un contratto."@it .
+  rdfs:comment "La classe che comprende gli atti con i quali la stazione appaltante manifesta la propria volontà di stipulare un contratto, individuando gli elementi essenziali del contratto e i criteri di selezione degli operatori economici e delle offerte."@it .
 
 :ProceduraDiRealizzazione a owl:Class ;
   rdfs:subClassOf l0:Activity ;
   rdfs:label "Procedura di realizzazione"@it ;
   rdfs:label ""@en ;
-  rdfs:comment "La classe che comprende le varie attività che una stazione appaltante mette in atto per realizzare un Intervento, ad esempio tramite un contratto di appalto, di concession o attività in amministrazione diretta."@it .
+  rdfs:comment "La classe che comprende le attività che una stazione appaltante mette in atto per realizzare un Intervento, ad esempio le attività svolte tramite un contratto di appalto o di concessione, le attività realizzate attraverso amministrazione diretta o affidamento in house. Le attività prevedono step procedurali che possono variare in relazione alla modalità di realizzazione (si associano alla Procedura di realizzazione informazioni che, in alcune banche dati, identificano il lotto e il suo iter di vita, dalle procedure di affidamento alla conclusione)."@it .
 
 :Appalto a owl:Class ;
   rdfs:subClassOf :ProceduraDiRealizzazione ;
@@ -567,16 +567,22 @@ covapit:Organization a owl:Class ;
   rdfs:comment "La classe che comprende le attività che una stazione appaltante mette in atto per realizzare un Intervento tramite una concessione."@it .
 
 :AmministrazioneDiretta a owl:Class ;
- rdfs:subClassOf :ProceduraDiRealizzazione ;
+  rdfs:subClassOf :ProceduraDiRealizzazione ;
   rdfs:label "Amministrazione diretta"@it ;
   rdfs:label ""@en ;
   rdfs:comment "La classe che comprende le attività che una stazione appaltante mette in atto per realizzare un Intervento in amministrazione diretta."@it .
 
 :AccordoQuadro a owl:Class ;
- rdfs:subClassOf :ProceduraDiRealizzazione ;
+  rdfs:subClassOf :ProceduraDiRealizzazione ;
   rdfs:label "Accordo quadro"@it ;
   rdfs:label ""@en ;
   rdfs:comment "La classe che comprende le attività che una stazione appaltante mette in atto per realizzare un Intervento tramite un accordo quadro. Si noti che le attività relative all'adesione all'accordo quadro non rientrano in questa Classe."@it .
+
+:PublicPrivatePartnership a owl:Class ;
+  rdfs:subClassOf :ProceduraDiRealizzazione ;
+  rdfs:label "Parternariato Pubblico/Privato"@it ;
+  rdfs:label "Public/Private Partnership"@en ;
+  rdfs:comment "La classe che comprende le attività che una stazione appaltante mette in atto per realizzare un Intervento tramite un parternariato pubblico/privato."@it .
 
 # Può essere parte dello scheletro base di ontologia della Programmazione e delle opere.
 :Intervento a owl:Class ;
@@ -597,7 +603,7 @@ covapit:Organization a owl:Class ;
   rdfs:subClassOf :Intervento ;
   rdfs:label "Servizio/Fornitura"@it ;
   rdfs:label ""@en ;
-  rdfs:comment "La classe che comprende gli interventi che consistono nell'acquisto di servizi o forniture."@it .
+  rdfs:comment "La classe che comprende gli interventi che consistono nell'acquisto di beni o servizi."@it .
 
 # Può essere parte dello scheletro base di ontologia della Programmazione e delle opere.
 :Servizio a owl:Class ;
@@ -611,14 +617,14 @@ covapit:Organization a owl:Class ;
   rdfs:subClassOf :ServizioFornitura ;
   rdfs:label "Fornitura"@it ;
   rdfs:label ""@en ;
-  rdfs:comment "La classe che comprende gli interventi che consistono nell'acquisto di forniture."@it .
+  rdfs:comment "La classe che comprende gli interventi che consistono nell'acquisto di beni."@it .
 
 # Può essere parte dello scheletro base di ontologia della Programmazione e delle opere.
 :InterventoMisto a owl:Class ;
   rdfs:subClassOf :Intervento ;
   rdfs:label "Intervento misto"@it ;
   rdfs:label ""@en ;
-  rdfs:comment "La classe che comprende gli interventi la cui realizzazione richiede almeno due attività tra l'acquisto di servizi o forniture e la realizzazione di lavori pubblici."@it .
+  rdfs:comment "La classe che comprende gli interventi la cui realizzazione richiede almeno due attività tra l'acquisto di beni o servizi e la realizzazione di lavori pubblici."@it .
   # si valuti se le classi di cui sopra esauriscono i casi di interesse ed i rimanenti possono essere semplicemente "altri interventi", ovvero se serve una classe che comprende, ad es., gli Interventi che si traducono in attività in amministrazione diretta.
 
 # Può essere parte dello scheletro base di ontologia della Programmazione e delle opere.
