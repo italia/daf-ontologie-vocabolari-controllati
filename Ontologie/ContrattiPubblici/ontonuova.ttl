@@ -233,27 +233,27 @@ ti:date a owl:DatatypeProperty ;
   rdfs:domain :ProceduraDiRealizzazione ;
   rdfs:range xsd:date ;
   rdfs:comment ""@en ;
-  rdfs:comment "Questa proprietà indica la data effettiva di realizzazione dell'intervento"@it ;
-  rdfs:label "Data realizzazione intervento"@it ;
+  rdfs:comment "Questa proprietà indica la data effettiva in cui l'intervento è stato realizzato."@it ;
+  rdfs:label "Data effettiva realizzazione intervento"@it ;
   rdfs:label ""@en .
 
 :startDate a owl:DatatypeProperty ;
   rdfs:subPropertyOf ti:startTime ;
   rdfs:domain :ProceduraDiRealizzazione ;
-  rdfs:label "Data di inizio"@it ;
+  rdfs:label "Data di inizio intervento"@it ;
   rdfs:label "Start Date"@en ;
   rdfs:comment "The property that detemins the beginning date."@en ;
   rdfs:comment "La proprietà che determina la data effettiva di inizio dell'intervento."@en ;
   rdfs:range xsd:date .
 
-  :winDate a owl:DatatypeProperty ;
+  :dataAggiudicazioneAffidamento a owl:DatatypeProperty ;
     rdfs:subPropertyOf ti:date ;
     rdfs:domain :ProceduraDiRealizzazione ;
     rdfs:range xsd:date ;
-    rdfs:label "win date"@en ;
-    rdfs:label "data di aggiudicazione"@it ;
-    rdfs:comment "Proprietà che indica la data di aggiudicazione di un contratto a un offerente" @it ;
-    rdfs:comment "Property for date of contract award to a bidder." @en .
+    rdfs:label ""@en ;
+    rdfs:label "data di aggiudicazione/affidamento"@it ;
+    rdfs:comment "Proprietà che indica la data di aggiudicazione a un offerente o affidamento." @it ;
+    rdfs:comment "" @en .
 
   :publicationDate a owl:DatatypeProperty ;
     rdfs:subPropertyOf ti:issued ;
@@ -273,16 +273,13 @@ ti:date a owl:DatatypeProperty ;
     rdfs:comment "Proprietà che determina la data di scadenza del Bando/Avviso."@it ;
    rdfs:comment "The property that determines the expire date."@en .
 
-
-
-
    :CurrentEstimatedEndDate a owl:DatatypeProperty ;
      rdfs:subPropertyOf ti:endTime ;
      rdfs:domain :ProceduraDiRealizzazione ;
-     rdfs:label "data attualmente stimata realizzazione intervento"@it ;
+     rdfs:label "ultima data stimata realizzazione intervento"@it ;
      rdfs:label ""@en ;
-     rdfs:comment "The property that detemins the estimated end Date."@en ;
-     rdfs:comment "La proprietà che determina la data  stimata di fine lavori."@en ;
+     rdfs:comment "The property that detemins the estimated end date."@en ;
+     rdfs:comment "La proprietà che determina l'ultima data stimata per il completamento dell'intervento."@it ;
      rdfs:range xsd:date .
 
    :estimatedEndDate a owl:DatatypeProperty ;
@@ -292,7 +289,7 @@ ti:date a owl:DatatypeProperty ;
      rdfs:label "data stimata realizzazione intervento"@it ;
      rdfs:label ""@en ;
      rdfs:comment "The property that determines the estimated end date."@en ;
-     rdfs:comment "Questa proprietà determina la data stimata di realizzazione dell'intervento."@it .
+     rdfs:comment "Questa proprietà determina la data stimata di realizzazione dell'intervento, nell'ambito di una versione del quadro economico."@it .
 
   :additionalDays a owl:DatatypeProperty ;
     rdfs:subPropertyOf ti:duration ;
@@ -300,15 +297,15 @@ ti:date a owl:DatatypeProperty ;
     rdfs:range xsd:float ;
     rdfs:label "giorni aggiuntivi" @it ;
     rdfs:label "additional days" @en ;
-    rdfs:comment "The property that determines additional days needed in the variant."@en ;
-    rdfs:comment "Questa proprietà indica i giorni aggiuntivi necessari per la variante."@it.
+    rdfs:comment ""@en ;
+    rdfs:comment "Questa proprietà indica i giorni aggiuntivi necessari per il completamento dell'intervento, indicati nella variante."@it.
 
 :agreedPrice a owl:DatatypeProperty ;
-  rdfs:domain :ProceduraDiRealizzazione, :ContractNotice ;
+  rdfs:domain :ProceduraDiRealizzazione ;
   rdfs:range xsd:float ;
   rdfs:label "prezzo concordato"@it ;
   rdfs:label "agreed price"@en ;
-  rdfs:comment "La proprietà che determina il prezzo concordato (o importo di aggiudicazione) per la realizzazione dell'Intervento."@it ;
+  rdfs:comment "La proprietà che determina il prezzo concordato (anche detto importo di aggiudicazione, nel caso di gare con bando) per la realizzazione dell'intervento."@it ;
   rdfs:comment ""@en .
 
 :nonDiscountableSum a owl:DatatypeProperty ;
@@ -318,7 +315,6 @@ ti:date a owl:DatatypeProperty ;
   rdfs:label "sum of non-discountable money"@en ;
   rdfs:comment "The property that determines the amount of the starting price that  is not lowerable."@en ;
   rdfs:comment "La proprietà che determina la somma di denaro che non è ribassabile."@it .
-
 
 :reductionPercentage a owl:DatatypeProperty ;
   rdfs:domain :ProceduraDiRealizzazione ;
@@ -337,22 +333,12 @@ ti:date a owl:DatatypeProperty ;
   rdfs:comment "The property that determines the auction base amount."@en .
 
 :safetyAmount a owl:DatatypeProperty ;
-  rdfs:domain :ContractNotice ;
+  rdfs:domain :ProceduraDiRealizzazione ;
   rdfs:range xsd:float ;
   rdfs:label "importo sicurezza"@it ;
   rdfs:label "safety amount"@en ;
-  rdfs:comment "La proprietà che determina l'importo dedicato alla sicurezza stabilito nel lotto oppure nel bando"@it ;
-  rdfs:comment "The property that determines the amount of money to be spent for safety reason as stated in the lot or in the ContractNotice."@en .
-
-:awardAmount a owl:DatatypeProperty ;
-  rdfs:domain :ProceduraDiRealizzazione ;
-  rdfs:range xsd:float ;
-  rdfs:label "importo di aggiudicazione"@it ;
-  rdfs:label "award amount"@en ;
-  rdfs:comment "La proprietà che determina l'importo di aggiudicazione stabilito nel lotto"@it ;
-  rdfs:comment "The property that determines the award amount of money as stated in the Lot."@en .
-
-
+  rdfs:comment "La proprietà che determina l'importo stabilito destinato alla sicurezza."@it ;
+  rdfs:comment "The property that determines the amount of money to be spent for safety reason."@en .
 
 :variantType a owl:DatatypeProperty ;
   rdfs:domain :VariantDocument;
@@ -372,7 +358,13 @@ ti:date a owl:DatatypeProperty ;
   rdfs:comment "The property that links the contract variant to the identifier within the controlled vocabulary of variant reasons."@en .
 #TODO compilare vocabolario controllato delle motivazioni delle varianti
 
-
+:importoAggiuntivo a owl:DatatypeProperty ;
+  rdfs:domain :VariantDocument;
+  rdfs:range xsd:float ;
+  rdfs:label "importo aggiuntivo"@it ;
+  rdfs:label ""@en ;
+  rdfs:comment "Questa proprietà indica l'importo aggiuntivo, indicato nella variante, necessario per il completamento dell'intervento."@it ;
+  rdfs:comment ""@en .
 
 
 :cig a owl:DatatypeProperty ;
@@ -381,8 +373,8 @@ ti:date a owl:DatatypeProperty ;
   rdfs:range xsd:string ;
   rdfs:label "CIG"@it ;
   rdfs:label "CIG"@en ;
-  rdfs:comment "La proprietà che identifica Lotto (Subappalto o Bando) tramite un CIG (Codice Identificativo di Gara)."@it ;
-  rdfs:comment "The property that links a Lot with a CIG identifier."@en .
+  rdfs:comment "La proprietà che identifica la procedura di realizzazione tramite un CIG (Codice Identificativo di Gara)."@it ;
+  rdfs:comment ""@en .
 
   :cpv a owl:DatatypeProperty ;
     rdfs:subPropertyOf l0:identifier ;
@@ -391,8 +383,9 @@ ti:date a owl:DatatypeProperty ;
     rdfs:range xsd:string ;
     rdfs:label "cpv"@it ;
     rdfs:label "cpv"@en ;
-    rdfs:comment "La proprietà che classifica un Lotto (Subappalto o Bando) tramite un identificativo del vocabolario controllato dei CPV (Common Procurement Vocabulary)."@it ;
-    rdfs:comment "The property that links the Lot (Subcontract or ContractNotice) to the identifier within the controlled vocabulary of CPV (Common Procurement Vocabulary), code describing the main object of a public contract."@en .
+    rdfs:comment "La proprietà che classifica una procedura di realizzazione tramite un identificativo del vocabolario controllato dei CPV (Common Procurement Vocabulary)."@it ;
+    rdfs:comment "The property that links the Procedura di realizzazione to the identifier within the controlled vocabulary of CPV (Common Procurement Vocabulary), code describing the main object of a public contract."@en .
+#TODO completare il vocabolario controllato dei CPV aggiungendo le relazioni gerarchiche
 
 :modalitaSceltaContraente a owl:DatatypeProperty ;
   rdfs:subPropertyOf l0:identifier ;
@@ -401,6 +394,7 @@ ti:date a owl:DatatypeProperty ;
   rdfs:range xsd:string ;
   rdfs:label "modalità di scelta contraente"@it ;
   rdfs:label ""@en .
+#TODO compilare il vocabolario controllato delle modalità scelta contraente.
 
 :isSubcontractExpected a owl:DatatypeProperty ;
   rdfs:domain :ProceduraDiRealizzazione ;
@@ -409,51 +403,38 @@ ti:date a owl:DatatypeProperty ;
   rdfs:label "is subcontract expected"@en ;
   rdfs:comment "La proprietà che determina se è previsto un Subappalto."@it ;
   rdfs:comment "The property that determines if a subcontract is expected."@en .
-  ########################################################################################################################################
-  ########################################################################################################################################
 
-########################################################################################################################################
-:currentAmount a owl:DatatypeProperty ;
+:ultimoImportoProgetto a owl:DatatypeProperty ;
   rdfs:domain :ProceduraDiRealizzazione ;
   rdfs:range xsd:float ;
-  rdfs:label "importo attuale"@it ;
-  rdfs:label "current amount"@en ;
-  rdfs:comment "La proprietà che determina l'importo relativo al lotto"@it ;
-  rdfs:comment "The property that determines the current amount of money related to the Lot."@en .
-
-:netAmount a owl:DatatypeProperty ;
-  rdfs:domain :Contract ;
-  rdfs:range xsd:float ;
-  rdfs:label "ammontare netto"@it ;
-  rdfs:label "net amount"@en ;
-  rdfs:comment "The property that determines the net amount of the payment."@en ;
-  rdfs:comment "La proprietà che determina l'ammontare netto del pagamento."@it .
-
-
-
+  rdfs:label "ultimo importo progetto"@it ;
+  rdfs:label ""@en ;
+  rdfs:comment "La proprietà che determina l'importo previsto per la realizzazione dell'intervento, secondo l'ultima versione del quadro economico."@it ;
+  rdfs:comment ""@en .
 
 :importoProgetto a owl:DatatypeProperty ;
-  rdfs:domain :ProceduraDiRealizzazione ;
+  rdfs:domain :EconomicalFramework ;
   rdfs:range xsd:float ;
   rdfs:label "importo progetto"@it ;
-  rdfs:label "planning cost"@en ;
-  rdfs:comment "La proprietà che determina l'importo per il progetto del contratto."@it ;
-  rdfs:comment "The property that determines the planning cost of the lotto."@en .
-
-
-:actualPrice a owl:DatatypeProperty ;
-  rdfs:domain :ProceduraDiRealizzazione ;
-  rdfs:range xsd:float ;
-  rdfs:label "Importo conto finale"@it ;
-  rdfs:label "Actual price"@en ;
-rdfs:comment "The property that determines the final amount of money to be paid"@en ;
-  rdfs:comment "La proprietà che determina la somma di denaro finale che è dovuta"@it .
+  rdfs:label ""@en ;
+  rdfs:comment "La proprietà che determina l'importo previsto per la realizzazione dell'intervento, nell'ambito di una versione del quadro economico."@it ;
+  rdfs:comment ""@en .
 
 :importoLiquidato a owl:DatatypeProperty ;
-  rdfs:domain :ProceduraDiRealizzazione ;
+  rdfs:domain :EconomicalFramework ;
   rdfs:range xsd:float ;
   rdfs:label "Importo liquidato"@it ;
-  rdfs:label ""@en .
+  rdfs:label ""@en ;
+  rdfs:comment ""@en ;
+  rdfs:comment "La proprietà che indica l'importo che è stato liquidato, nell'ambito di una versione del quadro economico."@it .
+
+:ultimoImportoLiquidato a owl:DatatypeProperty ;
+  rdfs:domain :ProceduraDiRealizzazione ;
+  rdfs:range xsd:float ;
+  rdfs:label "Ultimo importo liquidato"@it ;
+  rdfs:label ""@en ;
+  rdfs:comment ""@en ;
+  rdfs:comment "La proprietà che indica la sommatoria degli importi liquidati per la realizzazione dell'intervento, secondo l'ultimo quadro economico aggiornato."@it .
 
 
 :specialSector a owl:DatatypeProperty ;
@@ -461,8 +442,8 @@ rdfs:comment "The property that determines the final amount of money to be paid"
   rdfs:range xsd:boolean ;
   rdfs:label "settore speciale"@it ;
   rdfs:label "special sector"@en ;
-  rdfs:comment "The property that determines wheter or not the Contract belongs to with a sector  that is considered special by DLGS 163/2006 Art3."@en ;
-  rdfs:comment "La proprietà che determina se un contratto appartiene a uno dei settori speciali definiti dal DLGS 163/2006 Art3."@it .
+  rdfs:comment ""@en ;
+  rdfs:comment "La proprietà che determina se una procedura di realizzazione appartiene a uno dei settori speciali definiti dal DLGS 163/2006 Art3."@it .
 
 #################################################################
 #    Classes
