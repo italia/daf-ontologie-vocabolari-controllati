@@ -1,0 +1,214 @@
+@prefix : <https://w3id.org/italia/onto/muapit/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix l0: <https://w3id.org/italia/onto/l0/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <https://w3id.org/italia/onto/l0/0.4/> .
+
+<https://w3id.org/italia/onto/l0/0.4/> rdf:type owl:Ontology ;
+                                       
+                                       rdfs:label "Measurement Unit Ontology"@en ,
+                                                  "Ontologia per le unità di misura"@it ;
+                                       
+                                       dct:modified "2018-03-03" ;
+                                       
+                                       dct:issued "2017-11-13"@en ;
+                                       
+                                       dc:creator "Agency for Digital Italy - AgID"@en ,
+                                                  "Institute of Cognitive Sciences and Technologies of the Italian Research Council (CNR) - Semantic Technology Laboratory (STLab)"@en ,
+                                                  "Italian Digital Transformation Team"@en ;
+                                       
+                                       owl:versionInfo "Version 0.1 - November 13 2017 - creation of the ontology"@en ,
+                                                       "Version 0.3 - March 03 2018 - use of https://w3id.org/italia/onto/MU/ as namespace."@en ;
+                                       
+                                       dc:creator "Agenzia per l'Italia Digitale - AgID"@it ,
+                                                  "Istituto di Scienze e Tecnologie della Cognizione del CNR - Semantic Technology Lab (STLab)"@it ;
+                                       
+                                       rdfs:comment "Questa è l'ontologia per la modellazione di valori e unità di misura"@it ;
+                                       
+                                       dc:creator "Team per la Trasformazione Digitale"@it ;
+                                       
+                                       owl:versionInfo "Versione 0.1 - 12 Novembre 2017 - creazione dell'ontologia"@it ,
+                                                       "Versione 0.3 - uso del namespace https://w3id.org/italia/onto/MU/"@it ;
+                                       
+                                       dct:license <https://creativecommons.org/licenses/by/4.0/> ;
+                                       
+                                       owl:imports <https://w3id.org/italia/onto/l0> ;
+                                       
+                                       rdfs:isDefinedBy : ;
+                                       
+                                       owl:versionIRI <https://w3id.org/italia/onto/muapit/0.2/> .
+
+
+#################################################################
+#
+#    Annotation properties
+#
+#################################################################
+
+
+###  http://purl.org/dc/elements/1.1/creator
+
+dc:creator rdf:type owl:AnnotationProperty .
+
+
+
+###  http://purl.org/dc/terms/issued
+
+dct:issued rdf:type owl:AnnotationProperty .
+
+
+
+###  http://purl.org/dc/terms/license
+
+dct:license rdf:type owl:AnnotationProperty .
+
+
+
+###  http://purl.org/dc/terms/modified
+
+dct:modified rdf:type owl:AnnotationProperty .
+
+
+
+
+
+#################################################################
+#
+#    Object Properties
+#
+#################################################################
+
+
+###  https://w3id.org/italia/onto/muapit/hasMeasurementUnit
+
+:hasMeasurementUnit rdf:type owl:ObjectProperty ;
+                    
+                    rdfs:label "has measurement unit" ,
+                               "ha unità di misura"@it ;
+                    
+                    rdfs:comment "Property that links an object that can be measured to its Measurement Unit."@en ,
+                                 "Proprietà che lega un valore osservato o un parametro di misurazione con la sua unità di misura."@it ;
+                    
+                    rdfs:isDefinedBy <http://dati.gov.it/onto/muapit> ;
+                    
+                    rdfs:domain owl:Thing ;
+                    
+                    rdfs:range :MeasurementUnit .
+
+
+
+###  https://w3id.org/italia/onto/muapit/isMeasurementUnitOf
+
+:isMeasurementUnitOf rdf:type owl:ObjectProperty ;
+                     
+                     rdfs:label "is measurement unit of"@en ,
+                                "è unità di misura di"@it ;
+                     
+                     rdfs:comment "Inverse object property of 'has measurement unit'."@en ,
+                                  "Object property inversa di 'ha unità di misura'."@it ;
+                     
+                     rdfs:isDefinedBy <http://dati.gov.it/onto/muapit> ;
+                     
+                     rdfs:range owl:Thing ;
+                     
+                     rdfs:domain :MeasurementUnit ;
+                     
+                     owl:inverseOf :hasMeasurementUnit .
+
+
+
+
+
+#################################################################
+#
+#    Data properties
+#
+#################################################################
+
+
+###  https://w3id.org/italia/onto/muapit/value
+
+:value rdf:type owl:DatatypeProperty ;
+       
+       rdfs:label "valore"@it ;
+       
+       rdfs:comment "This property represents a value. It can be the value of the observedValue or the value of the Measurement Capability."@en ,
+                    "Questa proprietà rappresenta un valore, il valore osservato e il valore di una capacità di misurazione."@it ;
+       
+       rdfs:isDefinedBy <http://dati.gov.it/onto/muapit> ;
+       
+       rdfs:range rdfs:Literal ;
+       
+       rdfs:domain owl:Thing .
+
+
+
+
+
+#################################################################
+#
+#    Classes
+#
+#################################################################
+
+
+###  https://w3id.org/italia/onto/l0/Characteristic
+
+l0:Characteristic rdf:type owl:Class .
+
+
+
+###  https://w3id.org/italia/onto/muapit/MeasurementUnit
+
+:MeasurementUnit rdf:type owl:Class ;
+                 
+                 rdfs:label "Measurement Unit"@en ,
+                            "Unità di Misura"@it ;
+                 
+                 rdfs:subClassOf l0:Characteristic ;
+                 
+                 rdfs:comment "This class is used to model a measurement unit (e.g., meter, kilometer, gram, etc.)"@en ,
+                              "Questa classe è utilizzata per rappresentare un'unità di misura (e.g., metro, chilometro, grammo, ecc.)."@it ;
+                 
+                 rdfs:isDefinedBy "https://w3id.org/italia/onto/muapit/"@it .
+
+
+
+###  https://w3id.org/italia/onto/muapit/Value
+
+:Value rdf:type owl:Class ;
+       
+       rdfs:subClassOf l0:Characteristic ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :hasMeasurementUnit ;
+                         owl:onClass :MeasurementUnit ;
+                         owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger
+                       ] ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :value ;
+                         owl:cardinality "1"^^xsd:nonNegativeInteger
+                       ] .
+
+
+
+
+
+#################################################################
+#
+#    Annotations
+#
+#################################################################
+
+
+<http://dati.gov.it/onto/muapit> rdfs:comment "This is the ontology used to represent valies and measurment units"@en .
+
+
+
+
+###  Generated by the OWL API (version 3.5.1) http://owlapi.sourceforge.net
+
