@@ -1,7 +1,7 @@
-@prefix : <http://dati.gov.it/onto/covapit#> .
+@prefix : <https://w3id.org/italia/onto/COV/> .
 @prefix dc: <http://purl.org/dc/elements/1.1/> .
-@prefix l0: <http://dati.gov.it/onto/l0/> .
-@prefix ti: <http://dati.gov.it/onto/tiapit/> .
+@prefix l0: <https://w3id.org/italia/onto/l0/> .
+@prefix ti: <https://w3id.org/italia/onto/COV/TI/> .
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -9,31 +9,31 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix roapit: <http://dati.gov.it/onto/roapit/> .
-@prefix smapit: <http://dati.gov.it/onto/smapit/> .
-@prefix clvapit: <http://dati.gov.it/onto/clvapit#> .
-@base <http://dati.gov.it/onto/covapit/> .
+@prefix roapit: <https://w3id.org/italia/onto/RO/> .
+@prefix smapit: <https://w3id.org/italia/onto/SM/> .
+@prefix clvapit: <https://w3id.org/italia/onto/CLV/> .
+@base <https://w3id.org/italia/onto/COV/> .
 
-<http://dati.gov.it/onto/covapit/> rdf:type owl:Ontology ;
+<https://w3id.org/italia/onto/COV> rdf:type owl:Ontology ;
                                     owl:versionIRI : ;
-                                    owl:imports ti: ,
-                                                clvapit: ,
-                                                l0: ,
-                                                roapit: ,
-                                                smapit: ;
+                                    owl:imports <https://w3id.org/italia/onto/COV/TI> ,
+                                                <https://w3id.org/italia/onto/CLV> ,
+                                                <https://w3id.org/italia/onto/l0> ,
+                                                <https://w3id.org/italia/onto/RO> ,
+                                                <https://w3id.org/italia/onto/SM> ;
                                     rdfs:comment "Questa è l'ontologia del profilo applicativo italiano sulle organizzazioni (pubbliche e private)"@en ;
                                     dct:issued "2017-07-20"^^xsd:date ;
                                     dc:creator "Institute of Cognitive Sciences and Technologies of the Italian Research Council (CNR) - Semantic Technology Laboratory (STLab)"@en ;
-                                    dct:modified "2018-02-23" ;
+                                    dct:modified "2018-03-03" ;
                                     rdfs:label "Organizzazioni (Pubbliche e Private)"@it ;
                                     dc:creator "Italian Digital Transformation Team"@en ;
-                                    owl:versionInfo "Version 0.9 - 23  February 2018 - deleted OrganizationTypology class as not required. Added new classes, object properties and data type properties for enabling the connection with controlled vocabularies that will be soon available"@en ;
+                                    owl:versionInfo "Version 0.10 - 03 March 2018 - migration to w3id.org/italia/onto"@en ;
                                     rdfs:comment "This is the ontology of the Italian application profile for Organizations (Public and Private)"@en ;
                                     dct:license <https://creativecommons.org/licenses/by/4.0/> ;
                                     rdfs:isDefinedBy <http://dati.gov.it/onto/covapit> ;
                                     rdfs:label "Organization (Private & Public)"@en ;
                                     prov:wasDerivedFrom : ;
-                                    owl:versionInfo "Versione 0.9 - 23 February 2017 - Cancellata classe OrganizationTypology perché non necessaria. Aggiunte nuove classi e proprietà per abilitare i collegamenti ai vocabolari controllati per le organizzazioni che sranno tutti presto disponibili"@it ;
+                                    owl:versionInfo "Versione 0.10 - 03 Marzo 2018 - Migrazione a w3id.org/italia/onto"@it ;
                                     dc:creator "Agency for Digital Italy - AgID"@en .
 
 #################################################################
@@ -73,7 +73,7 @@ clvapit:hasSpatialCoverage rdf:type owl:ObjectProperty ;
                            rdfs:isDefinedBy <http://dati.gov.it/onto/clvapit> .
 
 
-###  http://dati.gov.it/onto/covapit#actsOnBehalfOf
+###  https://w3id.org/italia/onto/COV/actsOnBehalfOf
 :actsOnBehalfOf rdf:type owl:ObjectProperty ;
                 rdfs:domain l0:Agent ;
                 rdfs:range l0:Agent ;
@@ -86,7 +86,7 @@ clvapit:hasSpatialCoverage rdf:type owl:ObjectProperty ;
                                 "stable"@en .
 
 
-###  http://dati.gov.it/onto/covapit#changedBy
+###  https://w3id.org/italia/onto/COV/changedBy
 :changedBy rdf:type owl:ObjectProperty ;
            owl:inverseOf :orginalOrganization ;
            rdfs:domain :Organization ;
@@ -100,7 +100,7 @@ clvapit:hasSpatialCoverage rdf:type owl:ObjectProperty ;
                            "stable"@en .
 
 
-###  http://dati.gov.it/onto/covapit#employmentFor
+###  https://w3id.org/italia/onto/COV/employmentFor
 :employmentFor rdf:type owl:ObjectProperty ;
                rdfs:domain :Employment ;
                rdfs:range :Organization ;
@@ -113,7 +113,7 @@ clvapit:hasSpatialCoverage rdf:type owl:ObjectProperty ;
                                "stable"@en .
 
 
-###  http://dati.gov.it/onto/covapit#follows
+###  https://w3id.org/italia/onto/COV/follows
 :follows rdf:type owl:ObjectProperty ,
                   owl:TransitiveProperty ;
          rdfs:domain :Organization ;
@@ -127,7 +127,7 @@ clvapit:hasSpatialCoverage rdf:type owl:ObjectProperty ;
                          "stable"@en .
 
 
-###  http://dati.gov.it/onto/covapit#hasActivityType
+###  https://w3id.org/italia/onto/COV/hasActivityType
 :hasActivityType rdf:type owl:ObjectProperty ;
                  rdfs:domain :Organization ;
                  rdfs:range :ActivityType ;
@@ -140,7 +140,7 @@ clvapit:hasSpatialCoverage rdf:type owl:ObjectProperty ;
                                  "unstable"@en .
 
 
-###  http://dati.gov.it/onto/covapit#hasBalanceSheet
+###  https://w3id.org/italia/onto/COV/hasBalanceSheet
 :hasBalanceSheet rdf:type owl:ObjectProperty ;
                  rdfs:domain :Organization ;
                  rdfs:range :BalanceSheet ;
@@ -153,7 +153,7 @@ clvapit:hasSpatialCoverage rdf:type owl:ObjectProperty ;
                                  "stable"@en .
 
 
-###  http://dati.gov.it/onto/covapit#hasCategory
+###  https://w3id.org/italia/onto/COV/hasCategory
 :hasCategory rdf:type owl:ObjectProperty ;
              rdfs:domain :PublicOrganization ;
              rdfs:range :PublicOrganizationCategory ;
@@ -166,7 +166,7 @@ clvapit:hasSpatialCoverage rdf:type owl:ObjectProperty ;
                              "stable"@en .
 
 
-###  http://dati.gov.it/onto/covapit#hasEInvoiceService
+###  https://w3id.org/italia/onto/COV/hasEInvoiceService
 :hasEInvoiceService rdf:type owl:ObjectProperty ;
                     rdfs:domain :Office ;
                     rdfs:range :eInvoiceService ;
@@ -179,7 +179,7 @@ clvapit:hasSpatialCoverage rdf:type owl:ObjectProperty ;
                                     "stable"@en .
 
 
-###  http://dati.gov.it/onto/covapit#hasLegalStatus
+###  https://w3id.org/italia/onto/COV/hasLegalStatus
 :hasLegalStatus rdf:type owl:ObjectProperty ;
                 rdfs:domain :Organization ;
                 rdfs:range :LegalStatus ;
@@ -192,7 +192,7 @@ clvapit:hasSpatialCoverage rdf:type owl:ObjectProperty ;
                                 "stable"@en .
 
 
-###  http://dati.gov.it/onto/covapit#hasLogo
+###  https://w3id.org/italia/onto/COV/hasLogo
 :hasLogo rdf:type owl:ObjectProperty ;
          rdfs:subPropertyOf smapit:hasImage ;
          rdfs:domain :Organization ;
@@ -206,7 +206,7 @@ clvapit:hasSpatialCoverage rdf:type owl:ObjectProperty ;
                          "stable"@en .
 
 
-###  http://dati.gov.it/onto/covapit#hasParticipationType
+###  https://w3id.org/italia/onto/COV/hasParticipationType
 :hasParticipationType rdf:type owl:ObjectProperty ;
                       rdfs:domain :Participation ;
                       rdfs:range :ParticipationType ;
@@ -219,7 +219,7 @@ clvapit:hasSpatialCoverage rdf:type owl:ObjectProperty ;
                                       "stable"@en .
 
 
-###  http://dati.gov.it/onto/covapit#hasSubOrganization
+###  https://w3id.org/italia/onto/COV/hasSubOrganization
 :hasSubOrganization rdf:type owl:ObjectProperty ;
                     owl:inverseOf :subOrganizationOf ;
                     rdfs:domain :Organization ;
@@ -233,7 +233,7 @@ clvapit:hasSpatialCoverage rdf:type owl:ObjectProperty ;
                                     "stable"@en .
 
 
-###  http://dati.gov.it/onto/covapit#hasSupportUnit
+###  https://w3id.org/italia/onto/COV/hasSupportUnit
 :hasSupportUnit rdf:type owl:ObjectProperty ;
                 owl:inverseOf :isSupportUnitOf ;
                 rdfs:domain :Organization ;
@@ -247,7 +247,7 @@ clvapit:hasSpatialCoverage rdf:type owl:ObjectProperty ;
                                 "stable"@en .
 
 
-###  http://dati.gov.it/onto/covapit#holdEmployment
+###  https://w3id.org/italia/onto/COV/holdEmployment
 :holdEmployment rdf:type owl:ObjectProperty ;
                 rdfs:domain l0:Agent ;
                 rdfs:range :Employment ;
@@ -260,7 +260,7 @@ clvapit:hasSpatialCoverage rdf:type owl:ObjectProperty ;
                                 "stable"@en .
 
 
-###  http://dati.gov.it/onto/covapit#isPartOf
+###  https://w3id.org/italia/onto/COV/isPartOf
 :isPartOf rdf:type owl:ObjectProperty ;
           rdfs:domain :Office ;
           rdfs:range :HomogeneousOrganizationalArea ;
@@ -273,7 +273,7 @@ clvapit:hasSpatialCoverage rdf:type owl:ObjectProperty ;
                           "unstable"@en .
 
 
-###  http://dati.gov.it/onto/covapit#isSupportUnitOf
+###  https://w3id.org/italia/onto/COV/isSupportUnitOf
 :isSupportUnitOf rdf:type owl:ObjectProperty ;
                  rdfs:domain :SupportUnit ;
                  rdfs:range :Organization ;
@@ -286,7 +286,7 @@ clvapit:hasSpatialCoverage rdf:type owl:ObjectProperty ;
                                  "stable"@en .
 
 
-###  http://dati.gov.it/onto/covapit#orginalOrganization
+###  https://w3id.org/italia/onto/COV/orginalOrganization
 :orginalOrganization rdf:type owl:ObjectProperty ;
                      rdfs:domain :ChangeEvent ;
                      rdfs:range :Organization ;
@@ -299,7 +299,7 @@ clvapit:hasSpatialCoverage rdf:type owl:ObjectProperty ;
                                      "stable"@en .
 
 
-###  http://dati.gov.it/onto/covapit#participated
+###  https://w3id.org/italia/onto/COV/participated
 :participated rdf:type owl:ObjectProperty ;
               rdfs:domain :Participation ;
               rdfs:range :Organization ;
@@ -312,7 +312,7 @@ clvapit:hasSpatialCoverage rdf:type owl:ObjectProperty ;
                               "unstable"@en .
 
 
-###  http://dati.gov.it/onto/covapit#participating
+###  https://w3id.org/italia/onto/COV/participating
 :participating rdf:type owl:ObjectProperty ;
                rdfs:domain :Organization ;
                rdfs:range :Participation ;
@@ -325,7 +325,7 @@ clvapit:hasSpatialCoverage rdf:type owl:ObjectProperty ;
                                "unstable"@en .
 
 
-###  http://dati.gov.it/onto/covapit#precedes
+###  https://w3id.org/italia/onto/COV/precedes
 :precedes rdf:type owl:ObjectProperty ,
                    owl:TransitiveProperty ;
           rdfs:domain :Organization ;
@@ -339,7 +339,7 @@ clvapit:hasSpatialCoverage rdf:type owl:ObjectProperty ;
                           "stable"@en .
 
 
-###  http://dati.gov.it/onto/covapit#resultedFrom
+###  https://w3id.org/italia/onto/COV/resultedFrom
 :resultedFrom rdf:type owl:ObjectProperty ;
               owl:inverseOf :resultingOrganization ;
               rdfs:domain :Organization ;
@@ -353,7 +353,7 @@ clvapit:hasSpatialCoverage rdf:type owl:ObjectProperty ;
                               "stable"@en .
 
 
-###  http://dati.gov.it/onto/covapit#resultingOrganization
+###  https://w3id.org/italia/onto/COV/resultingOrganization
 :resultingOrganization rdf:type owl:ObjectProperty ;
                        rdfs:domain :ChangeEvent ;
                        rdfs:range :Organization ;
@@ -366,7 +366,7 @@ clvapit:hasSpatialCoverage rdf:type owl:ObjectProperty ;
                                        "stable"@en .
 
 
-###  http://dati.gov.it/onto/covapit#subOrganizationOf
+###  https://w3id.org/italia/onto/COV/subOrganizationOf
 :subOrganizationOf rdf:type owl:ObjectProperty ;
                    rdfs:domain :Organization ;
                    rdfs:range :Organization ;
@@ -431,7 +431,7 @@ ti:hasPublicOrgActivityType rdf:type owl:ObjectProperty ;
 #    Data properties
 #################################################################
 
-###  http://dati.gov.it/onto/covapit#AOOIdentifier
+###  https://w3id.org/italia/onto/COV/AOOIdentifier
 :AOOIdentifier rdf:type owl:DatatypeProperty ;
                rdfs:subPropertyOf l0:identifier ;
                rdf:type owl:FunctionalProperty ;
@@ -446,7 +446,7 @@ ti:hasPublicOrgActivityType rdf:type owl:ObjectProperty ;
                                "stable"@en .
 
 
-###  http://dati.gov.it/onto/covapit#IPAcode
+###  https://w3id.org/italia/onto/COV/IPAcode
 :IPAcode rdf:type owl:DatatypeProperty ;
          rdfs:subPropertyOf l0:identifier ;
          rdf:type owl:FunctionalProperty ;
@@ -461,7 +461,7 @@ ti:hasPublicOrgActivityType rdf:type owl:ObjectProperty ;
                          "stable"@en .
 
 
-###  http://dati.gov.it/onto/covapit#REANumber
+###  https://w3id.org/italia/onto/COV/REANumber
 :REANumber rdf:type owl:DatatypeProperty ;
            rdfs:subPropertyOf l0:identifier ;
            rdfs:domain :PrivateOrganization ;
@@ -475,7 +475,7 @@ ti:hasPublicOrgActivityType rdf:type owl:ObjectProperty ;
                            "stable"@en .
 
 
-###  http://dati.gov.it/onto/covapit#VATnumber
+###  https://w3id.org/italia/onto/COV/VATnumber
 :VATnumber rdf:type owl:DatatypeProperty ;
            rdfs:subPropertyOf l0:identifier ;
            rdf:type owl:FunctionalProperty ;
@@ -490,7 +490,7 @@ ti:hasPublicOrgActivityType rdf:type owl:ObjectProperty ;
                            "stable"@en .
 
 
-###  http://dati.gov.it/onto/covapit#accreditationDate
+###  https://w3id.org/italia/onto/COV/accreditationDate
 :accreditationDate rdf:type owl:DatatypeProperty ;
                    rdfs:subPropertyOf ti:date ;
                    rdfs:domain :Organization ;
@@ -504,7 +504,7 @@ ti:hasPublicOrgActivityType rdf:type owl:ObjectProperty ;
                                    "stable"@en .
 
 
-###  http://dati.gov.it/onto/covapit#acronym
+###  https://w3id.org/italia/onto/COV/acronym
 :acronym rdf:type owl:DatatypeProperty ;
          rdfs:subPropertyOf l0:name ;
          rdf:type owl:FunctionalProperty ;
@@ -519,7 +519,7 @@ ti:hasPublicOrgActivityType rdf:type owl:ObjectProperty ;
                          "stable"@en .
 
 
-###  http://dati.gov.it/onto/covapit#altName
+###  https://w3id.org/italia/onto/COV/altName
 :altName rdf:type owl:DatatypeProperty ;
          rdfs:subPropertyOf l0:name ;
          rdfs:domain :Organization ;
@@ -533,7 +533,7 @@ ti:hasPublicOrgActivityType rdf:type owl:ObjectProperty ;
                          "stable"@en .
 
 
-###  http://dati.gov.it/onto/covapit#businessObjective
+###  https://w3id.org/italia/onto/COV/businessObjective
 :businessObjective rdf:type owl:DatatypeProperty ;
                    rdfs:domain :PrivateOrganization ;
                    rdfs:range rdfs:Literal ;
@@ -546,7 +546,7 @@ ti:hasPublicOrgActivityType rdf:type owl:ObjectProperty ;
                                    "unstable"@en .
 
 
-###  http://dati.gov.it/onto/covapit#eInvoiceServiceStartingDate
+###  https://w3id.org/italia/onto/COV/eInvoiceServiceStartingDate
 :eInvoiceServiceStartingDate rdf:type owl:DatatypeProperty ;
                              rdfs:subPropertyOf ti:date ;
                              rdfs:domain :eInvoiceService ;
@@ -560,7 +560,7 @@ ti:hasPublicOrgActivityType rdf:type owl:ObjectProperty ;
                                              "stable"@en .
 
 
-###  http://dati.gov.it/onto/covapit#foundationDate
+###  https://w3id.org/italia/onto/COV/foundationDate
 :foundationDate rdf:type owl:DatatypeProperty ;
                 rdfs:subPropertyOf ti:date ;
                 rdfs:domain :PrivateOrganization ;
@@ -574,7 +574,7 @@ ti:hasPublicOrgActivityType rdf:type owl:ObjectProperty ;
                                 "stable"@en .
 
 
-###  http://dati.gov.it/onto/covapit#legalName
+###  https://w3id.org/italia/onto/COV/legalName
 :legalName rdf:type owl:DatatypeProperty ;
            rdfs:subPropertyOf l0:name ;
            rdfs:domain :Organization ;
@@ -588,7 +588,7 @@ ti:hasPublicOrgActivityType rdf:type owl:ObjectProperty ;
                            "stable"@en .
 
 
-###  http://dati.gov.it/onto/covapit#mainFunction
+###  https://w3id.org/italia/onto/COV/mainFunction
 :mainFunction rdf:type owl:DatatypeProperty ;
               rdfs:domain :Organization ;
               rdfs:range rdfs:Literal ;
@@ -601,7 +601,7 @@ ti:hasPublicOrgActivityType rdf:type owl:ObjectProperty ;
                               "stable"@en .
 
 
-###  http://dati.gov.it/onto/covapit#officeIdentifier
+###  https://w3id.org/italia/onto/COV/officeIdentifier
 :officeIdentifier rdf:type owl:DatatypeProperty ;
                   rdfs:subPropertyOf l0:identifier ;
                   rdf:type owl:FunctionalProperty ;
@@ -616,7 +616,7 @@ ti:hasPublicOrgActivityType rdf:type owl:ObjectProperty ;
                                   "stable"@en .
 
 
-###  http://dati.gov.it/onto/covapit#participationPercentage
+###  https://w3id.org/italia/onto/COV/participationPercentage
 :participationPercentage rdf:type owl:DatatypeProperty ;
                          rdfs:domain :Participation ;
                          rdfs:range xsd:float ;
@@ -629,7 +629,7 @@ ti:hasPublicOrgActivityType rdf:type owl:ObjectProperty ;
                                          "stable"@en .
 
 
-###  http://dati.gov.it/onto/covapit#remuneration
+###  https://w3id.org/italia/onto/COV/remuneration
 :remuneration rdf:type owl:DatatypeProperty ;
               rdfs:domain :Employment ;
               rdfs:range xsd:double ;
@@ -642,7 +642,7 @@ ti:hasPublicOrgActivityType rdf:type owl:ObjectProperty ;
                               "stable"@en .
 
 
-###  http://dati.gov.it/onto/covapit#startingActivityDate
+###  https://w3id.org/italia/onto/COV/startingActivityDate
 :startingActivityDate rdf:type owl:DatatypeProperty ;
                       rdfs:subPropertyOf ti:date ;
                       rdfs:domain :PrivateOrganization ;
@@ -656,7 +656,7 @@ ti:hasPublicOrgActivityType rdf:type owl:ObjectProperty ;
                                       "unstable"@en .
 
 
-###  http://dati.gov.it/onto/covapit#taxCode
+###  https://w3id.org/italia/onto/COV/taxCode
 :taxCode rdf:type owl:DatatypeProperty ;
          rdfs:subPropertyOf l0:identifier ;
          rdf:type owl:FunctionalProperty ;
@@ -671,7 +671,7 @@ ti:hasPublicOrgActivityType rdf:type owl:ObjectProperty ;
                          "stable"@en .
 
 
-###  http://dati.gov.it/onto/covapit#taxCodeEInvoiceService
+###  https://w3id.org/italia/onto/COV/taxCodeEInvoiceService
 :taxCodeEInvoiceService rdf:type owl:DatatypeProperty ;
                         rdfs:subPropertyOf l0:identifier ;
                         rdf:type owl:FunctionalProperty ;
@@ -686,7 +686,7 @@ ti:hasPublicOrgActivityType rdf:type owl:ObjectProperty ;
                                         "stable"@en .
 
 
-###  http://dati.gov.it/onto/covapit#taxCodeValidationDate
+###  https://w3id.org/italia/onto/COV/taxCodeValidationDate
 :taxCodeValidationDate rdf:type owl:DatatypeProperty ;
                        rdfs:subPropertyOf ti:modified ;
                        rdfs:domain :eInvoiceService ;
@@ -700,7 +700,7 @@ ti:hasPublicOrgActivityType rdf:type owl:ObjectProperty ;
                                        "unstable"@en .
 
 
-###  http://dati.gov.it/onto/covapit#totalAmount
+###  https://w3id.org/italia/onto/COV/totalAmount
 :totalAmount rdf:type owl:DatatypeProperty ;
              rdfs:domain :BalanceSheet ;
              rdfs:range xsd:float ;
@@ -713,7 +713,7 @@ ti:hasPublicOrgActivityType rdf:type owl:ObjectProperty ;
                              "stable"@en .
 
 
-###  http://dati.gov.it/onto/covapit#totalTaxBurden
+###  https://w3id.org/italia/onto/COV/totalTaxBurden
 :totalTaxBurden rdf:type owl:DatatypeProperty ;
                 rdfs:domain :BalanceSheet ;
                 rdfs:range xsd:float ;
@@ -726,7 +726,7 @@ ti:hasPublicOrgActivityType rdf:type owl:ObjectProperty ;
                                 "unstable"@en .
 
 
-###  http://dati.gov.it/onto/covapit#yearOfReference
+###  https://w3id.org/italia/onto/COV/yearOfReference
 :yearOfReference rdf:type owl:DatatypeProperty ;
                  rdfs:domain :BalanceSheet ;
                  rdfs:range xsd:gYear ;
@@ -798,7 +798,7 @@ ti:modified rdf:type owl:DatatypeProperty ;
 #    Classes
 #################################################################
 
-###  http://dati.gov.it/onto/covapit#ActivityType
+###  https://w3id.org/italia/onto/COV/ActivityType
 :ActivityType rdf:type owl:Class ;
               rdfs:subClassOf l0:Characteristic ;
               rdfs:comment "Questa classe rappresenta il tipo di attiità svolta dall'organizzazione. Le istanze di questa classe possono essere rappresentate come concetti dello standard skos di un vocabolario controllato. Nel caso di organizzazioni private (impresa) è necessario utilizzare la classificazione delle attività ATECO. Nel caso di organizzazioni pubbliche si può utilizzare la classificazione COFOG."@it ,
@@ -811,7 +811,7 @@ ti:modified rdf:type owl:DatatypeProperty ;
               prov:wasDerivedFrom <http://www.w3.org/2004/02/skos/core#Concept> .
 
 
-###  http://dati.gov.it/onto/covapit#BalanceSheet
+###  https://w3id.org/italia/onto/COV/BalanceSheet
 :BalanceSheet rdf:type owl:Class ;
               rdfs:subClassOf l0:Object ,
                               [ rdf:type owl:Restriction ;
@@ -836,7 +836,7 @@ ti:modified rdf:type owl:DatatypeProperty ;
                               "unstable"@en .
 
 
-###  http://dati.gov.it/onto/covapit#ChangeEvent
+###  https://w3id.org/italia/onto/COV/ChangeEvent
 :ChangeEvent rdf:type owl:Class ;
              rdfs:subClassOf l0:Event ,
                              [ rdf:type owl:Restriction ;
@@ -862,7 +862,7 @@ ti:modified rdf:type owl:DatatypeProperty ;
              prov:wasInfluencedBy <http://www.ontologydesignpatterns.org/cp/owl/classification.owl> .
 
 
-###  http://dati.gov.it/onto/covapit#Closing
+###  https://w3id.org/italia/onto/COV/Closing
 :Closing rdf:type owl:Class ;
          rdfs:subClassOf :ChangeEvent ;
          rdfs:comment "Questa classe rappresenta un evento di Chiusra per un'organizzazione."@it ,
@@ -874,7 +874,7 @@ ti:modified rdf:type owl:DatatypeProperty ;
                          "stable"@en .
 
 
-###  http://dati.gov.it/onto/covapit#Employment
+###  https://w3id.org/italia/onto/COV/Employment
 :Employment rdf:type owl:Class ;
             rdfs:subClassOf roapit:TimeIndexedRole ,
                             [ rdf:type owl:Restriction ;
@@ -908,7 +908,7 @@ ti:modified rdf:type owl:DatatypeProperty ;
                                  <http://www.w3.org/ns/org#Membership> .
 
 
-###  http://dati.gov.it/onto/covapit#Foundation
+###  https://w3id.org/italia/onto/COV/Foundation
 :Foundation rdf:type owl:Class ;
             rdfs:subClassOf :ChangeEvent ;
             rdfs:comment "Questa classe rappresenta un evento di costituzione di un'organizzazione."@it ,
@@ -921,7 +921,7 @@ ti:modified rdf:type owl:DatatypeProperty ;
             prov:wasDerivedFrom <http://data.europa.eu/m8g/FoundationEvent> .
 
 
-###  http://dati.gov.it/onto/covapit#Group
+###  https://w3id.org/italia/onto/COV/Group
 :Group rdf:type owl:Class ;
        rdfs:subClassOf l0:Agent ;
        owl:disjointWith :Organization ;
@@ -935,7 +935,7 @@ ti:modified rdf:type owl:DatatypeProperty ;
        prov:wasDerivedFrom <http://xmlns.com/foaf/0.1/Group> .
 
 
-###  http://dati.gov.it/onto/covapit#HomogeneousOrganizationalArea
+###  https://w3id.org/italia/onto/COV/HomogeneousOrganizationalArea
 :HomogeneousOrganizationalArea rdf:type owl:Class ;
                                rdfs:subClassOf :SupportUnit ,
                                                [ rdf:type owl:Restriction ;
@@ -952,7 +952,7 @@ ti:modified rdf:type owl:DatatypeProperty ;
                                                "stable"@en .
 
 
-###  http://dati.gov.it/onto/covapit#LegalStatus
+###  https://w3id.org/italia/onto/COV/LegalStatus
 :LegalStatus rdf:type owl:Class ;
              rdfs:subClassOf l0:Characteristic ;
              l0:controlledvocabulary <http://w3id.org/italia/controlled-vocabulary/organization/OrganizationLegalStatus> ;
@@ -966,7 +966,7 @@ ti:modified rdf:type owl:DatatypeProperty ;
              prov:wasDerivedFrom <http://www.w3.org/2004/02/skos/core#Concept> .
 
 
-###  http://dati.gov.it/onto/covapit#Merger
+###  https://w3id.org/italia/onto/COV/Merger
 :Merger rdf:type owl:Class ;
         rdfs:subClassOf :ChangeEvent ;
         rdfs:comment "Questa classe rappresenta un evento di fusione per un'organizzazione."@it ,
@@ -978,7 +978,7 @@ ti:modified rdf:type owl:DatatypeProperty ;
                         "stable"@en .
 
 
-###  http://dati.gov.it/onto/covapit#Office
+###  https://w3id.org/italia/onto/COV/Office
 :Office rdf:type owl:Class ;
         rdfs:subClassOf :SupportUnit ,
                         [ rdf:type owl:Restriction ;
@@ -1004,7 +1004,7 @@ ti:modified rdf:type owl:DatatypeProperty ;
                         "stable"@en .
 
 
-###  http://dati.gov.it/onto/covapit#Organization
+###  https://w3id.org/italia/onto/COV/Organization
 :Organization rdf:type owl:Class ;
               rdfs:subClassOf l0:Agent ,
                               [ rdf:type owl:Restriction ;
@@ -1092,7 +1092,7 @@ ti:modified rdf:type owl:DatatypeProperty ;
               prov:wasInfluencedBy <http://www.ontologydesignpatterns.org/cp/owl/classification.owl> .
 
 
-###  http://dati.gov.it/onto/covapit#Participation
+###  https://w3id.org/italia/onto/COV/Participation
 :Participation rdf:type owl:Class ;
                rdfs:subClassOf l0:Event ,
                                [ rdf:type owl:Restriction ;
@@ -1125,7 +1125,7 @@ ti:modified rdf:type owl:DatatypeProperty ;
                prov:wasInfluencedBy <http://www.ontologydesignpatterns.org/cp/owl/timeindexedsituation.owl> .
 
 
-###  http://dati.gov.it/onto/covapit#ParticipationType
+###  https://w3id.org/italia/onto/COV/ParticipationType
 :ParticipationType rdf:type owl:Class ;
                    rdfs:subClassOf l0:Characteristic ;
                    rdfs:comment "Questa classe rappresenta il tipo di partecipazione di un'organizzazione in un'altra. Essa assume al momento due valori \"Diretta\" e \"Indiretta\"."@it ,
@@ -1137,7 +1137,7 @@ ti:modified rdf:type owl:DatatypeProperty ;
                                    "stable"@en .
 
 
-###  http://dati.gov.it/onto/covapit#PrivateOrganization
+###  https://w3id.org/italia/onto/COV/PrivateOrganization
 :PrivateOrganization rdf:type owl:Class ;
                      rdfs:subClassOf :Organization ,
                                      [ rdf:type owl:Restriction ;
@@ -1172,7 +1172,7 @@ ti:modified rdf:type owl:DatatypeProperty ;
                      prov:wasInfluencedBy <http://www.w3.org/ns/regorg#RegisteredOrganization> .
 
 
-###  http://dati.gov.it/onto/covapit#PublicOrganization
+###  https://w3id.org/italia/onto/COV/PublicOrganization
 :PublicOrganization rdf:type owl:Class ;
                     rdfs:subClassOf :Organization ,
                                     [ rdf:type owl:Restriction ;
@@ -1200,7 +1200,7 @@ This class is derived from the Core Public Organization Vocabulary."""@en ;
                     prov:wasDerivedFrom <http://data.europa.eu/m8g/PublicOrganisation> .
 
 
-###  http://dati.gov.it/onto/covapit#PublicOrganizationCategory
+###  https://w3id.org/italia/onto/COV/PublicOrganizationCategory
 :PublicOrganizationCategory rdf:type owl:Class ;
                             rdfs:subClassOf l0:Characteristic ;
                             l0:controlledvocabulary <http://w3id..org/italia/controlled-vocabulary/organization/S13> ;
@@ -1214,7 +1214,7 @@ This class is derived from the Core Public Organization Vocabulary."""@en ;
                             prov:wasDerivedFrom <http://www.w3.org/2004/02/skos/core#Concept> .
 
 
-###  http://dati.gov.it/onto/covapit#PublicPrivateOrganization
+###  https://w3id.org/italia/onto/COV/PublicPrivateOrganization
 :PublicPrivateOrganization rdf:type owl:Class ;
                            rdfs:subClassOf :Organization ;
                            rdfs:comment "Questa classe rappresenta organizzazioni miste pubblico-private."@it ,
@@ -1226,7 +1226,7 @@ This class is derived from the Core Public Organization Vocabulary."""@en ;
                                            "unstable"@en .
 
 
-###  http://dati.gov.it/onto/covapit#Replacement
+###  https://w3id.org/italia/onto/COV/Replacement
 :Replacement rdf:type owl:Class ;
              rdfs:subClassOf :ChangeEvent ;
              rdfs:comment "Questa classe rappresenta un evento di sostituzione per un'organizzazione. Come la sostituzione di una pubblica amministrazioe con un'altra."@it ,
@@ -1238,7 +1238,7 @@ This class is derived from the Core Public Organization Vocabulary."""@en ;
                              "stable"@en .
 
 
-###  http://dati.gov.it/onto/covapit#Scission
+###  https://w3id.org/italia/onto/COV/Scission
 :Scission rdf:type owl:Class ;
           rdfs:subClassOf :ChangeEvent ;
           rdfs:comment "Questa classe rappresenta una scissione per un'organizzaizone."@it ,
@@ -1250,7 +1250,7 @@ This class is derived from the Core Public Organization Vocabulary."""@en ;
                           "stable"@en .
 
 
-###  http://dati.gov.it/onto/covapit#Status
+###  https://w3id.org/italia/onto/COV/Status
 :Status rdf:type owl:Class ;
         rdfs:subClassOf l0:Characteristic ;
         rdfs:comment "Questa classe rappresenta lo stato di un'organizzazione privata (impresa). Essa assume i seguenti valori predefiniti: \"registrata\" \"cancellata\" \"in fase di registrazione\"."@it ,
@@ -1262,7 +1262,7 @@ This class is derived from the Core Public Organization Vocabulary."""@en ;
                         "unstable"@en .
 
 
-###  http://dati.gov.it/onto/covapit#SupportUnit
+###  https://w3id.org/italia/onto/COV/SupportUnit
 :SupportUnit rdf:type owl:Class ;
              rdfs:subClassOf :Organization ;
              rdfs:comment "Questa classe rappresenta una generica unità di supporto o unità/divisione dell'organizzazione. Un nome alternativo potrebbe essere anche Dipartimento. Essa, nel contesto italiano, si suddivide in due tipologie di unità di supporto: Area Organizzativa Omogena e Ufficio (unità organizzativa). Questa è una classe astratta istanziata nei dati con i due precedenti tipi."@it ,
@@ -1275,7 +1275,7 @@ This class is derived from the Core Public Organization Vocabulary."""@en ;
              prov:wasInfluencedBy <http://www.w3.org/ns/org#OrganizationalUnit> .
 
 
-###  http://dati.gov.it/onto/covapit#eInvoiceService
+###  https://w3id.org/italia/onto/COV/eInvoiceService
 :eInvoiceService rdf:type owl:Class ;
                  rdfs:subClassOf l0:Object ,
                                  [ rdf:type owl:Restriction ;
@@ -1385,52 +1385,52 @@ ti:TimeInterval rdf:type owl:Class ;
 #    Individuals
 #################################################################
 
-###  http://dati.gov.it/onto/covapit#Cancelled
+###  https://w3id.org/italia/onto/COV/Cancelled
 :Cancelled rdf:type owl:NamedIndividual ,
                     :Status .
 
 
-###  http://dati.gov.it/onto/covapit#Direct
+###  https://w3id.org/italia/onto/COV/Direct
 :Direct rdf:type owl:NamedIndividual ,
                  :ParticipationType .
 
 
-###  http://dati.gov.it/onto/covapit#Facebook
+###  https://w3id.org/italia/onto/COV/Facebook
 :Facebook rdf:type owl:NamedIndividual ;
           rdfs:isDefinedBy <http://dati.gov.it/onto/covapit/> .
 
 
-###  http://dati.gov.it/onto/covapit#GooglePlus
+###  https://w3id.org/italia/onto/COV/GooglePlus
 :GooglePlus rdf:type owl:NamedIndividual ;
             rdfs:isDefinedBy <http://dati.gov.it/onto/covapit/> .
 
 
-###  http://dati.gov.it/onto/covapit#Indirect
+###  https://w3id.org/italia/onto/COV/Indirect
 :Indirect rdf:type owl:NamedIndividual ,
                    :ParticipationType .
 
 
-###  http://dati.gov.it/onto/covapit#LinkedIn
+###  https://w3id.org/italia/onto/COV/LinkedIn
 :LinkedIn rdf:type owl:NamedIndividual ;
           rdfs:isDefinedBy <http://dati.gov.it/onto/covapit/> .
 
 
-###  http://dati.gov.it/onto/covapit#Registered
+###  https://w3id.org/italia/onto/COV/Registered
 :Registered rdf:type owl:NamedIndividual ,
                      :Status .
 
 
-###  http://dati.gov.it/onto/covapit#Twitter
+###  https://w3id.org/italia/onto/COV/Twitter
 :Twitter rdf:type owl:NamedIndividual ;
          rdfs:isDefinedBy <http://dati.gov.it/onto/covapit/> .
 
 
-###  http://dati.gov.it/onto/covapit#UnderRegistration
+###  https://w3id.org/italia/onto/COV/UnderRegistration
 :UnderRegistration rdf:type owl:NamedIndividual ,
                             :Status .
 
 
-###  http://dati.gov.it/onto/covapit#YouTube
+###  https://w3id.org/italia/onto/COV/YouTube
 :YouTube rdf:type owl:NamedIndividual ;
          rdfs:isDefinedBy <http://dati.gov.it/onto/covapit/> .
 

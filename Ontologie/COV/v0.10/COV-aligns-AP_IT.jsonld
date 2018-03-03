@@ -1,11 +1,10 @@
 {
   "@context": {
-    "clvapit": "http://dati.gov.it/onto/clvapit#",
-    "covapit": "http://dati.gov.it/onto/covapit#",
+    "clvapit": "https://w3id.org/italia/onto/CLV/",
+    "covapit": "https://w3id.org/italia/onto/COV/",
     "cpov": "http://data.europa.eu/m8g/",
-    "cpvapit": "http://dati.gov.it/onto/cpvapit/",
+    "cpvapit": "https://w3id.org/italia/onto/CPV/",
     "dc": "http://purl.org/dc/elements/1.1/",
-    "dct": "http://purl.org/dc/terms/",
     "dcterms": "http://purl.org/dc/terms/",
     "dul": "http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#",
     "foaf": "http://xmlns.com/foaf/0.1/",
@@ -23,29 +22,42 @@
   "@graph": [
     {
       "@id": "org:unitOf",
-      "@type": "owl:ObjectProperty"
+      "@type": "owl:ObjectProperty",
+      "owl:equivalentProperty": {
+        "@id": "covapit:isSupportUnitOf"
+      }
     },
     {
       "@id": "org:classification",
-      "@type": "owl:ObjectProperty"
+      "@type": "owl:ObjectProperty",
+      "owl:equivalentProperty": {
+        "@id": "covapit:hasCategory"
+      }
     },
     {
       "@id": "org:reportsTo",
       "@type": "owl:ObjectProperty"
     },
     {
-      "@id": "covapit:isSupportUnitOf",
-      "@type": "owl:ObjectProperty",
-      "owl:equivalentProperty": {
-        "@id": "org:unitOf"
-      },
+      "@id": "covapit:legalName",
+      "@type": "owl:DatatypeProperty",
       "rdfs:isDefinedBy": {
         "@id": "covapit:"
+      },
+      "rdfs:subPropertyOf": {
+        "@id": "skos:prefLabel"
       }
     },
     {
-      "@id": "org:hasUnit",
-      "@type": "owl:ObjectProperty"
+      "@id": "foaf:Group",
+      "@type": "owl:Class",
+      "owl:equivalentClass": {
+        "@id": "covapit:Group"
+      }
+    },
+    {
+      "@id": "org:OrganizationalUnit",
+      "@type": "owl:Class"
     },
     {
       "@id": "skos:altLabel",
@@ -53,18 +65,21 @@
     },
     {
       "@id": "org:hasSubOrganization",
-      "@type": "owl:ObjectProperty"
+      "@type": "owl:ObjectProperty",
+      "owl:equivalentProperty": {
+        "@id": "covapit:hasSubOrganization"
+      }
     },
     {
       "@id": "org:resultingOrganization",
-      "@type": "owl:ObjectProperty"
+      "@type": "owl:ObjectProperty",
+      "owl:equivalentProperty": {
+        "@id": "covapit:resultingOrganization"
+      }
     },
     {
       "@id": "covapit:hasLegalStatusDesc",
       "@type": "owl:DatatypeProperty",
-      "rdfs:equivalentProperty": {
-        "@id": "skos:prefLabel"
-      },
       "rdfs:isDefinedBy": {
         "@id": "covapit:"
       }
@@ -72,9 +87,6 @@
     {
       "@id": "covapit:changedBy",
       "@type": "owl:ObjectProperty",
-      "owl:equivalentProperty": {
-        "@id": "org:changedBy"
-      },
       "rdfs:isDefinedBy": {
         "@id": "covapit:"
       }
@@ -100,42 +112,19 @@
       }
     },
     {
-      "@id": "http://dati.gov.it/onto/covapit-aligns/",
-      "@type": "owl:Ontology",
-      "dc:creator": [
-        {
-          "@language": "en",
-          "@value": "Italian Digital Transformation Team"
-        },
-        {
-          "@language": "en",
-          "@value": "Institute of Cognitive Sciences and Technologies of the Italian Research Council (CNR) - Semantic Technology Laboratory (STLab)"
-        },
-        {
-          "@language": "en",
-          "@value": "Agency for Digital Italy - AgID"
-        }
-      ],
-      "dc:modified": {
-        "@type": "xsd:date",
-        "@value": "2017-09-28"
+      "@id": "covapit:Organization",
+      "@type": "owl:Class",
+      "rdfs:isDefinedBy": {
+        "@id": "covapit:"
       },
-      "dc:title": [
+      "rdfs:subClassOf": [
         {
-          "@language": "en",
-          "@value": "These are the alignments to external ontologies widely used and available at the state of the art"
+          "@id": "org:Organization"
         },
         {
-          "@language": "it",
-          "@value": "Questi sono gli allineamenti dell'ontologia sulle organizzazioni (pubbliche, private) Core Organization Vocabulary - Italian Application Profile  (COV-AP_IT) verso ontologie esterne del Web semantico standard e ampiamente utilizzate."
+          "@id": "schema:Organization"
         }
-      ],
-      "owl:imports": {
-        "@id": "http://dati.gov.it/onto/covapit/0.7"
-      },
-      "owl:versionIRI": {
-        "@id": "http://dati.gov.it/onto/covapit-aligns/0.1"
-      }
+      ]
     },
     {
       "@id": "org:Organization",
@@ -143,22 +132,32 @@
     },
     {
       "@id": "org:orginalOrganization",
-      "@type": "owl:ObjectProperty"
+      "@type": "owl:ObjectProperty",
+      "owl:equivalentProperty": {
+        "@id": "covapit:originalOrganization"
+      }
     },
     {
-      "@id": "foaf:Group",
-      "@type": "owl:Class"
+      "@id": "org:hasUnit",
+      "@type": "owl:ObjectProperty",
+      "owl:equivalentProperty": {
+        "@id": "covapit:hasSupportUnit"
+      }
     },
     {
       "@id": "org:ChangeEvent",
       "@type": "owl:Class"
     },
     {
+      "@id": "covapit:subOrganizationOf",
+      "@type": "owl:ObjectProperty",
+      "rdfs:isDefinedBy": {
+        "@id": "covapit:"
+      }
+    },
+    {
       "@id": "covapit:hasLogo",
       "@type": "owl:ObjectProperty",
-      "owl:equivalentClass": {
-        "@id": "schema:logo"
-      },
       "rdfs:isDefinedBy": {
         "@id": "covapit:"
       }
@@ -172,15 +171,8 @@
       "@type": "owl:Class"
     },
     {
-      "@id": "skos:prefLabel",
-      "@type": "owl:DatatypeProperty"
-    },
-    {
       "@id": "covapit:hasPrivateOrgActivityType",
       "@type": "owl:ObjectProperty",
-      "owl:equivalentProperty": {
-        "@id": "org:purpose"
-      },
       "rdfs:isDefinedBy": {
         "@id": "covapit:"
       }
@@ -188,9 +180,6 @@
     {
       "@id": "covapit:Foundation",
       "@type": "owl:Class",
-      "owl:equivalentClass": {
-        "@id": "cpov:FoundationEvent"
-      },
       "rdfs:isDefinedBy": {
         "@id": "covapit:"
       }
@@ -198,9 +187,6 @@
     {
       "@id": "covapit:ActivityType",
       "@type": "owl:Class",
-      "rdfs:equivalentClass": {
-        "@id": "skos:Concept"
-      },
       "rdfs:isDefinedBy": {
         "@id": "covapit:"
       }
@@ -208,57 +194,79 @@
     {
       "@id": "covapit:originalOrganization",
       "@type": "owl:ObjectProperty",
-      "owl:equivalentProperty": {
-        "@id": "org:orginalOrganization"
-      },
       "rdfs:isDefinedBy": {
         "@id": "covapit:"
       }
     },
     {
-      "@id": "org:OrganizationalUnit",
-      "@type": "owl:Class"
-    },
-    {
-      "@id": "covapit:hasSubOrganization",
-      "@type": "owl:ObjectProperty",
-      "owl:equivalentProperty": {
-        "@id": "org:hasSubOrganization"
-      },
+      "@id": "covapit:Group",
+      "@type": "owl:Class",
       "rdfs:isDefinedBy": {
         "@id": "covapit:"
       }
     },
     {
       "@id": "org:subOrganizationOf",
-      "@type": "owl:ObjectProperty"
+      "@type": "owl:ObjectProperty",
+      "owl:equivalentProperty": {
+        "@id": "covapit:subOrganizationOf"
+      }
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/COV-aligns/",
+      "@type": "owl:Ontology",
+      "dc:creator": [
+        {
+          "@language": "en",
+          "@value": "Agency for Digital Italy - AgID"
+        },
+        {
+          "@language": "en",
+          "@value": "Italian Digital Transformation Team"
+        },
+        {
+          "@language": "en",
+          "@value": "Institute of Cognitive Sciences and Technologies of the Italian Research Council (CNR) - Semantic Technology Laboratory (STLab)"
+        }
+      ],
+      "dc:modified": {
+        "@type": "xsd:date",
+        "@value": "2018-03-03"
+      },
+      "dc:title": [
+        {
+          "@language": "it",
+          "@value": "Questi sono gli allineamenti dell'ontologia sulle organizzazioni (pubbliche, private) Core Organization Vocabulary - Italian Application Profile  (COV-AP_IT) verso ontologie esterne del Web semantico standard e ampiamente utilizzate."
+        },
+        {
+          "@language": "en",
+          "@value": "These are the alignments to external ontologies widely used and available at the state of the art"
+        }
+      ],
+      "owl:imports": {
+        "@id": "https://w3id.org/italia/onto/COV"
+      },
+      "owl:versionIRI": {
+        "@id": "http://dati.gov.it/onto/covapit-aligns/0.10"
+      }
     },
     {
       "@id": "covapit:hasLegalStatusCode",
       "@type": "owl:DatatypeProperty",
-      "rdfs:equivalentProperty": {
-        "@id": "skos:notation"
-      },
       "rdfs:isDefinedBy": {
         "@id": "covapit:"
       }
     },
     {
-      "@id": "covapit:legalName",
-      "@type": "owl:DatatypeProperty",
+      "@id": "covapit:isSupportUnitOf",
+      "@type": "owl:ObjectProperty",
       "rdfs:isDefinedBy": {
         "@id": "covapit:"
-      },
-      "rdfs:subPropertyOf": {
-        "@id": "skos:prefLabel"
       }
     },
     {
       "@id": "covapit:hasCategory",
       "@type": "owl:ObjectProperty",
-      "owl:equivalentProperty": {
-        "@id": "org:classification"
-      },
       "rdfs:isDefinedBy": {
         "@id": "covapit:"
       }
@@ -278,30 +286,19 @@
       "@type": "owl:DatatypeProperty"
     },
     {
-      "@id": "covapit:Organization",
-      "@type": "owl:Class",
-      "rdfs:isDefinedBy": {
-        "@id": "covapit:"
-      },
-      "rdfs:subClassOf": [
-        {
-          "@id": "org:Organization"
-        },
-        {
-          "@id": "schema:Organization"
-        }
-      ]
+      "@id": "skos:prefLabel",
+      "@type": "owl:DatatypeProperty"
     },
     {
       "@id": "org:resultedFrom",
-      "@type": "owl:ObjectProperty"
+      "@type": "owl:ObjectProperty",
+      "owl:equivalentProperty": {
+        "@id": "covapit:resultedFrom"
+      }
     },
     {
       "@id": "covapit:resultedFrom",
       "@type": "owl:ObjectProperty",
-      "owl:equivalentProperty": {
-        "@id": "org:resultedFrom"
-      },
       "rdfs:isDefinedBy": {
         "@id": "covapit:"
       }
@@ -309,9 +306,6 @@
     {
       "@id": "covapit:hasSupportUnit",
       "@type": "owl:ObjectProperty",
-      "owl:equivalentProperty": {
-        "@id": "org:hasUnit"
-      },
       "rdfs:isDefinedBy": {
         "@id": "covapit:"
       }
@@ -319,9 +313,6 @@
     {
       "@id": "covapit:hasPublicOrgActivityType",
       "@type": "owl:ObjectProperty",
-      "owl:equivalentProperty": {
-        "@id": "org:purpose"
-      },
       "rdfs:isDefinedBy": {
         "@id": "covapit:"
       }
@@ -333,23 +324,20 @@
     {
       "@id": "covapit:LegalStatus",
       "@type": "owl:Class",
-      "rdfs:equivalentClass": {
-        "@id": "skos:Concept"
-      },
       "rdfs:isDefinedBy": {
         "@id": "covapit:"
       }
     },
     {
       "@id": "cpov:FoundationEvent",
-      "@type": "owl:Class"
+      "@type": "owl:Class",
+      "owl:equivalentClass": {
+        "@id": "covapit:Foundation"
+      }
     },
     {
       "@id": "covapit:PublicOrgActivityType",
       "@type": "owl:Class",
-      "rdfs:equivalentClass": {
-        "@id": "skos:Concept"
-      },
       "rdfs:isDefinedBy": {
         "@id": "covapit:"
       }
@@ -367,75 +355,6 @@
     {
       "@id": "covapit:hasActivityType",
       "@type": "owl:ObjectProperty",
-      "owl:equivalentProperty": {
-        "@id": "org:purpose"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "covapit:"
-      }
-    },
-    {
-      "@id": "org:purpose",
-      "@type": "owl:ObjectProperty"
-    },
-    {
-      "@id": "covapit:SupportUnit",
-      "@type": "owl:Class",
-      "rdfs:isDefinedBy": {
-        "@id": "covapit:"
-      },
-      "rdfs:subClassOf": {
-        "@id": "org:OrganizationalUnit"
-      }
-    },
-    {
-      "@id": "covapit:PublicOrganizationCategory",
-      "@type": "owl:Class",
-      "rdfs:equivalentClass": {
-        "@id": "skos:Concept"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "covapit:"
-      }
-    },
-    {
-      "@id": "covapit:subOrganizationOf",
-      "@type": "owl:ObjectProperty",
-      "owl:equivalentProperty": {
-        "@id": "org:subOrganizationOf"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "covapit:"
-      }
-    },
-    {
-      "@id": "org:changedBy",
-      "@type": "owl:ObjectProperty"
-    },
-    {
-      "@id": "covapit:Group",
-      "@type": "owl:Class",
-      "owl:equivalentClass": {
-        "@id": "foaf:Group"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "covapit:"
-      }
-    },
-    {
-      "@id": "schema:logo",
-      "@type": "owl:ObjectProperty"
-    },
-    {
-      "@id": "schema:Organization",
-      "@type": "owl:Class"
-    },
-    {
-      "@id": "covapit:PrivateOrgActivityType",
-      "@type": "owl:Class",
-      "rdfs:equivalentClass": {
-        "@id": "skos:Concept"
-      },
       "rdfs:isDefinedBy": {
         "@id": "covapit:"
       }
@@ -451,14 +370,72 @@
       }
     },
     {
-      "@id": "covapit:resultingOrganization",
-      "@type": "owl:ObjectProperty",
-      "owl:equivalentProperty": {
-        "@id": "org:resultingOrganization"
-      },
+      "@id": "covapit:PublicOrganizationCategory",
+      "@type": "owl:Class",
       "rdfs:isDefinedBy": {
         "@id": "covapit:"
       }
+    },
+    {
+      "@id": "covapit:hasSubOrganization",
+      "@type": "owl:ObjectProperty",
+      "rdfs:isDefinedBy": {
+        "@id": "covapit:"
+      }
+    },
+    {
+      "@id": "org:changedBy",
+      "@type": "owl:ObjectProperty",
+      "owl:equivalentProperty": {
+        "@id": "covapit:changedBy"
+      }
+    },
+    {
+      "@id": "covapit:SupportUnit",
+      "@type": "owl:Class",
+      "rdfs:isDefinedBy": {
+        "@id": "covapit:"
+      },
+      "rdfs:subClassOf": {
+        "@id": "org:OrganizationalUnit"
+      }
+    },
+    {
+      "@id": "schema:logo",
+      "@type": "owl:ObjectProperty"
+    },
+    {
+      "@id": "covapit:resultingOrganization",
+      "@type": "owl:ObjectProperty",
+      "rdfs:isDefinedBy": {
+        "@id": "covapit:"
+      }
+    },
+    {
+      "@id": "covapit:PrivateOrgActivityType",
+      "@type": "owl:Class",
+      "rdfs:isDefinedBy": {
+        "@id": "covapit:"
+      }
+    },
+    {
+      "@id": "org:purpose",
+      "@type": "owl:ObjectProperty",
+      "owl:equivalentProperty": [
+        {
+          "@id": "covapit:hasPrivateOrgActivityType"
+        },
+        {
+          "@id": "covapit:hasPublicOrgActivityType"
+        },
+        {
+          "@id": "covapit:hasActivityType"
+        }
+      ]
+    },
+    {
+      "@id": "schema:Organization",
+      "@type": "owl:Class"
     }
   ]
 }
