@@ -4,8 +4,9 @@
 <!DOCTYPE rdf:RDF [
     <!ENTITY org "http://www.w3.org/ns/org#" >
     <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
-    <!ENTITY roapit "http://dati.gov.it/onto/roapit/" >
+    <!ENTITY roapit "https://w3id.org/italia/onto/RO/" >
     <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY xml "http://www.w3.org/XML/1998/namespace" >
     <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
     <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
     <!ENTITY d0 "http://www.ontologydesignpatterns.org/ont/d0.owl#" >
@@ -13,21 +14,22 @@
 ]>
 
 
-<rdf:RDF xmlns="http://dati.gov.it/onto/roapit-aligns/"
-     xml:base="http://dati.gov.it/onto/roapit-aligns/"
+<rdf:RDF xmlns="https://w3id.org/italia/onto/RO-aligns/"
+     xml:base="https://w3id.org/italia/onto/RO-aligns/"
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:roapit="https://w3id.org/italia/onto/RO/"
      xmlns:owl="http://www.w3.org/2002/07/owl#"
-     xmlns:roapit="http://dati.gov.it/onto/roapit/"
      xmlns:org="http://www.w3.org/ns/org#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
      xmlns:dul="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#"
      xmlns:d0="http://www.ontologydesignpatterns.org/ont/d0.owl#">
-    <owl:Ontology rdf:about="http://dati.gov.it/onto/roapit-aligns/">
-        <owl:versionIRI rdf:resource="http://dati.gov.it/onto/roapit-aligns/0.1"/>
-        <owl:imports rdf:resource="&roapit;0.1"/>
+    <owl:Ontology rdf:about="https://w3id.org/italia/onto/RO-aligns">
         <owl:imports rdf:resource="http://www.ontologydesignpatterns.org/ont/d0.owl"/>
         <owl:imports rdf:resource="http://www.w3.org/ns/org#"/>
+        <owl:imports rdf:resource="https://w3id.org/italia/onto/RO"/>
+        <owl:versionIRI rdf:resource="https://w3id.org/italia/onto/RO-aligns/0.2"/>
     </owl:Ontology>
     
 
@@ -43,7 +45,15 @@
     
 
 
-    <!-- http://dati.gov.it/onto/roapit/forAgent -->
+    <!-- http://www.w3.org/ns/org#memberDuring -->
+
+    <rdf:Description rdf:about="&org;memberDuring">
+        <rdfs:subPropertyOf rdf:resource="https://w3id.org/italia/onto/TI/hasTemporalEntity"/>
+    </rdf:Description>
+    
+
+
+    <!-- https://w3id.org/italia/onto/RO/forAgent -->
 
     <rdf:Description rdf:about="&roapit;forAgent">
         <rdfs:subPropertyOf rdf:resource="&org;member"/>
@@ -51,7 +61,7 @@
     
 
 
-    <!-- http://dati.gov.it/onto/roapit/holdsRole -->
+    <!-- https://w3id.org/italia/onto/RO/holdsRole -->
 
     <rdf:Description rdf:about="&roapit;holdsRole">
         <rdfs:subPropertyOf rdf:resource="&dul;hasRole"/>
@@ -59,7 +69,7 @@
     
 
 
-    <!-- http://dati.gov.it/onto/roapit/isRoleOf -->
+    <!-- https://w3id.org/italia/onto/RO/isRoleOf -->
 
     <rdf:Description rdf:about="&roapit;isRoleOf">
         <rdfs:subPropertyOf rdf:resource="&dul;isRoleOf"/>
@@ -67,18 +77,10 @@
     
 
 
-    <!-- http://dati.gov.it/onto/roapit/withRole -->
+    <!-- https://w3id.org/italia/onto/RO/withRole -->
 
     <rdf:Description rdf:about="&roapit;withRole">
         <rdfs:subPropertyOf rdf:resource="&org;role"/>
-    </rdf:Description>
-    
-
-
-    <!-- http://www.w3.org/ns/org#memberDuring -->
-
-    <rdf:Description rdf:about="&org;memberDuring">
-        <rdfs:subPropertyOf rdf:resource="http://dati.gov.it/onto/tiapit/hasTemporalEntity"/>
     </rdf:Description>
     
 
@@ -94,33 +96,34 @@
     
 
 
-    <!-- http://dati.gov.it/onto/roapit/Role -->
-
-    <rdf:Description rdf:about="&roapit;Role">
-        <owl:equivalentClass rdf:resource="&dul;Role"/>
-        <owl:equivalentClass rdf:resource="&org;Role"/>
-    </rdf:Description>
-    
-
-
-    <!-- http://dati.gov.it/onto/roapit/TimeIndexedRole -->
-
-    <rdf:Description rdf:about="&roapit;TimeIndexedRole">
-        <rdfs:subClassOf rdf:resource="&dul;Situation"/>
-        <rdfs:subClassOf rdf:resource="&org;Membership"/>
-    </rdf:Description>
-    
-
-
     <!-- http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Role -->
 
-    <rdf:Description rdf:about="&dul;Role"/>
+    <rdf:Description rdf:about="&dul;Role">
+        <owl:equivalentClass rdf:resource="&roapit;Role"/>
+    </rdf:Description>
     
 
 
     <!-- http://www.w3.org/ns/org#Role -->
 
-    <rdf:Description rdf:about="&org;Role"/>
+    <rdf:Description rdf:about="&org;Role">
+        <owl:equivalentClass rdf:resource="&roapit;Role"/>
+    </rdf:Description>
+    
+
+
+    <!-- https://w3id.org/italia/onto/RO/Role -->
+
+    <rdf:Description rdf:about="&roapit;Role"/>
+    
+
+
+    <!-- https://w3id.org/italia/onto/RO/TimeIndexedRole -->
+
+    <rdf:Description rdf:about="&roapit;TimeIndexedRole">
+        <rdfs:subClassOf rdf:resource="&dul;Situation"/>
+        <rdfs:subClassOf rdf:resource="&org;Membership"/>
+    </rdf:Description>
 </rdf:RDF>
 
 
