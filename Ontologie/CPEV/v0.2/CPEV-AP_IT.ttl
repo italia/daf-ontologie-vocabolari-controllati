@@ -1,0 +1,521 @@
+@prefix : <https://w3id.org/italia/onto/CPEV/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix l0: <https://w3id.org/italia/onto/l0/> .
+@prefix ti: <https://w3id.org/italia/onto/TI/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix smapit: <https://w3id.org/italia/onto/SM/> .
+@prefix potapit: <https://w3id.org/italia/onto/POT/> .
+@base <https://w3id.org/italia/onto/l0> .
+
+<https://w3id.org/italia/onto/l0> rdf:type owl:Ontology ;
+                                  
+                                  rdfs:label "Public Events"@en ,
+                                             "Eventi Pubblici"@it ;
+                                  
+                                  dct:issued "2017-12-06"^^xsd:date ;
+                                  
+                                  dct:modified "2018-03-13" ;
+                                  
+                                  dc:creator "Agency for Digital Italy - AgID"@en ,
+                                             "Institute of Cognitive Sciences and Technologies of the Italian Research Council (CNR) - Semantic Technology Laboratory (STLab)"@en ,
+                                             "Italian Digital Transformation Team"@en ;
+                                  
+                                  rdfs:comment "Questa è l'ontologia del profilo applicativo italiano sugli eventi pubblici)"@en ,
+                                               "This is the ontology of the Italian application profile for Public Events"@en ;
+                                  
+                                  owl:versionInfo "Version 0.2 - 13 March 2018 - Use of w3id.org/italia as base URI"@en ,
+                                                  "Versione 0.2 - 13 Marzo 2018 - Uso di w3id.org/italia come base URI."@it ;
+                                  
+                                  dct:license <https://creativecommons.org/licenses/by/4.0/> ;
+                                  
+                                  rdfs:isDefinedBy <https://w3id.org/italia/onto/CPEV> ;
+                                  
+                                  owl:imports <https://w3id.org/italia/onto/POT> ,
+                                              <https://w3id.org/italia/onto/SM> ,
+                                              <https://w3id.org/italia/onto/TI> ,
+                                              <https://w3id.org/italia/onto/l0> ;
+                                  
+                                  owl:versionIRI <https://w3id.org/italia/onto/CPEV/0.2> .
+
+
+#################################################################
+#
+#    Annotation properties
+#
+#################################################################
+
+
+###  http://www.w3.org/2002/07/owl#maxQualifiedCardinality
+
+owl:maxQualifiedCardinality rdf:type owl:AnnotationProperty .
+
+
+
+###  http://www.w3.org/ns/prov#wasDerivedFrom
+
+prov:wasDerivedFrom rdf:type owl:AnnotationProperty .
+
+
+
+###  http://www.w3.org/ns/prov#wasInfluencedBy
+
+prov:wasInfluencedBy rdf:type owl:AnnotationProperty .
+
+
+
+###  https://w3id.org/italia/onto/l0/controlledVocabulary
+
+l0:controlledVocabulary rdf:type owl:AnnotationProperty .
+
+
+
+
+
+#################################################################
+#
+#    Datatypes
+#
+#################################################################
+
+
+###  http://www.w3.org/2001/XMLSchema#gYear
+
+xsd:gYear rdf:type rdfs:Datatype .
+
+
+
+
+
+#################################################################
+#
+#    Object Properties
+#
+#################################################################
+
+
+###  https://w3id.org/italia/onto/CPEV/hasPublicEventTypology
+
+:hasPublicEventTypology rdf:type owl:ObjectProperty ;
+                        
+                        rdfs:label "has public event typology"@en ,
+                                   "ha tipologia di evento pubblico"@it ;
+                        
+                        rdfs:comment "This property links a public evento to its typology (usually defined in the context of a controlled vocabulary)."@en ;
+                        
+                        owl:versionInfo "stable"@en ;
+                        
+                        rdfs:comment "Questa proprietà collega un evento pubblico alla propria tipologia (definita nell'ambito di un vocabolario controllato)."@it ;
+                        
+                        owl:versionInfo "stabile"@it ;
+                        
+                        rdfs:isDefinedBy <http://dati.gov.it/onto/cpevapit> ;
+                        
+                        rdfs:domain :PublicEvent ;
+                        
+                        rdfs:range :PublicEventTypology ;
+                        
+                        owl:inverseOf :isPublicEventTypologyOf .
+
+
+
+###  https://w3id.org/italia/onto/CPEV/hasSubEvent
+
+:hasSubEvent rdf:type owl:ObjectProperty ;
+             
+             rdfs:label "has sub-event"@en ,
+                        "ha sotto-evento"@it ;
+             
+             rdfs:comment "This property is used to represent the composition of public events. In particular it links a composite public event with at least one public event"@en ;
+             
+             owl:versionInfo "stable"@en ;
+             
+             rdfs:comment "Questa proprietà è utilizzata per rappresentare una composizione di eventi pubblici. In particolare, la proprietà collega un evento pubblico composito con almeno un evento pubblico."@it ;
+             
+             owl:versionInfo "stabile"@it ;
+             
+             rdfs:isDefinedBy <http://dati.gov.it/onto/cpevapit> ;
+             
+             rdfs:domain :CompositePublicEvent ;
+             
+             rdfs:range :PublicEvent ;
+             
+             owl:inverseOf :isSubEventOf .
+
+
+
+###  https://w3id.org/italia/onto/CPEV/hosts
+
+:hosts rdf:type owl:ObjectProperty ;
+       
+       rdfs:label "hosts"@en ,
+                  "ospita"@it ;
+       
+       rdfs:comment "Property used to represent that a Point of Interest hosts a public event"@en ;
+       
+       owl:versionInfo "stable"@en ;
+       
+       rdfs:comment "Proprietà utilizzata per indicare che un certo punto di interesse ospita un evento pubblico"@it ;
+       
+       owl:versionInfo "stabile"@it ;
+       
+       rdfs:isDefinedBy <http://dati.gov.it/onto/cpevapit> ;
+       
+       rdfs:range :PublicEvent ;
+       
+       owl:inverseOf :takesPlaceIn ;
+       
+       rdfs:domain <https://w3id.org/italia/onto/POI/PointOfInterest> .
+
+
+
+###  https://w3id.org/italia/onto/CPEV/isPublicEventTypologyOf
+
+:isPublicEventTypologyOf rdf:type owl:ObjectProperty ;
+                         
+                         rdfs:label "is public event typology of"@en ,
+                                    "è tipologia di evento pubblico di"@it ;
+                         
+                         rdfs:comment "Inverse property of has public event typology that links a public event typology with its related public event."@en ;
+                         
+                         owl:versionInfo "stable"@en ;
+                         
+                         rdfs:comment "Proprietà inversa di \"ha tipologia di evento pubblico \" che collega una tipologia di evento pubblico con il relativo evento pubblico."@it ;
+                         
+                         owl:versionInfo "stabile"@it ;
+                         
+                         rdfs:isDefinedBy <http://dati.gov.it/onto/cpevapit> ;
+                         
+                         rdfs:range :PublicEvent ;
+                         
+                         rdfs:domain :PublicEventTypology .
+
+
+
+###  https://w3id.org/italia/onto/CPEV/isSubEventOf
+
+:isSubEventOf rdf:type owl:ObjectProperty ;
+              
+              rdfs:label "is sub-event of"@en ,
+                         "è sotto-evento di"@it ;
+              
+              rdfs:comment "Inverse property of \"has sub-event\" used to link a public event to the composite public event"@en ;
+              
+              owl:versionInfo "stable"@en ;
+              
+              rdfs:comment "Proprietà inversa di \"ha sotto-evento\" che collega un evento pubblico a un evento pubblico composito."@it ;
+              
+              owl:versionInfo "stabile"@it ;
+              
+              rdfs:isDefinedBy <http://dati.gov.it/onto/cpevapit> ;
+              
+              rdfs:range :CompositePublicEvent ;
+              
+              rdfs:domain :PublicEvent .
+
+
+
+###  https://w3id.org/italia/onto/CPEV/takesPlaceIn
+
+:takesPlaceIn rdf:type owl:ObjectProperty ;
+              
+              rdfs:label "takes place in"@en ,
+                         "avviene in"@it ;
+              
+              rdfs:comment "This property implements the ontology design pattern Place and represents the relationship between the public event and the point of interest (typically intended as Location) where the public event takes place."@en ;
+              
+              owl:versionInfo "stable"@en ;
+              
+              rdfs:comment "Questa proprietà implementa il design pattern \"Place\" e rappresenta la relazione tra un evento pubblico e il punto di interesse (tipicamente inteso come luogo) dove l'evento pubblico si svolge."@it ;
+              
+              owl:versionInfo "stabile"@it ;
+              
+              rdfs:isDefinedBy <http://dati.gov.it/onto/cpevapit> ;
+              
+              rdfs:domain :PublicEvent ;
+              
+              rdfs:range <https://w3id.org/italia/onto/POI/PointOfInterest> .
+
+
+
+###  https://w3id.org/italia/onto/POT/hasOffer
+
+potapit:hasOffer rdf:type owl:ObjectProperty ;
+                 
+                 rdfs:isDefinedBy potapit: .
+
+
+
+###  https://w3id.org/italia/onto/POT/hasTicket
+
+potapit:hasTicket rdf:type owl:ObjectProperty ;
+                  
+                  rdfs:isDefinedBy potapit: .
+
+
+
+###  https://w3id.org/italia/onto/RO/holdsRoleInTime
+
+<https://w3id.org/italia/onto/RO/holdsRoleInTime> rdf:type owl:ObjectProperty ;
+                                                  
+                                                  rdfs:isDefinedBy <https://w3id.org/italia/onto/RO/> .
+
+
+
+###  https://w3id.org/italia/onto/SM/hasOnlineContactPoint
+
+smapit:hasOnlineContactPoint rdf:type owl:ObjectProperty ;
+                             
+                             rdfs:isDefinedBy smapit: .
+
+
+
+
+
+#################################################################
+#
+#    Data properties
+#
+#################################################################
+
+
+###  https://w3id.org/italia/onto/l0/description
+
+l0:description rdf:type owl:DatatypeProperty ;
+               
+               rdfs:isDefinedBy l0: .
+
+
+
+###  https://w3id.org/italia/onto/l0/identifier
+
+l0:identifier rdf:type owl:DatatypeProperty ;
+              
+              rdfs:isDefinedBy l0: .
+
+
+
+###  https://w3id.org/italia/onto/l0/name
+
+l0:name rdf:type owl:DatatypeProperty ;
+        
+        rdfs:isDefinedBy l0: .
+
+
+
+
+
+#################################################################
+#
+#    Classes
+#
+#################################################################
+
+
+###  https://w3id.org/italia/onto/CPEV/CompositePublicEvent
+
+:CompositePublicEvent rdf:type owl:Class ;
+                      
+                      rdfs:label "Composite Public Event"@en ,
+                                 "Evento Pubblico Composito"@it ;
+                      
+                      rdfs:subClassOf :PublicEvent ,
+                                      [ rdf:type owl:Restriction ;
+                                        owl:onProperty :hasSubEvent ;
+                                        owl:someValuesFrom :PublicEvent
+                                      ] ;
+                      
+                      owl:disjointWith :SinglePublicEvent ;
+                      
+                      rdfs:comment "This class represents composite public events that are aggregations of multiple events, possibly occurring in parallel, each of which is described independently in the event program.  Example can be the celebration of the anniversary of the Italian Republic."@en ;
+                      
+                      owl:versionInfo "stable"@en ;
+                      
+                      rdfs:comment "Questa classe rappresenta eventi pubblici complessi o compositi che sono delle aggregazione di eventi multipli, che avvengono di solito in parallelo, ognuno dei queli è descritto indipendentemente nel programma dell'evento. Esempio: la celebrazione dell'anniversario della Repubblica Italiana."@it ;
+                      
+                      owl:versionInfo "stabile"@it ;
+                      
+                      rdfs:isDefinedBy <http://dati.gov.it/onto/cpevapit> .
+
+
+
+###  https://w3id.org/italia/onto/CPEV/PublicEvent
+
+:PublicEvent rdf:type owl:Class ;
+             
+             rdfs:label "Public Event"@en ,
+                        "Evento Pubblico"@it ;
+             
+             rdfs:subClassOf ti:TimeIndexedEvent ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty l0:name ;
+                               owl:someValuesFrom rdfs:Literal
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :takesPlaceIn ;
+                               owl:someValuesFrom <https://w3id.org/italia/onto/POI/PointOfInterest>
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty potapit:hasOffer ;
+                               owl:allValuesFrom potapit:Offer
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty potapit:hasTicket ;
+                               owl:allValuesFrom potapit:Ticket
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :hasPublicEventTypology ;
+                               owl:someValuesFrom :PublicEventTypology
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty <https://w3id.org/italia/onto/RO/holdsRoleInTime> ;
+                               owl:someValuesFrom <https://w3id.org/italia/onto/RO/TimeIndexedRole>
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty l0:identifier ;
+                               owl:cardinality "1"^^xsd:nonNegativeInteger
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :isSubEventOf ;
+                               owl:allValuesFrom :CompositePublicEvent
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty l0:description ;
+                               owl:someValuesFrom rdfs:Literal
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty smapit:hasOnlineContactPoint ;
+                               owl:allValuesFrom smapit:OnlineContactPoint
+                             ] ;
+             
+             rdfs:comment "This class represents a public event (e.g., a football match, a  conference, a book presentation, etc.)."@en ;
+             
+             owl:versionInfo "stable"@en ;
+             
+             rdfs:comment "Questa classe rappresenta un evento pubblico (e.g., una partita di calcio, una mostra, la presentazione di un libro, una fiera, ecc.)"@it ;
+             
+             owl:versionInfo "stabile"@it ;
+             
+             rdfs:isDefinedBy <http://dati.gov.it/onto/cpevapit> ;
+             
+             prov:wasInfluencedBy <http://schema.org/Event> .
+
+
+
+###  https://w3id.org/italia/onto/CPEV/PublicEventTypology
+
+:PublicEventTypology rdf:type owl:Class ;
+                     
+                     rdfs:label "Public Event Typology"@en ,
+                                "Tipo di Evento Pubblico"@it ;
+                     
+                     rdfs:subClassOf l0:Topic ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty :isPublicEventTypologyOf ;
+                                       owl:allValuesFrom :PublicEvent
+                                     ] ;
+                     
+                     rdfs:comment "The class represents the type of public event (e.g., festival, exhibition, public reading, etc.). The individuals of this class are only those of the controlled vocabulary http://dati.gov.it/onto/controlledvocabulary/PublicEvent on the types of public events. The class is equivalent to skos:Concept (as specified in the alignments file of the CPEV-AP_IT ontology where the alignments to external ontologies of the web are specified)."@en ;
+                     
+                     owl:versionInfo "stable"@en ;
+                     
+                     rdfs:comment "La classe rappresenta il tipo di evento pubblico (e.g., festival, lettura pubblica, mostra, ecc.). Gli individui di questa classe sono i soli del vocabolario controllato http://dati.gov.it/onto/controlledvocabulary/PublicEvent sui tipi di eventi pubblici. La classe è equivalente a skos:Concept (come specifico nel relativo file di allineamento dell'ontologia CPEV-AP_IT a vocabolari e ontologie esterne del web)."@it ;
+                     
+                     owl:versionInfo "stabile"@it ;
+                     
+                     rdfs:isDefinedBy <http://dati.gov.it/onto/cpevapit> ;
+                     
+                     l0:controlledVocabulary <http://dati.gov.it/onto/controlledvocabulary/PublicEvent> ;
+                     
+                     prov:wasDerivedFrom <http://www.w3.org/2004/02/skos/core#Concept> .
+
+
+
+###  https://w3id.org/italia/onto/CPEV/SinglePublicEvent
+
+:SinglePublicEvent rdf:type owl:Class ;
+                   
+                   rdfs:label "Single Public Event"@en ,
+                              "Evento Pubblico Singolo"@it ;
+                   
+                   rdfs:subClassOf :PublicEvent ;
+                   
+                   rdfs:comment "This class represents single public events that constitute a single, coherent unit, whose parts are not described separately. Examples can be: the Seafood Global Expo, Picasso's exposure, etc."@en ;
+                   
+                   owl:versionInfo "stable"@en ;
+                   
+                   rdfs:comment "Questa classe rappresenta eventi pubblici che costituiscono un'unità singola e coerente le cui parti non sono descritte separatamente. Esempio: il Seafood Global Expo, la mostra di Picasso, ecc."@it ;
+                   
+                   owl:versionInfo "stabile"@it ;
+                   
+                   rdfs:isDefinedBy <http://dati.gov.it/onto/cpevapit> .
+
+
+
+###  https://w3id.org/italia/onto/POI/PointOfInterest
+
+<https://w3id.org/italia/onto/POI/PointOfInterest> rdf:type owl:Class ;
+                                                   
+                                                   rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                                                     owl:onProperty :hosts ;
+                                                                     owl:allValuesFrom :PublicEvent
+                                                                   ] ;
+                                                   
+                                                   rdfs:isDefinedBy <http://dati.gov.it/onto/poiapit> .
+
+
+
+###  https://w3id.org/italia/onto/POT/Offer
+
+potapit:Offer rdf:type owl:Class ;
+              
+              rdfs:isDefinedBy potapit: .
+
+
+
+###  https://w3id.org/italia/onto/POT/Ticket
+
+potapit:Ticket rdf:type owl:Class ;
+               
+               rdfs:isDefinedBy potapit: .
+
+
+
+###  https://w3id.org/italia/onto/RO/TimeIndexedRole
+
+<https://w3id.org/italia/onto/RO/TimeIndexedRole> rdf:type owl:Class ;
+                                                  
+                                                  rdfs:isDefinedBy <https://w3id.org/italia/onto/RO/> .
+
+
+
+###  https://w3id.org/italia/onto/SM/OnlineContactPoint
+
+smapit:OnlineContactPoint rdf:type owl:Class ;
+                          
+                          rdfs:isDefinedBy smapit: .
+
+
+
+###  https://w3id.org/italia/onto/TI/TimeIndexedEvent
+
+ti:TimeIndexedEvent rdf:type owl:Class ;
+                    
+                    rdfs:isDefinedBy ti: .
+
+
+
+###  https://w3id.org/italia/onto/l0/Topic
+
+l0:Topic rdf:type owl:Class .
+
+
+
+
+###  Generated by the OWL API (version 3.5.1) http://owlapi.sourceforge.net
+

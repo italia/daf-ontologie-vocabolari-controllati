@@ -9,7 +9,6 @@
     <!ENTITY l0 "https://w3id.org/italia/onto/l0" >
     <!ENTITY dc "http://purl.org/dc/elements/1.1/" >
     <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
-    <!ENTITY xml "http://www.w3.org/XML/1998/namespace" >
     <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
     <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
 ]>
@@ -21,7 +20,6 @@
      xmlns:l0="https://w3id.org/italia/onto/l0"
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
      xmlns:owl="http://www.w3.org/2002/07/owl#"
-     xmlns:xml="http://www.w3.org/XML/1998/namespace"
      xmlns:tiapit="https://w3id.org/italia/onto/TI"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
@@ -313,9 +311,9 @@
     
 
 
-    <!-- http://dati.gov.it/onto/muapit/Value -->
+    <!-- https://w3id.org/italia/onto/MU/Value -->
 
-    <owl:Class rdf:about="http://dati.gov.it/onto/muapit/Value">
+    <owl:Class rdf:about="https://w3id.org/italia/onto/MU/Value">
         <rdfs:isDefinedBy rdf:resource="http://dati.gov.it/onto/muapit/"/>
     </owl:Class>
     
@@ -368,26 +366,26 @@ This allows modelling Price Specification as a a quantified value, where the val
         <rdfs:subClassOf rdf:resource="&l0;/Description"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/POT/hasValidity"/>
-                <owl:allValuesFrom rdf:resource="https://w3id.org/italia/onto/POT/Validity"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/POT/includes"/>
-                <owl:allValuesFrom rdf:resource="https://w3id.org/italia/onto/POT/Ticket"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
                 <owl:onProperty rdf:resource="&l0;/description"/>
                 <owl:allValuesFrom rdf:resource="&rdfs;Literal"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/POT/hasValidity"/>
+                <owl:allValuesFrom rdf:resource="https://w3id.org/italia/onto/POT/Validity"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
                 <owl:onProperty rdf:resource="https://w3id.org/italia/onto/POT/hasPriceSpecification"/>
                 <owl:someValuesFrom rdf:resource="https://w3id.org/italia/onto/POT/PriceSpecification"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/POT/includes"/>
+                <owl:allValuesFrom rdf:resource="https://w3id.org/italia/onto/POT/Ticket"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <dc:description xml:lang="en">Any fare is expressed within the ontology by using instances of the class Offer.
@@ -519,7 +517,7 @@ It is associated to a currency (e.g., Euro) and a currency value (i.e., a quanti
                 <owl:allValuesFrom>
                     <owl:Class>
                         <owl:unionOf rdf:parseType="Collection">
-                            <rdf:Description rdf:about="http://dati.gov.it/onto/muapit/Value"/>
+                            <rdf:Description rdf:about="https://w3id.org/italia/onto/MU/Value"/>
                             <rdf:Description rdf:about="&tiapit;/TimeInterval"/>
                         </owl:unionOf>
                     </owl:Class>
