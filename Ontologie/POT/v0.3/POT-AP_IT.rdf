@@ -368,6 +368,12 @@ This allows modelling Price Specification as a a quantified value, where the val
         <rdfs:subClassOf rdf:resource="&l0;/Description"/>
         <rdfs:subClassOf>
             <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/POT/hasPriceSpecification"/>
+                <owl:someValuesFrom rdf:resource="https://w3id.org/italia/onto/POT/PriceSpecification"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
                 <owl:onProperty rdf:resource="https://w3id.org/italia/onto/POT/hasValidity"/>
                 <owl:allValuesFrom rdf:resource="https://w3id.org/italia/onto/POT/Validity"/>
             </owl:Restriction>
@@ -382,12 +388,6 @@ This allows modelling Price Specification as a a quantified value, where the val
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&l0;/description"/>
                 <owl:allValuesFrom rdf:resource="&rdfs;Literal"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/POT/hasPriceSpecification"/>
-                <owl:someValuesFrom rdf:resource="https://w3id.org/italia/onto/POT/PriceSpecification"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <dc:description xml:lang="en">Any fare is expressed within the ontology by using instances of the class Offer.
@@ -417,19 +417,19 @@ It is possible to specify:
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="https://w3id.org/italia/onto/POT/hasCurrencyValue"/>
-                <owl:someValuesFrom rdf:resource="&xsd;float"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/POT/hasCurrency"/>
-                <owl:someValuesFrom rdf:resource="https://w3id.org/italia/onto/POT/Currency"/>
+                <owl:someValuesFrom rdf:resource="&xsd;double"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="https://w3id.org/italia/onto/POT/VAT"/>
                 <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/POT/hasCurrency"/>
+                <owl:someValuesFrom rdf:resource="https://w3id.org/italia/onto/POT/Currency"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <dc:description xml:lang="en">A price specification provides the information about the cost of an offer.
