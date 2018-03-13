@@ -1,0 +1,598 @@
+@prefix : <https://w3id.org/italia/onto/PARK/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix l0: <https://w3id.org/italia/onto/l0/> .
+@prefix ti: <https://w3id.org/italia/onto/TI/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix smapit: <https://w3id.org/italia/onto/SM/> .
+@prefix poiapit: <https://w3id.org/italia/onto/POI/> .
+@prefix potapit: <https://w3id.org/italia/onto/POT/> .
+@base <https://w3id.org/italia/onto/PARK> .
+
+<https://w3id.org/italia/onto/PARK> rdf:type owl:Ontology ;
+                                    
+                                    rdfs:label "Parking ontology"@en ,
+                                               "Ontologia dei Parcheggi"@it ;
+                                    
+                                    dct:issued "2017-12-19"^^xsd:date ;
+                                    
+                                    dct:modified "2018-13-03"^^xsd:date ;
+                                    
+                                    dc:creator "Agency for Digital Italy - AgID"@en ,
+                                               "Institute of Cognitive Sciences and Technologies of the Italian Research Council (CNR) - Semantic Technology Laboratory (STLab)"@en ,
+                                               "Italian Digital Transformation Team"@en ;
+                                    
+                                    rdfs:comment "Questa è l'ontologia del profilo applicativo italiano per i dati sui parcheggi)"@en ,
+                                                 "This is the ontology of the Italian application profile for Parking data"@en ;
+                                    
+                                    owl:versionInfo "Version 0.2 - 13 March 2018 - Migration to the namespace w3id.org/italia."@en ,
+                                                    "Versione 0.2 - 13 Marzo 2018 - Migrazione del namespace a w3id.org/italia."@it ;
+                                    
+                                    owl:versionIRI <http://dati.gov.it/onto/PARK/0.2> ;
+                                    
+                                    dct:license <https://creativecommons.org/licenses/by/4.0/> ;
+                                    
+                                    rdfs:isDefinedBy <https://w3id.org/italia/onto/PARK> ;
+                                    
+                                    owl:imports <https://w3id.org/italia/onto/POI> ,
+                                                <https://w3id.org/italia/onto/POT> ,
+                                                <https://w3id.org/italia/onto/SM> ,
+                                                <https://w3id.org/italia/onto/TI> ,
+                                                <https://w3id.org/italia/onto/l0> .
+
+
+#################################################################
+#
+#    Annotation properties
+#
+#################################################################
+
+
+###  http://www.w3.org/2002/07/owl#maxQualifiedCardinality
+
+owl:maxQualifiedCardinality rdf:type owl:AnnotationProperty .
+
+
+
+###  http://www.w3.org/ns/prov#wasDerivedFrom
+
+prov:wasDerivedFrom rdf:type owl:AnnotationProperty .
+
+
+
+###  http://www.w3.org/ns/prov#wasInfluencedBy
+
+prov:wasInfluencedBy rdf:type owl:AnnotationProperty .
+
+
+
+###  https://w3id.org/italia/onto/l0/controlledVocabulary
+
+l0:controlledVocabulary rdf:type owl:AnnotationProperty .
+
+
+
+
+
+#################################################################
+#
+#    Object Properties
+#
+#################################################################
+
+
+###  https://w3id.org/italia/onto/PARK/hasCarParkTypology
+
+:hasCarParkTypology rdf:type owl:ObjectProperty ;
+                    
+                    rdfs:label "has car park typology"@en ,
+                               "ha tipologia di parcheggio"@it ;
+                    
+                    rdfs:comment "Property that links the Car Park to its typology, defined in a controlled vocabulary"@en ;
+                    
+                    owl:versionInfo "stable"@en ;
+                    
+                    rdfs:comment "Proprietà che collega un parcheggio alla sua tipologia, come definita nel relativo vocabolario controllato."@it ;
+                    
+                    owl:versionInfo "stabile"@it ;
+                    
+                    rdfs:isDefinedBy <http://dati.gov.it/onto/parkingapit> ;
+                    
+                    rdfs:domain :CarPark ;
+                    
+                    rdfs:range :CarParkTypology ;
+                    
+                    owl:inverseOf :isCarParkTypologyOf .
+
+
+
+###  https://w3id.org/italia/onto/PARK/isCarParkTypologyOf
+
+:isCarParkTypologyOf rdf:type owl:ObjectProperty ;
+                     
+                     rdfs:label "is car park typology of"@en ,
+                                "è tipologia di parcheggio di"@it ;
+                     
+                     rdfs:comment "Inverse property of \"has car park typology\" which links a car park typology to the car park"@en ;
+                     
+                     owl:versionInfo "stable"@en ;
+                     
+                     rdfs:comment "Proprietà inversa di \"ha tipologia di parcheggio\" che lega la tipologia di al parcheggio stesso"@it ;
+                     
+                     owl:versionInfo "stabile"@it ;
+                     
+                     rdfs:isDefinedBy <http://dati.gov.it/onto/parkingapit> ;
+                     
+                     rdfs:range :CarPark ;
+                     
+                     rdfs:domain :CarParkTypology .
+
+
+
+###  https://w3id.org/italia/onto/POT/hasOffer
+
+potapit:hasOffer rdf:type owl:ObjectProperty ;
+                 
+                 rdfs:isDefinedBy potapit: .
+
+
+
+###  https://w3id.org/italia/onto/SM/hasOnlineContactPoint
+
+smapit:hasOnlineContactPoint rdf:type owl:ObjectProperty ;
+                             
+                             rdfs:isDefinedBy smapit: .
+
+
+
+
+
+#################################################################
+#
+#    Data properties
+#
+#################################################################
+
+
+###  https://w3id.org/italia/onto/PARK/carParkDescription
+
+:carParkDescription rdf:type owl:DatatypeProperty ;
+                    
+                    rdfs:label "car park description"@en ,
+                               "descrizione del parcheggio"@it ;
+                    
+                    rdfs:comment "Property that represents the generic description of the car park"@en ;
+                    
+                    owl:versionInfo "stable"@en ;
+                    
+                    rdfs:comment "Proprietà che rappresenta una descrizione testuale generica del parcheggio"@it ;
+                    
+                    owl:versionInfo "stabile"@it ;
+                    
+                    rdfs:isDefinedBy <http://dati.gov.it/onto/parkingapit> ;
+                    
+                    rdfs:range rdfs:Literal ;
+                    
+                    rdfs:domain :CarPark ;
+                    
+                    rdfs:subPropertyOf l0:description .
+
+
+
+###  https://w3id.org/italia/onto/PARK/carParkID
+
+:carParkID rdf:type owl:DatatypeProperty ,
+                    owl:FunctionalProperty ;
+           
+           rdfs:label "car park identifier"@en ,
+                      "identificativo del parcheggio"@it ;
+           
+           rdfs:comment "Property that identifies the unique identifier of the car park."@en ;
+           
+           owl:versionInfo "stable"@en ;
+           
+           rdfs:comment "Proprietà che rappresenta l'identificativo univoco del parcheggio"@it ;
+           
+           owl:versionInfo "stabile"@it ;
+           
+           rdfs:isDefinedBy <http://dati.gov.it/onto/parkingapit> ;
+           
+           rdfs:range rdfs:Literal ;
+           
+           rdfs:domain :CarPark ;
+           
+           rdfs:subPropertyOf l0:identifier .
+
+
+
+###  https://w3id.org/italia/onto/PARK/carParkName
+
+:carParkName rdf:type owl:DatatypeProperty ;
+             
+             rdfs:label "car park name"@en ,
+                        "nome del parcheggio"@it ;
+             
+             rdfs:comment "The name of the car park"@en ;
+             
+             owl:versionInfo "stable"@en ;
+             
+             rdfs:comment "Il nome del parcheggio"@it ;
+             
+             owl:versionInfo "stabile"@it ;
+             
+             rdfs:isDefinedBy <http://dati.gov.it/onto/parkingapit> ;
+             
+             rdfs:range rdfs:Literal ;
+             
+             rdfs:domain :CarPark ;
+             
+             rdfs:subPropertyOf l0:name .
+
+
+
+###  https://w3id.org/italia/onto/PARK/numAvailableParkingSpaces
+
+:numAvailableParkingSpaces rdf:type owl:DatatypeProperty ;
+                           
+                           rdfs:label "available parking spaces"@en ,
+                                      "posti auto disponibili"@it ;
+                           
+                           rdfs:comment "Number of available car parking spaces"@en ;
+                           
+                           owl:versionInfo "stable"@en ;
+                           
+                           rdfs:comment "il numero di posti auto disponibili del parcheggio"@it ;
+                           
+                           owl:versionInfo "stabile"@it ;
+                           
+                           rdfs:isDefinedBy <http://dati.gov.it/onto/parkingapit> ;
+                           
+                           rdfs:range xsd:int ;
+                           
+                           rdfs:domain :CarPark .
+
+
+
+###  https://w3id.org/italia/onto/PARK/numPayingParkingSpaces
+
+:numPayingParkingSpaces rdf:type owl:DatatypeProperty ;
+                        
+                        rdfs:label "paying parking spaces"@en ,
+                                   "posti auto paganti"@it ;
+                        
+                        rdfs:comment "Number of paying car park spaces."@en ;
+                        
+                        owl:versionInfo "stable"@en ;
+                        
+                        rdfs:comment "Il numero di posti auto paganti"@it ;
+                        
+                        owl:versionInfo "stabile"@it ;
+                        
+                        rdfs:isDefinedBy <http://dati.gov.it/onto/parkingapit> ;
+                        
+                        rdfs:range xsd:int ;
+                        
+                        rdfs:domain :CarPark .
+
+
+
+###  https://w3id.org/italia/onto/PARK/numSoldCarParkSpaces
+
+:numSoldCarParkSpaces rdf:type owl:DatatypeProperty ;
+                      
+                      rdfs:label "posti auto venduti"@en ,
+                                 "sold car park spaces"@en ;
+                      
+                      rdfs:comment "Number of sold car park spaces"@en ;
+                      
+                      owl:versionInfo "stable"@en ;
+                      
+                      rdfs:comment "Numero di posti auto venduti"@it ;
+                      
+                      owl:versionInfo "stabile"@it ;
+                      
+                      rdfs:isDefinedBy <http://dati.gov.it/onto/parkingapit> ;
+                      
+                      rdfs:range xsd:int ;
+                      
+                      rdfs:domain :CarPark .
+
+
+
+###  https://w3id.org/italia/onto/PARK/numSpacesForDisabled
+
+:numSpacesForDisabled rdf:type owl:DatatypeProperty ;
+                      
+                      rdfs:label "car park spaces for disabled"@en ,
+                                 "posti auto riservati per disabili"@it ;
+                      
+                      rdfs:comment "Numbero of car park spaces reserved for disabled"@en ;
+                      
+                      owl:versionInfo "stable"@en ;
+                      
+                      rdfs:comment "Il numero di posti auto del parcheggio risarvati ai disabili"@it ;
+                      
+                      owl:versionInfo "stabile"@it ;
+                      
+                      rdfs:isDefinedBy <http://dati.gov.it/onto/parkingapit> ;
+                      
+                      rdfs:range xsd:int ;
+                      
+                      rdfs:domain :CarPark .
+
+
+
+###  https://w3id.org/italia/onto/PARK/totalNumCarParkSpaces
+
+:totalNumCarParkSpaces rdf:type owl:DatatypeProperty ;
+                       
+                       rdfs:label "total number of car park spaces"@en ,
+                                  "numero totale di posti auto"@it ;
+                       
+                       rdfs:comment "The total number of car park spaces"@en ;
+                       
+                       owl:versionInfo "stable"@en ;
+                       
+                       rdfs:comment "Il numero totale di posto auto del parcheggio"@it ;
+                       
+                       owl:versionInfo "stabile"@it ;
+                       
+                       rdfs:isDefinedBy <http://dati.gov.it/onto/parkingapit> ;
+                       
+                       rdfs:range xsd:int ;
+                       
+                       rdfs:domain :CarPark .
+
+
+
+###  https://w3id.org/italia/onto/l0/description
+
+l0:description rdf:type owl:DatatypeProperty .
+
+
+
+###  https://w3id.org/italia/onto/l0/identifier
+
+l0:identifier rdf:type owl:DatatypeProperty ;
+              
+              rdfs:isDefinedBy l0: .
+
+
+
+###  https://w3id.org/italia/onto/l0/name
+
+l0:name rdf:type owl:DatatypeProperty .
+
+
+
+
+
+#################################################################
+#
+#    Classes
+#
+#################################################################
+
+
+###  https://w3id.org/italia/onto/PARK/CarPark
+
+:CarPark rdf:type owl:Class ;
+         
+         rdfs:label "Car Park"@en ,
+                    "Parcheggio"@it ;
+         
+         rdfs:subClassOf poiapit:PointOfInterest ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :hasCarParkTypology ;
+                           owl:someValuesFrom :CarParkTypology
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :carParkDescription ;
+                           owl:allValuesFrom rdfs:Literal
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :totalNumCarParkSpaces ;
+                           owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                           owl:onDataRange xsd:int
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :numSpacesForDisabled ;
+                           owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                           owl:onDataRange xsd:int
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty smapit:hasOnlineContactPoint ;
+                           owl:someValuesFrom smapit:OnlineContactPoint
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :carParkName ;
+                           owl:someValuesFrom rdfs:Literal
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :carParkID ;
+                           owl:cardinality "1"^^xsd:nonNegativeInteger
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :numAvailableParkingSpaces ;
+                           owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                           owl:onDataRange xsd:int
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :numSoldCarParkSpaces ;
+                           owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                           owl:onDataRange xsd:int
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :numPayingParkingSpaces ;
+                           owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                           owl:onDataRange xsd:int
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty potapit:hasOffer ;
+                           owl:allValuesFrom potapit:Offer
+                         ] ;
+         
+         rdfs:comment "This is the principal class of the ontology and it represents the car park."@en ;
+         
+         owl:versionInfo "stable"@en ;
+         
+         rdfs:comment "E' la classe principale dell'ontologia e rappresenta il parcheggio."@it ;
+         
+         owl:versionInfo "stabile"@it ;
+         
+         rdfs:isDefinedBy <http://dati.gov.it/onto/parkingapit> ;
+         
+         prov:wasInfluencedBy <http://schema.org/ParkingFacility> ,
+                              <http://www.productontology.org/id/Parking_lot> .
+
+
+
+###  https://w3id.org/italia/onto/PARK/CarParkTypology
+
+:CarParkTypology rdf:type owl:Class ;
+                 
+                 rdfs:label "Car Park Typology"@en ,
+                            "Tipologia di Parcheggio"@it ;
+                 
+                 rdfs:subClassOf l0:Topic ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty :isCarParkTypologyOf ;
+                                   owl:someValuesFrom :CarPark
+                                 ] ;
+                 
+                 rdfs:comment "This class represents the typology of car park. Its individuals are the instances of the related controlled vocabulary. In particular we may distinguish between car parks horizontally and vertically developed, parallel car park (30 car park, 45 car park, 60 car park right angle car park), etc."@en ;
+                 
+                 owl:versionInfo "stable"@en ;
+                 
+                 rdfs:comment "La classe rappresenta la tipologia di parcheggio. Gli individui di questa classe sono le istanze del relativo vocabolario controllato. In particolare, si possono distinguire tra parcheggi a sviluppo orizzontale (parcheggi in superficie e parcheggi a raso o a livello), parcheggi a sviluppo verticalere (parcheggi interrati, in elevazione, misti)."@it ;
+                 
+                 owl:versionInfo "stabile"@it ;
+                 
+                 rdfs:isDefinedBy <http://dati.gov.it/onto/parkingapit> .
+
+
+
+###  https://w3id.org/italia/onto/PARK/CarSharingCarPark
+
+:CarSharingCarPark rdf:type owl:Class ;
+                   
+                   rdfs:label "Car Sharing Car Park"@en ,
+                              "Parcheggio per Car Sharing"@it ;
+                   
+                   rdfs:subClassOf :CarPark ;
+                   
+                   rdfs:comment "This class represents a specific type of Car Park; that is, the Car Sharing Car Park"@en ;
+                   
+                   owl:versionInfo "stable"@en ;
+                   
+                   rdfs:comment "Questa classe rappresenta un tipo specifico di parcheggio, ovvero il parcheggio per il car sharing."@it ;
+                   
+                   owl:versionInfo "stabile"@it ;
+                   
+                   rdfs:isDefinedBy <http://dati.gov.it/onto/parkingapit> .
+
+
+
+###  https://w3id.org/italia/onto/PARK/ParkAndRide
+
+:ParkAndRide rdf:type owl:Class ;
+             
+             rdfs:label "Park and Ride"@en ,
+                        "Parcheggio di Scambio"@it ;
+             
+             rdfs:subClassOf :CarPark ;
+             
+             rdfs:comment "This class represents a specific type of car park; that is, park and ride. The park and ride type  is usually located close to the borders of a urban centre and it can be used to easily change the transportation mean, promoting the use of public transportation."@en ;
+             
+             owl:versionInfo "stable"@en ;
+             
+             rdfs:comment "Questa classe rappresenta uno specifico tipo di parcheggio, ovvero il parcheggio di scambio. I parcheggi di scambio sono tipicamente collocati ai margini del centro urbano o storico e sono usati per scambiare mezzo di trasporto e incentivare l’uso di mezzi pubblici."@it ;
+             
+             owl:versionInfo "stabile"@it ;
+             
+             rdfs:isDefinedBy <http://dati.gov.it/onto/parkingapit> .
+
+
+
+###  https://w3id.org/italia/onto/PARK/RotatingCarPark
+
+:RotatingCarPark rdf:type owl:Class ;
+                 
+                 rdfs:label "Rotating Car Park"@en ,
+                            "Parcheggio a Rotazione"@it ;
+                 
+                 rdfs:subClassOf :CarPark ;
+                 
+                 rdfs:comment "This class represents a specific type of car park; that is, a rotating car park for short term parking."@en ;
+                 
+                 owl:versionInfo "stable"@en ;
+                 
+                 rdfs:comment "Questa classe rappresenta un tipo di parcheggio, ovvero il parcheggio a rotazione. Il parcheggio a rotazioneè di solito un tipo di parcheggio destinato agli utenti che compiono brevi soste"@it ;
+                 
+                 owl:versionInfo "stabile"@it ;
+                 
+                 rdfs:isDefinedBy <http://dati.gov.it/onto/parkingapit> .
+
+
+
+###  https://w3id.org/italia/onto/PARK/TerminalCarPark
+
+:TerminalCarPark rdf:type owl:Class ;
+                 
+                 rdfs:label "Terminal Car Park"@en ,
+                            "Parcheggio Terminale"@it ;
+                 
+                 rdfs:subClassOf :CarPark ;
+                 
+                 rdfs:comment "This class represents a specific type of car park; that is, terminal car park used for long-term parking"@en ;
+                 
+                 owl:versionInfo "stable"@en ;
+                 
+                 rdfs:comment "Questa classe rappresenta uno specifico tipo di parcheggio, ovvero il parcheggio terminale, di solito utilizzato per lunghe soste."@it ;
+                 
+                 owl:versionInfo "stabile"@it ;
+                 
+                 rdfs:isDefinedBy <http://dati.gov.it/onto/parkingapit> .
+
+
+
+###  https://w3id.org/italia/onto/POI/PointOfInterest
+
+poiapit:PointOfInterest rdf:type owl:Class ;
+                        
+                        rdfs:isDefinedBy <http://dati.gov.it/onto/poiapit> .
+
+
+
+###  https://w3id.org/italia/onto/POT/Offer
+
+potapit:Offer rdf:type owl:Class ;
+              
+              rdfs:isDefinedBy potapit: .
+
+
+
+###  https://w3id.org/italia/onto/SM/OnlineContactPoint
+
+smapit:OnlineContactPoint rdf:type owl:Class ;
+                          
+                          rdfs:isDefinedBy smapit: .
+
+
+
+###  https://w3id.org/italia/onto/l0/Topic
+
+l0:Topic rdf:type owl:Class ;
+         
+         rdfs:isDefinedBy l0: .
+
+
+
+
+###  Generated by the OWL API (version 3.5.1) http://owlapi.sourceforge.net
+
