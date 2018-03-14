@@ -1,7 +1,8 @@
 {
   "@context": {
     "adms": "http://www.w3.org/ns/adms#",
-    "clvapit": "http://dati.gov.it/onto/clvapit#",
+    "clvapit": "http://w3id.org/italia/onto/CLV/",
+    "cpsvapit": "http://w3id.org/italia/onto/CPSV/",
     "dcat": "http://www.w3.org/ns/dcat#",
     "dcatapit": "http://dati.gov.it/onto/dcatapit#",
     "dct": "http://purl.org/dc/terms/",
@@ -17,13 +18,43 @@
   },
   "@graph": [
     {
+      "@id": "http://w3id.org/italia/controlled-vocabulary/classifications-for-public-services/authentication-type/CNS",
+      "@type": [
+        "cpsvapit:Authentication",
+        "skos:Concept"
+      ],
+      "clvapit:hasRankOrder": "2",
+      "dct:identifier": "CNS",
+      "skos:broader": {
+        "@id": "http://w3id.org/italia/controlled-vocabulary/classifications-for-public-services/authentication-type/2FAHW"
+      },
+      "skos:inScheme": {
+        "@id": "http://w3id.org/italia/controlled-vocabulary/classifications-for-public-services/authentication-type"
+      },
+      "skos:notation": "CNS",
+      "skos:prefLabel": [
+        {
+          "@language": "it",
+          "@value": "Carta nazionale dei servizi (CNS)"
+        },
+        {
+          "@language": "en",
+          "@value": "National service card"
+        },
+        {
+          "@language": "de",
+          "@value": "Nationale Servicekarte"
+        }
+      ]
+    },
+    {
       "@id": "http://dati.gov.it/data/resource/Distribution/Authentication_RDF_XML",
       "@type": "dcatapit:Distribution",
       "dcat:accessURL": {
-        "@id": "https://github.com/italia/daf-ontologie-vocabolari-controllati/tree/master/VocabolariControllati/ClassificazioniPerServiziPubblici/TipiAutenticazione"
+        "@id": "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/VocabolariControllati/classifications-for-public-services/authentication-type"
       },
       "dcat:downloadURL": {
-        "@id": "https://github.com/italia/daf-ontologie-vocabolari-controllati/blob/master/VocabolariControllati/ClassificazioniPerServiziPubblici/TipiAutenticazione/Authentication.rdf"
+        "@id": "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/VocabolariControllati/classifications-for-public-services/authentication-type/authentication-type.rdf"
       },
       "dct:description": [
         {
@@ -39,44 +70,43 @@
         "@id": "http://publications.europa.eu/resource/authority/file-type/RDF_XML"
       },
       "dct:license": {
-        "@id": "http://dati.gov.it/onto/controlledvocabulary/License/A21_CCBY40"
+        "@id": "http://w3id.org/italia/controlled-vocabulary/licences/A21_CCBY40"
       },
       "dct:title": [
         {
-          "@language": "it",
-          "@value": "Distribuzione RDF/XML tipi autenticazione servizi pubblici"
-        },
-        {
           "@language": "en",
           "@value": "RDF/XML distribution types of authentication for public services"
+        },
+        {
+          "@language": "it",
+          "@value": "Distribuzione RDF/XML tipi autenticazione servizi pubblici"
         }
       ]
     },
     {
-      "@id": "http://dati.gov.it/onto/controlledvocabulary/Authentication/2FA",
-      "@type": "skos:Concept",
-      "clvapit:hasRankOrder": "1",
-      "dct:identifier": "2FA",
-      "skos:inScheme": {
-        "@id": "http://dati.gov.it/onto/controlledvocabulary/Authentication"
-      },
-      "skos:narrower": [
-        {
-          "@id": "http://dati.gov.it/onto/controlledvocabulary/Authentication/SPIDL2"
-        },
-        {
-          "@id": "http://dati.gov.it/onto/controlledvocabulary/Authentication/IDOTP"
-        }
+      "@id": "http://w3id.org/italia/controlled-vocabulary/classifications-for-public-services/authentication-type/NONE",
+      "@type": [
+        "skos:Concept",
+        "cpsvapit:Authentication"
       ],
-      "skos:notation": "2FA",
+      "clvapit:hasRankOrder": "1",
+      "dct:identifier": "NONE",
+      "skos:inScheme": {
+        "@id": "http://w3id.org/italia/controlled-vocabulary/classifications-for-public-services/authentication-type"
+      },
+      "skos:notation": "NONE",
       "skos:prefLabel": [
         {
-          "@language": "it",
-          "@value": "Autenticazione a due fattori"
+          "@language": "de",
+          "@value": "Keine - freier Zugang"
         },
         {
           "@language": "en",
-          "@value": "Two Factor authentication"
+          "@value": "None - free access"
+        },
+        {
+          "@language": "it",
+          "@value": "Nessuna - accesso libero"
         }
       ]
     },
@@ -87,173 +117,6 @@
     {
       "@id": "skos:inScheme",
       "@type": "rdfs:Property"
-    },
-    {
-      "@id": "http://dati.gov.it/onto/controlledvocabulary/Authentication",
-      "@type": [
-        "adms:SemanticAsset",
-        "skos:ConceptScheme",
-        "dcatapit:Dataset"
-      ],
-      "adms:representationTechnique": {
-        "@id": "http://purl.org/adms/representationtechnique/SKOS"
-      },
-      "dcat:contactPoint": {
-        "@id": "http://dati.gov.it/data/resource/ContactPoint/voc_AgID"
-      },
-      "dcat:distribution": [
-        {
-          "@id": "http://dati.gov.it/data/resource/Distribution/Authentication_XLSX"
-        },
-        {
-          "@id": "http://dati.gov.it/data/resource/Distribution/Authentication_JSON_LD"
-        },
-        {
-          "@id": "http://dati.gov.it/data/resource/Distribution/Authentication_RDF_Turtle"
-        },
-        {
-          "@id": "http://dati.gov.it/data/resource/Distribution/Authentication_RDF_XML"
-        },
-        {
-          "@id": "http://dati.gov.it/data/resource/Distribution/Authentication_CSV"
-        }
-      ],
-      "dcat:keyword": [
-        {
-          "@language": "it",
-          "@value": "autenticazione"
-        },
-        {
-          "@language": "en",
-          "@value": "national service card"
-        },
-        {
-          "@language": "it",
-          "@value": "servizio pubblico"
-        },
-        {
-          "@language": "it",
-          "@value": "carta nazionale servizi"
-        },
-        {
-          "@language": "en",
-          "@value": "password"
-        },
-        {
-          "@language": "en",
-          "@value": "authentication"
-        },
-        {
-          "@language": "it",
-          "@value": "spid"
-        },
-        {
-          "@language": "it",
-          "@value": "password"
-        },
-        {
-          "@language": "en",
-          "@value": "public service"
-        },
-        {
-          "@language": "en",
-          "@value": "spid"
-        }
-      ],
-      "dcat:theme": {
-        "@id": "http://publications.europa.eu/resource/authority/data-theme/GOVE"
-      },
-      "dct:accrualPeriodicity": {
-        "@id": "http://publications.europa.eu/resource/authority/frequency/IRREG"
-      },
-      "dct:conformsTo": {
-        "@id": "http://dati.gov.it/data/resource/Standard/SKOS"
-      },
-      "dct:creator": {
-        "@id": "http://spcdata.digitpa.gov.it/browse/page/Amministrazione/agid"
-      },
-      "dct:description": [
-        {
-          "@language": "en",
-          "@value": "Controlled Vocabulary on the classification of the types of authentication. Currently, the vocabulary is used in the catalogue of public services."
-        },
-        {
-          "@language": "it",
-          "@value": "Vocabolario controllato della classificazione dei tipi di autenticazione. Attualmente il vocabolario è utilizzato nell'ambito dello sviluppo del catalogo servizi pubblici"
-        }
-      ],
-      "dct:identifier": "agid:D.6",
-      "dct:issued": {
-        "@type": "xsd:date",
-        "@value": "2017-10-20"
-      },
-      "dct:language": [
-        {
-          "@id": "http://publications.europa.eu/resource/authority/language/ITA"
-        },
-        {
-          "@id": "http://publications.europa.eu/resource/authority/language/ENG"
-        }
-      ],
-      "dct:modified": {
-        "@type": "xsd:date",
-        "@value": "2018-02-12"
-      },
-      "dct:publisher": {
-        "@id": "http://spcdata.digitpa.gov.it/browse/page/Amministrazione/agid"
-      },
-      "dct:rightsHolder": {
-        "@id": "http://spcdata.digitpa.gov.it/browse/page/Amministrazione/agid"
-      },
-      "dct:subject": [
-        {
-          "@id": "http://eurovoc.europa.eu/246051"
-        },
-        {
-          "@id": "http://eurovoc.europa.eu/246146"
-        },
-        {
-          "@id": "http://eurovoc.europa.eu/100169"
-        }
-      ],
-      "dct:title": [
-        {
-          "@language": "en",
-          "@value": "Authentication"
-        },
-        {
-          "@language": "it",
-          "@value": "Tipi di autenticazione"
-        }
-      ],
-      "dct:type": {
-        "@id": "http://purl.org/adms/assettype/Taxonomy"
-      },
-      "owl:versionInfo": "0.1",
-      "rdfs:comment": [
-        {
-          "@language": "en",
-          "@value": "Classification of the types of authentication"
-        },
-        {
-          "@language": "it",
-          "@value": "Classificazione dei tipi di autenticazione"
-        }
-      ],
-      "rdfs:isDefinedBy": {
-        "@id": "http://dati.gov.it/onto/controlledvocabulary/Authentication"
-      },
-      "rdfs:label": [
-        {
-          "@language": "it",
-          "@value": "Tipi di Autenticazione"
-        },
-        {
-          "@language": "en",
-          "@value": "Authentication"
-        }
-      ],
-      "xkos:numberOfLevels": "2"
     },
     {
       "@id": "dct:modified",
@@ -268,15 +131,71 @@
       "@type": "rdfs:Property"
     },
     {
-      "@id": "dct:license",
+      "@id": "http://w3id.org/italia/controlled-vocabulary/classifications-for-public-services/authentication-type/SPIDL2",
+      "@type": [
+        "skos:Concept",
+        "cpsvapit:Authentication"
+      ],
+      "clvapit:hasRankOrder": "2",
+      "dct:identifier": "SPIDL2",
+      "skos:broader": {
+        "@id": "http://w3id.org/italia/controlled-vocabulary/classifications-for-public-services/authentication-type/2FA"
+      },
+      "skos:inScheme": {
+        "@id": "http://w3id.org/italia/controlled-vocabulary/classifications-for-public-services/authentication-type"
+      },
+      "skos:notation": "SPIDL2",
+      "skos:prefLabel": [
+        {
+          "@language": "en",
+          "@value": "SPID (National public system of e-ID) Level 2"
+        },
+        {
+          "@language": "it",
+          "@value": "SPID Livello 2"
+        },
+        {
+          "@language": "de",
+          "@value": "SPID (Nationales öffentliches System der e-ID) Stufe 2"
+        }
+      ]
+    },
+    {
+      "@id": "http://w3id.org/italia/controlled-vocabulary/classifications-for-public-services/authentication-type/SPIDL3",
+      "@type": [
+        "skos:Concept",
+        "cpsvapit:Authentication"
+      ],
+      "clvapit:hasRankOrder": "2",
+      "dct:identifier": "SPIDL3",
+      "skos:broader": {
+        "@id": "http://w3id.org/italia/controlled-vocabulary/classifications-for-public-services/authentication-type/2FAHW"
+      },
+      "skos:inScheme": {
+        "@id": "http://w3id.org/italia/controlled-vocabulary/classifications-for-public-services/authentication-type"
+      },
+      "skos:notation": "SPIDL3",
+      "skos:prefLabel": [
+        {
+          "@language": "de",
+          "@value": "SPID (Nationales öffentliches System der e-ID) Stufe 3"
+        },
+        {
+          "@language": "en",
+          "@value": "SPID (National public system of e-ID) Level 3"
+        },
+        {
+          "@language": "it",
+          "@value": "SPID Livello 3"
+        }
+      ]
+    },
+    {
+      "@id": "dct:rightsHolder",
       "@type": "rdfs:Property"
     },
     {
-      "@id": "owl:versionInfo",
-      "@type": "rdfs:Property"
-    },
-    {
-      "@id": "dct:conformsTo",
+      "@id": "skos:prefLabel",
       "@type": "rdfs:Property"
     },
     {
@@ -292,57 +211,72 @@
       "@type": "rdfs:Class"
     },
     {
-      "@id": "http://dati.gov.it/data/resource/Distribution/Authentication_CSV",
-      "@type": "dcatapit:Distribution",
-      "dcat:accessURL": {
-        "@id": "https://github.com/italia/daf-ontologie-vocabolari-controllati/tree/master/VocabolariControllati/ClassificazioniPerServiziPubblici/TipiAutenticazione"
+      "@id": "http://w3id.org/italia/controlled-vocabulary/classifications-for-public-services/authentication-type/IDPWD",
+      "@type": [
+        "cpsvapit:Authentication",
+        "skos:Concept"
+      ],
+      "clvapit:hasRankOrder": "2",
+      "dct:identifier": "IDPWD",
+      "skos:broader": {
+        "@id": "http://w3id.org/italia/controlled-vocabulary/classifications-for-public-services/authentication-type/SFA"
       },
-      "dcat:downloadURL": {
-        "@id": "https://github.com/italia/daf-ontologie-vocabolari-controllati/blob/master/VocabolariControllati/ClassificazioniPerServiziPubblici/TipiAutenticazione/Authentication.csv"
-      },
-      "dct:description": [
+      "skos:definition": [
         {
           "@language": "it",
-          "@value": "Questa è la distribuzione CSV del dataset Linked Open Data del vocabolario controllato sulla classificazione dei tipi di autenticazione per i servizi pubblici"
+          "@value": "Credenziale semplice basata sull'uso di username e password. Accesso tramite sistemi quali NoiPA, FiscoOnline e ogni altro sistema che richiede solo credenziali di tipo usernname e password ricadono in questa categoria"
         },
         {
           "@language": "en",
-          "@value": "This is the distribution in CSV of the Linked Open Dataset of the controlled vocabulary related to the types of authentication for public services"
+          "@value": "Simple credential consisting in username and password. Access to online Italian systems such as NoiPA and Fiscoonline and any other system that requires username and password fall into this category"
         }
       ],
-      "dct:format": {
-        "@id": "http://publications.europa.eu/resource/authority/file-type/CSV"
+      "skos:inScheme": {
+        "@id": "http://w3id.org/italia/controlled-vocabulary/classifications-for-public-services/authentication-type"
       },
-      "dct:license": {
-        "@id": "http://dati.gov.it/onto/controlledvocabulary/License/A21_CCBY40"
-      },
-      "dct:title": [
+      "skos:notation": "IDPWD",
+      "skos:prefLabel": [
         {
           "@language": "en",
-          "@value": "CSV distribution types of authentication for public services"
+          "@value": "User ID and password"
         },
         {
           "@language": "it",
-          "@value": "Distribuzione CSV tipi autenticazione servizi pubblici"
+          "@value": "User ID e password"
+        },
+        {
+          "@language": "de",
+          "@value": "Benutzer-ID und Passwort"
         }
       ]
     },
     {
-      "@id": "http://dati.gov.it/onto/controlledvocabulary/Authentication/SPIDL1",
-      "@type": "skos:Concept",
+      "@id": "skos:broader",
+      "@type": "rdfs:Property"
+    },
+    {
+      "@id": "http://w3id.org/italia/controlled-vocabulary/classifications-for-public-services/authentication-type/SPIDL1",
+      "@type": [
+        "skos:Concept",
+        "cpsvapit:Authentication"
+      ],
       "clvapit:hasRankOrder": "2",
       "dct:identifier": "SPIDL1",
       "skos:broader": {
-        "@id": "http://dati.gov.it/onto/controlledvocabulary/Authentication/SFA"
+        "@id": "http://w3id.org/italia/controlled-vocabulary/classifications-for-public-services/authentication-type/SFA"
       },
       "skos:inScheme": {
-        "@id": "http://dati.gov.it/onto/controlledvocabulary/Authentication"
+        "@id": "http://w3id.org/italia/controlled-vocabulary/classifications-for-public-services/authentication-type"
       },
       "skos:notation": "SPIDL1",
       "skos:prefLabel": [
         {
           "@language": "it",
           "@value": "Credenziale SPID Livello 1"
+        },
+        {
+          "@language": "de",
+          "@value": "SPID (Nationales öffentliches System der e-ID) Berechtigungsnachweis Stufe 1"
         },
         {
           "@language": "en",
@@ -354,10 +288,10 @@
       "@id": "http://dati.gov.it/data/resource/Distribution/Authentication_XLSX",
       "@type": "dcatapit:Distribution",
       "dcat:accessURL": {
-        "@id": "https://github.com/italia/daf-ontologie-vocabolari-controllati/tree/master/VocabolariControllati/ClassificazioniPerServiziPubblici/TipiAutenticazione"
+        "@id": "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/VocabolariControllati/classifications-for-public-services/authentication-type"
       },
       "dcat:downloadURL": {
-        "@id": "https://github.com/italia/daf-ontologie-vocabolari-controllati/blob/master/VocabolariControllati/ClassificazioniPerServiziPubblici/TipiAutenticazione/Authentication.xlsx"
+        "@id": "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/VocabolariControllati/classifications-for-public-services/authentication-type/authentication-type.xlsx"
       },
       "dct:description": [
         {
@@ -373,7 +307,7 @@
         "@id": "http://publications.europa.eu/resource/authority/file-type/XLSX"
       },
       "dct:license": {
-        "@id": "http://dati.gov.it/onto/controlledvocabulary/License/A21_CCBY40"
+        "@id": "http://w3id.org/italia/controlled-vocabulary/licences/A21_CCBY40"
       },
       "dct:title": [
         {
@@ -395,35 +329,41 @@
       "@type": "rdfs:Property"
     },
     {
-      "@id": "http://dati.gov.it/onto/controlledvocabulary/Authentication/IDOTP",
-      "@type": "skos:Concept",
-      "clvapit:hasRankOrder": "2",
-      "dct:identifier": "ID OTP",
-      "skos:broader": {
-        "@id": "http://dati.gov.it/onto/controlledvocabulary/Authentication/2FA"
+      "@id": "dcat:downloadURL",
+      "@type": "rdfs:Property"
+    },
+    {
+      "@id": "http://w3id.org/italia/controlled-vocabulary/classifications-for-public-services/authentication-type/2FA",
+      "@type": [
+        "cpsvapit:Authentication",
+        "skos:Concept"
+      ],
+      "clvapit:hasRankOrder": "1",
+      "dct:identifier": "2FA",
+      "skos:inScheme": {
+        "@id": "http://w3id.org/italia/controlled-vocabulary/classifications-for-public-services/authentication-type"
       },
-      "skos:definition": [
+      "skos:narrower": [
         {
-          "@language": "en",
-          "@value": "Combination of two factors: userid and one time password"
+          "@id": "http://w3id.org/italia/controlled-vocabulary/classifications-for-public-services/authentication-type/SPIDL2"
         },
         {
-          "@language": "it",
-          "@value": "Combinazione di due fattori: userid e one time password"
+          "@id": "http://w3id.org/italia/controlled-vocabulary/classifications-for-public-services/authentication-type/IDOTP"
         }
       ],
-      "skos:inScheme": {
-        "@id": "http://dati.gov.it/onto/controlledvocabulary/Authentication"
-      },
-      "skos:notation": "ID OTP",
+      "skos:notation": "2FA",
       "skos:prefLabel": [
         {
-          "@language": "en",
-          "@value": "User ID and One Time Password"
+          "@language": "it",
+          "@value": "Autenticazione a due fattori"
         },
         {
-          "@language": "it",
-          "@value": "User ID e One Time Password"
+          "@language": "en",
+          "@value": "Two Factor authentication"
+        },
+        {
+          "@language": "de",
+          "@value": "Zwei-Faktor-Authentifizierung"
         }
       ]
     },
@@ -432,37 +372,8 @@
       "@type": "rdfs:Class"
     },
     {
-      "@id": "http://dati.gov.it/onto/controlledvocabulary/Authentication/IDPWD",
-      "@type": "skos:Concept",
-      "clvapit:hasRankOrder": "2",
-      "dct:identifier": "IDPWD",
-      "skos:broader": {
-        "@id": "http://dati.gov.it/onto/controlledvocabulary/Authentication/SFA"
-      },
-      "skos:definition": [
-        {
-          "@language": "it",
-          "@value": "Credenziale semplice basata sull'uso di username e password. Accesso tramite sistemi quali NoiPA, FiscoOnline e ogni altro sistema che richiede solo credenziali di tipo usernname e password ricadono in questa categoria"
-        },
-        {
-          "@language": "en",
-          "@value": "Simple credential consisting in username and password. Access to online Italian systems such as NoiPA and Fiscoonline and any other system that requires username and password fall into this category"
-        }
-      ],
-      "skos:inScheme": {
-        "@id": "http://dati.gov.it/onto/controlledvocabulary/Authentication"
-      },
-      "skos:notation": "IDPWD",
-      "skos:prefLabel": [
-        {
-          "@language": "it",
-          "@value": "User ID e password"
-        },
-        {
-          "@language": "en",
-          "@value": "User ID and password"
-        }
-      ]
+      "@id": "dct:language",
+      "@type": "rdfs:Property"
     },
     {
       "@id": "dcat:distribution",
@@ -485,12 +396,12 @@
       "dct:identifier": "agid",
       "foaf:name": [
         {
-          "@language": "it",
-          "@value": "Agenzia per l'Italia Digitale"
-        },
-        {
           "@language": "en",
           "@value": "Italian Digital Agency"
+        },
+        {
+          "@language": "it",
+          "@value": "Agenzia per l'Italia Digitale"
         }
       ]
     },
@@ -501,65 +412,14 @@
     {
       "@id": "http://dati.gov.it/data/resource/ContactPoint/voc_AgID",
       "@type": [
+        "vcard:Kind",
         "dcatapit:Organization",
-        "vcard:Organization",
-        "vcard:Kind"
+        "vcard:Organization"
       ],
       "vcard:fn": "banche dati e open data",
       "vcard:hasEmail": {
         "@id": "mailto:info@dati.gov.it"
       }
-    },
-    {
-      "@id": "http://dati.gov.it/onto/controlledvocabulary/Authentication/CNS",
-      "@type": "skos:Concept",
-      "clvapit:hasRankOrder": "2",
-      "dct:identifier": "CNS",
-      "skos:broader": {
-        "@id": "http://dati.gov.it/onto/controlledvocabulary/Authentication/2FAHW"
-      },
-      "skos:inScheme": {
-        "@id": "http://dati.gov.it/onto/controlledvocabulary/Authentication"
-      },
-      "skos:notation": "CNS",
-      "skos:prefLabel": [
-        {
-          "@language": "en",
-          "@value": "National service card"
-        },
-        {
-          "@language": "it",
-          "@value": "Carta nazionale dei servizi (CNS)"
-        }
-      ]
-    },
-    {
-      "@id": "http://dati.gov.it/onto/controlledvocabulary/Authentication/SFA",
-      "@type": "skos:Concept",
-      "clvapit:hasRankOrder": "1",
-      "dct:identifier": "SFA",
-      "skos:inScheme": {
-        "@id": "http://dati.gov.it/onto/controlledvocabulary/Authentication"
-      },
-      "skos:narrower": [
-        {
-          "@id": "http://dati.gov.it/onto/controlledvocabulary/Authentication/IDPWD"
-        },
-        {
-          "@id": "http://dati.gov.it/onto/controlledvocabulary/Authentication/SPIDL1"
-        }
-      ],
-      "skos:notation": "SFA",
-      "skos:prefLabel": [
-        {
-          "@language": "it",
-          "@value": "Autenticazione Singolo Fattore"
-        },
-        {
-          "@language": "en",
-          "@value": "Single Factor Authentication"
-        }
-      ]
     },
     {
       "@id": "vcard:fn",
@@ -570,12 +430,43 @@
       "@type": "rdfs:Class"
     },
     {
-      "@id": "skos:prefLabel",
+      "@id": "adms:representationTechnique",
       "@type": "rdfs:Property"
     },
     {
-      "@id": "adms:representationTechnique",
-      "@type": "rdfs:Property"
+      "@id": "http://w3id.org/italia/controlled-vocabulary/classifications-for-public-services/authentication-type/SFA",
+      "@type": [
+        "cpsvapit:Authentication",
+        "skos:Concept"
+      ],
+      "clvapit:hasRankOrder": "1",
+      "dct:identifier": "SFA",
+      "skos:inScheme": {
+        "@id": "http://w3id.org/italia/controlled-vocabulary/classifications-for-public-services/authentication-type"
+      },
+      "skos:narrower": [
+        {
+          "@id": "http://w3id.org/italia/controlled-vocabulary/classifications-for-public-services/authentication-type/SPIDL1"
+        },
+        {
+          "@id": "http://w3id.org/italia/controlled-vocabulary/classifications-for-public-services/authentication-type/IDPWD"
+        }
+      ],
+      "skos:notation": "SFA",
+      "skos:prefLabel": [
+        {
+          "@language": "en",
+          "@value": "Single Factor Authentication"
+        },
+        {
+          "@language": "it",
+          "@value": "Autenticazione Singolo Fattore"
+        },
+        {
+          "@language": "de",
+          "@value": "Single-Faktor-Authentifizierung"
+        }
+      ]
     },
     {
       "@id": "dct:subject",
@@ -586,8 +477,78 @@
       "@type": "rdfs:Property"
     },
     {
+      "@id": "http://w3id.org/italia/controlled-vocabulary/classifications-for-public-services/authentication-type/IDOTP",
+      "@type": [
+        "skos:Concept",
+        "cpsvapit:Authentication"
+      ],
+      "clvapit:hasRankOrder": "2",
+      "dct:identifier": "ID OTP",
+      "skos:broader": {
+        "@id": "http://w3id.org/italia/controlled-vocabulary/classifications-for-public-services/authentication-type/2FA"
+      },
+      "skos:definition": [
+        {
+          "@language": "en",
+          "@value": "Combination of two factors: userid and one time password"
+        },
+        {
+          "@language": "it",
+          "@value": "Combinazione di due fattori: userid e one time password"
+        }
+      ],
+      "skos:inScheme": {
+        "@id": "http://w3id.org/italia/controlled-vocabulary/classifications-for-public-services/authentication-type"
+      },
+      "skos:notation": "ID OTP",
+      "skos:prefLabel": [
+        {
+          "@language": "en",
+          "@value": "User ID and One Time Password"
+        },
+        {
+          "@language": "de",
+          "@value": "Benutzer-ID und Einmal-Passwort"
+        },
+        {
+          "@language": "it",
+          "@value": "User ID e One Time Password"
+        }
+      ]
+    },
+    {
       "@id": "skos:Concept",
       "@type": "rdfs:Class"
+    },
+    {
+      "@id": "http://w3id.org/italia/controlled-vocabulary/classifications-for-public-services/authentication-type/CIE",
+      "@type": [
+        "skos:Concept",
+        "cpsvapit:Authentication"
+      ],
+      "clvapit:hasRankOrder": "2",
+      "dct:identifier": "CIE",
+      "skos:broader": {
+        "@id": "http://w3id.org/italia/controlled-vocabulary/classifications-for-public-services/authentication-type/2FAHW"
+      },
+      "skos:inScheme": {
+        "@id": "http://w3id.org/italia/controlled-vocabulary/classifications-for-public-services/authentication-type"
+      },
+      "skos:notation": "CIE",
+      "skos:prefLabel": [
+        {
+          "@language": "it",
+          "@value": "Carta d'identità elettronica (CIE)"
+        },
+        {
+          "@language": "de",
+          "@value": "Elektronischer Personalausweis (CIE)"
+        },
+        {
+          "@language": "en",
+          "@value": "Electronic identity card"
+        }
+      ]
     },
     {
       "@id": "clvapit:hasRankOrder",
@@ -602,49 +563,199 @@
       "@type": "rdfs:Property"
     },
     {
-      "@id": "http://dati.gov.it/onto/controlledvocabulary/Authentication/NONE",
-      "@type": "skos:Concept",
-      "clvapit:hasRankOrder": "1",
-      "dct:identifier": "NONE",
-      "skos:inScheme": {
-        "@id": "http://dati.gov.it/onto/controlledvocabulary/Authentication"
+      "@id": "http://w3id.org/italia/controlled-vocabulary/classifications-for-public-services/authentication-type",
+      "@type": [
+        "adms:Asset",
+        "skos:ConceptScheme",
+        "dcatapit:Dataset"
+      ],
+      "adms:representationTechnique": {
+        "@id": "http://purl.org/adms/representationtechnique/SKOS"
       },
-      "skos:notation": "NONE",
-      "skos:prefLabel": [
+      "dcat:contactPoint": {
+        "@id": "http://dati.gov.it/data/resource/ContactPoint/voc_AgID"
+      },
+      "dcat:distribution": [
+        {
+          "@id": "http://dati.gov.it/data/resource/Distribution/Authentication_XLSX"
+        },
+        {
+          "@id": "http://dati.gov.it/data/resource/Distribution/Authentication_RDF_XML"
+        },
+        {
+          "@id": "http://dati.gov.it/data/resource/Distribution/Authentication_RDF_Turtle"
+        },
+        {
+          "@id": "http://dati.gov.it/data/resource/Distribution/Authentication_JSON_LD"
+        },
+        {
+          "@id": "http://dati.gov.it/data/resource/Distribution/Authentication_CSV"
+        }
+      ],
+      "dcat:keyword": [
+        {
+          "@language": "it",
+          "@value": "password"
+        },
         {
           "@language": "en",
-          "@value": "None - free access"
+          "@value": "password"
+        },
+        {
+          "@language": "en",
+          "@value": "spid"
         },
         {
           "@language": "it",
-          "@value": "Nessuna - accesso libero"
+          "@value": "servizio pubblico"
+        },
+        {
+          "@language": "it",
+          "@value": "spid"
+        },
+        {
+          "@language": "en",
+          "@value": "public service"
+        },
+        {
+          "@language": "it",
+          "@value": "autenticazione"
+        },
+        {
+          "@language": "it",
+          "@value": "carta nazionale servizi"
+        },
+        {
+          "@language": "en",
+          "@value": "national service card"
+        },
+        {
+          "@language": "en",
+          "@value": "authentication"
         }
-      ]
+      ],
+      "dcat:theme": {
+        "@id": "http://publications.europa.eu/resource/authority/data-theme/GOVE"
+      },
+      "dct:accrualPeriodicity": {
+        "@id": "http://publications.europa.eu/resource/authority/frequency/IRREG"
+      },
+      "dct:conformsTo": {
+        "@id": "http://dati.gov.it/data/resource/Standard/SKOS"
+      },
+      "dct:creator": {
+        "@id": "http://spcdata.digitpa.gov.it/browse/page/Amministrazione/agid"
+      },
+      "dct:description": [
+        {
+          "@language": "en",
+          "@value": "Controlled Vocabulary on the classification of the types of authentication. Currently, the vocabulary is used in the catalogue of public services. The translations in Germany were provided by Ivo Planoetscher of the Autonomous Province of Bolzano"
+        },
+        {
+          "@language": "it",
+          "@value": "Vocabolario controllato della classificazione dei tipi di autenticazione. Attualmente il vocabolario è utilizzato nell'ambito dello sviluppo del catalogo servizi pubblici. Le traduzioni in tedesco sono state fornite da Ivo Planoetscher della Pronvicia Autonoma di Bolzano"
+        }
+      ],
+      "dct:identifier": "agid:D.6",
+      "dct:issued": {
+        "@type": "xsd:date",
+        "@value": "2017-10-20"
+      },
+      "dct:language": [
+        {
+          "@id": "http://publications.europa.eu/resource/authority/language/DEU"
+        },
+        {
+          "@id": "http://publications.europa.eu/resource/authority/language/ITA"
+        },
+        {
+          "@id": "http://publications.europa.eu/resource/authority/language/ENG"
+        }
+      ],
+      "dct:modified": {
+        "@type": "xsd:date",
+        "@value": "2018-03-14"
+      },
+      "dct:publisher": {
+        "@id": "http://spcdata.digitpa.gov.it/browse/page/Amministrazione/agid"
+      },
+      "dct:rightsHolder": {
+        "@id": "http://spcdata.digitpa.gov.it/browse/page/Amministrazione/agid"
+      },
+      "dct:subject": [
+        {
+          "@id": "http://eurovoc.europa.eu/100169"
+        },
+        {
+          "@id": "http://eurovoc.europa.eu/246146"
+        },
+        {
+          "@id": "http://eurovoc.europa.eu/246051"
+        }
+      ],
+      "dct:title": [
+        {
+          "@language": "it",
+          "@value": "Tipi di autenticazione"
+        },
+        {
+          "@language": "en",
+          "@value": "Authentication"
+        }
+      ],
+      "dct:type": {
+        "@id": "http://purl.org/adms/assettype/Taxonomy"
+      },
+      "owl:versionInfo": "0.1",
+      "rdfs:comment": [
+        {
+          "@language": "en",
+          "@value": "Classification of the types of authentication"
+        },
+        {
+          "@language": "it",
+          "@value": "Classificazione dei tipi di autenticazione"
+        }
+      ],
+      "rdfs:isDefinedBy": {
+        "@id": "http://w3id.org/italia/controlled-vocabulary/classifications-for-public-services/authentication-type"
+      },
+      "rdfs:label": [
+        {
+          "@language": "en",
+          "@value": "Authentication"
+        },
+        {
+          "@language": "it",
+          "@value": "Tipi di Autenticazione"
+        }
+      ],
+      "xkos:numberOfLevels": "2"
     },
     {
       "@id": "http://dati.gov.it/data/resource/Distribution/Authentication_RDF_Turtle",
       "@type": "dcatapit:Distribution",
       "dcat:accessURL": {
-        "@id": "https://github.com/italia/daf-ontologie-vocabolari-controllati/tree/master/VocabolariControllati/ClassificazioniPerServiziPubblici/TipiAutenticazione"
+        "@id": "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/VocabolariControllati/classifications-for-public-services/authentication-type"
       },
       "dcat:downloadURL": {
-        "@id": "https://github.com/italia/daf-ontologie-vocabolari-controllati/blob/master/VocabolariControllati/ClassificazioniPerServiziPubblici/TipiAutenticazione/Authentication.ttl"
+        "@id": "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/VocabolariControllati/classifications-for-public-services/authentication-type/authentication-type.ttl"
       },
       "dct:description": [
         {
-          "@language": "it",
-          "@value": "Questa è la distribuzione RDF/Turtle del dataset Linked Open Data del vocabolario controllato sulla classificazione dei tipi di autenticazione per i servizi pubblici"
-        },
-        {
           "@language": "en",
           "@value": "This is the distribution in RDF/Turtle of the Linked Open Dataset of the controlled vocabulary related to the types of authentication for public services"
+        },
+        {
+          "@language": "it",
+          "@value": "Questa è la distribuzione RDF/Turtle del dataset Linked Open Data del vocabolario controllato sulla classificazione dei tipi di autenticazione per i servizi pubblici"
         }
       ],
       "dct:format": {
         "@id": "http://publications.europa.eu/resource/authority/file-type/RDF_TURTLE"
       },
       "dct:license": {
-        "@id": "http://dati.gov.it/onto/controlledvocabulary/License/A21_CCBY40"
+        "@id": "http://w3id.org/italia/controlled-vocabulary/licences/A21_CCBY40"
       },
       "dct:title": [
         {
@@ -658,22 +769,119 @@
       ]
     },
     {
-      "@id": "skos:broader",
+      "@id": "dct:description",
       "@type": "rdfs:Property"
     },
     {
-      "@id": "http://dati.gov.it/onto/controlledvocabulary/Authentication/MFA",
-      "@type": "skos:Concept",
+      "@id": "owl:versionInfo",
+      "@type": "rdfs:Property"
+    },
+    {
+      "@id": "skos:notation",
+      "@type": "rdfs:Property"
+    },
+    {
+      "@id": "dct:creator",
+      "@type": "rdfs:Property"
+    },
+    {
+      "@id": "http://dati.gov.it/data/resource/Distribution/Authentication_JSON_LD",
+      "@type": "dcatapit:Distribution",
+      "dcat:accessURL": {
+        "@id": "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/VocabolariControllati/classifications-for-public-services/authentication-type"
+      },
+      "dcat:downloadURL": {
+        "@id": "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/VocabolariControllati/classifications-for-public-services/authentication-type/authentication-type.jsonld"
+      },
+      "dct:description": [
+        {
+          "@language": "it",
+          "@value": "Questa è la distribuzione JSON_LD del dataset Linked Open Data del vocabolario controllato sulla classificazione dei tipi di autenticazione per i servizi pubblici"
+        },
+        {
+          "@language": "en",
+          "@value": "This is the distribution in JSON_LD of the Linked Open Dataset of the controlled vocabulary related to the types of authentication for public services"
+        }
+      ],
+      "dct:format": {
+        "@id": "http://publications.europa.eu/resource/authority/file-type/JSON_LD"
+      },
+      "dct:license": {
+        "@id": "http://w3id.org/italia/controlled-vocabulary/licences/A21_CCBY40"
+      },
+      "dct:title": [
+        {
+          "@language": "en",
+          "@value": "JSON_LD distribution types of authentication for public services"
+        },
+        {
+          "@language": "it",
+          "@value": "Distribuzione JSON_LD tipi autenticazione servizi pubblici"
+        }
+      ]
+    },
+    {
+      "@id": "http://w3id.org/italia/controlled-vocabulary/classifications-for-public-services/authentication-type/2FAHW",
+      "@type": [
+        "skos:Concept",
+        "cpsvapit:Authentication"
+      ],
+      "clvapit:hasRankOrder": "1",
+      "dct:identifier": "2FAHW",
+      "skos:inScheme": {
+        "@id": "http://w3id.org/italia/controlled-vocabulary/classifications-for-public-services/authentication-type"
+      },
+      "skos:narrower": [
+        {
+          "@id": "http://w3id.org/italia/controlled-vocabulary/classifications-for-public-services/authentication-type/CNS"
+        },
+        {
+          "@id": "http://w3id.org/italia/controlled-vocabulary/classifications-for-public-services/authentication-type/CIE"
+        },
+        {
+          "@id": "http://w3id.org/italia/controlled-vocabulary/classifications-for-public-services/authentication-type/SPIDL3"
+        }
+      ],
+      "skos:notation": "2FAHW",
+      "skos:prefLabel": [
+        {
+          "@language": "en",
+          "@value": "Two Factor Authentication hardware"
+        },
+        {
+          "@language": "it",
+          "@value": "Autenticazione a due fattori hardware"
+        },
+        {
+          "@language": "de",
+          "@value": "Zwei-Faktor-Hardware-Authentifizierung"
+        }
+      ]
+    },
+    {
+      "@id": "dct:conformsTo",
+      "@type": "rdfs:Property"
+    },
+    {
+      "@id": "http://w3id.org/italia/controlled-vocabulary/classifications-for-public-services/authentication-type/MFA",
+      "@type": [
+        "cpsvapit:Authentication",
+        "skos:Concept"
+      ],
       "clvapit:hasRankOrder": "1",
       "dct:identifier": "MFA",
       "skos:inScheme": {
-        "@id": "http://dati.gov.it/onto/controlledvocabulary/Authentication"
+        "@id": "http://w3id.org/italia/controlled-vocabulary/classifications-for-public-services/authentication-type"
       },
       "skos:narrower": {
-        "@id": "http://dati.gov.it/onto/controlledvocabulary/Authentication/IDOTPBIO"
+        "@id": "http://w3id.org/italia/controlled-vocabulary/classifications-for-public-services/authentication-type/IDOTPBIO"
       },
       "skos:notation": "MFA",
       "skos:prefLabel": [
+        {
+          "@language": "de",
+          "@value": "Multi-Faktor-Authentifizierung"
+        },
         {
           "@language": "it",
           "@value": "Autenticazione multi-fattore"
@@ -685,83 +893,12 @@
       ]
     },
     {
-      "@id": "dct:creator",
-      "@type": "rdfs:Property"
-    },
-    {
-      "@id": "http://dati.gov.it/data/resource/Distribution/Authentication_JSON_LD",
-      "@type": "dcatapit:Distribution",
-      "dcat:accessURL": {
-        "@id": "https://github.com/italia/daf-ontologie-vocabolari-controllati/tree/master/VocabolariControllati/ClassificazioniPerServiziPubblici/TipiAutenticazione"
-      },
-      "dcat:downloadURL": {
-        "@id": "https://github.com/italia/daf-ontologie-vocabolari-controllati/blob/master/VocabolariControllati/ClassificazioniPerServiziPubblici/TipiAutenticazione/Authentication.jsonld"
-      },
-      "dct:description": [
-        {
-          "@language": "en",
-          "@value": "This is the distribution in JSON_LD of the Linked Open Dataset of the controlled vocabulary related to the types of authentication for public services"
-        },
-        {
-          "@language": "it",
-          "@value": "Questa è la distribuzione JSON_LD del dataset Linked Open Data del vocabolario controllato sulla classificazione dei tipi di autenticazione per i servizi pubblici"
-        }
-      ],
-      "dct:format": {
-        "@id": "http://publications.europa.eu/resource/authority/file-type/JSON_LD"
-      },
-      "dct:license": {
-        "@id": "http://dati.gov.it/onto/controlledvocabulary/License/A21_CCBY40"
-      },
-      "dct:title": [
-        {
-          "@language": "it",
-          "@value": "Distribuzione JSON_LD tipi autenticazione servizi pubblici"
-        },
-        {
-          "@language": "en",
-          "@value": "JSON_LD distribution types of authentication for public services"
-        }
-      ]
-    },
-    {
-      "@id": "http://dati.gov.it/onto/controlledvocabulary/Authentication/SPIDL2",
-      "@type": "skos:Concept",
-      "clvapit:hasRankOrder": "2",
-      "dct:identifier": "SPIDL2",
-      "skos:broader": {
-        "@id": "http://dati.gov.it/onto/controlledvocabulary/Authentication/2FA"
-      },
-      "skos:inScheme": {
-        "@id": "http://dati.gov.it/onto/controlledvocabulary/Authentication"
-      },
-      "skos:notation": "SPIDL2",
-      "skos:prefLabel": [
-        {
-          "@language": "en",
-          "@value": "SPID (National public system of e-ID) Level 2"
-        },
-        {
-          "@language": "it",
-          "@value": "SPID Livello 2"
-        }
-      ]
-    },
-    {
-      "@id": "dct:language",
-      "@type": "rdfs:Property"
-    },
-    {
       "@id": "dcatapit:Standard",
       "@type": "rdfs:Class"
     },
     {
       "@id": "vcard:Organization",
       "@type": "rdfs:Class"
-    },
-    {
-      "@id": "dct:rightsHolder",
-      "@type": "rdfs:Property"
     },
     {
       "@id": "dcat:keyword",
@@ -786,39 +923,6 @@
       "@type": "rdfs:Class"
     },
     {
-      "@id": "http://dati.gov.it/onto/controlledvocabulary/Authentication/IDOTPBIO",
-      "@type": "skos:Concept",
-      "clvapit:hasRankOrder": "2",
-      "dct:identifier": "USERID OTP BIO",
-      "skos:broader": {
-        "@id": "http://dati.gov.it/onto/controlledvocabulary/Authentication/MFA"
-      },
-      "skos:definition": [
-        {
-          "@language": "it",
-          "@value": "Combinazione di più fattori: userid, one time password e strumenti di biometria"
-        },
-        {
-          "@language": "en",
-          "@value": "Combination of different factors: userid,  one time password and biometric mechanisms"
-        }
-      ],
-      "skos:inScheme": {
-        "@id": "http://dati.gov.it/onto/controlledvocabulary/Authentication"
-      },
-      "skos:notation": "USERID OTP BIO",
-      "skos:prefLabel": [
-        {
-          "@language": "it",
-          "@value": "User ID, One Time Password e Biometria"
-        },
-        {
-          "@language": "en",
-          "@value": "User ID, One Time Password and Biometric"
-        }
-      ]
-    },
-    {
       "@id": "skos:definition",
       "@type": "rdfs:Property"
     },
@@ -827,30 +931,7 @@
       "@type": "rdfs:Property"
     },
     {
-      "@id": "http://dati.gov.it/onto/controlledvocabulary/Authentication/CIE",
-      "@type": "skos:Concept",
-      "clvapit:hasRankOrder": "2",
-      "dct:identifier": "CIE",
-      "skos:broader": {
-        "@id": "http://dati.gov.it/onto/controlledvocabulary/Authentication/2FAHW"
-      },
-      "skos:inScheme": {
-        "@id": "http://dati.gov.it/onto/controlledvocabulary/Authentication"
-      },
-      "skos:notation": "CIE",
-      "skos:prefLabel": [
-        {
-          "@language": "en",
-          "@value": "Electronic identity card"
-        },
-        {
-          "@language": "it",
-          "@value": "Carta d'identità elettronica (CIE)"
-        }
-      ]
-    },
-    {
-      "@id": "dct:description",
+      "@id": "dct:license",
       "@type": "rdfs:Property"
     },
     {
@@ -858,65 +939,47 @@
       "@type": "rdfs:Property"
     },
     {
-      "@id": "dct:identifier",
-      "@type": "rdfs:Property"
-    },
-    {
-      "@id": "http://dati.gov.it/onto/controlledvocabulary/Authentication/SPIDL3",
-      "@type": "skos:Concept",
+      "@id": "http://w3id.org/italia/controlled-vocabulary/classifications-for-public-services/authentication-type/IDOTPBIO",
+      "@type": [
+        "cpsvapit:Authentication",
+        "skos:Concept"
+      ],
       "clvapit:hasRankOrder": "2",
-      "dct:identifier": "SPIDL3",
+      "dct:identifier": "USERID OTP BIO",
       "skos:broader": {
-        "@id": "http://dati.gov.it/onto/controlledvocabulary/Authentication/2FAHW"
+        "@id": "http://w3id.org/italia/controlled-vocabulary/classifications-for-public-services/authentication-type/MFA"
       },
-      "skos:inScheme": {
-        "@id": "http://dati.gov.it/onto/controlledvocabulary/Authentication"
-      },
-      "skos:notation": "SPIDL3",
-      "skos:prefLabel": [
+      "skos:definition": [
         {
           "@language": "en",
-          "@value": "SPID (National public system of e-ID) Level 3"
+          "@value": "Combination of different factors: userid,  one time password and biometric mechanisms"
         },
         {
           "@language": "it",
-          "@value": "SPID Livello 3"
-        }
-      ]
-    },
-    {
-      "@id": "http://dati.gov.it/onto/controlledvocabulary/Authentication/2FAHW",
-      "@type": "skos:Concept",
-      "clvapit:hasRankOrder": "1",
-      "dct:identifier": "2FAHW",
-      "skos:inScheme": {
-        "@id": "http://dati.gov.it/onto/controlledvocabulary/Authentication"
-      },
-      "skos:narrower": [
-        {
-          "@id": "http://dati.gov.it/onto/controlledvocabulary/Authentication/SPIDL3"
-        },
-        {
-          "@id": "http://dati.gov.it/onto/controlledvocabulary/Authentication/CNS"
-        },
-        {
-          "@id": "http://dati.gov.it/onto/controlledvocabulary/Authentication/CIE"
+          "@value": "Combinazione di più fattori: userid, one time password e strumenti di biometria"
         }
       ],
-      "skos:notation": "2FAHW",
+      "skos:inScheme": {
+        "@id": "http://w3id.org/italia/controlled-vocabulary/classifications-for-public-services/authentication-type"
+      },
+      "skos:notation": "USERID OTP BIO",
       "skos:prefLabel": [
         {
           "@language": "it",
-          "@value": "Autenticazione a due fattori hardware"
+          "@value": "User ID, One Time Password e Biometria"
+        },
+        {
+          "@language": "de",
+          "@value": "Benutzer-ID, Einmalpasswort und biometrische Daten"
         },
         {
           "@language": "en",
-          "@value": "Two Factor Authentication hardware"
+          "@value": "User ID, One Time Password and Biometric"
         }
       ]
     },
     {
-      "@id": "dcat:downloadURL",
+      "@id": "dct:identifier",
       "@type": "rdfs:Property"
     },
     {
@@ -924,8 +987,40 @@
       "@type": "rdfs:Property"
     },
     {
-      "@id": "skos:notation",
-      "@type": "rdfs:Property"
+      "@id": "http://dati.gov.it/data/resource/Distribution/Authentication_CSV",
+      "@type": "dcatapit:Distribution",
+      "dcat:accessURL": {
+        "@id": "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/VocabolariControllati/classifications-for-public-services/authentication-type"
+      },
+      "dcat:downloadURL": {
+        "@id": "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/VocabolariControllati/classifications-for-public-services/authentication-type/authentication-type.csv"
+      },
+      "dct:description": [
+        {
+          "@language": "en",
+          "@value": "This is the distribution in CSV of the Linked Open Dataset of the controlled vocabulary related to the types of authentication for public services"
+        },
+        {
+          "@language": "it",
+          "@value": "Questa è la distribuzione CSV del dataset Linked Open Data del vocabolario controllato sulla classificazione dei tipi di autenticazione per i servizi pubblici"
+        }
+      ],
+      "dct:format": {
+        "@id": "http://publications.europa.eu/resource/authority/file-type/CSV"
+      },
+      "dct:license": {
+        "@id": "http://w3id.org/italia/controlled-vocabulary/licences/A21_CCBY40"
+      },
+      "dct:title": [
+        {
+          "@language": "en",
+          "@value": "CSV distribution types of authentication for public services"
+        },
+        {
+          "@language": "it",
+          "@value": "Distribuzione CSV tipi autenticazione servizi pubblici"
+        }
+      ]
     }
   ]
 }
