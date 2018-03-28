@@ -5,11 +5,12 @@
     <!ENTITY terms "http://purl.org/dc/terms/" >
     <!ENTITY ssn "http://www.w3.org/ns/ssn/" >
     <!ENTITY sosa "http://www.w3.org/ns/sosa/" >
-    <!ENTITY to "http://dati.gov.it/onto/to/" >
     <!ENTITY time "http://www.w3.org/2006/time#" >
     <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
-    <!ENTITY iotapit "http://dati.gov.it/onto/iotapit/" >
+    <!ENTITY iotapit2 "http://dati.gov.it/onto/iotapit/" >
+    <!ENTITY iotapit "https://w3id.org/italia/onto/IoT/" >
     <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY skos "http://www.w3.org/2004/02/skos/core#" >
     <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
     <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
     <!ENTITY d0 "http://www.ontologydesignpatterns.org/ont/d0.owl#" >
@@ -19,22 +20,336 @@
 
 <rdf:RDF xmlns="http://dati.gov.it/onto/iotapit-aligns/"
      xml:base="http://dati.gov.it/onto/iotapit-aligns/"
-     xmlns:iotapit="http://dati.gov.it/onto/iotapit/"
+     xmlns:iotapit="https://w3id.org/italia/onto/IoT/"
      xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:iotapit2="http://dati.gov.it/onto/iotapit/"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:skos="http://www.w3.org/2004/02/skos/core#"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
      xmlns:d0="http://www.ontologydesignpatterns.org/ont/d0.owl#"
      xmlns:ssn="http://www.w3.org/ns/ssn/"
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
      xmlns:terms="http://purl.org/dc/terms/"
      xmlns:dul="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#"
-     xmlns:to="http://dati.gov.it/onto/to/"
      xmlns:time="http://www.w3.org/2006/time#"
      xmlns:sosa="http://www.w3.org/ns/sosa/">
-    <owl:Ontology rdf:about="http://dati.gov.it/onto/iotapit-aligns/">
-        <owl:versionIRI rdf:resource="http://dati.gov.it/onto/iotapit-aligns/0.1"/>
-        <owl:imports rdf:resource="&iotapit;0.5"/>
+    <owl:Ontology rdf:about="https://w3id.org/italia/onto/iotapit-aligns/">
+        <owl:imports rdf:resource="https://w3id.org/italia/onto/IoT"/>
+        <owl:versionIRI rdf:resource="https://w3id.org/italia/onto/iotapit-aligns/0.10"/>
     </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://dati.gov.it/onto/iotapit/atTime -->
+
+    <owl:AnnotationProperty rdf:about="&iotapit2;atTime">
+        <rdfs:subPropertyOf rdf:resource="&dul;isTimeOfObservationOf"/>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://dati.gov.it/onto/iotapit/consistsOf -->
+
+    <owl:AnnotationProperty rdf:about="&iotapit2;consistsOf">
+        <rdfs:subPropertyOf rdf:resource="&dul;hasMember"/>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://dati.gov.it/onto/iotapit/date -->
+
+    <owl:AnnotationProperty rdf:about="&iotapit2;date">
+        <rdfs:subPropertyOf rdf:resource="&sosa;resultTime"/>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://dati.gov.it/onto/iotapit/description -->
+
+    <owl:AnnotationProperty rdf:about="&iotapit2;description">
+        <rdfs:subPropertyOf rdf:resource="&terms;description"/>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://dati.gov.it/onto/iotapit/hasAssociatedGeometry -->
+
+    <owl:AnnotationProperty rdf:about="&iotapit2;hasAssociatedGeometry">
+        <rdfs:subPropertyOf rdf:resource="&dul;associatedWith"/>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://dati.gov.it/onto/iotapit/hasFeatureOfInterest -->
+
+    <owl:AnnotationProperty rdf:about="&iotapit2;hasFeatureOfInterest">
+        <rdfs:subPropertyOf rdf:resource="&sosa;hasFeatureOfInterest"/>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://dati.gov.it/onto/iotapit/hasMeasurementQualityValue -->
+
+    <owl:AnnotationProperty rdf:about="&iotapit2;hasMeasurementQualityValue">
+        <rdfs:subPropertyOf rdf:resource="&dul;hasRegion"/>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://dati.gov.it/onto/iotapit/hasMeasurementUnit -->
+
+    <owl:AnnotationProperty rdf:about="&iotapit2;hasMeasurementUnit">
+        <rdfs:subPropertyOf rdf:resource="&dul;hasParameter"/>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://dati.gov.it/onto/iotapit/hasObservationParameter -->
+
+    <owl:AnnotationProperty rdf:about="&iotapit2;hasObservationParameter">
+        <rdfs:subPropertyOf rdf:resource="&dul;hasParameter"/>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://dati.gov.it/onto/iotapit/hasObservationValue -->
+
+    <owl:AnnotationProperty rdf:about="&iotapit2;hasObservationValue">
+        <rdfs:subPropertyOf rdf:resource="&dul;hasRegion"/>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://dati.gov.it/onto/iotapit/hasQuality -->
+
+    <owl:AnnotationProperty rdf:about="&iotapit2;hasQuality">
+        <rdfs:subPropertyOf rdf:resource="&dul;hasQuality"/>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://dati.gov.it/onto/iotapit/hasValueForObservationParameter -->
+
+    <owl:AnnotationProperty rdf:about="&iotapit2;hasValueForObservationParameter">
+        <rdfs:subPropertyOf rdf:resource="&dul;hasRegion"/>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://dati.gov.it/onto/iotapit/identifier -->
+
+    <owl:AnnotationProperty rdf:about="&iotapit2;identifier">
+        <rdfs:subPropertyOf rdf:resource="&terms;identifier"/>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://dati.gov.it/onto/iotapit/isFeatureOfInterestFor -->
+
+    <owl:AnnotationProperty rdf:about="&iotapit2;isFeatureOfInterestFor">
+        <rdfs:subPropertyOf rdf:resource="&sosa;isFeatureOfInterestOf"/>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://dati.gov.it/onto/iotapit/isMeasurementQualityValueOf -->
+
+    <owl:AnnotationProperty rdf:about="&iotapit2;isMeasurementQualityValueOf">
+        <rdfs:subPropertyOf rdf:resource="&dul;isRegionOf"/>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://dati.gov.it/onto/iotapit/isObservationParameterFor -->
+
+    <owl:AnnotationProperty rdf:about="&iotapit2;isObservationParameterFor">
+        <rdfs:subPropertyOf rdf:resource="&dul;isParameterFor"/>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://dati.gov.it/onto/iotapit/isObservationValueOf -->
+
+    <owl:AnnotationProperty rdf:about="&iotapit2;isObservationValueOf">
+        <rdfs:subPropertyOf rdf:resource="&dul;isRegionOf"/>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://dati.gov.it/onto/iotapit/isPartOf -->
+
+    <owl:AnnotationProperty rdf:about="&iotapit2;isPartOf">
+        <rdfs:subPropertyOf rdf:resource="&dul;isMemberOf"/>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://dati.gov.it/onto/iotapit/isValueForObservationParameter -->
+
+    <owl:AnnotationProperty rdf:about="&iotapit2;isValueForObservationParameter">
+        <rdfs:subPropertyOf rdf:resource="&dul;isRegionOf"/>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://dati.gov.it/onto/iotapit/makesObservation -->
+
+    <owl:AnnotationProperty rdf:about="&iotapit2;makesObservation">
+        <rdfs:subPropertyOf rdf:resource="&sosa;madeObservation"/>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://dati.gov.it/onto/iotapit/makesObservationCollection -->
+
+    <owl:AnnotationProperty rdf:about="&iotapit2;makesObservationCollection">
+        <rdfs:subPropertyOf rdf:resource="&dul;associatedWith"/>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://dati.gov.it/onto/iotapit/modified -->
+
+    <owl:AnnotationProperty rdf:about="&iotapit2;modified">
+        <rdfs:subPropertyOf rdf:resource="&terms;modified"/>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://dati.gov.it/onto/iotapit/observationCollectionMadeBySensor -->
+
+    <owl:AnnotationProperty rdf:about="&iotapit2;observationCollectionMadeBySensor">
+        <rdfs:subPropertyOf rdf:resource="&dul;associatedWith"/>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://dati.gov.it/onto/iotapit/observationMadeBySensor -->
+
+    <owl:AnnotationProperty rdf:about="&iotapit2;observationMadeBySensor">
+        <rdfs:subPropertyOf rdf:resource="&sosa;madeBySensor"/>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://dati.gov.it/onto/iotapit/prefLabel -->
+
+    <owl:AnnotationProperty rdf:about="&iotapit2;prefLabel">
+        <rdfs:subPropertyOf rdf:resource="&skos;prefLabel"/>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://purl.org/dc/terms/description -->
+
+    <owl:AnnotationProperty rdf:about="&terms;description"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/identifier -->
+
+    <owl:AnnotationProperty rdf:about="&terms;identifier"/>
+    
+
+
+    <!-- http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#associatedWith -->
+
+    <owl:AnnotationProperty rdf:about="&dul;associatedWith"/>
+    
+
+
+    <!-- http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#hasMember -->
+
+    <owl:AnnotationProperty rdf:about="&dul;hasMember"/>
+    
+
+
+    <!-- http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#hasParameter -->
+
+    <owl:AnnotationProperty rdf:about="&dul;hasParameter"/>
+    
+
+
+    <!-- http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#hasQuality -->
+
+    <owl:AnnotationProperty rdf:about="&dul;hasQuality"/>
+    
+
+
+    <!-- http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#hasRegion -->
+
+    <owl:AnnotationProperty rdf:about="&dul;hasRegion"/>
+    
+
+
+    <!-- http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#isMemberOf -->
+
+    <owl:AnnotationProperty rdf:about="&dul;isMemberOf"/>
+    
+
+
+    <!-- http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#isParameterFor -->
+
+    <owl:AnnotationProperty rdf:about="&dul;isParameterFor"/>
+    
+
+
+    <!-- http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#isRegionOf -->
+
+    <owl:AnnotationProperty rdf:about="&dul;isRegionOf"/>
+    
+
+
+    <!-- http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#isTimeOfObservationOf -->
+
+    <owl:AnnotationProperty rdf:about="&dul;isTimeOfObservationOf"/>
+    
+
+
+    <!-- http://www.w3.org/2004/02/skos/core#prefLabel -->
+
+    <owl:AnnotationProperty rdf:about="&skos;prefLabel"/>
+    
+
+
+    <!-- http://www.w3.org/ns/sosa/hasFeatureOfInterest -->
+
+    <owl:AnnotationProperty rdf:about="&sosa;hasFeatureOfInterest"/>
+    
+
+
+    <!-- http://www.w3.org/ns/sosa/isFeatureOfInterestOf -->
+
+    <owl:AnnotationProperty rdf:about="&sosa;isFeatureOfInterestOf"/>
+    
+
+
+    <!-- http://www.w3.org/ns/sosa/madeBySensor -->
+
+    <owl:AnnotationProperty rdf:about="&sosa;madeBySensor"/>
+    
+
+
+    <!-- http://www.w3.org/ns/sosa/madeObservation -->
+
+    <owl:AnnotationProperty rdf:about="&sosa;madeObservation"/>
+    
+
+
+    <!-- http://www.w3.org/ns/sosa/resultTime -->
+
+    <owl:AnnotationProperty rdf:about="&sosa;resultTime"/>
     
 
 
@@ -49,170 +364,9 @@
     
 
 
-    <!-- http://dati.gov.it/onto/iotapit/atTime -->
-
-    <rdf:Description rdf:about="&iotapit;atTime">
-        <owl:equivalentProperty rdf:resource="&to;atTime"/>
-        <rdfs:subPropertyOf rdf:resource="&dul;isTimeOfObservationOf"/>
-    </rdf:Description>
-    
-
-
-    <!-- http://dati.gov.it/onto/iotapit/consistsOf -->
-
-    <rdf:Description rdf:about="&iotapit;consistsOf">
-        <rdfs:subPropertyOf rdf:resource="&dul;hasMember"/>
-    </rdf:Description>
-    
-
-
-    <!-- http://dati.gov.it/onto/iotapit/hasAssociatedGeometry -->
-
-    <rdf:Description rdf:about="&iotapit;hasAssociatedGeometry">
-        <rdfs:subPropertyOf rdf:resource="&dul;associatedWith"/>
-    </rdf:Description>
-    
-
-
-    <!-- http://dati.gov.it/onto/iotapit/hasFeatureOfInterest -->
-
-    <rdf:Description rdf:about="&iotapit;hasFeatureOfInterest">
-        <rdfs:subPropertyOf rdf:resource="&sosa;hasFeatureOfInterest"/>
-    </rdf:Description>
-    
-
-
-    <!-- http://dati.gov.it/onto/iotapit/hasMeasurementQualityValue -->
-
-    <rdf:Description rdf:about="&iotapit;hasMeasurementQualityValue">
-        <rdfs:subPropertyOf rdf:resource="&dul;hasRegion"/>
-    </rdf:Description>
-    
-
-
-    <!-- http://dati.gov.it/onto/iotapit/hasMeasurementUnit -->
-
-    <rdf:Description rdf:about="&iotapit;hasMeasurementUnit">
-        <rdfs:subPropertyOf rdf:resource="&dul;hasParameter"/>
-    </rdf:Description>
-    
-
-
-    <!-- http://dati.gov.it/onto/iotapit/hasObservationParameter -->
-
-    <rdf:Description rdf:about="&iotapit;hasObservationParameter">
-        <rdfs:subPropertyOf rdf:resource="&dul;hasParameter"/>
-    </rdf:Description>
-    
-
-
-    <!-- http://dati.gov.it/onto/iotapit/hasObservationValue -->
-
-    <rdf:Description rdf:about="&iotapit;hasObservationValue">
-        <rdfs:subPropertyOf rdf:resource="&dul;hasRegion"/>
-    </rdf:Description>
-    
-
-
-    <!-- http://dati.gov.it/onto/iotapit/hasQuality -->
-
-    <rdf:Description rdf:about="&iotapit;hasQuality">
-        <rdfs:subPropertyOf rdf:resource="&dul;hasQuality"/>
-    </rdf:Description>
-    
-
-
-    <!-- http://dati.gov.it/onto/iotapit/hasValueForObservationParameter -->
-
-    <rdf:Description rdf:about="&iotapit;hasValueForObservationParameter">
-        <rdfs:subPropertyOf rdf:resource="&dul;hasRegion"/>
-    </rdf:Description>
-    
-
-
-    <!-- http://dati.gov.it/onto/iotapit/isFeatureOfInterestFor -->
-
-    <rdf:Description rdf:about="&iotapit;isFeatureOfInterestFor">
-        <rdfs:subPropertyOf rdf:resource="&sosa;isFeatureOfInterestOf"/>
-    </rdf:Description>
-    
-
-
-    <!-- http://dati.gov.it/onto/iotapit/isMeasurementQualityValueOf -->
-
-    <rdf:Description rdf:about="&iotapit;isMeasurementQualityValueOf">
-        <rdfs:subPropertyOf rdf:resource="&dul;isRegionOf"/>
-    </rdf:Description>
-    
-
-
-    <!-- http://dati.gov.it/onto/iotapit/isObservationParameterFor -->
-
-    <rdf:Description rdf:about="&iotapit;isObservationParameterFor">
-        <rdfs:subPropertyOf rdf:resource="&dul;isParameterFor"/>
-    </rdf:Description>
-    
-
-
-    <!-- http://dati.gov.it/onto/iotapit/isObservationValueOf -->
-
-    <rdf:Description rdf:about="&iotapit;isObservationValueOf">
-        <rdfs:subPropertyOf rdf:resource="&dul;isRegionOf"/>
-    </rdf:Description>
-    
-
-
-    <!-- http://dati.gov.it/onto/iotapit/isPartOf -->
-
-    <rdf:Description rdf:about="&iotapit;isPartOf">
-        <rdfs:subPropertyOf rdf:resource="&dul;isMemberOf"/>
-    </rdf:Description>
-    
-
-
-    <!-- http://dati.gov.it/onto/iotapit/isValueForObservationParameter -->
-
-    <rdf:Description rdf:about="&iotapit;isValueForObservationParameter">
-        <rdfs:subPropertyOf rdf:resource="&dul;isRegionOf"/>
-    </rdf:Description>
-    
-
-
-    <!-- http://dati.gov.it/onto/iotapit/makesObservation -->
-
-    <rdf:Description rdf:about="&iotapit;makesObservation">
-        <rdfs:subPropertyOf rdf:resource="&sosa;madeObservation"/>
-    </rdf:Description>
-    
-
-
-    <!-- http://dati.gov.it/onto/iotapit/makesObservationCollection -->
-
-    <rdf:Description rdf:about="&iotapit;makesObservationCollection">
-        <rdfs:subPropertyOf rdf:resource="&dul;associatedWith"/>
-    </rdf:Description>
-    
-
-
-    <!-- http://dati.gov.it/onto/iotapit/observationCollectionMadeBySensor -->
-
-    <rdf:Description rdf:about="&iotapit;observationCollectionMadeBySensor">
-        <rdfs:subPropertyOf rdf:resource="&dul;associatedWith"/>
-    </rdf:Description>
-    
-
-
-    <!-- http://dati.gov.it/onto/iotapit/observationMadeBySensor -->
-
-    <rdf:Description rdf:about="&iotapit;observationMadeBySensor">
-        <rdfs:subPropertyOf rdf:resource="&sosa;madeBySensor"/>
-    </rdf:Description>
-    
-
-
     <!-- http://dati.gov.it/onto/to/atTime -->
 
-    <owl:ObjectProperty rdf:about="&to;atTime">
+    <owl:ObjectProperty rdf:about="http://dati.gov.it/onto/to/atTime">
         <rdfs:subPropertyOf rdf:resource="&dul;isTimeOfObservationOf"/>
     </owl:ObjectProperty>
     
@@ -331,46 +485,6 @@
     
 
 
-    <!-- http://dati.gov.it/onto/iotapit/date -->
-
-    <rdf:Description rdf:about="&iotapit;date">
-        <rdfs:subPropertyOf rdf:resource="&sosa;resultTime"/>
-    </rdf:Description>
-    
-
-
-    <!-- http://dati.gov.it/onto/iotapit/description -->
-
-    <rdf:Description rdf:about="&iotapit;description">
-        <rdfs:subPropertyOf rdf:resource="&terms;description"/>
-    </rdf:Description>
-    
-
-
-    <!-- http://dati.gov.it/onto/iotapit/identifier -->
-
-    <rdf:Description rdf:about="&iotapit;identifier">
-        <rdfs:subPropertyOf rdf:resource="&terms;identifier"/>
-    </rdf:Description>
-    
-
-
-    <!-- http://dati.gov.it/onto/iotapit/modified -->
-
-    <rdf:Description rdf:about="&iotapit;modified">
-        <rdfs:subPropertyOf rdf:resource="&terms;modified"/>
-    </rdf:Description>
-    
-
-
-    <!-- http://dati.gov.it/onto/iotapit/prefLabel -->
-
-    <rdf:Description rdf:about="&iotapit;prefLabel">
-        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2004/02/skos/core#prefLabel"/>
-    </rdf:Description>
-    
-
-
     <!-- http://purl.org/dc/terms/description -->
 
     <owl:DatatypeProperty rdf:about="&terms;description"/>
@@ -391,7 +505,7 @@
 
     <!-- http://www.w3.org/2004/02/skos/core#prefLabel -->
 
-    <owl:DatatypeProperty rdf:about="http://www.w3.org/2004/02/skos/core#prefLabel"/>
+    <owl:DatatypeProperty rdf:about="&skos;prefLabel"/>
     
 
 
@@ -414,88 +528,88 @@
 
     <!-- http://dati.gov.it/onto/iotapit/FeatureOfInterest -->
 
-    <rdf:Description rdf:about="&iotapit;FeatureOfInterest">
+    <owl:Class rdf:about="&iotapit2;FeatureOfInterest">
         <rdfs:subClassOf rdf:resource="&sosa;FeatureOfInterest"/>
-    </rdf:Description>
+    </owl:Class>
     
 
 
     <!-- http://dati.gov.it/onto/iotapit/Geometry -->
 
-    <rdf:Description rdf:about="&iotapit;Geometry">
+    <owl:Class rdf:about="&iotapit2;Geometry">
         <rdfs:subClassOf rdf:resource="&dul;SpaceRegion"/>
-    </rdf:Description>
+    </owl:Class>
     
 
 
     <!-- http://dati.gov.it/onto/iotapit/MeasurementQuality -->
 
-    <rdf:Description rdf:about="&iotapit;MeasurementQuality">
+    <owl:Class rdf:about="&iotapit2;MeasurementQuality">
         <rdfs:subClassOf rdf:resource="&ssn;SystemProperty"/>
-    </rdf:Description>
+    </owl:Class>
     
 
 
     <!-- http://dati.gov.it/onto/iotapit/MeasurementUnit -->
 
-    <rdf:Description rdf:about="&iotapit;MeasurementUnit">
+    <owl:Class rdf:about="&iotapit2;MeasurementUnit">
         <rdfs:subClassOf rdf:resource="&dul;UnitOfMeasure"/>
-    </rdf:Description>
+    </owl:Class>
     
 
 
     <!-- http://dati.gov.it/onto/iotapit/Observation -->
 
-    <rdf:Description rdf:about="&iotapit;Observation">
+    <owl:Class rdf:about="&iotapit2;Observation">
         <rdfs:subClassOf rdf:resource="&sosa;Observation"/>
-    </rdf:Description>
+    </owl:Class>
     
 
 
     <!-- http://dati.gov.it/onto/iotapit/ObservationCollection -->
 
-    <rdf:Description rdf:about="&iotapit;ObservationCollection">
+    <owl:Class rdf:about="&iotapit2;ObservationCollection">
         <rdfs:subClassOf rdf:resource="&dul;Collection"/>
-    </rdf:Description>
+    </owl:Class>
     
 
 
     <!-- http://dati.gov.it/onto/iotapit/ObservationParameter -->
 
-    <rdf:Description rdf:about="&iotapit;ObservationParameter">
+    <owl:Class rdf:about="&iotapit2;ObservationParameter">
         <rdfs:subClassOf rdf:resource="&dul;Parameter"/>
-    </rdf:Description>
+    </owl:Class>
     
 
 
     <!-- http://dati.gov.it/onto/iotapit/Sensor -->
 
-    <rdf:Description rdf:about="&iotapit;Sensor">
+    <owl:Class rdf:about="&iotapit2;Sensor">
         <rdfs:subClassOf rdf:resource="&ssn;Sensor"/>
-    </rdf:Description>
+    </owl:Class>
     
 
 
     <!-- http://dati.gov.it/onto/iotapit/TimeInterval -->
 
-    <rdf:Description rdf:about="&iotapit;TimeInterval">
-        <owl:equivalentClass rdf:resource="&to;TimeInterval"/>
+    <owl:Class rdf:about="&iotapit2;TimeInterval">
+        <owl:equivalentClass rdf:resource="http://dati.gov.it/onto/to/TimeInterval"/>
         <rdfs:subClassOf rdf:resource="&time;Interval"/>
-    </rdf:Description>
+    </owl:Class>
     
 
 
     <!-- http://dati.gov.it/onto/iotapit/Value -->
 
-    <rdf:Description rdf:about="&iotapit;Value">
+    <owl:Class rdf:about="&iotapit2;Value">
         <rdfs:subClassOf rdf:resource="&dul;Amount"/>
-    </rdf:Description>
+    </owl:Class>
     
 
 
     <!-- http://dati.gov.it/onto/to/TimeInterval -->
 
-    <owl:Class rdf:about="&to;TimeInterval">
+    <owl:Class rdf:about="http://dati.gov.it/onto/to/TimeInterval">
         <rdfs:subClassOf rdf:resource="&time;Interval"/>
     </owl:Class>
     

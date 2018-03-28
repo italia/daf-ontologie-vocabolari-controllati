@@ -1,2142 +1,1694 @@
-{
-  "@context": {
-    "clvapit": "http://dati.gov.it/onto/clvapit",
-    "dc": "http://purl.org/dc/elements/1.1/",
-    "dcterms": "http://purl.org/dc/terms/",
-    "dul": "http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#",
-    "l0": "http://dati.gov.it/onto/l0/",
-    "muapit": "http://dati.gov.it/onto/muapit/",
-    "owl": "http://www.w3.org/2002/07/owl#",
-    "prov": "http://www.w3.org/ns/prov#",
-    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
-    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
-    "skos": "http://www.w3.org/2004/02/skos/core#",
-    "sosa": "http://www.w3.org/ns/sosa/",
-    "ssn": "http://www.w3.org/ns/ssn/",
-    "terms": "http://purl.org/dc/terms/",
-    "tiapit": "http://dati.gov.it/onto/tiapit/",
-    "to": "http://dati.gov.it/onto/to/",
-    "xsd": "http://www.w3.org/2001/XMLSchema#"
-  },
-  "@graph": [
-    {
-      "@id": "http://dati.gov.it/onto/iotapit/hasObservationValue",
-      "@type": "owl:ObjectProperty",
-      "owl:inverseOf": {
-        "@id": "http://dati.gov.it/onto/iotapit/isObservationValueOf"
-      },
-      "owl:versionInfo": [
-        {
-          "@language": "en",
-          "@value": "stable"
-        },
-        {
-          "@language": "it",
-          "@value": "stabile"
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@language": "en",
-          "@value": "Property that links an Observation to its value."
-        },
-        {
-          "@language": "it",
-          "@value": "Proprietà che lega un'osservazione al suo valore."
-        }
-      ],
-      "rdfs:domain": {
-        "@id": "http://dati.gov.it/onto/iotapit/Observation"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "http://dati.gov.it/onto/iotapit/"
-      },
-      "rdfs:label": [
-        {
-          "@language": "it",
-          "@value": "ha valore dell'osservazione"
-        },
-        {
-          "@language": "en",
-          "@value": "has observation value"
-        }
-      ],
-      "rdfs:range": {
-        "@id": "http://dati.gov.it/onto/iotapit/ObservationValue"
-      }
-    },
-    {
-      "@id": "_:ub14bL560C30",
-      "@type": "owl:Restriction",
-      "owl:onClass": {
-        "@id": "http://dati.gov.it/onto/iotapit/FeatureOfInterest"
-      },
-      "owl:onProperty": {
-        "@id": "http://dati.gov.it/onto/iotapit/hasFeatureOfInterest"
-      },
-      "owl:qualifiedCardinality": {
-        "@type": "xsd:nonNegativeInteger",
-        "@value": "1"
-      }
-    },
-    {
-      "@id": "l0:Collection",
-      "@type": "owl:Class"
-    },
-    {
-      "@id": "http://dati.gov.it/onto/iotapit/isObservationValueOf",
-      "@type": "owl:ObjectProperty",
-      "owl:versionInfo": [
-        {
-          "@language": "en",
-          "@value": "stable"
-        },
-        {
-          "@language": "it",
-          "@value": "stabile"
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@language": "en",
-          "@value": "Inverse property of hasObservedValue that links an ObservedValue to its related Observation."
-        },
-        {
-          "@language": "it",
-          "@value": "Proprietà inversa di ha valore osservato che unisce un valore osservato alla relativa osservazione."
-        }
-      ],
-      "rdfs:domain": {
-        "@id": "http://dati.gov.it/onto/iotapit/ObservationValue"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "http://dati.gov.it/onto/iotapit/"
-      },
-      "rdfs:label": [
-        {
-          "@language": "it",
-          "@value": "è valore osservato di"
-        },
-        {
-          "@language": "en",
-          "@value": "is osbservation value of"
-        }
-      ],
-      "rdfs:range": {
-        "@id": "http://dati.gov.it/onto/iotapit/Observation"
-      }
-    },
-    {
-      "@id": "http://dati.gov.it/onto/iotapit/MeasurementQuality",
-      "@type": "owl:Class",
-      "owl:versionInfo": [
-        {
-          "@language": "it",
-          "@value": "instabile"
-        },
-        {
-          "@language": "en",
-          "@value": "unstable"
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@language": "en",
-          "@value": "This class represents quality parameters or measurement capabilities/qualities of an observation. Examples include Latency, Accuracy, Repetability, etc."
-        },
-        {
-          "@language": "it",
-          "@value": "Questa classe rappresenta dei parametri di qualità o capacità di misurazione dell'osservazione. Esempi di parametri sono: Latenza, Accuratezza, Ripetibilità, ecc."
-        }
-      ],
-      "rdfs:isDefinedBy": {
-        "@id": "http://dati.gov.it/onto/iotapit/"
-      },
-      "rdfs:label": [
-        {
-          "@language": "it",
-          "@value": "Qualità di Misurazione"
-        },
-        {
-          "@language": "en",
-          "@value": "Measurement Quality"
-        }
-      ],
-      "rdfs:subClassOf": [
-        {
-          "@id": "l0:Characteristic"
-        },
-        {
-          "@id": "_:ub14bL515C37"
-        }
-      ]
-    },
-    {
-      "@id": "http://dati.gov.it/onto/iotapit/makesObservationCollection",
-      "@type": "owl:ObjectProperty",
-      "owl:inverseOf": {
-        "@id": "http://dati.gov.it/onto/iotapit/observationCollectionMadeBySensor"
-      },
-      "owl:versionInfo": [
-        {
-          "@language": "en",
-          "@value": "stable"
-        },
-        {
-          "@language": "it",
-          "@value": "stabile"
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@language": "en",
-          "@value": "The property links a sensor to the collection of observations that it makes."
-        },
-        {
-          "@language": "it",
-          "@value": "Questa proprietà collega un sensore a una collezione di osservazioni che esso fa."
-        }
-      ],
-      "rdfs:domain": {
-        "@id": "http://dati.gov.it/onto/iotapit/Sensor"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "http://dati.gov.it/onto/iotapit/"
-      },
-      "rdfs:label": [
-        {
-          "@language": "it",
-          "@value": "fa collezioni di osservazioni"
-        },
-        {
-          "@language": "en",
-          "@value": "makes observation collection"
-        }
-      ],
-      "rdfs:range": {
-        "@id": "http://dati.gov.it/onto/iotapit/ObservationCollection"
-      }
-    },
-    {
-      "@id": "_:ub14bL590C30",
-      "@type": "owl:Restriction",
-      "owl:maxQualifiedCardinality": {
-        "@type": "xsd:nonNegativeInteger",
-        "@value": "1"
-      },
-      "owl:onClass": {
-        "@id": "tiapit:TimeInterval"
-      },
-      "owl:onProperty": {
-        "@id": "tiapit:atTime"
-      }
-    },
-    {
-      "@id": "http://dati.gov.it/onto/iotapit/Latency",
-      "@type": "owl:Class",
-      "owl:versionInfo": [
-        {
-          "@language": "it",
-          "@value": "instabile"
-        },
-        {
-          "@language": "en",
-          "@value": "unstable"
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@language": "en",
-          "@value": "It represents the Latency; i.e., the time delay between the cause and the effect of some change in the system being observed"
-        },
-        {
-          "@language": "it",
-          "@value": "Questa classe rappresenta la Latenza, ovvero il ritardo di tempo tra la causa e l'effetto di qualche cambiamento nel sistema osservarto."
-        }
-      ],
-      "rdfs:isDefinedBy": {
-        "@id": "http://dati.gov.it/onto/iotapit/"
-      },
-      "rdfs:label": [
-        {
-          "@language": "it",
-          "@value": "Latenza"
-        },
-        {
-          "@language": "en",
-          "@value": "Latency"
-        }
-      ],
-      "rdfs:subClassOf": {
-        "@id": "http://dati.gov.it/onto/iotapit/MeasurementQuality"
-      }
-    },
-    {
-      "@id": "_:ub14bL585C30",
-      "@type": "owl:Restriction",
-      "owl:maxQualifiedCardinality": {
-        "@type": "xsd:nonNegativeInteger",
-        "@value": "1"
-      },
-      "owl:onClass": {
-        "@id": "tiapit:TimeInterval"
-      },
-      "owl:onProperty": {
-        "@id": "http://dati.gov.it/onto/iotapit/phenomenonTime"
-      }
-    },
-    {
-      "@id": "l0:identifier",
-      "@type": "owl:DatatypeProperty",
-      "rdfs:isDefinedBy": {
-        "@id": "l0:"
-      }
-    },
-    {
-      "@id": "_:ub14bL628C40",
-      "@type": "owl:Restriction",
-      "owl:onProperty": {
-        "@id": "http://dati.gov.it/onto/iotapit/consistsOf"
-      },
-      "owl:someValuesFrom": {
-        "@id": "http://dati.gov.it/onto/iotapit/Observation"
-      }
-    },
-    {
-      "@id": "l0:Activity",
-      "@type": "owl:Class"
-    },
-    {
-      "@id": "http://dati.gov.it/onto/iotapit/phenomenonTime",
-      "@type": "owl:ObjectProperty",
-      "owl:versionInfo": [
-        {
-          "@language": "it",
-          "@value": "stabile"
-        },
-        {
-          "@language": "en",
-          "@value": "stable"
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@language": "it",
-          "@value": "Questa proprietà è sotto proprietà di atTime ed è utilizzata per modellare il tempo di validità dell'osservazione."
-        },
-        {
-          "@language": "en",
-          "@value": "This property is subproperty of atTime and it is used to model the valididty time of an observation."
-        }
-      ],
-      "rdfs:domain": {
-        "@id": "http://dati.gov.it/onto/iotapit/Observation"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "http://dati.gov.it/onto/iotapit/"
-      },
-      "rdfs:label": [
-        {
-          "@language": "en",
-          "@value": "phenomenon time"
-        },
-        {
-          "@language": "it",
-          "@value": "tempo di validità"
-        }
-      ],
-      "rdfs:range": {
-        "@id": "tiapit:TimeInterval"
-      },
-      "rdfs:subPropertyOf": {
-        "@id": "tiapit:atTime"
-      }
-    },
-    {
-      "@id": "dcterms:license",
-      "@type": "owl:AnnotationProperty"
-    },
-    {
-      "@id": "http://dati.gov.it/onto/clvapit#hasGeometry",
-      "@type": "owl:ObjectProperty",
-      "rdfs:isDefinedBy": {
-        "@id": "http://dati.gov.it/onto/clvapit"
-      }
-    },
-    {
-      "@id": "http://dati.gov.it/onto/iotapit/Observation",
-      "@type": "owl:Class",
-      "owl:versionInfo": [
-        {
-          "@language": "it",
-          "@value": "stabile"
-        },
-        {
-          "@language": "en",
-          "@value": "stable"
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@language": "it",
-          "@value": "L'atto di condurre un'osservazione (che è un evento) per stimare o calcolare un valore di un attributo di una caratteristica di interesse."
-        },
-        {
-          "@language": "en",
-          "@value": "Act of carrying out an Observation (which is an Event) to estimate or calculate a value of an attribute of a feature of interest."
-        }
-      ],
-      "rdfs:isDefinedBy": {
-        "@id": "http://dati.gov.it/onto/iotapit/"
-      },
-      "rdfs:label": [
-        {
-          "@language": "it",
-          "@value": "Osservazione"
-        },
-        {
-          "@language": "en",
-          "@value": "Observation"
-        }
-      ],
-      "rdfs:subClassOf": [
-        {
-          "@id": "_:ub14bL603C30"
-        },
-        {
-          "@id": "_:ub14bL585C30"
-        },
-        {
-          "@id": "_:ub14bL556C30"
-        },
-        {
-          "@id": "_:ub14bL599C30"
-        },
-        {
-          "@id": "_:ub14bL595C30"
-        },
-        {
-          "@id": "_:ub14bL548C30"
-        },
-        {
-          "@id": "_:ub14bL565C30"
-        },
-        {
-          "@id": "_:ub14bL608C30"
-        },
-        {
-          "@id": "_:ub14bL580C30"
-        },
-        {
-          "@id": "_:ub14bL590C30"
-        },
-        {
-          "@id": "_:ub14bL570C30"
-        },
-        {
-          "@id": "_:ub14bL575C30"
-        },
-        {
-          "@id": "l0:Activity"
-        },
-        {
-          "@id": "_:ub14bL560C30"
-        },
-        {
-          "@id": "_:ub14bL552C30"
-        }
-      ]
-    },
-    {
-      "@id": "_:ub14bL570C30",
-      "@type": "owl:Restriction",
-      "owl:onClass": {
-        "@id": "http://dati.gov.it/onto/iotapit/Sensor"
-      },
-      "owl:onProperty": {
-        "@id": "http://dati.gov.it/onto/iotapit/observationMadeBySensor"
-      },
-      "owl:qualifiedCardinality": {
-        "@type": "xsd:nonNegativeInteger",
-        "@value": "1"
-      }
-    },
-    {
-      "@id": "http://dati.gov.it/onto/iotapit/ObservationCollection",
-      "@type": "owl:Class",
-      "owl:versionInfo": [
-        {
-          "@language": "en",
-          "@value": "unstable"
-        },
-        {
-          "@language": "it",
-          "@value": "instabile"
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@language": "it",
-          "@value": "Questa classe rappresenta una collezione di osservazioni fatte da un sensore. Potrebbe anche essere vista come uno stream di dati."
-        },
-        {
-          "@language": "en",
-          "@value": "This class represents a collection of observations made by a sensor. It can also be thought of as a data stream."
-        }
-      ],
-      "rdfs:isDefinedBy": {
-        "@id": "http://dati.gov.it/onto/iotapit/"
-      },
-      "rdfs:label": [
-        {
-          "@language": "en",
-          "@value": "Observation Collection"
-        },
-        {
-          "@language": "it",
-          "@value": "Collezione di Osservazioni"
-        }
-      ],
-      "rdfs:subClassOf": [
-        {
-          "@id": "l0:Collection"
-        },
-        {
-          "@id": "_:ub14bL637C40"
-        },
-        {
-          "@id": "_:ub14bL628C40"
-        },
-        {
-          "@id": "_:ub14bL632C40"
-        }
-      ]
-    },
-    {
-      "@id": "_:ub14bL556C30",
-      "@type": "owl:Restriction",
-      "owl:allValuesFrom": {
-        "@id": "http://dati.gov.it/onto/iotapit/MeasurementQuality"
-      },
-      "owl:onProperty": {
-        "@id": "http://dati.gov.it/onto/iotapit/hasQuality"
-      }
-    },
-    {
-      "@id": "_:ub14bL687C35",
-      "@type": "owl:Restriction",
-      "owl:onProperty": {
-        "@id": "http://dati.gov.it/onto/iotapit/isValueForObservationParameter"
-      },
-      "owl:someValuesFrom": {
-        "@id": "http://dati.gov.it/onto/iotapit/ObservationValue"
-      }
-    },
-    {
-      "@id": "http://dati.gov.it/onto/iotapit/hasValueForObservationParameter",
-      "@type": "owl:ObjectProperty",
-      "owl:inverseOf": {
-        "@id": "http://dati.gov.it/onto/iotapit/isValueForObservationParameter"
-      },
-      "owl:versionInfo": [
-        {
-          "@language": "en",
-          "@value": "stable"
-        },
-        {
-          "@language": "it",
-          "@value": "stabile"
-        }
-      ],
-      "rdfs:domain": {
-        "@id": "http://dati.gov.it/onto/iotapit/ObservationParameter"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "http://dati.gov.it/onto/iotapit/"
-      },
-      "rdfs:label": [
-        {
-          "@language": "en",
-          "@value": "This property links the Observation Parameter to the Observation Value."
-        },
-        {
-          "@language": "it",
-          "@value": "Questa proprietà connette l'attributo (parametro) dell'osservazione a rispettivo valore dell'osservazione."
-        },
-        {
-          "@language": "it",
-          "@value": "ha valore per parametro di osservazione"
-        },
-        {
-          "@language": "en",
-          "@value": "has value for observation parameter"
-        }
-      ],
-      "rdfs:range": {
-        "@id": "http://dati.gov.it/onto/iotapit/ObservationValue"
-      }
-    },
-    {
-      "@id": "_:ub14bL664C39",
-      "@type": "owl:Restriction",
-      "owl:onProperty": {
-        "@id": "l0:name"
-      },
-      "owl:someValuesFrom": {
-        "@id": "rdfs:Literal"
-      }
-    },
-    {
-      "@id": "http://dati.gov.it/onto/iotapit/isFeatureOfInterestFor",
-      "@type": "owl:ObjectProperty",
-      "owl:versionInfo": [
-        {
-          "@language": "en",
-          "@value": "stable"
-        },
-        {
-          "@language": "it",
-          "@value": "stabile"
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@language": "en",
-          "@value": "Inverse property of has feature of interest that links a feature of interest to an observation."
-        },
-        {
-          "@language": "it",
-          "@value": "Proprietà inversa di ha caratteristica di interesse che lega una caratteristica di interesse a un'osservaizione."
-        }
-      ],
-      "rdfs:domain": {
-        "@id": "http://dati.gov.it/onto/iotapit/FeatureOfInterest"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "http://dati.gov.it/onto/iotapit/"
-      },
-      "rdfs:label": [
-        {
-          "@language": "it",
-          "@value": "è caratteristica di interesse per"
-        },
-        {
-          "@language": "en",
-          "@value": "is feature of interest for"
-        }
-      ],
-      "rdfs:range": {
-        "@id": "http://dati.gov.it/onto/iotapit/Observation"
-      }
-    },
-    {
-      "@id": "prov:wasDerivedFrom",
-      "@type": "owl:AnnotationProperty"
-    },
-    {
-      "@id": "_:ub14bL599C30",
-      "@type": "owl:Restriction",
-      "owl:cardinality": {
-        "@type": "xsd:nonNegativeInteger",
-        "@value": "1"
-      },
-      "owl:onProperty": {
-        "@id": "l0:identifier"
-      }
-    },
-    {
-      "@id": "dc:creator",
-      "@type": "owl:AnnotationProperty"
-    },
-    {
-      "@id": "http://dati.gov.it/onto/iotapit/hasFeatureOfInterest",
-      "@type": "owl:ObjectProperty",
-      "owl:inverseOf": {
-        "@id": "http://dati.gov.it/onto/iotapit/isFeatureOfInterestFor"
-      },
-      "owl:versionInfo": [
-        {
-          "@language": "en",
-          "@value": "stable"
-        },
-        {
-          "@language": "it",
-          "@value": "stabile"
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@language": "en",
-          "@value": "Property that links the Observation to a feature of interest."
-        },
-        {
-          "@language": "it",
-          "@value": "Proprietà che lega un'osservazione a una caratteristica di interesse."
-        }
-      ],
-      "rdfs:domain": {
-        "@id": "http://dati.gov.it/onto/iotapit/Observation"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "http://dati.gov.it/onto/iotapit/"
-      },
-      "rdfs:label": [
-        {
-          "@language": "en",
-          "@value": "has feature of interest"
-        },
-        {
-          "@language": "it",
-          "@value": "ha caratteristica di interesse"
-        }
-      ],
-      "rdfs:range": {
-        "@id": "http://dati.gov.it/onto/iotapit/FeatureOfInterest"
-      }
-    },
-    {
-      "@id": "http://dati.gov.it/onto/iotapit/isMeasurementQualityValueOf",
-      "@type": "owl:ObjectProperty",
-      "owl:versionInfo": [
-        {
-          "@language": "it",
-          "@value": "stabile"
-        },
-        {
-          "@language": "en",
-          "@value": "stable"
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@language": "en",
-          "@value": "Inverse property of has measurement quality value that links the measurement quality value to the measurment quality."
-        },
-        {
-          "@language": "it",
-          "@value": "Proprietà inversa che lega un valore della qualità di misurazione con la qualità di misurazione."
-        }
-      ],
-      "rdfs:domain": {
-        "@id": "http://dati.gov.it/onto/iotapit/MeasurementQualityValue"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "http://dati.gov.it/onto/iotapit/"
-      },
-      "rdfs:label": [
-        {
-          "@language": "en",
-          "@value": "is measurement quality value of"
-        },
-        {
-          "@language": "it",
-          "@value": "è valore di qualità di misurazione di"
-        }
-      ],
-      "rdfs:range": {
-        "@id": "http://dati.gov.it/onto/iotapit/MeasurementQuality"
-      }
-    },
-    {
-      "@id": "http://dati.gov.it/onto/iotapit/MeasurementQualityValue",
-      "@type": "owl:Class",
-      "rdfs:isDefinedBy": {
-        "@id": "http://dati.gov.it/onto/iotapit/"
-      },
-      "rdfs:label": [
-        {
-          "@language": "en",
-          "@value": "Measurement Quality Value"
-        },
-        {
-          "@language": "it",
-          "@value": "Valore Qualità di Misurazione"
-        }
-      ],
-      "rdfs:subClassOf": [
-        {
-          "@id": "_:ub14bL535C42"
-        },
-        {
-          "@id": "muapit:Value"
-        }
-      ]
-    },
-    {
-      "@id": "http://dati.gov.it/onto/iotapit/hasObservationParameter",
-      "@type": "owl:ObjectProperty",
-      "owl:inverseOf": {
-        "@id": "http://dati.gov.it/onto/iotapit/isObservationParameterFor"
-      },
-      "owl:versionInfo": [
-        {
-          "@language": "it",
-          "@value": "stabile"
-        },
-        {
-          "@language": "en",
-          "@value": "stable"
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@language": "en",
-          "@value": "Property that links an observation to its parameter being observed."
-        },
-        {
-          "@language": "it",
-          "@value": "Proprietà che collega un'osservazione al suo parametro osservato."
-        }
-      ],
-      "rdfs:domain": {
-        "@id": "http://dati.gov.it/onto/iotapit/Observation"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "http://dati.gov.it/onto/iotapit/"
-      },
-      "rdfs:label": [
-        {
-          "@language": "it",
-          "@value": "ha parametro dell'osservazione"
-        },
-        {
-          "@language": "en",
-          "@value": "has observation parameter"
-        }
-      ],
-      "rdfs:range": {
-        "@id": "http://dati.gov.it/onto/iotapit/ObservationParameter"
-      }
-    },
-    {
-      "@id": "_:ub14bL462C36",
-      "@type": "owl:Restriction",
-      "owl:allValuesFrom": {
-        "@id": "http://dati.gov.it/onto/iotapit/Observation"
-      },
-      "owl:onProperty": {
-        "@id": "http://dati.gov.it/onto/iotapit/isFeatureOfInterestFor"
-      }
-    },
-    {
-      "@id": "http://dati.gov.it/onto/clvapit/Geometry",
-      "@type": "owl:Class",
-      "rdfs:isDefinedBy": {
-        "@id": "http://dati.gov.it/onto/clvapit"
-      }
-    },
-    {
-      "@id": "http://dati.gov.it/onto/iotapit/Accuracy",
-      "@type": "owl:Class",
-      "owl:versionInfo": [
-        {
-          "@language": "it",
-          "@value": "instabile"
-        },
-        {
-          "@language": "en",
-          "@value": "unstable"
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@language": "en",
-          "@value": "It represents the Accuracy; that is, the maximimum difference between the indicated value and the actual measurand being monitored, whilst taking into account all possible sources of error that are relevant to the application."
-        },
-        {
-          "@language": "it",
-          "@value": "Questa classe rappresenta l'Accuratezza, cioè la differenza massima tra il valore indicato e il valore effettivo monitorato, tenuto conto di tutte le possibili fonti di errore rilevanti per l'applicazione."
-        }
-      ],
-      "rdfs:isDefinedBy": {
-        "@id": "http://dati.gov.it/onto/iotapit/"
-      },
-      "rdfs:label": [
-        {
-          "@language": "en",
-          "@value": "Accuracy"
-        },
-        {
-          "@language": "it",
-          "@value": "Accuratezza"
-        }
-      ],
-      "rdfs:subClassOf": {
-        "@id": "http://dati.gov.it/onto/iotapit/MeasurementQuality"
-      }
-    },
-    {
-      "@id": "http://dati.gov.it/onto/iotapit/hasQuality",
-      "@type": "owl:ObjectProperty",
-      "owl:versionInfo": [
-        {
-          "@language": "it",
-          "@value": "stabile"
-        },
-        {
-          "@language": "en",
-          "@value": "stable"
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@language": "it",
-          "@value": "Proprietà che lega un'osservazione a una serie di parametri di qualità."
-        },
-        {
-          "@language": "en",
-          "@value": "Property that links an Observation to a number of measurement capabilities."
-        }
-      ],
-      "rdfs:domain": {
-        "@id": "http://dati.gov.it/onto/iotapit/Observation"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "http://dati.gov.it/onto/iotapit/"
-      },
-      "rdfs:label": [
-        {
-          "@language": "en",
-          "@value": "has quality"
-        },
-        {
-          "@language": "it",
-          "@value": "ha qualità"
-        }
-      ],
-      "rdfs:range": {
-        "@id": "http://dati.gov.it/onto/iotapit/MeasurementQuality"
-      }
-    },
-    {
-      "@id": "l0:name",
-      "@type": "owl:DatatypeProperty",
-      "rdfs:isDefinedBy": {
-        "@id": "l0:"
-      }
-    },
-    {
-      "@id": "http://dati.gov.it/onto/iotapit/isPartOf",
-      "@type": "owl:ObjectProperty",
-      "owl:versionInfo": [
-        {
-          "@language": "en",
-          "@value": "stable"
-        },
-        {
-          "@language": "it",
-          "@value": "stabile"
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@language": "en",
-          "@value": "Inverse property of consistsOf that links an observation to its related collection."
-        },
-        {
-          "@language": "it",
-          "@value": "Proprietà inversa di consiste di che lega un'osservazione alla sua relativa collezione."
-        }
-      ],
-      "rdfs:domain": {
-        "@id": "http://dati.gov.it/onto/iotapit/Observation"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "http://dati.gov.it/onto/iotapit/"
-      },
-      "rdfs:label": [
-        {
-          "@language": "it",
-          "@value": "è parte di"
-        },
-        {
-          "@language": "en",
-          "@value": "is part of"
-        }
-      ],
-      "rdfs:range": {
-        "@id": "http://dati.gov.it/onto/iotapit/ObservationCollection"
-      }
-    },
-    {
-      "@id": "http://dati.gov.it/onto/iotapit/generationTime",
-      "@type": "owl:ObjectProperty",
-      "owl:versionInfo": [
-        {
-          "@language": "it",
-          "@value": "stabile"
-        },
-        {
-          "@language": "en",
-          "@value": "stable"
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@language": "it",
-          "@value": "Questa proprietà è sottoproprietà di atTime e consente di modellare il tempo di generazione della osservazione."
-        },
-        {
-          "@language": "en",
-          "@value": "This property is a subproperty of atTime and defines the generation time of the observation."
-        }
-      ],
-      "rdfs:domain": {
-        "@id": "http://dati.gov.it/onto/iotapit/Observation"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "http://dati.gov.it/onto/iotapit/"
-      },
-      "rdfs:label": [
-        {
-          "@language": "en",
-          "@value": "generation time"
-        },
-        {
-          "@language": "it",
-          "@value": "tempo di generazione"
-        }
-      ],
-      "rdfs:range": {
-        "@id": "tiapit:TimeInterval"
-      },
-      "rdfs:subPropertyOf": {
-        "@id": "tiapit:atTime"
-      }
-    },
-    {
-      "@id": "http://dati.gov.it/onto/iotapit/FeatureOfInterest",
-      "@type": "owl:Class",
-      "owl:versionInfo": [
-        {
-          "@language": "it",
-          "@value": "stabile"
-        },
-        {
-          "@language": "en",
-          "@value": "stable"
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@language": "it",
-          "@value": "Rappresenta la caratteristica di interesse il cui attributo osservato è osservato da un sensor per ottenere un valore osservato. Per esempio, se diciamo che la temperatura della cucina è di 28 gradi celsius, la caratteristica di interesse è la cucina."
-        },
-        {
-          "@language": "en",
-          "@value": "It represents the Feature whose Observed Attribute is being observed by a Sensor in order to get an Observed Value. For instance, if we say that the temperature of the kitchen is 28 celsius degrees, the Feature of Interest is the kitchen."
-        }
-      ],
-      "rdfs:isDefinedBy": {
-        "@id": "http://dati.gov.it/onto/iotapit/"
-      },
-      "rdfs:label": [
-        {
-          "@language": "it",
-          "@value": "Caratteristica di interesse"
-        },
-        {
-          "@language": "en",
-          "@value": "Feature of Interest"
-        }
-      ],
-      "rdfs:subClassOf": [
-        {
-          "@id": "l0:Characteristic"
-        },
-        {
-          "@id": "_:ub14bL462C36"
-        },
-        {
-          "@id": "_:ub14bL466C36"
-        }
-      ]
-    },
-    {
-      "@id": "http://dati.gov.it/onto/iotapit/consistsOf",
-      "@type": "owl:ObjectProperty",
-      "owl:inverseOf": {
-        "@id": "http://dati.gov.it/onto/iotapit/isPartOf"
-      },
-      "owl:versionInfo": [
-        {
-          "@language": "it",
-          "@value": "stabile"
-        },
-        {
-          "@language": "en",
-          "@value": "stable"
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@language": "en",
-          "@value": "Property that links a collection of observations with its observations."
-        },
-        {
-          "@language": "it",
-          "@value": "Proprietà che collega una collezione di osservazioni con le sue osservazioni."
-        }
-      ],
-      "rdfs:domain": {
-        "@id": "http://dati.gov.it/onto/iotapit/ObservationCollection"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "http://dati.gov.it/onto/iotapit/"
-      },
-      "rdfs:label": [
-        {
-          "@language": "en",
-          "@value": "consists of"
-        },
-        {
-          "@language": "it",
-          "@value": "consiste di"
-        }
-      ],
-      "rdfs:range": {
-        "@id": "http://dati.gov.it/onto/iotapit/Observation"
-      }
-    },
-    {
-      "@id": "_:ub14bL766C25",
-      "@type": "owl:Restriction",
-      "owl:allValuesFrom": {
-        "@id": "http://dati.gov.it/onto/iotapit/Observation"
-      },
-      "owl:onProperty": {
-        "@id": "http://dati.gov.it/onto/iotapit/makesObservation"
-      }
-    },
-    {
-      "@id": "_:ub14bL515C37",
-      "@type": "owl:Restriction",
-      "owl:onClass": {
-        "@id": "http://dati.gov.it/onto/iotapit/MeasurementQualityValue"
-      },
-      "owl:onProperty": {
-        "@id": "http://dati.gov.it/onto/iotapit/hasMeasurementQualityValue"
-      },
-      "owl:qualifiedCardinality": {
-        "@type": "xsd:nonNegativeInteger",
-        "@value": "1"
-      }
-    },
-    {
-      "@id": "_:ub14bL637C40",
-      "@type": "owl:Restriction",
-      "owl:cardinality": {
-        "@type": "xsd:nonNegativeInteger",
-        "@value": "1"
-      },
-      "owl:onProperty": {
-        "@id": "l0:identifier"
-      }
-    },
-    {
-      "@id": "_:ub14bL565C30",
-      "@type": "owl:Restriction",
-      "owl:onClass": {
-        "@id": "http://dati.gov.it/onto/iotapit/ObservationCollection"
-      },
-      "owl:onProperty": {
-        "@id": "http://dati.gov.it/onto/iotapit/isPartOf"
-      },
-      "owl:qualifiedCardinality": {
-        "@type": "xsd:nonNegativeInteger",
-        "@value": "1"
-      }
-    },
-    {
-      "@id": "_:ub14bL656C39",
-      "@type": "owl:Restriction",
-      "owl:onProperty": {
-        "@id": "http://dati.gov.it/onto/iotapit/hasValueForObservationParameter"
-      },
-      "owl:someValuesFrom": {
-        "@id": "http://dati.gov.it/onto/iotapit/ObservationValue"
-      }
-    },
-    {
-      "@id": "_:ub14bL575C30",
-      "@type": "owl:Restriction",
-      "owl:maxQualifiedCardinality": {
-        "@type": "xsd:nonNegativeInteger",
-        "@value": "1"
-      },
-      "owl:onClass": {
-        "@id": "http://dati.gov.it/onto/clvapit/Geometry"
-      },
-      "owl:onProperty": {
-        "@id": "http://dati.gov.it/onto/clvapit#hasGeometry"
-      }
-    },
-    {
-      "@id": "tiapit:modified",
-      "@type": "owl:DatatypeProperty",
-      "rdfs:isDefinedBy": {
-        "@id": "tiapit:"
-      }
-    },
-    {
-      "@id": "http://dati.gov.it/onto/iotapit/",
-      "@type": "owl:Ontology",
-      "dc:creator": [
-        {
-          "@language": "en",
-          "@value": "Agency for Digital Italy - AgID"
-        },
-        {
-          "@language": "it",
-          "@value": "Team per la Trasformazione Digitale"
-        },
-        {
-          "@language": "en",
-          "@value": "Italian Digital Transformation Team"
-        },
-        {
-          "@language": "it",
-          "@value": "Agenzia per l'Italia Digitale - AgID"
-        },
-        {
-          "@language": "it",
-          "@value": "Istituto di Scienze e Tecnologie della Cognizione del CNR - Semantic Technology Lab (STLab)"
-        },
-        {
-          "@language": "en",
-          "@value": "Institute of Cognitive Sciences and Technologies of the Italian Research Council (CNR) - Semantic Technology Laboratory (STLab)"
-        }
-      ],
-      "dcterms:issued": {
-        "@language": "en",
-        "@value": "2017-05-15"
-      },
-      "dcterms:license": {
-        "@id": "https://creativecommons.org/licenses/by/4.0/"
-      },
-      "dcterms:modified": "2017-11-26",
-      "owl:imports": [
-        {
-          "@id": "l0:"
-        },
-        {
-          "@id": "tiapit:"
-        },
-        {
-          "@id": "muapit:"
-        },
-        {
-          "@id": "http://dati.gov.it/onto/clvapit"
-        }
-      ],
-      "owl:versionIRI": {
-        "@id": "http://dati.gov.it/onto/iotapit/"
-      },
-      "owl:versionInfo": [
-        {
-          "@language": "it",
-          "@value": "Versione 0.10 - 26 Novembre 2017 - rifattorizzazione tenendo in considerazione nuove proprietà di L0 e di TI-AP_IT (TIme - Italian Application Profile) e usando CLV-AP_IT (Core Location Vocabulary - Profilo Applicativo Italiano)"
-        },
-        {
-          "@language": "en",
-          "@value": "Version 0.10 - November 26 2017 - refactoring taking into account new properties in L0 and in TI-AP_IT (TIme - Italian Application Profile), and using CLV-AP_IT ontology (Core Location Vocabulary - Italian Application Profile)"
-        }
-      ],
-      "prov:wasDerivedFrom": {
-        "@id": "http://dati.gov.it/onto/iotapit/"
-      },
-      "rdfs:comment": [
-        {
-          "@language": "en",
-          "@value": "This is the ontology used to represent IoT events. It can be used to model temporal series and measures of sensors of different type. Currently the ontology is specialized for modelling traffic flows."
-        },
-        {
-          "@language": "it",
-          "@value": "Questa è l'ontologia di eventi IoT. Essa può essere utilizzata per esempio per rappresentare serie temporali e misure di sensoristica di vario tipo. Attualmente l'ontologia include classi specializzate per la modellazione di flussi di traffico."
-        }
-      ],
-      "rdfs:isDefinedBy": {
-        "@id": "http://dati.gov.it/onto/iotapit/"
-      },
-      "rdfs:label": [
-        {
-          "@language": "en",
-          "@value": "IoT event Ontology"
-        },
-        {
-          "@language": "it",
-          "@value": "Ontologia per eventi IoT"
-        }
-      ]
-    },
-    {
-      "@id": "l0:Characteristic",
-      "@type": "owl:Class"
-    },
-    {
-      "@id": "http://dati.gov.it/onto/iotapit/isValueForObservationParameter",
-      "@type": "owl:ObjectProperty",
-      "owl:versionInfo": [
-        {
-          "@language": "it",
-          "@value": "stabile"
-        },
-        {
-          "@language": "en",
-          "@value": "stable"
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@language": "it",
-          "@value": "Proprietà inversa di ha valore per il parametro di osservazione che lega un valore dell'osservazione al parametro dell'osservazione."
-        },
-        {
-          "@language": "en",
-          "@value": "Inverse property of has value for observation parameter that links an observation value to the  observation parameter"
-        }
-      ],
-      "rdfs:domain": {
-        "@id": "http://dati.gov.it/onto/iotapit/ObservationValue"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "http://dati.gov.it/onto/iotapit/"
-      },
-      "rdfs:label": [
-        {
-          "@language": "en",
-          "@value": "is value for observation parameter"
-        },
-        {
-          "@language": "it",
-          "@value": "è valore per parametro osservazione"
-        }
-      ],
-      "rdfs:range": {
-        "@id": "http://dati.gov.it/onto/iotapit/ObservationParameter"
-      }
-    },
-    {
-      "@id": "_:ub14bL595C30",
-      "@type": "owl:Restriction",
-      "owl:allValuesFrom": {
-        "@id": "rdfs:Literal"
-      },
-      "owl:onProperty": {
-        "@id": "l0:description"
-      }
-    },
-    {
-      "@id": "_:ub14bL683C35",
-      "@type": "owl:Restriction",
-      "owl:onProperty": {
-        "@id": "http://dati.gov.it/onto/iotapit/isObservationValueOf"
-      },
-      "owl:someValuesFrom": {
-        "@id": "http://dati.gov.it/onto/iotapit/Observation"
-      }
-    },
-    {
-      "@id": "http://dati.gov.it/onto/iotapit/observationMadeBySensor",
-      "@type": "owl:ObjectProperty",
-      "owl:versionInfo": [
-        {
-          "@language": "it",
-          "@value": "stabile"
-        },
-        {
-          "@language": "en",
-          "@value": "stable"
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@language": "it",
-          "@value": "Questa è la proprietù inversa che lega un'osservazione al sensore."
-        },
-        {
-          "@language": "en",
-          "@value": "This is the inverse property of makesObservation and links an Observation to the Sensor."
-        }
-      ],
-      "rdfs:domain": {
-        "@id": "http://dati.gov.it/onto/iotapit/Observation"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "http://dati.gov.it/onto/iotapit/"
-      },
-      "rdfs:label": [
-        {
-          "@language": "en",
-          "@value": "observation made by sensor"
-        },
-        {
-          "@language": "it",
-          "@value": "osservazione fatta dal sensore"
-        }
-      ],
-      "rdfs:range": {
-        "@id": "http://dati.gov.it/onto/iotapit/Sensor"
-      }
-    },
-    {
-      "@id": "_:ub14bL466C36",
-      "@type": "owl:Restriction",
-      "owl:onProperty": {
-        "@id": "l0:name"
-      },
-      "owl:someValuesFrom": {
-        "@id": "rdfs:Literal"
-      }
-    },
-    {
-      "@id": "_:ub14bL580C30",
-      "@type": "owl:Restriction",
-      "owl:maxQualifiedCardinality": {
-        "@type": "xsd:nonNegativeInteger",
-        "@value": "1"
-      },
-      "owl:onClass": {
-        "@id": "tiapit:TimeInterval"
-      },
-      "owl:onProperty": {
-        "@id": "http://dati.gov.it/onto/iotapit/generationTime"
-      }
-    },
-    {
-      "@id": "http://dati.gov.it/onto/iotapit/makesObservation",
-      "@type": "owl:ObjectProperty",
-      "owl:inverseOf": {
-        "@id": "http://dati.gov.it/onto/iotapit/observationMadeBySensor"
-      },
-      "owl:versionInfo": [
-        {
-          "@language": "it",
-          "@value": "stabile"
-        },
-        {
-          "@language": "en",
-          "@value": "stable"
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@language": "en",
-          "@value": "Property that links a Sensor to the Observation."
-        },
-        {
-          "@language": "it",
-          "@value": "Proprietà che collega un sensore all'osservazione fatta dal sensore."
-        }
-      ],
-      "rdfs:domain": {
-        "@id": "http://dati.gov.it/onto/iotapit/Sensor"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "http://dati.gov.it/onto/iotapit/"
-      },
-      "rdfs:label": [
-        {
-          "@language": "en",
-          "@value": "makes observation"
-        },
-        {
-          "@language": "it",
-          "@value": "fa osservazione"
-        }
-      ],
-      "rdfs:range": {
-        "@id": "http://dati.gov.it/onto/iotapit/Observation"
-      }
-    },
-    {
-      "@id": "http://dati.gov.it/onto/iotapit/Actuator",
-      "@type": "owl:Class",
-      "rdfs:comment": [
-        {
-          "@language": "it",
-          "@value": "La classe che rappresenta un attuatore."
-        },
-        {
-          "@language": "en",
-          "@value": "An actuator."
-        }
-      ],
-      "rdfs:label": [
-        {
-          "@language": "en",
-          "@value": "Actuator"
-        },
-        {
-          "@language": "it",
-          "@value": "Attuatore"
-        }
-      ],
-      "rdfs:subClassOf": {
-        "@id": "l0:Object"
-      }
-    },
-    {
-      "@id": "http://dati.gov.it/onto/iotapit/TrafficFlow",
-      "@type": "owl:Class",
-      "owl:versionInfo": [
-        {
-          "@language": "it",
-          "@value": "instabile"
-        },
-        {
-          "@language": "en",
-          "@value": "unstable"
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@language": "it",
-          "@value": "Questa classe rappresenta una specifica osservazione sui flussi di traffico"
-        },
-        {
-          "@language": "en",
-          "@value": "This class represents a specific observation on the traffic flows"
-        }
-      ],
-      "rdfs:isDefinedBy": {
-        "@id": "http://dati.gov.it/onto/iotapit/"
-      },
-      "rdfs:label": [
-        {
-          "@language": "it",
-          "@value": "Flusso Traffico"
-        },
-        {
-          "@language": "en",
-          "@value": "Traffic Flow"
-        }
-      ],
-      "rdfs:subClassOf": {
-        "@id": "http://dati.gov.it/onto/iotapit/Observation"
-      }
-    },
-    {
-      "@id": "muapit:Value",
-      "@type": "owl:Class"
-    },
-    {
-      "@id": "_:ub14bL548C30",
-      "@type": "owl:Restriction",
-      "owl:onProperty": {
-        "@id": "http://dati.gov.it/onto/iotapit/hasObservationParameter"
-      },
-      "owl:someValuesFrom": {
-        "@id": "http://dati.gov.it/onto/iotapit/ObservationParameter"
-      }
-    },
-    {
-      "@id": "http://dati.gov.it/onto/iotapit/Precision",
-      "@type": "owl:Class",
-      "owl:versionInfo": [
-        {
-          "@language": "en",
-          "@value": "unstable"
-        },
-        {
-          "@language": "it",
-          "@value": "instabile"
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@language": "it",
-          "@value": "Questa classe rappresenta la Precisione, ovvero il grado di riproducibilità di una misura. In altre parole, se esattamente gli stessi valori sono stati misurati un certo numero di volte, un sensor ideale produrrebbe come output esattamente lo stesso valore ogni volta."
-        },
-        {
-          "@language": "en",
-          "@value": "It represents the Precision; i.e., the  degree of reproducibility of a measurement. In other words, if exactly the same values were measured a number of times, an ideal sensor would output exactly the same value every time."
-        }
-      ],
-      "rdfs:isDefinedBy": {
-        "@id": "http://dati.gov.it/onto/iotapit/"
-      },
-      "rdfs:label": [
-        {
-          "@language": "it",
-          "@value": "Precisione"
-        },
-        {
-          "@language": "en",
-          "@value": "Precision"
-        }
-      ],
-      "rdfs:subClassOf": {
-        "@id": "http://dati.gov.it/onto/iotapit/MeasurementQuality"
-      }
-    },
-    {
-      "@id": "http://dati.gov.it/onto/iotapit/Sensor",
-      "@type": "owl:Class",
-      "owl:versionInfo": [
-        {
-          "@language": "it",
-          "@value": "stabile"
-        },
-        {
-          "@language": "en",
-          "@value": "stable"
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@language": "en",
-          "@value": "This class represents a sensor. A sensor is a device whose purpose is to detect and respond to events or changes in its environment. The detected information can be used and disseminated for successive elaborations."
-        },
-        {
-          "@language": "it",
-          "@value": "Questa classe rappresenta un sensore. Un sensore è uno strumento il cui scopo è quello di rilevare e rispondere a eventi o cambiamenti che avvengono nel proprio ambienti. L'informazione rilevata può essere  utilizzata e distribuita per successive elaborazioni."
-        }
-      ],
-      "rdfs:isDefinedBy": {
-        "@id": "http://dati.gov.it/onto/iotapit/"
-      },
-      "rdfs:label": [
-        {
-          "@language": "it",
-          "@value": "Sensore"
-        },
-        {
-          "@language": "en",
-          "@value": "Sensor"
-        }
-      ],
-      "rdfs:subClassOf": [
-        {
-          "@id": "_:ub14bL774C25"
-        },
-        {
-          "@id": "_:ub14bL770C25"
-        },
-        {
-          "@id": "l0:Object"
-        },
-        {
-          "@id": "_:ub14bL766C25"
-        }
-      ]
-    },
-    {
-      "@id": "tiapit:atTime",
-      "@type": "owl:ObjectProperty"
-    },
-    {
-      "@id": "_:ub14bL608C30",
-      "@type": "owl:Restriction",
-      "owl:maxQualifiedCardinality": {
-        "@type": "xsd:nonNegativeInteger",
-        "@value": "1"
-      },
-      "owl:onDataRange": {
-        "@id": "xsd:dateTime"
-      },
-      "owl:onProperty": {
-        "@id": "tiapit:modified"
-      }
-    },
-    {
-      "@id": "l0:description",
-      "@type": "owl:DatatypeProperty",
-      "rdfs:isDefinedBy": {
-        "@id": "l0:"
-      }
-    },
-    {
-      "@id": "dcterms:modified",
-      "@type": "owl:AnnotationProperty"
-    },
-    {
-      "@id": "_:ub14bL660C39",
-      "@type": "owl:Restriction",
-      "owl:allValuesFrom": {
-        "@id": "http://dati.gov.it/onto/iotapit/Observation"
-      },
-      "owl:onProperty": {
-        "@id": "http://dati.gov.it/onto/iotapit/isObservationParameterFor"
-      }
-    },
-    {
-      "@id": "_:ub14bL770C25",
-      "@type": "owl:Restriction",
-      "owl:allValuesFrom": {
-        "@id": "rdfs:Literal"
-      },
-      "owl:onProperty": {
-        "@id": "l0:description"
-      }
-    },
-    {
-      "@id": "_:ub14bL535C42",
-      "@type": "owl:Restriction",
-      "owl:onProperty": {
-        "@id": "http://dati.gov.it/onto/iotapit/isMeasurementQualityValueOf"
-      },
-      "owl:someValuesFrom": {
-        "@id": "http://dati.gov.it/onto/iotapit/MeasurementQuality"
-      }
-    },
-    {
-      "@id": "http://dati.gov.it/onto/iotapit/Frequency",
-      "@type": "owl:Class",
-      "owl:versionInfo": [
-        {
-          "@language": "it",
-          "@value": "instabile"
-        },
-        {
-          "@language": "en",
-          "@value": "unstable"
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@language": "en",
-          "@value": "It represents the Frequency; that is, the smallest possible time between one observation and the next, under the defined conditions."
-        },
-        {
-          "@language": "it",
-          "@value": "Questa classe rappresenta la frequenza ovvero il più piccolo tempo possibile tra un'osservazione e un'altra, in determinate condizioni."
-        }
-      ],
-      "rdfs:isDefinedBy": {
-        "@id": "http://dati.gov.it/onto/iotapit/"
-      },
-      "rdfs:label": [
-        {
-          "@language": "en",
-          "@value": "Frequency"
-        },
-        {
-          "@language": "en",
-          "@value": "Frequenza"
-        }
-      ],
-      "rdfs:subClassOf": {
-        "@id": "http://dati.gov.it/onto/iotapit/MeasurementQuality"
-      }
-    },
-    {
-      "@id": "http://dati.gov.it/onto/iotapit/observationCollectionMadeBySensor",
-      "@type": "owl:ObjectProperty",
-      "owl:versionInfo": [
-        {
-          "@language": "en",
-          "@value": "stable"
-        },
-        {
-          "@language": "it",
-          "@value": "stabile"
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@language": "en",
-          "@value": "Inverse property of makes observation collection that links a collection of observation made by a sensor."
-        },
-        {
-          "@language": "it",
-          "@value": "Proprietà inversa di fa collezioni di osservazioni che unisce una collezione di osservazioni a un sensore che le produce."
-        }
-      ],
-      "rdfs:domain": {
-        "@id": "http://dati.gov.it/onto/iotapit/ObservationCollection"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "http://dati.gov.it/onto/iotapit/"
-      },
-      "rdfs:label": [
-        {
-          "@language": "it",
-          "@value": "collezione di osservazioni fatte da sensore"
-        },
-        {
-          "@language": "en",
-          "@value": "observation collection made by sensor"
-        }
-      ],
-      "rdfs:range": {
-        "@id": "http://dati.gov.it/onto/iotapit/Sensor"
-      }
-    },
-    {
-      "@id": "_:ub14bL552C30",
-      "@type": "owl:Restriction",
-      "owl:onProperty": {
-        "@id": "http://dati.gov.it/onto/iotapit/hasObservationValue"
-      },
-      "owl:someValuesFrom": {
-        "@id": "http://dati.gov.it/onto/iotapit/ObservationValue"
-      }
-    },
-    {
-      "@id": "http://dati.gov.it/onto/iotapit/ObservationValue",
-      "@type": "owl:Class",
-      "owl:versionInfo": [
-        {
-          "@language": "it",
-          "@value": "stabile"
-        },
-        {
-          "@language": "en",
-          "@value": "stable"
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@language": "it",
-          "@value": "Rappresenta il valore dell'osservazione. Per esempio se diciamo che la temperatura della cucina è di 28 gradi celsius, il valore osservato è 28 gradi celsius."
-        },
-        {
-          "@language": "en",
-          "@value": "It represents the value of the observation. For instance if we say that the temperature of the kitchen is 28 celsius degrees, the observed value is 28 celsius degrees."
-        }
-      ],
-      "rdfs:isDefinedBy": {
-        "@id": "http://dati.gov.it/onto/iotapit/"
-      },
-      "rdfs:label": [
-        {
-          "@language": "it",
-          "@value": "Valore dell'Osservazione"
-        },
-        {
-          "@language": "en",
-          "@value": "Observation Value"
-        }
-      ],
-      "rdfs:subClassOf": [
-        {
-          "@id": "_:ub14bL683C35"
-        },
-        {
-          "@id": "muapit:Value"
-        },
-        {
-          "@id": "_:ub14bL687C35"
-        }
-      ]
-    },
-    {
-      "@id": "http://dati.gov.it/onto/iotapit/Repetability",
-      "@type": "owl:Class",
-      "owl:versionInfo": [
-        {
-          "@language": "en",
-          "@value": "unstable"
-        },
-        {
-          "@language": "it",
-          "@value": "instabile"
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@language": "en",
-          "@value": "It represents the Repetability; that is, the variation in measurements taken by the sensor on the same item, under the same conditions, and in a short period of time."
-        },
-        {
-          "@language": "it",
-          "@value": "Questa classe rappresenta la ripetibilità ovvero la variazione nelle misurazioni fatte da un sensor sullo stesso oggetto, alle stesse condizioni e in un lasso breve di tempo."
-        }
-      ],
-      "rdfs:isDefinedBy": {
-        "@id": "http://dati.gov.it/onto/iotapit/"
-      },
-      "rdfs:label": [
-        {
-          "@language": "it",
-          "@value": "Ripetibilità"
-        },
-        {
-          "@language": "en",
-          "@value": "Repetability"
-        }
-      ],
-      "rdfs:subClassOf": {
-        "@id": "http://dati.gov.it/onto/iotapit/MeasurementQuality"
-      }
-    },
-    {
-      "@id": "_:ub14bL603C30",
-      "@type": "owl:Restriction",
-      "owl:maxQualifiedCardinality": {
-        "@type": "xsd:nonNegativeInteger",
-        "@value": "1"
-      },
-      "owl:onDataRange": {
-        "@id": "xsd:dateTime"
-      },
-      "owl:onProperty": {
-        "@id": "tiapit:issued"
-      }
-    },
-    {
-      "@id": "http://dati.gov.it/onto/iotapit/RoadSegment",
-      "@type": "owl:Class",
-      "owl:versionInfo": [
-        {
-          "@language": "en",
-          "@value": "stable"
-        },
-        {
-          "@language": "it",
-          "@value": "stabile"
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@language": "it",
-          "@value": "Classe che rappresenta un arco stradale. Se l'ontologia è utilizzata per rappresentare eventi IoT nell'ambito dei dati real time sul traffico, la classe è rilevante e connota l'arco stradale dell'osservazione."
-        },
-        {
-          "@language": "en",
-          "@value": "This class represents the Road Segment  If the ontology is used to represent IoT events in the context of real time data traffic, the class is revelant and it represents the road segment of the observation."
-        }
-      ],
-      "rdfs:isDefinedBy": {
-        "@id": "http://dati.gov.it/onto/iotapit/"
-      },
-      "rdfs:label": [
-        {
-          "@language": "it",
-          "@value": "Arco Stradale"
-        },
-        {
-          "@language": "en",
-          "@value": "Road Segment"
-        }
-      ],
-      "rdfs:subClassOf": {
-        "@id": "http://dati.gov.it/onto/iotapit/FeatureOfInterest"
-      }
-    },
-    {
-      "@id": "http://dati.gov.it/onto/iotapit/isObservationParameterFor",
-      "@type": "owl:ObjectProperty",
-      "owl:versionInfo": [
-        {
-          "@language": "it",
-          "@value": "stabile"
-        },
-        {
-          "@language": "en",
-          "@value": "stable"
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@language": "it",
-          "@value": "Proprietà inversa di ha attributo osservato che lega un attributo osservato alla sua relativa osservazione."
-        },
-        {
-          "@language": "en",
-          "@value": "Inverse property of hasObservationParameter that links a parameter to its related observation."
-        }
-      ],
-      "rdfs:domain": {
-        "@id": "http://dati.gov.it/onto/iotapit/ObservationParameter"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "http://dati.gov.it/onto/iotapit/"
-      },
-      "rdfs:label": [
-        {
-          "@language": "en",
-          "@value": "is observation parameter for"
-        },
-        {
-          "@language": "it",
-          "@value": "è parametro dell'osservazione per"
-        }
-      ],
-      "rdfs:range": {
-        "@id": "http://dati.gov.it/onto/iotapit/Observation"
-      }
-    },
-    {
-      "@id": "_:ub14bL774C25",
-      "@type": "owl:Restriction",
-      "owl:cardinality": {
-        "@type": "xsd:nonNegativeInteger",
-        "@value": "1"
-      },
-      "owl:onProperty": {
-        "@id": "l0:identifier"
-      }
-    },
-    {
-      "@id": "http://dati.gov.it/onto/iotapit/Offset",
-      "@type": "owl:Class",
-      "owl:versionInfo": [
-        {
-          "@language": "en",
-          "@value": "unstable"
-        },
-        {
-          "@language": "it",
-          "@value": "instabile"
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@language": "en",
-          "@value": "It represents the offset error; that is, the difference between the actual output value and the specified output value under some particular set of conditions."
-        },
-        {
-          "@language": "it",
-          "@value": "Questa classe rappresenta l'errore di compensazione, ovvero  la differenza tra il valore reale di uscita e il valore di uscita specificato in alcune particolari condizioni."
-        }
-      ],
-      "rdfs:isDefinedBy": {
-        "@id": "http://dati.gov.it/onto/iotapit/"
-      },
-      "rdfs:label": [
-        {
-          "@language": "it",
-          "@value": "Compensazione"
-        },
-        {
-          "@language": "en",
-          "@value": "Offset"
-        }
-      ],
-      "rdfs:subClassOf": {
-        "@id": "http://dati.gov.it/onto/iotapit/MeasurementQuality"
-      }
-    },
-    {
-      "@id": "tiapit:TimeInterval",
-      "@type": "owl:Class",
-      "rdfs:isDefinedBy": {
-        "@id": "tiapit:"
-      }
-    },
-    {
-      "@id": "http://dati.gov.it/onto/iotapit/hasMeasurementQualityValue",
-      "@type": "owl:ObjectProperty",
-      "owl:inverseOf": {
-        "@id": "http://dati.gov.it/onto/iotapit/isMeasurementQualityValueOf"
-      },
-      "owl:versionInfo": [
-        {
-          "@language": "en",
-          "@value": "stable"
-        },
-        {
-          "@language": "it",
-          "@value": "stabile"
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@language": "it",
-          "@value": "Proprietà che collega la Misurazione di qualità con il relativo valore."
-        },
-        {
-          "@language": "en",
-          "@value": "Property that links the Measrurement Quality with its value."
-        }
-      ],
-      "rdfs:domain": {
-        "@id": "http://dati.gov.it/onto/iotapit/MeasurementQuality"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "http://dati.gov.it/onto/iotapit/"
-      },
-      "rdfs:label": [
-        {
-          "@language": "it",
-          "@value": "ha valore di qualità di misurazione"
-        },
-        {
-          "@language": "en",
-          "@value": "has measurement quality value"
-        }
-      ],
-      "rdfs:range": {
-        "@id": "http://dati.gov.it/onto/iotapit/MeasurementQualityValue"
-      }
-    },
-    {
-      "@id": "http://dati.gov.it/onto/iotapit/ObservationParameter",
-      "@type": "owl:Class",
-      "owl:versionInfo": [
-        {
-          "@language": "en",
-          "@value": "stable"
-        },
-        {
-          "@language": "it",
-          "@value": "stabile"
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@language": "en",
-          "@value": "An observation parameter (property, characteristic) of a feature of interest. For instance, if we say that the temperature of the kitchen is 28 clesius degrees, the observed attribute is temperature."
-        },
-        {
-          "@language": "it",
-          "@value": "Rappresenta un parametro (proprietà) dell'osservazione di una caratteristica di interesse. Per esempio, se diciamo che la temperatura della cucina è di 28 gradi celsius, la temperatura rappresenta l'attributo osservato."
-        }
-      ],
-      "rdfs:isDefinedBy": {
-        "@id": "http://dati.gov.it/onto/iotapit/"
-      },
-      "rdfs:label": [
-        {
-          "@language": "en",
-          "@value": "Observation Parameter"
-        },
-        {
-          "@language": "it",
-          "@value": "Parametro dell'Osservazione"
-        }
-      ],
-      "rdfs:subClassOf": [
-        {
-          "@id": "_:ub14bL660C39"
-        },
-        {
-          "@id": "_:ub14bL664C39"
-        },
-        {
-          "@id": "l0:Characteristic"
-        },
-        {
-          "@id": "_:ub14bL656C39"
-        }
-      ]
-    },
-    {
-      "@id": "l0:Object",
-      "@type": "owl:Class"
-    },
-    {
-      "@id": "tiapit:issued",
-      "@type": "owl:DatatypeProperty",
-      "rdfs:isDefinedBy": {
-        "@id": "tiapit:"
-      }
-    },
-    {
-      "@id": "_:ub14bL632C40",
-      "@type": "owl:Restriction",
-      "owl:onClass": {
-        "@id": "http://dati.gov.it/onto/iotapit/Sensor"
-      },
-      "owl:onProperty": {
-        "@id": "http://dati.gov.it/onto/iotapit/observationCollectionMadeBySensor"
-      },
-      "owl:qualifiedCardinality": {
-        "@type": "xsd:nonNegativeInteger",
-        "@value": "1"
-      }
-    }
-  ]
-}
+[{
+	"@id": "_:b0",
+	"@type": ["http://www.w3.org/2002/07/owl#Restriction"],
+	"http://www.w3.org/2002/07/owl#onProperty": [{
+		"@id": "https://w3id.org/italia/onto/l0/name"
+	}],
+	"http://www.w3.org/2002/07/owl#someValuesFrom": [{
+		"@id": "http://www.w3.org/2000/01/rdf-schema#Literal"
+	}]
+}, {
+	"@id": "_:b1",
+	"@type": ["http://www.w3.org/2002/07/owl#Restriction"],
+	"http://www.w3.org/2002/07/owl#onProperty": [{
+		"@id": "https://w3id.org/italia/onto/IoT/isFeatureOfInterestFor"
+	}],
+	"http://www.w3.org/2002/07/owl#allValuesFrom": [{
+		"@id": "https://w3id.org/italia/onto/IoT/Observation"
+	}]
+}, {
+	"@id": "_:b10",
+	"@type": ["http://www.w3.org/2002/07/owl#Restriction"],
+	"http://www.w3.org/2002/07/owl#onProperty": [{
+		"@id": "https://w3id.org/italia/onto/IoT/hasQuality"
+	}],
+	"http://www.w3.org/2002/07/owl#allValuesFrom": [{
+		"@id": "https://w3id.org/italia/onto/IoT/MeasurementQuality"
+	}]
+}, {
+	"@id": "_:b11",
+	"@type": ["http://www.w3.org/2002/07/owl#Restriction"],
+	"http://www.w3.org/2002/07/owl#onProperty": [{
+		"@id": "https://w3id.org/italia/onto/IoT/phenomenonTime"
+	}],
+	"http://www.w3.org/2002/07/owl#onClass": [{
+		"@id": "https://w3id.org/italia/onto/TI/TimeInterval"
+	}],
+	"http://www.w3.org/2002/07/owl#maxQualifiedCardinality": [{
+		"@value": "1",
+		"@type": "http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+	}]
+}, {
+	"@id": "_:b12",
+	"@type": ["http://www.w3.org/2002/07/owl#Restriction"],
+	"http://www.w3.org/2002/07/owl#onProperty": [{
+		"@id": "https://w3id.org/italia/onto/TI/modified"
+	}],
+	"http://www.w3.org/2002/07/owl#maxQualifiedCardinality": [{
+		"@value": "1",
+		"@type": "http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+	}],
+	"http://www.w3.org/2002/07/owl#onDataRange": [{
+		"@id": "http://www.w3.org/2001/XMLSchema#dateTime"
+	}]
+}, {
+	"@id": "_:b13",
+	"@type": ["http://www.w3.org/2002/07/owl#Restriction"],
+	"http://www.w3.org/2002/07/owl#onProperty": [{
+		"@id": "https://w3id.org/italia/onto/l0/identifier"
+	}],
+	"http://www.w3.org/2002/07/owl#cardinality": [{
+		"@value": "1",
+		"@type": "http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+	}]
+}, {
+	"@id": "_:b14",
+	"@type": ["http://www.w3.org/2002/07/owl#Restriction"],
+	"http://www.w3.org/2002/07/owl#onProperty": [{
+		"@id": "https://w3id.org/italia/onto/IoT/hasFeatureOfInterest"
+	}],
+	"http://www.w3.org/2002/07/owl#onClass": [{
+		"@id": "https://w3id.org/italia/onto/IoT/FeatureOfInterest"
+	}],
+	"http://www.w3.org/2002/07/owl#qualifiedCardinality": [{
+		"@value": "1",
+		"@type": "http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+	}]
+}, {
+	"@id": "_:b15",
+	"@type": ["http://www.w3.org/2002/07/owl#Restriction"],
+	"http://www.w3.org/2002/07/owl#onProperty": [{
+		"@id": "https://w3id.org/italia/onto/TI/issued"
+	}],
+	"http://www.w3.org/2002/07/owl#maxQualifiedCardinality": [{
+		"@value": "1",
+		"@type": "http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+	}],
+	"http://www.w3.org/2002/07/owl#onDataRange": [{
+		"@id": "http://www.w3.org/2001/XMLSchema#dateTime"
+	}]
+}, {
+	"@id": "_:b16",
+	"@type": ["http://www.w3.org/2002/07/owl#Restriction"],
+	"http://www.w3.org/2002/07/owl#onProperty": [{
+		"@id": "https://w3id.org/italia/onto/TI/atTime"
+	}],
+	"http://www.w3.org/2002/07/owl#onClass": [{
+		"@id": "https://w3id.org/italia/onto/TI/TimeInterval"
+	}],
+	"http://www.w3.org/2002/07/owl#maxQualifiedCardinality": [{
+		"@value": "1",
+		"@type": "http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+	}]
+}, {
+	"@id": "_:b17",
+	"@type": ["http://www.w3.org/2002/07/owl#Restriction"],
+	"http://www.w3.org/2002/07/owl#onProperty": [{
+		"@id": "https://w3id.org/italia/onto/IoT/observationMadeBySensor"
+	}],
+	"http://www.w3.org/2002/07/owl#onClass": [{
+		"@id": "https://w3id.org/italia/onto/IoT/Sensor"
+	}],
+	"http://www.w3.org/2002/07/owl#qualifiedCardinality": [{
+		"@value": "1",
+		"@type": "http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+	}]
+}, {
+	"@id": "_:b18",
+	"@type": ["http://www.w3.org/2002/07/owl#Restriction"],
+	"http://www.w3.org/2002/07/owl#onProperty": [{
+		"@id": "https://w3id.org/italia/onto/IoT/consistsOf"
+	}],
+	"http://www.w3.org/2002/07/owl#someValuesFrom": [{
+		"@id": "https://w3id.org/italia/onto/IoT/Observation"
+	}]
+}, {
+	"@id": "_:b19",
+	"@type": ["http://www.w3.org/2002/07/owl#Restriction"],
+	"http://www.w3.org/2002/07/owl#onProperty": [{
+		"@id": "https://w3id.org/italia/onto/l0/identifier"
+	}],
+	"http://www.w3.org/2002/07/owl#cardinality": [{
+		"@value": "1",
+		"@type": "http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+	}]
+}, {
+	"@id": "_:b2",
+	"@type": ["http://www.w3.org/2002/07/owl#Restriction"],
+	"http://www.w3.org/2002/07/owl#onProperty": [{
+		"@id": "https://w3id.org/italia/onto/IoT/hasMeasurementQualityValue"
+	}],
+	"http://www.w3.org/2002/07/owl#onClass": [{
+		"@id": "https://w3id.org/italia/onto/IoT/MeasurementQualityValue"
+	}],
+	"http://www.w3.org/2002/07/owl#qualifiedCardinality": [{
+		"@value": "1",
+		"@type": "http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+	}]
+}, {
+	"@id": "_:b20",
+	"@type": ["http://www.w3.org/2002/07/owl#Restriction"],
+	"http://www.w3.org/2002/07/owl#onProperty": [{
+		"@id": "https://w3id.org/italia/onto/IoT/observationCollectionMadeBySensor"
+	}],
+	"http://www.w3.org/2002/07/owl#onClass": [{
+		"@id": "https://w3id.org/italia/onto/IoT/Sensor"
+	}],
+	"http://www.w3.org/2002/07/owl#qualifiedCardinality": [{
+		"@value": "1",
+		"@type": "http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+	}]
+}, {
+	"@id": "_:b21",
+	"@type": ["http://www.w3.org/2002/07/owl#Restriction"],
+	"http://www.w3.org/2002/07/owl#onProperty": [{
+		"@id": "https://w3id.org/italia/onto/IoT/isObservationParameterFor"
+	}],
+	"http://www.w3.org/2002/07/owl#allValuesFrom": [{
+		"@id": "https://w3id.org/italia/onto/IoT/Observation"
+	}]
+}, {
+	"@id": "_:b22",
+	"@type": ["http://www.w3.org/2002/07/owl#Restriction"],
+	"http://www.w3.org/2002/07/owl#onProperty": [{
+		"@id": "https://w3id.org/italia/onto/IoT/hasValueForObservationParameter"
+	}],
+	"http://www.w3.org/2002/07/owl#someValuesFrom": [{
+		"@id": "https://w3id.org/italia/onto/IoT/ObservationValue"
+	}]
+}, {
+	"@id": "_:b23",
+	"@type": ["http://www.w3.org/2002/07/owl#Restriction"],
+	"http://www.w3.org/2002/07/owl#onProperty": [{
+		"@id": "https://w3id.org/italia/onto/l0/name"
+	}],
+	"http://www.w3.org/2002/07/owl#someValuesFrom": [{
+		"@id": "http://www.w3.org/2000/01/rdf-schema#Literal"
+	}]
+}, {
+	"@id": "_:b24",
+	"@type": ["http://www.w3.org/2002/07/owl#Restriction"],
+	"http://www.w3.org/2002/07/owl#onProperty": [{
+		"@id": "https://w3id.org/italia/onto/IoT/isValueForObservationParameter"
+	}],
+	"http://www.w3.org/2002/07/owl#someValuesFrom": [{
+		"@id": "https://w3id.org/italia/onto/IoT/ObservationValue"
+	}]
+}, {
+	"@id": "_:b25",
+	"@type": ["http://www.w3.org/2002/07/owl#Restriction"],
+	"http://www.w3.org/2002/07/owl#onProperty": [{
+		"@id": "https://w3id.org/italia/onto/IoT/isObservationValueOf"
+	}],
+	"http://www.w3.org/2002/07/owl#someValuesFrom": [{
+		"@id": "https://w3id.org/italia/onto/IoT/Observation"
+	}]
+}, {
+	"@id": "_:b26",
+	"@type": ["http://www.w3.org/2002/07/owl#Restriction"],
+	"http://www.w3.org/2002/07/owl#onProperty": [{
+		"@id": "https://w3id.org/italia/onto/IoT/makesObservation"
+	}],
+	"http://www.w3.org/2002/07/owl#allValuesFrom": [{
+		"@id": "https://w3id.org/italia/onto/IoT/Observation"
+	}]
+}, {
+	"@id": "_:b27",
+	"@type": ["http://www.w3.org/2002/07/owl#Restriction"],
+	"http://www.w3.org/2002/07/owl#onProperty": [{
+		"@id": "https://w3id.org/italia/onto/l0/identifier"
+	}],
+	"http://www.w3.org/2002/07/owl#cardinality": [{
+		"@value": "1",
+		"@type": "http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+	}]
+}, {
+	"@id": "_:b28",
+	"@type": ["http://www.w3.org/2002/07/owl#Restriction"],
+	"http://www.w3.org/2002/07/owl#onProperty": [{
+		"@id": "https://w3id.org/italia/onto/l0/description"
+	}],
+	"http://www.w3.org/2002/07/owl#allValuesFrom": [{
+		"@id": "http://www.w3.org/2000/01/rdf-schema#Literal"
+	}]
+}, {
+	"@id": "_:b3",
+	"@type": ["http://www.w3.org/2002/07/owl#Restriction"],
+	"http://www.w3.org/2002/07/owl#onProperty": [{
+		"@id": "https://w3id.org/italia/onto/IoT/isMeasurementQualityValueOf"
+	}],
+	"http://www.w3.org/2002/07/owl#someValuesFrom": [{
+		"@id": "https://w3id.org/italia/onto/IoT/MeasurementQuality"
+	}]
+}, {
+	"@id": "_:b4",
+	"@type": ["http://www.w3.org/2002/07/owl#Restriction"],
+	"http://www.w3.org/2002/07/owl#onProperty": [{
+		"@id": "https://w3id.org/italia/onto/IoT/hasObservationValue"
+	}],
+	"http://www.w3.org/2002/07/owl#someValuesFrom": [{
+		"@id": "https://w3id.org/italia/onto/IoT/ObservationValue"
+	}]
+}, {
+	"@id": "_:b5",
+	"@type": ["http://www.w3.org/2002/07/owl#Restriction"],
+	"http://www.w3.org/2002/07/owl#onProperty": [{
+		"@id": "https://w3id.org/italia/onto/IoT/isPartOf"
+	}],
+	"http://www.w3.org/2002/07/owl#onClass": [{
+		"@id": "https://w3id.org/italia/onto/IoT/ObservationCollection"
+	}],
+	"http://www.w3.org/2002/07/owl#qualifiedCardinality": [{
+		"@value": "1",
+		"@type": "http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+	}]
+}, {
+	"@id": "_:b6",
+	"@type": ["http://www.w3.org/2002/07/owl#Restriction"],
+	"http://www.w3.org/2002/07/owl#onProperty": [{
+		"@id": "https://w3id.org/italia/onto/IoT/hasObservationParameter"
+	}],
+	"http://www.w3.org/2002/07/owl#someValuesFrom": [{
+		"@id": "https://w3id.org/italia/onto/IoT/ObservationParameter"
+	}]
+}, {
+	"@id": "_:b7",
+	"@type": ["http://www.w3.org/2002/07/owl#Restriction"],
+	"http://www.w3.org/2002/07/owl#onProperty": [{
+		"@id": "https://w3id.org/italia/onto/CLV#hasGeometry"
+	}],
+	"http://www.w3.org/2002/07/owl#onClass": [{
+		"@id": "https://w3id.org/italia/onto/CLV/Geometry"
+	}],
+	"http://www.w3.org/2002/07/owl#maxQualifiedCardinality": [{
+		"@value": "1",
+		"@type": "http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+	}]
+}, {
+	"@id": "_:b8",
+	"@type": ["http://www.w3.org/2002/07/owl#Restriction"],
+	"http://www.w3.org/2002/07/owl#onProperty": [{
+		"@id": "https://w3id.org/italia/onto/l0/description"
+	}],
+	"http://www.w3.org/2002/07/owl#allValuesFrom": [{
+		"@id": "http://www.w3.org/2000/01/rdf-schema#Literal"
+	}]
+}, {
+	"@id": "_:b9",
+	"@type": ["http://www.w3.org/2002/07/owl#Restriction"],
+	"http://www.w3.org/2002/07/owl#onProperty": [{
+		"@id": "https://w3id.org/italia/onto/IoT/generationTime"
+	}],
+	"http://www.w3.org/2002/07/owl#onClass": [{
+		"@id": "https://w3id.org/italia/onto/TI/TimeInterval"
+	}],
+	"http://www.w3.org/2002/07/owl#maxQualifiedCardinality": [{
+		"@value": "1",
+		"@type": "http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+	}]
+}, {
+	"@id": "http://purl.org/dc/elements/1.1/creator",
+	"@type": ["http://www.w3.org/2002/07/owl#AnnotationProperty"]
+}, {
+	"@id": "http://purl.org/dc/terms/license",
+	"@type": ["http://www.w3.org/2002/07/owl#AnnotationProperty"]
+}, {
+	"@id": "http://purl.org/dc/terms/modified",
+	"@type": ["http://www.w3.org/2002/07/owl#AnnotationProperty"]
+}, {
+	"@id": "http://www.w3.org/2000/01/rdf-schema#Literal"
+}, {
+	"@id": "http://www.w3.org/2001/XMLSchema#dateTime"
+}, {
+	"@id": "http://www.w3.org/2002/07/owl#AnnotationProperty"
+}, {
+	"@id": "http://www.w3.org/2002/07/owl#Class"
+}, {
+	"@id": "http://www.w3.org/2002/07/owl#DatatypeProperty"
+}, {
+	"@id": "http://www.w3.org/2002/07/owl#ObjectProperty"
+}, {
+	"@id": "http://www.w3.org/2002/07/owl#Ontology"
+}, {
+	"@id": "http://www.w3.org/2002/07/owl#Restriction"
+}, {
+	"@id": "http://www.w3.org/ns/prov#wasDerivedFrom",
+	"@type": ["http://www.w3.org/2002/07/owl#AnnotationProperty"]
+}, {
+	"@id": "https://creativecommons.org/licenses/by/4.0/"
+}, {
+	"@id": "https://w3id.org/italia/onto/CLV"
+}, {
+	"@id": "https://w3id.org/italia/onto/CLV#hasGeometry",
+	"@type": ["http://www.w3.org/2002/07/owl#ObjectProperty"],
+	"http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [{
+		"@id": "https://w3id.org/italia/onto/CLV/"
+	}]
+}, {
+	"@id": "https://w3id.org/italia/onto/CLV/"
+}, {
+	"@id": "https://w3id.org/italia/onto/CLV/Geometry",
+	"@type": ["http://www.w3.org/2002/07/owl#Class"],
+	"http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [{
+		"@id": "https://w3id.org/italia/onto/CLV/"
+	}]
+}, {
+	"@id": "https://w3id.org/italia/onto/IoT",
+	"@type": ["http://www.w3.org/2002/07/owl#Ontology"],
+	"http://www.w3.org/2000/01/rdf-schema#label": [{
+		"@value": "IoT event Ontology",
+		"@language": "en"
+	}, {
+		"@value": "Ontologia per eventi IoT",
+		"@language": "it"
+	}],
+	"http://purl.org/dc/terms/modified": [{
+		"@value": "2017-11-26"
+	}],
+	"http://purl.org/dc/terms/issued": [{
+		"@value": "2017-05-15",
+		"@language": "en"
+	}],
+	"http://purl.org/dc/elements/1.1/creator": [{
+		"@value": "Agency for Digital Italy - AgID",
+		"@language": "en"
+	}, {
+		"@value": "Institute of Cognitive Sciences and Technologies of the Italian Research Council (CNR) - Semantic Technology Laboratory (STLab)",
+		"@language": "en"
+	}, {
+		"@value": "Italian Digital Transformation Team",
+		"@language": "en"
+	}, {
+		"@value": "Agenzia per l'Italia Digitale - AgID",
+		"@language": "it"
+	}, {
+		"@value": "Istituto di Scienze e Tecnologie della Cognizione del CNR - Semantic Technology Lab (STLab)",
+		"@language": "it"
+	}, {
+		"@value": "Team per la Trasformazione Digitale",
+		"@language": "it"
+	}],
+	"http://www.w3.org/2000/01/rdf-schema#comment": [{
+		"@value": "This is the ontology used to represent IoT events. It can be used to model temporal series and measures of sensors of different type. Currently the ontology is specialized for modelling traffic flows.",
+		"@language": "en"
+	}, {
+		"@value": "Questa è l'ontologia di eventi IoT. Essa può essere utilizzata per esempio per rappresentare serie temporali e misure di sensoristica di vario tipo. Attualmente l'ontologia include classi specializzate per la modellazione di flussi di traffico.",
+		"@language": "it"
+	}],
+	"http://www.w3.org/2002/07/owl#versionInfo": [{
+		"@value": "Version 0.10 - November 26 2017 - refactoring taking into account new properties in L0 and in TI-AP_IT (TIme - Italian Application Profile), and using CLV-AP_IT ontology (Core Location Vocabulary - Italian Application Profile)",
+		"@language": "en"
+	}, {
+		"@value": "Versione 0.10 - 26 Novembre 2017 - rifattorizzazione tenendo in considerazione nuove proprietà di L0 e di TI-AP_IT (TIme - Italian Application Profile) e usando CLV-AP_IT (Core Location Vocabulary - Profilo Applicativo Italiano)",
+		"@language": "it"
+	}],
+	"http://purl.org/dc/terms/license": [{
+		"@id": "https://creativecommons.org/licenses/by/4.0/"
+	}],
+	"http://www.w3.org/2002/07/owl#imports": [{
+		"@id": "https://w3id.org/italia/onto/CLV"
+	}, {
+		"@id": "https://w3id.org/italia/onto/MU"
+	}, {
+		"@id": "https://w3id.org/italia/onto/TI"
+	}, {
+		"@id": "https://w3id.org/italia/onto/l0"
+	}],
+	"http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [{
+		"@id": "https://w3id.org/italia/onto/IoT"
+	}],
+	"http://www.w3.org/ns/prov#wasDerivedFrom": [{
+		"@id": "https://w3id.org/italia/onto/IoT/"
+	}],
+	"http://www.w3.org/2002/07/owl#versionIRI": [{
+		"@id": "https://w3id.org/italia/onto/IoT/0.10"
+	}]
+}, {
+	"@id": "https://w3id.org/italia/onto/IoT/"
+}, {
+	"@id": "https://w3id.org/italia/onto/IoT/0.10"
+}, {
+	"@id": "https://w3id.org/italia/onto/IoT/Accuracy",
+	"@type": ["http://www.w3.org/2002/07/owl#Class"],
+	"http://www.w3.org/2000/01/rdf-schema#label": [{
+		"@value": "Accuracy",
+		"@language": "en"
+	}, {
+		"@value": "Accuratezza",
+		"@language": "it"
+	}],
+	"http://www.w3.org/2000/01/rdf-schema#subClassOf": [{
+		"@id": "https://w3id.org/italia/onto/IoT/MeasurementQuality"
+	}],
+	"http://www.w3.org/2000/01/rdf-schema#comment": [{
+		"@value": "It represents the Accuracy; that is, the maximimum difference between the indicated value and the actual measurand being monitored, whilst taking into account all possible sources of error that are relevant to the application.",
+		"@language": "en"
+	}, {
+		"@value": "Questa classe rappresenta l'Accuratezza, cioè la differenza massima tra il valore indicato e il valore effettivo monitorato, tenuto conto di tutte le possibili fonti di errore rilevanti per l'applicazione.",
+		"@language": "it"
+	}],
+	"http://www.w3.org/2002/07/owl#versionInfo": [{
+		"@value": "unstable",
+		"@language": "en"
+	}, {
+		"@value": "instabile",
+		"@language": "it"
+	}],
+	"http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [{
+		"@id": "https://w3id.org/italia/onto/IoT"
+	}]
+}, {
+	"@id": "https://w3id.org/italia/onto/IoT/Actuator",
+	"@type": ["http://www.w3.org/2002/07/owl#Class"],
+	"http://www.w3.org/2000/01/rdf-schema#label": [{
+		"@value": "Actuator",
+		"@language": "en"
+	}, {
+		"@value": "Attuatore",
+		"@language": "it"
+	}],
+	"http://www.w3.org/2000/01/rdf-schema#subClassOf": [{
+		"@id": "https://w3id.org/italia/onto/l0/Object"
+	}],
+	"http://www.w3.org/2000/01/rdf-schema#comment": [{
+		"@value": "An actuator.",
+		"@language": "en"
+	}, {
+		"@value": "La classe che rappresenta un attuatore.",
+		"@language": "it"
+	}]
+}, {
+	"@id": "https://w3id.org/italia/onto/IoT/FeatureOfInterest",
+	"@type": ["http://www.w3.org/2002/07/owl#Class"],
+	"http://www.w3.org/2000/01/rdf-schema#label": [{
+		"@value": "Feature of Interest",
+		"@language": "en"
+	}, {
+		"@value": "Caratteristica di interesse",
+		"@language": "it"
+	}],
+	"http://www.w3.org/2000/01/rdf-schema#subClassOf": [{
+		"@id": "https://w3id.org/italia/onto/l0/Characteristic"
+	}, {
+		"@id": "_:b0"
+	}, {
+		"@id": "_:b1"
+	}],
+	"http://www.w3.org/2000/01/rdf-schema#comment": [{
+		"@value": "It represents the Feature whose Observed Attribute is being observed by a Sensor in order to get an Observed Value. For instance, if we say that the temperature of the kitchen is 28 celsius degrees, the Feature of Interest is the kitchen.",
+		"@language": "en"
+	}, {
+		"@value": "Rappresenta la caratteristica di interesse il cui attributo osservato è osservato da un sensor per ottenere un valore osservato. Per esempio, se diciamo che la temperatura della cucina è di 28 gradi celsius, la caratteristica di interesse è la cucina.",
+		"@language": "it"
+	}],
+	"http://www.w3.org/2002/07/owl#versionInfo": [{
+		"@value": "stable",
+		"@language": "en"
+	}, {
+		"@value": "stabile",
+		"@language": "it"
+	}],
+	"http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [{
+		"@id": "https://w3id.org/italia/onto/IoT"
+	}]
+}, {
+	"@id": "https://w3id.org/italia/onto/IoT/Frequency",
+	"@type": ["http://www.w3.org/2002/07/owl#Class"],
+	"http://www.w3.org/2000/01/rdf-schema#label": [{
+		"@value": "Frequency",
+		"@language": "en"
+	}, {
+		"@value": "Frequenza",
+		"@language": "en"
+	}],
+	"http://www.w3.org/2000/01/rdf-schema#subClassOf": [{
+		"@id": "https://w3id.org/italia/onto/IoT/MeasurementQuality"
+	}],
+	"http://www.w3.org/2000/01/rdf-schema#comment": [{
+		"@value": "It represents the Frequency; that is, the smallest possible time between one observation and the next, under the defined conditions.",
+		"@language": "en"
+	}, {
+		"@value": "Questa classe rappresenta la frequenza ovvero il più piccolo tempo possibile tra un'osservazione e un'altra, in determinate condizioni.",
+		"@language": "it"
+	}],
+	"http://www.w3.org/2002/07/owl#versionInfo": [{
+		"@value": "unstable",
+		"@language": "en"
+	}, {
+		"@value": "instabile",
+		"@language": "it"
+	}],
+	"http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [{
+		"@id": "https://w3id.org/italia/onto/IoT"
+	}]
+}, {
+	"@id": "https://w3id.org/italia/onto/IoT/Latency",
+	"@type": ["http://www.w3.org/2002/07/owl#Class"],
+	"http://www.w3.org/2000/01/rdf-schema#label": [{
+		"@value": "Latency",
+		"@language": "en"
+	}, {
+		"@value": "Latenza",
+		"@language": "it"
+	}],
+	"http://www.w3.org/2000/01/rdf-schema#subClassOf": [{
+		"@id": "https://w3id.org/italia/onto/IoT/MeasurementQuality"
+	}],
+	"http://www.w3.org/2000/01/rdf-schema#comment": [{
+		"@value": "It represents the Latency; i.e., the time delay between the cause and the effect of some change in the system being observed",
+		"@language": "en"
+	}, {
+		"@value": "Questa classe rappresenta la Latenza, ovvero il ritardo di tempo tra la causa e l'effetto di qualche cambiamento nel sistema osservarto.",
+		"@language": "it"
+	}],
+	"http://www.w3.org/2002/07/owl#versionInfo": [{
+		"@value": "unstable",
+		"@language": "en"
+	}, {
+		"@value": "instabile",
+		"@language": "it"
+	}],
+	"http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [{
+		"@id": "https://w3id.org/italia/onto/IoT"
+	}]
+}, {
+	"@id": "https://w3id.org/italia/onto/IoT/MeasurementQuality",
+	"@type": ["http://www.w3.org/2002/07/owl#Class"],
+	"http://www.w3.org/2000/01/rdf-schema#label": [{
+		"@value": "Measurement Quality",
+		"@language": "en"
+	}, {
+		"@value": "Qualità di Misurazione",
+		"@language": "it"
+	}],
+	"http://www.w3.org/2000/01/rdf-schema#subClassOf": [{
+		"@id": "https://w3id.org/italia/onto/l0/Characteristic"
+	}, {
+		"@id": "_:b2"
+	}],
+	"http://www.w3.org/2000/01/rdf-schema#comment": [{
+		"@value": "This class represents quality parameters or measurement capabilities/qualities of an observation. Examples include Latency, Accuracy, Repetability, etc.",
+		"@language": "en"
+	}, {
+		"@value": "Questa classe rappresenta dei parametri di qualità o capacità di misurazione dell'osservazione. Esempi di parametri sono: Latenza, Accuratezza, Ripetibilità, ecc.",
+		"@language": "it"
+	}],
+	"http://www.w3.org/2002/07/owl#versionInfo": [{
+		"@value": "unstable",
+		"@language": "en"
+	}, {
+		"@value": "instabile",
+		"@language": "it"
+	}],
+	"http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [{
+		"@id": "https://w3id.org/italia/onto/IoT"
+	}]
+}, {
+	"@id": "https://w3id.org/italia/onto/IoT/MeasurementQualityValue",
+	"@type": ["http://www.w3.org/2002/07/owl#Class"],
+	"http://www.w3.org/2000/01/rdf-schema#label": [{
+		"@value": "Measurement Quality Value",
+		"@language": "en"
+	}, {
+		"@value": "Valore Qualità di Misurazione",
+		"@language": "it"
+	}],
+	"http://www.w3.org/2000/01/rdf-schema#subClassOf": [{
+		"@id": "https://w3id.org/italia/onto/MU/Value"
+	}, {
+		"@id": "_:b3"
+	}],
+	"http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [{
+		"@id": "https://w3id.org/italia/onto/IoT"
+	}]
+}, {
+	"@id": "https://w3id.org/italia/onto/IoT/Observation",
+	"@type": ["http://www.w3.org/2002/07/owl#Class"],
+	"http://www.w3.org/2000/01/rdf-schema#label": [{
+		"@value": "Observation",
+		"@language": "en"
+	}, {
+		"@value": "Osservazione",
+		"@language": "it"
+	}],
+	"http://www.w3.org/2000/01/rdf-schema#subClassOf": [{
+		"@id": "https://w3id.org/italia/onto/l0/Activity"
+	}, {
+		"@id": "_:b4"
+	}, {
+		"@id": "_:b5"
+	}, {
+		"@id": "_:b6"
+	}, {
+		"@id": "_:b7"
+	}, {
+		"@id": "_:b8"
+	}, {
+		"@id": "_:b9"
+	}, {
+		"@id": "_:b10"
+	}, {
+		"@id": "_:b11"
+	}, {
+		"@id": "_:b12"
+	}, {
+		"@id": "_:b13"
+	}, {
+		"@id": "_:b14"
+	}, {
+		"@id": "_:b15"
+	}, {
+		"@id": "_:b16"
+	}, {
+		"@id": "_:b17"
+	}],
+	"http://www.w3.org/2000/01/rdf-schema#comment": [{
+		"@value": "Act of carrying out an Observation (which is an Event) to estimate or calculate a value of an attribute of a feature of interest.",
+		"@language": "en"
+	}, {
+		"@value": "L'atto di condurre un'osservazione (che è un evento) per stimare o calcolare un valore di un attributo di una caratteristica di interesse.",
+		"@language": "it"
+	}],
+	"http://www.w3.org/2002/07/owl#versionInfo": [{
+		"@value": "stable",
+		"@language": "en"
+	}, {
+		"@value": "stabile",
+		"@language": "it"
+	}],
+	"http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [{
+		"@id": "https://w3id.org/italia/onto/IoT"
+	}]
+}, {
+	"@id": "https://w3id.org/italia/onto/IoT/ObservationCollection",
+	"@type": ["http://www.w3.org/2002/07/owl#Class"],
+	"http://www.w3.org/2000/01/rdf-schema#label": [{
+		"@value": "Observation Collection",
+		"@language": "en"
+	}, {
+		"@value": "Collezione di Osservazioni",
+		"@language": "it"
+	}],
+	"http://www.w3.org/2000/01/rdf-schema#subClassOf": [{
+		"@id": "https://w3id.org/italia/onto/l0/Collection"
+	}, {
+		"@id": "_:b18"
+	}, {
+		"@id": "_:b19"
+	}, {
+		"@id": "_:b20"
+	}],
+	"http://www.w3.org/2000/01/rdf-schema#comment": [{
+		"@value": "This class represents a collection of observations made by a sensor. It can also be thought of as a data stream.",
+		"@language": "en"
+	}, {
+		"@value": "Questa classe rappresenta una collezione di osservazioni fatte da un sensore. Potrebbe anche essere vista come uno stream di dati.",
+		"@language": "it"
+	}],
+	"http://www.w3.org/2002/07/owl#versionInfo": [{
+		"@value": "unstable",
+		"@language": "en"
+	}, {
+		"@value": "instabile",
+		"@language": "it"
+	}],
+	"http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [{
+		"@id": "https://w3id.org/italia/onto/IoT"
+	}]
+}, {
+	"@id": "https://w3id.org/italia/onto/IoT/ObservationParameter",
+	"@type": ["http://www.w3.org/2002/07/owl#Class"],
+	"http://www.w3.org/2000/01/rdf-schema#label": [{
+		"@value": "Observation Parameter",
+		"@language": "en"
+	}, {
+		"@value": "Parametro dell'Osservazione",
+		"@language": "it"
+	}],
+	"http://www.w3.org/2000/01/rdf-schema#subClassOf": [{
+		"@id": "https://w3id.org/italia/onto/l0/Characteristic"
+	}, {
+		"@id": "_:b21"
+	}, {
+		"@id": "_:b22"
+	}, {
+		"@id": "_:b23"
+	}],
+	"http://www.w3.org/2000/01/rdf-schema#comment": [{
+		"@value": "An observation parameter (property, characteristic) of a feature of interest. For instance, if we say that the temperature of the kitchen is 28 clesius degrees, the observed attribute is temperature.",
+		"@language": "en"
+	}, {
+		"@value": "Rappresenta un parametro (proprietà) dell'osservazione di una caratteristica di interesse. Per esempio, se diciamo che la temperatura della cucina è di 28 gradi celsius, la temperatura rappresenta l'attributo osservato.",
+		"@language": "it"
+	}],
+	"http://www.w3.org/2002/07/owl#versionInfo": [{
+		"@value": "stable",
+		"@language": "en"
+	}, {
+		"@value": "stabile",
+		"@language": "it"
+	}],
+	"http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [{
+		"@id": "https://w3id.org/italia/onto/IoT"
+	}]
+}, {
+	"@id": "https://w3id.org/italia/onto/IoT/ObservationValue",
+	"@type": ["http://www.w3.org/2002/07/owl#Class"],
+	"http://www.w3.org/2000/01/rdf-schema#label": [{
+		"@value": "Observation Value",
+		"@language": "en"
+	}, {
+		"@value": "Valore dell'Osservazione",
+		"@language": "it"
+	}],
+	"http://www.w3.org/2000/01/rdf-schema#subClassOf": [{
+		"@id": "https://w3id.org/italia/onto/MU/Value"
+	}, {
+		"@id": "_:b24"
+	}, {
+		"@id": "_:b25"
+	}],
+	"http://www.w3.org/2000/01/rdf-schema#comment": [{
+		"@value": "It represents the value of the observation. For instance if we say that the temperature of the kitchen is 28 celsius degrees, the observed value is 28 celsius degrees.",
+		"@language": "en"
+	}, {
+		"@value": "Rappresenta il valore dell'osservazione. Per esempio se diciamo che la temperatura della cucina è di 28 gradi celsius, il valore osservato è 28 gradi celsius.",
+		"@language": "it"
+	}],
+	"http://www.w3.org/2002/07/owl#versionInfo": [{
+		"@value": "stable",
+		"@language": "en"
+	}, {
+		"@value": "stabile",
+		"@language": "it"
+	}],
+	"http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [{
+		"@id": "https://w3id.org/italia/onto/IoT"
+	}]
+}, {
+	"@id": "https://w3id.org/italia/onto/IoT/Offset",
+	"@type": ["http://www.w3.org/2002/07/owl#Class"],
+	"http://www.w3.org/2000/01/rdf-schema#label": [{
+		"@value": "Offset",
+		"@language": "en"
+	}, {
+		"@value": "Compensazione",
+		"@language": "it"
+	}],
+	"http://www.w3.org/2000/01/rdf-schema#subClassOf": [{
+		"@id": "https://w3id.org/italia/onto/IoT/MeasurementQuality"
+	}],
+	"http://www.w3.org/2000/01/rdf-schema#comment": [{
+		"@value": "It represents the offset error; that is, the difference between the actual output value and the specified output value under some particular set of conditions.",
+		"@language": "en"
+	}, {
+		"@value": "Questa classe rappresenta l'errore di compensazione, ovvero  la differenza tra il valore reale di uscita e il valore di uscita specificato in alcune particolari condizioni.",
+		"@language": "it"
+	}],
+	"http://www.w3.org/2002/07/owl#versionInfo": [{
+		"@value": "unstable",
+		"@language": "en"
+	}, {
+		"@value": "instabile",
+		"@language": "it"
+	}],
+	"http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [{
+		"@id": "https://w3id.org/italia/onto/IoT"
+	}]
+}, {
+	"@id": "https://w3id.org/italia/onto/IoT/Precision",
+	"@type": ["http://www.w3.org/2002/07/owl#Class"],
+	"http://www.w3.org/2000/01/rdf-schema#label": [{
+		"@value": "Precision",
+		"@language": "en"
+	}, {
+		"@value": "Precisione",
+		"@language": "it"
+	}],
+	"http://www.w3.org/2000/01/rdf-schema#subClassOf": [{
+		"@id": "https://w3id.org/italia/onto/IoT/MeasurementQuality"
+	}],
+	"http://www.w3.org/2000/01/rdf-schema#comment": [{
+		"@value": "It represents the Precision; i.e., the  degree of reproducibility of a measurement. In other words, if exactly the same values were measured a number of times, an ideal sensor would output exactly the same value every time.",
+		"@language": "en"
+	}, {
+		"@value": "Questa classe rappresenta la Precisione, ovvero il grado di riproducibilità di una misura. In altre parole, se esattamente gli stessi valori sono stati misurati un certo numero di volte, un sensor ideale produrrebbe come output esattamente lo stesso valore ogni volta.",
+		"@language": "it"
+	}],
+	"http://www.w3.org/2002/07/owl#versionInfo": [{
+		"@value": "unstable",
+		"@language": "en"
+	}, {
+		"@value": "instabile",
+		"@language": "it"
+	}],
+	"http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [{
+		"@id": "https://w3id.org/italia/onto/IoT"
+	}]
+}, {
+	"@id": "https://w3id.org/italia/onto/IoT/Repetability",
+	"@type": ["http://www.w3.org/2002/07/owl#Class"],
+	"http://www.w3.org/2000/01/rdf-schema#label": [{
+		"@value": "Repetability",
+		"@language": "en"
+	}, {
+		"@value": "Ripetibilità",
+		"@language": "it"
+	}],
+	"http://www.w3.org/2000/01/rdf-schema#subClassOf": [{
+		"@id": "https://w3id.org/italia/onto/IoT/MeasurementQuality"
+	}],
+	"http://www.w3.org/2000/01/rdf-schema#comment": [{
+		"@value": "It represents the Repetability; that is, the variation in measurements taken by the sensor on the same item, under the same conditions, and in a short period of time.",
+		"@language": "en"
+	}, {
+		"@value": "Questa classe rappresenta la ripetibilità ovvero la variazione nelle misurazioni fatte da un sensor sullo stesso oggetto, alle stesse condizioni e in un lasso breve di tempo.",
+		"@language": "it"
+	}],
+	"http://www.w3.org/2002/07/owl#versionInfo": [{
+		"@value": "unstable",
+		"@language": "en"
+	}, {
+		"@value": "instabile",
+		"@language": "it"
+	}],
+	"http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [{
+		"@id": "https://w3id.org/italia/onto/IoT"
+	}]
+}, {
+	"@id": "https://w3id.org/italia/onto/IoT/RoadSegment",
+	"@type": ["http://www.w3.org/2002/07/owl#Class"],
+	"http://www.w3.org/2000/01/rdf-schema#label": [{
+		"@value": "Road Segment",
+		"@language": "en"
+	}, {
+		"@value": "Arco Stradale",
+		"@language": "it"
+	}],
+	"http://www.w3.org/2000/01/rdf-schema#subClassOf": [{
+		"@id": "https://w3id.org/italia/onto/IoT/FeatureOfInterest"
+	}],
+	"http://www.w3.org/2000/01/rdf-schema#comment": [{
+		"@value": "This class represents the Road Segment  If the ontology is used to represent IoT events in the context of real time data traffic, the class is revelant and it represents the road segment of the observation.",
+		"@language": "en"
+	}, {
+		"@value": "Classe che rappresenta un arco stradale. Se l'ontologia è utilizzata per rappresentare eventi IoT nell'ambito dei dati real time sul traffico, la classe è rilevante e connota l'arco stradale dell'osservazione.",
+		"@language": "it"
+	}],
+	"http://www.w3.org/2002/07/owl#versionInfo": [{
+		"@value": "stable",
+		"@language": "en"
+	}, {
+		"@value": "stabile",
+		"@language": "it"
+	}],
+	"http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [{
+		"@id": "https://w3id.org/italia/onto/IoT"
+	}]
+}, {
+	"@id": "https://w3id.org/italia/onto/IoT/Sensor",
+	"@type": ["http://www.w3.org/2002/07/owl#Class"],
+	"http://www.w3.org/2000/01/rdf-schema#label": [{
+		"@value": "Sensor",
+		"@language": "en"
+	}, {
+		"@value": "Sensore",
+		"@language": "it"
+	}],
+	"http://www.w3.org/2000/01/rdf-schema#subClassOf": [{
+		"@id": "https://w3id.org/italia/onto/l0/Object"
+	}, {
+		"@id": "_:b26"
+	}, {
+		"@id": "_:b27"
+	}, {
+		"@id": "_:b28"
+	}],
+	"http://www.w3.org/2000/01/rdf-schema#comment": [{
+		"@value": "This class represents a sensor. A sensor is a device whose purpose is to detect and respond to events or changes in its environment. The detected information can be used and disseminated for successive elaborations.",
+		"@language": "en"
+	}, {
+		"@value": "Questa classe rappresenta un sensore. Un sensore è uno strumento il cui scopo è quello di rilevare e rispondere a eventi o cambiamenti che avvengono nel proprio ambienti. L'informazione rilevata può essere  utilizzata e distribuita per successive elaborazioni.",
+		"@language": "it"
+	}],
+	"http://www.w3.org/2002/07/owl#versionInfo": [{
+		"@value": "stable",
+		"@language": "en"
+	}, {
+		"@value": "stabile",
+		"@language": "it"
+	}],
+	"http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [{
+		"@id": "https://w3id.org/italia/onto/IoT"
+	}]
+}, {
+	"@id": "https://w3id.org/italia/onto/IoT/TrafficFlow",
+	"@type": ["http://www.w3.org/2002/07/owl#Class"],
+	"http://www.w3.org/2000/01/rdf-schema#label": [{
+		"@value": "Traffic Flow",
+		"@language": "en"
+	}, {
+		"@value": "Flusso Traffico",
+		"@language": "it"
+	}],
+	"http://www.w3.org/2000/01/rdf-schema#subClassOf": [{
+		"@id": "https://w3id.org/italia/onto/IoT/Observation"
+	}],
+	"http://www.w3.org/2000/01/rdf-schema#comment": [{
+		"@value": "This class represents a specific observation on the traffic flows",
+		"@language": "en"
+	}, {
+		"@value": "Questa classe rappresenta una specifica osservazione sui flussi di traffico",
+		"@language": "it"
+	}],
+	"http://www.w3.org/2002/07/owl#versionInfo": [{
+		"@value": "unstable",
+		"@language": "en"
+	}, {
+		"@value": "instabile",
+		"@language": "it"
+	}],
+	"http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [{
+		"@id": "https://w3id.org/italia/onto/IoT"
+	}]
+}, {
+	"@id": "https://w3id.org/italia/onto/IoT/consistsOf",
+	"@type": ["http://www.w3.org/2002/07/owl#ObjectProperty"],
+	"http://www.w3.org/2000/01/rdf-schema#label": [{
+		"@value": "consists of",
+		"@language": "en"
+	}, {
+		"@value": "consiste di",
+		"@language": "it"
+	}],
+	"http://www.w3.org/2000/01/rdf-schema#comment": [{
+		"@value": "Property that links a collection of observations with its observations.",
+		"@language": "en"
+	}, {
+		"@value": "Proprietà che collega una collezione di osservazioni con le sue osservazioni.",
+		"@language": "it"
+	}],
+	"http://www.w3.org/2002/07/owl#versionInfo": [{
+		"@value": "stable",
+		"@language": "en"
+	}, {
+		"@value": "stabile",
+		"@language": "it"
+	}],
+	"http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [{
+		"@id": "https://w3id.org/italia/onto/IoT"
+	}],
+	"http://www.w3.org/2000/01/rdf-schema#range": [{
+		"@id": "https://w3id.org/italia/onto/IoT/Observation"
+	}],
+	"http://www.w3.org/2000/01/rdf-schema#domain": [{
+		"@id": "https://w3id.org/italia/onto/IoT/ObservationCollection"
+	}],
+	"http://www.w3.org/2002/07/owl#inverseOf": [{
+		"@id": "https://w3id.org/italia/onto/IoT/isPartOf"
+	}]
+}, {
+	"@id": "https://w3id.org/italia/onto/IoT/generationTime",
+	"@type": ["http://www.w3.org/2002/07/owl#ObjectProperty"],
+	"http://www.w3.org/2000/01/rdf-schema#label": [{
+		"@value": "generation time",
+		"@language": "en"
+	}, {
+		"@value": "tempo di generazione",
+		"@language": "it"
+	}],
+	"http://www.w3.org/2000/01/rdf-schema#comment": [{
+		"@value": "This property is a subproperty of atTime and defines the generation time of the observation.",
+		"@language": "en"
+	}, {
+		"@value": "Questa proprietà è sottoproprietà di atTime e consente di modellare il tempo di generazione della osservazione.",
+		"@language": "it"
+	}],
+	"http://www.w3.org/2002/07/owl#versionInfo": [{
+		"@value": "stable",
+		"@language": "en"
+	}, {
+		"@value": "stabile",
+		"@language": "it"
+	}],
+	"http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [{
+		"@id": "https://w3id.org/italia/onto/IoT"
+	}],
+	"http://www.w3.org/2000/01/rdf-schema#domain": [{
+		"@id": "https://w3id.org/italia/onto/IoT/Observation"
+	}],
+	"http://www.w3.org/2000/01/rdf-schema#range": [{
+		"@id": "https://w3id.org/italia/onto/TI/TimeInterval"
+	}],
+	"http://www.w3.org/2000/01/rdf-schema#subPropertyOf": [{
+		"@id": "https://w3id.org/italia/onto/TI/atTime"
+	}]
+}, {
+	"@id": "https://w3id.org/italia/onto/IoT/hasFeatureOfInterest",
+	"@type": ["http://www.w3.org/2002/07/owl#ObjectProperty"],
+	"http://www.w3.org/2000/01/rdf-schema#label": [{
+		"@value": "has feature of interest",
+		"@language": "en"
+	}, {
+		"@value": "ha caratteristica di interesse",
+		"@language": "it"
+	}],
+	"http://www.w3.org/2000/01/rdf-schema#comment": [{
+		"@value": "Property that links the Observation to a feature of interest.",
+		"@language": "en"
+	}, {
+		"@value": "Proprietà che lega un'osservazione a una caratteristica di interesse.",
+		"@language": "it"
+	}],
+	"http://www.w3.org/2002/07/owl#versionInfo": [{
+		"@value": "stable",
+		"@language": "en"
+	}, {
+		"@value": "stabile",
+		"@language": "it"
+	}],
+	"http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [{
+		"@id": "https://w3id.org/italia/onto/IoT"
+	}],
+	"http://www.w3.org/2000/01/rdf-schema#range": [{
+		"@id": "https://w3id.org/italia/onto/IoT/FeatureOfInterest"
+	}],
+	"http://www.w3.org/2000/01/rdf-schema#domain": [{
+		"@id": "https://w3id.org/italia/onto/IoT/Observation"
+	}],
+	"http://www.w3.org/2002/07/owl#inverseOf": [{
+		"@id": "https://w3id.org/italia/onto/IoT/isFeatureOfInterestFor"
+	}]
+}, {
+	"@id": "https://w3id.org/italia/onto/IoT/hasMeasurementQualityValue",
+	"@type": ["http://www.w3.org/2002/07/owl#ObjectProperty"],
+	"http://www.w3.org/2000/01/rdf-schema#label": [{
+		"@value": "has measurement quality value",
+		"@language": "en"
+	}, {
+		"@value": "ha valore di qualità di misurazione",
+		"@language": "it"
+	}],
+	"http://www.w3.org/2000/01/rdf-schema#comment": [{
+		"@value": "Property that links the Measrurement Quality with its value.",
+		"@language": "en"
+	}, {
+		"@value": "Proprietà che collega la Misurazione di qualità con il relativo valore.",
+		"@language": "it"
+	}],
+	"http://www.w3.org/2002/07/owl#versionInfo": [{
+		"@value": "stable",
+		"@language": "en"
+	}, {
+		"@value": "stabile",
+		"@language": "it"
+	}],
+	"http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [{
+		"@id": "https://w3id.org/italia/onto/IoT"
+	}],
+	"http://www.w3.org/2000/01/rdf-schema#domain": [{
+		"@id": "https://w3id.org/italia/onto/IoT/MeasurementQuality"
+	}],
+	"http://www.w3.org/2000/01/rdf-schema#range": [{
+		"@id": "https://w3id.org/italia/onto/IoT/MeasurementQualityValue"
+	}],
+	"http://www.w3.org/2002/07/owl#inverseOf": [{
+		"@id": "https://w3id.org/italia/onto/IoT/isMeasurementQualityValueOf"
+	}]
+}, {
+	"@id": "https://w3id.org/italia/onto/IoT/hasObservationParameter",
+	"@type": ["http://www.w3.org/2002/07/owl#ObjectProperty"],
+	"http://www.w3.org/2000/01/rdf-schema#label": [{
+		"@value": "has observation parameter",
+		"@language": "en"
+	}, {
+		"@value": "ha parametro dell'osservazione",
+		"@language": "it"
+	}],
+	"http://www.w3.org/2000/01/rdf-schema#comment": [{
+		"@value": "Property that links an observation to its parameter being observed.",
+		"@language": "en"
+	}, {
+		"@value": "Proprietà che collega un'osservazione al suo parametro osservato.",
+		"@language": "it"
+	}],
+	"http://www.w3.org/2002/07/owl#versionInfo": [{
+		"@value": "stable",
+		"@language": "en"
+	}, {
+		"@value": "stabile",
+		"@language": "it"
+	}],
+	"http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [{
+		"@id": "https://w3id.org/italia/onto/IoT"
+	}],
+	"http://www.w3.org/2000/01/rdf-schema#domain": [{
+		"@id": "https://w3id.org/italia/onto/IoT/Observation"
+	}],
+	"http://www.w3.org/2000/01/rdf-schema#range": [{
+		"@id": "https://w3id.org/italia/onto/IoT/ObservationParameter"
+	}],
+	"http://www.w3.org/2002/07/owl#inverseOf": [{
+		"@id": "https://w3id.org/italia/onto/IoT/isObservationParameterFor"
+	}]
+}, {
+	"@id": "https://w3id.org/italia/onto/IoT/hasObservationValue",
+	"@type": ["http://www.w3.org/2002/07/owl#ObjectProperty"],
+	"http://www.w3.org/2000/01/rdf-schema#label": [{
+		"@value": "has observation value",
+		"@language": "en"
+	}, {
+		"@value": "ha valore dell'osservazione",
+		"@language": "it"
+	}],
+	"http://www.w3.org/2000/01/rdf-schema#comment": [{
+		"@value": "Property that links an Observation to its value.",
+		"@language": "en"
+	}, {
+		"@value": "Proprietà che lega un'osservazione al suo valore.",
+		"@language": "it"
+	}],
+	"http://www.w3.org/2002/07/owl#versionInfo": [{
+		"@value": "stable",
+		"@language": "en"
+	}, {
+		"@value": "stabile",
+		"@language": "it"
+	}],
+	"http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [{
+		"@id": "https://w3id.org/italia/onto/IoT"
+	}],
+	"http://www.w3.org/2000/01/rdf-schema#domain": [{
+		"@id": "https://w3id.org/italia/onto/IoT/Observation"
+	}],
+	"http://www.w3.org/2000/01/rdf-schema#range": [{
+		"@id": "https://w3id.org/italia/onto/IoT/ObservationValue"
+	}],
+	"http://www.w3.org/2002/07/owl#inverseOf": [{
+		"@id": "https://w3id.org/italia/onto/IoT/isObservationValueOf"
+	}]
+}, {
+	"@id": "https://w3id.org/italia/onto/IoT/hasQuality",
+	"@type": ["http://www.w3.org/2002/07/owl#ObjectProperty"],
+	"http://www.w3.org/2000/01/rdf-schema#label": [{
+		"@value": "has quality",
+		"@language": "en"
+	}, {
+		"@value": "ha qualità",
+		"@language": "it"
+	}],
+	"http://www.w3.org/2000/01/rdf-schema#comment": [{
+		"@value": "Property that links an Observation to a number of measurement capabilities.",
+		"@language": "en"
+	}, {
+		"@value": "Proprietà che lega un'osservazione a una serie di parametri di qualità.",
+		"@language": "it"
+	}],
+	"http://www.w3.org/2002/07/owl#versionInfo": [{
+		"@value": "stable",
+		"@language": "en"
+	}, {
+		"@value": "stabile",
+		"@language": "it"
+	}],
+	"http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [{
+		"@id": "https://w3id.org/italia/onto/IoT"
+	}],
+	"http://www.w3.org/2000/01/rdf-schema#range": [{
+		"@id": "https://w3id.org/italia/onto/IoT/MeasurementQuality"
+	}],
+	"http://www.w3.org/2000/01/rdf-schema#domain": [{
+		"@id": "https://w3id.org/italia/onto/IoT/Observation"
+	}]
+}, {
+	"@id": "https://w3id.org/italia/onto/IoT/hasValueForObservationParameter",
+	"@type": ["http://www.w3.org/2002/07/owl#ObjectProperty"],
+	"http://www.w3.org/2000/01/rdf-schema#label": [{
+		"@value": "This property links the Observation Parameter to the Observation Value.",
+		"@language": "en"
+	}, {
+		"@value": "has value for observation parameter",
+		"@language": "en"
+	}, {
+		"@value": "Questa proprietà connette l'attributo (parametro) dell'osservazione a rispettivo valore dell'osservazione.",
+		"@language": "it"
+	}, {
+		"@value": "ha valore per parametro di osservazione",
+		"@language": "it"
+	}],
+	"http://www.w3.org/2002/07/owl#versionInfo": [{
+		"@value": "stable",
+		"@language": "en"
+	}, {
+		"@value": "stabile",
+		"@language": "it"
+	}],
+	"http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [{
+		"@id": "https://w3id.org/italia/onto/IoT"
+	}],
+	"http://www.w3.org/2000/01/rdf-schema#domain": [{
+		"@id": "https://w3id.org/italia/onto/IoT/ObservationParameter"
+	}],
+	"http://www.w3.org/2000/01/rdf-schema#range": [{
+		"@id": "https://w3id.org/italia/onto/IoT/ObservationValue"
+	}],
+	"http://www.w3.org/2002/07/owl#inverseOf": [{
+		"@id": "https://w3id.org/italia/onto/IoT/isValueForObservationParameter"
+	}]
+}, {
+	"@id": "https://w3id.org/italia/onto/IoT/isFeatureOfInterestFor",
+	"@type": ["http://www.w3.org/2002/07/owl#ObjectProperty"],
+	"http://www.w3.org/2000/01/rdf-schema#label": [{
+		"@value": "is feature of interest for",
+		"@language": "en"
+	}, {
+		"@value": "è caratteristica di interesse per",
+		"@language": "it"
+	}],
+	"http://www.w3.org/2000/01/rdf-schema#comment": [{
+		"@value": "Inverse property of has feature of interest that links a feature of interest to an observation.",
+		"@language": "en"
+	}, {
+		"@value": "Proprietà inversa di ha caratteristica di interesse che lega una caratteristica di interesse a un'osservaizione.",
+		"@language": "it"
+	}],
+	"http://www.w3.org/2002/07/owl#versionInfo": [{
+		"@value": "stable",
+		"@language": "en"
+	}, {
+		"@value": "stabile",
+		"@language": "it"
+	}],
+	"http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [{
+		"@id": "https://w3id.org/italia/onto/IoT"
+	}],
+	"http://www.w3.org/2000/01/rdf-schema#domain": [{
+		"@id": "https://w3id.org/italia/onto/IoT/FeatureOfInterest"
+	}],
+	"http://www.w3.org/2000/01/rdf-schema#range": [{
+		"@id": "https://w3id.org/italia/onto/IoT/Observation"
+	}]
+}, {
+	"@id": "https://w3id.org/italia/onto/IoT/isMeasurementQualityValueOf",
+	"@type": ["http://www.w3.org/2002/07/owl#ObjectProperty"],
+	"http://www.w3.org/2000/01/rdf-schema#label": [{
+		"@value": "is measurement quality value of",
+		"@language": "en"
+	}, {
+		"@value": "è valore di qualità di misurazione di",
+		"@language": "it"
+	}],
+	"http://www.w3.org/2000/01/rdf-schema#comment": [{
+		"@value": "Inverse property of has measurement quality value that links the measurement quality value to the measurment quality.",
+		"@language": "en"
+	}, {
+		"@value": "Proprietà inversa che lega un valore della qualità di misurazione con la qualità di misurazione.",
+		"@language": "it"
+	}],
+	"http://www.w3.org/2002/07/owl#versionInfo": [{
+		"@value": "stable",
+		"@language": "en"
+	}, {
+		"@value": "stabile",
+		"@language": "it"
+	}],
+	"http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [{
+		"@id": "https://w3id.org/italia/onto/IoT"
+	}],
+	"http://www.w3.org/2000/01/rdf-schema#range": [{
+		"@id": "https://w3id.org/italia/onto/IoT/MeasurementQuality"
+	}],
+	"http://www.w3.org/2000/01/rdf-schema#domain": [{
+		"@id": "https://w3id.org/italia/onto/IoT/MeasurementQualityValue"
+	}]
+}, {
+	"@id": "https://w3id.org/italia/onto/IoT/isObservationParameterFor",
+	"@type": ["http://www.w3.org/2002/07/owl#ObjectProperty"],
+	"http://www.w3.org/2000/01/rdf-schema#label": [{
+		"@value": "is observation parameter for",
+		"@language": "en"
+	}, {
+		"@value": "è parametro dell'osservazione per",
+		"@language": "it"
+	}],
+	"http://www.w3.org/2000/01/rdf-schema#comment": [{
+		"@value": "Inverse property of hasObservationParameter that links a parameter to its related observation.",
+		"@language": "en"
+	}, {
+		"@value": "Proprietà inversa di ha attributo osservato che lega un attributo osservato alla sua relativa osservazione.",
+		"@language": "it"
+	}],
+	"http://www.w3.org/2002/07/owl#versionInfo": [{
+		"@value": "stable",
+		"@language": "en"
+	}, {
+		"@value": "stabile",
+		"@language": "it"
+	}],
+	"http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [{
+		"@id": "https://w3id.org/italia/onto/IoT"
+	}],
+	"http://www.w3.org/2000/01/rdf-schema#range": [{
+		"@id": "https://w3id.org/italia/onto/IoT/Observation"
+	}],
+	"http://www.w3.org/2000/01/rdf-schema#domain": [{
+		"@id": "https://w3id.org/italia/onto/IoT/ObservationParameter"
+	}]
+}, {
+	"@id": "https://w3id.org/italia/onto/IoT/isObservationValueOf",
+	"@type": ["http://www.w3.org/2002/07/owl#ObjectProperty"],
+	"http://www.w3.org/2000/01/rdf-schema#label": [{
+		"@value": "is osbservation value of",
+		"@language": "en"
+	}, {
+		"@value": "è valore osservato di",
+		"@language": "it"
+	}],
+	"http://www.w3.org/2000/01/rdf-schema#comment": [{
+		"@value": "Inverse property of hasObservedValue that links an ObservedValue to its related Observation.",
+		"@language": "en"
+	}, {
+		"@value": "Proprietà inversa di ha valore osservato che unisce un valore osservato alla relativa osservazione.",
+		"@language": "it"
+	}],
+	"http://www.w3.org/2002/07/owl#versionInfo": [{
+		"@value": "stable",
+		"@language": "en"
+	}, {
+		"@value": "stabile",
+		"@language": "it"
+	}],
+	"http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [{
+		"@id": "https://w3id.org/italia/onto/IoT"
+	}],
+	"http://www.w3.org/2000/01/rdf-schema#range": [{
+		"@id": "https://w3id.org/italia/onto/IoT/Observation"
+	}],
+	"http://www.w3.org/2000/01/rdf-schema#domain": [{
+		"@id": "https://w3id.org/italia/onto/IoT/ObservationValue"
+	}]
+}, {
+	"@id": "https://w3id.org/italia/onto/IoT/isPartOf",
+	"@type": ["http://www.w3.org/2002/07/owl#ObjectProperty"],
+	"http://www.w3.org/2000/01/rdf-schema#label": [{
+		"@value": "is part of",
+		"@language": "en"
+	}, {
+		"@value": "è parte di",
+		"@language": "it"
+	}],
+	"http://www.w3.org/2000/01/rdf-schema#comment": [{
+		"@value": "Inverse property of consistsOf that links an observation to its related collection.",
+		"@language": "en"
+	}, {
+		"@value": "Proprietà inversa di consiste di che lega un'osservazione alla sua relativa collezione.",
+		"@language": "it"
+	}],
+	"http://www.w3.org/2002/07/owl#versionInfo": [{
+		"@value": "stable",
+		"@language": "en"
+	}, {
+		"@value": "stabile",
+		"@language": "it"
+	}],
+	"http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [{
+		"@id": "https://w3id.org/italia/onto/IoT"
+	}],
+	"http://www.w3.org/2000/01/rdf-schema#domain": [{
+		"@id": "https://w3id.org/italia/onto/IoT/Observation"
+	}],
+	"http://www.w3.org/2000/01/rdf-schema#range": [{
+		"@id": "https://w3id.org/italia/onto/IoT/ObservationCollection"
+	}]
+}, {
+	"@id": "https://w3id.org/italia/onto/IoT/isValueForObservationParameter",
+	"@type": ["http://www.w3.org/2002/07/owl#ObjectProperty"],
+	"http://www.w3.org/2000/01/rdf-schema#label": [{
+		"@value": "is value for observation parameter",
+		"@language": "en"
+	}, {
+		"@value": "è valore per parametro osservazione",
+		"@language": "it"
+	}],
+	"http://www.w3.org/2000/01/rdf-schema#comment": [{
+		"@value": "Inverse property of has value for observation parameter that links an observation value to the  observation parameter",
+		"@language": "en"
+	}, {
+		"@value": "Proprietà inversa di ha valore per il parametro di osservazione che lega un valore dell'osservazione al parametro dell'osservazione.",
+		"@language": "it"
+	}],
+	"http://www.w3.org/2002/07/owl#versionInfo": [{
+		"@value": "stable",
+		"@language": "en"
+	}, {
+		"@value": "stabile",
+		"@language": "it"
+	}],
+	"http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [{
+		"@id": "https://w3id.org/italia/onto/IoT"
+	}],
+	"http://www.w3.org/2000/01/rdf-schema#range": [{
+		"@id": "https://w3id.org/italia/onto/IoT/ObservationParameter"
+	}],
+	"http://www.w3.org/2000/01/rdf-schema#domain": [{
+		"@id": "https://w3id.org/italia/onto/IoT/ObservationValue"
+	}]
+}, {
+	"@id": "https://w3id.org/italia/onto/IoT/makesObservation",
+	"@type": ["http://www.w3.org/2002/07/owl#ObjectProperty"],
+	"http://www.w3.org/2000/01/rdf-schema#label": [{
+		"@value": "makes observation",
+		"@language": "en"
+	}, {
+		"@value": "fa osservazione",
+		"@language": "it"
+	}],
+	"http://www.w3.org/2000/01/rdf-schema#comment": [{
+		"@value": "Property that links a Sensor to the Observation.",
+		"@language": "en"
+	}, {
+		"@value": "Proprietà che collega un sensore all'osservazione fatta dal sensore.",
+		"@language": "it"
+	}],
+	"http://www.w3.org/2002/07/owl#versionInfo": [{
+		"@value": "stable",
+		"@language": "en"
+	}, {
+		"@value": "stabile",
+		"@language": "it"
+	}],
+	"http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [{
+		"@id": "https://w3id.org/italia/onto/IoT"
+	}],
+	"http://www.w3.org/2000/01/rdf-schema#range": [{
+		"@id": "https://w3id.org/italia/onto/IoT/Observation"
+	}],
+	"http://www.w3.org/2000/01/rdf-schema#domain": [{
+		"@id": "https://w3id.org/italia/onto/IoT/Sensor"
+	}],
+	"http://www.w3.org/2002/07/owl#inverseOf": [{
+		"@id": "https://w3id.org/italia/onto/IoT/observationMadeBySensor"
+	}]
+}, {
+	"@id": "https://w3id.org/italia/onto/IoT/makesObservationCollection",
+	"@type": ["http://www.w3.org/2002/07/owl#ObjectProperty"],
+	"http://www.w3.org/2000/01/rdf-schema#label": [{
+		"@value": "makes observation collection",
+		"@language": "en"
+	}, {
+		"@value": "fa collezioni di osservazioni",
+		"@language": "it"
+	}],
+	"http://www.w3.org/2000/01/rdf-schema#comment": [{
+		"@value": "The property links a sensor to the collection of observations that it makes.",
+		"@language": "en"
+	}, {
+		"@value": "Questa proprietà collega un sensore a una collezione di osservazioni che esso fa.",
+		"@language": "it"
+	}],
+	"http://www.w3.org/2002/07/owl#versionInfo": [{
+		"@value": "stable",
+		"@language": "en"
+	}, {
+		"@value": "stabile",
+		"@language": "it"
+	}],
+	"http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [{
+		"@id": "https://w3id.org/italia/onto/IoT"
+	}],
+	"http://www.w3.org/2000/01/rdf-schema#range": [{
+		"@id": "https://w3id.org/italia/onto/IoT/ObservationCollection"
+	}],
+	"http://www.w3.org/2000/01/rdf-schema#domain": [{
+		"@id": "https://w3id.org/italia/onto/IoT/Sensor"
+	}],
+	"http://www.w3.org/2002/07/owl#inverseOf": [{
+		"@id": "https://w3id.org/italia/onto/IoT/observationCollectionMadeBySensor"
+	}]
+}, {
+	"@id": "https://w3id.org/italia/onto/IoT/observationCollectionMadeBySensor",
+	"@type": ["http://www.w3.org/2002/07/owl#ObjectProperty"],
+	"http://www.w3.org/2000/01/rdf-schema#label": [{
+		"@value": "observation collection made by sensor",
+		"@language": "en"
+	}, {
+		"@value": "collezione di osservazioni fatte da sensore",
+		"@language": "it"
+	}],
+	"http://www.w3.org/2000/01/rdf-schema#comment": [{
+		"@value": "Inverse property of makes observation collection that links a collection of observation made by a sensor.",
+		"@language": "en"
+	}, {
+		"@value": "Proprietà inversa di fa collezioni di osservazioni che unisce una collezione di osservazioni a un sensore che le produce.",
+		"@language": "it"
+	}],
+	"http://www.w3.org/2002/07/owl#versionInfo": [{
+		"@value": "stable",
+		"@language": "en"
+	}, {
+		"@value": "stabile",
+		"@language": "it"
+	}],
+	"http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [{
+		"@id": "https://w3id.org/italia/onto/IoT"
+	}],
+	"http://www.w3.org/2000/01/rdf-schema#domain": [{
+		"@id": "https://w3id.org/italia/onto/IoT/ObservationCollection"
+	}],
+	"http://www.w3.org/2000/01/rdf-schema#range": [{
+		"@id": "https://w3id.org/italia/onto/IoT/Sensor"
+	}]
+}, {
+	"@id": "https://w3id.org/italia/onto/IoT/observationMadeBySensor",
+	"@type": ["http://www.w3.org/2002/07/owl#ObjectProperty"],
+	"http://www.w3.org/2000/01/rdf-schema#label": [{
+		"@value": "observation made by sensor",
+		"@language": "en"
+	}, {
+		"@value": "osservazione fatta dal sensore",
+		"@language": "it"
+	}],
+	"http://www.w3.org/2000/01/rdf-schema#comment": [{
+		"@value": "This is the inverse property of makesObservation and links an Observation to the Sensor.",
+		"@language": "en"
+	}, {
+		"@value": "Questa è la proprietù inversa che lega un'osservazione al sensore.",
+		"@language": "it"
+	}],
+	"http://www.w3.org/2002/07/owl#versionInfo": [{
+		"@value": "stable",
+		"@language": "en"
+	}, {
+		"@value": "stabile",
+		"@language": "it"
+	}],
+	"http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [{
+		"@id": "https://w3id.org/italia/onto/IoT"
+	}],
+	"http://www.w3.org/2000/01/rdf-schema#domain": [{
+		"@id": "https://w3id.org/italia/onto/IoT/Observation"
+	}],
+	"http://www.w3.org/2000/01/rdf-schema#range": [{
+		"@id": "https://w3id.org/italia/onto/IoT/Sensor"
+	}]
+}, {
+	"@id": "https://w3id.org/italia/onto/IoT/phenomenonTime",
+	"@type": ["http://www.w3.org/2002/07/owl#ObjectProperty"],
+	"http://www.w3.org/2000/01/rdf-schema#label": [{
+		"@value": "phenomenon time",
+		"@language": "en"
+	}, {
+		"@value": "tempo di validità",
+		"@language": "it"
+	}],
+	"http://www.w3.org/2000/01/rdf-schema#comment": [{
+		"@value": "This property is subproperty of atTime and it is used to model the valididty time of an observation.",
+		"@language": "en"
+	}, {
+		"@value": "Questa proprietà è sotto proprietà di atTime ed è utilizzata per modellare il tempo di validità dell'osservazione.",
+		"@language": "it"
+	}],
+	"http://www.w3.org/2002/07/owl#versionInfo": [{
+		"@value": "stable",
+		"@language": "en"
+	}, {
+		"@value": "stabile",
+		"@language": "it"
+	}],
+	"http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [{
+		"@id": "https://w3id.org/italia/onto/IoT"
+	}],
+	"http://www.w3.org/2000/01/rdf-schema#domain": [{
+		"@id": "https://w3id.org/italia/onto/IoT/Observation"
+	}],
+	"http://www.w3.org/2000/01/rdf-schema#range": [{
+		"@id": "https://w3id.org/italia/onto/TI/TimeInterval"
+	}],
+	"http://www.w3.org/2000/01/rdf-schema#subPropertyOf": [{
+		"@id": "https://w3id.org/italia/onto/TI/atTime"
+	}]
+}, {
+	"@id": "https://w3id.org/italia/onto/MU"
+}, {
+	"@id": "https://w3id.org/italia/onto/MU/Value",
+	"@type": ["http://www.w3.org/2002/07/owl#Class"]
+}, {
+	"@id": "https://w3id.org/italia/onto/TI"
+}, {
+	"@id": "https://w3id.org/italia/onto/TI/"
+}, {
+	"@id": "https://w3id.org/italia/onto/TI/TimeInterval",
+	"@type": ["http://www.w3.org/2002/07/owl#Class"],
+	"http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [{
+		"@id": "https://w3id.org/italia/onto/TI/"
+	}]
+}, {
+	"@id": "https://w3id.org/italia/onto/TI/atTime",
+	"@type": ["http://www.w3.org/2002/07/owl#ObjectProperty"]
+}, {
+	"@id": "https://w3id.org/italia/onto/TI/issued",
+	"@type": ["http://www.w3.org/2002/07/owl#DatatypeProperty"],
+	"http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [{
+		"@id": "https://w3id.org/italia/onto/TI/"
+	}]
+}, {
+	"@id": "https://w3id.org/italia/onto/TI/modified",
+	"@type": ["http://www.w3.org/2002/07/owl#DatatypeProperty"],
+	"http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [{
+		"@id": "https://w3id.org/italia/onto/TI/"
+	}]
+}, {
+	"@id": "https://w3id.org/italia/onto/l0"
+}, {
+	"@id": "https://w3id.org/italia/onto/l0/"
+}, {
+	"@id": "https://w3id.org/italia/onto/l0/Activity",
+	"@type": ["http://www.w3.org/2002/07/owl#Class"]
+}, {
+	"@id": "https://w3id.org/italia/onto/l0/Characteristic",
+	"@type": ["http://www.w3.org/2002/07/owl#Class"]
+}, {
+	"@id": "https://w3id.org/italia/onto/l0/Collection",
+	"@type": ["http://www.w3.org/2002/07/owl#Class"]
+}, {
+	"@id": "https://w3id.org/italia/onto/l0/Object",
+	"@type": ["http://www.w3.org/2002/07/owl#Class"]
+}, {
+	"@id": "https://w3id.org/italia/onto/l0/description",
+	"@type": ["http://www.w3.org/2002/07/owl#DatatypeProperty"],
+	"http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [{
+		"@id": "https://w3id.org/italia/onto/l0/"
+	}]
+}, {
+	"@id": "https://w3id.org/italia/onto/l0/identifier",
+	"@type": ["http://www.w3.org/2002/07/owl#DatatypeProperty"],
+	"http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [{
+		"@id": "https://w3id.org/italia/onto/l0/"
+	}]
+}, {
+	"@id": "https://w3id.org/italia/onto/l0/name",
+	"@type": ["http://www.w3.org/2002/07/owl#DatatypeProperty"],
+	"http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [{
+		"@id": "https://w3id.org/italia/onto/l0/"
+	}]
+}]
