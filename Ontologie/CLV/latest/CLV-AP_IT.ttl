@@ -10,39 +10,39 @@
 @prefix prov: <http://www.w3.org/ns/prov#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix covapit: <https://w3id.org/italia/onto/COV/> .
-@base <https://w3id.org/italia/onto/CLV> .
+@base <https://w3id.org/italia/onto/l0> .
 
-<https://w3id.org/italia/onto/CLV> rdf:type owl:Ontology ;
-                                   
-                                   rdfs:label "Address(Location)"@en ,
-                                              "Indirizzi(Luoghi)"@it ;
-                                   
-                                   dct:issued "2017-08-07"^^xsd:date ;
-                                   
-                                   dct:modified "2018-03-03" ;
-                                   
-                                   dc:creator "Agency for Digital Italy - AgID"@en ,
-                                              "Institute of Cognitive Sciences and Technologies of the Italian Research Council (CNR) - Semantic Technology Laboratory (STLab)"@en ,
-                                              "Italian Digital Transformation Team"@en ;
-                                   
-                                   rdfs:comment "This is the ontology of the Italian application profile for Location and Addresses"@en ;
-                                   
-                                   owl:versionInfo "Version 0.8 - 03 March 2018 - Use of w3id.org/italia/onto as base URI."@en ;
-                                   
-                                   rdfs:comment "Questa è l'ontologia del profilo di italiano sugli indirizzi che hanno anche una connotazione geografica (Italian Core Location Vocabulary - Application Profile  - CLV-AP_IT)"@it ;
-                                   
-                                   owl:versionInfo "Versione 0.8 - 03 Marzo 2018 - Uso di w3id.org/italia/onto come base URI"@it ;
-                                   
-                                   dct:license <https://creativecommons.org/licenses/by/4.0/> ;
-                                   
-                                   rdfs:isDefinedBy <https://w3id.org/italia/onto/CLV> ;
-                                   
-                                   owl:imports <https://w3id.org/italia/onto/TI> ,
-                                               <https://w3id.org/italia/onto/l0> ;
-                                   
-                                   prov:wasDerivedFrom <https://w3id.org/italia/onto/CLV/0.7> ;
-                                   
-                                   owl:versionIRI <https://w3id.org/italia/onto/CLV/0.8> .
+<https://w3id.org/italia/onto/l0> rdf:type owl:Ontology ;
+                                  
+                                  rdfs:label "Address(Location)"@en ,
+                                             "Indirizzi(Luoghi)"@it ;
+                                  
+                                  dct:issued "2017-08-07"^^xsd:date ;
+                                  
+                                  dct:modified "2018-03-03" ;
+                                  
+                                  dc:creator "Agency for Digital Italy - AgID"@en ,
+                                             "Institute of Cognitive Sciences and Technologies of the Italian Research Council (CNR) - Semantic Technology Laboratory (STLab)"@en ,
+                                             "Italian Digital Transformation Team"@en ;
+                                  
+                                  rdfs:comment "This is the ontology of the Italian application profile for Location and Addresses"@en ;
+                                  
+                                  owl:versionInfo "Version 0.8 - 03 March 2018 - Use of w3id.org/italia/onto as base URI."@en ;
+                                  
+                                  rdfs:comment "Questa è l'ontologia del profilo di italiano sugli indirizzi che hanno anche una connotazione geografica (Italian Core Location Vocabulary - Application Profile  - CLV-AP_IT)"@it ;
+                                  
+                                  owl:versionInfo "Versione 0.8 - 03 Marzo 2018 - Uso di w3id.org/italia/onto come base URI"@it ;
+                                  
+                                  dct:license <https://creativecommons.org/licenses/by/4.0/> ;
+                                  
+                                  rdfs:isDefinedBy <https://w3id.org/italia/onto/CLV> ;
+                                  
+                                  owl:imports <https://w3id.org/italia/onto/TI> ,
+                                              <https://w3id.org/italia/onto/l0> ;
+                                  
+                                  prov:wasDerivedFrom <https://w3id.org/italia/onto/CLV/0.7> ;
+                                  
+                                  owl:versionIRI <https://w3id.org/italia/onto/CLV/0.8> .
 
 
 #################################################################
@@ -224,7 +224,7 @@ l0:controlledVocabulary rdf:type owl:AnnotationProperty .
 :hasCity rdf:type owl:ObjectProperty ;
          
          rdfs:label "has city"@en ,
-                    "ha comune"@it ;
+                    "ha città"@it ;
          
          rdfs:comment "This property speciaizes the property has address component in order to link the address to the city component of the address itself."@en ;
          
@@ -1444,6 +1444,10 @@ l0:name rdf:type owl:DatatypeProperty ;
                
                rdfs:subClassOf l0:Event ,
                                [ rdf:type owl:Restriction ;
+                                 owl:onProperty :prev ;
+                                 owl:allValuesFrom :AddressInTime
+                               ] ,
+                               [ rdf:type owl:Restriction ;
                                  owl:onProperty :next ;
                                  owl:allValuesFrom :AddressInTime
                                ] ,
@@ -1451,10 +1455,6 @@ l0:name rdf:type owl:DatatypeProperty ;
                                  owl:onProperty :withAddress ;
                                  owl:onClass :Address ;
                                  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger
-                               ] ,
-                               [ rdf:type owl:Restriction ;
-                                 owl:onProperty :prev ;
-                                 owl:allValuesFrom :AddressInTime
                                ] ,
                                [ rdf:type owl:Restriction ;
                                  owl:onProperty ti:atTime ;
@@ -1569,10 +1569,6 @@ l0:name rdf:type owl:DatatypeProperty ;
          
          rdfs:subClassOf :NamedAddressComponent ,
                          [ rdf:type owl:Restriction ;
-                           owl:onProperty :hasDirectLowerRank ;
-                           owl:allValuesFrom :Region
-                         ] ,
-                         [ rdf:type owl:Restriction ;
                            owl:onProperty :hasLowerRank ;
                            owl:allValuesFrom [ rdf:type owl:Class ;
                                                owl:unionOf ( :City
@@ -1580,6 +1576,10 @@ l0:name rdf:type owl:DatatypeProperty ;
                                                              :Region
                                                            )
                                              ]
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :hasDirectLowerRank ;
+                           owl:allValuesFrom :Region
                          ] ;
          
          :hasRankOrder 1 ;
@@ -1609,12 +1609,12 @@ l0:name rdf:type owl:DatatypeProperty ;
                                          owl:maxCardinality "1"^^xsd:nonNegativeInteger
                                        ] ,
                                        [ rdf:type owl:Restriction ;
-                                         owl:onProperty :streetNumber ;
-                                         owl:cardinality "1"^^xsd:nonNegativeInteger
-                                       ] ,
-                                       [ rdf:type owl:Restriction ;
                                          owl:onProperty :peculiarity ;
                                          owl:maxCardinality "1"^^xsd:nonNegativeInteger
+                                       ] ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty :streetNumber ;
+                                         owl:cardinality "1"^^xsd:nonNegativeInteger
                                        ] ;
                        
                        owl:disjointWith :InternalAddressNumber ;
@@ -1640,6 +1640,14 @@ l0:name rdf:type owl:DatatypeProperty ;
          
          rdfs:subClassOf :SpatialObject ,
                          [ rdf:type owl:Restriction ;
+                           owl:onProperty :hasValidity ;
+                           owl:allValuesFrom ti:TimeInterval
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :hasGeometry ;
+                           owl:allValuesFrom :Geometry
+                         ] ,
+                         [ rdf:type owl:Restriction ;
                            owl:onProperty :hasSpatialCoverage ;
                            owl:allValuesFrom :Feature
                          ] ,
@@ -1647,14 +1655,6 @@ l0:name rdf:type owl:DatatypeProperty ;
                            owl:onProperty :modified ;
                            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                            owl:onDataRange xsd:dateTime
-                         ] ,
-                         [ rdf:type owl:Restriction ;
-                           owl:onProperty :hasGeometry ;
-                           owl:allValuesFrom :Geometry
-                         ] ,
-                         [ rdf:type owl:Restriction ;
-                           owl:onProperty :hasValidity ;
-                           owl:allValuesFrom ti:TimeInterval
                          ] ;
          
          owl:disjointWith :Geometry ;
@@ -1684,7 +1684,7 @@ l0:name rdf:type owl:DatatypeProperty ;
           
           rdfs:subClassOf :SpatialObject ,
                           [ rdf:type owl:Restriction ;
-                            owl:onProperty :lat ;
+                            owl:onProperty :long ;
                             owl:cardinality "1"^^xsd:nonNegativeInteger
                           ] ,
                           [ rdf:type owl:Restriction ;
@@ -1692,21 +1692,21 @@ l0:name rdf:type owl:DatatypeProperty ;
                             owl:maxCardinality "1"^^xsd:nonNegativeInteger
                           ] ,
                           [ rdf:type owl:Restriction ;
-                            owl:onProperty :long ;
+                            owl:onProperty :coordinate ;
+                            owl:maxCardinality "1"^^xsd:nonNegativeInteger
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :lat ;
                             owl:cardinality "1"^^xsd:nonNegativeInteger
                           ] ,
                           [ rdf:type owl:Restriction ;
-                            owl:onProperty :coordinate ;
+                            owl:onProperty :alt ;
                             owl:maxCardinality "1"^^xsd:nonNegativeInteger
                           ] ,
                           [ rdf:type owl:Restriction ;
                             owl:onProperty :hasGeometryType ;
                             owl:onClass :GeometryType ;
                             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger
-                          ] ,
-                          [ rdf:type owl:Restriction ;
-                            owl:onProperty :alt ;
-                            owl:maxCardinality "1"^^xsd:nonNegativeInteger
                           ] ,
                           [ rdf:type owl:Restriction ;
                             owl:onProperty :geographicPositionMethod ;
@@ -1759,16 +1759,16 @@ l0:name rdf:type owl:DatatypeProperty ;
             
             rdfs:subClassOf l0:Characteristic ,
                             [ rdf:type owl:Restriction ;
-                              owl:onProperty :issuedBy ;
-                              owl:allValuesFrom covapit:Organization
-                            ] ,
-                            [ rdf:type owl:Restriction ;
                               owl:onProperty l0:identifier ;
                               owl:cardinality "1"^^xsd:nonNegativeInteger
                             ] ,
                             [ rdf:type owl:Restriction ;
                               owl:onProperty :identifierType ;
                               owl:maxCardinality "1"^^xsd:nonNegativeInteger
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :issuedBy ;
+                              owl:allValuesFrom covapit:Organization
                             ] ;
             
             rdfs:comment "This class represents the Identifier and all the information associated with it (the identifier itself, the type, the authority that issued it)."@en ;
@@ -1794,8 +1794,21 @@ l0:name rdf:type owl:DatatypeProperty ;
                        
                        rdfs:subClassOf :AddressNumber ,
                                        [ rdf:type owl:Restriction ;
+                                         owl:onProperty :refersToExternalNumber ;
+                                         owl:onClass :ExternalAddressNumber ;
+                                         owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger
+                                       ] ,
+                                       [ rdf:type owl:Restriction ;
                                          owl:onProperty :staircase ;
                                          owl:allValuesFrom rdfs:Literal
+                                       ] ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty :flatNumber ;
+                                         owl:cardinality "1"^^xsd:nonNegativeInteger
+                                       ] ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty :yard ;
+                                         owl:maxCardinality "1"^^xsd:nonNegativeInteger
                                        ] ,
                                        [ rdf:type owl:Restriction ;
                                          owl:onProperty :floor ;
@@ -1804,19 +1817,6 @@ l0:name rdf:type owl:DatatypeProperty ;
                                        [ rdf:type owl:Restriction ;
                                          owl:onProperty :building ;
                                          owl:maxCardinality "1"^^xsd:nonNegativeInteger
-                                       ] ,
-                                       [ rdf:type owl:Restriction ;
-                                         owl:onProperty :refersToExternalNumber ;
-                                         owl:onClass :ExternalAddressNumber ;
-                                         owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger
-                                       ] ,
-                                       [ rdf:type owl:Restriction ;
-                                         owl:onProperty :yard ;
-                                         owl:maxCardinality "1"^^xsd:nonNegativeInteger
-                                       ] ,
-                                       [ rdf:type owl:Restriction ;
-                                         owl:onProperty :flatNumber ;
-                                         owl:cardinality "1"^^xsd:nonNegativeInteger
                                        ] ;
                        
                        rdfs:comment "This class represents the internal number that refers to the external number (street number) of an Address. The internal number consists of a set of informaton related to the Internal accesses to private spaces or staircase that allow one to access to private residential units."@en ;
@@ -1865,6 +1865,11 @@ l0:name rdf:type owl:DatatypeProperty ;
           
           rdfs:subClassOf :NamedAddressComponent ,
                           [ rdf:type owl:Restriction ;
+                            owl:onProperty :hasDirectHigherRank ;
+                            owl:onClass :Region ;
+                            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger
+                          ] ,
+                          [ rdf:type owl:Restriction ;
                             owl:onProperty :hasHigherRank ;
                             owl:onClass [ rdf:type owl:Class ;
                                           owl:unionOf ( :Country
@@ -1876,11 +1881,6 @@ l0:name rdf:type owl:DatatypeProperty ;
                           [ rdf:type owl:Restriction ;
                             owl:onProperty :hasDirectLowerRank ;
                             owl:allValuesFrom :City
-                          ] ,
-                          [ rdf:type owl:Restriction ;
-                            owl:onProperty :hasDirectHigherRank ;
-                            owl:onClass :Region ;
-                            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger
                           ] ,
                           [ rdf:type owl:Restriction ;
                             owl:onProperty :acronym ;
@@ -1910,11 +1910,6 @@ l0:name rdf:type owl:DatatypeProperty ;
         
         rdfs:subClassOf :NamedAddressComponent ,
                         [ rdf:type owl:Restriction ;
-                          owl:onProperty :hasDirectHigherRank ;
-                          owl:onClass :Country ;
-                          owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger
-                        ] ,
-                        [ rdf:type owl:Restriction ;
                           owl:onProperty :hasDirectLowerRank ;
                           owl:allValuesFrom :Province
                         ] ,
@@ -1925,6 +1920,11 @@ l0:name rdf:type owl:DatatypeProperty ;
                                                             :Province
                                                           )
                                             ]
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :hasDirectHigherRank ;
+                          owl:onClass :Country ;
+                          owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger
                         ] ;
         
         :hasRankOrder 2 ;

@@ -29,7 +29,7 @@
      xmlns:covapit="https://w3id.org/italia/onto/COV/"
      xmlns:prov="http://www.w3.org/ns/prov#"
      xmlns:dc="http://purl.org/dc/elements/1.1/">
-    <owl:Ontology rdf:about="https://w3id.org/italia/onto/CLV">
+    <owl:Ontology rdf:about="https://w3id.org/italia/onto/l0">
         <rdfs:label xml:lang="en">Address(Location)</rdfs:label>
         <rdfs:label xml:lang="it">Indirizzi(Luoghi)</rdfs:label>
         <dct:issued rdf:datatype="&xsd;date">2017-08-07</dct:issued>
@@ -200,7 +200,7 @@
 
     <owl:ObjectProperty rdf:about="https://w3id.org/italia/onto/CLV/hasCity">
         <rdfs:label xml:lang="en">has city</rdfs:label>
-        <rdfs:label xml:lang="it">ha comune</rdfs:label>
+        <rdfs:label xml:lang="it">ha città</rdfs:label>
         <rdfs:comment xml:lang="en">This property speciaizes the property has address component in order to link the address to the city component of the address itself.</rdfs:comment>
         <owl:versionInfo xml:lang="en">unstable</owl:versionInfo>
         <rdfs:comment xml:lang="it">Questa proprietà specializza la proprietà ha componente indirzzo per collegare l&apos;indirizzo alla componente Comune dello stesso.  Esempio di comune: Roma, Bologna, Palermo, Milano, ecc.</rdfs:comment>
@@ -1084,6 +1084,12 @@
         <rdfs:subClassOf rdf:resource="&l0;Event"/>
         <rdfs:subClassOf>
             <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/CLV/prev"/>
+                <owl:allValuesFrom rdf:resource="https://w3id.org/italia/onto/CLV/AddressInTime"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
                 <owl:onProperty rdf:resource="https://w3id.org/italia/onto/CLV/next"/>
                 <owl:allValuesFrom rdf:resource="https://w3id.org/italia/onto/CLV/AddressInTime"/>
             </owl:Restriction>
@@ -1093,12 +1099,6 @@
                 <owl:onProperty rdf:resource="https://w3id.org/italia/onto/CLV/withAddress"/>
                 <owl:onClass rdf:resource="https://w3id.org/italia/onto/CLV/Address"/>
                 <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/CLV/prev"/>
-                <owl:allValuesFrom rdf:resource="https://w3id.org/italia/onto/CLV/AddressInTime"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -1199,12 +1199,6 @@
         <rdfs:subClassOf rdf:resource="https://w3id.org/italia/onto/CLV/NamedAddressComponent"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/CLV/hasDirectLowerRank"/>
-                <owl:allValuesFrom rdf:resource="https://w3id.org/italia/onto/CLV/Region"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
                 <owl:onProperty rdf:resource="https://w3id.org/italia/onto/CLV/hasLowerRank"/>
                 <owl:allValuesFrom>
                     <owl:Class>
@@ -1215,6 +1209,12 @@
                         </owl:unionOf>
                     </owl:Class>
                 </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/CLV/hasDirectLowerRank"/>
+                <owl:allValuesFrom rdf:resource="https://w3id.org/italia/onto/CLV/Region"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <hasRankOrder rdf:datatype="&xsd;integer">1</hasRankOrder>
@@ -1241,14 +1241,14 @@
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/CLV/streetNumber"/>
-                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/CLV/peculiarity"/>
+                <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/CLV/peculiarity"/>
-                <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/CLV/streetNumber"/>
+                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="https://w3id.org/italia/onto/CLV/InternalAddressNumber"/>
@@ -1269,15 +1269,8 @@
         <rdfs:subClassOf rdf:resource="https://w3id.org/italia/onto/CLV/SpatialObject"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/CLV/hasSpatialCoverage"/>
-                <owl:allValuesFrom rdf:resource="https://w3id.org/italia/onto/CLV/Feature"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/CLV/modified"/>
-                <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
-                <owl:onDataRange rdf:resource="&xsd;dateTime"/>
+                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/CLV/hasValidity"/>
+                <owl:allValuesFrom rdf:resource="&ti;TimeInterval"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -1288,8 +1281,15 @@
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/CLV/hasValidity"/>
-                <owl:allValuesFrom rdf:resource="&ti;TimeInterval"/>
+                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/CLV/hasSpatialCoverage"/>
+                <owl:allValuesFrom rdf:resource="https://w3id.org/italia/onto/CLV/Feature"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/CLV/modified"/>
+                <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onDataRange rdf:resource="&xsd;dateTime"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="https://w3id.org/italia/onto/CLV/Geometry"/>
@@ -1313,7 +1313,7 @@
         <rdfs:subClassOf rdf:resource="https://w3id.org/italia/onto/CLV/SpatialObject"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/CLV/lat"/>
+                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/CLV/long"/>
                 <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -1325,13 +1325,19 @@
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/CLV/long"/>
+                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/CLV/coordinate"/>
+                <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/CLV/lat"/>
                 <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/CLV/coordinate"/>
+                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/CLV/alt"/>
                 <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -1340,12 +1346,6 @@
                 <owl:onProperty rdf:resource="https://w3id.org/italia/onto/CLV/hasGeometryType"/>
                 <owl:onClass rdf:resource="https://w3id.org/italia/onto/CLV/GeometryType"/>
                 <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/CLV/alt"/>
-                <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -1388,12 +1388,6 @@
         <rdfs:subClassOf rdf:resource="&l0;Characteristic"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/CLV/issuedBy"/>
-                <owl:allValuesFrom rdf:resource="&covapit;Organization"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
                 <owl:onProperty rdf:resource="&l0;identifier"/>
                 <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
             </owl:Restriction>
@@ -1402,6 +1396,12 @@
             <owl:Restriction>
                 <owl:onProperty rdf:resource="https://w3id.org/italia/onto/CLV/identifierType"/>
                 <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/CLV/issuedBy"/>
+                <owl:allValuesFrom rdf:resource="&covapit;Organization"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:comment xml:lang="en">This class represents the Identifier and all the information associated with it (the identifier itself, the type, the authority that issued it).</rdfs:comment>
@@ -1422,8 +1422,27 @@
         <rdfs:subClassOf rdf:resource="https://w3id.org/italia/onto/CLV/AddressNumber"/>
         <rdfs:subClassOf>
             <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/CLV/refersToExternalNumber"/>
+                <owl:onClass rdf:resource="https://w3id.org/italia/onto/CLV/ExternalAddressNumber"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
                 <owl:onProperty rdf:resource="https://w3id.org/italia/onto/CLV/staircase"/>
                 <owl:allValuesFrom rdf:resource="&rdfs;Literal"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/CLV/flatNumber"/>
+                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/CLV/yard"/>
+                <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -1436,25 +1455,6 @@
             <owl:Restriction>
                 <owl:onProperty rdf:resource="https://w3id.org/italia/onto/CLV/building"/>
                 <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/CLV/refersToExternalNumber"/>
-                <owl:onClass rdf:resource="https://w3id.org/italia/onto/CLV/ExternalAddressNumber"/>
-                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/CLV/yard"/>
-                <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/CLV/flatNumber"/>
-                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:comment xml:lang="en">This class represents the internal number that refers to the external number (street number) of an Address. The internal number consists of a set of informaton related to the Internal accesses to private spaces or staircase that allow one to access to private residential units.</rdfs:comment>
@@ -1495,6 +1495,13 @@
         <rdfs:subClassOf rdf:resource="https://w3id.org/italia/onto/CLV/NamedAddressComponent"/>
         <rdfs:subClassOf>
             <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/CLV/hasDirectHigherRank"/>
+                <owl:onClass rdf:resource="https://w3id.org/italia/onto/CLV/Region"/>
+                <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
                 <owl:onProperty rdf:resource="https://w3id.org/italia/onto/CLV/hasHigherRank"/>
                 <owl:onClass>
                     <owl:Class>
@@ -1511,13 +1518,6 @@
             <owl:Restriction>
                 <owl:onProperty rdf:resource="https://w3id.org/italia/onto/CLV/hasDirectLowerRank"/>
                 <owl:allValuesFrom rdf:resource="https://w3id.org/italia/onto/CLV/City"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/CLV/hasDirectHigherRank"/>
-                <owl:onClass rdf:resource="https://w3id.org/italia/onto/CLV/Region"/>
-                <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -1544,13 +1544,6 @@
         <rdfs:subClassOf rdf:resource="https://w3id.org/italia/onto/CLV/NamedAddressComponent"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/CLV/hasDirectHigherRank"/>
-                <owl:onClass rdf:resource="https://w3id.org/italia/onto/CLV/Country"/>
-                <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
                 <owl:onProperty rdf:resource="https://w3id.org/italia/onto/CLV/hasDirectLowerRank"/>
                 <owl:allValuesFrom rdf:resource="https://w3id.org/italia/onto/CLV/Province"/>
             </owl:Restriction>
@@ -1566,6 +1559,13 @@
                         </owl:unionOf>
                     </owl:Class>
                 </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/CLV/hasDirectHigherRank"/>
+                <owl:onClass rdf:resource="https://w3id.org/italia/onto/CLV/Country"/>
+                <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
         <hasRankOrder rdf:datatype="&xsd;integer">2</hasRankOrder>
