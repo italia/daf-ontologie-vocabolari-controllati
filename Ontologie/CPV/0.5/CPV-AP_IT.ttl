@@ -2,13 +2,13 @@
 @prefix dc: <http://purl.org/dc/elements/1.1/> .
 @prefix l0: <https://w3id.org/italia/onto/l0/> .
 @prefix ti: <https://w3id.org/italia/onto/TI/> .
+@prefix clv: <https://w3id.org/italia/onto/CLV/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix clvapit: <https://w3id.org/italia/onto/CLV/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @base <https://w3id.org/italia/onto/CPV> .
 
@@ -176,11 +176,11 @@ xsd:date rdf:type rdfs:Datatype .
                      
                      owl:versionInfo "stabile"@it ;
                      
+                     rdfs:range clv:Address ;
+                     
                      rdfs:isDefinedBy : ;
                      
-                     rdfs:domain :Resident ;
-                     
-                     rdfs:range l0:Location .
+                     rdfs:domain :Resident .
 
 
 
@@ -426,6 +426,24 @@ xsd:date rdf:type rdfs:Datatype .
 
 
 
+###  https://w3id.org/italia/onto/CPV/isCurrentResidenceOf
+
+:isCurrentResidenceOf rdf:type owl:ObjectProperty ;
+                      
+                      rdfs:label "is current residence of"@en ,
+                                 "è residenza attuale di"@it ;
+                      
+                      rdfs:comment "The inverse relation that links a person who is resident in a country to his/her location of residence. It is the current residence of the person."@en ,
+                                   "Relazione inversa che lega una persona residente in un paese al proprio luogo di residenza Rappresenta la residenza corrente della persona"@it ;
+                      
+                      rdfs:domain clv:Address ;
+                      
+                      rdfs:range :Resident ;
+                      
+                      owl:inverseOf :hasCurrentResidence .
+
+
+
 ###  https://w3id.org/italia/onto/CPV/isDeathPlaceOf
 
 :isDeathPlaceOf rdf:type owl:ObjectProperty ;
@@ -576,6 +594,14 @@ xsd:date rdf:type rdfs:Datatype .
 
 
 
+###  https://w3id.org/italia/onto/CPV/isResidenceOf
+
+:isResidenceOf rdf:type owl:ObjectProperty ;
+               
+               owl:inverseOf :residentIn .
+
+
+
 ###  https://w3id.org/italia/onto/CPV/isUncleOf
 
 :isUncleOf rdf:type owl:ObjectProperty ;
@@ -647,6 +673,26 @@ xsd:date rdf:type rdfs:Datatype .
                      rdfs:domain :ResidenceInTime ;
                      
                      rdfs:range l0:Location .
+
+
+
+###  https://w3id.org/italia/onto/CPV/residentIn
+
+:residentIn rdf:type owl:ObjectProperty ;
+            
+            rdfs:label "resident in"@en ,
+                       "residente in"@it ;
+            
+            rdfs:comment "This property represents the residence expressed as binary relation between a person and an address."@en ,
+                         "Questa proprietà rappresenta la residenza espressa come relazione binaria tra una persona ed un indirizzo."@it ;
+            
+            rdfs:range clv:Address ;
+            
+            rdfs:domain :Person ;
+            
+            owl:propertyChainAxiom ( :hasResidenceInTime
+                                     :residenceInLocation
+                                   ) .
 
 
 
@@ -1272,12 +1318,12 @@ l0:name rdf:type owl:DatatypeProperty ;
         
         rdfs:subClassOf l0:Characteristic ,
                         [ rdf:type owl:Restriction ;
-                          owl:onProperty :genderID ;
-                          owl:cardinality "1"^^xsd:nonNegativeInteger
-                        ] ,
-                        [ rdf:type owl:Restriction ;
                           owl:onProperty :genderDesc ;
                           owl:someValuesFrom xsd:string
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :genderID ;
+                          owl:cardinality "1"^^xsd:nonNegativeInteger
                         ] ;
         
         rdfs:comment "This class represents the gender of the person. The instances of the class are defined in the related controlled vocabulary GenderVoc http://dati.gov.it/onto/controlledvocabulary/GenderVoc"@en ;
@@ -1376,23 +1422,12 @@ l0:name rdf:type owl:DatatypeProperty ;
         
         rdfs:subClassOf l0:Agent ,
                         [ rdf:type owl:Restriction ;
-                          owl:onProperty :givenName ;
-                          owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                          owl:onDataRange xsd:string
+                          owl:onProperty clv:hasAddress ;
+                          owl:allValuesFrom clv:Address
                         ] ,
                         [ rdf:type owl:Restriction ;
-                          owl:onProperty :hasRelationshipWith ;
-                          owl:allValuesFrom :Person
-                        ] ,
-                        [ rdf:type owl:Restriction ;
-                          owl:onProperty :hasBirthPlace ;
-                          owl:onClass l0:Location ;
-                          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger
-                        ] ,
-                        [ rdf:type owl:Restriction ;
-                          owl:onProperty :familyName ;
-                          owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                          owl:onDataRange xsd:string
+                          owl:onProperty :hasResidenceInTime ;
+                          owl:allValuesFrom :ResidenceInTime
                         ] ,
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :dateOfBirth ;
@@ -1400,11 +1435,11 @@ l0:name rdf:type owl:DatatypeProperty ;
                           owl:onDataRange xsd:dateTime
                         ] ,
                         [ rdf:type owl:Restriction ;
-                          owl:onProperty :taxCode ;
-                          owl:maxCardinality "1"^^xsd:nonNegativeInteger
+                          owl:onProperty :hasParentalRelationshipWith ;
+                          owl:allValuesFrom :Person
                         ] ,
                         [ rdf:type owl:Restriction ;
-                          owl:onProperty :hasParentalRelationshipWith ;
+                          owl:onProperty :hasRelationshipWith ;
                           owl:allValuesFrom :Person
                         ] ,
                         [ rdf:type owl:Restriction ;
@@ -1413,13 +1448,32 @@ l0:name rdf:type owl:DatatypeProperty ;
                           owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger
                         ] ,
                         [ rdf:type owl:Restriction ;
-                          owl:onProperty :altName ;
+                          owl:onProperty :residentIn ;
+                          owl:allValuesFrom clv:Address
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :hasBirthPlace ;
+                          owl:onClass l0:Location ;
+                          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :givenName ;
                           owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                           owl:onDataRange xsd:string
                         ] ,
                         [ rdf:type owl:Restriction ;
-                          owl:onProperty :hasResidenceInTime ;
-                          owl:allValuesFrom :ResidenceInTime
+                          owl:onProperty :familyName ;
+                          owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                          owl:onDataRange xsd:string
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :taxCode ;
+                          owl:maxCardinality "1"^^xsd:nonNegativeInteger
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :altName ;
+                          owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                          owl:onDataRange xsd:string
                         ] ,
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :personID ;
@@ -1448,13 +1502,13 @@ l0:name rdf:type owl:DatatypeProperty ;
                   
                   rdfs:subClassOf :Family ,
                                   [ rdf:type owl:Restriction ;
-                                    owl:onProperty :registeredFamilyID ;
-                                    owl:cardinality "1"^^xsd:nonNegativeInteger
-                                  ] ,
-                                  [ rdf:type owl:Restriction ;
                                     owl:onProperty :numberRegFamilyComponents ;
                                     owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                                     owl:onDataRange xsd:integer
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty :registeredFamilyID ;
+                                    owl:cardinality "1"^^xsd:nonNegativeInteger
                                   ] ;
                   
                   rdfs:comment "It is a group of people tied together by relationships of marriage, kinship, affinity, adoption, protection or affection. The members must live and be habitually resident in the same municipality (Article 4 of Italian Presidential Decree 30/05/1989, n. 223)"@en ;
@@ -1477,14 +1531,14 @@ l0:name rdf:type owl:DatatypeProperty ;
                  
                  rdfs:subClassOf :TimeIndexedEvent ,
                                  [ rdf:type owl:Restriction ;
-                                   owl:onProperty :residenceInLocation ;
-                                   owl:onClass l0:Location ;
-                                   owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger
-                                 ] ,
-                                 [ rdf:type owl:Restriction ;
                                    owl:onProperty :isResidenceInTimeOf ;
                                    owl:onClass :Person ;
                                    owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty :residenceInLocation ;
+                                   owl:onClass clv:Address ;
+                                   owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger
                                  ] ;
                  
                  rdfs:comment "This class represents the n-ary relationship between a resident, the location of residence and the time. It is specifically subclass of the TimeIndexedEvent defined in the time ontology from which it inherits the relationship with the time interval"@en ;

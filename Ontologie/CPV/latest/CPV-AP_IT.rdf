@@ -8,7 +8,7 @@
     <!ENTITY l0 "https://w3id.org/italia/onto/l0/" >
     <!ENTITY dc "http://purl.org/dc/elements/1.1/" >
     <!ENTITY ti "https://w3id.org/italia/onto/TI/" >
-    <!ENTITY clvapit "https://w3id.org/italia/onto/CLV/" >
+    <!ENTITY clv "https://w3id.org/italia/onto/CLV/" >
     <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
     <!ENTITY xml "http://www.w3.org/XML/1998/namespace" >
     <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
@@ -20,9 +20,9 @@
      xml:base="https://w3id.org/italia/onto/CPV/"
      xmlns:l0="https://w3id.org/italia/onto/l0/"
      xmlns:owl="http://www.w3.org/2002/07/owl#"
-     xmlns:clvapit="https://w3id.org/italia/onto/CLV/"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:clv="https://w3id.org/italia/onto/CLV/"
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
      xmlns:ti="https://w3id.org/italia/onto/TI/"
      xmlns:xml="http://www.w3.org/XML/1998/namespace"
@@ -160,9 +160,9 @@
         <owl:versionInfo xml:lang="en">stable</owl:versionInfo>
         <rdfs:comment xml:lang="it">Relazione che lega una persona residente in un paese al proprio luogo di residenza Rappresenta la residenza corrente della persona</rdfs:comment>
         <owl:versionInfo xml:lang="it">stabile</owl:versionInfo>
+        <rdfs:range rdf:resource="&clv;Address"/>
         <rdfs:isDefinedBy rdf:resource="https://w3id.org/italia/onto/CPV/"/>
         <rdfs:domain rdf:resource="https://w3id.org/italia/onto/CPV/Resident"/>
-        <rdfs:range rdf:resource="&l0;Location"/>
     </owl:ObjectProperty>
     
 
@@ -333,6 +333,20 @@
     
 
 
+    <!-- https://w3id.org/italia/onto/CPV/isCurrentResidenceOf -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/italia/onto/CPV/isCurrentResidenceOf">
+        <rdfs:label xml:lang="en">is current residence of</rdfs:label>
+        <rdfs:label xml:lang="it">è residenza attuale di</rdfs:label>
+        <rdfs:comment xml:lang="en">The inverse relation that links a person who is resident in a country to his/her location of residence. It is the current residence of the person.</rdfs:comment>
+        <rdfs:comment xml:lang="it">Relazione inversa che lega una persona residente in un paese al proprio luogo di residenza Rappresenta la residenza corrente della persona</rdfs:comment>
+        <rdfs:domain rdf:resource="&clv;Address"/>
+        <rdfs:range rdf:resource="https://w3id.org/italia/onto/CPV/Resident"/>
+        <owl:inverseOf rdf:resource="https://w3id.org/italia/onto/CPV/hasCurrentResidence"/>
+    </owl:ObjectProperty>
+    
+
+
     <!-- https://w3id.org/italia/onto/CPV/isDeathPlaceOf -->
 
     <owl:ObjectProperty rdf:about="https://w3id.org/italia/onto/CPV/isDeathPlaceOf">
@@ -435,6 +449,14 @@
     
 
 
+    <!-- https://w3id.org/italia/onto/CPV/isResidenceOf -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/italia/onto/CPV/isResidenceOf">
+        <owl:inverseOf rdf:resource="https://w3id.org/italia/onto/CPV/residentIn"/>
+    </owl:ObjectProperty>
+    
+
+
     <!-- https://w3id.org/italia/onto/CPV/isUncleOf -->
 
     <owl:ObjectProperty rdf:about="https://w3id.org/italia/onto/CPV/isUncleOf">
@@ -482,6 +504,23 @@
         <rdfs:isDefinedBy rdf:resource="https://w3id.org/italia/onto/CPV/"/>
         <rdfs:domain rdf:resource="https://w3id.org/italia/onto/CPV/ResidenceInTime"/>
         <rdfs:range rdf:resource="&l0;Location"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/italia/onto/CPV/residentIn -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/italia/onto/CPV/residentIn">
+        <rdfs:label xml:lang="en">resident in</rdfs:label>
+        <rdfs:label xml:lang="it">residente in</rdfs:label>
+        <rdfs:comment xml:lang="en">This property represents the residence expressed as binary relation between a person and an address.</rdfs:comment>
+        <rdfs:comment xml:lang="it">Questa proprietà rappresenta la residenza espressa come relazione binaria tra una persona ed un indirizzo.</rdfs:comment>
+        <rdfs:range rdf:resource="&clv;Address"/>
+        <rdfs:domain rdf:resource="https://w3id.org/italia/onto/CPV/Person"/>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description rdf:about="https://w3id.org/italia/onto/CPV/hasResidenceInTime"/>
+            <rdf:Description rdf:about="https://w3id.org/italia/onto/CPV/residenceInLocation"/>
+        </owl:propertyChainAxiom>
     </owl:ObjectProperty>
     
 
@@ -801,16 +840,16 @@
         <rdfs:subClassOf rdf:resource="https://w3id.org/italia/onto/CPV/Person"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/CPV/age"/>
+                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/CPV/hasLevelOfEducation"/>
+                <owl:onClass rdf:resource="https://w3id.org/italia/onto/CPV/EducationLevel"/>
                 <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
-                <owl:onDataRange rdf:resource="&xsd;integer"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/CPV/hasLevelOfEducation"/>
-                <owl:onClass rdf:resource="https://w3id.org/italia/onto/CPV/EducationLevel"/>
+                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/CPV/age"/>
                 <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onDataRange rdf:resource="&xsd;integer"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="https://w3id.org/italia/onto/CPV/Dead"/>
@@ -846,16 +885,16 @@
         <rdfs:subClassOf rdf:resource="https://w3id.org/italia/onto/CPV/Person"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/CPV/hasDeathPlace"/>
-                <owl:onClass rdf:resource="&l0;Location"/>
+                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/CPV/ageWhenDead"/>
                 <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onDataRange rdf:resource="&xsd;integer"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/CPV/ageWhenDead"/>
+                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/CPV/hasDeathPlace"/>
+                <owl:onClass rdf:resource="&l0;Location"/>
                 <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
-                <owl:onDataRange rdf:resource="&xsd;integer"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:comment xml:lang="en">A dead natural person</rdfs:comment>
@@ -958,14 +997,14 @@
         <rdfs:subClassOf rdf:resource="&l0;Characteristic"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/CPV/genderID"/>
-                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/CPV/genderDesc"/>
+                <owl:someValuesFrom rdf:resource="&xsd;string"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/CPV/genderDesc"/>
-                <owl:someValuesFrom rdf:resource="&xsd;string"/>
+                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/CPV/genderID"/>
+                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:comment xml:lang="en">This class represents the gender of the person. The instances of the class are defined in the related controlled vocabulary GenderVoc http://dati.gov.it/onto/controlledvocabulary/GenderVoc</rdfs:comment>
@@ -1040,15 +1079,47 @@
         <rdfs:subClassOf rdf:resource="&l0;Agent"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/CPV/givenName"/>
+                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/CPV/hasParentalRelationshipWith"/>
+                <owl:allValuesFrom rdf:resource="https://w3id.org/italia/onto/CPV/Person"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/CPV/residentIn"/>
+                <owl:allValuesFrom rdf:resource="&clv;Address"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/CPV/familyName"/>
                 <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
                 <owl:onDataRange rdf:resource="&xsd;string"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/CPV/hasRelationshipWith"/>
-                <owl:allValuesFrom rdf:resource="https://w3id.org/italia/onto/CPV/Person"/>
+                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/CPV/taxCode"/>
+                <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&clv;hasAddress"/>
+                <owl:allValuesFrom rdf:resource="&clv;Address"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/CPV/altName"/>
+                <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onDataRange rdf:resource="&xsd;string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/CPV/givenName"/>
+                <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onDataRange rdf:resource="&xsd;string"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -1060,8 +1131,21 @@
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/CPV/familyName"/>
-                <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/CPV/hasGender"/>
+                <owl:onClass rdf:resource="https://w3id.org/italia/onto/CPV/Gender"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/CPV/hasRelationshipWith"/>
+                <owl:allValuesFrom rdf:resource="https://w3id.org/italia/onto/CPV/Person"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/CPV/personID"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
                 <owl:onDataRange rdf:resource="&xsd;string"/>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -1074,41 +1158,8 @@
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/CPV/taxCode"/>
-                <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/CPV/hasParentalRelationshipWith"/>
-                <owl:allValuesFrom rdf:resource="https://w3id.org/italia/onto/CPV/Person"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/CPV/hasGender"/>
-                <owl:onClass rdf:resource="https://w3id.org/italia/onto/CPV/Gender"/>
-                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/CPV/altName"/>
-                <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
-                <owl:onDataRange rdf:resource="&xsd;string"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
                 <owl:onProperty rdf:resource="https://w3id.org/italia/onto/CPV/hasResidenceInTime"/>
                 <owl:allValuesFrom rdf:resource="https://w3id.org/italia/onto/CPV/ResidenceInTime"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/CPV/personID"/>
-                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onDataRange rdf:resource="&xsd;string"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:comment xml:lang="en">A natural person</rdfs:comment>
@@ -1128,15 +1179,15 @@
         <rdfs:subClassOf rdf:resource="https://w3id.org/italia/onto/CPV/Family"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/CPV/registeredFamilyID"/>
-                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/CPV/numberRegFamilyComponents"/>
+                <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onDataRange rdf:resource="&xsd;integer"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/CPV/numberRegFamilyComponents"/>
-                <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
-                <owl:onDataRange rdf:resource="&xsd;integer"/>
+                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/CPV/registeredFamilyID"/>
+                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:comment xml:lang="en">It is a group of people tied together by relationships of marriage, kinship, affinity, adoption, protection or affection. The members must live and be habitually resident in the same municipality (Article 4 of Italian Presidential Decree 30/05/1989, n. 223)</rdfs:comment>
@@ -1157,7 +1208,7 @@
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="https://w3id.org/italia/onto/CPV/residenceInLocation"/>
-                <owl:onClass rdf:resource="&l0;Location"/>
+                <owl:onClass rdf:resource="&clv;Address"/>
                 <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
