@@ -96,7 +96,7 @@ xsd:boolean a rdfs:Datatype .
   rdfs:comment "The properties that links the procedure to its framework agreement." @en ;
   rdfs:comment "La proprietà che lega un'istanza di procedura di realizzazione a un accordo quadro o convenzione." @it .
 
-:haContratto a owl:ObjectProperty ;
+:hasContract a owl:ObjectProperty ;
   rdfs:subPropertyOf :hasDocument ;
   rdfs:domain :Procedure ;
   rdfs:range :Contract;
@@ -149,7 +149,7 @@ xsd:boolean a rdfs:Datatype .
 
 :hasChangeDocument a owl:ObjectProperty ;
   rdfs:domain :Procedure , :Project , :Intervention , :Contract ;
-  rdfs:range :ChangeDocument ;
+  rdfs:range :ModificationDocument ;
   rdfs:label "ha documento di modifica"@it ;
   rdfs:label "has change document"@en ;
   rdfs:comment "La proprietà che indica il documento che descrive una modifica alle caratteristiche di un Progetto, Intervento, Procedura di realizzazione o Contratto."@it ;
@@ -205,7 +205,7 @@ xsd:boolean a rdfs:Datatype .
 
 :isPrimaryTopicOf
   rdfs:domain :ChangeEvent , :Resolution ;
-  rdfs:range :ChangeDocument ;
+  rdfs:range :ModificationDocument ;
   rdfs:label "è argomento principale di" @it ;
   rdfs:label "is primary topic of" @en ;
   rdfs:comment "La proprietà che collega un evento (per esempio un evento di cambiamento del propetto economico, oppure un evento di risoluzione di un contratto) al documento di modifica che ne descrive le caratteristiche."@it ;
@@ -307,7 +307,6 @@ xsd:boolean a rdfs:Datatype .
   #TODO compilare vocabolario controllato delle motivazioni delle risoluzioni
 
 :hasCPV a owl:ObjectProperty ;
-  rdfs:subPropertyOf l0:identifier ;
   rdfs:domain :Intervention, :Procedure, :Notice, :Contract ;
   rdfs:range :CPV ;
   rdfs:label "ha CPV"@it ;
@@ -747,7 +746,7 @@ ti:date a owl:DatatypeProperty ;
   rdfs:comment "Una istanza di questa classe rappresenta una offerta relativa a una procedura di realizzazione."@it .
 
 covapit:Organization a owl:Class ;
-  rdfs:subClassOf :Agent ;
+  rdfs:subClassOf l0:Agent ;
   rdfs:isDefinedBy covapit: .
 
 :ChangeEvent  rdfs:subClassOf l0:Event ;
@@ -787,7 +786,7 @@ covapit:Organization a owl:Class ;
   rdfs:comment "Un'istanza di questa classe rappresenta il prospetto economico di un Progetto, Intervento, Procedura di realizzazione o Contratto. Date e ammontari contenuti nel prospetto sono generalmente definiti nelle fasi preliminari di aggiudicazione, affidamento, contrattazione e redazione del quadro economico. Il prospetto economico, così come il quadro economico che eventualmente lo alimenta in merito agli ammontari, può essere rimodulato in seguito a un evento di cambiamento (per esempio, una variante in corso d'opera o una sospensione). Tale modifica genera un nuovo prospetto economico che sostituisce il precedente, e aggiorna i valori di date e ammontari in base a quanto stabilito nei documenti di modifica corrispondenti all'evento di cambiamento stesso"@it .
 
 :SuspensionDocument a owl:Class ;
-  rdfs:subClassOf :ChangeDocument ;
+  rdfs:subClassOf :ModificationDocument ;
   rdfs:label "Documento di sospensione"@it ;
   rdfs:label "Suspension Document"@en ;
   rdfs:comment "The class that represents the document setting the suspension."@en ;
@@ -808,21 +807,21 @@ covapit:Organization a owl:Class ;
   rdfs:comment "La classe che rappresenta il certificato di pagamento emesso dalla stazione appaltante, generalmente deliberato nell'ambito di un SAL (Stato Avanzamento Lavori)."@it .
 
 :ResolutionDocument a owl:Class ;
-  rdfs:subClassOf :ChangeDocument ;
+  rdfs:subClassOf :ModificationDocument ;
   rdfs:label "Documento di risoluzione"@it ;
   rdfs:label "Resolution document"@en ;
   rdfs:comment "The class that represents the document setting the resolution of a contract."@en ;
   rdfs:comment "La classe che rappresenta il documento che stabilisce la risoluzione di un contratto."@it .
 
-:ChangeDocument a owl:Class ;
+:ModificationDocument a owl:Class ;
  rdfs:subClassOf :Document ;
   rdfs:label "Documento di modifica"@it ;
-  rdfs:label "Change document"@en ;
+  rdfs:label "Modification document"@en ;
   rdfs:comment "The class that represents the document setting a change in the characteristics of a project, intervention, procedure or contract."@en ;
   rdfs:comment "La classe che rappresenta il documento che stabilisce una modifica nelle caratteristiche di un progetto, intervento, procedura di realizzazione o contratto."@it .
 
 :VariantDocument a owl:Class ;
-  rdfs:subClassOf :ChangeDocument ;
+  rdfs:subClassOf :ModificationDocument ;
   rdfs:label "Documento di Variante"@it ;
   rdfs:label "Variant Document"@en ;
   rdfs:comment "The class that represents the document setting the variant."@en ;
