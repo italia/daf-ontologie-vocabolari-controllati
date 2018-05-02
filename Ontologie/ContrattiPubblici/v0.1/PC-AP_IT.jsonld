@@ -5,10 +5,13 @@
     "@id" : "http://dati.gov.it/onto/covapit/"
   } ],
   "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
-    "@id" : "http://w3id.org/italia/onto/Agent"
+    "@id" : "http://dati.gov.it/onto/l0/Agent"
   } ]
 }, {
   "@id" : "http://dati.gov.it/onto/l0/Activity",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ]
+}, {
+  "@id" : "http://dati.gov.it/onto/l0/Agent",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ]
 }, {
   "@id" : "http://dati.gov.it/onto/l0/Characteristic",
@@ -30,7 +33,7 @@
   } ]
 }, {
   "@id" : "http://dati.gov.it/onto/l0/identifier",
-  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty", "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
   "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
     "@id" : "http://dati.gov.it/onto/l0/"
   } ]
@@ -58,9 +61,6 @@
 }, {
   "@id" : "http://dati.gov.it/onto/tiapitstartTime",
   "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ]
-}, {
-  "@id" : "http://w3id.org/italia/onto/Agent",
-  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ]
 }, {
   "@id" : "http://w3id.org/italia/onto/AwardCriteria",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
@@ -100,26 +100,6 @@
   } ],
   "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
     "@id" : "http://dati.gov.it/onto/l0/Characteristic"
-  } ]
-}, {
-  "@id" : "http://w3id.org/italia/onto/ChangeDocument",
-  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
-  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
-    "@language" : "it",
-    "@value" : "La classe che rappresenta il documento che stabilisce una modifica nelle caratteristiche di un progetto, intervento, procedura di realizzazione o contratto."
-  }, {
-    "@language" : "en",
-    "@value" : "The class that represents the document setting a change in the characteristics of a project, intervention, procedure or contract."
-  } ],
-  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
-    "@language" : "en",
-    "@value" : "Change document"
-  }, {
-    "@language" : "it",
-    "@value" : "Documento di modifica"
-  } ],
-  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
-    "@id" : "http://w3id.org/italia/onto/Document"
   } ]
 }, {
   "@id" : "http://w3id.org/italia/onto/ChangeEvent",
@@ -280,6 +260,26 @@
   } ],
   "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
     "@id" : "http://dati.gov.it/onto/l0/Activity"
+  } ]
+}, {
+  "@id" : "http://w3id.org/italia/onto/ModificationDocument",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "it",
+    "@value" : "La classe che rappresenta il documento che stabilisce una modifica nelle caratteristiche di un progetto, intervento, procedura di realizzazione o contratto."
+  }, {
+    "@language" : "en",
+    "@value" : "The class that represents the document setting a change in the characteristics of a project, intervention, procedure or contract."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "it",
+    "@value" : "Documento di modifica"
+  }, {
+    "@language" : "en",
+    "@value" : "Modification document"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "http://w3id.org/italia/onto/Document"
   } ]
 }, {
   "@id" : "http://w3id.org/italia/onto/Notice",
@@ -516,7 +516,7 @@
     "@value" : "Resolution document"
   } ],
   "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
-    "@id" : "http://w3id.org/italia/onto/ChangeDocument"
+    "@id" : "http://w3id.org/italia/onto/ModificationDocument"
   } ]
 }, {
   "@id" : "http://w3id.org/italia/onto/ResolutionReason",
@@ -636,7 +636,7 @@
     "@value" : "Suspension Document"
   } ],
   "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
-    "@id" : "http://w3id.org/italia/onto/ChangeDocument"
+    "@id" : "http://w3id.org/italia/onto/ModificationDocument"
   } ]
 }, {
   "@id" : "http://w3id.org/italia/onto/SuspensionReason",
@@ -716,7 +716,7 @@
     "@value" : "Variant Document"
   } ],
   "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
-    "@id" : "http://w3id.org/italia/onto/ChangeDocument"
+    "@id" : "http://w3id.org/italia/onto/ModificationDocument"
   } ]
 }, {
   "@id" : "http://w3id.org/italia/onto/VariantReason",
@@ -1208,32 +1208,6 @@
     "@id" : "http://dati.gov.it/onto/tiapitissued"
   } ]
 }, {
-  "@id" : "http://w3id.org/italia/onto/haContratto",
-  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
-  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
-    "@language" : "it",
-    "@value" : "La proprietà che determina il legame tra la procedura di realizzazione e il relativo contratto."
-  }, {
-    "@language" : "en",
-    "@value" : "The property that determines the link between a contract and the relative procedure."
-  } ],
-  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
-    "@id" : "http://w3id.org/italia/onto/Procedure"
-  } ],
-  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
-    "@language" : "it",
-    "@value" : "ha contratto"
-  }, {
-    "@language" : "en",
-    "@value" : "has contract"
-  } ],
-  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
-    "@id" : "http://w3id.org/italia/onto/Contract"
-  } ],
-  "http://www.w3.org/2000/01/rdf-schema#subPropertyOf" : [ {
-    "@id" : "http://w3id.org/italia/onto/hasDocument"
-  } ]
-}, {
   "@id" : "http://w3id.org/italia/onto/hasAwardCriteria",
   "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
   "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
@@ -1258,7 +1232,7 @@
   } ]
 }, {
   "@id" : "http://w3id.org/italia/onto/hasCIG",
-  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty", "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
   "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
     "@language" : "it",
     "@value" : "La proprietà che identifica la procedura di realizzazione tramite un CIG (Codice Identificativo di Gara). L'eventuale relazione tra CIG padre e CIG figlio può essere dedotta dall'analisi del contesto, laddove in presenza di una proprietà \"ha accordo quadro\" che collega due procedure si intende che, secondo la prassi più comune, il dominio può essere identificato da un CIG figlio e il range da un CIG padre."
@@ -1270,11 +1244,11 @@
     "@id" : "http://w3id.org/italia/onto/Procedure"
   } ],
   "http://www.w3.org/2000/01/rdf-schema#label" : [ {
-    "@language" : "en",
-    "@value" : "has CIG"
-  }, {
     "@language" : "it",
     "@value" : "ha CIG"
+  }, {
+    "@language" : "en",
+    "@value" : "has CIG"
   } ],
   "http://www.w3.org/2000/01/rdf-schema#range" : [ {
     "@id" : "http://www.w3.org/2001/XMLSchema#string"
@@ -1310,9 +1284,6 @@
   } ],
   "http://www.w3.org/2000/01/rdf-schema#range" : [ {
     "@id" : "http://w3id.org/italia/onto/CPV"
-  } ],
-  "http://www.w3.org/2000/01/rdf-schema#subPropertyOf" : [ {
-    "@id" : "http://dati.gov.it/onto/l0/identifier"
   } ]
 }, {
   "@id" : "http://w3id.org/italia/onto/hasChangeDocument",
@@ -1341,7 +1312,33 @@
     "@value" : "has change document"
   } ],
   "http://www.w3.org/2000/01/rdf-schema#range" : [ {
-    "@id" : "http://w3id.org/italia/onto/ChangeDocument"
+    "@id" : "http://w3id.org/italia/onto/ModificationDocument"
+  } ]
+}, {
+  "@id" : "http://w3id.org/italia/onto/hasContract",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "it",
+    "@value" : "La proprietà che determina il legame tra la procedura di realizzazione e il relativo contratto."
+  }, {
+    "@language" : "en",
+    "@value" : "The property that determines the link between a contract and the relative procedure."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "http://w3id.org/italia/onto/Procedure"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "it",
+    "@value" : "ha contratto"
+  }, {
+    "@language" : "en",
+    "@value" : "has contract"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://w3id.org/italia/onto/Contract"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subPropertyOf" : [ {
+    "@id" : "http://w3id.org/italia/onto/hasDocument"
   } ]
 }, {
   "@id" : "http://w3id.org/italia/onto/hasContractingAuthority",
@@ -1801,7 +1798,7 @@
     "@value" : "è argomento principale di"
   } ],
   "http://www.w3.org/2000/01/rdf-schema#range" : [ {
-    "@id" : "http://w3id.org/italia/onto/ChangeDocument"
+    "@id" : "http://w3id.org/italia/onto/ModificationDocument"
   } ]
 }, {
   "@id" : "http://w3id.org/italia/onto/isProjectFor",

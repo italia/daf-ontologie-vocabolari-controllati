@@ -104,17 +104,6 @@ xsd:string rdf:type rdfs:Datatype .
                       "changed by"@en .
 
 
-###  http://w3id.org/italia/onto/haContratto
-:haContratto rdf:type owl:ObjectProperty ;
-             rdfs:subPropertyOf :hasDocument ;
-             rdfs:domain :Procedure ;
-             rdfs:range :Contract ;
-             rdfs:comment "La proprietà che determina il legame tra la procedura di realizzazione e il relativo contratto."@it ,
-                          "The property that determines the link between a contract and the relative procedure."@en ;
-             rdfs:label "ha contratto"@it ,
-                        "has contract"@en .
-
-
 ###  http://w3id.org/italia/onto/hasAwardCriteria
 :hasAwardCriteria rdf:type owl:ObjectProperty ;
                   rdfs:domain :Procedure ;
@@ -125,15 +114,8 @@ xsd:string rdf:type rdfs:Datatype .
                              "has award criteria"@en .
 
 
-###  http://w3id.org/italia/onto/hasCIG
-:hasCIG rdf:type owl:ObjectProperty ;
-        rdfs:subPropertyOf l0:identifier ;
-        rdfs:domain :Procedure .
-
-
 ###  http://w3id.org/italia/onto/hasCPV
 :hasCPV rdf:type owl:ObjectProperty ;
-        rdfs:subPropertyOf l0:identifier ;
         rdfs:domain :Contract ,
                     :Intervention ,
                     :Notice ,
@@ -151,11 +133,22 @@ xsd:string rdf:type rdfs:Datatype .
                                :Intervention ,
                                :Procedure ,
                                :Project ;
-                   rdfs:range :ChangeDocument ;
+                   rdfs:range :ModificationDocument ;
                    rdfs:comment "La proprietà che indica il documento che descrive una modifica alle caratteristiche di un Progetto, Intervento, Procedura di realizzazione o Contratto."@it ,
                                 "The property that determines the document describing a change to the characteristics of a project, intervention, procedure or contract."@en ;
                    rdfs:label "ha documento di modifica"@it ,
                               "has change document"@en .
+
+
+###  http://w3id.org/italia/onto/hasContract
+:hasContract rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf :hasDocument ;
+             rdfs:domain :Procedure ;
+             rdfs:range :Contract ;
+             rdfs:comment "La proprietà che determina il legame tra la procedura di realizzazione e il relativo contratto."@it ,
+                          "The property that determines the link between a contract and the relative procedure."@en ;
+             rdfs:label "ha contratto"@it ,
+                        "has contract"@en .
 
 
 ###  http://w3id.org/italia/onto/hasContractingAuthority
@@ -318,7 +311,7 @@ xsd:string rdf:type rdfs:Datatype .
 :isPrimaryTopicOf rdf:type owl:ObjectProperty ;
                   rdfs:domain :ChangeEvent ,
                               :Resolution ;
-                  rdfs:range :ChangeDocument ;
+                  rdfs:range :ModificationDocument ;
                   rdfs:comment "La proprietà che collega un evento (per esempio un evento di cambiamento del propetto economico, oppure un evento di risoluzione di un contratto) al documento di modifica che ne descrive le caratteristiche."@it ,
                                "The property that links an event (e.g., an event that modifies the economic summary of a procedure or the event that determines the resolution of a contract) to the document describing the characteristics of the event."@en ;
                   rdfs:label "is primary topic of"@en ,
@@ -416,7 +409,8 @@ l0:description rdf:type owl:DatatypeProperty ;
 
 
 ###  http://dati.gov.it/onto/l0/identifier
-l0:identifier rdf:type owl:DatatypeProperty .
+l0:identifier rdf:type owl:DatatypeProperty ;
+              rdfs:isDefinedBy l0: .
 
 
 ###  http://dati.gov.it/onto/l0/name
@@ -570,7 +564,13 @@ l0:name rdf:type owl:DatatypeProperty ;
 
 ###  http://w3id.org/italia/onto/hasCIG
 :hasCIG rdf:type owl:DatatypeProperty ;
-        rdfs:range xsd:string .
+        rdfs:subPropertyOf l0:identifier ;
+        rdfs:domain :Procedure ;
+        rdfs:range xsd:string ;
+        rdfs:comment "La proprietà che identifica la procedura di realizzazione tramite un CIG (Codice Identificativo di Gara). L'eventuale relazione tra CIG padre e CIG figlio può essere dedotta dall'analisi del contesto, laddove in presenza di una proprietà \"ha accordo quadro\" che collega due procedure si intende che, secondo la prassi più comune, il dominio può essere identificato da un CIG figlio e il range da un CIG padre."@it ,
+                     "The property that represents the CIG (Codice Identificativo di Gara), the code used to identify the procedure."@en ;
+        rdfs:label "ha CIG"@it ,
+                   "has CIG"@en .
 
 
 ###  http://w3id.org/italia/onto/increaseAmount
@@ -829,12 +829,16 @@ l0:name rdf:type owl:DatatypeProperty ;
 
 ###  http://dati.gov.it/onto/covapit/Organization
 covapit:Organization rdf:type owl:Class ;
-                     rdfs:subClassOf :Agent ;
+                     rdfs:subClassOf l0:Agent ;
                      rdfs:isDefinedBy covapit: .
 
 
 ###  http://dati.gov.it/onto/l0/Activity
 l0:Activity rdf:type owl:Class .
+
+
+###  http://dati.gov.it/onto/l0/Agent
+l0:Agent rdf:type owl:Class .
 
 
 ###  http://dati.gov.it/onto/l0/Characteristic
@@ -847,10 +851,6 @@ l0:Event rdf:type owl:Class .
 
 ###  http://dati.gov.it/onto/l0/Object
 l0:Object rdf:type owl:Class .
-
-
-###  http://w3id.org/italia/onto/Agent
-:Agent rdf:type owl:Class .
 
 
 ###  http://w3id.org/italia/onto/AwardCriteria
@@ -869,15 +869,6 @@ l0:Object rdf:type owl:Class .
                   "The class that represents the CPV (Common Procurement Vocabulary), code describing the main object of an intervention, notice, procedure or contract. The instances of this class can be represented as skos concepts of a controlled vocabulary."@en ;
      rdfs:label "CPV"@en ,
                 "CPV"@it .
-
-
-###  http://w3id.org/italia/onto/ChangeDocument
-:ChangeDocument rdf:type owl:Class ;
-                rdfs:subClassOf :Document ;
-                rdfs:comment "La classe che rappresenta il documento che stabilisce una modifica nelle caratteristiche di un progetto, intervento, procedura di realizzazione o contratto."@it ,
-                             "The class that represents the document setting a change in the characteristics of a project, intervention, procedure or contract."@en ;
-                rdfs:label "Change document"@en ,
-                           "Documento di modifica"@it .
 
 
 ###  http://w3id.org/italia/onto/ChangeEvent
@@ -950,6 +941,15 @@ l0:Object rdf:type owl:Class .
                            "The class that includes the interventions planned by a public administration in order to satisfy detected needs."@en ;
               rdfs:label "Intervention"@en ,
                          "Intervento"@it .
+
+
+###  http://w3id.org/italia/onto/ModificationDocument
+:ModificationDocument rdf:type owl:Class ;
+                      rdfs:subClassOf :Document ;
+                      rdfs:comment "La classe che rappresenta il documento che stabilisce una modifica nelle caratteristiche di un progetto, intervento, procedura di realizzazione o contratto."@it ,
+                                   "The class that represents the document setting a change in the characteristics of a project, intervention, procedure or contract."@en ;
+                      rdfs:label "Documento di modifica"@it ,
+                                 "Modification document"@en .
 
 
 ###  http://w3id.org/italia/onto/Notice
@@ -1052,7 +1052,7 @@ l0:Object rdf:type owl:Class .
 
 ###  http://w3id.org/italia/onto/ResolutionDocument
 :ResolutionDocument rdf:type owl:Class ;
-                    rdfs:subClassOf :ChangeDocument ;
+                    rdfs:subClassOf :ModificationDocument ;
                     rdfs:comment "La classe che rappresenta il documento che stabilisce la risoluzione di un contratto."@it ,
                                  "The class that represents the document setting the resolution of a contract."@en ;
                     rdfs:label "Documento di risoluzione"@it ,
@@ -1106,7 +1106,7 @@ l0:Object rdf:type owl:Class .
 
 ###  http://w3id.org/italia/onto/SuspensionDocument
 :SuspensionDocument rdf:type owl:Class ;
-                    rdfs:subClassOf :ChangeDocument ;
+                    rdfs:subClassOf :ModificationDocument ;
                     rdfs:comment "La classe che rappresenta il documento che stabilisce la sospensione di un contratto."@it ,
                                  "The class that represents the document setting the suspension."@en ;
                     rdfs:label "Documento di sospensione"@it ,
@@ -1142,7 +1142,7 @@ l0:Object rdf:type owl:Class .
 
 ###  http://w3id.org/italia/onto/VariantDocument
 :VariantDocument rdf:type owl:Class ;
-                 rdfs:subClassOf :ChangeDocument ;
+                 rdfs:subClassOf :ModificationDocument ;
                  rdfs:comment "La classe che rappresenta il documento che stabilisce la variante di un contratto."@it ,
                               "The class that represents the document setting the variant."@en ;
                  rdfs:label "Documento di Variante"@it ,
@@ -1174,19 +1174,6 @@ l0:Object rdf:type owl:Class .
                                  "The class that represents the document reporting the progress of work."@en ;
                     rdfs:label "Stato avanzamento lavori"@it ,
                                "Work Progress Report"@en .
-
-
-#################################################################
-#    Annotations
-#################################################################
-
-l0:identifier rdfs:isDefinedBy l0: .
-
-
-:hasCIG rdfs:comment "La proprietà che identifica la procedura di realizzazione tramite un CIG (Codice Identificativo di Gara). L'eventuale relazione tra CIG padre e CIG figlio può essere dedotta dall'analisi del contesto, laddove in presenza di una proprietà \"ha accordo quadro\" che collega due procedure si intende che, secondo la prassi più comune, il dominio può essere identificato da un CIG figlio e il range da un CIG padre."@it ,
-                     "The property that represents the CIG (Codice Identificativo di Gara), the code used to identify the procedure."@en ;
-        rdfs:label "has CIG"@en ,
-                   "ha CIG"@it .
 
 
 ###  Generated by the OWL API (version 4.2.8.20170104-2310) https://github.com/owlcs/owlapi

@@ -146,20 +146,6 @@
     
 
 
-    <!-- http://w3id.org/italia/onto/haContratto -->
-
-    <owl:ObjectProperty rdf:about="http://w3id.org/italia/onto/haContratto">
-        <rdfs:subPropertyOf rdf:resource="http://w3id.org/italia/onto/hasDocument"/>
-        <rdfs:domain rdf:resource="http://w3id.org/italia/onto/Procedure"/>
-        <rdfs:range rdf:resource="http://w3id.org/italia/onto/Contract"/>
-        <rdfs:comment xml:lang="it">La proprietà che determina il legame tra la procedura di realizzazione e il relativo contratto.</rdfs:comment>
-        <rdfs:comment xml:lang="en">The property that determines the link between a contract and the relative procedure.</rdfs:comment>
-        <rdfs:label xml:lang="it">ha contratto</rdfs:label>
-        <rdfs:label xml:lang="en">has contract</rdfs:label>
-    </owl:ObjectProperty>
-    
-
-
     <!-- http://w3id.org/italia/onto/hasAwardCriteria -->
 
     <owl:ObjectProperty rdf:about="http://w3id.org/italia/onto/hasAwardCriteria">
@@ -173,19 +159,9 @@
     
 
 
-    <!-- http://w3id.org/italia/onto/hasCIG -->
-
-    <owl:ObjectProperty rdf:about="http://w3id.org/italia/onto/hasCIG">
-        <rdfs:subPropertyOf rdf:resource="http://dati.gov.it/onto/l0/identifier"/>
-        <rdfs:domain rdf:resource="http://w3id.org/italia/onto/Procedure"/>
-    </owl:ObjectProperty>
-    
-
-
     <!-- http://w3id.org/italia/onto/hasCPV -->
 
     <owl:ObjectProperty rdf:about="http://w3id.org/italia/onto/hasCPV">
-        <rdfs:subPropertyOf rdf:resource="http://dati.gov.it/onto/l0/identifier"/>
         <rdfs:domain rdf:resource="http://w3id.org/italia/onto/Contract"/>
         <rdfs:domain rdf:resource="http://w3id.org/italia/onto/Intervention"/>
         <rdfs:domain rdf:resource="http://w3id.org/italia/onto/Notice"/>
@@ -206,11 +182,25 @@
         <rdfs:domain rdf:resource="http://w3id.org/italia/onto/Intervention"/>
         <rdfs:domain rdf:resource="http://w3id.org/italia/onto/Procedure"/>
         <rdfs:domain rdf:resource="http://w3id.org/italia/onto/Project"/>
-        <rdfs:range rdf:resource="http://w3id.org/italia/onto/ChangeDocument"/>
+        <rdfs:range rdf:resource="http://w3id.org/italia/onto/ModificationDocument"/>
         <rdfs:comment xml:lang="it">La proprietà che indica il documento che descrive una modifica alle caratteristiche di un Progetto, Intervento, Procedura di realizzazione o Contratto.</rdfs:comment>
         <rdfs:comment xml:lang="en">The property that determines the document describing a change to the characteristics of a project, intervention, procedure or contract.</rdfs:comment>
         <rdfs:label xml:lang="it">ha documento di modifica</rdfs:label>
         <rdfs:label xml:lang="en">has change document</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://w3id.org/italia/onto/hasContract -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/italia/onto/hasContract">
+        <rdfs:subPropertyOf rdf:resource="http://w3id.org/italia/onto/hasDocument"/>
+        <rdfs:domain rdf:resource="http://w3id.org/italia/onto/Procedure"/>
+        <rdfs:range rdf:resource="http://w3id.org/italia/onto/Contract"/>
+        <rdfs:comment xml:lang="it">La proprietà che determina il legame tra la procedura di realizzazione e il relativo contratto.</rdfs:comment>
+        <rdfs:comment xml:lang="en">The property that determines the link between a contract and the relative procedure.</rdfs:comment>
+        <rdfs:label xml:lang="it">ha contratto</rdfs:label>
+        <rdfs:label xml:lang="en">has contract</rdfs:label>
     </owl:ObjectProperty>
     
 
@@ -421,7 +411,7 @@
     <owl:ObjectProperty rdf:about="http://w3id.org/italia/onto/isPrimaryTopicOf">
         <rdfs:domain rdf:resource="http://w3id.org/italia/onto/ChangeEvent"/>
         <rdfs:domain rdf:resource="http://w3id.org/italia/onto/Resolution"/>
-        <rdfs:range rdf:resource="http://w3id.org/italia/onto/ChangeDocument"/>
+        <rdfs:range rdf:resource="http://w3id.org/italia/onto/ModificationDocument"/>
         <rdfs:comment xml:lang="it">La proprietà che collega un evento (per esempio un evento di cambiamento del propetto economico, oppure un evento di risoluzione di un contratto) al documento di modifica che ne descrive le caratteristiche.</rdfs:comment>
         <rdfs:comment xml:lang="en">The property that links an event (e.g., an event that modifies the economic summary of a procedure or the event that determines the resolution of a contract) to the document describing the characteristics of the event.</rdfs:comment>
         <rdfs:label xml:lang="en">is primary topic of</rdfs:label>
@@ -561,7 +551,9 @@
 
     <!-- http://dati.gov.it/onto/l0/identifier -->
 
-    <owl:DatatypeProperty rdf:about="http://dati.gov.it/onto/l0/identifier"/>
+    <owl:DatatypeProperty rdf:about="http://dati.gov.it/onto/l0/identifier">
+        <rdfs:isDefinedBy rdf:resource="http://dati.gov.it/onto/l0/"/>
+    </owl:DatatypeProperty>
     
 
 
@@ -762,7 +754,13 @@
     <!-- http://w3id.org/italia/onto/hasCIG -->
 
     <owl:DatatypeProperty rdf:about="http://w3id.org/italia/onto/hasCIG">
+        <rdfs:subPropertyOf rdf:resource="http://dati.gov.it/onto/l0/identifier"/>
+        <rdfs:domain rdf:resource="http://w3id.org/italia/onto/Procedure"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment xml:lang="it">La proprietà che identifica la procedura di realizzazione tramite un CIG (Codice Identificativo di Gara). L&apos;eventuale relazione tra CIG padre e CIG figlio può essere dedotta dall&apos;analisi del contesto, laddove in presenza di una proprietà &quot;ha accordo quadro&quot; che collega due procedure si intende che, secondo la prassi più comune, il dominio può essere identificato da un CIG figlio e il range da un CIG padre.</rdfs:comment>
+        <rdfs:comment xml:lang="en">The property that represents the CIG (Codice Identificativo di Gara), the code used to identify the procedure.</rdfs:comment>
+        <rdfs:label xml:lang="it">ha CIG</rdfs:label>
+        <rdfs:label xml:lang="en">has CIG</rdfs:label>
     </owl:DatatypeProperty>
     
 
@@ -1103,7 +1101,7 @@
     <!-- http://dati.gov.it/onto/covapit/Organization -->
 
     <owl:Class rdf:about="http://dati.gov.it/onto/covapit/Organization">
-        <rdfs:subClassOf rdf:resource="http://w3id.org/italia/onto/Agent"/>
+        <rdfs:subClassOf rdf:resource="http://dati.gov.it/onto/l0/Agent"/>
         <rdfs:isDefinedBy rdf:resource="http://dati.gov.it/onto/covapit/"/>
     </owl:Class>
     
@@ -1112,6 +1110,12 @@
     <!-- http://dati.gov.it/onto/l0/Activity -->
 
     <owl:Class rdf:about="http://dati.gov.it/onto/l0/Activity"/>
+    
+
+
+    <!-- http://dati.gov.it/onto/l0/Agent -->
+
+    <owl:Class rdf:about="http://dati.gov.it/onto/l0/Agent"/>
     
 
 
@@ -1130,12 +1134,6 @@
     <!-- http://dati.gov.it/onto/l0/Object -->
 
     <owl:Class rdf:about="http://dati.gov.it/onto/l0/Object"/>
-    
-
-
-    <!-- http://w3id.org/italia/onto/Agent -->
-
-    <owl:Class rdf:about="http://w3id.org/italia/onto/Agent"/>
     
 
 
@@ -1159,18 +1157,6 @@
         <rdfs:comment xml:lang="en">The class that represents the CPV (Common Procurement Vocabulary), code describing the main object of an intervention, notice, procedure or contract. The instances of this class can be represented as skos concepts of a controlled vocabulary.</rdfs:comment>
         <rdfs:label xml:lang="en">CPV</rdfs:label>
         <rdfs:label xml:lang="it">CPV</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://w3id.org/italia/onto/ChangeDocument -->
-
-    <owl:Class rdf:about="http://w3id.org/italia/onto/ChangeDocument">
-        <rdfs:subClassOf rdf:resource="http://w3id.org/italia/onto/Document"/>
-        <rdfs:comment xml:lang="it">La classe che rappresenta il documento che stabilisce una modifica nelle caratteristiche di un progetto, intervento, procedura di realizzazione o contratto.</rdfs:comment>
-        <rdfs:comment xml:lang="en">The class that represents the document setting a change in the characteristics of a project, intervention, procedure or contract.</rdfs:comment>
-        <rdfs:label xml:lang="en">Change document</rdfs:label>
-        <rdfs:label xml:lang="it">Documento di modifica</rdfs:label>
     </owl:Class>
     
 
@@ -1267,6 +1253,18 @@
         <rdfs:comment xml:lang="en">The class that includes the interventions planned by a public administration in order to satisfy detected needs.</rdfs:comment>
         <rdfs:label xml:lang="en">Intervention</rdfs:label>
         <rdfs:label xml:lang="it">Intervento</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/italia/onto/ModificationDocument -->
+
+    <owl:Class rdf:about="http://w3id.org/italia/onto/ModificationDocument">
+        <rdfs:subClassOf rdf:resource="http://w3id.org/italia/onto/Document"/>
+        <rdfs:comment xml:lang="it">La classe che rappresenta il documento che stabilisce una modifica nelle caratteristiche di un progetto, intervento, procedura di realizzazione o contratto.</rdfs:comment>
+        <rdfs:comment xml:lang="en">The class that represents the document setting a change in the characteristics of a project, intervention, procedure or contract.</rdfs:comment>
+        <rdfs:label xml:lang="it">Documento di modifica</rdfs:label>
+        <rdfs:label xml:lang="en">Modification document</rdfs:label>
     </owl:Class>
     
 
@@ -1405,7 +1403,7 @@
     <!-- http://w3id.org/italia/onto/ResolutionDocument -->
 
     <owl:Class rdf:about="http://w3id.org/italia/onto/ResolutionDocument">
-        <rdfs:subClassOf rdf:resource="http://w3id.org/italia/onto/ChangeDocument"/>
+        <rdfs:subClassOf rdf:resource="http://w3id.org/italia/onto/ModificationDocument"/>
         <rdfs:comment xml:lang="it">La classe che rappresenta il documento che stabilisce la risoluzione di un contratto.</rdfs:comment>
         <rdfs:comment xml:lang="en">The class that represents the document setting the resolution of a contract.</rdfs:comment>
         <rdfs:label xml:lang="it">Documento di risoluzione</rdfs:label>
@@ -1477,7 +1475,7 @@
     <!-- http://w3id.org/italia/onto/SuspensionDocument -->
 
     <owl:Class rdf:about="http://w3id.org/italia/onto/SuspensionDocument">
-        <rdfs:subClassOf rdf:resource="http://w3id.org/italia/onto/ChangeDocument"/>
+        <rdfs:subClassOf rdf:resource="http://w3id.org/italia/onto/ModificationDocument"/>
         <rdfs:comment xml:lang="it">La classe che rappresenta il documento che stabilisce la sospensione di un contratto.</rdfs:comment>
         <rdfs:comment xml:lang="en">The class that represents the document setting the suspension.</rdfs:comment>
         <rdfs:label xml:lang="it">Documento di sospensione</rdfs:label>
@@ -1525,7 +1523,7 @@
     <!-- http://w3id.org/italia/onto/VariantDocument -->
 
     <owl:Class rdf:about="http://w3id.org/italia/onto/VariantDocument">
-        <rdfs:subClassOf rdf:resource="http://w3id.org/italia/onto/ChangeDocument"/>
+        <rdfs:subClassOf rdf:resource="http://w3id.org/italia/onto/ModificationDocument"/>
         <rdfs:comment xml:lang="it">La classe che rappresenta il documento che stabilisce la variante di un contratto.</rdfs:comment>
         <rdfs:comment xml:lang="en">The class that represents the document setting the variant.</rdfs:comment>
         <rdfs:label xml:lang="it">Documento di Variante</rdfs:label>
@@ -1567,26 +1565,6 @@
         <rdfs:label xml:lang="it">Stato avanzamento lavori</rdfs:label>
         <rdfs:label xml:lang="en">Work Progress Report</rdfs:label>
     </owl:Class>
-    
-
-
-    <!-- 
-    ///////////////////////////////////////////////////////////////////////////////////////
-    //
-    // Annotations
-    //
-    ///////////////////////////////////////////////////////////////////////////////////////
-     -->
-
-    <rdf:Description rdf:about="http://dati.gov.it/onto/l0/identifier">
-        <rdfs:isDefinedBy rdf:resource="http://dati.gov.it/onto/l0/"/>
-    </rdf:Description>
-    <rdf:Description rdf:about="http://w3id.org/italia/onto/hasCIG">
-        <rdfs:comment xml:lang="it">La proprietà che identifica la procedura di realizzazione tramite un CIG (Codice Identificativo di Gara). L&apos;eventuale relazione tra CIG padre e CIG figlio può essere dedotta dall&apos;analisi del contesto, laddove in presenza di una proprietà &quot;ha accordo quadro&quot; che collega due procedure si intende che, secondo la prassi più comune, il dominio può essere identificato da un CIG figlio e il range da un CIG padre.</rdfs:comment>
-        <rdfs:comment xml:lang="en">The property that represents the CIG (Codice Identificativo di Gara), the code used to identify the procedure.</rdfs:comment>
-        <rdfs:label xml:lang="en">has CIG</rdfs:label>
-        <rdfs:label xml:lang="it">ha CIG</rdfs:label>
-    </rdf:Description>
 </rdf:RDF>
 
 
