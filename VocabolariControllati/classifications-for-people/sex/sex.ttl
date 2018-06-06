@@ -5,7 +5,7 @@
 @prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix dc:      <http://purl.org/dc/elements/1.1/> .
 @prefix skos:    <http://www.w3.org/2004/02/skos/core#> .
-@prefix cpvapit: <https://w3id.org/italia/onto/cpvapit/> .
+@prefix cpvapit: <https://w3id.org/italia/onto/CPV/> .
 @prefix xkos:    <http://rdf-vocabulary.ddialliance.org/xkos#> .
 @prefix clvapit: <https://w3id.org/italia/onto/CLV/> .
 @prefix dcatapit: <http://dati.gov.it/onto/dcatapit#> .
@@ -21,7 +21,7 @@ skos:ConceptScheme
 skos:Concept
       a       rdfs:Class .
 
-cpvapit:Gender
+cpvapit:Sex
       a       rdfs:Class .
 
 dcatapit:Dataset
@@ -120,10 +120,10 @@ dct:modified
 dct:license
     a       rdfs:Property .
 
-cpvapit:genderID
+cpvapit:sexID
     a       rdfs:Property .
 
-cpvapit:genderDesc
+cpvapit:sexDesc
     a       rdfs:Property .
 
 xkos:numberOfLevels
@@ -167,12 +167,12 @@ vcard:hasEmail
 
 
 #Metadata DCAT-AP_IT for the controlled vocabulary
-<https://w3id.org/italia/controlled-vocabulary/classifications-for-people/gender>
+<https://w3id.org/italia/controlled-vocabulary/classifications-for-people/sex>
       a       skos:ConceptScheme , adms:Asset , dcatapit:Dataset ;
-      dct:title "Gender Controlled Vocabulary"@en , "Vocabolario Controllato sul Sesso delle Persone"@it ;
-      dct:description "This is the Gender controlled vocabulary"@en , "Questo è il vocabolario controllato sul sesso delle persone."@it ;
-      rdfs:comment "This is the Gender controlled vocabulary."@en , "Questo è il vocabolario controllato sul sesso delle persone."@it ;
-      rdfs:label "Gender Controlled Vocabulary"@en , "Vocabolario Controllato Sesso Persone"@it ;
+      dct:title "Sex Controlled Vocabulary"@en , "Vocabolario Controllato sul Sesso"@it ;
+      dct:description "This is the sex controlled vocabulary"@en , "Questo è il vocabolario controllato sul sesso."@it ;
+      rdfs:comment "This is the sex controlled vocabulary."@en , "Questo è il vocabolario controllato sul sesso."@it ;
+      rdfs:label "Sex Controlled Vocabulary"@en , "Vocabolario Controllato Sesso"@it ;
       dct:type <http://purl.org/adms/assettype/CodeList> ;
       xkos:numberOfLevels "1";
       adms:representationTechnique <http://purl.org/adms/representationtechnique/SKOS> ;
@@ -183,16 +183,18 @@ vcard:hasEmail
       dcat:theme <http://publications.europa.eu/resource/authority/data-theme/SOCI> ;
       dct:subject <http://eurovoc.europa.eu/100210> , <http://eurovoc.europa.eu/251539> , <http://eurovoc.europa.eu/251540> ;
       dct:conformsTo <http://dati.gov.it/data/resource/Standard/SKOS> ;
-      dct:language <http://publications.europa.eu/resource/authority/language/ITA> , <http://publications.europa.eu/resource/authority/language/ENG> , <http://publications.europa.eu/resource/authority/language/DEU> , <http://publications.europa.eu/resource/authority/language/FRA> ;
+      dct:language <http://publications.europa.eu/resource/authority/language/ITA> , <http://publications.europa.eu/resource/authority/language/ENG> ;
       dct:accrualPeriodicity <http://publications.europa.eu/resource/authority/frequency/IRREG> ;
-      rdfs:isDefinedBy <https://w3id.org/italia/controlled-vocabulary/classifications-for-people/gender> ;
+      rdfs:isDefinedBy <https://w3id.org/italia/controlled-vocabulary/classifications-for-people/sex> ;
       dcat:keyword "Sesso"@it, "Genere"@it , "Sex"@en, "Gender"@en ;
-      dcat:distribution <http://dati.gov.it/data/resource/Distribution/GenderVoc_RDF_Turtle> , <http://dati.gov.it/data/resource/Distribution/GenderVoc_RDF_XML> , <http://dati.gov.it/data/resource/Distribution/GenderVoc_JSON_LD> , <http://dati.gov.it/data/resource/Distribution/GenderVoc_CSV> ,
-      <http://dati.gov.it/data/resource/Distribution/GenderVoc_XLSX> ;
+      dcat:distribution <http://dati.gov.it/data/resource/Distribution/SexVoc_RDF_Turtle> , <http://dati.gov.it/data/resource/Distribution/SexVoc_RDF_XML> , <http://dati.gov.it/data/resource/Distribution/SexVoc_JSON_LD> , <http://dati.gov.it/data/resource/Distribution/SexVoc_CSV> ,
+      <http://dati.gov.it/data/resource/Distribution/SexVoc_XLSX> ;
       dcat:contactPoint <http://dati.gov.it/data/resource/ContactPoint/voc_AgID> ;
       dct:issued "2018-01-16"^^xsd:date ;
-      dct:modified "2018-01-19"^^xsd:date ;
-      owl:versionInfo "1.0" .
+      dct:modified "2018-06-06"^^xsd:date ;
+      skos:hasTopConcept <https://w3id.org/italia/controlled-vocabulary/classifications-for-people/sex/M> ,
+      <https://w3id.org/italia/controlled-vocabulary/classifications-for-people/sex/F> ;
+      owl:versionInfo "1.0 - The term gender was replaced with the term sex; German and French versions of the vocabulary were removed since not officially released by ISTAT"@en ,  "1.0 - il termine gender è stato sostituito con il termine sex; le versioni in tedesco e in francese del vocabolario sono state rimossa perché non rilasciate ufficialmente da ISTAT"@it.
 
 <http://spcdata.digitpa.gov.it/browse/page/Amministrazione/ISTAT>
       a dcatapit:Agent , foaf:Agent ;
@@ -220,80 +222,72 @@ vcard:hasEmail
     	vcard:fn		"banche dati e open data" ;
     	vcard:hasEmail <mailto:info@dati.gov.it> .
 
-<http://dati.gov.it/data/resource/Distribution/GenderVoc_RDF_Turtle>
+<http://dati.gov.it/data/resource/Distribution/SexVoc_RDF_Turtle>
       	a						dcatapit:Distribution  ;
-      	dct:title				"Distribuzione RDF/Turtle del vocabolario controllato sul sesso delle persone"@it , "RDF/Turtle distribution of the gender controlled vocabulary"@en ;
-      	dct:description			"Questa è la distribuzione RDF/Turtle del dataset Linked Open Data del vocabolario controllato sul sesso delle persone"@it , "This is the distribution in RDF/turtle of the Linked Open Dataset of the gender controlled vocabulary "@en ;
+      	dct:title				"Distribuzione RDF/Turtle del vocabolario controllato sul sesso"@it , "RDF/Turtle distribution of the sex controlled vocabulary"@en ;
+      	dct:description			"Questa è la distribuzione RDF/Turtle del dataset Linked Open Data del vocabolario controllato sul sesso"@it , "This is the distribution in RDF/turtle of the Linked Open Dataset of the sex controlled vocabulary "@en ;
       	dct:format 				<http://publications.europa.eu/resource/authority/file-type/RDF_TURTLE> ;
       	dct:license <https://w3id.org/italia/controlled-vocabulary/licences/A21_CCBY40> ;
-      	dcat:downloadURL		<https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/VocabolariControllati/classifications-for-people/gender/gender.ttl> ;
-      	dcat:accessURL 			<https://github.com/italia/daf-ontologie-vocabolari-controllati/tree/master/VocabolariControllati/classifications-for-people/gender> .
+      	dcat:downloadURL		<https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/VocabolariControllati/classifications-for-people/sex/sex.ttl> ;
+      	dcat:accessURL 			<https://github.com/italia/daf-ontologie-vocabolari-controllati/tree/master/VocabolariControllati/classifications-for-people/sex> .
 
-<http://dati.gov.it/data/resource/Distribution/GenderVoc_RDF_XML>
+<http://dati.gov.it/data/resource/Distribution/SexVoc_RDF_XML>
         a						dcatapit:Distribution  ;
-        dct:title				"Distribuzione RDF/XML del vocabolario controllato sul sesso delle persone"@it , "RDF/XML distribution of the gender controlled vocabulary"@en ;
-        dct:description			"Questa è la distribuzione RDF/XML del dataset Linked Open Data del vocabolario controllato sul sesso delle persone"@it , "This is the distribution in RDF/XML of the Linked Open Dataset of the gender controlled vocabulary "@en ;
+        dct:title				"Distribuzione RDF/XML del vocabolario controllato sul sesso"@it , "RDF/XML distribution of the sex controlled vocabulary"@en ;
+        dct:description			"Questa è la distribuzione RDF/XML del dataset Linked Open Data del vocabolario controllato sul sesso"@it , "This is the distribution in RDF/XML of the Linked Open Dataset of the sex controlled vocabulary "@en ;
         dct:format 	<http://publications.europa.eu/resource/authority/file-type/RDF_XML> ;
         dct:license <https://w3id.org/italia/controlled-vocabulary/licences/A21_CCBY40> ;
-        dcat:downloadURL		<https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/VocabolariControllati/classifications-for-people/gender/gender.rdf> ;
-        dcat:accessURL 			<https://github.com/italia/daf-ontologie-vocabolari-controllati/tree/master/VocabolariControllati/classifications-for-people/gender> .
+        dcat:downloadURL		<https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/VocabolariControllati/classifications-for-people/sex/sex.rdf> ;
+        dcat:accessURL 			<https://github.com/italia/daf-ontologie-vocabolari-controllati/tree/master/VocabolariControllati/classifications-for-people/sex> .
 
-<http://dati.gov.it/data/resource/Distribution/GenderVoc_JSON_LD>
+<http://dati.gov.it/data/resource/Distribution/SexVoc_JSON_LD>
         a						dcatapit:Distribution  ;
-        dct:title				"Distribuzione JSON_LD del vocabolario controllato sul sesso delle persone"@it , "JSON_LD distribution of the gender controlled vocabulary"@en ;
-        dct:description	"Questa è la distribuzione JSON_LD del dataset Linked Open Data del vocabolario controllato sul sesso delle persone"@it , "This is the distribution in JSON_LD of the Linked Open Dataset of the gender controlled vocabulary "@en ;
+        dct:title				"Distribuzione JSON_LD del vocabolario controllato sul sesso"@it , "JSON_LD distribution of the sex controlled vocabulary"@en ;
+        dct:description	"Questa è la distribuzione JSON_LD del dataset Linked Open Data del vocabolario controllato sul sesso"@it , "This is the distribution in JSON_LD of the Linked Open Dataset of the sex controlled vocabulary"@en ;
         dct:format 	<http://publications.europa.eu/resource/authority/file-type/JSON_LD> ;
         dct:license <https://w3id.org/italia/controlled-vocabulary/licences/A21_CCBY40> ;
-        dcat:downloadURL		<https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/VocabolariControllati/classifications-for-people/gender/gender.jsonld> ;
-        dcat:accessURL 			<https://github.com/italia/daf-ontologie-vocabolari-controllati/tree/master/VocabolariControllati/classifications-for-people/gender> .
+        dcat:downloadURL		<https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/VocabolariControllati/classifications-for-people/sex/sex.jsonld> ;
+        dcat:accessURL 			<https://github.com/italia/daf-ontologie-vocabolari-controllati/tree/master/VocabolariControllati/classifications-for-people/sex> .
 
-  <http://dati.gov.it/data/resource/Distribution/GenderVoc_CSV>
+  <http://dati.gov.it/data/resource/Distribution/SexVoc_CSV>
         a						dcatapit:Distribution  ;
-        dct:title				"Distribuzione CSV sesso delle persone"@it , "CSV distribution of  gender controlled vocabulary"@en ;
-        dct:description			"Questa è la distribuzione CSV del dataset Linked Open Data del vocabolario controllato sul sesso delle persone"@it , "This is the distribution in CSV of the Linked Open Dataset of the gender controlled vocabulary "@en ;
+        dct:title				"Distribuzione CSV vocabolario controllato sul sesso"@it , "CSV distribution of sex controlled vocabulary"@en ;
+        dct:description			"Questa è la distribuzione CSV del vocabolario controllato sul sesso"@it , "This is the distribution in CSV of dataset on the sex controlled vocabulary"@en ;
         dct:format 	<http://publications.europa.eu/resource/authority/file-type/CSV> ;
         dct:license <https://w3id.org/italia/controlled-vocabulary/licences/A21_CCBY40>;
-        dcat:downloadURL		<https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/VocabolariControllati/classifications-for-people/gender/gender.csv>;
-        dcat:accessURL 			<https://github.com/italia/daf-ontologie-vocabolari-controllati/tree/master/VocabolariControllati/classifications-for-people/gender> .
+        dcat:downloadURL		<https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/VocabolariControllati/classifications-for-people/sex/sex.csv>;
+        dcat:accessURL 			<https://github.com/italia/daf-ontologie-vocabolari-controllati/tree/master/VocabolariControllati/classifications-for-people/sex> .
 
-<http://dati.gov.it/data/resource/Distribution/GenderVoc_XLSX>
+<http://dati.gov.it/data/resource/Distribution/SexVoc_XLSX>
         a						dcatapit:Distribution  ;
-        dct:title				"Distribuzione XLSX sesso delle persone"@it , "XLSX distribution of  gender controlled vocabulary"@en ;
-        dct:description			"Questa è la distribuzione XLSX del dataset Linked Open Data del vocabolario controllato sul sesso delle persone"@it , "This is the distribution in XLSX of the Linked Open Dataset of the gender controlled vocabulary "@en ;
+        dct:title				"Distribuzione XLSX vocabolario controllato sul sesso"@it , "XLSX distribution of sex controlled vocabulary"@en ;
+        dct:description			"Questa è la distribuzione XLSX del vocabolario controllato sul sesso"@it , "This is the distribution in XLSX of the sex controlled vocabulary "@en ;
         dct:format 	<http://publications.europa.eu/resource/authority/file-type/XLSX> ;
         dct:license <https://w3id.org/italia/controlled-vocabulary/licences/A21_CCBY40> ;
-        dcat:downloadURL		<https://github.com/italia/daf-ontologie-vocabolari-controllati/raw/master/VocabolariControllati/classifications-for-people/gender/gender.xlsx> ;
-        dcat:accessURL 			<https://github.com/italia/daf-ontologie-vocabolari-controllati/tree/master/VocabolariControllati/classifications-for-people/gender> .
+        dcat:downloadURL		<https://github.com/italia/daf-ontologie-vocabolari-controllati/raw/master/VocabolariControllati/classifications-for-people/sex/sex.xlsx> ;
+        dcat:accessURL 			<https://github.com/italia/daf-ontologie-vocabolari-controllati/tree/master/VocabolariControllati/classifications-for-people/sex> .
 
 #Definition of the controlled vocabulary
- <https://w3id.org/italia/controlled-vocabulary/classifications-for-people/gender/M>
- 	    a  	skos:Concept , cpvapit:Gender ;
- 	    skos:inScheme <https://w3id.org/italia/controlled-vocabulary/classifications-for-people/gender> ;
+ <https://w3id.org/italia/controlled-vocabulary/classifications-for-people/sex/M>
+ 	    a  	skos:Concept , cpvapit:Sex ;
+ 	    skos:inScheme <https://w3id.org/italia/controlled-vocabulary/classifications-for-people/sex> ;
       clvapit:hasRankOrder "1" ;
  	    skos:notation "M" ;
  	    dct:identifier "M" ;
-      cpvapit:genderID "M" ;
+      cpvapit:sexID "M" ;
  	    skos:prefLabel "Maschio"@it ;
       skos:prefLabel "Male"@en ;
-      skos:prefLabel "Männlich"@de ;
-      skos:prefLabel "Masculin"@fr ;
-      cpvapit:genderDesc "Maschio"@it ;
-      cpvapit:genderDesc "Male"@en ;
-      cpvapit:genderDesc "Männlich"@de ;
-      cpvapit:genderDesc "Masculin"@fr .
+      cpvapit:sexDesc "Maschio"@it ;
+      cpvapit:sexDesc "Male"@en .
 
-<https://w3id.org/italia/controlled-vocabulary/classifications-for-people/gender/F>
-      a  	skos:Concept , cpvapit:Gender ;
-      skos:inScheme <https://w3id.org/italia/controlled-vocabulary/classifications-for-people/gender> ;
+<https://w3id.org/italia/controlled-vocabulary/classifications-for-people/sex/F>
+      a  	skos:Concept , cpvapit:Sex ;
+      skos:inScheme <https://w3id.org/italia/controlled-vocabulary/classifications-for-people/sex> ;
       clvapit:hasRankOrder "1" ;
       skos:notation "F" ;
       dct:identifier "F" ;
-      cpvapit:genderID "F" ;
+      cpvapit:sexrID "F" ;
       skos:prefLabel "Femmina"@it ;
       skos:prefLabel "Female"@en ;
-      skos:prefLabel "Weiblich"@de ;
-      skos:prefLabel "Féminin"@fr ;
-      cpvapit:genderDesc "Femmina"@it ;
-      cpvapit:genderDesc "Female"@en ;
-      cpvapit:genderDesc "Weiblich"@de ;
-      cpvapit:genderDesc "Féminin"@fr .
+      cpvapit:sexDesc "Femmina"@it ;
+      cpvapit:sexDesc "Female"@en .
