@@ -1,4 +1,4 @@
-@prefix : <https://w3id.org/italia/onto/muapit/> .
+@prefix : <https://w3id.org/italia/onto/MU/> .
 @prefix dc: <http://purl.org/dc/elements/1.1/> .
 @prefix l0: <https://w3id.org/italia/onto/l0/> .
 @prefix dct: <http://purl.org/dc/terms/> .
@@ -7,41 +7,51 @@
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
+@prefix admsapit: <https://w3id.org/italia/onto/ADMS/> .
+@prefix dcatapit: <http://dati.gov.it/onto/dcatapit#> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @base <https://w3id.org/italia/onto/MU> .
 
-<https://w3id.org/italia/onto/MU> rdf:type owl:Ontology ;
-                                  
+<https://w3id.org/italia/onto/MU> rdf:type owl:Ontology , admsapit:SemanticAsset ;
+
                                   rdfs:label "Measurement Unit Ontology"@en ,
                                              "Ontologia per le unità di misura"@it ;
-                                  
-                                  dct:issued "2017-11-13"@en ;
-                                  
-                                  dct:modified "2018-03-03" ;
-                                  
-                                  dc:creator "Agency for Digital Italy - AgID"@en ,
-                                             "Institute of Cognitive Sciences and Technologies of the Italian Research Council (CNR) - Semantic Technology Laboratory (STLab)"@en ,
-                                             "Italian Digital Transformation Team"@en ;
-                                  
-                                  owl:versionInfo "Version 0.1 - November 13 2017 - creation of the ontology"@en ,
-                                                  "Version 0.3 - March 03 2018 - use of https://w3id.org/italia/onto/MU/ as namespace."@en ;
-                                  
-                                  dc:creator "Agenzia per l'Italia Digitale - AgID"@it ,
-                                             "Istituto di Scienze e Tecnologie della Cognizione del CNR - Semantic Technology Lab (STLab)"@it ;
-                                  
-                                  rdfs:comment "Questa è l'ontologia per la modellazione di valori e unità di misura"@it ;
-                                  
-                                  dc:creator "Team per la Trasformazione Digitale"@it ;
-                                  
-                                  owl:versionInfo "Versione 0.1 - 12 Novembre 2017 - creazione dell'ontologia"@it ,
-                                                  "Versione 0.3 - uso del namespace https://w3id.org/italia/onto/MU/"@it ;
-                                  
-                                  dct:license <https://creativecommons.org/licenses/by/4.0/> ;
-                                  
+                                  dct:title "Measurement Unit Ontology"@en ,
+                                             "Ontologia per le unità di misura"@it ;
+                                  dct:issued "2017-11-13"^^xsd:date ;
+                                  dct:modified "2018-06-25"^^xsd:date ;
+                                  owl:versionInfo "Version 0.2 - June 25 2018 - use of https://w3id.org/italia/onto/MU/ as namespace and bug fix in the URIs"@en , "Versione 0.2 - uso del namespace https://w3id.org/italia/onto/MU/ e correzione di alcuni bug negli URI"@it ;
+                                  rdfs:comment "Questa è l'ontologia per la modellazione di valori e unità di misura"@it , "This is the ontology for modeling measurement unit"@en ;
+                                  dct:description "Questa è l'ontologia per la modellazione di valori e unità di misura"@it , "This is the ontology for modeling measurement unit"@en ;
                                   owl:imports <https://w3id.org/italia/onto/l0> ;
-                                  
                                   owl:versionIRI <https://w3id.org/italia/onto/MU/0.2> ;
-                                  
-                                  rdfs:isDefinedBy : .
+                                  prov:wasDerivedFrom <https://w3id.org/italia/onto/MU/0.1> ;
+                                  dct:creator <http://spcdata.digitpa.gov.it/browse/page/Amministrazione/agid> ;
+                                  dct:rightsHolder <http://spcdata.digitpa.gov.it/browse/page/Amministrazione/agid> ;
+                                  dct:publisher <http://spcdata.digitpa.gov.it/browse/page/Amministrazione/agid> ;
+                                  dct:identifier "https://w3id.org/italia/onto/MU" ;
+                                  admsapit:hasTask admsapit:AnnotationTask , admsapit:QueryFormulationTask , admsapit:SearchTask ;
+                                  admsapit:keyClasses :MeasurementUnit , :Value ;
+                                  dcat:theme <http://publications.europa.eu/resource/authority/data-theme/TECH> ;
+                                  admsapit:target "Pubbliche Amministrazioni" , "Imprese" , "Cittadini" ;
+                                  admsapit:hasOntologyLanguage admsapit:OWL ;
+                                  admsapit:hasContributor <https://w3id.org/italia/data/organization/support-unit/cnr-Z6HZEH/stlab> , <https://w3id.org/italia/data/organization/public-organization/td> ;
+                                  admsapit:officialURI "https://w3id.org/italia/onto/MU/"^^xsd:anyURI ;
+                                  admsapit:status "published" , "catalogued" ;
+                                  admsapit:prefix "muapit" ;
+                                  admsapit:acronym "MU-AP_IT" ;
+                                  admsapit:type admsapit:ServiceOntology ;
+                                  admsapit:hasFormalityLevel admsapit:Formal ;
+                                  dct:accrualPeriodicity <http://publications.europa.eu/resource/authority/frequency/IRREG> ;
+                                  dcat:contactPoint <https://w3id.org/italia/data/contact-point/onto-agid> ;
+                                  dct:language <http://publications.europa.eu/resource/authority/language/ENG> , <http://publications.europa.eu/resource/authority/language/ITA> ;
+                                  admsapit:hasSemanticAssetDistribution <https://w3id,org/italia/data/distribution/MUAPIT-RDF-TURTLE> , <https://w3id,org/italia/data/distribution/MUAPIT-RDF-XML> , <https://w3id,org/italia/data/distribution/MUAPIT-JSON-LD> ;
+                                  admsapit:semanticAssetInUse <https://w3id.org/italia/data/project/DAF> ,
+                                                              <https://w3id.org/italia/data/project/OntoPiA> ;
+                                  rdfs:isDefinedBy <https://w3id.org/italia/onto/MU> .
 
 
 #################################################################
@@ -84,41 +94,41 @@ dct:modified rdf:type owl:AnnotationProperty .
 #################################################################
 
 
-###  https://w3id.org/italia/onto/MUmuapit/hasMeasurementUnit
+###  https://w3id.org/italia/onto/MU/hasMeasurementUnit
 
-<https://w3id.org/italia/onto/MUmuapit/hasMeasurementUnit> rdf:type owl:ObjectProperty ;
-                                                           
+<https://w3id.org/italia/onto/MU/hasMeasurementUnit> rdf:type owl:ObjectProperty ;
+
                                                            rdfs:label "has measurement unit" ,
                                                                       "ha unità di misura"@it ;
-                                                           
+
                                                            rdfs:comment "Property that links an object that can be measured to its Measurement Unit."@en ,
                                                                         "Proprietà che lega un valore osservato o un parametro di misurazione con la sua unità di misura."@it ;
-                                                           
-                                                           rdfs:isDefinedBy <http://dati.gov.it/onto/muapit> ;
-                                                           
+
+                                                           rdfs:isDefinedBy <https://w3id.org/italia/onto/MU> ;
+
                                                            rdfs:domain owl:Thing ;
-                                                           
-                                                           rdfs:range <https://w3id.org/italia/onto/MUmuapit/MeasurementUnit> .
+
+                                                           rdfs:range <https://w3id.org/italia/onto/MU/MeasurementUnit> .
 
 
 
-###  https://w3id.org/italia/onto/MUmuapit/isMeasurementUnitOf
+###  https://w3id.org/italia/onto/MU/isMeasurementUnitOf
 
-<https://w3id.org/italia/onto/MUmuapit/isMeasurementUnitOf> rdf:type owl:ObjectProperty ;
-                                                            
+<https://w3id.org/italia/onto/MU/isMeasurementUnitOf> rdf:type owl:ObjectProperty ;
+
                                                             rdfs:label "is measurement unit of"@en ,
                                                                        "è unità di misura di"@it ;
-                                                            
+
                                                             rdfs:comment "Inverse object property of 'has measurement unit'."@en ,
                                                                          "Object property inversa di 'ha unità di misura'."@it ;
-                                                            
-                                                            rdfs:isDefinedBy <http://dati.gov.it/onto/muapit> ;
-                                                            
+
+                                                            rdfs:isDefinedBy <https://w3id.org/italia/onto/MU> ;
+
                                                             rdfs:range owl:Thing ;
-                                                            
-                                                            rdfs:domain <https://w3id.org/italia/onto/MUmuapit/MeasurementUnit> ;
-                                                            
-                                                            owl:inverseOf <https://w3id.org/italia/onto/MUmuapit/hasMeasurementUnit> .
+
+                                                            rdfs:domain <https://w3id.org/italia/onto/MU/MeasurementUnit> ;
+
+                                                            owl:inverseOf <https://w3id.org/italia/onto/MU/hasMeasurementUnit> .
 
 
 
@@ -131,19 +141,19 @@ dct:modified rdf:type owl:AnnotationProperty .
 #################################################################
 
 
-###  https://w3id.org/italia/onto/MUmuapit/value
+###  https://w3id.org/italia/onto/MU/value
 
-<https://w3id.org/italia/onto/MUmuapit/value> rdf:type owl:DatatypeProperty ;
-                                              
+<https://w3id.org/italia/onto/MU/value> rdf:type owl:DatatypeProperty ;
+
                                               rdfs:label "valore"@it ;
-                                              
+
                                               rdfs:comment "This property represents a value. It can be the value of the observedValue or the value of the Measurement Capability."@en ,
                                                            "Questa proprietà rappresenta un valore, il valore osservato e il valore di una capacità di misurazione."@it ;
-                                              
-                                              rdfs:isDefinedBy <http://dati.gov.it/onto/muapit> ;
-                                              
+
+                                              rdfs:isDefinedBy <https://w3id.org/italia/onto/MU> ;
+
                                               rdfs:range rdfs:Literal ;
-                                              
+
                                               rdfs:domain owl:Thing .
 
 
@@ -159,56 +169,138 @@ dct:modified rdf:type owl:AnnotationProperty .
 
 ###  https://w3id.org/italia/onto/MU/Characteristic
 
-<https://w3id.org/italia/onto/MU/Characteristic> rdf:type owl:Class .
+<https://w3id.org/italia/onto/l0/Characteristic> rdf:type owl:Class .
 
 
 
-###  https://w3id.org/italia/onto/MUmuapit/MeasurementUnit
+###  https://w3id.org/italia/onto/MU/MeasurementUnit
 
-<https://w3id.org/italia/onto/MUmuapit/MeasurementUnit> rdf:type owl:Class ;
-                                                        
+<https://w3id.org/italia/onto/MU/MeasurementUnit> rdf:type owl:Class ;
+
                                                         rdfs:label "Measurement Unit"@en ,
                                                                    "Unità di Misura"@it ;
-                                                        
-                                                        rdfs:subClassOf <https://w3id.org/italia/onto/MU/Characteristic> ;
-                                                        
+
+                                                        rdfs:subClassOf <https://w3id.org/italia/onto/l0/Characteristic> ;
+
                                                         rdfs:comment "This class is used to model a measurement unit (e.g., meter, kilometer, gram, etc.)"@en ,
                                                                      "Questa classe è utilizzata per rappresentare un'unità di misura (e.g., metro, chilometro, grammo, ecc.)."@it ;
-                                                        
-                                                        rdfs:isDefinedBy "https://w3id.org/italia/onto/muapit/"@it .
+
+                                                        rdfs:isDefinedBy <https://w3id.org/italia/onto/MU> .
 
 
 
-###  https://w3id.org/italia/onto/MUmuapit/Value
+###  https://w3id.org/italia/onto/MU/Value
 
-<https://w3id.org/italia/onto/MUmuapit/Value> rdf:type owl:Class ;
-                                              
-                                              rdfs:subClassOf <https://w3id.org/italia/onto/MU/Characteristic> ,
+<https://w3id.org/italia/onto/MU/Value> rdf:type owl:Class ;
+
+                                              rdfs:subClassOf <https://w3id.org/italia/onto/l0/Characteristic> ,
                                                               [ rdf:type owl:Restriction ;
-                                                                owl:onProperty <https://w3id.org/italia/onto/MUmuapit/value> ;
+                                                                owl:onProperty <https://w3id.org/italia/onto/MU/value> ;
                                                                 owl:cardinality "1"^^xsd:nonNegativeInteger
                                                               ] ,
                                                               [ rdf:type owl:Restriction ;
-                                                                owl:onProperty <https://w3id.org/italia/onto/MUmuapit/hasMeasurementUnit> ;
-                                                                owl:onClass <https://w3id.org/italia/onto/MUmuapit/MeasurementUnit> ;
+                                                                owl:onProperty <https://w3id.org/italia/onto/MU/hasMeasurementUnit> ;
+                                                                owl:onClass <https://w3id.org/italia/onto/MU/MeasurementUnit> ;
                                                                 owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger
                                                               ] .
 
 
 
-
-
 #################################################################
-#
-#    Annotations
-#
+#    Individuals
 #################################################################
 
 
-<http://dati.gov.it/onto/muapit> rdfs:comment "This is the ontology used to represent valies and measurment units"@en .
+
+###  http://spcdata.digitpa.gov.it/browse/page/Amministrazione/agid
+<http://spcdata.digitpa.gov.it/browse/page/Amministrazione/agid> rdf:type owl:NamedIndividual ,
+                                                                         dcatapit:Agent ,
+                                                                         foaf:Agent ;
+                                                                dct:identifier "agid" ;
+                                                                foaf:name "Agenzia per l'Italia Digitale"@it ,
+                                                                          "Italian Digital Agency"@en .
+
+
+###  https://w3id,org/italia/data/distribution/MUAPIT-JSON-LD
+<https://w3id,org/italia/data/distribution/MUAPIT-JSON-LD> rdf:type owl:NamedIndividual ,
+                                                                    admsapit:SemanticAssetDistribution ;
+                                                           dct:description "Questa è la distribuzione JSON-LD dell'ontologia delle unità di misura"@it ,
+                                                                           "This is the distribution in JSON-LD of the Measurement Unit ontology"@en ;
+                                                           dct:format <http://publications.europa.eu/resource/authority/file-type/JSON_LD> ;
+                                                           dct:license <https://w3id.org/italia/controlled-vocabulary/licences/A21_CCBY40> ;
+                                                           dct:title "Distribuzione JSON-LD ontologia MU-AP_IT"@it ,
+                                                                     "JSON-LD distribution of MU-AP_IT Ontology"@en ;
+                                                           dcat:accessURL <https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/MU/latest> ;
+                                                           dcat:downloadURL <https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/MU/latest/MU-AP_IT.jsonld> .
+
+
+###  https://w3id,org/italia/data/distribution/MUAPIT-RDF-TURTLE
+<https://w3id,org/italia/data/distribution/MUAPIT-RDF-TURTLE> rdf:type owl:NamedIndividual ,
+                                                                       admsapit:SemanticAssetDistribution ;
+                                                              dct:description "Questa è la distribuzione RDF/Turtle dell'ontologia delle unità di misura"@it ,
+                                                                              "This is the distribution in RDF/turtle of the Measurement Unit ontology"@en ;
+                                                              dct:format <http://publications.europa.eu/resource/authority/file-type/RDF_TURTLE> ;
+                                                              dct:license <https://w3id.org/italia/controlled-vocabulary/licences/A21_CCBY40> ;
+                                                              dct:title "Distribuzione RDF/Turtle ontologia MU-AP_IT"@it ,
+                                                                        "RDF/Turtle distribution of MU-AP_IT Ontology"@en ;
+                                                              dcat:accessURL <https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/MU/latest> ;
+                                                              dcat:downloadURL <https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/MU/latest/MU-AP_IT.ttl> .
+
+
+###  https://w3id,org/italia/data/distribution/MUAPIT-RDF-XML
+<https://w3id,org/italia/data/distribution/MUAPIT-RDF-XML> rdf:type owl:NamedIndividual ,
+                                                                    admsapit:SemanticAssetDistribution ;
+                                                           dct:description "Questa è la distribuzione RDF/XML dell'ontologia delle unità di misura"@it ,
+                                                                           "This is the distribution in RDF/XML of the Measurement Unit ontology"@en ;
+                                                           dct:format <http://publications.europa.eu/resource/authority/file-type/RDF_XML> ;
+                                                           dct:license <https://w3id.org/italia/controlled-vocabulary/licences/A21_CCBY40> ;
+                                                           dct:title "Distribuzione RDF/XML ontologia MU-AP_IT"@it ,
+                                                                     "RDF/XML distribution of MU-AP_IT Ontology"@en ;
+                                                           dcat:accessURL <https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/MU/latest> ;
+                                                           dcat:downloadURL <https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/MU/latest/MU-AP_IT.rdf> .
+
+
+ ###  https://w3id.org/italia/data/contact-point/onto-agid
+ <https://w3id.org/italia/data/contact-point/onto-agid> rdf:type owl:NamedIndividual ,
+                                                                 dcatapit:Organization ,
+                                                                 vcard:Kind ,
+                                                                 vcard:Organization ;
+                                                        vcard:fn "banche dati e open data" ;
+                                                        vcard:hasEmail <mailto:info@dati.gov.it> .
+
+
+###  https://w3id.org/italia/data/organization/public-organization/td
+<https://w3id.org/italia/data/organization/public-organization/td> rdf:type owl:NamedIndividual ,
+                                                                           dcatapit:Agent ,
+                                                                           foaf:Agent ;
+                                                                  dct:identifier "TD" ;
+                                                                  foaf:name "Digital Transformation Team"@en ,
+                                                                            "Team per la Trasformazione Digitale"@it .
+
+
+###  https://w3id.org/italia/data/organization/support-unit/cnr-Z6HZEH/stlab
+<https://w3id.org/italia/data/organization/support-unit/cnr-Z6HZEH/stlab> rdf:type owl:NamedIndividual ,
+                                                                                  l0:Agent ;
+                                                                         l0:name "Institute of Cognitive Sciences and Technologies of the Italian Research Council (CNR) - Semantic Technology Laboratory (STLab)"@en ,
+                                                                                 "Istituto di Scienze e Tecnologie della Cognizione del CNR - Semantic Technology Lab (STLab)"@it ;
+                                                                         dct:identifier "cnr - Z6HZEH - STLab" .
+
+
+
+###  https://w3id.org/italia/data/project/DAF
+<https://w3id.org/italia/data/project/DAF> rdf:type owl:NamedIndividual ,
+                                                   admsapit:Project ;
+                                          l0:name "Data & Analytics Framework"@it .
+
+
+###  https://w3id.org/italia/data/project/OntoPiA
+<https://w3id.org/italia/data/project/OntoPiA> rdf:type owl:NamedIndividual ,
+                                                       admsapit:Project ;
+                                              l0:name "OntoPiA - la rete di ontologie della pubblica amministrazione italiana"@it .
+
+
 
 
 
 
 ###  Generated by the OWL API (version 3.5.1) http://owlapi.sourceforge.net
-
