@@ -1,0 +1,61 @@
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix parkapit: <https://w3id.org/italia/onto/PARK/> .
+@prefix pto: <http://www.productontology.org/id/> .
+@base <https://w3id.org/italia/onto/PARK-aligns/> .
+
+
+<https://w3id.org/italia/onto/PARK-aligns> rdf:type owl:Ontology ;
+
+    owl:versionIRI <https://w3id.org/italia/onto/PARK-aligns/0.1> ;
+    dc:creator "Institute of Cognitive Sciences and Technologies of the Italian Research Council (CNR) - Semantic Technology Laboratory (STLab)"@en ;
+    dc:creator "Agency for Digital Italy - AgID"@en ;
+    dc:creator "Italian Digital Transformation Team"@en ;
+    dc:issued "2018-06-25"^^xsd:date ;
+    dc:modified "2018-06-25"^^xsd:date ;
+    dct:title "Car Park Ontology Alignments"@en , "Allineamenti per l'ontologia dei parcheggi"@it ;
+    dct:description "These are the alignments to external ontologies widely used and available at the state of the art for the car park ontology"@en , "Questi sono gli allineamenti dell'ontologia sui parcheggi Car Park- Italian Application Profile  (PARK-AP_IT) verso ontologie esterne del Web semantico standard e ampiamente utilizzate."@it ;
+
+    owl:imports <https://w3id.org/italia/onto/PARK> .
+
+
+# Classes - Alignments
+
+parkapit:CarPark a owl:Class ;
+      rdfs:isDefinedBy parkapit: ;
+      owl:subClassOf pto:Parking_lot , schema:ParkingFacility .
+
+parkapit:CarParkTypology a owl:Class ;
+      rdfs:isDefinedBy parkapit: ;
+      owl:equivalentClass skos:Concept .
+
+#Data Type Properties - Alignments
+
+parkapit:carParkID a owl:Property ;
+      rdfs:isDefinedBy parkapit: ;
+      owl:equivalentProperty dct:identifier .
+
+parkapit:carParkName a owl:Property ;
+      rdfs:isDefinedBy parkapit: ;
+      owl:equivalentProperty dct:title .
+
+parkapit:carParkDescription a owl:Property ;
+      rdfs:isDefinedBy parkapit: ;
+      owl:equivalentProperty dct:description .
+
+
+
+pto:Parking_lot a owl:Class .
+schema:ParkingFacility a owl:Class .
+skos:Concept a owl:Class .
+dct:identifier a owl:Property .
+dct:title a owl:Property .
+dct:description a owl:Property .
