@@ -11,319 +11,211 @@
 @prefix tiapit: <https://w3id.org/italia/onto/TI/> .
 @base <https://w3id.org/italia/onto/RO> .
 
-<https://w3id.org/italia/onto/RO> rdf:type owl:Ontology ;
-                                  
-                                  rdfs:label "Role Ontology"@en ,
-                                             "Ontologia dei Ruoli"@it ;
-                                  
-                                  terms:modified "2017-03-03" ;
-                                  
-                                  terms:issued "2017-11-21"@en ;
-                                  
-                                  dc:creator "Agency for Digital Italy - AgID"@en ,
-                                             "Institute of Cognitive Sciences and Technologies of the Italian Research Council (CNR) - Semantic Technology Laboratory (STLab)"@en ,
-                                             "Italian Digital Transformation Team"@en ;
-                                  
-                                  rdfs:comment "This is the ontology used to represent roles"@en ;
-                                  
-                                  owl:versionInfo "Version 0.2 - March 03 2018 - use of w3id.org/italia/onto/RO as base URI."@en ;
-                                  
-                                  dc:creator "Agenzia per l'Italia Digitale - AgID"@it ,
-                                             "Istituto di Scienze e Tecnologie della Cognizione del CNR - Semantic Technology Lab (STLab)"@it ;
-                                  
-                                  rdfs:comment "Questa è l'ontologia per la modellazione dei ruoli"@it ;
-                                  
-                                  dc:creator "Team per la Trasformazione Digitale"@it ;
-                                  
-                                  owl:versionInfo "Versione 0.2 - 03 Marzo 2018 - uso of w3id.org/italia/onto/RO come base URI."@it ;
-                                  
-                                  terms:license <https://creativecommons.org/licenses/by/4.0/> ;
-                                  
-                                  owl:imports <https://w3id.org/italia/onto/TI> ,
-                                              <https://w3id.org/italia/onto/l0> ;
-                                  
-                                  rdfs:isDefinedBy : ;
-                                  
-                                  owl:versionIRI <https://w3id.org/italia/onto/RO/0.2> .
-
-
-#################################################################
+<https://w3id.org/italia/onto/RO> a owl:Ontology ;
+	owl:versionIRI <https://w3id.org/italia/onto/RO/0.2> ;
+	owl:imports <https://w3id.org/italia/onto/TI> , <https://w3id.org/italia/onto/l0> ;
+	terms:modified "2017-03-03" ;
+	dc:creator "Institute of Cognitive Sciences and Technologies of the Italian Research Council (CNR) - Semantic Technology Laboratory (STLab)"@en ;
+	rdfs:comment "This is the ontology used to represent roles"@en ;
+	terms:issued "2017-11-21"@en ;
+	rdfs:label "Ontologia dei Ruoli"@it ;
+	owl:versionInfo "Versione 0.2 - 03 Marzo 2018 - uso of w3id.org/italia/onto/RO come base URI."@it ;
+	dc:creator "Istituto di Scienze e Tecnologie della Cognizione del CNR - Semantic Technology Lab (STLab)"@it , "Italian Digital Transformation Team"@en ;
+	rdfs:label "Role Ontology"@en ;
+	rdfs:comment "Questa è l'ontologia per la modellazione dei ruoli"@it ;
+	terms:license <https://creativecommons.org/licenses/by/4.0/> ;
+	dc:creator "Team per la Trasformazione Digitale"@it ;
+	rdfs:isDefinedBy <https://w3id.org/italia/onto/RO/> ;
+	dc:creator "Agency for Digital Italy - AgID"@en , "Agenzia per l'Italia Digitale - AgID"@it ;
+	owl:versionInfo "Version 0.2 - March 03 2018 - use of w3id.org/italia/onto/RO as base URI."@en .
 #
-#    Annotation properties
 #
-#################################################################
-
-
-###  http://purl.org/dc/elements/1.1/creator
-
-dc:creator rdf:type owl:AnnotationProperty .
-
-
-
-###  http://purl.org/dc/terms/issued
-
-terms:issued rdf:type owl:AnnotationProperty .
-
-
-
-###  http://purl.org/dc/terms/license
-
-terms:license rdf:type owl:AnnotationProperty .
-
-
-
-###  http://purl.org/dc/terms/modified
-
-terms:modified rdf:type owl:AnnotationProperty .
-
-
-
-
-
-#################################################################
+# #################################################################
+# #
+# #    Annotation properties
+# #
+# #################################################################
 #
-#    Object Properties
 #
-#################################################################
+# http://purl.org/dc/elements/1.1/creator
 
-
-###  https://w3id.org/italia/onto/RO/forAgent
-
-:forAgent rdf:type owl:ObjectProperty ;
-          
-          rdfs:label "for agent"@en ,
-                     "per agente"@it ;
-          
-          rdfs:comment "Property that links a time indexed role with the agent holding such a role."@en ,
-                       "Proprietà che collega un ruolo a tempo con l'agente che lo ricopre."@it ;
-          
-          rdfs:isDefinedBy : ;
-          
-          rdfs:domain :TimeIndexedRole ;
-          
-          rdfs:range l0:Agent .
-
-
-
-###  https://w3id.org/italia/onto/RO/holdsRole
-
-:holdsRole rdf:type owl:ObjectProperty ;
-           
-           rdfs:label "holds role"@en ,
-                      "ricopre ruolo"@it ;
-           
-           rdfs:comment "The relation existing between an agent and a role."@en ,
-                        "La relazione tra un agente ed un ruolo."@it ;
-           
-           rdfs:isDefinedBy : ;
-           
-           rdfs:range :Role ;
-           
-           owl:inverseOf :isRoleOf ;
-           
-           rdfs:domain l0:Entity .
-
-
-
-###  https://w3id.org/italia/onto/RO/holdsRoleInTime
-
-:holdsRoleInTime rdf:type owl:ObjectProperty ;
-                 
-                 rdfs:label "holds role in time"@en ,
-                            "possiede ruolo nel tempo"@it ;
-                 
-                 rdfs:comment "The relation between an entity and a role in time."@en ,
-                              "Relazione tra un'entità generica ed un ruolo nel tempo."@it ;
-                 
-                 rdfs:isDefinedBy : ;
-                 
-                 rdfs:range :TimeIndexedRole ;
-                 
-                 owl:inverseOf :isRoleInTimeOf ;
-                 
-                 rdfs:domain l0:Entity .
-
-
-
-###  https://w3id.org/italia/onto/RO/isRoleInTimeOf
-
-:isRoleInTimeOf rdf:type owl:FunctionalProperty ,
-                         owl:ObjectProperty ;
-                
-                rdfs:isDefinedBy : ;
-                
-                rdfs:domain :TimeIndexedRole ;
-                
-                rdfs:range l0:Entity .
-
-
-
-###  https://w3id.org/italia/onto/RO/isRoleOf
-
-:isRoleOf rdf:type owl:ObjectProperty ;
-          
-          rdfs:label "is role of"@en ,
-                     "è ruolo di"@it ;
-          
-          rdfs:comment "The relation existing between a role and an agent. This is the inverse property of holdsRole."@en ,
-                       "La relazione tra un ruolo ed una persona. E' la proprietà inversa di holdsRole."@it ;
-          
-          rdfs:isDefinedBy : ;
-          
-          rdfs:domain :Role ;
-          
-          rdfs:range l0:Entity .
-
-
-
-###  https://w3id.org/italia/onto/RO/withRole
-
-:withRole rdf:type owl:FunctionalProperty ,
-                   owl:ObjectProperty ;
-          
-          rdfs:label "with role"@en ,
-                     "con ruolo"@it ;
-          
-          rdfs:comment "Association between a TimeIndexedRole and a Role."@en ,
-                       "Associazione tra un TimeIndexedRole ed un Role."@it ;
-          
-          rdfs:isDefinedBy : ;
-          
-          rdfs:range :Role ;
-          
-          rdfs:domain :TimeIndexedRole ;
-          
-          owl:inverseOf tiapit:isRoleIn .
-
-
-
-###  https://w3id.org/italia/onto/TI/isRoleIn
-
-tiapit:isRoleIn rdf:type owl:ObjectProperty ;
-                
-                rdfs:label "is role in"@en ,
-                           "è ruolo in"@it ;
-                
-                rdfs:comment "Inverse property of \"with role\""@en ;
-                
-                owl:versionInfo "stable"@en ;
-                
-                rdfs:comment "Proprietà inversa di \"con ruolo\""@it ;
-                
-                owl:versionInfo "stabile"@it ;
-                
-                rdfs:isDefinedBy : ;
-                
-                rdfs:domain :Role ;
-                
-                rdfs:range :TimeIndexedRole .
-
-
-
-
-
-#################################################################
+dc:creator a owl:AnnotationProperty .
 #
-#    Data properties
+# http://purl.org/dc/terms/issued
+
+terms:issued a owl:AnnotationProperty .
 #
-#################################################################
+# http://purl.org/dc/terms/license
 
-
-###  https://w3id.org/italia/onto/l0/name
-
-l0:name rdf:type owl:DatatypeProperty ;
-        
-        rdfs:isDefinedBy l0: .
-
-
-
-
-
-#################################################################
+terms:license a owl:AnnotationProperty .
 #
-#    Classes
+# http://purl.org/dc/terms/modified
+
+terms:modified a owl:AnnotationProperty .
 #
-#################################################################
+#
+#
+# #################################################################
+# #
+# #    Object Properties
+# #
+# #################################################################
+#
+#
+# https://w3id.org/italia/onto/RO/forAgent
 
+:forAgent a owl:ObjectProperty ;
+	rdfs:domain :TimeIndexedRole ;
+	rdfs:range l0:Agent ;
+	rdfs:comment "Property that links a time indexed role with the agent holding such a role."@en , "Proprietà che collega un ruolo a tempo con l'agente che lo ricopre."@it ;
+	rdfs:isDefinedBy <https://w3id.org/italia/onto/RO/> ;
+	rdfs:label "for agent"@en , "per agente"@it .
+#
+# https://w3id.org/italia/onto/RO/holdsRole
 
-###  https://w3id.org/italia/onto/RO/Role
+:holdsRole a owl:ObjectProperty ;
+	owl:inverseOf :isRoleOf ;
+	rdfs:domain l0:Entity ;
+	rdfs:range :Role ;
+	rdfs:comment "La relazione tra un agente ed un ruolo."@it , "The relation existing between an agent and a role."@en ;
+	rdfs:isDefinedBy <https://w3id.org/italia/onto/RO/> ;
+	rdfs:label "holds role"@en , "ricopre ruolo"@it .
+#
+# https://w3id.org/italia/onto/RO/holdsRoleInTime
 
-:Role rdf:type owl:Class ;
-      
-      rdfs:label "Role"@en ,
-                 "Ruolo"@it ;
-      
-      rdfs:subClassOf l0:Object ,
-                      [ rdf:type owl:Restriction ;
-                        owl:onProperty l0:name ;
-                        owl:someValuesFrom rdfs:Literal
-                      ] ;
-      
-      rdfs:comment "A role."@en ,
-                   "Un ruolo."@it ;
-      
-      rdfs:isDefinedBy : .
+:holdsRoleInTime a owl:ObjectProperty ;
+	owl:inverseOf :isRoleInTimeOf ;
+	rdfs:domain l0:Entity ;
+	rdfs:range :TimeIndexedRole ;
+	rdfs:comment "Relazione tra un'entità generica ed un ruolo nel tempo."@it , "The relation between an entity and a role in time."@en ;
+	rdfs:isDefinedBy <https://w3id.org/italia/onto/RO/> ;
+	rdfs:label "holds role in time"@en , "possiede ruolo nel tempo"@it .
+#
+# https://w3id.org/italia/onto/RO/isRoleInTimeOf
 
+:isRoleInTimeOf a owl:ObjectProperty , owl:FunctionalProperty ;
+	rdfs:domain :TimeIndexedRole ;
+	rdfs:range l0:Entity ;
+	rdfs:isDefinedBy <https://w3id.org/italia/onto/RO/> .
+#
+# https://w3id.org/italia/onto/RO/isRoleOf
 
+:isRoleOf a owl:ObjectProperty ;
+	rdfs:domain :Role ;
+	rdfs:range l0:Entity ;
+	rdfs:comment "La relazione tra un ruolo ed una persona. E' la proprietà inversa di holdsRole."@it , "The relation existing between a role and an agent. This is the inverse property of holdsRole."@en ;
+	rdfs:isDefinedBy <https://w3id.org/italia/onto/RO/> ;
+	rdfs:label "is role of"@en , "è ruolo di"@it .
+#
+# https://w3id.org/italia/onto/RO/withRole
 
-###  https://w3id.org/italia/onto/RO/TimeIndexedRole
+:withRole a owl:ObjectProperty ;
+	owl:inverseOf tiapit:isRoleIn ;
+	a owl:FunctionalProperty ;
+	rdfs:domain :TimeIndexedRole ;
+	rdfs:range :Role ;
+	rdfs:comment "Association between a TimeIndexedRole and a Role."@en , "Associazione tra un TimeIndexedRole ed un Role."@it ;
+	rdfs:isDefinedBy <https://w3id.org/italia/onto/RO/> ;
+	rdfs:label "con ruolo"@it , "with role"@en .
+#
+# https://w3id.org/italia/onto/TI/hasTemporalEntity
 
-:TimeIndexedRole rdf:type owl:Class ;
-                 
-                 rdfs:label "Time indexed role"@en ,
-                            "Ruolo nel tempo"@it ;
-                 
-                 rdfs:subClassOf l0:Event ,
-                                 [ rdf:type owl:Restriction ;
-                                   owl:onProperty tiapit:hasTemporalEntity ;
-                                   owl:someValuesFrom tiapit:TemporalEntity
-                                 ] ,
-                                 [ rdf:type owl:Restriction ;
-                                   owl:onProperty :withRole ;
-                                   owl:someValuesFrom :Role
-                                 ] ,
-                                 [ rdf:type owl:Restriction ;
-                                   owl:onProperty :forAgent ;
-                                   owl:someValuesFrom l0:Agent
-                                 ] ;
-                 
-                 rdfs:comment "Representation of Role with a clearly defined time extension."@en ,
-                              "Rappresentazione di un ruolo associato ad un intervallo temporale determinato."@it ;
-                 
-                 rdfs:isDefinedBy : .
+tiapit:hasTemporalEntity a owl:ObjectProperty .
+#
+# https://w3id.org/italia/onto/TI/isRoleIn
 
+tiapit:isRoleIn a owl:ObjectProperty ;
+	rdfs:domain :Role ;
+	rdfs:range :TimeIndexedRole ;
+	rdfs:comment "Inverse property of \"with role\""@en , "Proprietà inversa di \"con ruolo\""@it ;
+	rdfs:isDefinedBy <https://w3id.org/italia/onto/RO/> ;
+	rdfs:label "is role in"@en , "è ruolo in"@it ;
+	owl:versionInfo "stabile"@it , "stable"@en .
+#
+#
+#
+# #################################################################
+# #
+# #    Data properties
+# #
+# #################################################################
+#
+#
+# https://w3id.org/italia/onto/l0/name
 
+l0:name a owl:DatatypeProperty ;
+	rdfs:isDefinedBy <https://w3id.org/italia/onto/l0/> .
+#
+#
+#
+# #################################################################
+# #
+# #    Classes
+# #
+# #################################################################
+#
+#
+# https://w3id.org/italia/onto/RO/Role
 
-###  https://w3id.org/italia/onto/l0/Agent
+:Role a owl:Class ;
+	rdfs:subClassOf l0:Object , _:genid1 .
 
-l0:Agent rdf:type owl:Class ;
-         
-         rdfs:subClassOf l0:Entity ,
-                         [ rdf:type owl:Restriction ;
-                           owl:onProperty :holdsRoleInTime ;
-                           owl:allValuesFrom :TimeIndexedRole
-                         ] .
+_:genid1 a owl:Restriction ;
+	owl:onProperty l0:name ;
+	owl:someValuesFrom rdfs:Literal .
 
+:Role rdfs:comment "A role."@en , "Un ruolo."@it ;
+	rdfs:isDefinedBy <https://w3id.org/italia/onto/RO/> ;
+	rdfs:label "Role"@en , "Ruolo"@it .
+#
+# https://w3id.org/italia/onto/RO/TimeIndexedRole
 
+:TimeIndexedRole a owl:Class ;
+	rdfs:subClassOf l0:Event , _:genid2 .
 
-###  https://w3id.org/italia/onto/l0/Entity
+_:genid2 a owl:Restriction ;
+	owl:onProperty :forAgent ;
+	owl:someValuesFrom l0:Agent .
 
-l0:Entity rdf:type owl:Class .
+:TimeIndexedRole rdfs:subClassOf _:genid3 .
 
+_:genid3 a owl:Restriction ;
+	owl:onProperty :withRole ;
+	owl:someValuesFrom :Role .
 
+:TimeIndexedRole rdfs:subClassOf _:genid4 .
 
-###  https://w3id.org/italia/onto/l0/Event
+_:genid4 a owl:Restriction ;
+	owl:onProperty tiapit:hasTemporalEntity ;
+	owl:someValuesFrom tiapit:TemporalEntity .
 
-l0:Event rdf:type owl:Class .
+tiapit:TemporalEntity a owl:Class .
 
+:TimeIndexedRole rdfs:comment "Rappresentazione di un ruolo associato ad un intervallo temporale determinato."@it , "Representation of Role with a clearly defined time extension."@en ;
+	rdfs:isDefinedBy <https://w3id.org/italia/onto/RO/> ;
+	rdfs:label "Ruolo nel tempo"@it , "Time indexed role"@en .
+#
+# https://w3id.org/italia/onto/TI/TemporalEntity
+#
+# https://w3id.org/italia/onto/l0/Agent
 
+l0:Agent a owl:Class ;
+	rdfs:subClassOf l0:Entity , _:genid5 .
 
-###  https://w3id.org/italia/onto/l0/Object
+_:genid5 a owl:Restriction ;
+	owl:onProperty :holdsRoleInTime ;
+	owl:allValuesFrom :TimeIndexedRole .
+#
+# https://w3id.org/italia/onto/l0/Entity
 
-l0:Object rdf:type owl:Class .
+l0:Entity a owl:Class .
+#
+# https://w3id.org/italia/onto/l0/Event
 
+l0:Event a owl:Class .
+#
+# https://w3id.org/italia/onto/l0/Object
 
-
-
-###  Generated by the OWL API (version 3.5.1) http://owlapi.sourceforge.net
-
+l0:Object a owl:Class .
+#
+# Generated by the OWL API (version 4.2.8.20170104-2310) https://github.com/owlcs/owlapi
