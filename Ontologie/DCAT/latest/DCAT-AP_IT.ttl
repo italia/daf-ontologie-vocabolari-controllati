@@ -1,0 +1,1411 @@
+@prefix : <http://dati.gov.it/onto/dcatapit> .
+@prefix dct: <http://purl.org/dc/elements/1.1/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix adms: <http://www.w3.org/ns/adms#> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix terms: <http://purl.org/dc/terms/> .
+@prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
+@base <http://dati.gov.it/onto/dcatapit> .
+
+<http://dati.gov.it/onto/dcatapit> rdf:type owl:Ontology ;
+                                    owl:versionIRI <http://dati.gov.it/onto/dcatapit/2.0> ;
+                                    dct:description "This is version 2.0 (2016-03-18) of the ontology of the Italian application profile for the metadata that describe catalogues and data of  Italian Public Administrations (DCAT-AP_IT)."@en ;
+                                    dct:rights "Attribuzione - http://creativecommons.org/licenses/by/3.0/it/legalcode"@it ;
+                                    dct:title "DCAT-AP IT - Ontologia del profilo nazionale  dei metadati dei dati della PA"@it ;
+                                    dct:description <http://www.dati.gov.it/sites/default/files/DCAT-AP_IT_UML.png> ;
+                                    dct:creator "AgID - Agenzia per l'Italia Digitale" ;
+                                    rdfs:comment "Questa è la versione 2.0 dell'ontologia  - Ultima modifica del 18 marzo 2016. L'ontologia è definita sulla base del profilo DCAT-AP 1.1 rilasciato dalla Commissione Europea, nel contesto del programma ISA, lo scorso Novembre 2015."@it ;
+                                    dct:title "DCAT-AP IT - The Italian application profile for metadata of datasets"@en ;
+                                    dct:license <http://creativecommons.org/licenses/by/3.0/it/> ;
+                                    dct:modified "2016-03-18" ;
+                                    rdfs:comment "This is 2.0 version  of the ontology - last update on 18th March 2016. The ontology is built upon DCAT-AP version 1.1 released by the European Commission, in the context of the ISA programme, on November 2015."@en ;
+                                    dct:description "Versione 2.0 del 18-03-2016 dell'ontologia del Profilo italiano dei metadati che descrivono dati, e cataloghi di dati, delle pubbliche amministrazioni (DCAT-AP_IT)."@it ;
+                                    dct:contributor "Working Group on National metadata profile DCAT-AP IT - Regione Piemonte, Provincia Autonoma di Trento, CISIS, Protezione Civile and ISTAT"@en ,
+                                                    "Gruppo di lavoro su Profilo Nazionale Metadati - Regione Piemonte, Provincia autonoma di Trento, CISIS, Protezione Civile e Istat"@it ;
+                                    dct:rights "Attribution - http://creativecommons.org/licenses/by/3.0/it/legalcode"@en .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://purl.org/dc/elements/1.1/author
+dct:author rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/elements/1.1/contributor
+dct:contributor rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/elements/1.1/date
+dct:date rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/description
+terms:description rdf:type owl:AnnotationProperty ;
+                  rdfs:range rdf:PlainLiteral ;
+                  rdfs:domain owl:Thing .
+
+
+###  http://purl.org/dc/terms/modified
+terms:modified rdf:type owl:AnnotationProperty ;
+               rdfs:domain _:genid13 ,
+                           _:genid147 ,
+                           _:genid16 ,
+                           _:genid20 ,
+                           _:genid238 .
+
+
+###  http://purl.org/dc/terms/title
+terms:title rdf:type owl:AnnotationProperty ;
+            rdfs:range rdf:PlainLiteral ;
+            rdfs:domain owl:Thing .
+
+
+###  http://www.w3.org/2000/01/rdf-schema#comment
+rdfs:comment rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2000/01/rdf-schema#isDefinedBy
+rdfs:isDefinedBy rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2000/01/rdf-schema#label
+rdfs:label rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2000/01/rdf-schema#subClassOf
+rdfs:subClassOf rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2002/07/owl#versionInfo
+owl:versionInfo rdf:type owl:AnnotationProperty ;
+                rdfs:range rdfs:Literal ;
+                rdfs:domain owl:Thing .
+
+
+#################################################################
+#    Datatypes
+#################################################################
+
+###  http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral
+rdf:PlainLiteral rdf:type rdfs:Datatype .
+
+
+###  http://www.w3.org/2000/01/rdf-schema#Literal
+rdfs:Literal rdf:type rdfs:Datatype .
+
+
+###  http://www.w3.org/2001/XMLSchema#date
+xsd:date rdf:type rdfs:Datatype .
+
+
+###  http://www.w3.org/2001/XMLSchema#dateTime
+xsd:dateTime rdf:type rdfs:Datatype .
+
+
+###  http://www.w3.org/2001/XMLSchema#decimal
+xsd:decimal rdf:type rdfs:Datatype .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://purl.org/dc/terms/accrualPeriodicity
+terms:accrualPeriodicity rdf:type owl:ObjectProperty ;
+                         rdfs:domain :Dataset ;
+                         rdfs:range terms:Frequency ;
+                         rdfs:comment "Property used to represent the frequancy of update of the dataset."@en ,
+                                      "Proprietà utilizzata per rappresentare la frequenza dcon cui il Dataset viene aggiornato. I valori da utilizzare per questa proprietà sono gli URI dei concetti del vocabolario MDR Frequency Named Authority List (http://publications.europa.eu/mdr/authority/frequency)."@it ;
+                         rdfs:isDefinedBy terms: ;
+                         rdfs:label "accrual periodicity"@en ,
+                                    "frequenza di aggiornamento"@it .
+
+
+###  http://purl.org/dc/terms/conformsTo
+terms:conformsTo rdf:type owl:ObjectProperty ;
+                 rdfs:domain :Dataset ;
+                 rdfs:range :Standard ;
+                 rdfs:comment "Property used to link a dataset to the standard to which the dataset conforms."@en ,
+                              "Questa proprietà si riferisce a una regola implementativa o altra specifica a cui il Dataset è conforme."@t ;
+                 rdfs:isDefinedBy terms: ;
+                 rdfs:label "conformità"@it ,
+                            "conforms to"@en .
+
+
+###  http://purl.org/dc/terms/creator
+terms:creator rdf:type owl:ObjectProperty ;
+              rdfs:domain :Dataset ;
+              rdfs:range :Agent ;
+              rdfs:comment "Property used to represent the creator of the dataset; that is, the authority responsible for creating/making the dataset. Avoid the use of names of single persons."@en ,
+                           "Proprietà utilizzata per rappresentare una o più entità (organizzazione/i) che hanno materialmente prodotto il Dataset. Evitare di indicare nomi di singole persone."@it ;
+              rdfs:isDefinedBy terms: ;
+              rdfs:label "autore"@it ,
+                         "creator"@en .
+
+
+###  http://purl.org/dc/terms/format
+terms:format rdf:type owl:ObjectProperty ;
+             rdfs:domain :Distribution ;
+             rdfs:range terms:MediaTypeOrExtent ;
+             rdfs:comment "Property used to represent the format of the distribution of the dataset. In order to represent the format it is required the use of the controlled vocabulary available at http://publications.europa.eu/mdr/authority/file-type/."@en ,
+                          "Proprietà utilizzata per rappresentare il formato del file di distribuzione del dataset. Per i formati si richiede l'uso del vocabolario controllato disponibile in http://publications.europa.eu/mdr/authority/file-type/."@it ;
+             rdfs:isDefinedBy terms: ;
+             rdfs:label "format"@en ,
+                        "formato"@it .
+
+
+###  http://purl.org/dc/terms/isVersionOf
+terms:isVersionOf rdf:type owl:ObjectProperty ;
+                  rdfs:domain :Dataset ;
+                  rdfs:range :Dataset ;
+                  rdfs:comment "Questa proprietà si riferisce a un Dataset correlato che è una versione, un’edizione o un adattamento del Dataset descritto."@it ,
+                               "This property refers to a related Dataset of which the described Dataset is a version, edition, or adaptation."@en ;
+                  rdfs:isDefinedBy terms: ;
+                  rdfs:label "is version of"@en ,
+                             "è versione di"@it .
+
+
+###  http://purl.org/dc/terms/language
+terms:language rdf:type owl:ObjectProperty ;
+               rdfs:domain [ rdf:type owl:Class ;
+                             owl:unionOf ( :Dataset
+                                           <https://dati.gov.it/onto/dcatapit#Catalog>
+                                         )
+                           ] ;
+               rdfs:range terms:LinguisticSystem ;
+               rdfs:comment """Questa proprietà si riferisce a una lingua utilizzata nei metadati testuali che descrivono i titoli, le descrizioni, … dei Dataset o del Catalogo. Questa proprietà può essere ripetuta se i metadati sono forniti in più lingue.
+Deve essere utilizzato il vocabolario http://publications.europa.eu/mdr/authority/language/"""@it ,
+                            "This property refers to a language of the Dataset or of the Catalogue. This property can be repeated if there are multiple languages in the Dataset or in the Catalogue."@en ;
+               rdfs:isDefinedBy terms: ;
+               rdfs:label "language"@en ,
+                          "lingua"@it .
+
+
+###  http://purl.org/dc/terms/license
+terms:license rdf:type owl:ObjectProperty ;
+              rdfs:domain :Distribution ;
+              rdfs:range :LicenseDocument ;
+              rdfs:comment terms: ,
+                           "Questa proprietà si riferisce a una licenza con la quale la Distribuzione è resa disponibile."@it ,
+                           "This property refers to the licence under which the distribution of the dataset is made available."@en ;
+              rdfs:label "license"@en ,
+                         "licenza"@it .
+
+
+###  http://purl.org/dc/terms/publisher
+terms:publisher rdf:type owl:ObjectProperty ;
+                rdfs:domain [ rdf:type owl:Class ;
+                              owl:unionOf ( :Dataset
+                                            <https://dati.gov.it/onto/dcatapit#Catalog>
+                                          )
+                            ] ;
+                rdfs:range :Agent ;
+                rdfs:comment "Questa proprietà è utilizzata per rappresentare un agente (tipicamente un'organizzazione) che è responsabile di rendere disponibile (pubblicare) il dataset o il catalogo. Evitare di specificare nomi di singole persone."@it ,
+                             "This property is used to represent an agent (typically an organization) which is responsible for making available (for publishing) the dataset or the catalogue. Avoid the use of names of single persons."@en ;
+                rdfs:isDefinedBy terms: ;
+                rdfs:label "editore"@it ,
+                           "publisher"@en .
+
+
+###  http://purl.org/dc/terms/rightsHolder
+terms:rightsHolder rdf:type owl:ObjectProperty ;
+                   rdfs:domain :Dataset ;
+                   rdfs:range :Agent ;
+                   rdfs:comment "Sulla base anche di quanto indicato all’art.2 lettera i) del D. Lgs. n. 36/2006, il titolare del dataset è la pubblica amministrazione o l’organismo di diritto pubblico che ha originariamente formato per uso proprio o commissionato ad altro soggetto pubblico o privato il documento che rappresenta il dato, o che ne ha la disponibilità. Il titolare è pertanto responsabile della gestione complessiva del dataset in virtù dei propri compiti istituzionali.Si fa presente che, nell’ambito della presente ontologia, l’accezione di documento suddetta può essere intesa riferita al dataset. E' bene evitare di specificare nomi di singole persone."@it ,
+                                "This property is used to represent an agent (typically an organization) which is responsible for the overall management of the dataset in the light of its institutional objectives. This property represents one of the extensions introduced by the Italian profile of the DCaT-AP 1.1. Do not include names of single persons."@en ;
+                   rdfs:isDefinedBy <http://purl.org/dc/terms//> ;
+                   rdfs:label "rights holder"@en ,
+                              "titolare"@it .
+
+
+###  http://purl.org/dc/terms/spatial
+terms:spatial rdf:type owl:ObjectProperty ;
+              rdfs:domain :Dataset ;
+              rdfs:range terms:Location ;
+              rdfs:comment "Questa proprietà è utilizzata per rappresentare una zona geografica (copertura spaziale) del dataset."@it ,
+                           "This property refers to a geographical area covered by the Dataset"@en ;
+              rdfs:isDefinedBy terms: ;
+              rdfs:label "copertura geografica"@it ,
+                         "spatial coverage"@en .
+
+
+###  http://purl.org/dc/terms/subject
+terms:subject rdf:type owl:ObjectProperty ;
+              rdfs:domain owl:Thing ;
+              rdfs:range skos:Concept ;
+              rdfs:comment """Questa proprietà è definita in http://purl.org/dc/terms/ ed è utilizzata in DCAT-AP_IT per rappresentare delle parole chiave controllate per i dataset, ovvero una classificazione più dettagliata del tema di riferimento dei dati. Questa proprietà rappresenta una delle estensioni introdotte dal profilo italiano DCAT-AP IT. Un Dataset può essere associato a più sottotemi.
+I valori da utilizzare per questa proprietà sono gli URI dei concetti del vocabolario Eurovoc (http://eurovoc.europa.eu/drupal/?q=it/navigation&cl=it). Il mapping tra i temi del dataset e Eurovoc è disponibile presso il portale europeo dei dati. Questa proprietà è fortemente raccomandata."""@it ,
+                           "This property is defined in http://purl.org/dc/terms/ and it is used in DCAT-AP_IT to represent controlled keywords (a fine-grained classification of the theme) for a dataset. This property represents one of the Italian externsions of DCAT-AP. A dataset can have more than one subject. The values are the URI of the controlled vocabulary Eurovoc (http://eurovoc.europa.eu/drupal/?q=it/navigation&cl=en). The mapping between the dataset themes and Eurovoc is available through the european data poral. This property is strongly recommended."@en ;
+              rdfs:isDefinedBy terms: ;
+              rdfs:label "sottotema"@it ,
+                         "subtheme"@en .
+
+
+###  http://purl.org/dc/terms/temporal
+terms:temporal rdf:type owl:ObjectProperty ;
+               rdfs:domain :Dataset ;
+               rdfs:range terms:PeriodOfTime ;
+               rdfs:comment "Questa proprietà è utilizzata per rappresentare un'estensione temporale che il dataset possiede."@it ,
+                            "This property refers to a temporal period that the Dataset covers."@en ;
+               rdfs:isDefinedBy terms: ;
+               rdfs:label "estensione temporale"@it ,
+                          "temporal coverage"@en .
+
+
+###  http://purl.org/dc/terms/type
+terms:type rdf:type owl:ObjectProperty ;
+           rdfs:domain owl:Thing ;
+           rdfs:range skos:Concept ;
+           terms:description "Questa proprietà è definita in http://purl.org/dc/terms/ ed è aggiunta a DCAT-AP_IT al fine di modellare i tipi delle \"cose\". In particolare, è utilizzata per rappresentare il tipo di licenza di una distribuzione di un dataset. Il vocabolario che deve essere utilizzato per specificare il tipo della licenza è il seguente: http://purl.org/adms/licencetype/1.0"@it ,
+                             "This property is defined in http://purl.org/dc/terms/ and it is added in DCAT-AP_IT to model the type of \"things\". In particular, it is used to specify the type of license of a distribution of a dataset. The vocabulary to be used to specify the type of license is the following: http://purl.org/adms/licencetype/1.0"@en ;
+           rdfs:isDefinedBy terms: ;
+           rdfs:label "tipo"@it ,
+                      "type"@en .
+
+
+###  http://sdati.gov.it/onto/dcatapit#startDate
+<http://sdati.gov.it/onto/dcatapit#startDate> rdf:type owl:ObjectProperty ;
+                                              rdfs:domain terms:PeriodOfTime ;
+                                              rdfs:range [ rdf:type owl:Class ;
+                                                           owl:unionOf ( xsd:date
+                                                                         xsd:dateTime
+                                                                       )
+                                                         ] .
+
+
+###  http://www.w3.org/2006/vcard/ns#hasEmail
+vcard:hasEmail rdf:type owl:ObjectProperty ;
+               rdfs:domain :Organization ;
+               rdfs:range vcard:Email ;
+               rdfs:comment "Proprietà utilizzata per specificare l'indirizzo email primario da utilizzare nelle comunicazioni con l'oggetto (nel contesto DCAT_AP IT l'oggetto è il dipartimento/ufficio identificato come punto di contatto stabile per un dataset).  Si raccomanda di utilizzare e-mail istituzionali riferibili all’ufficio/servizio/UO e non alla singola persona."@it ,
+                            "To specify the primary electronic mail address for communications with the contact point of the dataset."@en ;
+               rdfs:isDefinedBy <http://www.w3.org/2006/vcard/ns> ;
+               rdfs:label "ha email"@it ,
+                          "has email"@en .
+
+
+###  http://www.w3.org/2006/vcard/ns#hasTelephone
+vcard:hasTelephone rdf:type owl:ObjectProperty ;
+                   rdfs:domain :Organization ;
+                   rdfs:range vcard:TelephoneType ;
+                   rdfs:comment "Questa proprietà è definita in http://www.w3.org/2006/vcard/ns ed è stata aggiunta al fine di poter legare l'Organizzazione, che rappresenta il punto di contatto, con il numero di telefono della stessa."@it ,
+                                "This property is defined in http://www.w3.org/2006/vcard/ns and it is used to link the Organization representing the contact point to its phone number."@en ;
+                   rdfs:isDefinedBy <http://www.w3.org/2006/vcard/ns> ;
+                   rdfs:label "ha telefono"@it ,
+                              "has telephone"@en .
+
+
+###  http://www.w3.org/2006/vcard/ns#hasURL
+vcard:hasURL rdf:type owl:ObjectProperty ;
+             rdfs:domain :Organization ;
+             rdfs:range owl:Thing ;
+             terms:description "Property defined in http://www.w3.org/2006/vcard/ns and used to represent the primary URL of the contact point of the dataset. It is recommended to indicate the URL of the main contact page or the contact form. It is discouraged the use of the main URL of the institutional web site of the organization that provides the dataset. In case additional secondary URLs are to be added, it is recommended to extend DCAT-AP_IT with properties such as foaf:page."@en ,
+                               "Proprietà utilizzata per rappresentare l'URL primario del punto di contatto per il dataset. Si raccomanda di indicare l'URL di una pagina primaria di contatti o di un form per il contatto e non l'URL del sito web istituzionale dell'organizzazione che fornisce il dataset. Nel caso si vogliano specificare ulteriori URL secondari si può estendere il profilo DCAT-AP_IT con proprietà come per esempio foaf:page."@it ;
+             rdfs:isDefinedBy <http://www.w3.org/2006/vcard/ns> ;
+             rdfs:label "sito"@it ,
+                        "web site"@en .
+
+
+###  http://www.w3.org/ns/adms#identifier
+adms:identifier rdf:type owl:ObjectProperty ;
+                rdfs:domain :Dataset ;
+                rdfs:range adms:Identifier ;
+                rdfs:comment "Questa proprietà si riferisce a un eventuale identificativo secondario del Dataset (un identificativo che il dataset assume in altri contesti come per esempio il DOI, l'ISBN, ecc.)."@it ,
+                             "This property is used to represent a secondary identifier of the dataset such a DOI, ISBN, etc."@en ;
+                rdfs:isDefinedBy adms: ;
+                rdfs:label "altro identificativo"@it ,
+                           "other identifier"@en .
+
+
+###  http://www.w3.org/ns/dcat#accessURL
+dcat:accessURL rdf:type owl:ObjectProperty ;
+               rdfs:domain :Distribution ;
+               rdfs:range rdfs:Resource ;
+               rdfs:comment "Questa proprietà contiene un URL tramite cui si può accedere alla Distribuzione del Dataset.  La risorsa all'URL di accesso potrebbe contenere informazioni su come ottenere il dataset."@it ,
+                            "This property contains a URL that gives access to a Distribution of the Dataset. The resource at the access URL may contain information about how to get the Dataset."@en ;
+               rdfs:isDefinedBy dcat: ;
+               rdfs:label "URL di accesso"@it ,
+                          "access URL"@en .
+
+
+###  http://www.w3.org/ns/dcat#contactPoint
+dcat:contactPoint rdf:type owl:ObjectProperty ;
+                  rdfs:domain :Dataset ;
+                  rdfs:range vcard:Kind ;
+                  rdfs:comment "Questa proprietà è utilizzata per rappresentare informazioni di contatto di un dataset. Tali informazioni possono essere usate per abilitare l'invio di commenti o richieste a coloro che gestiscono il dataset."@it ,
+                               "This property is used to represent contact information that can be used for sending comments about the dataset."@en ;
+                  rdfs:isDefinedBy dcat: ;
+                  rdfs:label "contact point"@en ,
+                             "punto di contatto"@it .
+
+
+###  http://www.w3.org/ns/dcat#dataset
+dcat:dataset rdf:type owl:ObjectProperty ;
+             rdfs:domain <https://dati.gov.it/onto/dcatapit#Catalog> ;
+             rdfs:range :Dataset ;
+             rdfs:comment "Property used to link the catalogue with the dataset that is included in the Catalogue."@en ,
+                          "Proprietà utilizzata per collegare il catalogo ai dataset che sono inclusi nel catalogo stesso"@it ;
+             rdfs:isDefinedBy dcat: ;
+             rdfs:label "dataset"@en ,
+                        "dataset"@it ;
+             owl:versionInfo "1.2"@en .
+
+
+###  http://www.w3.org/ns/dcat#distribution
+dcat:distribution rdf:type owl:ObjectProperty ;
+                  rdfs:domain :Dataset ;
+                  rdfs:range :Distribution ;
+                  rdfs:comment "Property used to link the dataset with its available distributions"@en ,
+                               "Proprietà utilizzata per collegare il dataset con eventuali distribuzioni disponibili"@it ;
+                  rdfs:isDefinedBy dcat: ;
+                  rdfs:label "distribution"@en ,
+                             "distribuzione"@it .
+
+
+###  http://www.w3.org/ns/dcat#downloadURL
+dcat:downloadURL rdf:type owl:ObjectProperty ;
+                 rdfs:domain :Distribution ;
+                 rdfs:range rdfs:Resource ;
+                 rdfs:comment "Questa proprietà è utilizzata per rappresentare l'URL che fornisce un link diretto al file scaricabile in un determinato formato."@it ,
+                              "This property is used to represent a URL that is a direct link to a downloadable file in a given format."@en ;
+                 rdfs:isDefinedBy dcat: ;
+                 rdfs:label "URL di download"@it ,
+                            "download URL"@en ;
+                 owl:versionInfo "1.2"@en ,
+                                 "1.2"@it .
+
+
+###  http://www.w3.org/ns/dcat#landingPage
+dcat:landingPage rdf:type owl:ObjectProperty ;
+                 rdfs:domain :Dataset ;
+                 rdfs:range foaf:Document ;
+                 rdfs:comment "Questa proprietà si riferisce a una pagina web, riferibile al fornitore e non ad una terza parte, che fornisce l’accesso al Dataset, le sue Distribuzioni e/o informazioni aggiuntive."@it ,
+                              "This property refers to a web page that provides access to the Dataset, its Distributions and/or additional information."@en ;
+                 rdfs:isDefinedBy dcat: ;
+                 rdfs:label "landing page"@en ,
+                            "pagina di accesso"@it .
+
+
+###  http://www.w3.org/ns/dcat#theme
+dcat:theme rdf:type owl:ObjectProperty ;
+           rdfs:domain :Dataset ;
+           rdfs:range skos:Concept ;
+           rdfs:comment "Questa proprietà è utilizzata per rappresentare il tema che classifica il dataset. Un dataset può essere associato a temi multipli. I valori da utilizzare per questa proprietà sono gli URI dei concetti del vocabolario EU Data Theme (URI vocabolario: http://publications.europa.eu/resource/authority/data-theme) descritti alla pagina http://publications.europa.eu/mdr/authority/data-theme."@it ,
+                        "This property refers to a category of the Dataset. A Dataset may be associated with multiple themes."@en ;
+           rdfs:isDefinedBy dcat: ;
+           rdfs:label "tema"@it ,
+                      "theme"@en .
+
+
+###  http://www.w3.org/ns/dcat#themeTaxonomy
+dcat:themeTaxonomy rdf:type owl:ObjectProperty ;
+                   rdfs:domain <https://dati.gov.it/onto/dcatapit#Catalog> ;
+                   rdfs:range skos:ConceptScheme ;
+                   rdfs:comment "Questa proprietà è utilizzata per rappresentare un sistema di organizzazione della conoscenza utile per la classificazione dei dataset contenuti nel catalogo."@it ,
+                                "This property refers to a knowledge organization system used to categorized the Catalogue's Datasets."@en ;
+                   rdfs:isDefinedBy dcat: ;
+                   rdfs:label "tema del catalogo"@it ,
+                              "theme taxonomy"@en .
+
+
+###  http://www.w3.org/ns/locn#geographicName
+<http://www.w3.org/ns/locn#geographicName> rdf:type owl:ObjectProperty ;
+                                           rdfs:domain terms:Location ;
+                                           rdfs:range skos:Concept ;
+                                           rdfs:comment <http://www.w3.org/ns/locn> ,
+                                                        "A geographic name is a proper noun applied to a spatial object. Examples include: \"Roma\" (n Italian), \"Rome\" (in English), etc."@en ,
+                                                        "Un nome geografico è un nome proprio dato a un oggetto spaziale. Esempi includono: \"Roma\" (in italiano), \"Rome\" (in inglese), ecc. Utilizzare questa proprietà solo se non è disponibile un URI relativo alla localizzazione geografica da indicare utilizzando la proprietà geographicalIdentifier"@it ;
+                                           rdfs:label "geographical name"@en ,
+                                                      "nome geografico"@it .
+
+
+###  http://xmlns.com/foaf/0.1/homepage
+foaf:homepage rdf:type owl:ObjectProperty ;
+              rdfs:domain <https://dati.gov.it/onto/dcatapit#Catalog> ;
+              rdfs:range foaf:Document ;
+              rdfs:comment "Questa proprietà si riferisce alla pagina web. Essa è utilizzata per rappresentare la pagina principale per il Catalogo e per il punto di contatto del dataset. Nel caso del punto di contatto, la proprietà può essere sia l'home page dell'organizzazione/ufficio che agisce come punto di contatto, o una pagina web con le informazioni relative al punto di contatto."@it ,
+                           "This property refers to the home page. It is used to represent the main page for the Catalogue and the Contact Point of the dataset. In the case of the contact point, the home page can be either the home page of the organization/organization office acting as contact point or the home page  including contact information for the dataset."@en ;
+              rdfs:isDefinedBy foaf: ;
+              rdfs:label "home page"@en ,
+                         "home page"@it .
+
+
+###  https://www.w3.org/ns/locn#geometry
+<https://www.w3.org/ns/locn#geometry> rdf:type owl:ObjectProperty ;
+                                      rdfs:domain terms:Location ;
+                                      rdfs:range <http://www.w3.org/ns/locn#Geometry> ;
+                                      rdfs:comment "Property used to associated any resource with a geometry."@en ,
+                                                   "Proprietà utilizzata per associare qualsiasi risorsa alla corrispondente geometria."@it ;
+                                      rdfs:isDefinedBy <https://www.w3.org/ns/locn> ;
+                                      rdfs:label "geometria"@it ,
+                                                 "geometry"@en .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://dati.gov.it/onto/dcatapit#endDate
+:endDate rdf:type owl:DatatypeProperty ;
+         rdfs:subPropertyOf <http://schema.org/endDate> ;
+         rdfs:domain terms:PeriodOfTime ;
+         rdfs:range [ rdf:type rdfs:Datatype ;
+                      owl:unionOf ( xsd:date
+                                    xsd:dateTime
+                                  )
+                    ] ;
+         rdfs:comment "Property used to represent the end date in a period of time."@en ,
+                      "Proprietà utilizzata per rappresentare una data di fine di un periodo temporale."@it ;
+         rdfs:isDefinedBy <http://dati.gov.it/onto/dcatapit> ;
+         rdfs:label "data fine"@it ,
+                    "end date"@en .
+
+
+###  http://dati.gov.it/onto/dcatapit#referenceDoc
+:referenceDoc rdf:type owl:DatatypeProperty ;
+              rdfs:domain owl:Thing ;
+              rdfs:range xsd:anyURI ;
+              rdfs:comment "Questa proprietà si riferisce agli URL attraverso i quali viene fornito l’accesso a documenti di dettaglio relativi allo Standard indicato."@it ,
+                           "This property is used to represent reference documentation. This can be used for the Standard class (the property is a URL where the documentation can be found)."@en ;
+              rdfs:isDefinedBy <http://dati.gov.it/onto/dcatapit> ;
+              rdfs:label "documentazione di riferimento"@it ,
+                         "reference documentation"@en ;
+              owl:versionInfo "stabile"@it ,
+                              "stable"@en .
+
+
+###  http://purl.org/dc/terms/description
+terms:description rdf:type owl:DatatypeProperty .
+
+
+###  http://purl.org/dc/terms/identifier
+terms:identifier rdf:type owl:DatatypeProperty ;
+                 rdfs:domain owl:Thing ;
+                 rdfs:range rdfs:Literal ;
+                 rdfs:comment """Questa proprietà rappresenta l'identificativo associato a una cosa. Esso può essere utilizzato come parte dell'URI dell'oggetto ma può essere anche esplicitato.
+
+Un esempio dell'uso dell'identificatore in turtle è il seguente (dove datiAmministrazione potrebbe essere definita come http://dati.gov.it/resource/Amministrazione/)
+
+<pre>
+
+datiAmministrazione:agid
+  a               dcatapit:Agent , foaf:Agent ;
+  dct:identifier  \"agid\" ;
+  foaf:name       \"AgID\"@it .
+
+</pre>"""@it ,
+                              "The identifier might be used as part of the URI of the thing to which is associated, but still having it represented explicitly is useful."@en ;
+                 rdfs:isDefinedBy terms: ;
+                 rdfs:label "identificativo"@it ,
+                            "identifier"@en .
+
+
+###  http://purl.org/dc/terms/issued
+terms:issued rdf:type owl:DatatypeProperty ;
+             rdfs:domain [ rdf:type owl:Class ;
+                           owl:unionOf ( :Dataset
+                                         <https://dati.gov.it/onto/dcatapit#Catalog>
+                                       )
+                         ] ;
+             rdfs:range [ rdf:type rdfs:Datatype ;
+                          owl:unionOf ( xsd:date
+                                        xsd:dateTime
+                                      )
+                        ] ;
+             rdfs:comment "Questa proprietà è utilizzata per rappresntare la data ufficiale di rilascio (es. pubblicazione) del Catalogo o del Dataset."@it ,
+                          "This property contains the date of formal issuance (e.g., publication) of either the Catalogue or the Dataset,"@en ;
+             rdfs:isDefinedBy terms: ;
+             rdfs:label "data di rilascio"@it ,
+                        "release date"@en .
+
+
+###  http://purl.org/dc/terms/modified
+terms:modified rdf:type owl:DatatypeProperty ;
+               rdfs:range [ rdf:type rdfs:Datatype ;
+                            owl:unionOf ( xsd:date
+                                          xsd:dateTime
+                                        )
+                          ] .
+
+
+###  http://purl.org/dc/terms/title
+terms:title rdf:type owl:DatatypeProperty .
+
+
+###  http://schema.org/endDate
+<http://schema.org/endDate> rdf:type owl:DatatypeProperty ;
+                            rdfs:comment <http://schema.org/> ,
+                                         "Questa proprietà è definita in schema.org ed è stata aggiunta al fine di garantire il completo allineamento con la relativa proprietà end Date (data fine) definita nel profilo italiano DCAT, DCAT-AP IT."@it ,
+                                         "This property is defined in schema.org and it has been added in order to guarantee the full alignment with the relative endDate (data fine) defined in the DCAT Italian application profile, DCAT-AP IT."@en ;
+                            rdfs:label "end date" .
+
+
+###  http://schema.org/startDate
+<http://schema.org/startDate> rdf:type owl:DatatypeProperty ;
+                              rdfs:comment "Questa proprietà è definita in schema.org ed è stata aggiunta al fine di garantire l'allineamento con la relativa proprietà start date (data inizio) definita nel profilo italiano DCAT, DCAT-AP IT."@it ,
+                                           "This property is defined in schema.org and it has been added in order to guarantee the algnment with the relative property startDate (data inizio) of the DCAT Italian application profile, DCAT-AP IT."@en ;
+                              rdfs:isDefinedBy <http://schema.org/> ;
+                              rdfs:label "start date" .
+
+
+###  http://sdati.gov.it/onto/dcatapit#startDate
+<http://sdati.gov.it/onto/dcatapit#startDate> rdf:type owl:DatatypeProperty ;
+                                              rdfs:subPropertyOf <http://schema.org/startDate> .
+
+
+###  http://www.w3.org/2002/07/owl#versionInfo
+owl:versionInfo rdf:type owl:DatatypeProperty .
+
+
+###  http://www.w3.org/2004/02/skos/core#notation
+skos:notation rdf:type owl:DatatypeProperty ;
+              rdfs:domain adms:Identifier ;
+              rdfs:range rdfs:Literal ;
+              rdfs:comment <http://www.w3.org/2004/02/skos/core> ,
+                           "A notation is a string of characters such as \"T58.5\" or \"303.4833\" used to uniquely identify a concept."@en ,
+                           "Questa proprietà contiene una stringa che è un identificatore nel contesto dello schema di identificazione a cui fa riferimento il suo tipo."@it ;
+              rdfs:label "notation"@en ,
+                         "notazione"@it .
+
+
+###  http://www.w3.org/2004/02/skos/core#prefLabel
+skos:prefLabel rdf:type owl:DatatypeProperty ;
+               rdfs:domain owl:Thing ;
+               rdfs:range rdf:PlainLiteral ;
+               rdfs:comment "Proprietà utilizzata per identificare una stringa lessicale principale di una risorsa, espressa in uno più linguaggi naturali."@it ,
+                            "The preferred lexical label for a resource, in a given language."@en ;
+               rdfs:isDefinedBy <http://www.w3.org/2004/02/skos/core> ;
+               rdfs:label "etichetta principale"@it ,
+                          "preferred label"@en .
+
+
+###  http://www.w3.org/2006/vcard/ns#fn
+vcard:fn rdf:type owl:DatatypeProperty ;
+         rdfs:domain :Organization ;
+         rdfs:range xsd:string ;
+         rdfs:comment <http://www.w3.org/2006/vcard/ns> ,
+                      "Property defined in http://www.w3.org/2006/vcard/ns. It represents the full name of an object (as a single string). In DCAT-AP_IT it is used to represent the name of the department/office that is the stable contact point for the dataset. It is recommend not using the name of the organization as a whole. The name of the organization can be used only when the name of the department/office does not exist or cannot be clearly identified."@en ,
+                      "Proprietà definita in http://www.w3.org/2006/vcard/ns. Rappresenta il nome completo di un oggetto (inteso come singola stringa). In DCAT-AP_IT la proprietà è utilizzata per specificare il nome del dipartimento/ufficio identificato come il punto di contatto stabile per il Dataset. Si raccomanda di non utilizzare il nome dell'organizzazione nel suo complesso. Il nome dell'organizzazione può essere usato solo nell'eventualità il dipartimento/ufficio non esista o non si possa chiaramente identificare."@it ;
+         rdfs:label "department name"@en ,
+                    "nome dell'ufficio/organizzazione"@it .
+
+
+###  http://www.w3.org/2006/vcard/ns#value
+vcard:value rdf:type owl:DatatypeProperty ;
+            rdfs:domain owl:Thing ;
+            rdfs:range rdfs:Literal ;
+            rdfs:comment "Questa proprietà è definita in http://www.w3.org/2006/vcard/ns ed è stata aggiunta al fine di rappresentare il valore del numero di telefono del punto di contatto."@it ,
+                         "This property is defined in http://www.w3.org/2006/vcard/ns and it has been added in DCAt-AP_IT in order to represent the phone number of the contact point."@en ;
+            rdfs:isDefinedBy <http://www.w3.org/2006/vcard/ns> ;
+            rdfs:label "valore"@it ,
+                       "value"@en .
+
+
+###  http://www.w3.org/ns/dcat#byteSize
+dcat:byteSize rdf:type owl:DatatypeProperty ;
+              rdfs:domain :Distribution ;
+              rdfs:range xsd:decimal ;
+              rdfs:comment "Questa proprietà è utilizzata per rappresentare la dimensione della distribuzione del dataset espressa in byte."@it ,
+                           "This property contains the size of the Distribution of the dataset expressed in bytes"@en ;
+              rdfs:isDefinedBy <http://www.w3.org/ns/dcat> ;
+              rdfs:label "byte size"@en ,
+                         "dimensione in byte"@it .
+
+
+###  http://www.w3.org/ns/dcat#keyword
+dcat:keyword rdf:type owl:DatatypeProperty ;
+             rdfs:domain :Dataset ;
+             rdfs:range rdfs:Literal ;
+             rdfs:comment "Questa proprietà è usata per indicare parole chiave o tag per descrivere il dataset. Questa proprietà è opzionale e può essere utilizzata per specificare ulteriori parole chiave a testo libero oltre a quelle già individuate mediante la proprietà sotto tema."@it ,
+                          "This property contains a keyword or a tag used to describe the Dataset. The property is optional; it can be use in order to define additional keywords as free text other than those already provided using the subTheme property."@en ;
+             rdfs:isDefinedBy dcat: ;
+             rdfs:label "keyword"@en ,
+                        "parola chiave"@it .
+
+
+###  http://xmlns.com/foaf/0.1/name
+foaf:name rdf:type owl:DatatypeProperty ;
+          rdfs:domain owl:Thing ;
+          rdfs:range rdfs:Literal ;
+          rdfs:comment "Property used to represent a name of a Thing."@en ,
+                       "Proprietà utilizzata per rappresentare il nome di una cosa."@it ;
+          rdfs:isDefinedBy foaf: ;
+          rdfs:label "name"@en ,
+                     "nome"@it .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://dati.gov.it/onto/dcatapit#Agent
+:Agent rdf:type owl:Class ;
+       rdfs:subClassOf foaf:Agent ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty terms:identifier ;
+                         owl:cardinality "1"^^xsd:nonNegativeInteger
+                       ] ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty foaf:name ;
+                         owl:cardinality "1"^^xsd:nonNegativeInteger
+                       ] ;
+       rdfs:comment """An Agent who plays a specific role on the data. In the Italian profile DCAT-AP IT, an agent is an organization (either public or private). The class is defined in the context (namespace) of the DCAT-AP IT as subClassOf foaf:Agent. This allows maintaining the alignment with the external ontology required by DCAT-AP but guaranteeing, at the same time, the possibility to add new properties and new restrictions on those properties according to the Italian application profile DCAT-AP IT.
+The class is mandatory,
+
+An example in turle can be the following (where datiAmministrazione can be <http://dati.gov.it/resource/Amministrazione>):
+
+<pre>
+datiAmministrazione:agid
+  a                 dcatapit:Agent , foaf:Agent ;
+  foaf:name        \"Agenzia per l'Italia Digitale\"@it .
+</pre>"""@en ,
+                    """Soggetto che esercita uno specifico ruolo sui dati. La classe è associata con i Cataloghi e/o con i Dataset. Nel profilo italiano l’Agente è  un’organizzazione (o publica o privata). La classe è definita nell'ambito del profilo DCAT-AP IT come sottoclasse di foaf:Agent per mantenere l'allineamento con l'ontologia esterna assicurando la possibilità di aggiungere proprietà o restringere le cardinalità di tali proprietà in accordo con i requisiti del profilo italiano DCAT-AP IT.
+
+E' obbligatorio specificare la classe.
+
+Un esempio in turtle per la specifica di un agente è il seguente (dove datiAmministrazione potrebbe essere definito come <http://dati.gov.it/resource/Amministrazione/>):
+
+<pre>
+datiAmministrazione:agid
+  a                 dcatapit:Agent , foaf:Agent ;
+  foaf:name        \"Agenzia per l'Italia Digitale\"@it .
+</pre>"""@it ;
+       rdfs:isDefinedBy <http://dati.gov.it/onto/dcatapit> ;
+       rdfs:label "Agent"@en ,
+                  "Agente"@it .
+
+
+###  http://dati.gov.it/onto/dcatapit#Dataset
+:Dataset rdf:type owl:Class ;
+         rdfs:subClassOf <https://www.w3.org/ns/dcat#Dataset> ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty dcat:theme ;
+                           owl:someValuesFrom skos:Concept
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty terms:conformsTo ;
+                           owl:allValuesFrom :Standard
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty terms:creator ;
+                           owl:allValuesFrom :Agent
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty terms:isVersionOf ;
+                           owl:allValuesFrom :Dataset
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty terms:language ;
+                           owl:allValuesFrom terms:LinguisticSystem
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty terms:spatial ;
+                           owl:allValuesFrom terms:Location
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty terms:subject ;
+                           owl:allValuesFrom skos:Concept
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty terms:temporal ;
+                           owl:allValuesFrom terms:PeriodOfTime
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty adms:identifier ;
+                           owl:allValuesFrom adms:Identifier
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty dcat:contactPoint ;
+                           owl:allValuesFrom vcard:Kind
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty dcat:distribution ;
+                           owl:allValuesFrom :Distribution
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty terms:accrualPeriodicity ;
+                           owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                           owl:onClass terms:Frequency
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty terms:rightsHolder ;
+                           owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                           owl:onClass :Agent
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty terms:publisher ;
+                           owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                           owl:onClass :Agent
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty terms:description ;
+                           owl:someValuesFrom rdfs:Literal
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty terms:title ;
+                           owl:someValuesFrom rdfs:Literal
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty dcat:keyword ;
+                           owl:allValuesFrom rdfs:Literal
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty terms:identifier ;
+                           owl:cardinality "1"^^xsd:nonNegativeInteger
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty terms:modified ;
+                           owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                           owl:onDataRange [ rdf:type rdfs:Datatype ;
+                                             owl:unionOf ( xsd:date
+                                                           xsd:dateTime
+                                                         )
+                                           ]
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty terms:issued ;
+                           owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                           owl:onDataRange [ rdf:type rdfs:Datatype ;
+                                             owl:unionOf ( xsd:date
+                                                           xsd:dateTime
+                                                         )
+                                           ]
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty owl:versionInfo ;
+                           owl:maxCardinality "1"^^xsd:nonNegativeInteger
+                         ] ;
+         rdfs:comment """A conceptual entity that represents the published information. The class is defined in the context of the DCAT-AP IT as sub class of dcat:Dataset. This allows maintaining the fully alignment with that external ontology but guaranteeing, at the same time, the possibility to add properties and restrictions on the properties according to the DCAT-AP IT requirements.
+
+The class is mandatory.
+
+An example in turtle is the following (where datiDataset could be http://dati.gov.it/resource/Dataset/>):
+
+<pre>
+datiDataset:LinkedOpenIPA
+   a   dcatapit:Dataset , dcat:Dataset ;
+   dct:identifier  \"LOD IPA\" ;
+   dct:title  \"Linked Open IPA\"@it ;
+   dct:description   \"Il dataset LOD dell'Indice della Pubblica Amministrazione\"@it ;
+   dcat:theme  		<http://publications.europa.eu/resource/authority/data-theme/GOVE> ;
+   dcatapit:subTheme 	<http://dati.gov.it/resource/subTheme/PUBSEC> ;
+   dct:issued   \"2012-01-15\"^^xsd:date ;
+   dct:modified  \"2015-05-25\"^^xsd:date ;
+   dcat:keyword  \"Pubblica Amministrazione\" ;
+   dcat:keyword  \"PEC\" ;
+   dcat:keyword  \"Unità Organizzativa\" ;
+   dcat:keyword   \"Area Organizzativa Omogenea\" ;
+   owl:versionOf  \"1.5\" ;
+   ct:rightsHolder 	<http://dati.gov.it/resource/Amministrazione/agid> ;
+   dct:publisher 		<http://dati.gov.it/resource/Amministrazione/agid> ;
+   dct:creator 		<http://dati.gov.it/resource/Amministrazione/agid> ;
+   dcat:distribution 		<http://dati.gov.it/resource/Distribuzione/LODIPA-Turtle> ;
+   dcat:distribution 		<http://dati.gov.it/resource/Distribuzione/LODIPA-RDFXML> ;
+   dct:accrualPeriodicity  <http://publications.europa.eu/resource/authority/frequency/QUARTERLY> ;
+   dct:conformsTo 			<http://dati.gov.it/resource/Standard/standard-org> ;
+   dct:isVersionOf			<http://dati.gov.it/resource/Dataset/LinkedOpenIPA14> ;
+   dct:temporal			<http://dati.gov.it/resource/PeriodoTemporale/periodTimeLinkedOpenIPA> ;
+   dcat:contactPoint 		<http://dati.gov.it/resource/PuntoContatto/contactPointLODIPA> ."""@en ,
+                      """Un’entità concettuale che rappresenta le informazioni pubblicate. In particolare, la classe rappresenta il concetto di dataset ovvero di una collezione di dati omogenea, generalmente riguardanti una stessa organizzazione.
+
+La classe è definita nell'ambito del profilo DCAT-AP IT come sottoclasse di dcat:Dataset per mantenere l'allineamento con l'ontologia esterna, assicurando al tempo stesso, la possibilità di aggiungere proprietà o restringere le cardinalità di tali proprietà in accordo con i requisiti del profilo italiano DCAT-AP IT.
+
+E' obbligatorio specificare la classe.
+
+Un esempio in turtle è il seguente (dove datiDataset potrebbe essere <http://dati.gov.it/resource/Dataset/>):
+
+<pre>
+datiDataset:LinkedOpenIPA
+   a   dcatapit:Dataset , dcat:Dataset ;
+   dct:identifier  \"LOD IPA\" ;
+   dct:title  \"Linked Open IPA\"@it ;
+   dct:description   \"Il dataset LOD dell'Indice della Pubblica Amministrazione\"@it ;
+   dcat:theme  		<http://publications.europa.eu/resource/authority/data-theme/GOVE> ;
+   dcatapit:subTheme 	<http://dati.gov.it/resource/subTheme/PUBSEC> ;
+   dct:issued   \"2012-01-15\"^^xsd:date ;
+   dct:modified  \"2015-05-25\"^^xsd:date ;
+   dcat:keyword  \"Pubblica Amministrazione\" ;
+   dcat:keyword  \"PEC\" ;
+   dcat:keyword  \"Unità Organizzativa\" ;
+   dcat:keyword   \"Area Organizzativa Omogenea\" ;
+   owl:versionOf  \"1.5\" ;
+   ct:rightsHolder 	<http://dati.gov.it/resource/Amministrazione/agid> ;
+   dct:publisher 		<http://dati.gov.it/resource/Amministrazione/agid> ;
+   dct:creator 		<http://dati.gov.it/resource/Amministrazione/agid> ;
+   dcat:distribution 		<http://dati.gov.it/resource/Distribuzione/LODIPA-Turtle> ;
+   dcat:distribution 		<http://dati.gov.it/resource/Distribuzione/LODIPA-RDFXML> ;
+   dct:accrualPeriodicity  <http://publications.europa.eu/resource/authority/frequency/QUARTERLY> ;
+   dct:conformsTo 			<http://dati.gov.it/resource/Standard/standard-org> ;
+   dct:isVersionOf			<http://dati.gov.it/resource/Dataset/LinkedOpenIPA14> ;
+   dct:temporal			<http://dati.gov.it/resource/PeriodoTemporale/periodTimeLinkedOpenIPA> ;
+   dcat:contactPoint 		<http://dati.gov.it/resource/PuntoContatto/contactPointLODIPA> ."""@it ;
+         rdfs:isDefinedBy <http://dati.gov.it/onto/dcatapit> ;
+         rdfs:label "Dataset"@en ,
+                    "Dataset"@it .
+
+
+###  http://dati.gov.it/onto/dcatapit#Distribution
+:Distribution rdf:type owl:Class ;
+              rdfs:subClassOf <https://www.w3.org/ns/dcat#Distribution> ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty dcat:downloadURL ;
+                                owl:allValuesFrom rdfs:Resource
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty terms:format ;
+                                owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                owl:onClass terms:MediaTypeOrExtent
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty terms:license ;
+                                owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                owl:onClass :LicenseDocument
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty dcat:accessURL ;
+                                owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                owl:onClass rdfs:Resource
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty terms:description ;
+                                owl:allValuesFrom rdfs:Literal
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty terms:title ;
+                                owl:allValuesFrom rdfs:Literal
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty terms:modified ;
+                                owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                owl:onDataRange [ rdf:type rdfs:Datatype ;
+                                                  owl:unionOf ( xsd:date
+                                                                xsd:dateTime
+                                                              )
+                                                ]
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty dcat:byteSize ;
+                                owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                owl:onDataRange xsd:decimal
+                              ] ;
+              rdfs:comment """Questa classe rappresenta la rappresentazione fisica del Dataset in un particolare formato. Obbligatoria nel caso in cui sia necessario descrivere la distribuzione di dati aperti. E' ozionale nel caso in cui sia necessario descrivere dati inclusi in banche dati delle pubbliche amministrazioni (e.g., per descrivere i database gestionali impiegati dalla pubblica amministrazione).
+
+La classe è definita nel contesto del profilo DCAT-AP IT come sottoclasse della classe dcat:Distribution al fine di mantenere il pieno allineamento con quella ontologia esterna ma garantendo, al tempo stesso, la possibilità di aggiungere proprietà e restrizioni su proprietà in linea con i requisiti di DCAT-AP IT.
+
+Un esempio in turtle è il seguente (dove datiDistribuzione potrebbe essere <http://dati.gov.it/resource/Distribuzione/>):
+
+<pre>
+datiDistribuzione:LODIPA-Turtle
+   a   dcatapit:Distribution , dcat:Distribution ;
+   dct:title  \"Distribuzione Turtle di LOD IPA\" ;
+   dct:format  <http://publications.europa.eu/resource/authority/file-type/RDF_TURTLE> ; 
+   dct:license  <http://creativecommons.org/licenses/by/4.0/> ;
+   dcat:downloadURL  <http://spcdata.digitpa.gov.it/data/ipa.ttl> ;
+   dcat:accessURL  <http://http://spcdata.digitpa.gov.it:8899/sparql> ."""@it ,
+                           """This class represents a physical embodiment of the Dataset in a particular format. This class is mandatory if you need to describe the distribution of a open dataset. It can be optional in case you need to describe other types of data (e.g., data included in databases of public administration used for internal management purposes).
+
+The class is defined in the context of DCAT-AP IT as sub class of dcat:Distribution. This allows maintaining the full alignment to that external ontology; however, this allows guaranteeing, at the same time, the possibility to add additional properties and customized restrictions on the properties according to DCAT-AP requirements.
+
+An example in turtle is the following (where datiDistribuzione can be <http://dati.gov.it/resource/Distribuzione/>):
+
+<pre>
+datiDistribuzione:LODIPA-Turtle
+   a   dcatapit:Distribution , dcat:Distribution ;
+   dct:title  \"Distribuzione Turtle di LOD IPA\" ;
+   dct:format  \"text/turtle\" ;
+   dct:license  <http://creativecommons.org/licenses/by/4.0/> ;
+   dcat:downloadURL  <http://spcdata.digitpa.gov.it/data/ipa.ttl> ;
+   dcat:accessURL  <http://http://spcdata.digitpa.gov.it:8899/sparql> ."""@en ;
+              rdfs:isDefinedBy <http://dati.gov.it/onto/dcatapit> ;
+              rdfs:label "Distribution"@en ,
+                         "Distribuzione"@it .
+
+
+###  http://dati.gov.it/onto/dcatapit#LicenseDocument
+:LicenseDocument rdf:type owl:Class ;
+                 rdfs:subClassOf terms:LicenseDocument ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty terms:type ;
+                                   owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                   owl:onClass skos:Concept
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty foaf:name ;
+                                   owl:allValuesFrom rdfs:Literal
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty owl:versionInfo ;
+                                   owl:maxCardinality "1"^^xsd:nonNegativeInteger
+                                 ] ;
+                 rdfs:comment """A legal document providing official permissions to do something with a resource. In this context it is used to define the rules for the reuse of the data.
+
+The class is defined in the context of DCAT-AP IT as sub class of dct:LicenseDocument. This allows maintaining the full alignment to that external ontology; however, this allows guaranteeing, at the same time, the possibility to add additional properties and customized restrictions on the properties according to DCAT-AP requirements."""@en ,
+                              """Un documento legale che fornisce un’autorizzazione ufficiale a fare qualcosa con una risorsa. Nel contesto del profilo nazionale dei metadati è utilizzata per definire le regole per il riutilizzo dei dati.
+
+La classe è definita nel contesto del profilo DCAT-AP IT come sottoclasse della classe dct:LicenseDocument al fine di mantenere il pieno allineamento con quella ontologia esterna ma garantendo, al tempo stesso, la possibilità di aggiungere proprietà e restrizioni su proprietà in linea con i requisiti di DCAT-AP IT."""@it ;
+                 rdfs:isDefinedBy <http://dati.gov.it/onto/dcatapit> ;
+                 rdfs:label "License Document"@en ,
+                            "Licenza"@it .
+
+
+###  http://dati.gov.it/onto/dcatapit#Organization
+:Organization rdf:type owl:Class ;
+              rdfs:subClassOf vcard:Organization ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty vcard:hasEmail ;
+                                owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                owl:onClass vcard:Email
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty vcard:hasTelephone ;
+                                owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                owl:onClass vcard:TelephoneType
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty vcard:hasURL ;
+                                owl:maxCardinality "1"^^xsd:nonNegativeInteger
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty vcard:fn ;
+                                owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                owl:onDataRange xsd:string
+                              ] ;
+              rdfs:comment "An object representing an organization. An organization is a single entity, and might represent a business or government, a department or division within a business or government, a club, an association, or the like."@en ,
+                           "Una singola entità che potrebbe rappresentare un’impresa o un organismo governativo, un dipartimento, una divisione, una unità all'interno di un'azienda o di governo, un gruppo, un’associazione, o simili."@it ;
+              rdfs:isDefinedBy <http://dati.gov.it/onto/dcatapit> ;
+              rdfs:label "Organization"@en ,
+                         "Organizzazione"@it .
+
+
+###  http://dati.gov.it/onto/dcatapit#Standard
+:Standard rdf:type owl:Class ;
+          rdfs:subClassOf terms:Standard ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :referenceDoc ;
+                            owl:allValuesFrom xsd:anyURI
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty terms:title ;
+                            owl:allValuesFrom rdfs:Literal
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty terms:identifier ;
+                            owl:cardinality "1"^^xsd:nonNegativeInteger
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty terms:description ;
+                            owl:maxCardinality "1"^^xsd:nonNegativeInteger
+                          ] ;
+          rdfs:comment """A standard or other specification to Standard which a Dataset
+conforms. It can be used to represent also a technical rule, an ontology, a specific data schema.
+
+The class is defined in the context of DCAT-AP IT as sub class of dct:Standard. This allows maintaining the full alignment to that external ontology; however, this allows guaranteeing, at the same time, the possibility to add additional properties and customized restrictions on the properties according to DCAT-AP requirements.
+
+An example in turtle can be the following (where datiStandard can be <http://dati.gov.it/resource/Standard/>):
+
+<pre>
+<http://dati.gov.it/resource/Standard/standard-org>
+   a  dcatapit:Standard , dct:Standard ;
+   dct:title  \"W3C Org organization ontology\" ;
+   dct:description  \"The ontology of the organizations\" ;
+   dcatapit:referenceDocumentation \"https://www.w3.org/ns/org.rdf\"^^xsd:anyURI ;
+   dcatapit:referenceDocumentation \"https://www.w3.org/TR/vocab-org/\"^^xsd:anyURI .
+</pre>"""@en ,
+                       """Uno standard o altre specifiche a cui un dataset è conforme. La classe può essere utilizzata per rappresentare  regole tecniche, modelli di dati, ontologie, norme su cui sono basati i Dataset.
+
+La classe è definita nel contesto del profilo DCAT-AP IT come sottoclasse della classe dct:Standard al fine di mantenere il pieno allineamento con quella ontologia esterna ma garantendo, al tempo stesso, la possibilità di aggiungere proprietà e restrizioni su proprietà in linea con i requisiti di DCAT-AP IT.
+
+Un esempio in turtle è il seguente (dove datiStandard potrebbe essere <http://dati.gov.it/resource/Standard>):
+
+<pre>
+<http://dati.gov.it/resource/Standard/standard-org>
+   a   dcatapit:Standard , dct:Standard ;
+   dct:title \"W3C Org organization ontology\" ;
+   dct:description  \"The ontology of the organizations\" ;
+   dcatapit:referenceDocumentation \"https://www.w3.org/ns/org.rdf\"^^xsd:anyURI ;
+   dcatapit:referenceDocumentation \"https://www.w3.org/TR/vocab-org/\"^^xsd:anyURI .
+</pre>"""@it ;
+          rdfs:isDefinedBy <http://dati.gov.it/onto/dcatapit> ;
+          rdfs:label "Standard"@en ,
+                     "Standard"@it .
+
+
+###  http://purl.org/dc/terms/Frequency
+terms:Frequency rdf:type owl:Class ;
+                rdfs:comment "A rate at which something recurs. It is used to represent the frequency of update of datasets. It assumes a specific set of values as defined by the controlled vocabulary available at http://publications.europa.eu/mdr/authority/frequency/index.html. The class is defined by the Dublin Core standard"@en ,
+                             "Numero delle volte che qualcosa si ripete. E' utlizzata per rappresentare la frequenza di aggiornamento dei dataset. Essa assume un insieme finito di valori come definiti dal vocabolario controllato disponibile in http://publications.europa.eu/mdr/authority/frequency/index.html. La classe è definita dallo standard dublin core"@it ;
+                rdfs:isDefinedBy terms: ;
+                rdfs:label "Frequency"@en ,
+                           "Frequenza"@it .
+
+
+###  http://purl.org/dc/terms/LicenseDocument
+terms:LicenseDocument rdf:type owl:Class ;
+                      rdfs:comment "Questa classe è definita in Dublin Core ed è stata aggiunta al fine di garantire l'allineamento completo con la classe relativa (Licenza) nel profilo Italiano DCAt, DCAT-AP IT."@it ,
+                                   "This class is defined in Dublin Core and it has been added in order to guarantee the alignment with the Lincense Document (Licenza) class of the Italian DCAT application profile, DCAT-AP IT."@en ;
+                      rdfs:isDefinedBy terms: ;
+                      rdfs:label "License Document" .
+
+
+###  http://purl.org/dc/terms/LinguisticSystem
+terms:LinguisticSystem rdf:type owl:Class ;
+                       rdfs:comment "A system of signs, symbols, sounds, gestures, or rules used in communication, e.g. a language. It is used to represent the linguistic system for the dataset and for the catalogue."@en ,
+                                    "Un sistema di segni, simboli, suoni, gesti o regole usate nella comunicazione (es. una lingua). Utilizzata nel contesto DCAT-AP IT per rappresentare il sistema linguistico di riferimento per i dataset e i cataloghi"@it ;
+                       rdfs:isDefinedBy terms: ;
+                       rdfs:label "Linguistic System"@en ,
+                                  "Sistema linguistico"@it .
+
+
+###  http://purl.org/dc/terms/Location
+terms:Location rdf:type owl:Class ;
+               rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                 owl:onProperty <http://www.w3.org/ns/locn#geographicName> ;
+                                 owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                 owl:onClass skos:Concept
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty <https://www.w3.org/ns/locn#geometry> ;
+                                 owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                 owl:onClass <http://www.w3.org/ns/locn#Geometry>
+                               ] ;
+               rdfs:comment "A spatial region or named place. It can be represented using a controlled vocabulary or with geographic coordinates. In the latter case, the use of the Core Location Vocabulary is recommended, following the approach described in the GeoDCAT-AP specification. It is used to represent the location of the dataset."@en ,
+                            "Una regione spaziale o un luogo identificato da un nome. Può essere rappresentato utilizzando un vocabolario controllato o attraverso delle coordinate geografiche. Nel primo caso si raccomanda l'uso del vocabolario Core Location, seguendo l'approccio descritto nelle specifiche GeoDCAT-AP. Utilizzata per rappresentare la regione o il luogo di riferimento del dataset"@it ;
+               rdfs:isDefinedBy terms: ;
+               rdfs:label "Localizzazione geografica"@it ,
+                          "Location"@en .
+
+
+###  http://purl.org/dc/terms/MediaTypeOrExtent
+terms:MediaTypeOrExtent rdf:type owl:Class ;
+                        rdfs:comment "A media Type or Extent."@en ,
+                                     "Un tipo di supporto o estensione, es. il formato di un file. La classe è utilizzata per rappresentare il formato della distribuzione dei dataset. E' raccomandato l'uso del seguente vocabolario: http://www.iana.org/assignments/media-types/media-types.xhtml."@it ;
+                        rdfs:isDefinedBy terms: ;
+                        rdfs:label "Formato"@it ,
+                                   "Media Type or Extent"@en .
+
+
+###  http://purl.org/dc/terms/PeriodOfTime
+terms:PeriodOfTime rdf:type owl:Class ;
+                   rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                     owl:onProperty <http://sdati.gov.it/onto/dcatapit#startDate> ;
+                                     owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                     owl:onDataRange [ rdf:type rdfs:Datatype ;
+                                                       owl:unionOf ( xsd:date
+                                                                     xsd:dateTime
+                                                                   )
+                                                     ]
+                                   ] ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty :endDate ;
+                                     owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                     owl:onDataRange [ rdf:type rdfs:Datatype ;
+                                                       owl:unionOf ( xsd:date
+                                                                     xsd:dateTime
+                                                                   )
+                                                     ]
+                                   ] ;
+                   rdfs:comment "An interval of time that is named or defined by its start and end dates."@en ,
+                                "Un intervallo temporale identificato o definito da proprie date di inizio e fine."@it ;
+                   rdfs:isDefinedBy terms: ;
+                   rdfs:label "Period of Time"@en ,
+                              "Periodo Temporale"@it .
+
+
+###  http://purl.org/dc/terms/Standard
+terms:Standard rdf:type owl:Class ;
+               rdfs:comment terms: ,
+                            "Questa classe è definita in Dublin Core ed è stata aggiunta al fine di garantire il suo allineamento con la classe Standard definita nel contesto del profilo italiano DCAT-AP IT."@it ,
+                            "This class is defined in Dublin Core and it has been added in order to align it with the Standard class defined in DCAT.AP IT."@en ;
+               rdfs:label "Standard" .
+
+
+###  http://www.w3.org/2000/01/rdf-schema#Resource
+rdfs:Resource rdf:type owl:Class ;
+              rdfs:comment "Anything described by RDF. In this context, it is used to indicate an access and download URL for the distribution of the dataset."@en ,
+                           "Qualsiasi “oggetto” descritto in RDF. Nel contesto DCAT-AP IT è utilizzata come codominio di alcune proprietà che rappresentano l'URL di accesso e di download della distribuzione del dataset."@it ;
+              rdfs:isDefinedBy <ttp://www.w3.org/2000/01/rdf-schema#> ;
+              rdfs:label "Resource"@en ,
+                         "Risorsa"@it .
+
+
+###  http://www.w3.org/2002/07/owl#Thing
+owl:Thing rdf:type owl:Class .
+
+
+###  http://www.w3.org/2004/02/skos/core#Concept
+skos:Concept rdf:type owl:Class ;
+             rdfs:subClassOf [ rdf:type owl:Restriction ;
+                               owl:onProperty skos:prefLabel ;
+                               owl:someValuesFrom rdf:PlainLiteral
+                             ] ;
+             rdfs:comment "A concept such as an idea or notion; a unit of thought.The class represents both 1) the main subject (category) of the dataset being described. It is required the use of the controlled vocabulary defined in http://publications.europa.eu/resource/authority/data-theme; and 2) the subTheme that will defined in the upcoming weeks by AgID and that will be based on the COFOG classification."@en ,
+                          "Un concetto come un'idea, una nozione un'unità di pensiero. Nel contesto del profilo italiano la classe è utilizzata per rappresentare sia il tema principale (categoria) del dataset (è richiesto l'uso del vocabolario controllato definito nell'ambito del profilo DCAT disponibile in http://publications.europa.eu/resource/authority/data-theme), sia il sotto tema che sarà definito da AgID nelle prossime settimane e che sarà basato sulla classificazione ufficiale COFOG."@it ;
+             rdfs:isDefinedBy skos: ;
+             rdfs:label "Categoria"@it ,
+                        "Category"@en .
+
+
+###  http://www.w3.org/2004/02/skos/core#ConceptScheme
+skos:ConceptScheme rdf:type owl:Class ;
+                   rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                     owl:onProperty terms:title ;
+                                     owl:someValuesFrom rdfs:Literal
+                                   ] ;
+                   rdfs:comment "A concept collection (e.g. controlled vocabulary) in which the Category is defined. The class represents the main category of the catalogue.  It is required to specify the URI of the vocabulary itself (not the URI of the concepts included in the vocabulary) which is the following:  http://publications.europa.eu/resource/authority/data-theme"@en ,
+                                "Una collezione di concetti (e.g., un vocabolario controllato) in cui la Categoria è definita. La classe rappresenta il tema principale del catalogo dei dati. E' richiesto l'uso dell'URI del vocabolario controllato (non degli URI dei concetti inclusi nel vocabolario). L'URI è il seguente: http://publications.europa.eu/resource/authority/data-theme"@it ;
+                   rdfs:isDefinedBy skos: ;
+                   rdfs:label "Category Schema"@en ,
+                              "Schema Categoria"@it .
+
+
+###  http://www.w3.org/2006/vcard/ns#Email
+vcard:Email rdf:type owl:Class ;
+            rdfs:comment <http://www.w3.org/2006/vcard/ns> ,
+                         "La classe è utilizzata per specificare l'indirizzo email primario per le comunicazioni con l'oggetto che vCard rappresenta."@it ,
+                         "To specify the primary electronic mail address for communications with the object the vCard represents."@en ;
+            rdfs:label "Email"@en ,
+                       "Email"@it .
+
+
+###  http://www.w3.org/2006/vcard/ns#Kind
+vcard:Kind rdf:type owl:Class ;
+           rdfs:comment "A description following the vCard specification, e.g. to provide telephone number and  e-mail address, for instance, for a contact point."@en ,
+                        "E' la classe definita nelle specifiche vCard utilizzata per definire un punto di contatto che include per esempio un indirizzo email, un numero di telefono un URL di riferimento."@it ;
+           rdfs:isDefinedBy vcard: ;
+           rdfs:label "Contact Point"@en ,
+                      "Punto di contatto"@it .
+
+
+###  http://www.w3.org/2006/vcard/ns#Organization
+vcard:Organization rdf:type owl:Class ;
+                   rdfs:subClassOf vcard:Kind ;
+                   rdfs:comment <http://www.w3.org/2006/vcard/ns> ,
+                                "Questa classe è definita in vCard ed è stata aggiunta al fine di garantire l'allineamento con vCard:Kind definito in ambito DCAT."@it ,
+                                "This class is defined in vCard and it has been added in order to guarantee the alignment with the vcard:Kind as required in DCAT."@en ;
+                   rdfs:label "Organization" .
+
+
+###  http://www.w3.org/2006/vcard/ns#TelephoneType
+vcard:TelephoneType rdf:type owl:Class ;
+                    rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                      owl:onProperty vcard:value ;
+                                      owl:cardinality "1"^^xsd:nonNegativeInteger
+                                    ] ;
+                    rdfs:comment "Questa classe è definita in http://www.w3.org/2006/vcard/ns per rappresentare un tipo di numero telefonico."@it ,
+                                 "This class is defined in http://www.w3.org/2006/vcard/ns and it is used to represent a type of phone number."@en ;
+                    rdfs:isDefinedBy <http://www.w3.org/2006/vcard/ns> ;
+                    rdfs:label "Phone"@en ,
+                               "Telefono"@it .
+
+
+###  http://www.w3.org/ns/adms#Identifier
+adms:Identifier rdf:type owl:Class ;
+                rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                  owl:onProperty skos:notation ;
+                                  owl:allValuesFrom rdfs:Literal
+                                ] ;
+                rdfs:comment "An identifier in a particular context, consisting of the string that is the identifier. For instance, other identifiers can be the ISBN or DOI, etc."@en ,
+                             "Un identificatore definito in un particolare contesto. Rappresenta un altro identificatore del dataset in un preciso contesto. Ad esempio può essere il codice ISBN, DOI, ecc."@it ;
+                rdfs:isDefinedBy <http://www.w3.org/ns/adms> ;
+                rdfs:label "Identificatore"@it ,
+                           "Identifier"@en .
+
+
+###  http://www.w3.org/ns/adms#SemanticAsset
+adms:SemanticAsset rdf:type owl:Class .
+
+
+###  http://www.w3.org/ns/locn#Geometry
+<http://www.w3.org/ns/locn#Geometry> rdf:type owl:Class ;
+                                     rdfs:comment "La classe consente di identificare una posizione rappresentata come punto, linea, poligono, ecc espressi utilizzando le coordinate in un certo sistema di riferimento. Il modello concettuale della classe geometria, così come evidenziato nel diagramma UML, mostra un numero di proprietà che devono essere specificate. Tali proprietà non sono tuttavia definite nell'OWL dal momento che, in pratica, meccanismi di codifica di geometrie includono già tutte queste proprietà. La specifica GeoDCAT-AP prevede che deve essere utilizzata almeno una delle seguenti codifiche: GML o WKT."@it ,
+                                                  "The locn:Geometry class provides the means to identify a location as a point, line, polygon, etc. expressed using coordinates in some coordinate reference system. The conceptual model of the Geometry class itself shows a number of properties that are not defined in the OWL since in practice  geometry encodings all include already these properties. GeoDCAT-AP specifies that at least one of the following encodings must be used: GML or WKT."@en ;
+                                     rdfs:isDefinedBy <http://www.w3.org/ns/locn> ;
+                                     rdfs:label "Geometria"@it ,
+                                                "Geometry"@en .
+
+
+###  http://xmlns.com/foaf/0.1/Agent
+foaf:Agent rdf:type owl:Class ;
+           rdfs:comment "Questa classe è definita in FOAF ed è stata aggiunta per allinearla con l'Agente definito nel contesto del profilo italiano DCAT-AP IT. In particolare, si sono utilizzate solo alcune delle proprietà dell'Agente definito in FOAF con alcune restrizioni utili per la definizione del profilo italiano."@it ,
+                        "This class is defined in FOAF and it has been added in order to align it with the class Agent of the DCAT Italian application profile, i.e., DCAT-AP IT. In particular, only a few properties of the FOAF:Agent class have been used with some restrictions that were specified for the definition of DCAT-AP IT."@en ;
+           rdfs:isDefinedBy foaf: ;
+           rdfs:label "Agent" .
+
+
+###  http://xmlns.com/foaf/0.1/Document
+foaf:Document rdf:type owl:Class ;
+              rdfs:comment "A textual resource intended for human consumption that contains information, e.g. a web page about a Dataset."@en ,
+                           "Una risorsa testuale contenente informazioni. La risorsa può essere consultata da persone. Una pagina web su un dataset è un esempio di documento."@it ;
+              rdfs:isDefinedBy foaf: ;
+              rdfs:label "Document"@en ,
+                         "Documento"@it .
+
+
+###  https://dati.gov.it/onto/dcatapit#Catalog
+<https://dati.gov.it/onto/dcatapit#Catalog> rdf:type owl:Class ;
+                                            rdfs:subClassOf <https://www.w3.org/ns/dcat#Catalog> ,
+                                                            [ rdf:type owl:Restriction ;
+                                                              owl:onProperty dcat:dataset ;
+                                                              owl:someValuesFrom :Dataset
+                                                            ] ,
+                                                            [ rdf:type owl:Restriction ;
+                                                              owl:onProperty terms:language ;
+                                                              owl:allValuesFrom terms:LinguisticSystem
+                                                            ] ,
+                                                            [ rdf:type owl:Restriction ;
+                                                              owl:onProperty dcat:themeTaxonomy ;
+                                                              owl:allValuesFrom skos:ConceptScheme
+                                                            ] ,
+                                                            [ rdf:type owl:Restriction ;
+                                                              owl:onProperty terms:publisher ;
+                                                              owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                              owl:onClass :Agent
+                                                            ] ,
+                                                            [ rdf:type owl:Restriction ;
+                                                              owl:onProperty foaf:homepage ;
+                                                              owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                              owl:onClass foaf:Document
+                                                            ] ,
+                                                            [ rdf:type owl:Restriction ;
+                                                              owl:onProperty terms:description ;
+                                                              owl:someValuesFrom rdfs:Literal
+                                                            ] ,
+                                                            [ rdf:type owl:Restriction ;
+                                                              owl:onProperty terms:modified ;
+                                                              owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                              owl:onDataRange xsd:dateTime
+                                                            ] ,
+                                                            [ rdf:type owl:Restriction ;
+                                                              owl:onProperty terms:title ;
+                                                              owl:cardinality "1"^^xsd:nonNegativeInteger
+                                                            ] ,
+                                                            [ rdf:type owl:Restriction ;
+                                                              owl:onProperty terms:issued ;
+                                                              owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                              owl:onDataRange xsd:dateTime
+                                                            ] ;
+                                            rdfs:comment """A catalogue or repository that hosts the datasets to be described. Typically it is used to represent catalogs such as CKAN/DKAN catalogs containing open data of public administrations. However, the class can be used to define even catalog of any type of data, not necessarily open data (e.g., a catalog of the databases of a public administration).
+The class has been defined in the context of the Italian application profile DCAT-AP IT as a sub class of dcat:Catalog. This allows maintaining a fully alignment to that external ontology but guaranteeing, at the same time, the possibility to add additional propertie,s and restrictions on those properties, according to the DCAT-AP IT requirements.
+
+This class is mandatory.
+
+An example in turtle can be the following (where datiCatalogo can be <http://dati.gov.it/resource/Catalogo/>):
+
+<pre>
+datiCatalogo:SPCDataCatalog
+   a dcatapit:Catalog , dcat:Catalog ;
+   dct:title \"Catalogo SPCData\"@it ;
+   dct:description \"Una descrizione del catalogo\" ;
+   dct:modified	\"2015-05-25\"^^xsd:date ;
+   dct:issued \"2012-01-15\"^^xsd:date ;
+   dct:publisher  <http://dati.gov.it/resource/Amministrazione/agid> ;
+   dct:language <http://publications.europa.eu/resource/authority/language/ITA> ;
+   dcat:dataset <http://dati.gov.it/resource/Dataset/LinkedOpenIPA> ;
+   dcat:dataset <http://dati.gov.it/resource/Dataset/ContrattiSPC> ;
+   foaf:homepage <http://spcdata.digitpa.gov.it/index.html> ;
+   dcat:themeTaxonomy <http://publications.europa.eu/resource/authority/data-theme> ."""@en ,
+                                                         """Un catalogo o un repository che contiene i dataset che si vogliono descrivere. Tipicamente utilizzata per rappresentare cataloghi come per esempio CKAN/DKAN che contengono dati aperti delle pubbliche amministrazioni, la classe comunque può essere riutilizzata per specificare anche cataloghi di dati di ogni tipo, non necessariamente aperti (e.g., un catalogo di banche dati di una pubblica amministrazione).
+La classe è definita nell'ambito del profilo DCAT-AP IT come sottoclasse di dcat:Catalog per mantenere l'allineamento con l'ontologia esterna assicurando la possibilità di aggiungere proprietà o restringere le cardinalità di tali proprietà in accordo con i requisiti del profilo italiano DCAT-AP IT.
+
+E' obbligatorio specificare la classe.
+
+Un esempio in turtle è il seguente (dove datiCatalogo potrebbe essere <http://dati.gov.it/resource/Catalogo/>):
+
+<pre>
+datiCatalogo:SPCDataCatalog
+   a dcatapit:Catalog , dcat:Catalog ;
+   dct:title \"Catalogo SPCData\"@it ;
+   dct:description \"Una descrizione del catalogo\" ;
+   dct:modified	\"2015-05-25\"^^xsd:date ;
+   dct:issued \"2012-01-15\"^^xsd:date ;
+   dct:publisher  <http://dati.gov.it/resource/Amministrazione/agid> ;
+   dct:language <http://publications.europa.eu/resource/authority/language/ITA> ;
+   dcat:dataset <http://dati.gov.it/resource/Dataset/LinkedOpenIPA> ;
+   dcat:dataset <http://dati.gov.it/resource/Dataset/ContrattiSPC> ;
+   foaf:homepage <http://spcdata.digitpa.gov.it/index.html> ;
+   dcat:themeTaxonomy <http://publications.europa.eu/resource/authority/data-theme> ."""@it ;
+                                            rdfs:isDefinedBy <https://dati.gov.it/onto/dcatapit> ;
+                                            rdfs:label "Catalogo"@it ,
+                                                       "Catalogue"@en .
+
+
+###  https://www.w3.org/ns/dcat#Catalog
+<https://www.w3.org/ns/dcat#Catalog> rdf:type owl:Class ;
+                                     rdfs:comment "La classe Catalog è definita in DCAT ed è stata aggiunta al fine di allinearla con la classe Catalog (Catalogo) del profilo italiano DCAT, i.e., DCAT-AP IT. In particolare, le proprietà di DCAT Catalog e le loro cardinalità sono state leggermente modificate per renderle conformi a DCAT-AP, definito in sede Europea."@it ,
+                                                  "This class is defined in DCAT and it has been added in order to align it with the class Catalog (Catalogo) defined in the DCAT Italian application profile, i.e., DCAT-AP IT. In particular, the properties of DCAT Catalog and their cardinalities have been slightly modified in order to make it conform with DCAT-AP, specified at European level."@en ;
+                                     rdfs:isDefinedBy <https://www.w3.org/ns/dcat> ;
+                                     rdfs:label "Catalog" .
+
+
+###  https://www.w3.org/ns/dcat#Dataset
+<https://www.w3.org/ns/dcat#Dataset> rdf:type owl:Class ;
+                                     rdfs:comment "Questa classe è definita in DCAT ed è stata aggiunta al fine di allinerarla con la classe Dataset del profilo italiano DCAT-AP IT. In particolare, le proprietà della classe Dataset di DCAT e le loro cardinalità sono state leggermente modificate in DCAT-AP IT per essere conformi a DCAT-AP, definito in sede Europea."@it ,
+                                                  "This class is defined in DCAT and it has been added in order to align it with the Dataset class of the DCAT-AP IT, the Italian application profile. In particular, the properties of DCAT Dataset and their cardinalities have been slightly modified in order to make DCAT-AP IT conformant with DCAT-AP, specified at the European level."@en ;
+                                     rdfs:isDefinedBy <https://www.w3.org/ns/dcat> ;
+                                     rdfs:label "Dataset" .
+
+
+###  https://www.w3.org/ns/dcat#Distribution
+<https://www.w3.org/ns/dcat#Distribution> rdf:type owl:Class ;
+                                          rdfs:comment "Questa classe è definita in DCAT ed è stata utilizzata per garantire il pieno allineamento con la classe Distribution (Distribuzione) definita nel profilo italiano DCAT (DCAT-AP IT). In particolare, la classe definisce  proprietà e cardinalità per la distribuzione di dataset che sono state  modificate nel profilo italiano al fine di rendere quest'ultimo conforme a DCAT-AP come specificato a livello Europeo."@it ,
+                                                       "This class is defined in DCAT and it has been used to align it with the Distribution class defined in the Italian DCAT Application Profile. In particular, the class defines certain properties and cardinalities that have been slightly modified in the Italian DCAT Application Profile in order to be conformant with DCAT-AP, specified at the European Level."@en ;
+                                          rdfs:isDefinedBy <https://www.w3.org/ns/dcat> ;
+                                          rdfs:label "Distribution" .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://dati.gov.it/onto/dcatapit
+<http://dati.gov.it/onto/dcatapit> rdf:type owl:NamedIndividual ,
+                                            adms:SemanticAsset .
+
+
+#################################################################
+#    Annotations
+#################################################################
+
+terms:description rdfs:comment "This propery refers to the description of the Catalogue or of the Dataset."@en ;
+                  rdfs:label "description"@en ;
+                  rdfs:comment "Questa proprietà è usata per indicare la descrizione del catalogo o del dataset. Questa proprietà può essere ripetuta per esprimere la descrizione in diverse lingue."@it ;
+                  rdfs:isDefinedBy terms: ;
+                  rdfs:label "descrizione"@it .
+
+
+terms:modified rdfs:isDefinedBy terms: ;
+               rdfs:label "update date"@en ;
+               rdfs:comment "Questa proprietà consente di rappresentare la data di ultima modifica o del Catalogo o del Dataset o della Distribuzione del Dataset."@it ,
+                            "This property contains the most recent date on which either the Catalogue or the Dataset or the Ditribution was modified."@en ;
+               rdfs:label "data ultima modifica"@it .
+
+
+terms:title rdfs:label "title"@en ;
+            rdfs:comment "This property represents the title or name of a Thing."@en ;
+            rdfs:isDefinedBy terms: ;
+            rdfs:label "titolo"@it ;
+            rdfs:comment "Questa proprietù rappresenta il titolo o il nome di una cosa. Può essere utilizzato per il titolo del Catalogo, del Dataset e della Distribuzione. Questa proprietà può essere ripetuta per esprimere il titolo in diverse lingue."@it .
+
+
+<http://sdati.gov.it/onto/dcatapit#startDate> rdfs:comment "Proprietà utilizzata per rappresentare una data di inizio di un periodo temporale."@it ,
+                                                           "Property used to represent the start date in a period of time."@en ,
+                                                           <http://dati.gov.it/onto/dcatapit> ;
+                                              rdfs:label "start date"@en ,
+                                                         "data di inizio"@it .
+
+
+owl:versionInfo rdfs:isDefinedBy owl: ;
+                rdfs:label "version"@en ;
+                rdfs:comment "Questa proprietà contiene il numero della versione o altre indicazioni della versione del dataset."@it ;
+                rdfs:label "versione"@it ;
+                rdfs:comment "This property contains a version number or any other version designation of the Dataset."@en .
+
+
+###  Generated by the OWL API (version 4.2.8.20170104-2310) https://github.com/owlcs/owlapi
