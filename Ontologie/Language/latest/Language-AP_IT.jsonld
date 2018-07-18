@@ -1,11 +1,7 @@
 {
   "@context": {
     "admsapit": "https://w3id.org/italia/onto/ADMS/",
-    "clvapit": "https://w3id.org/italia/onto/CLV/",
-    "dc": "http://purl.org/dc/elements/1.1/",
     "dcat": "http://www.w3.org/ns/dcat#",
-    "dcatapit": "http://dati.gov.it/onto/dcatapit#",
-    "dct": "http://purl.org/dc/terms/",
     "dcterms": "http://purl.org/dc/terms/",
     "foaf": "http://xmlns.com/foaf/0.1/",
     "l0": "https://w3id.org/italia/onto/l0/",
@@ -19,10 +15,14 @@
   },
   "@graph": [
     {
+      "@id": "http://dati.gov.it/onto/dcatapit#Organization",
+      "@type": "owl:Class"
+    },
+    {
       "@id": "https://w3id,org/italia/data/distribution/MUAPIT-RDF-XML",
       "@type": [
-        "owl:NamedIndividual",
-        "admsapit:SemanticAssetDistribution"
+        "admsapit:SemanticAssetDistribution",
+        "owl:NamedIndividual"
       ],
       "dcat:accessURL": {
         "@id": "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/MU/latest"
@@ -48,39 +48,62 @@
       },
       "dcterms:title": [
         {
-          "@language": "en",
-          "@value": "RDF/XML distribution of MU-AP_IT Ontology"
-        },
-        {
           "@language": "it",
           "@value": "Distribuzione RDF/XML ontologia MU-AP_IT"
+        },
+        {
+          "@language": "en",
+          "@value": "RDF/XML distribution of MU-AP_IT Ontology"
         }
       ]
     },
     {
-      "@id": "dcatapit:Agent",
+      "@id": "vcard:Kind",
       "@type": "owl:Class"
-    },
-    {
-      "@id": "_:ub6bL206C27",
-      "@type": "owl:Restriction",
-      "owl:allValuesFrom": {
-        "@id": "owl:Thing"
-      },
-      "owl:onProperty": {
-        "@id": "https://w3id.org/italia/onto/Language/isLanguageOf"
-      }
     },
     {
       "@id": "admsapit:SemanticAssetDistribution",
       "@type": "owl:Class"
     },
     {
+      "@id": "https://w3id.org/italia/onto/Language/isLanguageOf",
+      "@type": "owl:ObjectProperty",
+      "rdfs:comment": [
+        {
+          "@language": "en",
+          "@value": "Inverse property of 'has language'."
+        },
+        {
+          "@language": "it",
+          "@value": "Proprietà inversa di 'ha lingua'."
+        }
+      ],
+      "rdfs:domain": {
+        "@id": "https://w3id.org/italia/onto/Language/Language"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/italia/onto/Language"
+      },
+      "rdfs:label": [
+        {
+          "@language": "it",
+          "@value": "è lingua di"
+        },
+        {
+          "@language": "en",
+          "@value": "is language of"
+        }
+      ],
+      "rdfs:range": {
+        "@id": "owl:Thing"
+      }
+    },
+    {
       "@id": "https://w3id.org/italia/data/organization/public-organization/td",
       "@type": [
-        "owl:NamedIndividual",
+        "http://dati.gov.it/onto/dcatapit#Agent",
         "foaf:Agent",
-        "dcatapit:Agent"
+        "owl:NamedIndividual"
       ],
       "dcterms:identifier": "TD",
       "foaf:name": [
@@ -93,49 +116,6 @@
           "@value": "Digital Transformation Team"
         }
       ]
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/Language/isLanguageOf",
-      "@type": "owl:ObjectProperty",
-      "rdfs:comment": [
-        {
-          "@language": "it",
-          "@value": "Proprietà inversa di 'ha lingua'."
-        },
-        {
-          "@language": "en",
-          "@value": "Inverse property of 'has language'."
-        }
-      ],
-      "rdfs:domain": {
-        "@id": "https://w3id.org/italia/onto/Language/Language"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "https://w3id.org/italia/onto/Language"
-      },
-      "rdfs:label": [
-        {
-          "@language": "en",
-          "@value": "is language of"
-        },
-        {
-          "@language": "it",
-          "@value": "è lingua di"
-        }
-      ],
-      "rdfs:range": {
-        "@id": "owl:Thing"
-      }
-    },
-    {
-      "@id": "_:ub6bL210C27",
-      "@type": "owl:Restriction",
-      "owl:allValuesFrom": {
-        "@id": "clvapit:Country"
-      },
-      "owl:onProperty": {
-        "@id": "https://w3id.org/italia/onto/Language/spokenIn"
-      }
     },
     {
       "@id": "https://w3id.org/italia/onto/Language/hasLanguage",
@@ -171,28 +151,12 @@
       }
     },
     {
-      "@id": "vcard:Kind",
-      "@type": "owl:Class"
-    },
-    {
-      "@id": "dcat:downloadURL",
-      "@type": "owl:AnnotationProperty"
-    },
-    {
-      "@id": "dcatapit:Organization",
-      "@type": "owl:Class"
-    },
-    {
-      "@id": "vcard:hasEmail",
-      "@type": "owl:AnnotationProperty"
-    },
-    {
-      "@id": "dcterms:format",
-      "@type": "owl:AnnotationProperty"
-    },
-    {
       "@id": "dcterms:creator",
       "@type": "owl:AnnotationProperty"
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/CLV/Country",
+      "@type": "owl:Class"
     },
     {
       "@id": "https://w3id.org/italia/data/project/OntoPiA",
@@ -206,31 +170,31 @@
       }
     },
     {
+      "@id": "l0:controlledVocabulary",
+      "@type": "owl:AnnotationProperty"
+    },
+    {
       "@id": "http://spcdata.digitpa.gov.it/browse/page/Amministrazione/agid",
       "@type": [
+        "http://dati.gov.it/onto/dcatapit#Agent",
         "owl:NamedIndividual",
-        "dcatapit:Agent",
         "foaf:Agent"
       ],
       "dcterms:identifier": "agid",
       "foaf:name": [
         {
-          "@language": "it",
-          "@value": "Agenzia per l'Italia Digitale"
-        },
-        {
           "@language": "en",
           "@value": "Italian Digital Agency"
+        },
+        {
+          "@language": "it",
+          "@value": "Agenzia per l'Italia Digitale"
         }
       ]
     },
     {
-      "@id": "vcard:fn",
+      "@id": "vcard:hasEmail",
       "@type": "owl:AnnotationProperty"
-    },
-    {
-      "@id": "foaf:Agent",
-      "@type": "owl:Class"
     },
     {
       "@id": "https://w3id.org/italia/onto/Language/Language",
@@ -248,12 +212,12 @@
       ],
       "rdfs:comment": [
         {
-          "@language": "it",
-          "@value": "Questa classe è utilizzata per rappresentare una lingua (e.g., italiano, francese, tedesco, ecc.)."
-        },
-        {
           "@language": "en",
           "@value": "This class is used to model a language (e.g., Italian, French, German, etc.)"
+        },
+        {
+          "@language": "it",
+          "@value": "Questa classe è utilizzata per rappresentare una lingua (e.g., italiano, francese, tedesco, ecc.)."
         }
       ],
       "rdfs:isDefinedBy": {
@@ -271,18 +235,120 @@
       ],
       "rdfs:subClassOf": [
         {
-          "@id": "_:ub6bL210C27"
-        },
-        {
           "@id": "l0:Characteristic"
         },
         {
-          "@id": "_:ub6bL206C27"
+          "@id": "http://org.semanticweb.owlapi/error#Error2"
         },
         {
-          "@id": "_:ub6bL214C27"
+          "@id": "_:Nb0e7906306b7485197844cacdf7586e4"
+        },
+        {
+          "@id": "_:Nd632be6566774eaeb0d6109f902598fe"
         }
       ]
+    },
+    {
+      "@id": "dcterms:format",
+      "@type": "owl:AnnotationProperty"
+    },
+    {
+      "@id": "dcat:downloadURL",
+      "@type": "owl:AnnotationProperty"
+    },
+    {
+      "@id": "http://dati.gov.it/onto/dcatapit#Agent",
+      "@type": "owl:Class"
+    },
+    {
+      "@id": "l0:name",
+      "@type": "owl:AnnotationProperty"
+    },
+    {
+      "@id": "vcard:fn",
+      "@type": "owl:AnnotationProperty"
+    },
+    {
+      "@id": "foaf:Agent",
+      "@type": "owl:Class"
+    },
+    {
+      "@id": "foaf:name",
+      "@type": "owl:AnnotationProperty"
+    },
+    {
+      "@id": "prov:wasDerivedFrom",
+      "@type": "owl:AnnotationProperty"
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/Language/spokenIn",
+      "@type": "owl:ObjectProperty",
+      "rdfs:comment": [
+        {
+          "@language": "en",
+          "@value": "Property that links a language to the country in which it is spoken'."
+        },
+        {
+          "@language": "it",
+          "@value": "Proprietà che lega una lingua al paese in cui la lingua è parlata'."
+        }
+      ],
+      "rdfs:domain": {
+        "@id": "https://w3id.org/italia/onto/Language/Language"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/italia/onto/Language"
+      },
+      "rdfs:label": [
+        {
+          "@language": "en",
+          "@value": "spoken in"
+        },
+        {
+          "@language": "it",
+          "@value": "parlato in"
+        }
+      ],
+      "rdfs:range": {
+        "@id": "https://w3id.org/italia/onto/CLV/Country"
+      }
+    },
+    {
+      "@id": "admsapit:SemanticAsset",
+      "@type": "owl:Class"
+    },
+    {
+      "@id": "vcard:Organization",
+      "@type": "owl:Class"
+    },
+    {
+      "@id": "dcterms:license",
+      "@type": "owl:AnnotationProperty"
+    },
+    {
+      "@id": "_:Nd632be6566774eaeb0d6109f902598fe",
+      "@type": "owl:Restriction",
+      "owl:allValuesFrom": {
+        "@id": "https://w3id.org/italia/onto/CLV/Country"
+      },
+      "owl:onProperty": {
+        "@id": "https://w3id.org/italia/onto/Language/spokenIn"
+      }
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/Language",
+      "@type": [
+        "owl:NamedIndividual",
+        "admsapit:SemanticAsset"
+      ]
+    },
+    {
+      "@id": "l0:Characteristic",
+      "@type": "owl:Class"
+    },
+    {
+      "@id": "dcterms:identifier",
+      "@type": "owl:AnnotationProperty"
     },
     {
       "@id": "https://w3id,org/italia/data/distribution/MUAPIT-JSON-LD",
@@ -324,10 +390,6 @@
       ]
     },
     {
-      "@id": "admsapit:SemanticAsset",
-      "@type": "owl:Class"
-    },
-    {
       "@id": "https://w3id,org/italia/data/distribution/MUAPIT-RDF-TURTLE",
       "@type": [
         "admsapit:SemanticAssetDistribution",
@@ -341,12 +403,12 @@
       },
       "dcterms:description": [
         {
-          "@language": "it",
-          "@value": "Questa è la distribuzione RDF/Turtle dell'ontologia delle unità di misura"
-        },
-        {
           "@language": "en",
           "@value": "This is the distribution in RDF/turtle of the Measurement Unit ontology"
+        },
+        {
+          "@language": "it",
+          "@value": "Questa è la distribuzione RDF/Turtle dell'ontologia delle unità di misura"
         }
       ],
       "dcterms:format": {
@@ -367,90 +429,19 @@
       ]
     },
     {
-      "@id": "_:ub6bL214C27",
-      "@type": "owl:Restriction",
-      "owl:cardinality": {
-        "@type": "xsd:nonNegativeInteger",
-        "@value": "1"
-      },
-      "owl:onProperty": {
-        "@id": "l0:identifier"
-      }
-    },
-    {
-      "@id": "dcterms:license",
-      "@type": "owl:AnnotationProperty"
-    },
-    {
-      "@id": "foaf:name",
-      "@type": "owl:AnnotationProperty"
-    },
-    {
-      "@id": "https://w3id.org/italia/data/project/DAF",
-      "@type": [
-        "admsapit:Project",
-        "owl:NamedIndividual"
-      ],
-      "l0:name": {
-        "@language": "it",
-        "@value": "Data & Analytics Framework"
-      }
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/Language/spokenIn",
-      "@type": "owl:ObjectProperty",
-      "rdfs:comment": [
-        {
-          "@language": "en",
-          "@value": "Property that links a language to the country in which it is spoken'."
-        },
-        {
-          "@language": "it",
-          "@value": "Proprietà che lega una lingua al paese in cui la lingua è parlata'."
-        }
-      ],
-      "rdfs:domain": {
-        "@id": "https://w3id.org/italia/onto/Language/Language"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "https://w3id.org/italia/onto/Language"
-      },
-      "rdfs:label": [
-        {
-          "@language": "it",
-          "@value": "parlato in"
-        },
-        {
-          "@language": "en",
-          "@value": "spoken in"
-        }
-      ],
-      "rdfs:range": {
-        "@id": "clvapit:Country"
-      }
-    },
-    {
-      "@id": "dcterms:identifier",
-      "@type": "owl:AnnotationProperty"
-    },
-    {
       "@id": "dcterms:description",
       "@type": "owl:AnnotationProperty"
     },
     {
-      "@id": "https://w3id.org/italia/onto/Language",
-      "@type": [
-        "owl:NamedIndividual",
-        "admsapit:SemanticAsset",
-        "owl:Ontology"
-      ],
+      "@id": "https://w3id.org/italia/onto/l0",
+      "@type": "owl:Ontology",
       "admsapit:acronym": "Lang-AP_IT",
       "admsapit:hasContributor": [
         {
-          "@id": "https://w3id.org/italia/data/organization/public-organization/td"
+          "@id": "https://w3id.org/italia/data/organization/support-unit/cnr-Z6HZEH/stlab"
         },
         {
-          "@id": "https://w3id.org/italia/data/organization/support-unit/cnr-Z6HZEH/stlab"
+          "@id": "https://w3id.org/italia/data/organization/public-organization/td"
         }
       ],
       "admsapit:hasFormalityLevel": {
@@ -464,24 +455,24 @@
       },
       "admsapit:hasSemanticAssetDistribution": [
         {
-          "@id": "https://w3id,org/italia/data/distribution/LangAPIT-RDF-TURTLE"
+          "@id": "https://w3id,org/italia/data/distribution/LangAPIT-RDF-XML"
         },
         {
           "@id": "https://w3id,org/italia/data/distribution/LangAPIT-JSON-LD"
         },
         {
-          "@id": "https://w3id,org/italia/data/distribution/LangAPIT-RDF-XML"
+          "@id": "https://w3id,org/italia/data/distribution/LangAPIT-RDF-TURTLE"
         }
       ],
       "admsapit:hasTask": [
+        {
+          "@id": "admsapit:QueryFormulationTask"
+        },
         {
           "@id": "admsapit:SearchTask"
         },
         {
           "@id": "admsapit:AnnotationTask"
-        },
-        {
-          "@id": "admsapit:QueryFormulationTask"
         }
       ],
       "admsapit:last": {
@@ -494,16 +485,16 @@
       "admsapit:prefix": "langapit",
       "admsapit:semanticAssetInUse": [
         {
-          "@id": "https://w3id.org/italia/data/project/DAF"
+          "@id": "https://w3id.org/italia/data/project/OntoPiA"
         },
         {
-          "@id": "https://w3id.org/italia/data/project/OntoPiA"
+          "@id": "https://w3id.org/italia/data/project/DAF"
         }
       ],
       "admsapit:status": "final draft",
       "admsapit:target": [
-        "Imprese",
         "Cittadini",
+        "Imprese",
         "Pubbliche Amministrazioni"
       ],
       "admsapit:type": {
@@ -566,10 +557,10 @@
       ],
       "owl:imports": [
         {
-          "@id": "https://w3id.org/italia/onto/CLV"
+          "@id": "https://w3id.org/italia/onto/l0"
         },
         {
-          "@id": "https://w3id.org/italia/onto/l0"
+          "@id": "https://w3id.org/italia/onto/CLV"
         }
       ],
       "owl:versionIRI": {
@@ -577,12 +568,12 @@
       },
       "owl:versionInfo": [
         {
-          "@language": "en",
-          "@value": "Version 0.1 - June 27 2018 - creation of the ontology"
-        },
-        {
           "@language": "it",
           "@value": "Versione 0.1 - Creazione dell'ontologia"
+        },
+        {
+          "@language": "en",
+          "@value": "Version 0.1 - June 27 2018 - creation of the ontology"
         }
       ],
       "rdfs:comment": [
@@ -610,12 +601,68 @@
       ]
     },
     {
-      "@id": "vcard:Organization",
-      "@type": "owl:Class"
+      "@id": "https://w3id.org/italia/data/project/DAF",
+      "@type": [
+        "owl:NamedIndividual",
+        "admsapit:Project"
+      ],
+      "l0:name": {
+        "@language": "it",
+        "@value": "Data & Analytics Framework"
+      }
+    },
+    {
+      "@id": "https://w3id.org/italia/data/contact-point/onto-agid",
+      "@type": [
+        "http://dati.gov.it/onto/dcatapit#Organization",
+        "vcard:Kind",
+        "vcard:Organization",
+        "owl:NamedIndividual"
+      ],
+      "vcard:fn": "banche dati e open data",
+      "vcard:hasEmail": {
+        "@id": "mailto:info@dati.gov.it"
+      }
+    },
+    {
+      "@id": "_:Nb0e7906306b7485197844cacdf7586e4",
+      "@type": "owl:Restriction",
+      "owl:allValuesFrom": {
+        "@id": "owl:Thing"
+      },
+      "owl:onProperty": {
+        "@id": "https://w3id.org/italia/onto/Language/isLanguageOf"
+      }
     },
     {
       "@id": "dcterms:issued",
       "@type": "owl:AnnotationProperty"
+    },
+    {
+      "@id": "l0:Agent",
+      "@type": "owl:Class"
+    },
+    {
+      "@id": "https://w3id.org/italia/data/organization/support-unit/cnr-Z6HZEH/stlab",
+      "@type": [
+        "l0:Agent",
+        "owl:NamedIndividual"
+      ],
+      "dcterms:identifier": "cnr - Z6HZEH - STLab",
+      "l0:name": [
+        {
+          "@language": "en",
+          "@value": "Institute of Cognitive Sciences and Technologies of the Italian Research Council (CNR) - Semantic Technology Laboratory (STLab)"
+        },
+        {
+          "@language": "it",
+          "@value": "Istituto di Scienze e Tecnologie della Cognizione del CNR - Semantic Technology Lab (STLab)"
+        }
+      ]
+    },
+    {
+      "@id": "http://org.semanticweb.owlapi/error#Error2",
+      "@type": "owl:Class"
     },
     {
       "@id": "dcterms:title",
@@ -628,37 +675,6 @@
     {
       "@id": "dcat:accessURL",
       "@type": "owl:AnnotationProperty"
-    },
-    {
-      "@id": "https://w3id.org/italia/data/contact-point/onto-agid",
-      "@type": [
-        "vcard:Kind",
-        "owl:NamedIndividual",
-        "vcard:Organization",
-        "dcatapit:Organization"
-      ],
-      "vcard:fn": "banche dati e open data",
-      "vcard:hasEmail": {
-        "@id": "mailto:info@dati.gov.it"
-      }
-    },
-    {
-      "@id": "https://w3id.org/italia/data/organization/support-unit/cnr-Z6HZEH/stlab",
-      "@type": [
-        "l0:Agent",
-        "owl:NamedIndividual"
-      ],
-      "dcterms:identifier": "cnr - Z6HZEH - STLab",
-      "l0:name": [
-        {
-          "@language": "it",
-          "@value": "Istituto di Scienze e Tecnologie della Cognizione del CNR - Semantic Technology Lab (STLab)"
-        },
-        {
-          "@language": "en",
-          "@value": "Institute of Cognitive Sciences and Technologies of the Italian Research Council (CNR) - Semantic Technology Laboratory (STLab)"
-        }
-      ]
     },
     {
       "@id": "dcterms:modified",
