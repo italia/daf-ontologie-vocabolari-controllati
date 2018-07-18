@@ -1,8 +1,8 @@
 {
   "@context": {
     "dc": "http://purl.org/dc/elements/1.1/",
-    "dct": "http://purl.org/dc/terms/",
     "dcterms": "http://purl.org/dc/terms/",
+    "l0": "https://w3id.org/italia/onto/l0/",
     "owl": "http://www.w3.org/2002/07/owl#",
     "prov": "http://www.w3.org/ns/prov#",
     "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
@@ -11,7 +11,7 @@
   },
   "@graph": [
     {
-      "@id": "https://w3id.org/italia/onto/l0/Entity",
+      "@id": "l0:System",
       "@type": "owl:Class",
       "owl:versionInfo": [
         {
@@ -26,11 +26,11 @@
       "rdfs:comment": [
         {
           "@language": "it",
-          "@value": "Qualsiasi cosa reale, possibile o immaginaria."
+          "@value": "La classe dei sistemi. Esempi ne sono i sistema politici, fisici o economici."
         },
         {
           "@language": "en",
-          "@value": "Anything: real, possible, or imaginary, which some modeller wants to talk about for some purpose."
+          "@value": "The class including systems. Example include political, economical, physical systems."
         }
       ],
       "rdfs:isDefinedBy": {
@@ -39,17 +39,352 @@
       "rdfs:label": [
         {
           "@language": "it",
-          "@value": "Entità"
+          "@value": "Sistema"
         },
         {
           "@language": "en",
-          "@value": "Entity"
+          "@value": "System"
+        }
+      ],
+      "rdfs:subClassOf": {
+        "@id": "l0:Entity"
+      }
+    },
+    {
+      "@id": "prov:wasDerivedFrom",
+      "@type": "owl:AnnotationProperty"
+    },
+    {
+      "@id": "l0:description",
+      "@type": "owl:DatatypeProperty",
+      "owl:versionInfo": [
+        {
+          "@language": "it",
+          "@value": "stabile"
+        },
+        {
+          "@language": "en",
+          "@value": "stable"
+        }
+      ],
+      "rdfs:comment": [
+        {
+          "@language": "it",
+          "@value": "Datatype property che associa un valore letterale a una cosa."
+        },
+        {
+          "@language": "en",
+          "@value": "Datatype property that associates a literal value with a thing"
+        }
+      ],
+      "rdfs:domain": {
+        "@id": "owl:Thing"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/italia/onto/l0"
+      },
+      "rdfs:label": [
+        {
+          "@language": "en",
+          "@value": "description"
+        },
+        {
+          "@language": "it",
+          "@value": "descrizione"
+        }
+      ],
+      "rdfs:range": {
+        "@id": "rdfs:Literal"
+      }
+    },
+    {
+      "@id": "l0:controlledVocabulary",
+      "@type": "owl:AnnotationProperty",
+      "rdfs:comment": [
+        {
+          "@language": "en",
+          "@value": "This property is used to link a property (data type property) of an ontology to the related controlled vocabulary where the individuals of the property are located"
+        },
+        {
+          "@language": "it",
+          "@value": "Questa proprietà è utilizzata per collegare una proprietà (data type property) di un'ontologia al relativo vocabolario controllato dove si trovano le istanze della proprietà stessa"
+        }
+      ],
+      "rdfs:label": [
+        {
+          "@language": "it",
+          "@value": "vocabolario controllato"
+        },
+        {
+          "@language": "en",
+          "@value": "vocabolario controllato"
         }
       ]
     },
     {
-      "@id": "https://w3id.org/italia/onto/l0/Object",
+      "@id": "l0:hasDescription",
+      "@type": "owl:ObjectProperty",
+      "owl:inverseOf": {
+        "@id": "l0:isDescriptionOf"
+      },
+      "owl:versionInfo": [
+        {
+          "@language": "en",
+          "@value": "stable"
+        },
+        {
+          "@language": "it",
+          "@value": "stabile"
+        }
+      ],
+      "rdfs:comment": [
+        {
+          "@language": "en",
+          "@value": "Property that associates an entity with its description."
+        },
+        {
+          "@language": "it",
+          "@value": "Proprietà che associa un'entità alla sua descrizione."
+        }
+      ],
+      "rdfs:domain": {
+        "@id": "owl:Thing"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/italia/onto/l0"
+      },
+      "rdfs:label": [
+        {
+          "@language": "en",
+          "@value": "has description"
+        },
+        {
+          "@language": "it",
+          "@value": "ha descrizione"
+        }
+      ],
+      "rdfs:range": {
+        "@id": "l0:Description"
+      }
+    },
+    {
+      "@id": "l0:Agent",
       "@type": "owl:Class",
+      "owl:versionInfo": [
+        {
+          "@language": "en",
+          "@value": "stable"
+        },
+        {
+          "@language": "it",
+          "@value": "stabile"
+        }
+      ],
+      "rdfs:comment": [
+        {
+          "@language": "it",
+          "@value": "Un agente, sia fisico (ex. una persona, un robot, una quercia), o sociale (ex. una società, un'istituzione, una comunità)."
+        },
+        {
+          "@language": "en",
+          "@value": "Any agentive Object , either physical (e.g. a person, a robot, an oak), or social (e.g. a corporation, an institution, a community)."
+        }
+      ],
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/italia/onto/l0"
+      },
+      "rdfs:label": [
+        {
+          "@language": "en",
+          "@value": "Agent"
+        },
+        {
+          "@language": "it",
+          "@value": "Agente"
+        }
+      ],
+      "rdfs:subClassOf": {
+        "@id": "l0:Object"
+      }
+    },
+    {
+      "@id": "_:N5c6bf7ee49eb42c3bae7e40063b9ac80",
+      "@type": "owl:Restriction",
+      "owl:onProperty": {
+        "@id": "l0:description"
+      },
+      "owl:someValuesFrom": {
+        "@id": "rdfs:Literal"
+      }
+    },
+    {
+      "@id": "l0:Collection",
+      "@type": "owl:Class",
+      "owl:versionInfo": [
+        {
+          "@language": "en",
+          "@value": "stable"
+        },
+        {
+          "@language": "it",
+          "@value": "stabile"
+        }
+      ],
+      "rdfs:comment": [
+        {
+          "@language": "en",
+          "@value": "The class includes all collections of any entities: e.g. groups, repositories, communities, etc,"
+        },
+        {
+          "@language": "it",
+          "@value": "La classe che include collezioni di qualsiasi cosa, ex. gruppi, raccolte, comunità, etc."
+        }
+      ],
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/italia/onto/l0"
+      },
+      "rdfs:label": [
+        {
+          "@language": "en",
+          "@value": "Collection"
+        },
+        {
+          "@language": "it",
+          "@value": "Collezione"
+        }
+      ],
+      "rdfs:subClassOf": {
+        "@id": "l0:Entity"
+      }
+    },
+    {
+      "@id": "l0:Characteristic",
+      "@type": "owl:Class",
+      "owl:versionInfo": [
+        {
+          "@language": "en",
+          "@value": "stable"
+        },
+        {
+          "@language": "it",
+          "@value": "stabile"
+        }
+      ],
+      "rdfs:comment": [
+        {
+          "@language": "en",
+          "@value": "The class of characteristics, intended as any aspect, attribuite, or quality of an entity. E.g. a certain size, aesthetic quality, color, etc."
+        },
+        {
+          "@language": "it",
+          "@value": "La classe delle caratteristiche, intese come aspetti, attributi o qualità di un'entità. Ex. una quantità, qualità estetica, colore, etc."
+        }
+      ],
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/italia/onto/l0"
+      },
+      "rdfs:label": [
+        {
+          "@language": "it",
+          "@value": "Caratteristica"
+        },
+        {
+          "@language": "en",
+          "@value": "Characteristic"
+        }
+      ],
+      "rdfs:subClassOf": {
+        "@id": "l0:Entity"
+      }
+    },
+    {
+      "@id": "l0:Description",
+      "@type": "owl:Class",
+      "owl:versionInfo": [
+        {
+          "@language": "en",
+          "@value": "stable"
+        },
+        {
+          "@language": "it",
+          "@value": "stabile"
+        }
+      ],
+      "rdfs:comment": [
+        {
+          "@language": "en",
+          "@value": "The class of socially-created objects (texts, values, categories, relations, contexts) used to describe something else in a structured way.\nExamples include plans (as structured descriptions of actions to be executed), diagnoses (as structured descriptions of observed situations, explanations (as structured texts clarifying e.g. a concept), objective observations (as structured sets of values that identify a relevant situation)."
+        },
+        {
+          "@language": "it",
+          "@value": "La classe degli oggetti costruiti socialmente (testi, valori, categorie, relazioni, contesti) usati per descrivere qualcos'altro in modo structuratto.\nGli esempi includono i piani (come descrizioni strutturate di azioni da eseguire ex. in un processo industriale), le diagnosi (come descrizioni strutturate di situazioni osservate ex. clinicamente), le spiegazioni (come testi strutturati per chiarire ex. un concetto in un sistema normativo), osservazioni oggettive (come insiemi di valori strutturati che identificano una situazione rilevante ex. da un sistema di sensori)."
+        }
+      ],
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/italia/onto/l0"
+      },
+      "rdfs:label": [
+        {
+          "@language": "it",
+          "@value": "Descrizione"
+        },
+        {
+          "@language": "en",
+          "@value": "Description"
+        }
+      ],
+      "rdfs:subClassOf": [
+        {
+          "@id": "l0:Object"
+        },
+        {
+          "@id": "_:N5c6bf7ee49eb42c3bae7e40063b9ac80"
+        }
+      ]
+    },
+    {
+      "@id": "l0:Activity",
+      "@type": "owl:Class",
+      "owl:versionInfo": [
+        {
+          "@language": "en",
+          "@value": "stable"
+        },
+        {
+          "@language": "it",
+          "@value": "stabile"
+        }
+      ],
+      "rdfs:comment": [
+        {
+          "@language": "en",
+          "@value": "The class of activities carried out by an agent."
+        },
+        {
+          "@language": "it",
+          "@value": "La classe delle attività svolte da qualche agente."
+        }
+      ],
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/italia/onto/l0"
+      },
+      "rdfs:label": [
+        {
+          "@language": "en",
+          "@value": "Activity"
+        },
+        {
+          "@language": "it",
+          "@value": "Attività"
+        }
+      ],
+      "rdfs:subClassOf": {
+        "@id": "l0:Entity"
+      }
+    },
+    {
+      "@id": "l0:isDescriptionOf",
+      "@type": "owl:ObjectProperty",
       "owl:versionInfo": [
         {
           "@language": "it",
@@ -63,35 +398,38 @@
       "rdfs:comment": [
         {
           "@language": "en",
-          "@value": "Any entity that tends to be stable in time, either in the physical or social world. Examples include homes, cities, organizations, works of art, natural objects, artifacts, words, ideas, etc.\nObjects are opposable to events, since events typically flow in time, aggregating multiple objects during their flow, as with working, travelling or leisure activities, industrial or athmospheric processes, etc."
+          "@value": "Inverse property of 'has description'."
         },
         {
           "@language": "it",
-          "@value": "Ogni entità che tende a essere stabile in un tempo più o meno lungo, sia nel mondo fisico sia sociale. Gli esempi includono case, città, organizzazioni, opere d'arte, oggetti del mondo naturale, artefatti, parole, idee, etc.\nGLi oggetti si possono contrapporre agli eventi, che invece scorrono nel tempo, aggregando oggetti diversi nel loro scorrere, come accade per esempio nei processi industriali o atmosferici, nelle attività di lavoro, viaggio o divertimento, etc."
+          "@value": "Proprietà inversa di 'ha descrizione'."
         }
       ],
+      "rdfs:domain": {
+        "@id": "l0:Description"
+      },
       "rdfs:isDefinedBy": {
         "@id": "https://w3id.org/italia/onto/l0"
       },
       "rdfs:label": [
         {
-          "@language": "en",
-          "@value": "Object"
+          "@language": "it",
+          "@value": "è descrizione di"
         },
         {
-          "@language": "it",
-          "@value": "Oggetto"
+          "@language": "en",
+          "@value": "is description of"
         }
       ],
-      "rdfs:subClassOf": {
-        "@id": "https://w3id.org/italia/onto/l0/Entity"
+      "rdfs:range": {
+        "@id": "owl:Thing"
       }
     },
     {
-      "@id": "https://w3id.org/italia/onto/l0/Event",
+      "@id": "l0:Event",
       "@type": "owl:Class",
       "owl:disjointWith": {
-        "@id": "https://w3id.org/italia/onto/l0/Object"
+        "@id": "l0:Object"
       },
       "owl:versionInfo": [
         {
@@ -110,99 +448,32 @@
         },
         {
           "@language": "en",
-          "@value": "Any entity that typically flows in time, either in the physical or social world. Examples include athmospheric phenomena, concerts, travels, institutional processes, etc. \nEvents are opposable to objects, since events typically flow in time, aggregating multiple objects during their flow, while objects tend to be stable in a certain time interval."
+          "@value": "Any entity that typically flows in time, either in the physical or social world. Examples include athmospheric phenomena, concerts, travels, institutional processes, etc.\nEvents are opposable to objects, since events typically flow in time, aggregating multiple objects during their flow, while objects tend to be stable in a certain time interval."
         }
       ],
       "rdfs:isDefinedBy": {
         "@id": "https://w3id.org/italia/onto/l0"
       },
       "rdfs:label": [
-        {
-          "@language": "it",
-          "@value": "Evento"
-        },
         {
           "@language": "en",
           "@value": "Event"
+        },
+        {
+          "@language": "it",
+          "@value": "Evento"
         }
       ],
       "rdfs:subClassOf": {
-        "@id": "https://w3id.org/italia/onto/l0/Entity"
+        "@id": "l0:Entity"
       }
     },
     {
-      "@id": "https://w3id.org/italia/onto/l0",
-      "@type": "owl:Ontology",
-      "dc:creator": [
-        {
-          "@language": "it",
-          "@value": "Team per la Trasformazione Digitale"
-        },
-        {
-          "@language": "it",
-          "@value": "Istituto di Scienze e Tecnologie della Cognizione del CNR - Laboratorio di tecnologie semantiche (STLab)"
-        },
-        {
-          "@language": "en",
-          "@value": "Italian Digital Transformation Team"
-        },
-        {
-          "@language": "en",
-          "@value": "Agency for Digital Italy - AgID"
-        },
-        {
-          "@language": "it",
-          "@value": "Agenzia per l'Italia Digitale"
-        },
-        {
-          "@language": "en",
-          "@value": "Institute of Cognitive Sciences and Technologies of the Italian Research Council (CNR) - Semantic Technology Laboratory (STLab)"
-        }
-      ],
-      "dcterms:issued": "2017-09-29",
-      "dcterms:modified": "2018-06-11",
-      "owl:versionIRI": {
-        "@id": "https://w3id.org/italia/onto/l0/0.5"
-      },
-      "owl:versionInfo": [
-        {
-          "@language": "en",
-          "@value": "0.5 - 11 June 2018 - refactoring of the URI conventions, using w3id.org"
-        },
-        {
-          "@language": "it",
-          "@value": "0.5 - 11 Giugno 2018 - rifattorizzazione delle convenzioni sugli URI, conn l'utilizzo di w3id.org"
-        }
-      ],
-      "prov:wasDerivedFrom": {
-        "@id": "https://w3id.org/italia/onto/l0/0.4"
-      },
-      "prov:wasInfluencedBy": {
-        "@id": "http://www.ontologydesignpatterns.org/ont/d0.owl"
-      },
-      "rdfs:comment": [
-        {
-          "@language": "it",
-          "@value": "Questa ontologia fornisce il livello fondazionale allo stack ontologico di OntoPiA. Il nome L0 sta per Level-0 ontology poiché essa fornisce le fondamenta concettuali elementari all'intero stack. Questa ontologia è  ispirata da DOLCE zero (http://www.ontologydesignpatterns.org/ont/d0.owl)"
-        },
-        {
-          "@language": "en",
-          "@value": "This ontology provides the foundational level of the ontological stack of OntoPiA. The name L0 stands for Level-0 ontology as it provides the basic conceptual foundations to the whole stack. This ontology is inspired by DOLCE 0 (http://www.ontologydesignpatterns.org/ont/d0.owl)"
-        }
-      ],
-      "rdfs:label": [
-        {
-          "@language": "en",
-          "@value": "Level-0 ontology"
-        },
-        {
-          "@language": "it",
-          "@value": "Ontologia Level-0"
-        }
-      ]
+      "@id": "prov:wasInfluencedBy",
+      "@type": "owl:AnnotationProperty"
     },
     {
-      "@id": "https://w3id.org/italia/onto/l0/Collection",
+      "@id": "l0:Location",
       "@type": "owl:Class",
       "owl:versionInfo": [
         {
@@ -217,11 +488,11 @@
       "rdfs:comment": [
         {
           "@language": "it",
-          "@value": "La classe che include collezioni di qualsiasi cosa, ex. gruppi, raccolte, comunità, etc."
+          "@value": "Classe che rappresenta il concetto di luogo. Le istanze di questa classe possono essere entità di qualsiasi tipo intese come luogo di qualcos'altro: luoghi geografici, coordinate, contenitori, etc."
         },
         {
           "@language": "en",
-          "@value": "The class includes all collections of any entities: e.g. groups, repositories, communities, etc,"
+          "@value": "The class including locations. Individuals of this class can be anything that is intended as a location for something else, e.g. geographical places, spatial objects, containers, etc."
         }
       ],
       "rdfs:isDefinedBy": {
@@ -230,114 +501,28 @@
       "rdfs:label": [
         {
           "@language": "it",
-          "@value": "Collezione"
+          "@value": "Luogo"
         },
         {
           "@language": "en",
-          "@value": "Collection"
+          "@value": "Location"
         }
       ],
       "rdfs:subClassOf": {
-        "@id": "https://w3id.org/italia/onto/l0/Entity"
+        "@id": "l0:Entity"
       }
     },
     {
-      "@id": "https://w3id.org/italia/onto/l0/System",
-      "@type": "owl:Class",
-      "owl:versionInfo": [
-        {
-          "@language": "it",
-          "@value": "stabile"
-        },
-        {
-          "@language": "en",
-          "@value": "stable"
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@language": "en",
-          "@value": "The class including systems. Example include political, economical, physical systems."
-        },
-        {
-          "@language": "it",
-          "@value": "La classe dei sistemi. Esempi ne sono i sistema politici, fisici o economici."
-        }
-      ],
-      "rdfs:isDefinedBy": {
-        "@id": "https://w3id.org/italia/onto/l0"
-      },
-      "rdfs:label": [
-        {
-          "@language": "it",
-          "@value": "Sistema"
-        },
-        {
-          "@language": "en",
-          "@value": "System"
-        }
-      ],
-      "rdfs:subClassOf": {
-        "@id": "https://w3id.org/italia/onto/l0/Entity"
-      }
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/l0/hasDescription",
-      "@type": "owl:ObjectProperty",
-      "owl:inverseOf": {
-        "@id": "https://w3id.org/italia/onto/l0/isDescriptionOf"
-      },
-      "owl:versionInfo": [
-        {
-          "@language": "it",
-          "@value": "stabile"
-        },
-        {
-          "@language": "en",
-          "@value": "stable"
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@language": "it",
-          "@value": "Proprietà che associa un'entità alla sua descrizione."
-        },
-        {
-          "@language": "en",
-          "@value": "Property that associates an entity with its description."
-        }
-      ],
-      "rdfs:domain": {
-        "@id": "owl:Thing"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "https://w3id.org/italia/onto/l0"
-      },
-      "rdfs:label": [
-        {
-          "@language": "it",
-          "@value": "ha descrizione"
-        },
-        {
-          "@language": "en",
-          "@value": "has description"
-        }
-      ],
-      "rdfs:range": {
-        "@id": "https://w3id.org/italia/onto/l0/Description"
-      }
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/l0/identifier",
+      "@id": "l0:identifier",
       "@type": "owl:DatatypeProperty",
       "owl:versionInfo": [
         {
-          "@language": "en",
-          "@value": "stable"
-        },
-        {
           "@language": "it",
           "@value": "stabile"
+        },
+        {
+          "@language": "en",
+          "@value": "stable"
         }
       ],
       "rdfs:comment": [
@@ -371,139 +556,7 @@
       }
     },
     {
-      "@id": "https://w3id.org/italia/onto/l0/Description",
-      "@type": "owl:Class",
-      "owl:versionInfo": [
-        {
-          "@language": "it",
-          "@value": "stabile"
-        },
-        {
-          "@language": "en",
-          "@value": "stable"
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@language": "it",
-          "@value": "La classe degli oggetti costruiti socialmente (testi, valori, categorie, relazioni, contesti) usati per descrivere qualcos'altro in modo structuratto.\nGli esempi includono i piani (come descrizioni strutturate di azioni da eseguire ex. in un processo industriale), le diagnosi (come descrizioni strutturate di situazioni osservate ex. clinicamente), le spiegazioni (come testi strutturati per chiarire ex. un concetto in un sistema normativo), osservazioni oggettive (come insiemi di valori strutturati che identificano una situazione rilevante ex. da un sistema di sensori)."
-        },
-        {
-          "@language": "en",
-          "@value": "The class of socially-created objects (texts, values, categories, relations, contexts) used to describe something else in a structured way.\nExamples include plans (as structured descriptions of actions to be executed), diagnoses (as structured descriptions of observed situations, explanations (as structured texts clarifying e.g. a concept), objective observations (as structured sets of values that identify a relevant situation)."
-        }
-      ],
-      "rdfs:isDefinedBy": {
-        "@id": "https://w3id.org/italia/onto/l0"
-      },
-      "rdfs:label": [
-        {
-          "@language": "en",
-          "@value": "Description"
-        },
-        {
-          "@language": "it",
-          "@value": "Descrizione"
-        }
-      ],
-      "rdfs:subClassOf": [
-        {
-          "@id": "_:ub257bL327C30"
-        },
-        {
-          "@id": "https://w3id.org/italia/onto/l0/Object"
-        }
-      ]
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/l0/Characteristic",
-      "@type": "owl:Class",
-      "owl:versionInfo": [
-        {
-          "@language": "it",
-          "@value": "stabile"
-        },
-        {
-          "@language": "en",
-          "@value": "stable"
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@language": "it",
-          "@value": "La classe delle caratteristiche, intese come aspetti, attributi o qualità di un'entità. Ex. una quantità, qualità estetica, colore, etc."
-        },
-        {
-          "@language": "en",
-          "@value": "The class of characteristics, intended as any aspect, attribuite, or quality of an entity. E.g. a certain size, aesthetic quality, color, etc."
-        }
-      ],
-      "rdfs:isDefinedBy": {
-        "@id": "https://w3id.org/italia/onto/l0"
-      },
-      "rdfs:label": [
-        {
-          "@language": "en",
-          "@value": "Characteristic"
-        },
-        {
-          "@language": "it",
-          "@value": "Caratteristica"
-        }
-      ],
-      "rdfs:subClassOf": {
-        "@id": "https://w3id.org/italia/onto/l0/Entity"
-      }
-    },
-    {
-      "@id": "prov:wasDerivedFrom",
-      "@type": "owl:AnnotationProperty"
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/l0/isDescriptionOf",
-      "@type": "owl:ObjectProperty",
-      "owl:versionInfo": [
-        {
-          "@language": "en",
-          "@value": "stable"
-        },
-        {
-          "@language": "it",
-          "@value": "stabile"
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@language": "en",
-          "@value": "Inverse property of 'has description'."
-        },
-        {
-          "@language": "it",
-          "@value": "Proprietà inversa di 'ha descrizione'."
-        }
-      ],
-      "rdfs:domain": {
-        "@id": "https://w3id.org/italia/onto/l0/Description"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "https://w3id.org/italia/onto/l0"
-      },
-      "rdfs:label": [
-        {
-          "@language": "it",
-          "@value": "è descrizione di"
-        },
-        {
-          "@language": "en",
-          "@value": "is description of"
-        }
-      ],
-      "rdfs:range": {
-        "@id": "owl:Thing"
-      }
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/l0/name",
+      "@id": "l0:name",
       "@type": "owl:DatatypeProperty",
       "owl:versionInfo": [
         {
@@ -516,13 +569,13 @@
         }
       ],
       "rdfs:comment": [
-        {
-          "@language": "it",
-          "@value": "Un letterale che rappresenta il nome di una cosa."
-        },
         {
           "@language": "en",
           "@value": "Any literal that represents the name of a thing."
+        },
+        {
+          "@language": "it",
+          "@value": "Un letterale che rappresenta il nome di una cosa."
         }
       ],
       "rdfs:domain": {
@@ -533,12 +586,12 @@
       },
       "rdfs:label": [
         {
-          "@language": "it",
-          "@value": "nome"
-        },
-        {
           "@language": "en",
           "@value": "name"
+        },
+        {
+          "@language": "it",
+          "@value": "nome"
         }
       ],
       "rdfs:range": {
@@ -546,8 +599,8 @@
       }
     },
     {
-      "@id": "https://w3id.org/italia/onto/l0/description",
-      "@type": "owl:DatatypeProperty",
+      "@id": "l0:Object",
+      "@type": "owl:Class",
       "owl:versionInfo": [
         {
           "@language": "en",
@@ -561,59 +614,103 @@
       "rdfs:comment": [
         {
           "@language": "it",
-          "@value": "Datatype property che associa un valore letterale a una cosa."
+          "@value": "Ogni entità che tende a essere stabile in un tempo più o meno lungo, sia nel mondo fisico sia sociale. Gli esempi includono case, città, organizzazioni, opere d'arte, oggetti del mondo naturale, artefatti, parole, idee, etc.\nGLi oggetti si possono contrapporre agli eventi, che invece scorrono nel tempo, aggregando oggetti diversi nel loro scorrere, come accade per esempio nei processi industriali o atmosferici, nelle attività di lavoro, viaggio o divertimento, etc."
         },
         {
           "@language": "en",
-          "@value": "Datatype property that associates a literal value with a thing"
+          "@value": "Any entity that tends to be stable in time, either in the physical or social world. Examples include homes, cities, organizations, works of art, natural objects, artifacts, words, ideas, etc.\nObjects are opposable to events, since events typically flow in time, aggregating multiple objects during their flow, as with working, travelling or leisure activities, industrial or athmospheric processes, etc."
         }
       ],
-      "rdfs:domain": {
-        "@id": "owl:Thing"
-      },
       "rdfs:isDefinedBy": {
         "@id": "https://w3id.org/italia/onto/l0"
       },
       "rdfs:label": [
         {
           "@language": "it",
-          "@value": "descrizione"
+          "@value": "Oggetto"
         },
         {
           "@language": "en",
-          "@value": "description"
+          "@value": "Object"
         }
       ],
-      "rdfs:range": {
-        "@id": "rdfs:Literal"
+      "rdfs:subClassOf": {
+        "@id": "l0:Entity"
       }
     },
     {
-      "@id": "https://w3id.org/italia/onto/l0/controlledVocabulary",
-      "@type": "owl:AnnotationProperty",
-      "rdfs:comment": [
+      "@id": "https://w3id.org/italia/onto/l0",
+      "@type": "owl:Ontology",
+      "dc:creator": [
         {
           "@language": "en",
-          "@value": "This property is used to link a property (data type property) of an ontology to the related controlled vocabulary where the individuals of the property are located"
+          "@value": "Italian Digital Transformation Team"
+        },
+        {
+          "@language": "en",
+          "@value": "Agency for Digital Italy - AgID"
+        },
+        {
+          "@language": "en",
+          "@value": "Institute of Cognitive Sciences and Technologies of the Italian Research Council (CNR) - Semantic Technology Laboratory (STLab)"
         },
         {
           "@language": "it",
-          "@value": "Questa proprietà è utilizzata per collegare una proprietà (data type property) di un'ontologia al relativo vocabolario controllato dove si trovano le istanze della proprietà stessa"
+          "@value": "Team per la Trasformazione Digitale"
+        },
+        {
+          "@language": "it",
+          "@value": "Istituto di Scienze e Tecnologie della Cognizione del CNR - Laboratorio di tecnologie semantiche (STLab)"
+        },
+        {
+          "@language": "it",
+          "@value": "Agenzia per l'Italia Digitale"
+        }
+      ],
+      "dcterms:issued": "2017-09-29",
+      "dcterms:modified": "2018-06-11",
+      "owl:versionIRI": {
+        "@id": "l0:0.5"
+      },
+      "owl:versionInfo": [
+        {
+          "@language": "it",
+          "@value": "0.5 - 11 Giugno 2018 - rifattorizzazione delle convenzioni sugli URI, conn l'utilizzo di w3id.org"
+        },
+        {
+          "@language": "en",
+          "@value": "0.5 - 11 June 2018 - refactoring of the URI conventions, using w3id.org"
+        }
+      ],
+      "prov:wasDerivedFrom": {
+        "@id": "l0:0.4"
+      },
+      "prov:wasInfluencedBy": {
+        "@id": "http://www.ontologydesignpatterns.org/ont/d0.owl"
+      },
+      "rdfs:comment": [
+        {
+          "@language": "it",
+          "@value": "Questa ontologia fornisce il livello fondazionale allo stack ontologico di OntoPiA. Il nome L0 sta per Level-0 ontology poiché essa fornisce le fondamenta concettuali elementari all'intero stack. Questa ontologia è  ispirata da DOLCE zero (http://www.ontologydesignpatterns.org/ont/d0.owl)"
+        },
+        {
+          "@language": "en",
+          "@value": "This ontology provides the foundational level of the ontological stack of OntoPiA. The name L0 stands for Level-0 ontology as it provides the basic conceptual foundations to the whole stack. This ontology is inspired by DOLCE 0 (http://www.ontologydesignpatterns.org/ont/d0.owl)"
         }
       ],
       "rdfs:label": [
         {
           "@language": "en",
-          "@value": "vocabolario controllato"
+          "@value": "Level-0 ontology"
         },
         {
           "@language": "it",
-          "@value": "vocabolario controllato"
+          "@value": "Ontologia Level-0"
         }
       ]
     },
     {
-      "@id": "https://w3id.org/italia/onto/l0/Location",
+      "@id": "l0:Entity",
       "@type": "owl:Class",
       "owl:versionInfo": [
         {
@@ -627,12 +724,12 @@
       ],
       "rdfs:comment": [
         {
-          "@language": "it",
-          "@value": "Classe che rappresenta il concetto di luogo. Le istanze di questa classe possono essere entità di qualsiasi tipo intese come luogo di qualcos'altro: luoghi geografici, coordinate, contenitori, etc."
+          "@language": "en",
+          "@value": "Anything: real, possible, or imaginary, which some modeller wants to talk about for some purpose."
         },
         {
-          "@language": "en",
-          "@value": "The class including locations. Individuals of this class can be anything that is intended as a location for something else, e.g. geographical places, spatial objects, containers, etc."
+          "@language": "it",
+          "@value": "Qualsiasi cosa reale, possibile o immaginaria."
         }
       ],
       "rdfs:isDefinedBy": {
@@ -640,34 +737,17 @@
       },
       "rdfs:label": [
         {
-          "@language": "it",
-          "@value": "Luogo"
+          "@language": "en",
+          "@value": "Entity"
         },
         {
-          "@language": "en",
-          "@value": "Location"
+          "@language": "it",
+          "@value": "Entità"
         }
-      ],
-      "rdfs:subClassOf": {
-        "@id": "https://w3id.org/italia/onto/l0/Entity"
-      }
+      ]
     },
     {
-      "@id": "_:ub257bL327C30",
-      "@type": "owl:Restriction",
-      "owl:onProperty": {
-        "@id": "https://w3id.org/italia/onto/l0/description"
-      },
-      "owl:someValuesFrom": {
-        "@id": "rdfs:Literal"
-      }
-    },
-    {
-      "@id": "prov:wasInfluencedBy",
-      "@type": "owl:AnnotationProperty"
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/l0/Topic",
+      "@id": "l0:Topic",
       "@type": "owl:Class",
       "owl:versionInfo": [
         {
@@ -680,110 +760,30 @@
         }
       ],
       "rdfs:comment": [
-        {
-          "@language": "en",
-          "@value": "The class of topics, subjects, arguments, categories, domains, etc., intended as topics of a discourse or a categorization."
-        },
         {
           "@language": "it",
           "@value": "La classe che include temi, argomenti, categorie, discipline, etc. Per esempio: la matematica, lo svago, le arti marziali, etc., intesi come temi di un discorso o di una categorizzazione."
+        },
+        {
+          "@language": "en",
+          "@value": "The class of topics, subjects, arguments, categories, domains, etc., intended as topics of a discourse or a categorization."
         }
       ],
       "rdfs:isDefinedBy": {
         "@id": "https://w3id.org/italia/onto/l0"
       },
       "rdfs:label": [
-        {
-          "@language": "en",
-          "@value": "Topic"
-        },
         {
           "@language": "it",
           "@value": "Tema"
+        },
+        {
+          "@language": "en",
+          "@value": "Topic"
         }
       ],
       "rdfs:subClassOf": {
-        "@id": "https://w3id.org/italia/onto/l0/Object"
-      }
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/l0/Activity",
-      "@type": "owl:Class",
-      "owl:versionInfo": [
-        {
-          "@language": "it",
-          "@value": "stabile"
-        },
-        {
-          "@language": "en",
-          "@value": "stable"
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@language": "it",
-          "@value": "La classe delle attività svolte da qualche agente."
-        },
-        {
-          "@language": "en",
-          "@value": "The class of activities carried out by an agent."
-        }
-      ],
-      "rdfs:isDefinedBy": {
-        "@id": "https://w3id.org/italia/onto/l0"
-      },
-      "rdfs:label": [
-        {
-          "@language": "en",
-          "@value": "Activity"
-        },
-        {
-          "@language": "it",
-          "@value": "Attività"
-        }
-      ],
-      "rdfs:subClassOf": {
-        "@id": "https://w3id.org/italia/onto/l0/Entity"
-      }
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/l0/Agent",
-      "@type": "owl:Class",
-      "owl:versionInfo": [
-        {
-          "@language": "it",
-          "@value": "stabile"
-        },
-        {
-          "@language": "en",
-          "@value": "stable"
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@language": "it",
-          "@value": "Un agente, sia fisico (ex. una persona, un robot, una quercia), o sociale (ex. una società, un'istituzione, una comunità)."
-        },
-        {
-          "@language": "en",
-          "@value": "Any agentive Object , either physical (e.g. a person, a robot, an oak), or social (e.g. a corporation, an institution, a community)."
-        }
-      ],
-      "rdfs:isDefinedBy": {
-        "@id": "https://w3id.org/italia/onto/l0"
-      },
-      "rdfs:label": [
-        {
-          "@language": "en",
-          "@value": "Agent"
-        },
-        {
-          "@language": "it",
-          "@value": "Agente"
-        }
-      ],
-      "rdfs:subClassOf": {
-        "@id": "https://w3id.org/italia/onto/l0/Object"
+        "@id": "l0:Object"
       }
     }
   ]
