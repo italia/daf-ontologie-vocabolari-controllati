@@ -1,0 +1,208 @@
+@prefix : <https://w3id.org/italia/onto/COV-aligns/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix covapit: <https://w3id.org/italia/onto/COV/> .
+@prefix cpvapit: <https://w3id.org/italia/onto/CPV/> .
+@prefix clvapit: <https://w3id.org/italia/onto/CLV/> .
+@prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
+@prefix regorg: <http://www.w3.org/ns/regorg#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix cpov: <http://data.europa.eu/m8g/> .
+@base <https://w3id.org/italia/onto/COV-aligns/> .
+
+
+<https://w3id.org/italia/onto/COV-aligns/> rdf:type owl:Ontology ;
+
+    owl:versionIRI <http://dati.gov.it/onto/covapit-aligns/0.10> ;
+    dc:creator "Institute of Cognitive Sciences and Technologies of the Italian Research Council (CNR) - Semantic Technology Laboratory (STLab)"@en ;
+    dc:creator "Agency for Digital Italy - AgID"@en ;
+    dc:creator "Italian Digital Transformation Team"@en ;
+    dc:modified "2018-03-03"^^xsd:date ;
+    dc:title "These are the alignments to external ontologies widely used and available at the state of the art"@en ;
+    dc:title "Questi sono gli allineamenti dell'ontologia sulle organizzazioni (pubbliche, private) Core Organization Vocabulary - Italian Application Profile  (COV-AP_IT) verso ontologie esterne del Web semantico standard e ampiamente utilizzate."@it ;
+
+    owl:imports <https://w3id.org/italia/onto/COV> .
+
+
+# Classes - Alignments
+covapit:Organization a owl:Class ;
+  rdfs:isDefinedBy covapit: ;
+  rdfs:subClassOf org:Organization , schema:Organization .
+
+covapit:Group a owl:Class ;
+  rdfs:isDefinedBy covapit: ;
+  owl:equivalentClass foaf:Group .
+
+covapit:PrivateOrganization a owl:Class ;
+    rdfs:isDefinedBy covapit: ;
+    rdfs:subClassOf regorg:RegisteredOrganization .
+
+covapit:PublicOrganization a owl:Class ;
+    rdfs:isDefinedBy covapit: ;
+    rdfs:subClassOf cpov:PublicOrganization .
+
+covapit:SupportUnit a owl:Class ;
+    rdfs:isDefinedBy covapit: ;
+    rdfs:subClassOf org:OrganizationalUnit .
+
+covapit:ChangeEvent a owl:Class ;
+    rdfs:isDefinedBy covapit: ;
+    rdfs:subClassOf org:ChangeEvent .
+
+covapit:Foundation a owl:Class ;
+    rdfs:isDefinedBy covapit: ;
+    owl:equivalentClass cpov:FoundationEvent .
+
+covapit:LegalStatus a owl:Class ;
+    rdfs:isDefinedBy covapit: ;
+    rdfs:equivalentClass skos:Concept .
+
+covapit:ActivityType a owl:Class ;
+    rdfs:isDefinedBy covapit: ;
+    rdfs:equivalentClass skos:Concept .
+
+covapit:PublicOrgActivityType a owl:Class ;
+    rdfs:isDefinedBy covapit: ;
+    rdfs:equivalentClass skos:Concept .
+
+covapit:PrivateOrgActivityType a owl:Class ;
+    rdfs:isDefinedBy covapit: ;
+    rdfs:equivalentClass skos:Concept .
+
+covapit:PublicOrganizationCategory a owl:Class ;
+    rdfs:isDefinedBy covapit: ;
+    rdfs:equivalentClass skos:Concept .
+
+
+# Object Properties - Alignments
+covapit:actsOnBehalfOf a owl:ObjectProperty ;
+    rdfs:isDefinedBy covapit: ;
+    rdfs:subPropertyOf org:reportsTo .
+
+covapit:hasLogo a owl:ObjectProperty ;
+    rdfs:isDefinedBy covapit: ;
+    owl:equivalentClass schema:logo .
+
+covapit:changedBy a owl:ObjectProperty ;
+    rdfs:isDefinedBy covapit: ;
+    owl:equivalentProperty org:changedBy .
+
+covapit:hasActivityType a owl:ObjectProperty ;
+    rdfs:isDefinedBy covapit: ;
+    owl:equivalentProperty org:purpose .
+
+covapit:hasPublicOrgActivityType a owl:ObjectProperty ;
+    rdfs:isDefinedBy covapit: ;
+    owl:equivalentProperty org:purpose .
+
+covapit:hasPrivateOrgActivityType a owl:ObjectProperty ;
+    rdfs:isDefinedBy covapit: ;
+    owl:equivalentProperty org:purpose .
+
+covapit:hasCategory a owl:ObjectProperty ;
+    rdfs:isDefinedBy covapit: ;
+    owl:equivalentProperty org:classification .
+
+covapit:hasSubOrganization a owl:ObjectProperty ;
+    rdfs:isDefinedBy covapit: ;
+    owl:equivalentProperty org:hasSubOrganization .
+
+covapit:subOrganizationOf a owl:ObjectProperty ;
+    rdfs:isDefinedBy covapit: ;
+    owl:equivalentProperty org:subOrganizationOf .
+
+covapit:originalOrganization a owl:ObjectProperty ;
+    rdfs:isDefinedBy covapit: ;
+    owl:equivalentProperty org:orginalOrganization .
+
+covapit:hasSupportUnit a owl:ObjectProperty ;
+    rdfs:isDefinedBy covapit: ;
+    owl:equivalentProperty org:hasUnit .
+
+covapit:isSupportUnitOf a owl:ObjectProperty ;
+    rdfs:isDefinedBy covapit: ;
+    owl:equivalentProperty org:unitOf .
+
+covapit:resultedFrom a owl:ObjectProperty ;
+    rdfs:isDefinedBy covapit: ;
+    owl:equivalentProperty org:resultedFrom .
+
+covapit:resultingOrganization a owl:ObjectProperty ;
+    rdfs:isDefinedBy covapit: ;
+    owl:equivalentProperty org:resultingOrganization .
+
+# Datatype Properties - Alignments
+covapit:altName a owl:DatatypeProperty ;
+  rdfs:isDefinedBy covapit: ;
+  rdfs:subPropertyOf skos:altLabel .
+
+covapit:legalName a owl:DatatypeProperty ;
+  rdfs:isDefinedBy covapit: ;
+  rdfs:subPropertyOf skos:prefLabel .
+
+covapit:hasLegalStatusCode a owl:DatatypeProperty ;
+  rdfs:isDefinedBy covapit: ;
+  rdfs:equivalentProperty skos:notation .
+
+covapit:hasLegalStatusDesc a owl:DatatypeProperty ;
+  rdfs:isDefinedBy covapit: ;
+  rdfs:equivalentProperty skos:prefLabel .
+
+
+org:Organization a owl:Class .
+
+schema:Organization a owl:Class .
+
+foaf:Group a owl:Class .
+
+regorg:RegisteredOrganization a owl:Class .
+
+cpov:PublicOrganization a owl:Class .
+
+org:OrganizationalUnit a owl:Class .
+
+org:ChangeEvent a owl:Class .
+
+cpov:FoundationEvent a owl:Class .
+
+skos:Concept a owl:Class .
+
+org:reportsTo a owl:ObjectProperty .
+
+schema:logo a owl:ObjectProperty .
+
+org:changedBy a owl:ObjectProperty .
+
+org:purpose a owl:ObjectProperty .
+
+org:classification a owl:ObjectProperty .
+
+org:hasSubOrganization a owl:ObjectProperty .
+
+org:subOrganizationOf a owl:ObjectProperty .
+
+org:orginalOrganization a owl:ObjectProperty .
+
+org:hasUnit a owl:ObjectProperty .
+
+org:unitOf a owl:ObjectProperty .
+
+org:resultedFrom a owl:ObjectProperty .
+
+org:resultingOrganization a owl:ObjectProperty .
+
+skos:altLabel a owl:DatatypeProperty .
+
+skos:prefLabel a owl:DatatypeProperty .
+
+skos:notation a owl:DatatypeProperty .

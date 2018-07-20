@@ -12,6 +12,7 @@
     <!ENTITY ti "https://w3id.org/italia/onto/TI/" >
     <!ENTITY clvapit "https://w3id.org/italia/onto/CLV/" >
     <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY xml "http://www.w3.org/XML/1998/namespace" >
     <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
     <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
 ]>
@@ -28,6 +29,7 @@
      xmlns:dct="http://purl.org/dc/terms/"
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
      xmlns:ti="https://w3id.org/italia/onto/TI/"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
      xmlns:prov="http://www.w3.org/ns/prov#"
      xmlns:smapit="https://w3id.org/italia/onto/SM/"
      xmlns:dc="http://purl.org/dc/elements/1.1/">
@@ -1064,8 +1066,8 @@
         <rdfs:subClassOf rdf:resource="&l0;Object"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/COV/totalTaxBurden"/>
-                <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/COV/totalAmount"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
                 <owl:onDataRange rdf:resource="&xsd;float"/>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -1077,8 +1079,8 @@
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/COV/totalAmount"/>
-                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/COV/totalTaxBurden"/>
+                <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
                 <owl:onDataRange rdf:resource="&xsd;float"/>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -1098,12 +1100,6 @@
         <rdfs:subClassOf rdf:resource="&l0;Event"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/COV/orginalOrganization"/>
-                <owl:allValuesFrom rdf:resource="https://w3id.org/italia/onto/COV/Organization"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
                 <owl:onProperty rdf:resource="&l0;description"/>
                 <owl:someValuesFrom rdf:resource="&rdfs;Literal"/>
             </owl:Restriction>
@@ -1111,6 +1107,12 @@
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="https://w3id.org/italia/onto/COV/resultingOrganization"/>
+                <owl:allValuesFrom rdf:resource="https://w3id.org/italia/onto/COV/Organization"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/COV/orginalOrganization"/>
                 <owl:allValuesFrom rdf:resource="https://w3id.org/italia/onto/COV/Organization"/>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -1148,15 +1150,15 @@
         <rdfs:subClassOf rdf:resource="&roapit;TimeIndexedRole"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&ti;atTime"/>
-                <owl:onClass rdf:resource="&ti;TimeInterval"/>
-                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/COV/remuneration"/>
+                <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onDataRange rdf:resource="&xsd;double"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&roapit;withRole"/>
-                <owl:onClass rdf:resource="&roapit;Role"/>
+                <owl:onProperty rdf:resource="&ti;atTime"/>
+                <owl:onClass rdf:resource="&ti;TimeInterval"/>
                 <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -1169,9 +1171,9 @@
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/COV/remuneration"/>
-                <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
-                <owl:onDataRange rdf:resource="&xsd;double"/>
+                <owl:onProperty rdf:resource="&roapit;withRole"/>
+                <owl:onClass rdf:resource="&roapit;Role"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:comment xml:lang="en">This class represents the nature of an Agent&apos;s membership of an organization. In particular, the class is an n-ary relationship (a situation) that involves an Agent, an Organization, a Role and a Time Period.</rdfs:comment>
@@ -1280,8 +1282,8 @@
         <rdfs:subClassOf rdf:resource="https://w3id.org/italia/onto/COV/SupportUnit"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/COV/isPartOf"/>
-                <owl:onClass rdf:resource="https://w3id.org/italia/onto/COV/HomogeneousOrganizationalArea"/>
+                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/COV/hasEInvoiceService"/>
+                <owl:onClass rdf:resource="https://w3id.org/italia/onto/COV/eInvoiceService"/>
                 <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -1293,8 +1295,8 @@
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/COV/hasEInvoiceService"/>
-                <owl:onClass rdf:resource="https://w3id.org/italia/onto/COV/eInvoiceService"/>
+                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/COV/isPartOf"/>
+                <owl:onClass rdf:resource="https://w3id.org/italia/onto/COV/HomogeneousOrganizationalArea"/>
                 <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -1315,8 +1317,96 @@
         <rdfs:subClassOf rdf:resource="&l0;Agent"/>
         <rdfs:subClassOf>
             <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/COV/holdEmployment"/>
+                <owl:someValuesFrom rdf:resource="https://w3id.org/italia/onto/COV/Employment"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/COV/acronym"/>
+                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/COV/foundationDate"/>
+                <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onDataRange rdf:resource="&xsd;dateTime"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/COV/changedBy"/>
+                <owl:allValuesFrom rdf:resource="https://w3id.org/italia/onto/COV/ChangeEvent"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/COV/resultedFrom"/>
+                <owl:allValuesFrom rdf:resource="https://w3id.org/italia/onto/COV/ChangeEvent"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/COV/hasBalanceSheet"/>
+                <owl:allValuesFrom rdf:resource="https://w3id.org/italia/onto/COV/BalanceSheet"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&clvapit;hasSpatialCoverage"/>
+                <owl:someValuesFrom rdf:resource="&l0;Location"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/COV/hasActivityType"/>
+                <owl:allValuesFrom rdf:resource="https://w3id.org/italia/onto/COV/ActivityType"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/COV/mainFunction"/>
+                <owl:allValuesFrom rdf:resource="&rdfs;Literal"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/COV/accreditationDate"/>
+                <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onDataRange rdf:resource="&xsd;dateTime"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/COV/altName"/>
+                <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/COV/hasLogo"/>
+                <owl:onClass rdf:resource="&smapit;Image"/>
+                <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&smapit;hasOnlineContactPoint"/>
+                <owl:onClass rdf:resource="&smapit;OnlineContactPoint"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
                 <owl:onProperty rdf:resource="&l0;description"/>
                 <owl:someValuesFrom rdf:resource="&rdfs;Literal"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/COV/taxCode"/>
+                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -1330,94 +1420,6 @@
             <owl:Restriction>
                 <owl:onProperty rdf:resource="https://w3id.org/italia/onto/COV/legalName"/>
                 <owl:someValuesFrom rdf:resource="&rdfs;Literal"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/COV/acronym"/>
-                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/COV/changedBy"/>
-                <owl:allValuesFrom rdf:resource="https://w3id.org/italia/onto/COV/ChangeEvent"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/COV/hasActivityType"/>
-                <owl:allValuesFrom rdf:resource="https://w3id.org/italia/onto/COV/ActivityType"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/COV/hasBalanceSheet"/>
-                <owl:allValuesFrom rdf:resource="https://w3id.org/italia/onto/COV/BalanceSheet"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&smapit;hasOnlineContactPoint"/>
-                <owl:onClass rdf:resource="&smapit;OnlineContactPoint"/>
-                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/COV/altName"/>
-                <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/COV/foundationDate"/>
-                <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
-                <owl:onDataRange rdf:resource="&xsd;dateTime"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/COV/hasLogo"/>
-                <owl:onClass rdf:resource="&smapit;Image"/>
-                <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/COV/holdEmployment"/>
-                <owl:someValuesFrom rdf:resource="https://w3id.org/italia/onto/COV/Employment"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/COV/mainFunction"/>
-                <owl:allValuesFrom rdf:resource="&rdfs;Literal"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/COV/taxCode"/>
-                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&clvapit;hasSpatialCoverage"/>
-                <owl:someValuesFrom rdf:resource="&l0;Location"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/COV/accreditationDate"/>
-                <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
-                <owl:onDataRange rdf:resource="&xsd;dateTime"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/COV/resultedFrom"/>
-                <owl:allValuesFrom rdf:resource="https://w3id.org/italia/onto/COV/ChangeEvent"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:comment xml:lang="en">This class represents an organization, be it public or private, usually registrated in a national public registry (e.g. in Italy &quot;indice delle PA&quot; for the public administrations, &quot;Registro imprese&quot; for the private organizations. Examples: &quot;Agenzia per l&apos;Italia Digitale&quot;, &quot;Comune di Roma&quot;, &quot;TELECOM ITALIA SPA o TIM S.P.A.&quot;</rdfs:comment>
@@ -1440,9 +1442,16 @@
         <rdfs:subClassOf rdf:resource="&l0;Event"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/COV/participationPercentage"/>
+                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/COV/participated"/>
+                <owl:onClass rdf:resource="https://w3id.org/italia/onto/COV/Organization"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/COV/hasParticipationType"/>
+                <owl:onClass rdf:resource="https://w3id.org/italia/onto/COV/ParticipationType"/>
                 <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
-                <owl:onDataRange rdf:resource="&xsd;float"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -1454,16 +1463,9 @@
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/COV/participated"/>
-                <owl:onClass rdf:resource="https://w3id.org/italia/onto/COV/Organization"/>
-                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/COV/hasParticipationType"/>
-                <owl:onClass rdf:resource="https://w3id.org/italia/onto/COV/ParticipationType"/>
+                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/COV/participationPercentage"/>
                 <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onDataRange rdf:resource="&xsd;float"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:comment xml:lang="en">This class represents a participation of an organization in another. It is a n-ary relationship (situation) between organizations in a certain time interval. The participation can be of a specific type. Example is the participation of a municipality in a controlled enterprise that provides public services such as water management or public transportation.</rdfs:comment>
@@ -1518,14 +1520,20 @@
         <rdfs:subClassOf rdf:resource="https://w3id.org/italia/onto/COV/Organization"/>
         <rdfs:subClassOf>
             <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/COV/businessObjective"/>
+                <owl:allValuesFrom rdf:resource="&rdfs;Literal"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
                 <owl:onProperty rdf:resource="https://w3id.org/italia/onto/COV/VATnumber"/>
                 <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/COV/businessObjective"/>
-                <owl:allValuesFrom rdf:resource="&rdfs;Literal"/>
+                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/COV/REANumber"/>
+                <owl:someValuesFrom rdf:resource="&rdfs;Literal"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -1539,12 +1547,6 @@
                 <owl:onProperty rdf:resource="https://w3id.org/italia/onto/COV/startingActivityDate"/>
                 <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
                 <owl:onDataRange rdf:resource="&xsd;dateTime"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/COV/REANumber"/>
-                <owl:someValuesFrom rdf:resource="&rdfs;Literal"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="https://w3id.org/italia/onto/COV/PublicOrganization"/>
@@ -1583,15 +1585,15 @@
         <rdfs:subClassOf rdf:resource="https://w3id.org/italia/onto/COV/Organization"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/COV/hasCategory"/>
-                <owl:onClass rdf:resource="https://w3id.org/italia/onto/COV/PublicOrganizationCategory"/>
-                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/COV/IPAcode"/>
+                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/COV/IPAcode"/>
-                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/COV/hasCategory"/>
+                <owl:onClass rdf:resource="https://w3id.org/italia/onto/COV/PublicOrganizationCategory"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -1715,9 +1717,8 @@ Questa classe deriva dall&apos;analoga classe del Core Public Organization Vocab
         <rdfs:subClassOf rdf:resource="&l0;Object"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/COV/taxCodeValidationDate"/>
-                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onDataRange rdf:resource="&xsd;dateTime"/>
+                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/COV/taxCodeEInvoiceService"/>
+                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -1729,8 +1730,9 @@ Questa classe deriva dall&apos;analoga classe del Core Public Organization Vocab
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/COV/taxCodeEInvoiceService"/>
-                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/COV/taxCodeValidationDate"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="&xsd;dateTime"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:comment xml:lang="en">This class represents the Italian references for the eInvoice service, as defined in the national registry of public administrations named IPA.</rdfs:comment>
