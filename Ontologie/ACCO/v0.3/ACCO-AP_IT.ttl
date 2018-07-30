@@ -14,865 +14,518 @@
 @prefix covapit: <https://w3id.org/italia/onto/COV/> .
 @prefix poiapit: <https://w3id.org/italia/onto/POI/> .
 @prefix potapit: <https://w3id.org/italia/onto/POT/> .
-@base <https://w3id.org/italia/onto/ACCO> .
+@base <https://w3id.org/italia/onto/ACCO/> .
 
 <https://w3id.org/italia/onto/ACCO> rdf:type owl:Ontology ;
-                                    
-                                    rdfs:label "Accommodation Facilities"@en ,
-                                               "Strutture ricettive"@it ;
-                                    
-                                    dct:modified "2018-13-03" ;
-                                    
-                                    dct:issued "2017-10-23" ;
-                                    
-                                    dc:creator "Agency for Digital Italy - AgID"@en ,
-                                               "Institute of Cognitive Sciences and Technologies of the Italian Research Council (CNR) - Semantic Technology Laboratory (STLab)"@en ,
-                                               "Italian Digital Transformation Team"@en ;
-                                    
-                                    rdfs:comment "This is the ontology of the Italian application profile for Accomodation Facilities"@en ;
-                                    
-                                    owl:versionInfo "Version 0.3 - 13 March 2018 - Migration to w3id.org/italia as namespace."@en ;
-                                    
-                                    dc:creator "Agenzia per l'Italia Digitale - AgID"@it ,
-                                               "Istituto di Scienze e Tecnologie della Cognizione del CNR - Laboratorio di Tecnologie Semantiche (STLab)"@it ;
-                                    
-                                    rdfs:comment "Questa è l'ontologia del profilo  italiano sulle Strutture Ricettive (Accomodation Facility - Italian Application Profile - ACCO-AP_IT)"@it ;
-                                    
-                                    dc:creator "Team per la Trasformazione Digitale"@it ;
-                                    
-                                    owl:versionInfo "Version 0.3 - 13 Marzo 2018 - Migrazione al namespace w3id.org/italia"@it ;
-                                    
-                                    dct:license <https://creativecommons.org/licenses/by/4.0/> ;
-                                    
-                                    rdfs:isDefinedBy <https://w3id.org/italia/onto/ACCO> ;
-                                    
-                                    owl:imports <https://w3id.org/italia/onto/COV> ,
-                                                <https://w3id.org/italia/onto/POI> ,
-                                                <https://w3id.org/italia/onto/POT> ,
-                                                <https://w3id.org/italia/onto/SM> ,
-                                                <https://w3id.org/italia/onto/TI> ,
-                                                <https://w3id.org/italia/onto/l0> ;
-                                    
-                                    prov:wasDerivedFrom <https://w3id.org/italia/onto/ACCO/0.1> ;
-                                    
-                                    owl:versionIRI <https://w3id.org/italia/onto/ACCO/0.3> .
-
+                                      owl:versionIRI : <https://w3id.org/italia/onto/ACCO/0.3> ;
+                                      owl:imports <https://w3id.org/italia/onto/TI> ,
+                                                  <https://w3id.org/italia/onto/POT> ,
+                                                  <https://w3id.org/italia/onto/COV> ,
+                                                  <https://w3id.org/italia/onto/POI> ,
+                                                  <https://w3id.org/italia/onto/l0> ,
+                                                  <https://w3id.org/italia/onto/SM> ;
+                                      dc:creator "Institute of Cognitive Sciences and Technologies of the Italian Research Council (CNR) - Semantic Technology Laboratory (STLab)"@en ;
+                                      dct:modified "2018-13-03" ;
+                                      dc:creator "Italian Digital Transformation Team"@en ;
+                                      dct:issued "2017-10-23" ;
+                                      dc:creator "Istituto di Scienze e Tecnologie della Cognizione del CNR - Laboratorio di Tecnologie Semantiche (STLab)"@it ;
+                                      rdfs:comment "Questa è l'ontologia del profilo  italiano sulle Strutture Ricettive (Accomodation Facility - Italian Application Profile - ACCO-AP_IT)"@it ;
+                                      rdfs:isDefinedBy <https://w3id.org/italia/onto/ACCO> ;
+                                      prov:wasDerivedFrom : ;
+                                      dct:license <https://creativecommons.org/licenses/by/4.0/> ;
+                                      dc:creator "Team per la Trasformazione Digitale"@it ;
+                                      owl:versionInfo "Version 0.3 - 13 Marzo 2018 - Migrazione al namespace w3id.org/italia"@it ;
+                                      rdfs:comment "This is the ontology of the Italian application profile for Accomodation Facilities"@en ;
+                                      dc:creator "Agency for Digital Italy - AgID"@en ;
+                                      rdfs:label "Strutture ricettive"@it ;
+                                      owl:versionInfo "Version 0.3 - 13 March 2018 - Migration to w3id.org/italia as namespace."@en ;
+                                      dc:creator "Agenzia per l'Italia Digitale - AgID"@it ;
+                                      rdfs:label "Accommodation Facilities"@en .
 
 #################################################################
-#
 #    Annotation properties
-#
 #################################################################
-
 
 ###  http://purl.org/dc/terms/license
-
 dct:license rdf:type owl:AnnotationProperty .
 
 
-
 ###  http://www.w3.org/ns/prov#wasDerivedFrom
-
 prov:wasDerivedFrom rdf:type owl:AnnotationProperty .
 
 
-
 ###  http://www.w3.org/ns/prov#wasInfluencedBy
-
 prov:wasInfluencedBy rdf:type owl:AnnotationProperty .
 
 
-
 ###  https://w3id.org/italia/onto/l0/controlledVocabulary
-
 l0:controlledVocabulary rdf:type owl:AnnotationProperty .
 
 
-
-
-
 #################################################################
-#
 #    Object Properties
-#
 #################################################################
-
 
 ###  https://w3id.org/italia/onto/ACCO/hasAccommodationClassification
-
 :hasAccommodationClassification rdf:type owl:ObjectProperty ;
-                                
-                                rdfs:label "has accommodation classification"@en ,
-                                           "ha classificazione struttura ricettiva"@it ;
-                                
-                                rdfs:comment "This property links an accommodation facility with exactly 1 accommodation star rating. If you want to represent that a hotel is 4 star superior, you can use this property."@en ;
-                                
-                                owl:versionInfo "stable"@en ;
-                                
-                                rdfs:comment "Questa proprietà lega una struttura ricettiva alla sua classificazione rispetto al modello a stelle. Se si vuole indicare che un albergo è a 4 stelle, si può usare questa proprietà."@it ;
-                                
-                                owl:versionInfo "stabile"@it ;
-                                
-                                rdfs:isDefinedBy <https://w3id.org/italia/onto/ACCO> ;
-                                
+                                owl:inverseOf :isAccommodationClassificationOf ;
                                 rdfs:domain :Accommodation ;
-                                
                                 rdfs:range :AccommodationStarRating ;
-                                
-                                owl:inverseOf :isAccommodationClassificationOf .
-
+                                rdfs:comment "Questa proprietà lega una struttura ricettiva alla sua classificazione rispetto al modello a stelle. Se si vuole indicare che un albergo è a 4 stelle, si può usare questa proprietà."@it ,
+                                             "This property links an accommodation facility with exactly 1 accommodation star rating. If you want to represent that a hotel is 4 star superior, you can use this property."@en ;
+                                rdfs:isDefinedBy <https://w3id.org/italia/onto/ACCO> ;
+                                rdfs:label "ha classificazione struttura ricettiva"@it ,
+                                           "has accommodation classification"@en ;
+                                owl:versionInfo "stabile"@it ,
+                                                "stable"@en .
 
 
 ###  https://w3id.org/italia/onto/ACCO/hasAccommodationOwner
-
 :hasAccommodationOwner rdf:type owl:ObjectProperty ;
-                       
-                       rdfs:label "has accommodation owner"@en ,
-                                  "ha proprietario struttura ricettiva"@it ;
-                       
-                       rdfs:comment "This property links an accommodation facility to an organization expressing the specific role of owner"@en ;
-                       
-                       owl:versionInfo "stable"@en ;
-                       
-                       rdfs:comment "Questa proprietà collega una struttura ricettiva a un'organizzazione esprimento lo specifico ruolo di proprietario. Questa proprietà può essere utilizzata per mappare il \"codice esercente\" alla struttura ricettiva."@it ;
-                       
-                       owl:versionInfo "stable"@it ;
-                       
-                       rdfs:isDefinedBy <https://w3id.org/italia/onto/ACCO> ;
-                       
                        rdfs:domain :Accommodation ;
-                       
-                       rdfs:range covapit:Organization .
-
+                       rdfs:range covapit:Organization ;
+                       rdfs:comment "Questa proprietà collega una struttura ricettiva a un'organizzazione esprimento lo specifico ruolo di proprietario. Questa proprietà può essere utilizzata per mappare il \"codice esercente\" alla struttura ricettiva."@it ,
+                                    "This property links an accommodation facility to an organization expressing the specific role of owner"@en ;
+                       rdfs:isDefinedBy <https://w3id.org/italia/onto/ACCO> ;
+                       rdfs:label "ha proprietario struttura ricettiva"@it ,
+                                  "has accommodation owner"@en ;
+                       owl:versionInfo "stable"@en ,
+                                       "stable"@it .
 
 
 ###  https://w3id.org/italia/onto/ACCO/hasAccommodationRoom
-
 :hasAccommodationRoom rdf:type owl:ObjectProperty ;
-                      
-                      rdfs:label "has accommodation room"@en ,
-                                 "ha camera della struttura ricettiva"@it ;
-                      
-                      rdfs:comment "This property is the implementation of the ontology design pattern \"PartOf\". It links the accommodation facility to its rooms that are part of the facility."@en ;
-                      
-                      owl:versionInfo "stable"@en ;
-                      
-                      rdfs:comment "Questa proprietà è l'implementazione dell'ontology design pattern \"ParteDi\". Essa collega la struttura ricettiva con le sue camere che sono appunto parte della struttura stessa."@it ;
-                      
-                      owl:versionInfo "stabile"@it ;
-                      
-                      rdfs:isDefinedBy <https://w3id.org/italia/onto/ACCO> ;
-                      
+                      owl:inverseOf :isAccommodationRoomOf ;
                       rdfs:domain :Accommodation ;
-                      
                       rdfs:range :AccommodationRoom ;
-                      
-                      owl:inverseOf :isAccommodationRoomOf .
-
+                      rdfs:comment "Questa proprietà è l'implementazione dell'ontology design pattern \"ParteDi\". Essa collega la struttura ricettiva con le sue camere che sono appunto parte della struttura stessa."@it ,
+                                   "This property is the implementation of the ontology design pattern \"PartOf\". It links the accommodation facility to its rooms that are part of the facility."@en ;
+                      rdfs:isDefinedBy <https://w3id.org/italia/onto/ACCO> ;
+                      rdfs:label "ha camera della struttura ricettiva"@it ,
+                                 "has accommodation room"@en ;
+                      owl:versionInfo "stabile"@it ,
+                                      "stable"@en .
 
 
 ###  https://w3id.org/italia/onto/ACCO/hasAccommodationTypology
-
 :hasAccommodationTypology rdf:type owl:ObjectProperty ;
-                          
-                          rdfs:label "has accommodation typology"@en ,
-                                     "ha tipologia struttura ricettiva"@it ;
-                          
-                          rdfs:comment "This property links an accommodation with at least one typology (hotel, motel, camping, etc.)."@en ;
-                          
-                          owl:versionInfo "stable"@en ;
-                          
-                          rdfs:comment "Questa proprietà collega una struttura ricettiva con almeno una tipologia (hotel, motel, campeggio, albergo diffuso, ecc.)"@it ;
-                          
-                          owl:versionInfo "stabile"@it ;
-                          
-                          rdfs:isDefinedBy <https://w3id.org/italia/onto/ACCO> ;
-                          
+                          owl:inverseOf :isAccommodationTypologyOf ;
                           rdfs:domain :Accommodation ;
-                          
                           rdfs:range :AccommodationTypology ;
-                          
-                          owl:inverseOf :isAccommodationTypologyOf .
-
+                          rdfs:comment "Questa proprietà collega una struttura ricettiva con almeno una tipologia (hotel, motel, campeggio, albergo diffuso, ecc.)"@it ,
+                                       "This property links an accommodation with at least one typology (hotel, motel, camping, etc.)."@en ;
+                          rdfs:isDefinedBy <https://w3id.org/italia/onto/ACCO> ;
+                          rdfs:label "ha tipologia struttura ricettiva"@it ,
+                                     "has accommodation typology"@en ;
+                          owl:versionInfo "stabile"@it ,
+                                          "stable"@en .
 
 
 ###  https://w3id.org/italia/onto/ACCO/hasOSDCriterion
-
 :hasOSDCriterion rdf:type owl:ObjectProperty ;
-                 
-                 rdfs:label "has offered service description criterion"@en ,
-                            "ha criterio per descrizione servizi offerti"@it ;
-                 
-                 rdfs:comment "This property links the offered service description to its criteria ."@en ;
-                 
-                 owl:versionInfo "unstable"@en ;
-                 
-                 rdfs:comment "Questa proprietà collega la descrizione dei servizi, offerti da una struttura ricettiva o da una camera della struttura ricettiva, ai relativi criteri che possono essere usati per completare la descrizione."@it ;
-                 
-                 owl:versionInfo "provvisoria"@it ;
-                 
-                 rdfs:isDefinedBy <https://w3id.org/italia/onto/ACCO> ;
-                 
+                 rdfs:domain :OfferedServiceDescription ;
                  rdfs:range :OSDCriterion ;
-                 
-                 rdfs:domain :OfferedServiceDescription .
-
+                 rdfs:comment "Questa proprietà collega la descrizione dei servizi, offerti da una struttura ricettiva o da una camera della struttura ricettiva, ai relativi criteri che possono essere usati per completare la descrizione."@it ,
+                              "This property links the offered service description to its criteria ."@en ;
+                 rdfs:isDefinedBy <https://w3id.org/italia/onto/ACCO> ;
+                 rdfs:label "ha criterio per descrizione servizi offerti"@it ,
+                            "has offered service description criterion"@en ;
+                 owl:versionInfo "provvisoria"@it ,
+                                 "unstable"@en .
 
 
 ###  https://w3id.org/italia/onto/ACCO/hasOSDFeature
-
 :hasOSDFeature rdf:type owl:ObjectProperty ;
-               
-               rdfs:label "has offered service description feature"@en ,
-                          "ha caratteristica  descrizione servizi offerti"@it ;
-               
-               rdfs:comment "This property links the description of the offered services to its feature (or attribute or characteristic)."@en ;
-               
-               owl:versionInfo "stable"@en ;
-               
-               rdfs:comment "Questa proprietà collega la descrizione dei servizi offerti alla caratteristica descritta. Esempi di caratteristica sono: lo spazio occupato per una stanza, camera da letto per la struttura ricettiva, unità abitative, posto letto, ecc."@it ;
-               
-               owl:versionInfo "stable"@it ;
-               
-               rdfs:isDefinedBy <https://w3id.org/italia/onto/ACCO> ;
-               
+               rdfs:domain :OfferedServiceDescription ;
                rdfs:range :OSDFeature ;
-               
-               rdfs:domain :OfferedServiceDescription .
-
+               rdfs:comment "Questa proprietà collega la descrizione dei servizi offerti alla caratteristica descritta. Esempi di caratteristica sono: lo spazio occupato per una stanza, camera da letto per la struttura ricettiva, unità abitative, posto letto, ecc."@it ,
+                            "This property links the description of the offered services to its feature (or attribute or characteristic)."@en ;
+               rdfs:isDefinedBy <https://w3id.org/italia/onto/ACCO> ;
+               rdfs:label "ha caratteristica  descrizione servizi offerti"@it ,
+                          "has offered service description feature"@en ;
+               owl:versionInfo "stable"@en ,
+                               "stable"@it .
 
 
 ###  https://w3id.org/italia/onto/ACCO/hasOfferedServiceDescription
-
 :hasOfferedServiceDescription rdf:type owl:ObjectProperty ;
-                              
-                              rdfs:label "has offered service description"@en ,
-                                         "ha descrizione servizi offerti"@it ;
-                              
-                              rdfs:comment "This property links an accommodation facility (or an accommodation room)  to the description of the offered services."@en ;
-                              
-                              owl:versionInfo "stable"@en ;
-                              
-                              rdfs:comment "Questa proprietà collega una struttura ricettiva ( o una camera della struttura ricettiva) alla descrizione di tutti i possibili servizi offerti dalla struttura (camera) stessa."@it ;
-                              
-                              owl:versionInfo "stable"@it ;
-                              
-                              rdfs:isDefinedBy <https://w3id.org/italia/onto/ACCO> ;
-                              
-                              rdfs:range :OfferedServiceDescription ;
-                              
                               rdfs:domain [ rdf:type owl:Class ;
                                             owl:unionOf ( :Accommodation
                                                           :AccommodationRoom
                                                         )
-                                          ] .
-
+                                          ] ;
+                              rdfs:range :OfferedServiceDescription ;
+                              rdfs:comment "Questa proprietà collega una struttura ricettiva ( o una camera della struttura ricettiva) alla descrizione di tutti i possibili servizi offerti dalla struttura (camera) stessa."@it ,
+                                           "This property links an accommodation facility (or an accommodation room)  to the description of the offered services."@en ;
+                              rdfs:isDefinedBy <https://w3id.org/italia/onto/ACCO> ;
+                              rdfs:label "ha descrizione servizi offerti"@it ,
+                                         "has offered service description"@en ;
+                              owl:versionInfo "stable"@en ,
+                                              "stable"@it .
 
 
 ###  https://w3id.org/italia/onto/ACCO/includesAccommodation
-
 :includesAccommodation rdf:type owl:ObjectProperty ;
-                       
-                       rdfs:label "includes accommodation"@en ,
-                                  "include struttura ricettiva"@it ;
-                       
-                       rdfs:comment "This property connects an accommodation chain with all the accommodation facility that are part of the accommodation chain"@en ;
-                       
-                       owl:versionInfo "stable"@en ;
-                       
-                       rdfs:comment "Questa proprietà collega una catena di strutture ricettive con tutte le strutture ricettive della catena"@it ;
-                       
-                       owl:versionInfo "stabile"@it ;
-                       
-                       rdfs:isDefinedBy <https://w3id.org/italia/onto/ACCO> ;
-                       
-                       rdfs:range :Accommodation ;
-                       
-                       rdfs:domain :AccommodationChain ;
-                       
+                       rdfs:subPropertyOf poiapit:includesPOI ;
                        owl:inverseOf :isIncludedInAccommodation ;
-                       
-                       rdfs:subPropertyOf poiapit:includesPOI .
-
+                       rdfs:domain :AccommodationChain ;
+                       rdfs:range :Accommodation ;
+                       rdfs:comment "Questa proprietà collega una catena di strutture ricettive con tutte le strutture ricettive della catena"@it ,
+                                    "This property connects an accommodation chain with all the accommodation facility that are part of the accommodation chain"@en ;
+                       rdfs:isDefinedBy <https://w3id.org/italia/onto/ACCO> ;
+                       rdfs:label "include struttura ricettiva"@it ,
+                                  "includes accommodation"@en ;
+                       owl:versionInfo "stabile"@it ,
+                                       "stable"@en .
 
 
 ###  https://w3id.org/italia/onto/ACCO/isAccommodationClassificationOf
-
 :isAccommodationClassificationOf rdf:type owl:ObjectProperty ;
-                                 
+                                 rdfs:domain :AccommodationStarRating ;
+                                 rdfs:range :Accommodation ;
+                                 rdfs:comment "Inverse property of \"has accommodation classification\" that links the star rating to the accommodation facility"@en ,
+                                              "Proprietà inversa di \"ha classificazione struttura ricettiva\" e collega il rating a stelle alla struttura ricettiva"@it ;
+                                 rdfs:isDefinedBy <https://w3id.org/italia/onto/ACCO> ;
                                  rdfs:label "is accommodation classification of"@en ,
                                             "è classificazione di struttura ricettiva"@it ;
-                                 
-                                 rdfs:comment "Inverse property of \"has accommodation classification\" that links the star rating to the accommodation facility"@en ;
-                                 
-                                 owl:versionInfo "stable"@en ;
-                                 
-                                 rdfs:comment "Proprietà inversa di \"ha classificazione struttura ricettiva\" e collega il rating a stelle alla struttura ricettiva"@it ;
-                                 
-                                 owl:versionInfo "stabile"@it ;
-                                 
-                                 rdfs:isDefinedBy <https://w3id.org/italia/onto/ACCO> ;
-                                 
-                                 rdfs:range :Accommodation ;
-                                 
-                                 rdfs:domain :AccommodationStarRating .
-
+                                 owl:versionInfo "stabile"@it ,
+                                                 "stable"@en .
 
 
 ###  https://w3id.org/italia/onto/ACCO/isAccommodationRoomOf
-
 :isAccommodationRoomOf rdf:type owl:ObjectProperty ;
-                       
+                       rdfs:domain :AccommodationRoom ;
+                       rdfs:range :Accommodation ;
+                       rdfs:comment "Inverse property of \"has room\" that links an accommodation room to its facility"@en ,
+                                    "Proprietà inversa di \"ha camera\" che collega una camera (sala) alla propria struttura ricettiva."@it ;
+                       rdfs:isDefinedBy <https://w3id.org/italia/onto/ACCO> ;
                        rdfs:label "is accommodation room of"@en ,
                                   "è camera della struttura ricettiva"@it ;
-                       
-                       rdfs:comment "Inverse property of \"has room\" that links an accommodation room to its facility"@en ;
-                       
-                       owl:versionInfo "stable"@en ;
-                       
-                       rdfs:comment "Proprietà inversa di \"ha camera\" che collega una camera (sala) alla propria struttura ricettiva."@it ;
-                       
-                       owl:versionInfo "stabile"@it ;
-                       
-                       rdfs:isDefinedBy <https://w3id.org/italia/onto/ACCO> ;
-                       
-                       rdfs:range :Accommodation ;
-                       
-                       rdfs:domain :AccommodationRoom .
-
+                       owl:versionInfo "stabile"@it ,
+                                       "stable"@en .
 
 
 ###  https://w3id.org/italia/onto/ACCO/isAccommodationTypologyOf
-
 :isAccommodationTypologyOf rdf:type owl:ObjectProperty ;
-                           
+                           rdfs:domain :AccommodationTypology ;
+                           rdfs:range :Accommodation ;
+                           rdfs:comment "Inverse property of \"has accommodation typology\" and links the typology with the accommodation facility"@en ,
+                                        "Proprietà inversa di \"ha tipologia struttura ricettiva\" usata per collegare la tipologia alla struttura ricettiva"@it ;
+                           rdfs:isDefinedBy <https://w3id.org/italia/onto/ACCO> ;
                            rdfs:label "is accommodation typology of"@en ,
                                       "è tipologia di struttura ricettiva"@it ;
-                           
-                           rdfs:comment "Inverse property of \"has accommodation typology\" and links the typology with the accommodation facility"@en ;
-                           
-                           owl:versionInfo "stable"@en ;
-                           
-                           rdfs:comment "Proprietà inversa di \"ha tipologia struttura ricettiva\" usata per collegare la tipologia alla struttura ricettiva"@it ;
-                           
-                           owl:versionInfo "stabile"@it ;
-                           
-                           rdfs:isDefinedBy <https://w3id.org/italia/onto/ACCO> ;
-                           
-                           rdfs:range :Accommodation ;
-                           
-                           rdfs:domain :AccommodationTypology .
-
+                           owl:versionInfo "stabile"@it ,
+                                           "stable"@en .
 
 
 ###  https://w3id.org/italia/onto/ACCO/isIncludedInAccommodation
-
 :isIncludedInAccommodation rdf:type owl:ObjectProperty ;
-                           
+                           rdfs:domain :Accommodation ;
+                           rdfs:range :AccommodationChain ;
+                           rdfs:comment "Inverse property of \"includes accommodation\" used to link a accommodation facility to its accommodatin chain"@en ,
+                                        "Proprietà inversa di \"include struttura ricettiva\" utilizzata per collegare una struttura ricettiva a una catena di strutture ricettive"@it ;
+                           rdfs:isDefinedBy <https://w3id.org/italia/onto/ACCO> ;
                            rdfs:label "is included in accommodation"@en ,
                                       "è inclusa in struttura ricettiva"@it ;
-                           
-                           rdfs:comment "Inverse property of \"includes accommodation\" used to link a accommodation facility to its accommodatin chain"@en ;
-                           
-                           owl:versionInfo "stable"@en ;
-                           
-                           rdfs:comment "Proprietà inversa di \"include struttura ricettiva\" utilizzata per collegare una struttura ricettiva a una catena di strutture ricettive"@it ;
-                           
-                           owl:versionInfo "stabile"@it ;
-                           
-                           rdfs:isDefinedBy <https://w3id.org/italia/onto/ACCO> ;
-                           
-                           rdfs:domain :Accommodation ;
-                           
-                           rdfs:range :AccommodationChain .
-
+                           owl:versionInfo "stabile"@it ,
+                                           "stable"@en .
 
 
 ###  https://w3id.org/italia/onto/POI/includesPOI
-
 poiapit:includesPOI rdf:type owl:ObjectProperty ;
-                    
                     rdfs:isDefinedBy <http://dati.gov.it/onto/poiapit> .
 
 
-
 ###  https://w3id.org/italia/onto/POT/hasOffer
-
 potapit:hasOffer rdf:type owl:ObjectProperty ;
-                 
                  rdfs:isDefinedBy potapit: .
 
 
-
 ###  https://w3id.org/italia/onto/SM/hasOnlineContactPoint
-
 smapit:hasOnlineContactPoint rdf:type owl:ObjectProperty ;
-                             
                              rdfs:isDefinedBy smapit: .
 
 
-
-
-
 #################################################################
-#
 #    Data properties
-#
 #################################################################
-
 
 ###  https://w3id.org/italia/onto/ACCO/accoStarRatingID
-
 :accoStarRatingID rdf:type owl:DatatypeProperty ;
-                  
+                  rdfs:subPropertyOf l0:identifier ;
+                  rdfs:domain :AccommodationStarRating ;
+                  rdfs:range rdfs:Literal ;
+                  rdfs:comment "Questa proprietà rappresenta l'identificativo usato per ciascun elemento della classificazione a stelle delle strutture ricettive. E' equivalente a skos:notaiton e dct:identifier di skos e dublin core rispettivamente."@it ,
+                               "This property represents the identifier used for each element of the star classification of accommodation facilities. It is equivalent to skos:notation and dct:identifier of skos and dublin core ontologies, respectively."@en ;
+                  rdfs:isDefinedBy <https://w3id.org/italia/onto/ACCO> ;
                   rdfs:label "accomodation star rating code"@en ,
                              "codice classificazione stelle strutture ricettive"@it ;
-                  
-                  rdfs:comment "This property represents the identifier used for each element of the star classification of accommodation facilities. It is equivalent to skos:notation and dct:identifier of skos and dublin core ontologies, respectively."@en ;
-                  
-                  owl:versionInfo "stable"@en ;
-                  
-                  rdfs:comment "Questa proprietà rappresenta l'identificativo usato per ciascun elemento della classificazione a stelle delle strutture ricettive. E' equivalente a skos:notaiton e dct:identifier di skos e dublin core rispettivamente."@it ;
-                  
-                  owl:versionInfo "stabile"@it ;
-                  
-                  l0:controlledVocabulary <http://dati.gov.it/onto/controlledvocabulary/AccoStarRating> ;
-                  
-                  rdfs:range rdfs:Literal ;
-                  
-                  rdfs:isDefinedBy <https://w3id.org/italia/onto/ACCO> ;
-                  
-                  rdfs:domain :AccommodationStarRating ;
-                  
-                  rdfs:subPropertyOf l0:identifier .
-
+                  owl:versionInfo "stabile"@it ,
+                                  "stable"@en ;
+                  l0:controlledVocabulary <http://dati.gov.it/onto/controlledvocabulary/AccoStarRating> .
 
 
 ###  https://w3id.org/italia/onto/ACCO/accoStarRatingLabel
-
 :accoStarRatingLabel rdf:type owl:DatatypeProperty ;
-                     
+                     rdfs:subPropertyOf l0:name ;
+                     rdfs:domain :AccommodationStarRating ;
+                     rdfs:range rdfs:Literal ;
+                     rdfs:comment "Questa proprietà rappresenta la label principale dell'elemento della classificazione delle stelle delle strutture ricettive. E' equivalente a skos:prefLabel dell'ontologia skos."@it ,
+                                  "This property represents the preferred label of the elements of the accommodation star rating classification. It is equivalent to skos:prefLabel."@en ;
+                     rdfs:isDefinedBy <https://w3id.org/italia/onto/ACCO> ;
                      rdfs:label "accommodation star rating preferred label"@en ,
                                 "etichetta classificazione stelle strutture ricettive"@it ;
-                     
-                     rdfs:comment "This property represents the preferred label of the elements of the accommodation star rating classification. It is equivalent to skos:prefLabel."@en ;
-                     
-                     owl:versionInfo "stable"@en ;
-                     
-                     rdfs:comment "Questa proprietà rappresenta la label principale dell'elemento della classificazione delle stelle delle strutture ricettive. E' equivalente a skos:prefLabel dell'ontologia skos."@it ;
-                     
-                     owl:versionInfo "stabile"@it ;
-                     
-                     l0:controlledVocabulary <http://dati.gov.it/onto/controlledvocabulary/AccoStarRating> ;
-                     
-                     rdfs:range rdfs:Literal ;
-                     
-                     rdfs:isDefinedBy <https://w3id.org/italia/onto/ACCO> ;
-                     
-                     rdfs:domain :AccommodationStarRating ;
-                     
-                     rdfs:subPropertyOf l0:name .
-
+                     owl:versionInfo "stabile"@it ,
+                                     "stable"@en ;
+                     l0:controlledVocabulary <http://dati.gov.it/onto/controlledvocabulary/AccoStarRating> .
 
 
 ###  https://w3id.org/italia/onto/ACCO/accommodationCode
-
-:accommodationCode rdf:type owl:DatatypeProperty ,
-                            owl:FunctionalProperty ;
-                   
+:accommodationCode rdf:type owl:DatatypeProperty ;
+                   rdfs:subPropertyOf l0:identifier ;
+                   rdf:type owl:FunctionalProperty ;
+                   rdfs:domain :Accommodation ;
+                   rdfs:range rdfs:Literal ;
+                   rdfs:isDefinedBy <https://w3id.org/italia/onto/ACCO> ,
+                                    "A code associated with the accommodation facility"@en ,
+                                    "Un codice associato alla struttura ricettiva."@it ;
                    rdfs:label "accommodation code"@en ,
                               "codice struttura ricettiva"@it ;
-                   
-                   rdfs:isDefinedBy "A code associated with the accommodation facility"@en ;
-                   
-                   owl:priorVersion "stable"@en ;
-                   
-                   rdfs:isDefinedBy "Un codice associato alla struttura ricettiva."@it ;
-                   
-                   owl:priorVersion "stabile"@it ;
-                   
-                   rdfs:range rdfs:Literal ;
-                   
-                   rdfs:isDefinedBy <https://w3id.org/italia/onto/ACCO> ;
-                   
-                   rdfs:domain :Accommodation ;
-                   
-                   rdfs:subPropertyOf l0:identifier .
-
+                   owl:priorVersion "stabile"@it ,
+                                    "stable"@en .
 
 
 ###  https://w3id.org/italia/onto/ACCO/checkIn
-
 :checkIn rdf:type owl:DatatypeProperty ;
-         
+         rdfs:domain :Accommodation ;
+         rdfs:range xsd:dateTime ;
+         rdfs:comment "Il checkin previsto dalla struttura ricettiva"@it ,
+                      "The checkin time of the accommodation facility"@en ;
+         rdfs:isDefinedBy <https://w3id.org/italia/onto/ACCO> ;
          rdfs:label "check in"@en ,
                     "check in"@it ;
-         
-         rdfs:comment "The checkin time of the accommodation facility"@en ;
-         
-         owl:priorVersion "stable"@en ;
-         
-         rdfs:comment "Il checkin previsto dalla struttura ricettiva"@it ;
-         
-         owl:priorVersion "stabile"@it ;
-         
-         rdfs:range xsd:dateTime ;
-         
-         rdfs:isDefinedBy <https://w3id.org/italia/onto/ACCO> ;
-         
-         rdfs:domain :Accommodation .
-
+         owl:priorVersion "stabile"@it ,
+                          "stable"@en .
 
 
 ###  https://w3id.org/italia/onto/ACCO/checkOut
-
 :checkOut rdf:type owl:DatatypeProperty ;
-          
+          rdfs:domain :Accommodation ;
+          rdfs:range xsd:dateTime ;
+          rdfs:comment "Il check out previsto dalla struttura ricettiva"@it ,
+                       "The check out time of the accommodation facility"@en ;
+          rdfs:isDefinedBy <https://w3id.org/italia/onto/ACCO> ;
           rdfs:label "check out"@en ,
                      "check out"@it ;
-          
-          rdfs:comment "The check out time of the accommodation facility"@en ;
-          
-          owl:priorVersion "stable"@en ;
-          
-          rdfs:comment "Il check out previsto dalla struttura ricettiva"@it ;
-          
-          owl:priorVersion "stabile"@it ;
-          
-          rdfs:range xsd:dateTime ;
-          
-          rdfs:isDefinedBy <https://w3id.org/italia/onto/ACCO> ;
-          
-          rdfs:domain :Accommodation .
-
+          owl:priorVersion "stabile"@it ,
+                           "stable"@en .
 
 
 ###  https://w3id.org/italia/onto/ACCO/criterion
-
 :criterion rdf:type owl:DatatypeProperty ;
-           
-           rdfs:label "criterion"@en ,
-                      "criterio"@it ;
-           
-           rdfs:comment "This property allows one to specify a generic criterion for the class \"Offered Service Description Criterion\". Example: square meters"@en ;
-           
-           owl:versionInfo "unstable"@en ;
-           
-           rdfs:comment "Questa proprietà consente di specificare un generico criterio per la classe \"Criterio per Descrizione Servizi Offerti\". Esempio: metri quadrati"@it ;
-           
-           owl:versionInfo "provvisoria"@it ;
-           
+           rdfs:domain :OSDCriterion ;
            rdfs:range rdfs:Literal ;
-           
+           rdfs:comment "Questa proprietà consente di specificare un generico criterio per la classe \"Criterio per Descrizione Servizi Offerti\". Esempio: metri quadrati"@it ,
+                        "This property allows one to specify a generic criterion for the class \"Offered Service Description Criterion\". Example: square meters"@en ;
            rdfs:isDefinedBy <https://w3id.org/italia/onto/ACCO> ;
-           
-           rdfs:domain :OSDCriterion .
-
+           rdfs:label "criterio"@it ,
+                      "criterion"@en ;
+           owl:versionInfo "provvisoria"@it ,
+                           "unstable"@en .
 
 
 ###  https://w3id.org/italia/onto/ACCO/featureDescription
-
 :featureDescription rdf:type owl:DatatypeProperty ;
-                    
-                    rdfs:label "feature description"@en ,
-                               "descrizione caratteristica"@it ;
-                    
-                    rdfs:comment "This property allows one to specify a textual description of the feature of the offered services description"@en ;
-                    
-                    owl:versionInfo "stable"@en ;
-                    
-                    rdfs:comment "Questa proprietà consente di specificare una descrizione complessiva testuale della caratteristica della descrizione dei servizi offerti"@it ;
-                    
-                    owl:versionInfo "stabile"@it ;
-                    
-                    rdfs:range rdfs:Literal ;
-                    
-                    rdfs:isDefinedBy <https://w3id.org/italia/onto/ACCO> ;
-                    
+                    rdfs:subPropertyOf l0:description ;
                     rdfs:domain :OSDFeature ;
-                    
-                    rdfs:subPropertyOf l0:description .
-
+                    rdfs:range rdfs:Literal ;
+                    rdfs:comment "Questa proprietà consente di specificare una descrizione complessiva testuale della caratteristica della descrizione dei servizi offerti"@it ,
+                                 "This property allows one to specify a textual description of the feature of the offered services description"@en ;
+                    rdfs:isDefinedBy <https://w3id.org/italia/onto/ACCO> ;
+                    rdfs:label "descrizione caratteristica"@it ,
+                               "feature description"@en ;
+                    owl:versionInfo "stabile"@it ,
+                                    "stable"@en .
 
 
 ###  https://w3id.org/italia/onto/ACCO/featureName
-
 :featureName rdf:type owl:DatatypeProperty ;
-             
+             rdfs:subPropertyOf l0:name ;
+             rdfs:domain :OSDFeature ;
+             rdfs:range rdfs:Literal ;
+             rdfs:comment "Questa proprietà rappresenta il nome della caratteristica associata alla classe Caratteristica della Descrizione Servizi Offerti"@it ,
+                          "This is the feature name associated with the class Offered Service Description Feature"@en ;
+             rdfs:isDefinedBy <https://w3id.org/italia/onto/ACCO> ;
              rdfs:label "feature name"@en ,
                         "nome caratteristica"@it ;
-             
-             rdfs:comment "This is the feature name associated with the class Offered Service Description Feature"@en ;
-             
-             owl:versionInfo "stable"@en ;
-             
-             rdfs:comment "Questa proprietà rappresenta il nome della caratteristica associata alla classe Caratteristica della Descrizione Servizi Offerti"@it ;
-             
-             owl:versionInfo "stabile"@it ;
-             
-             rdfs:range rdfs:Literal ;
-             
-             rdfs:isDefinedBy <https://w3id.org/italia/onto/ACCO> ;
-             
-             rdfs:domain :OSDFeature ;
-             
-             rdfs:subPropertyOf l0:name .
-
+             owl:versionInfo "stabile"@it ,
+                             "stable"@en .
 
 
 ###  https://w3id.org/italia/onto/ACCO/genericValue
-
 :genericValue rdf:type owl:DatatypeProperty ,
                        owl:FunctionalProperty ;
-              
+              rdfs:domain :OfferedServiceDescription ;
+              rdfs:range rdfs:Literal ;
+              rdfs:comment "Questa proprietà rappresenta un valore generico. Nel dominio modellato delle strutture ricettive essa è associata alla descrizione dei serivizi offerti"@it ,
+                           "This property represents a generic value (literal). In the modelled domain of the accommodation facilities it is associated with the description of the offered services."@en ;
+              rdfs:isDefinedBy <https://w3id.org/italia/onto/ACCO> ;
               rdfs:label "generic value"@en ,
                          "valore generico"@it ;
-              
-              rdfs:comment "This property represents a generic value (literal). In the modelled domain of the accommodation facilities it is associated with the description of the offered services."@en ;
-              
-              owl:versionInfo "unstable"@en ;
-              
-              rdfs:comment "Questa proprietà rappresenta un valore generico. Nel dominio modellato delle strutture ricettive essa è associata alla descrizione dei serivizi offerti"@it ;
-              
-              owl:versionInfo "provvisoria"@it ;
-              
-              rdfs:range rdfs:Literal ;
-              
-              rdfs:isDefinedBy <https://w3id.org/italia/onto/ACCO> ;
-              
-              rdfs:domain :OfferedServiceDescription .
-
+              owl:versionInfo "provvisoria"@it ,
+                              "unstable"@en .
 
 
 ###  https://w3id.org/italia/onto/ACCO/maxValue
-
 :maxValue rdf:type owl:DatatypeProperty ,
                    owl:FunctionalProperty ;
-          
+          rdfs:domain :OfferedServiceDescription ;
+          rdfs:range xsd:int ;
+          rdfs:comment "Questa proprietà è utilizzata per specificare un valore massimo intero. Nell'ambito dell'ontologia delle strutture ricettive essa è associata alla descrizione dei servizi offerti"@it ,
+                       "This property is used to represent a maximum integer value. In the context of the ontology on accommodation facilities, it is associates with the Offered Service Description class"@en ;
+          rdfs:isDefinedBy <https://w3id.org/italia/onto/ACCO> ;
           rdfs:label "maximum value"@en ,
                      "valore massimo"@it ;
-          
-          rdfs:comment "This property is used to represent a maximum integer value. In the context of the ontology on accommodation facilities, it is associates with the Offered Service Description class"@en ;
-          
-          owl:versionInfo "unstable"@en ;
-          
-          rdfs:comment "Questa proprietà è utilizzata per specificare un valore massimo intero. Nell'ambito dell'ontologia delle strutture ricettive essa è associata alla descrizione dei servizi offerti"@it ;
-          
-          owl:versionInfo "provvisoria"@it ;
-          
-          rdfs:range xsd:int ;
-          
-          rdfs:isDefinedBy <https://w3id.org/italia/onto/ACCO> ;
-          
-          rdfs:domain :OfferedServiceDescription .
-
+          owl:versionInfo "provvisoria"@it ,
+                          "unstable"@en .
 
 
 ###  https://w3id.org/italia/onto/ACCO/minValue
-
 :minValue rdf:type owl:DatatypeProperty ,
                    owl:FunctionalProperty ;
-          
+          rdfs:domain :OfferedServiceDescription ;
+          rdfs:range xsd:int ;
+          rdfs:comment "Questa proprietà rappresenta un valore minimo intero. Nel dominio modellato è associato con la descrizione dei servizi offerti"@it ,
+                       "This property represents a minumun integer value. In the modelled domain it is associated with the description of the offered services."@en ;
+          rdfs:isDefinedBy <https://w3id.org/italia/onto/ACCO> ;
           rdfs:label "minimum value"@en ,
                      "valore minimo"@it ;
-          
-          rdfs:comment "This property represents a minumun integer value. In the modelled domain it is associated with the description of the offered services."@en ;
-          
-          owl:versionInfo "unstable"@en ;
-          
-          rdfs:comment "Questa proprietà rappresenta un valore minimo intero. Nel dominio modellato è associato con la descrizione dei servizi offerti"@it ;
-          
-          owl:versionInfo "provvisoria"@it ;
-          
-          rdfs:range xsd:int ;
-          
-          rdfs:isDefinedBy <https://w3id.org/italia/onto/ACCO> ;
-          
-          rdfs:domain :OfferedServiceDescription .
-
+          owl:versionInfo "provvisoria"@it ,
+                          "unstable"@en .
 
 
 ###  https://w3id.org/italia/onto/ACCO/roomName
-
 :roomName rdf:type owl:DatatypeProperty ;
-          
-          rdfs:label "room name"@en ,
-                     "nome della camera"@it ;
-          
-          rdfs:comment "This property represents the name of the room."@en ;
-          
-          owl:versionInfo "stable"@en ;
-          
-          rdfs:comment "Questa proprietà rappresenta il nome di una stanza (sala) o camera. Esempio: camera \"arancione\", oppure \"sala A\", ecc."@it ;
-          
-          owl:versionInfo "stable"@it ;
-          
-          rdfs:range rdfs:Literal ;
-          
-          rdfs:comment <https://w3id.org/italia/onto/ACCO> ;
-          
+          rdfs:subPropertyOf l0:name ;
           rdfs:domain :AccommodationRoom ;
-          
-          rdfs:subPropertyOf l0:name .
-
+          rdfs:range rdfs:Literal ;
+          rdfs:comment <https://w3id.org/italia/onto/ACCO> ,
+                       "Questa proprietà rappresenta il nome di una stanza (sala) o camera. Esempio: camera \"arancione\", oppure \"sala A\", ecc."@it ,
+                       "This property represents the name of the room."@en ;
+          rdfs:label "nome della camera"@it ,
+                     "room name"@en ;
+          owl:versionInfo "stable"@en ,
+                          "stable"@it .
 
 
 ###  https://w3id.org/italia/onto/ACCO/totalBed
-
 :totalBed rdf:type owl:DatatypeProperty ;
-          
-          rdfs:label "total number of beds"@en ,
-                     "numero totale di letti"@it ;
-          
-          rdfs:comment "This property represents the total number of beds of the accommodation facility."@en ;
-          
-          owl:priorVersion "stable"@en ;
-          
-          rdfs:comment "Questa proprietà rappresenta il numero totale di letti di una struttura ricettiva."@it ;
-          
-          owl:priorVersion "stabile"@it ;
-          
+          rdfs:domain :Accommodation ;
           rdfs:range xsd:int ;
-          
+          rdfs:comment "Questa proprietà rappresenta il numero totale di letti di una struttura ricettiva."@it ,
+                       "This property represents the total number of beds of the accommodation facility."@en ;
           rdfs:isDefinedBy <https://w3id.org/italia/onto/ACCO> ;
-          
-          rdfs:domain :Accommodation .
-
+          rdfs:label "numero totale di letti"@it ,
+                     "total number of beds"@en ;
+          owl:priorVersion "stabile"@it ,
+                           "stable"@en .
 
 
 ###  https://w3id.org/italia/onto/ACCO/totalRoom
-
 :totalRoom rdf:type owl:DatatypeProperty ;
-           
-           rdfs:label "total number of rooms"@en ,
-                      "numero totale di camere"@it ;
-           
-           rdfs:comment "This property represents the total number of rooms of the accommodation facility."@en ;
-           
-           owl:priorVersion "stable"@en ;
-           
-           rdfs:comment "Questa proprietà rappresenta il numero totale di camere della struttura ricettiva."@it ;
-           
-           owl:priorVersion "stabile"@it ;
-           
+           rdfs:domain :Accommodation ;
            rdfs:range xsd:int ;
-           
+           rdfs:comment "Questa proprietà rappresenta il numero totale di camere della struttura ricettiva."@it ,
+                        "This property represents the total number of rooms of the accommodation facility."@en ;
            rdfs:isDefinedBy <https://w3id.org/italia/onto/ACCO> ;
-           
-           rdfs:domain :Accommodation .
-
+           rdfs:label "numero totale di camere"@it ,
+                      "total number of rooms"@en ;
+           owl:priorVersion "stabile"@it ,
+                            "stable"@en .
 
 
 ###  https://w3id.org/italia/onto/ACCO/totalToilet
-
 :totalToilet rdf:type owl:DatatypeProperty ;
-             
-             rdfs:label "total number of toilets"@en ,
-                        "numero totale di bagni"@it ;
-             
-             rdfs:comment "This property represents the total number of toilets of the accommodation facility"@en ;
-             
-             owl:priorVersion "stable"@en ;
-             
-             rdfs:comment "Questa proprietà rappresenta il numero totale di bagni della struttura ricettiva."@it ;
-             
-             owl:priorVersion "stabile"@it ;
-             
+             rdfs:domain :Accommodation ;
              rdfs:range xsd:int ;
-             
+             rdfs:comment "Questa proprietà rappresenta il numero totale di bagni della struttura ricettiva."@it ,
+                          "This property represents the total number of toilets of the accommodation facility"@en ;
              rdfs:isDefinedBy <https://w3id.org/italia/onto/ACCO> ;
-             
-             rdfs:domain :Accommodation .
-
+             rdfs:label "numero totale di bagni"@it ,
+                        "total number of toilets"@en ;
+             owl:priorVersion "stabile"@it ,
+                              "stable"@en .
 
 
 ###  https://w3id.org/italia/onto/ACCO/totalValue
-
 :totalValue rdf:type owl:DatatypeProperty ;
-            
+            rdfs:domain :OfferedServiceDescription ;
+            rdfs:range xsd:int ;
+            rdfs:comment "Questa proprietà rappresenta un valore totale (intero). Nel dominio modellato delle strutture ricettive essa è associata alal descrizione dei servizi offerti"@it ,
+                         "This property represents a total value (integer). In the modelled domain it is associated with the description of the offered services."@en ;
+            rdfs:isDefinedBy <https://w3id.org/italia/onto/ACCO> ;
             rdfs:label "total value"@en ,
                        "valore totale"@it ;
-            
-            rdfs:comment "This property represents a total value (integer). In the modelled domain it is associated with the description of the offered services."@en ;
-            
-            owl:versionInfo "unstable"@en ;
-            
-            rdfs:comment "Questa proprietà rappresenta un valore totale (intero). Nel dominio modellato delle strutture ricettive essa è associata alal descrizione dei servizi offerti"@it ;
-            
-            owl:versionInfo "provvisoria"@it ;
-            
-            rdfs:range xsd:int ;
-            
-            rdfs:isDefinedBy <https://w3id.org/italia/onto/ACCO> ;
-            
-            rdfs:domain :OfferedServiceDescription .
-
+            owl:versionInfo "provvisoria"@it ,
+                            "unstable"@en .
 
 
 ###  https://w3id.org/italia/onto/l0/description
-
 l0:description rdf:type owl:DatatypeProperty ;
-               
                rdfs:isDefinedBy l0: .
 
 
-
 ###  https://w3id.org/italia/onto/l0/identifier
-
 l0:identifier rdf:type owl:DatatypeProperty ;
-              
               rdfs:isDefinedBy l0: .
 
 
-
 ###  https://w3id.org/italia/onto/l0/name
-
 l0:name rdf:type owl:DatatypeProperty ;
-        
         rdfs:isDefinedBy l0: .
 
 
-
-
-
 #################################################################
-#
 #    Classes
-#
 #################################################################
-
 
 ###  https://w3id.org/italia/onto/ACCO/Accommodation
-
 :Accommodation rdf:type owl:Class ;
-               
-               rdfs:label "Accommodation Facility"@en ,
-                          "Struttura ricettiva"@it ;
-               
                rdfs:subClassOf poiapit:PointOfInterest ,
                                [ rdf:type owl:Restriction ;
-                                 owl:onProperty :totalToilet ;
-                                 owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                 owl:onDataRange xsd:int
+                                 owl:onProperty :hasAccommodationTypology ;
+                                 owl:someValuesFrom :AccommodationTypology
                                ] ,
                                [ rdf:type owl:Restriction ;
-                                 owl:onProperty :hasAccommodationOwner ;
-                                 owl:onClass covapit:Organization ;
-                                 owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger
+                                 owl:onProperty :hasAccommodationRoom ;
+                                 owl:allValuesFrom :AccommodationRoom
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :hasOfferedServiceDescription ;
+                                 owl:allValuesFrom :OfferedServiceDescription
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :isIncludedInAccommodation ;
+                                 owl:allValuesFrom :AccommodationChain
                                ] ,
                                [ rdf:type owl:Restriction ;
                                  owl:onProperty potapit:hasOffer ;
                                  owl:allValuesFrom potapit:Offer
                                ] ,
                                [ rdf:type owl:Restriction ;
-                                 owl:onProperty :totalRoom ;
+                                 owl:onProperty :hasAccommodationClassification ;
                                  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                 owl:onDataRange xsd:int
+                                 owl:onClass :AccommodationStarRating
                                ] ,
                                [ rdf:type owl:Restriction ;
-                                 owl:onProperty :checkOut ;
+                                 owl:onProperty :hasAccommodationOwner ;
                                  owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                 owl:onDataRange xsd:dateTime
+                                 owl:onClass covapit:Organization
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty smapit:hasOnlineContactPoint ;
+                                 owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                 owl:onClass smapit:OnlineContactPoint
                                ] ,
                                [ rdf:type owl:Restriction ;
                                  owl:onProperty :totalBed ;
@@ -880,13 +533,14 @@ l0:name rdf:type owl:DatatypeProperty ;
                                  owl:onDataRange xsd:int
                                ] ,
                                [ rdf:type owl:Restriction ;
-                                 owl:onProperty :hasOfferedServiceDescription ;
-                                 owl:allValuesFrom :OfferedServiceDescription
+                                 owl:onProperty :totalRoom ;
+                                 owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                 owl:onDataRange xsd:int
                                ] ,
                                [ rdf:type owl:Restriction ;
-                                 owl:onProperty :hasAccommodationClassification ;
-                                 owl:onClass :AccommodationStarRating ;
-                                 owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger
+                                 owl:onProperty :totalToilet ;
+                                 owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                 owl:onDataRange xsd:int
                                ] ,
                                [ rdf:type owl:Restriction ;
                                  owl:onProperty :checkIn ;
@@ -894,79 +548,44 @@ l0:name rdf:type owl:DatatypeProperty ;
                                  owl:onDataRange xsd:dateTime
                                ] ,
                                [ rdf:type owl:Restriction ;
-                                 owl:onProperty :hasAccommodationRoom ;
-                                 owl:allValuesFrom :AccommodationRoom
-                               ] ,
-                               [ rdf:type owl:Restriction ;
-                                 owl:onProperty :isIncludedInAccommodation ;
-                                 owl:allValuesFrom :AccommodationChain
-                               ] ,
-                               [ rdf:type owl:Restriction ;
-                                 owl:onProperty :hasAccommodationTypology ;
-                                 owl:someValuesFrom :AccommodationTypology
-                               ] ,
-                               [ rdf:type owl:Restriction ;
-                                 owl:onProperty smapit:hasOnlineContactPoint ;
-                                 owl:onClass smapit:OnlineContactPoint ;
-                                 owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger
+                                 owl:onProperty :checkOut ;
+                                 owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                 owl:onDataRange xsd:dateTime
                                ] ;
-               
-               rdfs:comment "This is the main class and it represents an accommodation facility. The accommodation facility is a point of interest; thus it is a subclass of PointOfInterest as defined in http://dati.gov.it/onto/poiapit. It then inherit all the properties and classes defined for the PointOfInterest."@en ;
-               
-               owl:versionInfo "stable"@en ;
-               
-               rdfs:comment "Questa è la classe principale che rappresenta la struttura ricettiva. La struttura ricettiva è un punto di interesse e quindi dichiarata come sotto classe di PointOfInterest definito in http://dati.gov.it/onto/poiapit. Essa pertanto eredita tutte le proprietà e classi del punto di interesse."@it ;
-               
-               owl:versionInfo "stabile"@it ;
-               
+               rdfs:comment "Questa è la classe principale che rappresenta la struttura ricettiva. La struttura ricettiva è un punto di interesse e quindi dichiarata come sotto classe di PointOfInterest definito in http://dati.gov.it/onto/poiapit. Essa pertanto eredita tutte le proprietà e classi del punto di interesse."@it ,
+                            "This is the main class and it represents an accommodation facility. The accommodation facility is a point of interest; thus it is a subclass of PointOfInterest as defined in http://dati.gov.it/onto/poiapit. It then inherit all the properties and classes defined for the PointOfInterest."@en ;
+               rdfs:isDefinedBy <https://w3id.org/italia/onto/ACCO> ;
+               rdfs:label "Accommodation Facility"@en ,
+                          "Struttura ricettiva"@it ;
+               owl:versionInfo "stabile"@it ,
+                               "stable"@en ;
                prov:wasDerivedFrom <http://purl.org/acco/ns#Accommodation> ,
-                                   <http://schema.org/Accommodation> ;
-               
-               rdfs:isDefinedBy <https://w3id.org/italia/onto/ACCO> .
-
+                                   <http://schema.org/Accommodation> .
 
 
 ###  https://w3id.org/italia/onto/ACCO/AccommodationChain
-
 :AccommodationChain rdf:type owl:Class ;
-                    
-                    rdfs:label "Accommodation Chain"@en ,
-                               "Catena di Strutture Ricettive"@it ;
-                    
                     rdfs:subClassOf :Accommodation ,
                                     poiapit:MultiplePointOfInterest ,
                                     [ rdf:type owl:Restriction ;
                                       owl:onProperty :includesAccommodation ;
                                       owl:someValuesFrom :Accommodation
                                     ] ;
-                    
-                    rdfs:comment "This class represents a chain of accommodation facilities that in turn is an accommodation facility."@en ;
-                    
-                    owl:versionInfo "stable"@en ;
-                    
-                    rdfs:comment "Questa classe rappresenta una catena di strutture ricettive che a sua volta è una struttura ricettiva."@it ;
-                    
-                    owl:versionInfo "stabile"@it ;
-                    
-                    rdfs:isDefinedBy <https://w3id.org/italia/onto/ACCO> .
-
+                    rdfs:comment "Questa classe rappresenta una catena di strutture ricettive che a sua volta è una struttura ricettiva."@it ,
+                                 "This class represents a chain of accommodation facilities that in turn is an accommodation facility."@en ;
+                    rdfs:isDefinedBy <https://w3id.org/italia/onto/ACCO> ;
+                    rdfs:label "Accommodation Chain"@en ,
+                               "Catena di Strutture Ricettive"@it ;
+                    owl:versionInfo "stabile"@it ,
+                                    "stable"@en .
 
 
 ###  https://w3id.org/italia/onto/ACCO/AccommodationRoom
-
 :AccommodationRoom rdf:type owl:Class ;
-                   
-                   rdfs:label "Accommodation Room"@en ,
-                              "Camera (Stanza) della Struttura Ricettiva"@it ;
-                   
                    rdfs:subClassOf :OSDFeature ,
                                    [ rdf:type owl:Restriction ;
                                      owl:onProperty :hasOfferedServiceDescription ;
                                      owl:allValuesFrom :OfferedServiceDescription
-                                   ] ,
-                                   [ rdf:type owl:Restriction ;
-                                     owl:onProperty :roomName ;
-                                     owl:allValuesFrom rdfs:Literal
                                    ] ,
                                    [ rdf:type owl:Restriction ;
                                      owl:onProperty potapit:hasOffer ;
@@ -974,176 +593,113 @@ l0:name rdf:type owl:DatatypeProperty ;
                                    ] ,
                                    [ rdf:type owl:Restriction ;
                                      owl:onProperty :isAccommodationRoomOf ;
-                                     owl:onClass :Accommodation ;
-                                     owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger
+                                     owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                     owl:onClass :Accommodation
+                                   ] ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty :roomName ;
+                                     owl:allValuesFrom rdfs:Literal
                                    ] ;
-                   
-                   rdfs:comment "This is an abstract class  used to model a  room of the accommodation facility."@en ;
-                   
-                   owl:versionInfo "stable"@en ;
-                   
-                   rdfs:comment "Questa è una classe astratta utilizzta per modellare una camera/stanza di una struttura ricettiva."@it ;
-                   
-                   owl:versionInfo "stabile"@it ;
-                   
-                   prov:wasDerivedFrom <http://schema.org/Room> ;
-                   
-                   rdfs:isDefinedBy <https://w3id.org/italia/onto/ACCO> .
-
+                   rdfs:comment "Questa è una classe astratta utilizzta per modellare una camera/stanza di una struttura ricettiva."@it ,
+                                "This is an abstract class  used to model a  room of the accommodation facility."@en ;
+                   rdfs:isDefinedBy <https://w3id.org/italia/onto/ACCO> ;
+                   rdfs:label "Accommodation Room"@en ,
+                              "Camera (Stanza) della Struttura Ricettiva"@it ;
+                   owl:versionInfo "stabile"@it ,
+                                   "stable"@en ;
+                   prov:wasDerivedFrom <http://schema.org/Room> .
 
 
 ###  https://w3id.org/italia/onto/ACCO/AccommodationStarRating
-
 :AccommodationStarRating rdf:type owl:Class ;
-                         
-                         rdfs:label "Accommodation Star Rating"@en ,
-                                    "Classificazione a Stelle Strutture Ricettive"@it ;
-                         
                          rdfs:subClassOf l0:Characteristic ,
                                          [ rdf:type owl:Restriction ;
                                            owl:onProperty :isAccommodationClassificationOf ;
                                            owl:allValuesFrom :Accommodation
                                          ] ;
-                         
-                         rdfs:comment "This class represents the star classification of accommodation facilities. Values in this class are concepts of skos vocabulary (skos: Concept) and must be defined according to the following controlled vocabulary http://dati.gov.ti/onto/controlledvocabulary/AccommodationStarRating"@en ;
-                         
-                         owl:versionInfo "stable"@en ;
-                         
-                         rdfs:comment "Questa classe rappresenta la classificazione a stelle delle strutture ricettive. I valori di questa classe sono dei concetti del vocabolario skos (skos:Concept) e devono essere definiti secondo quanto indicato nel seguente vocabolario controllato http://dati.gov.ti/onto/controlledvocabulary/AccommodationStarRating"@it ;
-                         
-                         owl:versionInfo "stabile"@it ;
-                         
-                         prov:wasInfluencedBy <http://schema.org/Rating> ;
-                         
-                         rdfs:isDefinedBy <https://w3id.org/italia/onto/ACCO> .
-
+                         rdfs:comment "Questa classe rappresenta la classificazione a stelle delle strutture ricettive. I valori di questa classe sono dei concetti del vocabolario skos (skos:Concept) e devono essere definiti secondo quanto indicato nel seguente vocabolario controllato http://dati.gov.ti/onto/controlledvocabulary/AccommodationStarRating"@it ,
+                                      "This class represents the star classification of accommodation facilities. Values in this class are concepts of skos vocabulary (skos: Concept) and must be defined according to the following controlled vocabulary http://dati.gov.ti/onto/controlledvocabulary/AccommodationStarRating"@en ;
+                         rdfs:isDefinedBy <https://w3id.org/italia/onto/ACCO> ;
+                         rdfs:label "Accommodation Star Rating"@en ,
+                                    "Classificazione a Stelle Strutture Ricettive"@it ;
+                         owl:versionInfo "stabile"@it ,
+                                         "stable"@en ;
+                         prov:wasInfluencedBy <http://schema.org/Rating> .
 
 
 ###  https://w3id.org/italia/onto/ACCO/AccommodationTypology
-
 :AccommodationTypology rdf:type owl:Class ;
-                       
-                       rdfs:label "Accommodation Typology"@en ,
-                                  "Tipologia di Struttura Ricettiva"@it ;
-                       
                        rdfs:subClassOf l0:Topic ,
                                        [ rdf:type owl:Restriction ;
                                          owl:onProperty :isAccommodationTypologyOf ;
                                          owl:allValuesFrom :Accommodation
                                        ] ;
-                       
-                       rdfs:comment "This class represents the typology of accommodation facility. The elements of this class are skos:Concept and must be defined according to the controlled vocabulary available at http://dati.gov.it/onto/controlledvocabulary/AccommodationTypology"@en ;
-                       
-                       owl:versionInfo "stable"@en ;
-                       
-                       rdfs:comment "Questa classe rappresenta la tipologia di Struttura ricettiva. Gli elementi di questa classe sono concetti del vocabolario skos (skos:Concept) e devono essere definiti sulla base del vocabolario controllato disponibile in http://dati.gov.it/onto/controlledvcoabulary/AccommodationTypology. Questo vocabolario controllato definisce le tipologie di strutture ricettive così come identificate nel Decreto legislativo n°79 del 23 maggio 2011."@it ;
-                       
-                       owl:versionInfo "stabile"@it ;
-                       
-                       l0:controlledVocabulary <http://dati.gov.it/onto/controlledvocabulary/AccoTypology> ;
-                       
-                       rdfs:isDefinedBy <https://w3id.org/italia/onto/ACCO> .
-
+                       rdfs:comment "Questa classe rappresenta la tipologia di Struttura ricettiva. Gli elementi di questa classe sono concetti del vocabolario skos (skos:Concept) e devono essere definiti sulla base del vocabolario controllato disponibile in http://dati.gov.it/onto/controlledvcoabulary/AccommodationTypology. Questo vocabolario controllato definisce le tipologie di strutture ricettive così come identificate nel Decreto legislativo n°79 del 23 maggio 2011."@it ,
+                                    "This class represents the typology of accommodation facility. The elements of this class are skos:Concept and must be defined according to the controlled vocabulary available at http://dati.gov.it/onto/controlledvocabulary/AccommodationTypology"@en ;
+                       rdfs:isDefinedBy <https://w3id.org/italia/onto/ACCO> ;
+                       rdfs:label "Accommodation Typology"@en ,
+                                  "Tipologia di Struttura Ricettiva"@it ;
+                       owl:versionInfo "stabile"@it ,
+                                       "stable"@en ;
+                       l0:controlledVocabulary <http://dati.gov.it/onto/controlledvocabulary/AccoTypology> .
 
 
 ###  https://w3id.org/italia/onto/ACCO/Bedroom
-
 :Bedroom rdf:type owl:Class ;
-         
+         rdfs:subClassOf :AccommodationRoom ;
+         rdfs:comment "Questa è una classe astratta utilizzata per modellare una camera da letto di una struttura ricettiva"@it ,
+                      "This is an abstract class used to model a bed room of an accommodation facility"@en ;
          rdfs:label "Bedroom"@en ,
                     "Camera da Letto"@it ;
-         
-         rdfs:subClassOf :AccommodationRoom ;
-         
-         rdfs:comment "This is an abstract class used to model a bed room of an accommodation facility"@en ;
-         
-         owl:versionInfo "unstable"@en ;
-         
-         rdfs:comment "Questa è una classe astratta utilizzata per modellare una camera da letto di una struttura ricettiva"@it ;
-         
-         owl:versionInfo "provvisoria"@it ;
-         
-         prov:wasInfluencedBy <http://purl.org/acco/ns#HotelRoom> ;
-         
-         prov:wasDerivedFrom <http://schema.org/HotelRoom> .
-
+         owl:versionInfo "provvisoria"@it ,
+                         "unstable"@en ;
+         prov:wasDerivedFrom <http://schema.org/HotelRoom> ;
+         prov:wasInfluencedBy <http://purl.org/acco/ns#HotelRoom> .
 
 
 ###  https://w3id.org/italia/onto/ACCO/DoubleRoom
-
 :DoubleRoom rdf:type owl:Class ;
-            
-            rdfs:label "Double Room"@en ,
-                       "Camera Doppia"@it ;
-            
             rdfs:subClassOf :Bedroom ;
-            
-            rdfs:comment "This class is used to model a double room of an accommodation facility."@en ;
-            
-            owl:versionInfo "stable"@en ;
-            
-            rdfs:comment "Questa classe è usata per modellare una camera doppia della struttura ricettiva."@it ;
-            
-            owl:versionInfo "stabile"@it ;
-            
-            rdfs:isDefinedBy <https://w3id.org/italia/onto/ACCO> .
-
+            rdfs:comment "Questa classe è usata per modellare una camera doppia della struttura ricettiva."@it ,
+                         "This class is used to model a double room of an accommodation facility."@en ;
+            rdfs:isDefinedBy <https://w3id.org/italia/onto/ACCO> ;
+            rdfs:label "Camera Doppia"@it ,
+                       "Double Room"@en ;
+            owl:versionInfo "stabile"@it ,
+                            "stable"@en .
 
 
 ###  https://w3id.org/italia/onto/ACCO/MeetingRoom
-
 :MeetingRoom rdf:type owl:Class ;
-             
+             rdfs:subClassOf :AccommodationRoom ;
+             rdfs:comment "Questa classe è utilizzata per modellare una sala riunioni, un centro congressi di una struttura ricettiva"@it ,
+                          "This class is used to model a meeting room, a conference room, or a conference hall where singular events such as business conferences and meetings happen."@en ;
              rdfs:label "Meeting Room"@en ,
                         "Sala riunioni"@it ;
-             
-             rdfs:subClassOf :AccommodationRoom ;
-             
-             rdfs:comment "This class is used to model a meeting room, a conference room, or a conference hall where singular events such as business conferences and meetings happen."@en ;
-             
-             owl:versionInfo "unstable"@en ;
-             
-             rdfs:comment "Questa classe è utilizzata per modellare una sala riunioni, un centro congressi di una struttura ricettiva"@it ;
-             
-             owl:versionInfo "provvisoria"@it ;
-             
+             owl:versionInfo "provvisoria"@it ,
+                             "unstable"@en ;
              prov:wasDerivedFrom <http://purl.org/acco/ns#HotelRoom> ,
                                  <http://schema.org/HotelRoom> .
 
 
-
 ###  https://w3id.org/italia/onto/ACCO/OSDCriterion
-
 :OSDCriterion rdf:type owl:Class ;
-              
-              rdfs:label "Offered Service Description Criterion"@en ,
-                         "Criterio per Descrizione dei Servizi Offerti"@it ;
-              
               rdfs:subClassOf l0:Characteristic ,
                               [ rdf:type owl:Restriction ;
                                 owl:onProperty :criterion ;
                                 owl:someValuesFrom rdfs:Literal
                               ] ;
-              
-              rdfs:comment "This class represents the criterion used to describe offered services of the accommodation facility and of single rooms of the accommodation facility. For instance, a criterion can be to evaluate the occupancy (feature) of a room with the square meters (criterion)."@en ;
-              
-              owl:versionInfo "unstable"@en ;
-              
-              rdfs:comment "Questa classe rappresenta i criteri utilizzati per descrivere servizi offerti dalla struttura ricettiva o servizi offerti per singole stanze della struttura ricettiva. Esempio: un criterio potrebbe essere quello di valutare lo spazio occupato (feature) da una camera con i \"metri quadrati\" (criterio)."@it ;
-              
-              owl:versionInfo "provvisoria"@it ;
-              
-              rdfs:isDefinedBy <https://w3id.org/italia/onto/ACCO> .
-
+              rdfs:comment "Questa classe rappresenta i criteri utilizzati per descrivere servizi offerti dalla struttura ricettiva o servizi offerti per singole stanze della struttura ricettiva. Esempio: un criterio potrebbe essere quello di valutare lo spazio occupato (feature) da una camera con i \"metri quadrati\" (criterio)."@it ,
+                           "This class represents the criterion used to describe offered services of the accommodation facility and of single rooms of the accommodation facility. For instance, a criterion can be to evaluate the occupancy (feature) of a room with the square meters (criterion)."@en ;
+              rdfs:isDefinedBy <https://w3id.org/italia/onto/ACCO> ;
+              rdfs:label "Criterio per Descrizione dei Servizi Offerti"@it ,
+                         "Offered Service Description Criterion"@en ;
+              owl:versionInfo "provvisoria"@it ,
+                              "unstable"@en .
 
 
 ###  https://w3id.org/italia/onto/ACCO/OSDFeature
-
 :OSDFeature rdf:type owl:Class ;
-            
-            rdfs:label "Offered Service Description Feature"@en ,
-                       "Caratteristica della Descrizione dei Servizi Offerti"@it ;
-            
             rdfs:subClassOf l0:Entity ,
                             [ rdf:type owl:Restriction ;
                               owl:onProperty :featureName ;
@@ -1153,226 +709,142 @@ l0:name rdf:type owl:DatatypeProperty ;
                               owl:onProperty :featureDescription ;
                               owl:allValuesFrom rdfs:Literal
                             ] ;
-            
-            rdfs:comment "This class represents the specific feature of the description of the services offered by the accommodation facility and/or by the single room. For instance, it can be the toilet, bed, room, credit card, etc all elements of a general description of the offered services."@en ;
-            
-            owl:versionInfo "stable"@en ;
-            
-            rdfs:comment "Questa classe rappresenta una specifica caratteristica della descrizione dei servizi offerti dalla struttura ricettiva e/o dalla singola camera. Per esempio una caratterisca può essere il bagno, il letto, la camera d'albergo stessa, la carta di credito, lo spazio occupato da una camera da letto, ecc."@it ;
-            
-            owl:versionInfo "stabile"@it ;
-            
-            prov:wasInfluencedBy <http://purl.org/acco/ns#AccommodationFeature> ;
-            
-            rdfs:isDefinedBy <https://w3id.org/italia/onto/ACCO> .
-
+            rdfs:comment "Questa classe rappresenta una specifica caratteristica della descrizione dei servizi offerti dalla struttura ricettiva e/o dalla singola camera. Per esempio una caratterisca può essere il bagno, il letto, la camera d'albergo stessa, la carta di credito, lo spazio occupato da una camera da letto, ecc."@it ,
+                         "This class represents the specific feature of the description of the services offered by the accommodation facility and/or by the single room. For instance, it can be the toilet, bed, room, credit card, etc all elements of a general description of the offered services."@en ;
+            rdfs:isDefinedBy <https://w3id.org/italia/onto/ACCO> ;
+            rdfs:label "Caratteristica della Descrizione dei Servizi Offerti"@it ,
+                       "Offered Service Description Feature"@en ;
+            owl:versionInfo "stabile"@it ,
+                            "stable"@en ;
+            prov:wasInfluencedBy <http://purl.org/acco/ns#AccommodationFeature> .
 
 
 ###  https://w3id.org/italia/onto/ACCO/OfferedServiceDescription
-
 :OfferedServiceDescription rdf:type owl:Class ;
-                           
-                           rdfs:label "Offered Service Description"@en ,
-                                      "Descrizione Servizi Offerti"@it ;
-                           
                            rdfs:subClassOf l0:Object ,
-                                           [ rdf:type owl:Restriction ;
-                                             owl:onProperty :totalValue ;
-                                             owl:allValuesFrom xsd:int
-                                           ] ,
                                            [ rdf:type owl:Restriction ;
                                              owl:onProperty :maxValue ;
                                              owl:allValuesFrom xsd:int
                                            ] ,
                                            [ rdf:type owl:Restriction ;
-                                             owl:onProperty :genericValue ;
-                                             owl:maxCardinality "1"^^xsd:nonNegativeInteger
-                                           ] ,
-                                           [ rdf:type owl:Restriction ;
                                              owl:onProperty :minValue ;
                                              owl:allValuesFrom xsd:int
+                                           ] ,
+                                           [ rdf:type owl:Restriction ;
+                                             owl:onProperty :totalValue ;
+                                             owl:allValuesFrom xsd:int
+                                           ] ,
+                                           [ rdf:type owl:Restriction ;
+                                             owl:onProperty :genericValue ;
+                                             owl:maxCardinality "1"^^xsd:nonNegativeInteger
                                            ] ;
-                           
-                           rdfs:comment "This class allows one to model a description of the offered services. It is the implementation of the ontology design pattern description that can be used when specific features of the offered services are not known in advanced."@en ;
-                           
+                           rdfs:comment "Questa classe rappresenta la descrizine dei servizi offerti. Essa è l'implementazione del pattern descrizione ed è utilizzata quando specifiche caratteristiche dei servizi offerti non sono note in anticipo."@it ,
+                                        "This class allows one to model a description of the offered services. It is the implementation of the ontology design pattern description that can be used when specific features of the offered services are not known in advanced."@en ;
+                           rdfs:isDefinedBy <https://w3id.org/italia/onto/ACCO> ;
+                           rdfs:label "Descrizione Servizi Offerti"@it ,
+                                      "Offered Service Description"@en ;
                            owl:priorVersion "stable"@en ;
-                           
-                           rdfs:comment "Questa classe rappresenta la descrizine dei servizi offerti. Essa è l'implementazione del pattern descrizione ed è utilizzata quando specifiche caratteristiche dei servizi offerti non sono note in anticipo."@it ;
-                           
                            owl:versionInfo "stabile"@it ;
-                           
-                           prov:wasInfluencedBy <http://www.ontologydesignpatterns.org/cp/owl/description.owl> ;
-                           
-                           rdfs:isDefinedBy <https://w3id.org/italia/onto/ACCO> .
-
+                           prov:wasInfluencedBy <http://www.ontologydesignpatterns.org/cp/owl/description.owl> .
 
 
 ###  https://w3id.org/italia/onto/ACCO/QuadrupleRoom
-
 :QuadrupleRoom rdf:type owl:Class ;
-               
-               rdfs:label "Quadruple Room"@en ,
-                          "Camera quadrupla"@it ;
-               
                rdfs:subClassOf :Bedroom ;
-               
-               rdfs:comment "This class is used to model a quadruple room of an accommodation facility."@en ;
-               
-               owl:versionInfo "stable"@en ;
-               
-               rdfs:comment "Questa classe è usata per modellare una camera quadrupla della struttura ricettiva."@it ;
-               
-               owl:versionInfo "stabile"@it ;
-               
-               rdfs:isDefinedBy <https://w3id.org/italia/onto/ACCO> .
-
+               rdfs:comment "Questa classe è usata per modellare una camera quadrupla della struttura ricettiva."@it ,
+                            "This class is used to model a quadruple room of an accommodation facility."@en ;
+               rdfs:isDefinedBy <https://w3id.org/italia/onto/ACCO> ;
+               rdfs:label "Camera quadrupla"@it ,
+                          "Quadruple Room"@en ;
+               owl:versionInfo "stabile"@it ,
+                               "stable"@en .
 
 
 ###  https://w3id.org/italia/onto/ACCO/SingleRoom
-
 :SingleRoom rdf:type owl:Class ;
-            
-            rdfs:label "Single Room"@en ,
-                       "Camera Singola"@it ;
-            
             rdfs:subClassOf :Bedroom ;
-            
-            rdfs:comment "This class is used to model a single room of an accommodation facility."@en ;
-            
+            rdfs:comment "Questa classe è usata per modellare una camera singola della struttura ricettiva."@it ,
+                         "This class is used to model a single room of an accommodation facility."@en ;
+            rdfs:isDefinedBy <https://w3id.org/italia/onto/ACCO> ;
+            rdfs:label "Camera Singola"@it ,
+                       "Single Room"@en ;
             owl:priorVersion "stable"@en ;
-            
-            rdfs:comment "Questa classe è usata per modellare una camera singola della struttura ricettiva."@it ;
-            
-            owl:versionInfo "stabile"@it ;
-            
-            rdfs:isDefinedBy <https://w3id.org/italia/onto/ACCO> .
-
+            owl:versionInfo "stabile"@it .
 
 
 ###  https://w3id.org/italia/onto/ACCO/Suite
-
 :Suite rdf:type owl:Class ;
-       
+       rdfs:subClassOf :Bedroom ;
+       rdfs:comment "Questa classe è usata per modellare una suite della struttura ricettiva."@it ,
+                    "This class is used to model a suite of an accommodation facility."@en ;
+       rdfs:isDefinedBy <https://w3id.org/italia/onto/ACCO> ;
        rdfs:label "Suite"@en ,
                   "Suite"@it ;
-       
-       rdfs:subClassOf :Bedroom ;
-       
-       rdfs:comment "This class is used to model a suite of an accommodation facility."@en ;
-       
        owl:priorVersion "stable"@en ;
-       
-       rdfs:comment "Questa classe è usata per modellare una suite della struttura ricettiva."@it ;
-       
        owl:versionInfo "stabile"@it ;
-       
-       prov:wasDerivedFrom <http://purl.org/acco/ns#Suite> ;
-       
-       rdfs:isDefinedBy <https://w3id.org/italia/onto/ACCO> .
-
+       prov:wasDerivedFrom <http://purl.org/acco/ns#Suite> .
 
 
 ###  https://w3id.org/italia/onto/ACCO/TripleRoom
-
 :TripleRoom rdf:type owl:Class ;
-            
-            rdfs:label "Triple Room"@en ,
-                       "Camera Tripla"@it ;
-            
             rdfs:subClassOf :Bedroom ;
-            
-            rdfs:comment "This class is used to model a triple room of an accommodation facility."@en ;
-            
+            rdfs:comment "Questa classe è usata per modellare una camera tripla della struttura ricettiva."@it ,
+                         "This class is used to model a triple room of an accommodation facility."@en ;
+            rdfs:isDefinedBy <https://w3id.org/italia/onto/ACCO> ;
+            rdfs:label "Camera Tripla"@it ,
+                       "Triple Room"@en ;
             owl:priorVersion "stable"@en ;
-            
-            rdfs:comment "Questa classe è usata per modellare una camera tripla della struttura ricettiva."@it ;
-            
-            owl:versionInfo "stabile"@it ;
-            
-            rdfs:isDefinedBy <https://w3id.org/italia/onto/ACCO> .
-
+            owl:versionInfo "stabile"@it .
 
 
 ###  https://w3id.org/italia/onto/COV/Organization
-
 covapit:Organization rdf:type owl:Class ;
-                     
                      rdfs:isDefinedBy <http://dati.gov.it/onto/covapit> .
 
 
-
 ###  https://w3id.org/italia/onto/POI/MultiplePointOfInterest
-
 poiapit:MultiplePointOfInterest rdf:type owl:Class ;
-                                
                                 rdfs:isDefinedBy <http://dati.gov.it/onto/poiapit> .
 
 
-
 ###  https://w3id.org/italia/onto/POI/PointOfInterest
-
 poiapit:PointOfInterest rdf:type owl:Class ;
-                        
                         rdfs:isDefinedBy <http://dati.gov.it/onto/poiapit> .
 
 
-
 ###  https://w3id.org/italia/onto/POT/Offer
-
 potapit:Offer rdf:type owl:Class ;
-              
               rdfs:isDefinedBy potapit: .
 
 
-
 ###  https://w3id.org/italia/onto/SM/OnlineContactPoint
-
 smapit:OnlineContactPoint rdf:type owl:Class ;
-                          
                           rdfs:isDefinedBy smapit: .
 
 
-
 ###  https://w3id.org/italia/onto/TI/TimeInterval
-
 tiapit:TimeInterval rdf:type owl:Class ;
-                    
                     rdfs:isDefinedBy tiapit: .
 
 
-
 ###  https://w3id.org/italia/onto/l0/Characteristic
-
 l0:Characteristic rdf:type owl:Class ;
-                  
                   rdfs:isDefinedBy l0: .
 
 
-
 ###  https://w3id.org/italia/onto/l0/Entity
-
 l0:Entity rdf:type owl:Class ;
-          
           rdfs:isDefinedBy l0: .
-
 
 
 ###  https://w3id.org/italia/onto/l0/Object
-
 l0:Object rdf:type owl:Class ;
-          
           rdfs:isDefinedBy l0: .
 
 
-
 ###  https://w3id.org/italia/onto/l0/Topic
-
 l0:Topic rdf:type owl:Class ;
-         
          rdfs:isDefinedBy l0: .
 
 
-
-
-###  Generated by the OWL API (version 3.5.1) http://owlapi.sourceforge.net
-
+###  Generated by the OWL API (version 4.2.8.20170104-2310) https://github.com/owlcs/owlapi
