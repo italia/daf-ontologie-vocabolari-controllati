@@ -2,6 +2,7 @@
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix ad: <http://inspire.ec.europa.eu/ont/ad#> .
+@prefix au:  <http://inspire.ec.europa.eu/ont/au#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
@@ -21,12 +22,12 @@
 
 <https://w3id.org/italia/onto/CLV-aligns> rdf:type owl:Ontology ;
 
-    owl:versionIRI <https://w3id.org/italia/onto/CLV/0.8> ;
+    owl:versionIRI <https://w3id.org/italia/onto/CLV-aligns/0.1> ;
     dc:creator "Institute of Cognitive Sciences and Technologies of the Italian Research Council (CNR) - Semantic Technology Laboratory (STLab)"@en ;
     dc:creator "Agency for Digital Italy - AgID"@en ;
     dc:creator "Italian Digital Transformation Team"@en ;
     dc:issued "2017-09-25"^^xsd:date ;
-    dc:modified "2018-03-03"^^xsd:date ;
+    dc:modified "2018-08-25"^^xsd:date ;
     dc:title "These are the alignments to external ontologies widely used and available at the state of the art"@en ;
     dc:title "Questi sono gli allineamenti dell'ontologia sugli indirizzi/luoghi Core Location Vocabulary - Italian Application Profile  (CLV-AP_IT) verso ontologie esterne del Web semantico standard e ampiamente utilizzate." ;
 
@@ -34,10 +35,6 @@
 
 
 # Classes - Alignments
-clvapit:Organization a owl:Class ;
-  rdfs:isDefinedBy clvapit: ;
-  owl:equivalentClass covapit:Organization .
-
 clvapit:SpatialObject a owl:Class ;
   rdfs:isDefinedBy clvapit: ;
   owl:subClassOf gsp:SpatialObject , geo:SpatialThing .
@@ -66,6 +63,38 @@ clvapit:AddressArea a owl:Class ;
   rdfs:isDefinedBy clvapit: ;
   owl:subClassOf ad:AddressAreaName .
 
+clvapit:AdminUnitComponent a owl:Class ;
+  rdfs:isDefinedBy clvapit: ;
+  owl:subClassOf au:AdministrativeUnit .
+
+clvapit:StreetToponym a owl:Class ;
+    rdfs:isDefinedBy clvapit: ;
+    owl:subClassOf ad:ThoroughfareName .
+
+clvapit:CivicNumbering a owl:Class ;
+    rdfs:isDefinedBy clvapit: ;
+    owl:subClassOf ad:AddressLocator .
+
+clvapit:City a owl:Class ;
+    rdfs:isDefinedBy clvapit: ;
+    owl:equivalentClass skos:Concept .
+
+clvapit:Country a owl:Class ;
+    rdfs:isDefinedBy clvapit: ;
+    owl:equivalentClass skos:Concept .
+
+clvapit:District a owl:Class ;
+    rdfs:isDefinedBy clvapit: ;
+    owl:equivalentClass skos:Concept .
+
+clvapit:Province a owl:Class ;
+    rdfs:isDefinedBy clvapit: ;
+    owl:equivalentClass skos:Concept .
+
+clvapit:Region a owl:Class ;
+    rdfs:isDefinedBy clvapit: ;
+    owl:equivalentClass skos:Concept .
+
 # Object Properties - Alignments
 clvapit:hasAddress a owl:ObjectProperty ;
   rdfs:isDefinedBy clvapit: ;
@@ -81,28 +110,24 @@ clvapit:hasGeometry a owl:ObjectProperty ;
 
 clvapit:situatedWithin a owl:ObjectProperty ;
   rdfs:isDefinedBy clvapit: ;
-  owl:equivalentProperty ad:situatedWithin .
+  owl:equivalentProperty ad:situatedWithin , gsp:ehInside .
 
 clvapit:hasAddressComponent a owl:ObjectProperty ;
   rdfs:isDefinedBy clvapit: ;
-  owl:subPropertyOf ad:component .
+  owl:subPropertyOf ad:Address.component .
+
+clvapit:prevAddress a owl:ObjectProperty ;
+  rdfs:isDefinedBy clvapit: ;
+  owl:subPropertyOf ad:parentAddress .
 
 #Data Type Properties - Alignments
-clvapit:postalCode a owl:DatatypeProperty ;
+clvapit:postCode a owl:DatatypeProperty ;
   rdfs:isDefinedBy clvapit: ;
   owl:subPropertyOf ad:postCode .
 
 clvapit:fullAddress a owl:DatatypeProperty ;
   rdfs:isDefinedBy clvapit: ;
-  owl:equivalentProperty locn:fullAddress .
-
-clvapit:identifier a owl:DatatypeProperty ;
-  rdfs:isDefinedBy clvapit: ;
-  owl:equivalentProperty dct:identifier .
-
-clvapit:modified a owl:DatatypeProperty ;
-  rdfs:isDefinedBy clvapit: ;
-  owl:equivalentProperty dct:modified .
+  owl:subPropertyOf locn:fullAddress .
 
 clvapit:serialization a owl:DatatypeProperty ;
   rdfs:isDefinedBy clvapit: ;
@@ -122,8 +147,6 @@ clvapit:long a owl:DatatypeProperty ;
 
 
 
-covapit:Organization a owl:Class .
-
 gsp:SpatialObject a owl:Class .
 
 gsp:Feature a owl:Class .
@@ -142,6 +165,8 @@ ad:Address a owl:Class .
 
 ad:AddressComponent a owl:Class .
 
+au:AdministrativeUnit a owl:Class .
+
 ad:AddressAreaName a owl:Class .
 
 geo:SpatialThing a owl:Class .
@@ -158,11 +183,9 @@ ad:component a owl:ObjectProperty .
 
 ad:postCode a owl:DatatypeProperty .
 
+ad:parentAddress a owl:ObjectProperty .
+
 locn:fullAddress a owl:DatatypeProperty .
-
-dct:identifier a owl:DatatypeProperty .
-
-dct:modified a owl:DatatypeProperty .
 
 gsp:hasSerialization a owl:DatatypeProperty .
 
@@ -171,3 +194,5 @@ geo:alt a owl:DatatypeProperty .
 geo:lat a owl:DatatypeProperty .
 
 geo:long a owl:DatatypeProperty .
+
+gsp:ehInside a owl:ObjectProperty .
