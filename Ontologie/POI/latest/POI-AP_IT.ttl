@@ -7,45 +7,69 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
+@prefix schema: <http://schema.org/> .
+@prefix admsapit: <https://w3id.org/italia/onto/ADMS/> .
+@prefix dcatapit: <http://dati.gov.it/onto/dcatapit#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix smapit: <https://w3id.org/italia/onto/SM/> .
 @prefix clvapit: <https://w3id.org/italia/onto/CLV/> .
 @base <https://w3id.org/italia/onto/POI> .
 
 <https://w3id.org/italia/onto/POI> rdf:type owl:Ontology ;
-                                   
-                                   rdfs:label "Point of Interest"@en ,
-                                              "Punti di Interesse"@it ;
-                                   
-                                   dct:issued "2017-10-16"^^xsd:date ;
-                                   
-                                   dct:modified "2018-03-13" ;
-                                   
-                                   dc:creator "Agency for Digital Italy - AgID"@en ,
-                                              "Institute of Cognitive Sciences and Technologies of the Italian Research Council (CNR) - Semantic Technology Laboratory (STLab)"@en ,
-                                              "Italian Digital Transformation Team"@en ;
-                                   
-                                   rdfs:comment "This is the ontology of the Italian application profile for Points of Interest"@en ;
-                                   
-                                   owl:versionInfo "Version 0.3 - 13 March 2018 - Migration of the namespace to https://w3id.org/italia for dealing with persistent URIs."@en ;
-                                   
-                                   dc:creator "Agenzia per l'Italia Digitale - AgID"@it ,
-                                              "Istituto di Scienze e Tecnologie della Cognizione del CNR - Laboratorio di Tecnologie Semantiche (STLab)"@it ;
-                                   
-                                   rdfs:comment "Questa è l'ontologia del profilo  italiano sui Punti di Interesse (Point of Interest - Italian Application Profile - POI-AP_IT)"@it ;
-                                   
-                                   dc:creator "Team per la Trasformazione Digitale"@it ;
-                                   
-                                   owl:versionInfo "Versione 0.3 - 13 Marzo 2018 - Migrazione al namespace https://w3id.org/italia per gestire URI permanenti."@it ;
-                                   
+
                                    owl:imports <https://w3id.org/italia/onto/CLV> ,
-                                               <https://w3id.org/italia/onto/TI> ,
-                                               <https://w3id.org/italia/onto/l0> ;
-                                   
-                                   rdfs:isDefinedBy : ;
-                                   
-                                   owl:versionIRI <https://w3id.org/italia/onto/POI/0.3> .
+                                                <https://w3id.org/italia/onto/TI> ,
+                                                <https://w3id.org/italia/onto/l0> ;
+
+                                   owl:versionIRI <https://w3id.org/italia/onto/POI/0.3> ;
+
+                                   admsapit:prefix "poiapit" ;
+                                 	 dct:creator <http://spcdata.digitpa.gov.it/Amministrazione/agid> ;
+                                 	 admsapit:target "Cittadini"@it ;
+                                 	 dct:modified "2018-03-13"^^xsd:date ;
+                                 	 admsapit:hasTask admsapit:AnnotationTask ,
+                                 									 admsapit:QueryFormulationTask ;
+                                 	 admsapit:hasTask admsapit:SearchTask ;
+                                 	 admsapit:hasSemanticAssetDistribution <https://w3id,org/italia/data/distribution/POI-RDF-TURTLE> ;
+                                 	 admsapit:target "Pubbliche Amministrazioni"@it ;
+                                 	 rdfs:comment "This is the ontology of the Italian application profile for Points of Interest"@en ;
+                                   admsapit:hasOntologyLanguage admsapit:OWL ;
+                                 	 admsapit:officialURI "https://w3id.org/italia/onto/POI"^^xsd:anyURI ;
+                                 	 dct:creator <https://w3id.org/italia/data/organization/support-unit/cnr-Z6HZEH/stlab> ;
+                                 	 dcat:keyword "punto di interesse"@it , "luogo di interesse"@it ;
+                                 	 dct:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+                                 	 admsapit:hasFormalityLevel admsapit:Formal ;
+                                 	 admsapit:last <https://w3id.org/italia/onto/POI/0.3> ;
+                                 	 dct:title "Ontologia dei Punti di Interesse - Profilo applicativo italiano"@it ;
+                                 	 admsapit:hasKeyClass :PointOfInterest , :PointOfInterestCategory , :MultiplePointOfInterest ;
+                                 	 rdfs:isDefinedBy <https://w3id.org/italia/onto/POI> ;
+                                 	 dct:publisher <http://spcdata.digitpa.gov.it/Amministrazione/agid> ;
+                                 	 dct:rightsHolder <http://spcdata.digitpa.gov.it/Amministrazione/agid> ;
+                                 	 dct:description "Questa è l'ontologia del profilo  italiano sui Punti di Interesse (Point of Interest - Italian Application Profile - POI-AP_IT). Esempi di punti di interesse possono essere: luoghi della cultura, un incrocio stradale, una farmacia, un centro commerciale, una fermata dell'autobus, ecc."@it ;
+                                 	 owl:versionInfo "Versione 0.3 - 13 Marzo 2018 - Migrazione al namespace https://w3id.org/italia per gestire URI permanenti."@it , "Version 0.3 - 13 March 2018 - Migration of the namespace to https://w3id.org/italia for dealing with persistent URIs."@en ;
+                                 	 dcat:contactPoint <https://w3id.org/italia/data/contact-point/onto-agid> ;
+                                 	 admsapit:semanticAssetInUse <https://w3id.org/italia/data/project/DAF> ,
+                                 															<https://w3id.org/italia/data/project/OntoPiA> ;
+                                 	 dct:accrualPeriodicity <http://publications.europa.eu/resource/authority/frequency/IRREG> ;
+                                 	 rdfs:label "Ontologia dei Punti di Interesse - Profilo applicativo italiano"@it ;
+                                 	 admsapit:hasSemanticAssetDistribution <https://w3id,org/italia/data/distribution/POI-RDF-XML> ;
+                                 	 dcat:theme <http://publications.europa.eu/resource/authority/data-theme/REGI> ;
+                                 	 admsapit:acronym "POI-AP_IT" ;
+                                 	 admsapit:hasSemanticAssetDistribution <https://w3id,org/italia/data/distribution/POI-JSON-LD> ;
+                                 	 dct:issued "2017-10-16"^^xsd:date ;
+                                 	 admsapit:hasContributor <https://w3id.org/italia/data/organization/public-organization/td> ;
+                                 	 dct:description "This is the ontology of the Italian application profile for Points of Interest. Examples of Points of Interest can be: cultural sites, crossroads, a pharmacy, a mall, a bus stop, etc."@en ;
+                                 	 rdfs:label "Italian Points of Interest ontology"@en ;
+                                 	 dct:language <http://publications.europa.eu/resource/authority/language/ITA> ;
+                                 	 admsapit:status "published" , "catalogued" ;
+                                 	 admsapit:target "Imprese"@it ;
+                                 	 admsapit:type admsapit:ServiceOntology ;
+                                 	 rdfs:comment "Questa è l'ontologia del profilo  italiano sui Punti di Interesse (Point of Interest - Italian Application Profile - POI-AP_IT). Esempi di punti di interesse possono essere: luoghi della cultura, un incrocio stradale, una farmacia, un centro commerciale, una fermata dell'autobus, ecc."@it ;
+                                 	 dct:title "Point of Interest ontology - Italian application profile"@en .
 
 
 #################################################################
@@ -73,11 +97,11 @@ l0:controlledVocabulary rdf:type owl:AnnotationProperty .
 ###  https://w3id.org/italia/onto/CLV/hasAddress
 
 clvapit:hasAddress rdf:type owl:ObjectProperty ;
-                   
-                   rdfs:isDefinedBy <http://dati.gov.it/onto/clvapit> ;
-                   
+
+                   rdfs:isDefinedBy <https://w3id.org/italia/onto/CLV> ;
+
                    rdfs:domain owl:Thing ;
-                   
+
                    rdfs:range clvapit:Address .
 
 
@@ -85,11 +109,11 @@ clvapit:hasAddress rdf:type owl:ObjectProperty ;
 ###  https://w3id.org/italia/onto/CLV/hasGeometry
 
 clvapit:hasGeometry rdf:type owl:ObjectProperty ;
-                    
-                    rdfs:isDefinedBy <http://dati.gov.it/onto/clvapit> ;
-                    
+
+                    rdfs:isDefinedBy <https://w3id.org/italia/onto/CLV> ;
+
                     rdfs:domain owl:Thing ;
-                    
+
                     rdfs:range clvapit:Geometry .
 
 
@@ -97,24 +121,24 @@ clvapit:hasGeometry rdf:type owl:ObjectProperty ;
 ###  https://w3id.org/italia/onto/POI/hasPOICategory
 
 :hasPOICategory rdf:type owl:ObjectProperty ;
-                
+
                 rdfs:label "has point of interest category"@en ,
                            "ha categoria del punto di interesse"@it ;
-                
+
                 rdfs:comment "This property links the point of interest to its general cateogry."@en ;
-                
+
                 owl:versionInfo "stable"@en ;
-                
+
                 rdfs:comment "Questa proprietà lega il punto di inreresse alla sua categoria generale."@it ;
-                
+
                 owl:versionInfo "stabile"@it ;
-                
+
                 rdfs:isDefinedBy <https://w3id.org/italia/onto/POI> ;
-                
+
                 rdfs:domain :PointOfInterest ;
-                
+
                 rdfs:range :PointOfInterestCategory ;
-                
+
                 owl:inverseOf :isPOICategoryFor .
 
 
@@ -122,24 +146,24 @@ clvapit:hasGeometry rdf:type owl:ObjectProperty ;
 ###  https://w3id.org/italia/onto/POI/hasPOINameInITime
 
 :hasPOINameInITime rdf:type owl:ObjectProperty ;
-                   
+
                    rdfs:label "ha name in time of the point of interest"@en ,
                               "ha nome nel tempo del punto di interesse"@it ;
-                   
+
                    rdfs:comment "This property lnks the point of time to the situation (event) of its name that changes over time."@en ;
-                   
+
                    owl:versionInfo "unstable"@en ;
-                   
+
                    rdfs:comment "Questa proprietà lega il punto di interesse alla situazione (evento) del suo nome ch ecambia nel tempo."@it ;
-                   
+
                    owl:versionInfo "provvisoria"@it ;
-                   
+
                    rdfs:isDefinedBy <https://w3id.org/italia/onto/POI> ;
-                   
+
                    rdfs:range :POINameInTime ;
-                   
+
                    rdfs:domain :PointOfInterest ;
-                   
+
                    owl:inverseOf :isPOINameInTimeFor .
 
 
@@ -148,24 +172,24 @@ clvapit:hasGeometry rdf:type owl:ObjectProperty ;
 
 :hasPOIState rdf:type owl:FunctionalProperty ,
                       owl:ObjectProperty ;
-             
+
              rdfs:label "has point of interest status"@en ,
                         "ha stato del punto di interesse"@it ;
-             
+
              rdfs:comment "This property links the point of interest to its status."@en ;
-             
+
              owl:versionInfo "stable"@en ;
-             
+
              rdfs:comment "Questa proprietà lega il punto di interesse al suo stato."@it ;
-             
+
              owl:versionInfo "stabile"@it ;
-             
+
              rdfs:isDefinedBy <https://w3id.org/italia/onto/POI> ;
-             
+
              rdfs:range :POIState ;
-             
+
              rdfs:domain :PointOfInterest ;
-             
+
              owl:inverseOf :isPOIStateFor .
 
 
@@ -173,24 +197,24 @@ clvapit:hasGeometry rdf:type owl:ObjectProperty ;
 ###  https://w3id.org/italia/onto/POI/includesPOI
 
 :includesPOI rdf:type owl:ObjectProperty ;
-             
+
              rdfs:label "includes point of interest"@en ,
                         "include punto di interesse"@it ;
-             
+
              rdfs:comment "This property links a multiple point of interest with all the points of interest included in it."@en ;
-             
+
              owl:versionInfo "stable"@en ;
-             
+
              rdfs:comment "Questa proprietà lega un punto di interesse multiplo a tutti i  punti di interesse in esso contenuti."@it ;
-             
+
              owl:versionInfo "stabile"@it ;
-             
+
              rdfs:isDefinedBy <https://w3id.org/italia/onto/POI> ;
-             
+
              rdfs:domain :MultiplePointOfInterest ;
-             
+
              rdfs:range :PointOfInterest ;
-             
+
              owl:inverseOf :isIncludedInPOI .
 
 
@@ -198,22 +222,22 @@ clvapit:hasGeometry rdf:type owl:ObjectProperty ;
 ###  https://w3id.org/italia/onto/POI/isIncludedInPOI
 
 :isIncludedInPOI rdf:type owl:ObjectProperty ;
-                 
+
                  rdfs:label "is included in point of interest"@en ,
                             "è incluso nel punto di interesse"@it ;
-                 
+
                  rdfs:comment "Inverse property of \"includes point of interest\"."@en ;
-                 
+
                  owl:versionInfo "stable"@en ;
-                 
+
                  rdfs:comment "Proprietà inversa di \"include punto di interesse\"."@it ;
-                 
+
                  owl:versionInfo "stabile"@it ;
-                 
+
                  rdfs:comment <https://w3id.org/italia/onto/POI> ;
-                 
+
                  rdfs:range :MultiplePointOfInterest ;
-                 
+
                  rdfs:domain :PointOfInterest .
 
 
@@ -221,22 +245,22 @@ clvapit:hasGeometry rdf:type owl:ObjectProperty ;
 ###  https://w3id.org/italia/onto/POI/isPOICategoryFor
 
 :isPOICategoryFor rdf:type owl:ObjectProperty ;
-                  
+
                   rdfs:label "is point of interest category for"@en ,
                              "è categoria del punto di interesse per"@it ;
-                  
+
                   rdfs:comment "This is the inverse property of \"has point of interest category\"."@en ;
-                  
+
                   owl:versionInfo "stable"@en ;
-                  
+
                   rdfs:comment "Proprietà inversa di \"ha categoria del punto di interesse\"."@it ;
-                  
+
                   owl:versionInfo "stabile"@it ;
-                  
+
                   rdfs:isDefinedBy <https://w3id.org/italia/onto/POI> ;
-                  
+
                   rdfs:range :PointOfInterest ;
-                  
+
                   rdfs:domain :PointOfInterestCategory .
 
 
@@ -245,22 +269,22 @@ clvapit:hasGeometry rdf:type owl:ObjectProperty ;
 
 :isPOINameInTimeFor rdf:type owl:FunctionalProperty ,
                              owl:ObjectProperty ;
-                    
+
                     rdfs:label "is point of interest name in time for"@en ,
                                "è nome nel tempo del punto di interesse per"@it ;
-                    
+
                     rdfs:comment "Inverse property of \"has point of interest name in time\"."@en ;
-                    
+
                     owl:versionInfo "unstable"@en ;
-                    
+
                     rdfs:comment "Proprietà inversa di \"ha nome nel tempo del punto di interesse\"."@it ;
-                    
+
                     owl:versionInfo "provvisoria"@it ;
-                    
+
                     rdfs:isDefinedBy <https://w3id.org/italia/onto/POI> ;
-                    
+
                     rdfs:domain :POINameInTime ;
-                    
+
                     rdfs:range :PointOfInterest .
 
 
@@ -268,22 +292,22 @@ clvapit:hasGeometry rdf:type owl:ObjectProperty ;
 ###  https://w3id.org/italia/onto/POI/isPOIStateFor
 
 :isPOIStateFor rdf:type owl:ObjectProperty ;
-               
+
                rdfs:label "is point of interest status for"@en ,
                           "è stato del punto di interesse per"@it ;
-               
+
                rdfs:comment "inverse property of \"has point of interest status\"."@en ;
-               
+
                owl:versionInfo "stable"@en ;
-               
+
                rdfs:comment "Proprietà inversa di \"ha stato del punto di interesse\"."@it ;
-               
+
                owl:versionInfo "stabile"@it ;
-               
+
                rdfs:isDefinedBy <https://w3id.org/italia/onto/POI> ;
-               
+
                rdfs:domain :POIState ;
-               
+
                rdfs:range :PointOfInterest .
 
 
@@ -291,11 +315,11 @@ clvapit:hasGeometry rdf:type owl:ObjectProperty ;
 ###  https://w3id.org/italia/onto/SM/hasImage
 
 smapit:hasImage rdf:type owl:ObjectProperty ;
-                
-                rdfs:isDefinedBy <http://dati.gov.it/onto/smapit/> ;
-                
+
+                rdfs:isDefinedBy <https://w3id.org/italia/onto/SM> ;
+
                 rdfs:domain owl:Thing ;
-                
+
                 rdfs:range smapit:Image .
 
 
@@ -303,11 +327,11 @@ smapit:hasImage rdf:type owl:ObjectProperty ;
 ###  https://w3id.org/italia/onto/TI/atTime
 
 ti:atTime rdf:type owl:ObjectProperty ;
-          
+
           rdfs:domain owl:Thing ;
-          
+
           rdfs:isDefinedBy ti: ;
-          
+
           rdfs:range ti:TimeInterval .
 
 
@@ -325,22 +349,22 @@ ti:atTime rdf:type owl:ObjectProperty ;
 
 :POIID rdf:type owl:DatatypeProperty ,
                 owl:FunctionalProperty ;
-       
+
        rdfs:label "point of interest identifier"@en ,
                   "identificativo punto di interesse"@it ;
-       
+
        rdfs:comment "This property represents a unique identifier of the point of interest."@en ;
-       
+
        owl:versionInfo "stable"@en ;
-       
+
        rdfs:comment "Questa proprietà rappresenta l'identificativo univoco del punto di interesse."@it ;
-       
+
        owl:versionInfo "stabile"@it ;
-       
+
        rdfs:range rdfs:Literal ;
-       
+
        rdfs:isDefinedBy <https://w3id.org/italia/onto/POI> ;
-       
+
        rdfs:domain :PointOfInterest .
 
 
@@ -348,22 +372,22 @@ ti:atTime rdf:type owl:ObjectProperty ;
 ###  https://w3id.org/italia/onto/POI/POIalternativeName
 
 :POIalternativeName rdf:type owl:DatatypeProperty ;
-                    
+
                     rdfs:label "point of interest alternative name"@en ,
                                "nome alternativo del punto di interesse"@it ;
-                    
+
                     rdfs:comment "This property represents an alternative name (acronym, or any other name) with which the point of interest is known."@en ;
-                    
+
                     owl:versionInfo "stable"@en ;
-                    
+
                     rdfs:comment "Questa proprietà rappresenta un nome alternativo (acrononimo, o altro nome) con cui è conosciuto il punto di interesse."@it ;
-                    
+
                     owl:versionInfo "stabile"@it ;
-                    
+
                     rdfs:range rdfs:Literal ;
-                    
+
                     rdfs:isDefinedBy <https://w3id.org/italia/onto/POI> ;
-                    
+
                     rdfs:domain :POINameInTime .
 
 
@@ -371,18 +395,18 @@ ti:atTime rdf:type owl:ObjectProperty ;
 ###  https://w3id.org/italia/onto/POI/POIcategoryIdentifier
 
 :POIcategoryIdentifier rdf:type owl:DatatypeProperty ;
-                       
+
                        rdfs:label "POI category identifier"@en ,
                                   "identificativo categoria punto di interesse"@it ;
-                       
+
                        owl:versionInfo "stable"@en ;
-                       
+
                        rdfs:comment "Questa proprietà è l'identificativo nel vocabolario controllato della categoria dei punti di interesse. E' equivalente a dct:identifier e skos:notation utilizzati nel vocabolario controllato stesso."@it ;
-                       
+
                        owl:versionInfo "stabile"@it ;
-                       
-                       l0:controlledVocabulary <http://dati.gov.it/onto/controlledvocabulary/POICategoryClassification> ;
-                       
+
+                       l0:controlledVocabulary <https://w3id.org/italia/controlled-vocabulary/poi-category-classification> ;
+
                        rdfs:isDefinedBy <https://w3id.org/italia/onto/POI> .
 
 
@@ -390,24 +414,24 @@ ti:atTime rdf:type owl:ObjectProperty ;
 ###  https://w3id.org/italia/onto/POI/POIcategoryName
 
 :POIcategoryName rdf:type owl:DatatypeProperty ;
-                 
+
                  rdfs:label "name of point of interest category"@en ,
                             "nome categoria del punto di interesse"@it ;
-                 
+
                  rdfs:comment "This property represents the preferred label (name) of the category of the point of interest."@en ;
-                 
+
                  owl:versionInfo "stable"@en ;
-                 
+
                  rdfs:comment "Questa proprietà rappresenta l'etichetta (nome) della categoria del punto di interesse."@it ;
-                 
+
                  owl:versionInfo "stabile"@it ;
-                 
-                 l0:controlledVocabulary <http://dati.gov.it/onto/controlledvocabulary/POICategoryClassification> ;
-                 
+
+                 l0:controlledVocabulary <https://w3id.org/italia/controlled-vocabulary/poi-category-classification> ;
+
                  rdfs:range rdfs:Literal ;
-                 
+
                  rdfs:isDefinedBy <https://w3id.org/italia/onto/POI> ;
-                 
+
                  rdfs:domain :PointOfInterestCategory .
 
 
@@ -415,22 +439,22 @@ ti:atTime rdf:type owl:ObjectProperty ;
 ###  https://w3id.org/italia/onto/POI/POIdescription
 
 :POIdescription rdf:type owl:DatatypeProperty ;
-                
+
                 rdfs:label "point of interest description"@en ,
                            "descrizione del punto di interesse"@it ;
-                
+
                 rdfs:comment "This property represents a generic description of the point of interest."@en ;
-                
+
                 owl:versionInfo "stable"@en ;
-                
+
                 rdfs:comment "Questa proprietà rappresenta una generica descrizione del punto di interesse."@it ;
-                
+
                 owl:versionInfo "stabile"@it ;
-                
+
                 rdfs:range rdfs:Literal ;
-                
+
                 rdfs:isDefinedBy <https://w3id.org/italia/onto/POI> ;
-                
+
                 rdfs:domain :PointOfInterest .
 
 
@@ -438,22 +462,22 @@ ti:atTime rdf:type owl:ObjectProperty ;
 ###  https://w3id.org/italia/onto/POI/POIofficialName
 
 :POIofficialName rdf:type owl:DatatypeProperty ;
-                 
+
                  rdfs:label "point of interest official name"@en ,
                             "nome ufficiale del punto di interesse"@it ;
-                 
+
                  rdfs:comment "This property represents the official name of the point of interest."@en ;
-                 
+
                  owl:versionInfo "stable"@en ;
-                 
+
                  rdfs:comment "Questa proprietà rappresenta il nome ufficiale del punto di interesse."@it ;
-                 
+
                  owl:versionInfo "stabile"@it ;
-                 
+
                  rdfs:range rdfs:Literal ;
-                 
+
                  rdfs:isDefinedBy <https://w3id.org/italia/onto/POI> ;
-                 
+
                  rdfs:domain [ rdf:type owl:Class ;
                                owl:unionOf ( :POINameInTime
                                              :PointOfInterest
@@ -465,22 +489,22 @@ ti:atTime rdf:type owl:ObjectProperty ;
 ###  https://w3id.org/italia/onto/POI/POIstate
 
 :POIstate rdf:type owl:DatatypeProperty ;
-          
+
           rdfs:label "status"@en ,
-                     "stato"@it ;
-          
+                     "valore dello stato del punto di interesse"@it ;
+
           rdfs:comment "This property is the preferred label for the status of the point of interest."@en ;
-          
+
           owl:versionInfo "stable"@en ;
-          
+
           rdfs:comment "Questa proprietà rappresenta l'etichetta (stringa) dello stato del punto di interesse."@it ;
-          
+
           owl:versionInfo "stabile"@it ;
-          
+
           rdfs:range rdfs:Literal ;
-          
+
           rdfs:isDefinedBy <https://w3id.org/italia/onto/POI> ;
-          
+
           rdfs:domain :POIState .
 
 
@@ -497,40 +521,40 @@ ti:atTime rdf:type owl:ObjectProperty ;
 ###  https://w3id.org/italia/onto/CLV/Address
 
 clvapit:Address rdf:type owl:Class ;
-                
-                rdfs:isDefinedBy <http://dati.gov.it/onto/clvapit> .
+
+                rdfs:isDefinedBy <https://w3id.org/italia/onto/CLV> .
 
 
 
 ###  https://w3id.org/italia/onto/CLV/Geometry
 
 clvapit:Geometry rdf:type owl:Class ;
-                 
-                 rdfs:isDefinedBy <http://dati.gov.it/onto/clvapit> .
+
+                 rdfs:isDefinedBy <https://w3id.org/italia/onto/CLV> .
 
 
 
 ###  https://w3id.org/italia/onto/POI/MultiplePointOfInterest
 
 :MultiplePointOfInterest rdf:type owl:Class ;
-                         
+
                          rdfs:label "Multiple Point Of Interest"@en ,
                                     "Punto di Interesse Multiplo"@it ;
-                         
+
                          rdfs:subClassOf :PointOfInterest ,
                                          [ rdf:type owl:Restriction ;
                                            owl:onProperty :includesPOI ;
                                            owl:allValuesFrom :PointOfInterest
                                          ] ;
-                         
+
                          rdfs:comment "This class represents a collection of points of interest."@en ;
-                         
+
                          owl:versionInfo "stable"@en ;
-                         
+
                          rdfs:comment "Questa classe rappresenta una collezione di punti di interesse. Per esempio un centro commerciale è un punto di interesse ma a sua volta una collezioni di tanti punti di interesse (farmacia, negozi, ristoranti, cinema, ecc.)"@it ;
-                         
+
                          owl:versionInfo "stabile"@it ;
-                         
+
                          rdfs:isDefinedBy <https://w3id.org/italia/onto/POI> .
 
 
@@ -538,10 +562,10 @@ clvapit:Geometry rdf:type owl:Class ;
 ###  https://w3id.org/italia/onto/POI/POINameInTime
 
 :POINameInTime rdf:type owl:Class ;
-               
+
                rdfs:label "Name in Time of the Point of Interest"@en ,
                           "Nome nel Tempo del Punto di Interesse"@it ;
-               
+
                rdfs:subClassOf l0:Event ,
                                [ rdf:type owl:Restriction ;
                                  owl:onProperty :POIofficialName ;
@@ -561,15 +585,15 @@ clvapit:Geometry rdf:type owl:Class ;
                                  owl:onClass :PointOfInterest ;
                                  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger
                                ] ;
-               
+
                rdfs:comment "This class represents the situation of the name of the point of interest that changes over time. It is therefore represented as an ennary relationship between the point of interest, time and name. This class can be useful in case you want to trace the evolution of names of points of interest over time."@en ;
-               
+
                owl:versionInfo "unstable"@en ;
-               
+
                rdfs:comment "Questa classe rappresenta la situazione del nome del punto di interesse che cambia nel tempo. Essa è rappresentata quindi come una relazione ennaria tra il punto di interesse, il tempo e il nome. Questa classe può essere utile nel caso si voglia tracciare l'evoluzione dei nomi di punti di interesse nel tempo."@it ;
-               
+
                owl:versionInfo "provvisoria"@it ;
-               
+
                rdfs:isDefinedBy <https://w3id.org/italia/onto/POI> .
 
 
@@ -577,10 +601,10 @@ clvapit:Geometry rdf:type owl:Class ;
 ###  https://w3id.org/italia/onto/POI/POIState
 
 :POIState rdf:type owl:Class ;
-          
+
           rdfs:label "Point of Interest Status"@en ,
                      "Stato del Punto di Interesse"@it ;
-          
+
           rdfs:subClassOf l0:Characteristic ,
                           [ rdf:type owl:Restriction ;
                             owl:onProperty :isPOIStateFor ;
@@ -590,15 +614,15 @@ clvapit:Geometry rdf:type owl:Class ;
                             owl:onProperty :POIstate ;
                             owl:someValuesFrom rdfs:Literal
                           ] ;
-          
+
           rdfs:comment "This class represents the status of the point of interest. Its values can be fixed but vary according to the type of point of interest. For example, they may be \"on duty\",\"open\",\"closed\", etc. for pharmacies or \"free\",\"occupied\" for parking, or \"open\",\"closed\",\"under renovation\" in the case of accommodation facilities, etc."@en ;
-          
+
           owl:versionInfo "stable"@en ;
-          
+
           rdfs:comment "Questa classe rappresenta lo stato del punto di interesse. I suoi valori possono essere fissati per tipologia di punto di interesse. Per esempio, essi possono essere \"di turno\", \"aperta\", \"chiusa\", ecc. per le farmacie oppure \"libero\", \"occupato\" per i parcheggi, oppure \"aperto\", \"chiuso\", \"in ristrutturazione\" nel caso di strutture ricettive, ecc."@it ;
-          
+
           owl:versionInfo "stabile"@it ;
-          
+
           rdfs:isDefinedBy <https://w3id.org/italia/onto/POI> .
 
 
@@ -606,10 +630,10 @@ clvapit:Geometry rdf:type owl:Class ;
 ###  https://w3id.org/italia/onto/POI/PointOfInterest
 
 :PointOfInterest rdf:type owl:Class ;
-                 
+
                  rdfs:label "Point of Interest"@en ,
                             "Punto di Interesse"@it ;
-                 
+
                  rdfs:subClassOf l0:Entity ,
                                  [ rdf:type owl:Restriction ;
                                    owl:onProperty clvapit:hasGeometry ;
@@ -658,15 +682,15 @@ clvapit:Geometry rdf:type owl:Class ;
                                    owl:onProperty :POIofficialName ;
                                    owl:someValuesFrom rdfs:Literal
                                  ] ;
-                 
+
                  rdfs:comment "This class represents a point of interest, which is a particular point that someone finds useful or interesting. It may be a parking , an accommodation, a bus stop, a pharmacy, a shopping centre, a crossroads, etc. This class represents a \"superstructure\" used to model things of some kind of interest; however, at the same time it can be viewed as a location or place or feature (it is indeed a subclass of Entity in the top level ontology L0 which can be in turn a Location or an Object). This kind of modelling allows users to get information if they search for both a location and things to which they are interested in."@en ;
-                 
+
                  owl:versionInfo "stable"@en ;
-                 
+
                  rdfs:comment "Questa classe rappresenta un punto di interesse, ovvero un particolare punto che qualcuno trova utile o di interesse. Esso può essere un parcheggio, una struttura ricettiva, una feramta dell'autobus, una farmacia, un centro commerciale, un incrocio, ecc. E' da notare che questa classe rappresenta di fatto una sovrastruttura utile per modellare cose di interesse ma allo stesso tempo è anche accettato considerarla come luogo (infatti la classe è definita come sotto classe di \"Entity-Entità\" dell'ontologia L0 che a sua volta può essere un oggetto o un luogo). Questo tipo di modellazione quindi consente a utenti di poter cercare oggetti di interesse ma anche fare query su punti di interessse intesi come luoghi."@it ;
-                 
+
                  owl:versionInfo "stabile"@it ;
-                 
+
                  rdfs:isDefinedBy <https://w3id.org/italia/onto/POI> .
 
 
@@ -674,24 +698,24 @@ clvapit:Geometry rdf:type owl:Class ;
 ###  https://w3id.org/italia/onto/POI/PointOfInterestCategory
 
 :PointOfInterestCategory rdf:type owl:Class ;
-                         
+
                          rdfs:label "Point of Interest Category"@en ,
                                     "Categoria del Punto di Interesse"@it ;
-                         
+
                          rdfs:subClassOf l0:Topic ,
                                          [ rdf:type owl:Restriction ;
                                            owl:onProperty :POIcategoryName ;
                                            owl:someValuesFrom rdfs:Literal
                                          ] ;
-                         
+
                          rdfs:comment "This class represents the category of the point of interest. It individuals can be data of a controlled vocabulary (that we will make available in the upcoming weeks and that will be inspired by the classification offered by Open Street Map). The controlled vocabulary identifies the general types of Points of Interest such as, \"entertainament, food, public service, travel/tourism\", etc. The individuals of this class can also be subclasses of the class \"Point of Interest\" (Punning)"@en ;
-                         
+
                          owl:versionInfo "stable"@en ;
-                         
+
                          rdfs:comment "Questa classe rappresenta la categoria attraverso cui classificare il punto di interesse. Essa assume i valori di un vocabolario controllato (che sarà rilasciato nelle prossime settimane e ispirato dalla classificazione di Open Street Map) che identifica in linea generale i tipi di punti di interesse come per esempio: divertimento, cibo, servizio pubbico, viaggi/turismo, ecc. I suoi individui possono essere anche sottoclassi della classe Punto di Interesse (questa tecnica di modellazione in OWL si chiama Punning)."@it ;
-                         
+
                          owl:versionInfo "stabile"@it ;
-                         
+
                          rdfs:isDefinedBy <https://w3id.org/italia/onto/POI> .
 
 
@@ -699,15 +723,15 @@ clvapit:Geometry rdf:type owl:Class ;
 ###  https://w3id.org/italia/onto/SM/Image
 
 smapit:Image rdf:type owl:Class ;
-             
-             rdfs:comment <http://dati.gov.it/onto/smapit/> .
+
+             rdfs:comment <https://w3id.org/italia/onto/SM> .
 
 
 
 ###  https://w3id.org/italia/onto/TI/TimeInterval
 
 ti:TimeInterval rdf:type owl:Class ;
-                
+
                 rdfs:isDefinedBy ti: .
 
 
@@ -715,7 +739,7 @@ ti:TimeInterval rdf:type owl:Class ;
 ###  https://w3id.org/italia/onto/l0/Characteristic
 
 l0:Characteristic rdf:type owl:Class ;
-                  
+
                   rdfs:isDefinedBy l0: .
 
 
@@ -723,7 +747,7 @@ l0:Characteristic rdf:type owl:Class ;
 ###  https://w3id.org/italia/onto/l0/Entity
 
 l0:Entity rdf:type owl:Class ;
-          
+
           rdfs:isDefinedBy l0: .
 
 
@@ -731,7 +755,7 @@ l0:Entity rdf:type owl:Class ;
 ###  https://w3id.org/italia/onto/l0/Event
 
 l0:Event rdf:type owl:Class ;
-         
+
          rdfs:isDefinedBy l0: .
 
 
@@ -739,11 +763,105 @@ l0:Event rdf:type owl:Class ;
 ###  https://w3id.org/italia/onto/l0/Topic
 
 l0:Topic rdf:type owl:Class ;
-         
+
          rdfs:isDefinedBy l0: .
+
+
+ ### Metadata individuals
+ ###
+ ###
+ ###  http://spcdata.digitpa.gov.it/browse/page/Amministrazione/agid
+ <http://spcdata.digitpa.gov.it/browse/page/Amministrazione/agid> rdf:type owl:NamedIndividual ,
+                                                                           dcatapit:Agent ,
+                                                                           foaf:Agent ;
+                                                                  dct:identifier "agid" ;
+                                                                  foaf:name "Agenzia per l'Italia Digitale"@it ,
+                                                                            "Italian Digital Agency"@en .
+
+
+ ###  https://w3id,org/italia/data/distribution/POI-JSON-LD
+ <https://w3id,org/italia/data/distribution/POI-JSON-LD> rdf:type owl:NamedIndividual ,
+                                                                     admsapit:SemanticAssetDistribution ;
+                                                            dct:description "Questa è la distribuzione JSON-LD dell'ontologia dei punti di interesse"@it ,
+                                                                            "This is the distribution in JSON-LD of the Points of Interest ontology"@en ;
+                                                            dct:format <http://publications.europa.eu/resource/authority/file-type/JSON_LD> ;
+                                                            dct:license <https://w3id.org/italia/controlled-vocabulary/licences/A21_CCBY40> ;
+                                                            dct:title "Distribuzione JSON-LD ontologia POI-AP_IT"@it ,
+                                                                      "JSON-LD distribution of POI-AP_IT Ontology"@en ;
+                                                            dcat:accessURL <https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/POI/latest> ;
+                                                            dcat:downloadURL <https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/POI/POI-AP_IT.jsonld> .
+
+
+ ###  https://w3id,org/italia/data/distribution/POI-RDF-TURTLE
+ <https://w3id,org/italia/data/distribution/POI-RDF-TURTLE> rdf:type owl:NamedIndividual ,
+                                                                        admsapit:SemanticAssetDistribution ;
+                                                               dct:description "Questa è la distribuzione RDF/Turtle dell'ontologia dei punti di interesse"@it ,
+                                                                               "This is the distribution in RDF/turtle of the Points of Interest ontology"@en ;
+                                                               dct:format <http://publications.europa.eu/resource/authority/file-type/RDF_TURTLE> ;
+                                                               dct:license <https://w3id.org/italia/controlled-vocabulary/licences/A21_CCBY40> ;
+                                                               dct:title "Distribuzione RDF/Turtle ontologia POI-AP_IT"@it ,
+                                                                         "RDF/Turtle distribution of POI-AP_IT Ontology"@en ;
+                                                               dcat:accessURL <https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/POI/latest> ;
+                                                               dcat:downloadURL <https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/POI/latest/POI-AP_IT.ttl> .
+
+
+ ###  https://w3id,org/italia/data/distribution/POI-RDF-XML
+ <https://w3id,org/italia/data/distribution/POI-RDF-XML> rdf:type owl:NamedIndividual ,
+                                                                     admsapit:SemanticAssetDistribution ;
+                                                            dct:description "Questa è la distribuzione RDF/XML dell'ontologia dei punti di interesse"@it ,
+                                                                            "This is the distribution in RDF/XML of the Points of Interest ontology"@en ;
+                                                            dct:format <http://publications.europa.eu/resource/authority/file-type/RDF_XML> ;
+                                                            dct:license <https://w3id.org/italia/controlled-vocabulary/licences/A21_CCBY40> ;
+                                                            dct:title "Distribuzione RDF/XML ontologia POI-AP_IT"@it ,
+                                                                      "RDF/XML distribution of POI-AP_IT Ontology"@en ;
+                                                            dcat:accessURL <https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/POI/latest> ;
+                                                            dcat:downloadURL <https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/POI/latest/POI-AP_IT.rdf> .
+
+
+ ###  https://w3id.org/italia/data/contact-point/onto-agid
+ <https://w3id.org/italia/data/contact-point/onto-agid> rdf:type owl:NamedIndividual ,
+                                                                 dcatapit:Organization ,
+                                                                 vcard:Kind ,
+                                                                 vcard:Organization ;
+                                                        vcard:fn "banche dati e open data" ;
+                                                        vcard:hasEmail <mailto:info@dati.gov.it> .
+
+
+ ###  https://w3id.org/italia/data/organization/public-organization/td
+ <https://w3id.org/italia/data/organization/public-organization/td> rdf:type owl:NamedIndividual ,
+                                                                             dcatapit:Agent ,
+                                                                             foaf:Agent ;
+                                                                    dct:identifier "TD" ;
+                                                                    foaf:name "Digital Transformation Team"@en ,
+                                                                              "Team per la Trasformazione Digitale"@it .
+
+
+ ###  https://w3id.org/italia/data/organization/support-unit/cnr-Z6HZEH/stlab
+ <https://w3id.org/italia/data/organization/support-unit/cnr-Z6HZEH/stlab> rdf:type owl:NamedIndividual ,
+                                                                                    dcatapit:Agent ;
+                                                                           foaf:name "Institute of Cognitive Sciences and Technologies of the Italian Research Council (CNR) - Semantic Technology Laboratory (STLab)"@en ,
+                                                                                   "Istituto di Scienze e Tecnologie della Cognizione del CNR - Semantic Technology Lab (STLab)"@it ;
+                                                                           dct:identifier "cnr - Z6HZEH - STLab" .
+
+
+ ###  https://w3id.org/italia/data/project/DAF
+ <https://w3id.org/italia/data/project/DAF> rdf:type owl:NamedIndividual ,
+                                                     admsapit:Project ;
+                                            foaf:name "Data & Analytics Framework"@it .
+
+
+ ###  https://w3id.org/italia/data/project/OntoPiA
+ <https://w3id.org/italia/data/project/OntoPiA> rdf:type owl:NamedIndividual ,
+                                                         admsapit:Project ;
+                                                l0:name "OntoPiA - la rete di ontologie della pubblica amministrazione italiana"@it .
+
+
+ ###  https://w3id.org/italia/onto/POI
+ <https://w3id.org/italia/onto/POI> rdf:type owl:NamedIndividual ,
+                                                        admsapit:SemanticAsset .
+
 
 
 
 
 ###  Generated by the OWL API (version 3.5.1) http://owlapi.sourceforge.net
-
