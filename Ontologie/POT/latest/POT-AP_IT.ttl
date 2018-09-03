@@ -1,44 +1,72 @@
-@prefix : <https://w3id.org/italia/onto/POT#> .
+@prefix : <https://w3id.org/italia/onto/POT/> .
 @prefix dc: <http://purl.org/dc/elements/1.1/> .
 @prefix dct: <http://purl.org/dc/terms/> .
+@prefix l0: <https://w3id.org/italia/onto/l0/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
+@prefix schema: <http://schema.org/> .
+@prefix admsapit: <https://w3id.org/italia/onto/ADMS/> .
+@prefix dcatapit: <http://dati.gov.it/onto/dcatapit#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @base <https://w3id.org/italia/onto/POT> .
 
 <https://w3id.org/italia/onto/POT> rdf:type owl:Ontology ;
-                                   
-                                   rdfs:label "Prices / Offers /Tickets"@en ,
-                                              "Prezzi/Offerte/Biglietti"@it ;
-                                   
-                                   dct:modified "2018-03-03" ;
-                                   
-                                   dct:issued "2017-11-17" ;
-                                   
-                                   dc:creator "Agency for Digital Italy - AgID"@en ,
-                                              "Institute of Cognitive Sciences and Technologies of the Italian Research Council (CNR) - Semantic Technology Laboratory (STLab)"@en ,
-                                              "Italian Digital Transformation Team"@en ;
-                                   
-                                   owl:versionInfo "Version 0.3 - 03 March 2018 - Use di w3id.org/italia/onto/POT/ as base URI"@en ;
-                                   
-                                   dc:creator "Agenzia per l'Italia Digitale - AgID"@it ,
-                                              "Istituto di Scienze e Tecnologie della Cognizione del CNR - Laboratorio di Tecnologie Semantiche (STLab)"@it ,
-                                              "Team per la Trasformazione Digitale"@it ;
-                                   
-                                   owl:versionInfo "Versione 0.3 - 03 Marzo 2018 - Uso di w3id.org/italia/onto/POT/ come base URI"@it ;
-                                   
-                                   prov:wasDerivedFrom <http://dati.gov.it/onto/potapit/0.2> ;
-                                   
-                                   dct:license <https://creativecommons.org/licenses/by/4.0/> ;
-                                   
-                                   owl:imports <https://w3id.org/italia/onto/MU> ,
-                                               <https://w3id.org/italia/onto/TI> ,
-                                               <https://w3id.org/italia/onto/l0> ;
-                                   
-                                   owl:versionIRI <https://w3id.org/italia/onto/POT/0.3> .
+
+                                    owl:imports <https://w3id.org/italia/onto/MU> ,
+                                                <https://w3id.org/italia/onto/TI> ,
+                                                <https://w3id.org/italia/onto/l0> ;
+
+                                    owl:versionIRI <https://w3id.org/italia/onto/POT/0.3> ;
+                                    prov:wasDerivedFrom <http://dati.gov.it/onto/potapit/0.2> ;
+                                    admsapit:prefix "potapit" ;
+                                  	dct:creator <http://spcdata.digitpa.gov.it/Amministrazione/agid> ;
+                                  	admsapit:target "Cittadini"@it ;
+                                  	dct:modified "2018-03-03"^^xsd:date ;
+                                  	admsapit:hasTask admsapit:AnnotationTask ,
+                                  									 admsapit:QueryFormulationTask ;
+                                  	admsapit:hasTask admsapit:SearchTask ;
+                                  	admsapit:hasSemanticAssetDistribution <https://w3id,org/italia/data/distribution/POT-RDF-TURTLE> ;
+                                  	admsapit:target "Pubbliche Amministrazioni"@it ;
+                                  	rdfs:comment "This is the ontology used to represent price , tickets and offers"@en ;
+                                  	admsapit:hasOntologyLanguage admsapit:OWL ;
+                                  	admsapit:officialURI "https://w3id.org/italia/onto/POT"^^xsd:anyURI ;
+                                  	dct:creator <https://w3id.org/italia/data/organization/support-unit/cnr-Z6HZEH/stlab> ;
+                                  	dcat:keyword "prezzi"@it , "biglietto"@it , "offerta"@it ;
+                                  	dct:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+                                  	admsapit:hasFormalityLevel admsapit:Formal ;
+                                  	admsapit:last <https://w3id.org/italia/onto/POT/0.3> ;
+                                  	dct:title "Ontologia dei Prezzi, Offerte e Biglietti - Profilo applicativo italiano"@it ;
+                                  	admsapit:hasKeyClass :Ticket , :PriceSpecification , :Offer ;
+                                  	rdfs:isDefinedBy <https://w3id.org/italia/onto/POT> ;
+                                  	dct:publisher <http://spcdata.digitpa.gov.it/Amministrazione/agid> ;
+                                  	dct:rightsHolder <http://spcdata.digitpa.gov.it/Amministrazione/agid> ;
+                                  	dct:description "Questo il profilo applicativo italiano dell'ontologia dei prezzi, offerte e biglietti. L'ontologia può essere usata per rappresentare i dati relativi ai prezzi di un prodotto, le offerte e i biglietti, necessari per partecipare a eventi o aver accesso a determinati luoghi pubblici."@it ;
+                                  	owl:versionInfo "Versione 0.3 - 03 Marzo 2018 - Uso di w3id.org/italia/onto/POT/ come base URI"@it , "Version 0.3 - 03 March 2018 - Use di w3id.org/italia/onto/POT/ as base URI"@en ;
+                                  	dcat:contactPoint <https://w3id.org/italia/data/contact-point/onto-agid> ;
+                                  	admsapit:semanticAssetInUse <https://w3id.org/italia/data/project/DAF> ,
+                                  															<https://w3id.org/italia/data/project/OntoPiA> ;
+                                  	dct:accrualPeriodicity <http://publications.europa.eu/resource/authority/frequency/IRREG> ;
+                                  	rdfs:label "Ontologia del profilo italiano dei prezzi, offerte e biglietti"@it ;
+                                  	admsapit:hasSemanticAssetDistribution <https://w3id,org/italia/data/distribution/POT-RDF-XML> ;
+                                  	dcat:theme <http://publications.europa.eu/resource/authority/data-theme/EDUC> , <http://publications.europa.eu/resource/authority/data-theme/SOCI> , <http://publications.europa.eu/resource/authority/data-theme/TRAN> ;
+                                  	admsapit:acronym "POT-AP_IT" ;
+                                  	admsapit:hasSemanticAssetDistribution <https://w3id,org/italia/data/distribution/POT-JSON-LD> ;
+                                  	dct:issued "2017-11-17"^^xsd:date ;
+                                  	admsapit:hasContributor <https://w3id.org/italia/data/organization/public-organization/td> ;
+                                  	dct:description "This is the Italian application profile of the price, offers and ticket ontologies."@en ;
+                                  	rdfs:label "Italian Price/Offer/Ticket ontology"@en ;
+                                  	dct:language <http://publications.europa.eu/resource/authority/language/ITA> ;
+                                  	admsapit:status "published" , "catalogued" ;
+                                  	admsapit:target "Imprese"@it ;
+                                  	admsapit:type admsapit:ServiceOntology ;
+                                  	rdfs:comment "Questa è l'ontologia del profilo applicativo italiano dei prezzi, offerte e biglietti"@it ;
+                                  	dct:title "Price/Offer/Ticket ontology - Italian application profile"@en .
 
 
 #################################################################
@@ -78,24 +106,20 @@ prov:wasDerivedFrom rdf:type owl:AnnotationProperty .
 ###  https://w3id.org/italia/onto/POT/forAccessTo
 
 <https://w3id.org/italia/onto/POT/forAccessTo> rdf:type owl:ObjectProperty ;
-                                               
-                                               rdfs:label "per l'accesso a"@it ;
-                                               
-                                               rdfs:comment "Property used to associate a ticket to an event or location"@en ,
-                                                            "for access to"@en ;
-                                               
-                                               owl:versionInfo "stable"@en ;
-                                               
-                                               rdfs:comment "Proprietà che consente di associare un biglietto a un evento o a un luogo"@it ;
-                                               
-                                               owl:versionInfo "stabile"@it ;
-                                               
+
+                                               rdfs:label "per l'accesso a"@it , "for access to"@en ;
+
+                                               rdfs:comment "Property used to associate a ticket to an event or location"@en , "Proprietà che consente di associare un biglietto a un evento o a un luogo"@it ;
+
+
+                                               owl:versionInfo "stable"@en , "stabile"@it ;
+
                                                rdfs:isDefinedBy <https://w3id.org/italia/onto/POT> ;
-                                               
+
                                                rdfs:domain <https://w3id.org/italia/onto/POT/Ticket> ;
-                                               
+
                                                owl:inverseOf <https://w3id.org/italia/onto/POT/hasTicket> ;
-                                               
+
                                                rdfs:range [ rdf:type owl:Class ;
                                                             owl:unionOf ( <https://w3id.org/italia/onto/l0/Event>
                                                                           <https://w3id.org/italia/onto/l0/Location>
@@ -107,22 +131,22 @@ prov:wasDerivedFrom rdf:type owl:AnnotationProperty .
 ###  https://w3id.org/italia/onto/POT/hasCurrency
 
 <https://w3id.org/italia/onto/POT/hasCurrency> rdf:type owl:ObjectProperty ;
-                                               
+
                                                rdfs:label "has currency"@en ,
                                                           "ha valuta"@it ;
-                                               
+
                                                rdfs:comment "This property is used to connected the Price specification to Currency"@en ;
-                                               
+
                                                owl:versionInfo "stable"@en ;
-                                               
+
                                                rdfs:comment "Questa proprietà collega la specifica del prezzo con la classe currency."@it ;
-                                               
+
                                                owl:versionInfo "stabile"@it ;
-                                               
+
                                                rdfs:isDefinedBy <https://w3id.org/italia/onto/POT> ;
-                                               
+
                                                rdfs:range <https://w3id.org/italia/onto/POT/Currency> ;
-                                               
+
                                                rdfs:domain <https://w3id.org/italia/onto/POT/PriceSpecification> .
 
 
@@ -130,22 +154,22 @@ prov:wasDerivedFrom rdf:type owl:AnnotationProperty .
 ###  https://w3id.org/italia/onto/POT/hasEligibleUser
 
 <https://w3id.org/italia/onto/POT/hasEligibleUser> rdf:type owl:ObjectProperty ;
-                                                   
+
                                                    rdfs:label "has eligible user"@en ,
-                                                              "ha utente eligibile"@it ;
-                                                   
+                                                              "ha utente idoneo"@it ;
+
                                                    rdfs:comment "Property used to associate an offert for the access to an event or a locations with the type of user"@en ;
-                                                   
+
                                                    owl:versionInfo "stable"@en ;
-                                                   
+
                                                    rdfs:comment "Proprietà che consente di associare un'offerta per l'accesso a un evento o un luogo ad una tipologia di utente"@it ;
-                                                   
+
                                                    owl:versionInfo "stabile"@it ;
-                                                   
+
                                                    rdfs:isDefinedBy <https://w3id.org/italia/onto/POT> ;
-                                                   
+
                                                    rdfs:domain <https://w3id.org/italia/onto/POT/Offer> ;
-                                                   
+
                                                    rdfs:range <https://w3id.org/italia/onto/POT/UserType> .
 
 
@@ -153,22 +177,22 @@ prov:wasDerivedFrom rdf:type owl:AnnotationProperty .
 ###  https://w3id.org/italia/onto/POT/hasOffer
 
 <https://w3id.org/italia/onto/POT/hasOffer> rdf:type owl:ObjectProperty ;
-                                            
+
                                             rdfs:label "has offer"@en ,
                                                        "ha offerta"@it ;
-                                            
+
                                             rdfs:comment "This property links anything to an offer"@en ;
-                                            
+
                                             owl:versionInfo "stable"@en ;
-                                            
+
                                             rdfs:comment "Questa proprietà collega un qualsiasi cosa a un'offerta"@it ;
-                                            
+
                                             owl:versionInfo "stabile"@it ;
-                                            
+
                                             rdfs:domain owl:Thing ;
-                                            
+
                                             rdfs:isDefinedBy <https://w3id.org/italia/onto/POT/> ;
-                                            
+
                                             rdfs:range <https://w3id.org/italia/onto/POT/Offer> .
 
 
@@ -176,22 +200,22 @@ prov:wasDerivedFrom rdf:type owl:AnnotationProperty .
 ###  https://w3id.org/italia/onto/POT/hasPriceSpecification
 
 <https://w3id.org/italia/onto/POT/hasPriceSpecification> rdf:type owl:ObjectProperty ;
-                                                         
+
                                                          rdfs:label "has price specification"@en ,
-                                                                    "ha specifica di prezzo"@it ;
-                                                         
+                                                                    "ha specifica di prezzo"@it , "ha prezzo"@it , "ha costo"@it ;
+
                                                          rdfs:comment "This property is used to link an offer to its price specification."@en ;
-                                                         
+
                                                          owl:versionInfo "stable"@en ;
-                                                         
+
                                                          rdfs:comment "Questa proprietà è utliizzata per collegare un offerta a una specifica del prezzo."@it ;
-                                                         
+
                                                          owl:versionInfo "stabile"@it ;
-                                                         
+
                                                          rdfs:isDefinedBy <https://w3id.org/italia/onto/POT> ;
-                                                         
+
                                                          rdfs:domain <https://w3id.org/italia/onto/POT/Offer> ;
-                                                         
+
                                                          rdfs:range <https://w3id.org/italia/onto/POT/PriceSpecification> .
 
 
@@ -199,17 +223,17 @@ prov:wasDerivedFrom rdf:type owl:AnnotationProperty .
 ###  https://w3id.org/italia/onto/POT/hasTicket
 
 <https://w3id.org/italia/onto/POT/hasTicket> rdf:type owl:ObjectProperty ;
-                                             
+
                                              rdfs:label "has ticket"@en ,
                                                         "ha biglietto"@it ;
-                                             
+
                                              rdfs:comment "Property that associates a thing with a ticket."@en ,
                                                           "Proprietà che associa una cosa ad un biglietto."@it ;
-                                             
+
                                              rdfs:domain owl:Thing ;
-                                             
+
                                              rdfs:isDefinedBy <https://w3id.org/italia/onto/POT> ;
-                                             
+
                                              rdfs:range <https://w3id.org/italia/onto/POT/Ticket> .
 
 
@@ -217,20 +241,20 @@ prov:wasDerivedFrom rdf:type owl:AnnotationProperty .
 ###  https://w3id.org/italia/onto/POT/hasValidity
 
 <https://w3id.org/italia/onto/POT/hasValidity> rdf:type owl:ObjectProperty ;
-                                               
+
                                                rdfs:label "has validity"@en ,
                                                           "ha validità"@it ;
-                                               
+
                                                rdfs:comment "Property used to specify the validity of an offer or ticket."@en ,
                                                             "Proprietà utilizzata per specificare una validità di un offerta o di un biglietto."@it ;
-                                               
+
                                                owl:versionInfo "stabile"@it ,
                                                                "stable"@it ;
-                                               
+
                                                rdfs:isDefinedBy <https://w3id.org/italia/onto/POT> ;
-                                               
+
                                                rdfs:range <https://w3id.org/italia/onto/POT/Validity> ;
-                                               
+
                                                rdfs:domain [ rdf:type owl:Class ;
                                                              owl:unionOf ( <https://w3id.org/italia/onto/POT/Offer>
                                                                            <https://w3id.org/italia/onto/POT/Ticket>
@@ -242,17 +266,17 @@ prov:wasDerivedFrom rdf:type owl:AnnotationProperty .
 ###  https://w3id.org/italia/onto/POT/includes
 
 <https://w3id.org/italia/onto/POT/includes> rdf:type owl:ObjectProperty ;
-                                            
+
                                             rdfs:label "includes"@en ,
-                                                       "include"@it ;
-                                            
+                                                       "include biglietto"@it ;
+
                                             rdfs:comment "Property used to associate an offer with the relative ticket"@en ,
                                                          "Proprietà utilizzata per associare un'offerta al relativo biglietto."@it ;
-                                            
+
                                             rdfs:isDefinedBy <https://w3id.org/italia/onto/POT> ;
-                                            
+
                                             rdfs:domain <https://w3id.org/italia/onto/POT/Offer> ;
-                                            
+
                                             rdfs:range <https://w3id.org/italia/onto/POT/Ticket> .
 
 
@@ -260,17 +284,17 @@ prov:wasDerivedFrom rdf:type owl:AnnotationProperty .
 ###  https://w3id.org/italia/onto/POT/offers
 
 <https://w3id.org/italia/onto/POT/offers> rdf:type owl:ObjectProperty ;
-                                          
+
                                           rdfs:label "offers"@en ,
                                                      "offre"@it ;
-                                          
+
                                           rdfs:comment "Property used to associate an agent with an offer for accessing an event or a cultural institute or site"@en ,
                                                        "Proprietà che consente di associare un agente all'offerta per l'accesso a un evento o a un luogo della cultura."@it ;
-                                          
+
                                           rdfs:isDefinedBy <https://w3id.org/italia/onto/POT> ;
-                                          
+
                                           rdfs:range <https://w3id.org/italia/onto/POT/Offer> ;
-                                          
+
                                           rdfs:domain <https://w3id.org/italia/onto/l0/Agent> .
 
 
@@ -293,20 +317,20 @@ prov:wasDerivedFrom rdf:type owl:AnnotationProperty .
 ###  https://w3id.org/italia/onto/POT/VAT
 
 <https://w3id.org/italia/onto/POT/VAT> rdf:type owl:DatatypeProperty ;
-                                       
+
                                        rdfs:label "VAT"@en ,
                                                   "IVA"@it ;
-                                       
+
                                        rdfs:comment "This property represents the VAT applied to a price specification."@en ;
-                                       
+
                                        owl:versionInfo "unstable"@en ;
-                                       
+
                                        rdfs:comment "Questa proprietà rappresenta l'iva applicata alla specifica del prezzo."@it ;
-                                       
+
                                        owl:versionInfo "provvisoria"@it ;
-                                       
+
                                        rdfs:range rdfs:Literal ;
-                                       
+
                                        rdfs:domain <https://w3id.org/italia/onto/POT/PriceSpecification> .
 
 
@@ -314,22 +338,22 @@ prov:wasDerivedFrom rdf:type owl:AnnotationProperty .
 ###  https://w3id.org/italia/onto/POT/hasCurrencyValue
 
 <https://w3id.org/italia/onto/POT/hasCurrencyValue> rdf:type owl:DatatypeProperty ;
-                                                    
+
                                                     rdfs:label "currency value"@en ,
                                                                "prezzo"@it ;
-                                                    
+
                                                     rdfs:comment "Property used to represent the price associated to a specific ticket or a general offer"@en ;
-                                                    
+
                                                     owl:versionInfo "stable"@en ;
-                                                    
+
                                                     rdfs:comment "Proprietà utilizzata per indicare il prezzo di un biglietto o di una generica offerta"@it ;
-                                                    
+
                                                     owl:versionInfo "stabile"@it ;
-                                                    
+
                                                     rdfs:range xsd:double ;
-                                                    
+
                                                     rdfs:isDefinedBy <https://w3id.org/italia/onto/POT> ;
-                                                    
+
                                                     rdfs:domain <https://w3id.org/italia/onto/POT/PriceSpecification> .
 
 
@@ -364,20 +388,20 @@ prov:wasDerivedFrom rdf:type owl:AnnotationProperty .
 ###  https://w3id.org/italia/onto/POT/Card
 
 <https://w3id.org/italia/onto/POT/Card> rdf:type owl:Class ;
-                                        
+
                                         rdfs:label "Card"@en ,
-                                                   "Carta d'ingresso"@it ;
-                                        
+                                                   "Carta d'ingresso"@it , "Tessera d'ingresso"@it ;
+
                                         rdfs:subClassOf <https://w3id.org/italia/onto/POT/Ticket> ;
-                                        
+
                                         rdfs:comment "This class represents a card."@en ;
-                                        
+
                                         owl:versionInfo "stable"@en ;
-                                        
+
                                         rdfs:comment "Questa classe rappresenta una carta d'ingresso."@it ;
-                                        
+
                                         owl:versionInfo "stabile"@it ;
-                                        
+
                                         rdfs:isDefinedBy <https://w3id.org/italia/onto/POT> .
 
 
@@ -385,28 +409,28 @@ prov:wasDerivedFrom rdf:type owl:AnnotationProperty .
 ###  https://w3id.org/italia/onto/POT/Currency
 
 <https://w3id.org/italia/onto/POT/Currency> rdf:type owl:Class ;
-                                            
+
                                             rdfs:label "Currency"@en ,
                                                        "Valuta"@it ;
-                                            
+
                                             rdfs:subClassOf <https://w3id.org/italia/onto/l0/Object> ,
                                                             [ rdf:type owl:Restriction ;
                                                               owl:onProperty <https://w3id.org/italia/onto/l0/name> ;
                                                               owl:someValuesFrom rdfs:Literal
                                                             ] ;
-                                            
+
                                             dc:description """Individuals of the this class represent currency instances (e.g., Euro, US Dollar, Pound, Australian Dollar, etc.); they are always associated with individuals of the class 'Price Specification'.
 
 This allows modelling Price Specification as a a quantified value, where the value is expressed as an integer and it is quantified in terms of a currency"""@en ;
-                                            
+
                                             rdfs:comment "This class represents a currency. In our domain currency is typically associated with Price Specification for tickets, and assumes specific values (e.g., Euro)."@en ;
-                                            
+
                                             owl:versionInfo "stable"@en ;
-                                            
+
                                             rdfs:comment "Questa classe rappresenta la valuta per i biglietti di ingresso agli eventi o luoghi della cultura. Nel nostro dominio è associata alla descrizione del prezzo per i biglietti. Assume valori specifici (e.g., Euro)."@it ;
-                                            
+
                                             owl:versionInfo "stabile"@it ;
-                                            
+
                                             rdfs:isDefinedBy <https://w3id.org/italia/onto/POT> .
 
 
@@ -414,10 +438,10 @@ This allows modelling Price Specification as a a quantified value, where the val
 ###  https://w3id.org/italia/onto/POT/Offer
 
 <https://w3id.org/italia/onto/POT/Offer> rdf:type owl:Class ;
-                                         
+
                                          rdfs:label "Offer"@en ,
                                                     "Offerta"@it ;
-                                         
+
                                          rdfs:subClassOf <https://w3id.org/italia/onto/l0/Description> ,
                                                          [ rdf:type owl:Restriction ;
                                                            owl:onProperty <https://w3id.org/italia/onto/l0/description> ;
@@ -435,7 +459,7 @@ This allows modelling Price Specification as a a quantified value, where the val
                                                            owl:onProperty <https://w3id.org/italia/onto/POT/hasPriceSpecification> ;
                                                            owl:someValuesFrom <https://w3id.org/italia/onto/POT/PriceSpecification>
                                                          ] ;
-                                         
+
                                          dc:description """Any fare is expressed within the ontology by using instances of the class Offer.
 
 It is possible to specify:
@@ -443,18 +467,18 @@ It is possible to specify:
  * the information about the price (cf. object property hasPriceSpecification);
  * the information about the temporal validity of the offer (cf. object property hasValidity);
  * the association with a ticket (cf. object property includes)."""@en ;
-                                         
+
                                          rdfs:comment "It represents an offer (reduction  for specific types of users or base price)."@en ;
-                                         
+
                                          owl:versionInfo "stable"@en ;
-                                         
+
                                          rdfs:comment "Concetto utilizzato per rappresentare  offerte (riduzioni per specifiche categorie di utenti o importo intero)."@it ;
-                                         
+
                                          owl:versionInfo "stabile"@it ;
-                                         
+
                                          prov:wasDerivedFrom <http://purl.org/goodrelations/v1#Offering> ,
                                                              <http://schema.org/Offer> ;
-                                         
+
                                          rdfs:isDefinedBy <https://w3id.org/italia/onto/POT> .
 
 
@@ -462,10 +486,10 @@ It is possible to specify:
 ###  https://w3id.org/italia/onto/POT/PriceSpecification
 
 <https://w3id.org/italia/onto/POT/PriceSpecification> rdf:type owl:Class ;
-                                                      
+
                                                       rdfs:label "Price Specification"@en ,
                                                                  "Prezzo"@it ;
-                                                      
+
                                                       rdfs:subClassOf <https://w3id.org/italia/onto/l0/Characteristic> ,
                                                                       [ rdf:type owl:Restriction ;
                                                                         owl:onProperty <https://w3id.org/italia/onto/POT/hasCurrency> ;
@@ -479,24 +503,24 @@ It is possible to specify:
                                                                         owl:onProperty <https://w3id.org/italia/onto/POT/hasCurrencyValue> ;
                                                                         owl:someValuesFrom xsd:double
                                                                       ] ;
-                                                      
+
                                                       dc:description """A price specification provides the information about the cost of an offer.
 
 It is associated to a currency (e.g., Euro) and a currency value (i.e., a quantity, e.g., 5)."""@en ;
-                                                      
+
                                                       rdfs:comment "It represents the price specification of the ticket"@en ;
-                                                      
+
                                                       owl:versionInfo "stable"@en ;
-                                                      
+
                                                       rdfs:comment "Rappresenta la specifica del prezzo del biglietto."@it ;
-                                                      
+
                                                       owl:versionInfo "stabile"@it ;
-                                                      
+
                                                       dc:description <http://dati.beniculturali.it/cis/img/priceSpecification.png> ;
-                                                      
+
                                                       prov:wasDerivedFrom <http://purl.org/goodrelations/v1#PriceSpecification> ,
                                                                           <http://schema.org/PriceSpecification> ;
-                                                      
+
                                                       rdfs:isDefinedBy <https://w3id.org/italia/onto/POT> .
 
 
@@ -504,10 +528,10 @@ It is associated to a currency (e.g., Euro) and a currency value (i.e., a quanti
 ###  https://w3id.org/italia/onto/POT/Ticket
 
 <https://w3id.org/italia/onto/POT/Ticket> rdf:type owl:Class ;
-                                          
+
                                           rdfs:label "Ticket"@en ,
                                                      "Biglietto"@it ;
-                                          
+
                                           rdfs:subClassOf <https://w3id.org/italia/onto/l0/Object> ,
                                                           [ rdf:type owl:Restriction ;
                                                             owl:onProperty <https://w3id.org/italia/onto/POT/hasValidity> ;
@@ -517,15 +541,15 @@ It is associated to a currency (e.g., Euro) and a currency value (i.e., a quanti
                                                             owl:onProperty <https://w3id.org/italia/onto/l0/description> ;
                                                             owl:allValuesFrom rdfs:Literal
                                                           ] ;
-                                          
+
                                           rdfs:comment "It represents an entrance ticket for a Cultural Institute or Site, if required, and for an event"@en ;
-                                          
+
                                           owl:versionInfo "stable"@en ;
-                                          
+
                                           rdfs:comment "Rappresenta il biglietto d'ingresso per l'Istitituto e Luogo della Cultura, qualora sia previsto, e per l'evento culturale."@it ;
-                                          
+
                                           owl:versionInfo "stabile"@it ;
-                                          
+
                                           rdfs:isDefinedBy <https://w3id.org/italia/onto/POT> .
 
 
@@ -533,10 +557,10 @@ It is associated to a currency (e.g., Euro) and a currency value (i.e., a quanti
 ###  https://w3id.org/italia/onto/POT/UserType
 
 <https://w3id.org/italia/onto/POT/UserType> rdf:type owl:Class ;
-                                            
+
                                             rdfs:label "User Type"@en ,
                                                        "Tipo di utente"@it ;
-                                            
+
                                             rdfs:subClassOf <https://w3id.org/italia/onto/l0/Characteristic> ,
                                                             [ rdf:type owl:Restriction ;
                                                               owl:onProperty <https://w3id.org/italia/onto/l0/description> ;
@@ -546,15 +570,15 @@ It is associated to a currency (e.g., Euro) and a currency value (i.e., a quanti
                                                               owl:onProperty <https://w3id.org/italia/onto/l0/name> ;
                                                               owl:allValuesFrom rdfs:Literal
                                                             ] ;
-                                            
+
                                             rdfs:comment "It represents the identified type of users related to the tickets used to access an event or location. Examples include: people over 25 years old, people over 65 years old,  children, etc."@en ;
-                                            
+
                                             owl:versionInfo "stable"@en ;
-                                            
+
                                             rdfs:comment "Rappresenta la tipologia di utenti relativa ai biglietti per accedere a un evento o a un luogo. Esempi includono:  \"maggiorenni over 25\", oppure \"over 65\", \"bambini\", ecc."@it ;
-                                            
+
                                             owl:versionInfo "stabile"@it ;
-                                            
+
                                             rdfs:isDefinedBy <https://w3id.org/italia/onto/POT> .
 
 
@@ -562,10 +586,10 @@ It is associated to a currency (e.g., Euro) and a currency value (i.e., a quanti
 ###  https://w3id.org/italia/onto/POT/Validity
 
 <https://w3id.org/italia/onto/POT/Validity> rdf:type owl:Class ;
-                                            
+
                                             rdfs:label "Validity"@en ,
                                                        "Validità"@it ;
-                                            
+
                                             rdfs:subClassOf <https://w3id.org/italia/onto/l0/Event> ,
                                                             [ rdf:type owl:Restriction ;
                                                               owl:onProperty <https://w3id.org/italia/onto/l0/description> ;
@@ -579,15 +603,15 @@ It is associated to a currency (e.g., Euro) and a currency value (i.e., a quanti
                                                                                               )
                                                                                 ]
                                                             ] ;
-                                            
+
                                             rdfs:comment "This class represents the validity for the ticket and offering."@en ;
-                                            
+
                                             owl:versionInfo "stable"@en ;
-                                            
+
                                             rdfs:comment "Questa classe rappresenta la validità di biglietti e di offerte."@it ;
-                                            
+
                                             owl:versionInfo "stabile"@it ;
-                                            
+
                                             rdfs:isDefinedBy <https://w3id.org/italia/onto/POT> .
 
 
@@ -634,6 +658,99 @@ It is associated to a currency (e.g., Euro) and a currency value (i.e., a quanti
 
 
 
+## Metadata individuals
+###
+###
+###  http://spcdata.digitpa.gov.it/browse/page/Amministrazione/agid
+<http://spcdata.digitpa.gov.it/browse/page/Amministrazione/agid> rdf:type owl:NamedIndividual ,
+                                                                          dcatapit:Agent ,
+                                                                          foaf:Agent ;
+                                                                 dct:identifier "agid" ;
+                                                                 foaf:name "Agenzia per l'Italia Digitale"@it ,
+                                                                           "Italian Digital Agency"@en .
+
+
+###  https://w3id,org/italia/data/distribution/POT-JSON-LD
+<https://w3id,org/italia/data/distribution/POT-JSON-LD> rdf:type owl:NamedIndividual ,
+                                                                    admsapit:SemanticAssetDistribution ;
+                                                           dct:description "Questa è la distribuzione JSON-LD dell'ontologia dei prezzi, offerte e biglietti"@it ,
+                                                                           "This is the distribution in JSON-LD of the Price/Offer/Ticket ontology"@en ;
+                                                           dct:format <http://publications.europa.eu/resource/authority/file-type/JSON_LD> ;
+                                                           dct:license <https://w3id.org/italia/controlled-vocabulary/licences/A21_CCBY40> ;
+                                                           dct:title "Distribuzione JSON-LD ontologia POT-AP_IT"@it ,
+                                                                     "JSON-LD distribution of POT-AP_IT Ontology"@en ;
+                                                           dcat:accessURL <https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/POT/latest> ;
+                                                           dcat:downloadURL <https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/POT/POT-AP_IT.jsonld> .
+
+
+###  https://w3id,org/italia/data/distribution/POT-RDF-TURTLE
+<https://w3id,org/italia/data/distribution/POT-RDF-TURTLE> rdf:type owl:NamedIndividual ,
+                                                                       admsapit:SemanticAssetDistribution ;
+                                                              dct:description "Questa è la distribuzione RDF/Turtle dell'ontologia dei prezzi, offerte e biglietti"@it ,
+                                                                              "This is the distribution in RDF/turtle of the Price/Offer/Ticket ontology"@en ;
+                                                              dct:format <http://publications.europa.eu/resource/authority/file-type/RDF_TURTLE> ;
+                                                              dct:license <https://w3id.org/italia/controlled-vocabulary/licences/A21_CCBY40> ;
+                                                              dct:title "Distribuzione RDF/Turtle ontologia POT-AP_IT"@it ,
+                                                                        "RDF/Turtle distribution of POT-AP_IT Ontology"@en ;
+                                                              dcat:accessURL <https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/POT/latest> ;
+                                                              dcat:downloadURL <https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/POT/latest/POT-AP_IT.ttl> .
+
+
+###  https://w3id,org/italia/data/distribution/POT-RDF-XML
+<https://w3id,org/italia/data/distribution/POT-RDF-XML> rdf:type owl:NamedIndividual ,
+                                                                    admsapit:SemanticAssetDistribution ;
+                                                           dct:description "Questa è la distribuzione RDF/XML dell'ontologia dei prezzi, offerte e biglietti"@it ,
+                                                                           "This is the distribution in RDF/XML of the Price/Offer/Ticket ontology"@en ;
+                                                           dct:format <http://publications.europa.eu/resource/authority/file-type/RDF_XML> ;
+                                                           dct:license <https://w3id.org/italia/controlled-vocabulary/licences/A21_CCBY40> ;
+                                                           dct:title "Distribuzione RDF/XML ontologia POT-AP_IT"@it ,
+                                                                     "RDF/XML distribution of POT-AP_IT Ontology"@en ;
+                                                           dcat:accessURL <https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/POT/latest> ;
+                                                           dcat:downloadURL <https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/POT/latest/POT-AP_IT.rdf> .
+
+
+###  https://w3id.org/italia/data/contact-point/onto-agid
+<https://w3id.org/italia/data/contact-point/onto-agid> rdf:type owl:NamedIndividual ,
+                                                                dcatapit:Organization ,
+                                                                vcard:Kind ,
+                                                                vcard:Organization ;
+                                                       vcard:fn "banche dati e open data" ;
+                                                       vcard:hasEmail <mailto:info@dati.gov.it> .
+
+
+###  https://w3id.org/italia/data/organization/public-organization/td
+<https://w3id.org/italia/data/organization/public-organization/td> rdf:type owl:NamedIndividual ,
+                                                                            dcatapit:Agent ,
+                                                                            foaf:Agent ;
+                                                                   dct:identifier "TD" ;
+                                                                   foaf:name "Digital Transformation Team"@en ,
+                                                                             "Team per la Trasformazione Digitale"@it .
+
+
+###  https://w3id.org/italia/data/organization/support-unit/cnr-Z6HZEH/stlab
+<https://w3id.org/italia/data/organization/support-unit/cnr-Z6HZEH/stlab> rdf:type owl:NamedIndividual ,
+                                                                                   dcatapit:Agent ;
+                                                                          foaf:name "Institute of Cognitive Sciences and Technologies of the Italian Research Council (CNR) - Semantic Technology Laboratory (STLab)"@en ,
+                                                                                  "Istituto di Scienze e Tecnologie della Cognizione del CNR - Semantic Technology Lab (STLab)"@it ;
+                                                                          dct:identifier "cnr - Z6HZEH - STLab" .
+
+
+###  https://w3id.org/italia/data/project/DAF
+<https://w3id.org/italia/data/project/DAF> rdf:type owl:NamedIndividual ,
+                                                    admsapit:Project ;
+                                           foaf:name "Data & Analytics Framework"@it .
+
+
+###  https://w3id.org/italia/data/project/OntoPiA
+<https://w3id.org/italia/data/project/OntoPiA> rdf:type owl:NamedIndividual ,
+                                                        admsapit:Project ;
+                                               l0:name "OntoPiA - la rete di ontologie della pubblica amministrazione italiana"@it .
+
+
+###  https://w3id.org/italia/onto/POT
+<https://w3id.org/italia/onto/POT> rdf:type owl:NamedIndividual ,
+                                                       admsapit:SemanticAsset .
+
+
 
 ###  Generated by the OWL API (version 3.5.1) http://owlapi.sourceforge.net
-
