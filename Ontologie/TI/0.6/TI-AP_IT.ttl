@@ -6,23 +6,69 @@
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix l0: <https://w3id.org/italia/onto/l0/> .
+@prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
+@prefix schema: <http://schema.org/> .
+@prefix dcatapit: <http://dati.gov.it/onto/dcatapit#> .
+@prefix admsapit: <https://w3id.org/italia/onto/ADMS/> .
 @base <https://w3id.org/italia/onto/TI> .
 
 <https://w3id.org/italia/onto/TI> rdf:type owl:Ontology ;
                                    owl:versionIRI <https://w3id.org/italia/onto/TI/0.6> ;
                                    owl:imports <https://w3id.org/italia/onto/l0> ,
                                                <https://w3id.org/italia/onto/MU> ;
-                                   dc:creator "Institute of Cognitive Sciences and Technologies of the Italian Research Council (CNR) - Semantic Technology Laboratory (STLab)"@en ;
-                                   dct:modified "2018-06-18" ;
-                                   dct:issued "2017-09-25"^^xsd:date ;
-                                   dc:creator "Italian Digital Transformation Team"@en ;
-                                   rdfs:comment "Versione 0.6 - 18 Giugno 2018 - Cambiamento del dominio della proprietà hasTemporalEntity e di tutte le sue sottoproprietà"@it ;
-                                   dct:license <https://creativecommons.org/licenses/by/4.0/> ;
-                                   rdfs:label "Time ontology - Italian Application Profile"@en ;
-                                   rdfs:comment "Questa è l'ontologia del profilo applicativo italiano sul tempo"@it ;
-                                   dc:creator "Agency for Digital Italy - AgID"@en ;
+                                   admsapit:prefix "tiapit" ;
+                                   dct:creator <http://spcdata.digitpa.gov.it/Amministrazione/agid> ;
+                                   admsapit:target "Cittadini"@it ;
+                                   dct:modified "2018-06-18"^^xsd:date ;
+                                   admsapit:hasTask admsapit:AnnotationTask ,
+                                                    admsapit:QueryFormulationTask ;
+                                   admsapit:hasTask admsapit:SearchTask ;
+                                   admsapit:hasSemanticAssetDistribution <https://w3id,org/italia/data/distribution/TI-RDF-TURTLE> ;
+                                   admsapit:target "Pubbliche Amministrazioni"@it ;
+                                   rdfs:comment "This is the ontology of the time Italian profile"@en ;
+                                   admsapit:hasOntologyLanguage admsapit:OWL ;
+                                   admsapit:officialURI "https://w3id.org/italia/onto/TI"^^xsd:anyURI ;
+                                   dct:creator <https://w3id.org/italia/data/organization/support-unit/cnr-Z6HZEH/stlab> ;
+                                   dcat:keyword "tempo"@it ;
+                                   dct:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+                                   admsapit:hasFormalityLevel admsapit:Formal ;
+                                   admsapit:last <https://w3id.org/italia/onto/TI/0.6> ;
+                                   dct:title "Ontologia del Tempo - Profilo applicativo italiano"@it ;
+                                   admsapit:hasKeyClass :TimeInterval , :TimeIndexedEvent , :TemporalEntity ;
                                    rdfs:isDefinedBy <https://w3id.org/italia/onto/TI> ;
-                                   owl:versionInfo "Version 0.6 - 18 June 2018 - change of the domain of the property hasTemporalEntity and of all its subproperties"@en .
+                                   dct:publisher <http://spcdata.digitpa.gov.it/Amministrazione/agid> ;
+                                   dct:rightsHolder <http://spcdata.digitpa.gov.it/Amministrazione/agid> ;
+                                   dct:description "Questo il profilo applicativo italiano dell'ontologia sul tempo. Esso definisce concetti quali Intervallo di Tempo, istante temporale, evento indicizzato nel tempo"@it ;
+                                   owl:versionInfo "Versione 0.6 - 18 Giugno 2018 - Cambiamento del dominio della proprietà hasTemporalEntity e di tutte le sue sottoproprietà"@it , "Version 0.6 - 18 June 2018 - change of the domain of the property hasTemporalEntity and of all its subproperties"@en ;
+                                   dcat:keyword "intervallo temporale"@it ;
+                                   dcat:contactPoint <https://w3id.org/italia/data/contact-point/onto-agid> ;
+                                   admsapit:semanticAssetInUse <https://w3id.org/italia/data/project/DAF> ,
+                                                               <https://w3id.org/italia/data/project/OntoPiA> ;
+                                   dct:accrualPeriodicity <http://publications.europa.eu/resource/authority/frequency/IRREG> ;
+                                   dcat:keyword "anno"@it ,
+                                                "mese"@it ,
+                                                "giorno"@it ,
+                                                "istante temporale";
+                                   rdfs:label "Ontologia del profilo italiano sul tempo"@it ;
+                                   admsapit:hasSemanticAssetDistribution <https://w3id,org/italia/data/distribution/TI-RDF-XML> ;
+                                   dcat:theme <http://publications.europa.eu/resource/authority/data-theme/TECH> ;
+                                   admsapit:acronym "TI-AP_IT" ;
+                                   admsapit:hasSemanticAssetDistribution <https://w3id,org/italia/data/distribution/TI-JSON-LD> ;
+                                   dct:issued "2017-09-25"^^xsd:date ;
+                                   admsapit:hasContributor <https://w3id.org/italia/data/organization/public-organization/td> ;
+                                   dct:description "This is the Italian application profile of the time ontology. It includes such concepts as time interval, time, time indexed event, etc."@en ;
+                                   rdfs:label "Italian Time ontology"@en ;
+                                   dct:language <http://publications.europa.eu/resource/authority/language/ITA> ;
+                                   admsapit:status "published" , "catalogued" ;
+                                   admsapit:target "Imprese"@it ;
+                                   admsapit:type admsapit:ServiceOntology ;
+                                   rdfs:comment "Questa è l'ontologia del profilo applicativo del tempo."@it ;
+                                   dct:title "Time ontology - Italian application profile"@en .
+
 
 #################################################################
 #    Annotation properties
@@ -218,7 +264,7 @@ xsd:time rdf:type rdfs:Datatype .
                                                   ] ;
                                        rdfs:comment "Questa proprietà rappresenta una generica data / istante di tempo"@it ,
                                                     "This property represents a generic date / time instant."@en ;
-                                       rdfs:isDefinedBy <https://w3id.org/italia/onto/TI/> ;
+                                       rdfs:isDefinedBy <https://w3id.org/italia/onto/TI> ;
                                        rdfs:label "data"@it ,
                                                   "date"@en ;
                                        owl:versionInfo "provvisoria"@it ,
@@ -277,7 +323,8 @@ xsd:time rdf:type rdfs:Datatype .
                                          rdfs:comment "La proprietà rappresenta l'istante di tempo che può coincidere con un tempo di generazione o con la data di inizio dell'intervallo di tempo."@it ,
                                                       "This property represents the istant of time that can coincide with a generation time or the startTime of an interval."@en ;
                                          rdfs:isDefinedBy <https://w3id.org/italia/onto/TI> ;
-                                         rdfs:label "istante di tempo (generazione)"@it ,
+                                         rdfs:label "istante di tempo"@it ,
+                                                    "tempo di generazione"@it ,
                                                     "time of issuance"@en ;
                                          owl:versionInfo "stabile"@it ,
                                                          "stable"@en .
@@ -295,7 +342,8 @@ xsd:time rdf:type rdfs:Datatype .
                                            rdfs:comment "Questa proprietà è utilizzata per modellare la data di ultima modifica (o il tempo di aggiornamento)"@it ,
                                                         "This property  is used in order to model the update time."@en ;
                                            rdfs:isDefinedBy <https://w3id.org/italia/onto/TI> ;
-                                           rdfs:label "data ultima modifica (tempo di aggiornamento)"@it ,
+                                           rdfs:label "data ultima modifica"@it ,
+                                                      "tempo di aggiornamento"@it ,
                                                       "update time"@en ;
                                            owl:versionInfo "stabile"@it ,
                                                            "stable"@en .
@@ -606,6 +654,100 @@ xsd:time rdf:type rdfs:Datatype .
                                                      <https://w3id.org/italia/onto/TI/DayOfWeek> ;
                                             rdfs:label "Mercoledì"@it ,
                                                        "Wednesday"@en .
+
+### Metadata individuals
+###  http://spcdata.digitpa.gov.it/browse/page/Amministrazione/agid
+<http://spcdata.digitpa.gov.it/browse/page/Amministrazione/agid> rdf:type owl:NamedIndividual ,
+                                                                          dcatapit:Agent ,
+                                                                          foaf:Agent ;
+                                                                 dct:identifier "agid" ;
+                                                                 foaf:name "Agenzia per l'Italia Digitale"@it ,
+                                                                           "Italian Digital Agency"@en .
+
+
+###  https://w3id,org/italia/data/distribution/TI-JSON-LD
+<https://w3id,org/italia/data/distribution/TI-JSON-LD> rdf:type owl:NamedIndividual ,
+                                                                    admsapit:SemanticAssetDistribution ;
+                                                           dct:description "Questa è la distribuzione JSON-LD dell'ontologia del tempo"@it ,
+                                                                           "This is the distribution in JSON-LD of the Time ontology"@en ;
+                                                           dct:format <http://publications.europa.eu/resource/authority/file-type/JSON_LD> ;
+                                                           dct:license <https://w3id.org/italia/controlled-vocabulary/licences/A21_CCBY40> ;
+                                                           dct:title "Distribuzione JSON-LD ontologia TTI-AP_IT"@it ,
+                                                                     "JSON-LD distribution of TI-AP_IT Ontology"@en ;
+                                                           dcat:accessURL <https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/TI/latest> ;
+                                                           dcat:downloadURL <https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/TI/TI-AP_IT.jsonld> .
+
+
+###  https://w3id,org/italia/data/distribution/TI-RDF-TURTLE
+<https://w3id,org/italia/data/distribution/TI-RDF-TURTLE> rdf:type owl:NamedIndividual ,
+                                                                       admsapit:SemanticAssetDistribution ;
+                                                              dct:description "Questa è la distribuzione RDF/Turtle dell'ontologia del tempo"@it ,
+                                                                              "This is the distribution in RDF/turtle of the Time ontology"@en ;
+                                                              dct:format <http://publications.europa.eu/resource/authority/file-type/RDF_TURTLE> ;
+                                                              dct:license <https://w3id.org/italia/controlled-vocabulary/licences/A21_CCBY40> ;
+                                                              dct:title "Distribuzione RDF/Turtle ontologia TI-AP_IT"@it ,
+                                                                        "RDF/Turtle distribution of TI-AP_IT Ontology"@en ;
+                                                              dcat:accessURL <https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/TI/latest> ;
+                                                              dcat:downloadURL <https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/TI/latest/TI-AP_IT.ttl> .
+
+
+###  https://w3id,org/italia/data/distribution/TI-RDF-XML
+<https://w3id,org/italia/data/distribution/TI-RDF-XML> rdf:type owl:NamedIndividual ,
+                                                                    admsapit:SemanticAssetDistribution ;
+                                                           dct:description "Questa è la distribuzione RDF/XML dell'ontologia del tempo"@it ,
+                                                                           "This is the distribution in RDF/XML of the Time ontology"@en ;
+                                                           dct:format <http://publications.europa.eu/resource/authority/file-type/RDF_XML> ;
+                                                           dct:license <https://w3id.org/italia/controlled-vocabulary/licences/A21_CCBY40> ;
+                                                           dct:title "Distribuzione RDF/XML ontologia TI-AP_IT"@it ,
+                                                                     "RDF/XML distribution of TI-AP_IT Ontology"@en ;
+                                                           dcat:accessURL <https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/TI/latest> ;
+                                                           dcat:downloadURL <https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/TI/latest/TI-AP_IT.rdf> .
+
+
+###  https://w3id.org/italia/data/contact-point/onto-agid
+<https://w3id.org/italia/data/contact-point/onto-agid> rdf:type owl:NamedIndividual ,
+                                                                dcatapit:Organization ,
+                                                                vcard:Kind ,
+                                                                vcard:Organization ;
+                                                       vcard:fn "banche dati e open data" ;
+                                                       vcard:hasEmail <mailto:info@dati.gov.it> .
+
+
+###  https://w3id.org/italia/data/organization/public-organization/td
+<https://w3id.org/italia/data/organization/public-organization/td> rdf:type owl:NamedIndividual ,
+                                                                            dcatapit:Agent ,
+                                                                            foaf:Agent ;
+                                                                   dct:identifier "TD" ;
+                                                                   foaf:name "Digital Transformation Team"@en ,
+                                                                             "Team per la Trasformazione Digitale"@it .
+
+
+###  https://w3id.org/italia/data/organization/support-unit/cnr-Z6HZEH/stlab
+<https://w3id.org/italia/data/organization/support-unit/cnr-Z6HZEH/stlab> rdf:type owl:NamedIndividual ,
+                                                                                   dcatapit:Agent ;
+                                                                          foaf:name "Institute of Cognitive Sciences and Technologies of the Italian Research Council (CNR) - Semantic Technology Laboratory (STLab)"@en ,
+                                                                                  "Istituto di Scienze e Tecnologie della Cognizione del CNR - Semantic Technology Lab (STLab)"@it ;
+                                                                          dct:identifier "cnr - Z6HZEH - STLab" .
+
+
+###  https://w3id.org/italia/data/project/DAF
+<https://w3id.org/italia/data/project/DAF> rdf:type owl:NamedIndividual ,
+                                                    admsapit:Project ;
+                                           foaf:name "Data & Analytics Framework"@it .
+
+
+###  https://w3id.org/italia/data/project/OntoPiA
+<https://w3id.org/italia/data/project/OntoPiA> rdf:type owl:NamedIndividual ,
+                                                        admsapit:Project ;
+                                               l0:name "OntoPiA - la rete di ontologie della pubblica amministrazione italiana"@it .
+
+
+###  https://w3id.org/italia/onto/PublicContract
+<https://w3id.org/italia/onto/TI> rdf:type owl:NamedIndividual ,
+                                                       admsapit:SemanticAsset .
+
+
+
 
 
 #################################################################
