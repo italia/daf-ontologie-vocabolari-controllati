@@ -6,7 +6,14 @@
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix terms: <http://purl.org/dc/terms/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
+@prefix schema: <http://schema.org/> .
+@prefix admsapit: <https://w3id.org/italia/onto/ADMS/> .
+@prefix dcatapit: <http://dati.gov.it/onto/dcatapit#> .
 @prefix muapit: <https://w3id.org/italia/onto/MU/> .
 @prefix tiapit: <https://w3id.org/italia/onto/TI/> .
 @base <https://w3id.org/italia/onto/RO> .
@@ -14,20 +21,50 @@
 <https://w3id.org/italia/onto/RO> a owl:Ontology ;
 	owl:versionIRI <https://w3id.org/italia/onto/RO/0.2> ;
 	owl:imports <https://w3id.org/italia/onto/TI> , <https://w3id.org/italia/onto/l0> ;
-	terms:modified "2017-03-03" ;
-	dc:creator "Institute of Cognitive Sciences and Technologies of the Italian Research Council (CNR) - Semantic Technology Laboratory (STLab)"@en ;
+	admsapit:prefix "roapit" ;
+	dct:creator <http://spcdata.digitpa.gov.it/Amministrazione/agid> ;
+	admsapit:target "Cittadini"@it ;
+	dct:modified "2017-03-03"^^xsd:date ;
+	admsapit:hasTask admsapit:AnnotationTask ,
+									 admsapit:QueryFormulationTask ;
+	admsapit:hasTask admsapit:SearchTask ;
+	admsapit:hasSemanticAssetDistribution <https://w3id,org/italia/data/distribution/RO-RDF-TURTLE> ;
+	admsapit:target "Pubbliche Amministrazioni"@it ;
 	rdfs:comment "This is the ontology used to represent roles"@en ;
-	terms:issued "2017-11-21"@en ;
-	rdfs:label "Ontologia dei Ruoli"@it ;
-	owl:versionInfo "Versione 0.2 - 03 Marzo 2018 - uso of w3id.org/italia/onto/RO come base URI."@it ;
-	dc:creator "Istituto di Scienze e Tecnologie della Cognizione del CNR - Semantic Technology Lab (STLab)"@it , "Italian Digital Transformation Team"@en ;
-	rdfs:label "Role Ontology"@en ;
-	rdfs:comment "Questa è l'ontologia per la modellazione dei ruoli"@it ;
-	terms:license <https://creativecommons.org/licenses/by/4.0/> ;
-	dc:creator "Team per la Trasformazione Digitale"@it ;
-	rdfs:isDefinedBy <https://w3id.org/italia/onto/RO/> ;
-	dc:creator "Agency for Digital Italy - AgID"@en , "Agenzia per l'Italia Digitale - AgID"@it ;
-	owl:versionInfo "Version 0.2 - March 03 2018 - use of w3id.org/italia/onto/RO as base URI."@en .
+	admsapit:hasOntologyLanguage admsapit:OWL ;
+	admsapit:officialURI "https://w3id.org/italia/onto/RO"^^xsd:anyURI ;
+	dct:creator <https://w3id.org/italia/data/organization/support-unit/cnr-Z6HZEH/stlab> ;
+	dcat:keyword "ruolo"@it ;
+	dct:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+	admsapit:hasFormalityLevel admsapit:Formal ;
+	admsapit:last <https://w3id.org/italia/onto/RO/0.2> ;
+	dct:title "Ontologia dei Ruoli - Profilo applicativo italiano"@it ;
+	admsapit:hasKeyClass :Role , :RoleInTime ;
+	rdfs:isDefinedBy <https://w3id.org/italia/onto/RO> ;
+	dct:publisher <http://spcdata.digitpa.gov.it/Amministrazione/agid> ;
+	dct:rightsHolder <http://spcdata.digitpa.gov.it/Amministrazione/agid> ;
+	dct:description "Questo il profilo applicativo italiano dell'ontologia dei ruoli. Esso per rappresentare ruoli di persone, organizazzioni in determinati contesti. L'ontologia consente di rappresentare anche ruoli che evolvono nel tempo"@it ;
+	owl:versionInfo "Versione 0.2 - 03 Marzo 2018 - uso of w3id.org/italia/onto/RO come base URI."@it , "Version 0.2 - March 03 2018 - use of w3id.org/italia/onto/RO as base URI."@en ;
+	dcat:contactPoint <https://w3id.org/italia/data/contact-point/onto-agid> ;
+	admsapit:semanticAssetInUse <https://w3id.org/italia/data/project/DAF> ,
+															<https://w3id.org/italia/data/project/OntoPiA> ;
+	dct:accrualPeriodicity <http://publications.europa.eu/resource/authority/frequency/IRREG> ;
+	rdfs:label "Ontologia del profilo italiano dei ruoli"@it ;
+	admsapit:hasSemanticAssetDistribution <https://w3id,org/italia/data/distribution/RO-RDF-XML> ;
+	dcat:theme <http://publications.europa.eu/resource/authority/data-theme/SOCI> ;
+	admsapit:acronym "RO-AP_IT" ;
+	admsapit:hasSemanticAssetDistribution <https://w3id,org/italia/data/distribution/RO-JSON-LD> ;
+	dct:issued "2017-11-21"^^xsd:date ;
+	admsapit:hasContributor <https://w3id.org/italia/data/organization/public-organization/td> ;
+	dct:description "This is the Italian application profile of the roles ontology. It can be used to model roles of people or organizations in specific context. The ontology allows one to also represent roles that evolve over time."@en ;
+	rdfs:label "Italian Role ontology"@en ;
+	dct:language <http://publications.europa.eu/resource/authority/language/ITA> ;
+	admsapit:status "published" , "catalogued" ;
+	admsapit:target "Imprese"@it ;
+	admsapit:type admsapit:ServiceOntology ;
+	rdfs:comment "Questa è l'ontologia del profilo applicativo dei ruoli (di persone, organizzazioni)"@it ;
+	dct:title "Role ontology - Italian application profile"@en .
+
 #
 #
 # #################################################################
@@ -41,17 +78,17 @@
 
 dc:creator a owl:AnnotationProperty .
 #
-# http://purl.org/dc/terms/issued
+# http://purl.org/dc/dct/issued
 
-terms:issued a owl:AnnotationProperty .
+dct:issued a owl:AnnotationProperty .
 #
-# http://purl.org/dc/terms/license
+# http://purl.org/dc/dct/license
 
-terms:license a owl:AnnotationProperty .
+dct:license a owl:AnnotationProperty .
 #
-# http://purl.org/dc/terms/modified
+# http://purl.org/dc/dct/modified
 
-terms:modified a owl:AnnotationProperty .
+dct:modified a owl:AnnotationProperty .
 #
 #
 #
@@ -217,5 +254,102 @@ l0:Event a owl:Class .
 # https://w3id.org/italia/onto/l0/Object
 
 l0:Object a owl:Class .
+
+
+### Metadata individuals
+###
+###
+###  http://spcdata.digitpa.gov.it/browse/page/Amministrazione/agid
+<http://spcdata.digitpa.gov.it/browse/page/Amministrazione/agid> rdf:type owl:NamedIndividual ,
+                                                                          dcatapit:Agent ,
+                                                                          foaf:Agent ;
+                                                                 dct:identifier "agid" ;
+                                                                 foaf:name "Agenzia per l'Italia Digitale"@it ,
+                                                                           "Italian Digital Agency"@en .
+
+
+###  https://w3id,org/italia/data/distribution/RO-JSON-LD
+<https://w3id,org/italia/data/distribution/RO-JSON-LD> rdf:type owl:NamedIndividual ,
+                                                                    admsapit:SemanticAssetDistribution ;
+                                                           dct:description "Questa è la distribuzione JSON-LD dell'ontologia dei ruoli"@it ,
+                                                                           "This is the distribution in JSON-LD of the Roles ontology"@en ;
+                                                           dct:format <http://publications.europa.eu/resource/authority/file-type/JSON_LD> ;
+                                                           dct:license <https://w3id.org/italia/controlled-vocabulary/licences/A21_CCBY40> ;
+                                                           dct:title "Distribuzione JSON-LD ontologia RO-AP_IT"@it ,
+                                                                     "JSON-LD distribution of RO-AP_IT Ontology"@en ;
+                                                           dcat:accessURL <https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/RO/latest> ;
+                                                           dcat:downloadURL <https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/RO/RO-AP_IT.jsonld> .
+
+
+###  https://w3id,org/italia/data/distribution/RO-RDF-TURTLE
+<https://w3id,org/italia/data/distribution/RO-RDF-TURTLE> rdf:type owl:NamedIndividual ,
+                                                                       admsapit:SemanticAssetDistribution ;
+                                                              dct:description "Questa è la distribuzione RDF/Turtle dell'ontologia dei ruoli"@it ,
+                                                                              "This is the distribution in RDF/turtle of the Roles ontology"@en ;
+                                                              dct:format <http://publications.europa.eu/resource/authority/file-type/RDF_TURTLE> ;
+                                                              dct:license <https://w3id.org/italia/controlled-vocabulary/licences/A21_CCBY40> ;
+                                                              dct:title "Distribuzione RDF/Turtle ontologia RO-AP_IT"@it ,
+                                                                        "RDF/Turtle distribution of RO-AP_IT Ontology"@en ;
+                                                              dcat:accessURL <https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/RO/latest> ;
+                                                              dcat:downloadURL <https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/RO/latest/RO-AP_IT.ttl> .
+
+
+###  https://w3id,org/italia/data/distribution/RO-RDF-XML
+<https://w3id,org/italia/data/distribution/RO-RDF-XML> rdf:type owl:NamedIndividual ,
+                                                                    admsapit:SemanticAssetDistribution ;
+                                                           dct:description "Questa è la distribuzione RDF/XML dell'ontologia dei ruoli"@it ,
+                                                                           "This is the distribution in RDF/XML of the Roles ontology"@en ;
+                                                           dct:format <http://publications.europa.eu/resource/authority/file-type/RDF_XML> ;
+                                                           dct:license <https://w3id.org/italia/controlled-vocabulary/licences/A21_CCBY40> ;
+                                                           dct:title "Distribuzione RDF/XML ontologia RO-AP_IT"@it ,
+                                                                     "RDF/XML distribution of RO-AP_IT Ontology"@en ;
+                                                           dcat:accessURL <https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/RO/latest> ;
+                                                           dcat:downloadURL <https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/RO/latest/RO-AP_IT.rdf> .
+
+
+###  https://w3id.org/italia/data/contact-point/onto-agid
+<https://w3id.org/italia/data/contact-point/onto-agid> rdf:type owl:NamedIndividual ,
+                                                                dcatapit:Organization ,
+                                                                vcard:Kind ,
+                                                                vcard:Organization ;
+                                                       vcard:fn "banche dati e open data" ;
+                                                       vcard:hasEmail <mailto:info@dati.gov.it> .
+
+
+###  https://w3id.org/italia/data/organization/public-organization/td
+<https://w3id.org/italia/data/organization/public-organization/td> rdf:type owl:NamedIndividual ,
+                                                                            dcatapit:Agent ,
+                                                                            foaf:Agent ;
+                                                                   dct:identifier "TD" ;
+                                                                   foaf:name "Digital Transformation Team"@en ,
+                                                                             "Team per la Trasformazione Digitale"@it .
+
+
+###  https://w3id.org/italia/data/organization/support-unit/cnr-Z6HZEH/stlab
+<https://w3id.org/italia/data/organization/support-unit/cnr-Z6HZEH/stlab> rdf:type owl:NamedIndividual ,
+                                                                                   dcatapit:Agent ;
+                                                                          foaf:name "Institute of Cognitive Sciences and Technologies of the Italian Research Council (CNR) - Semantic Technology Laboratory (STLab)"@en ,
+                                                                                  "Istituto di Scienze e Tecnologie della Cognizione del CNR - Semantic Technology Lab (STLab)"@it ;
+                                                                          dct:identifier "cnr - Z6HZEH - STLab" .
+
+
+###  https://w3id.org/italia/data/project/DAF
+<https://w3id.org/italia/data/project/DAF> rdf:type owl:NamedIndividual ,
+                                                    admsapit:Project ;
+                                           foaf:name "Data & Analytics Framework"@it .
+
+
+###  https://w3id.org/italia/data/project/OntoPiA
+<https://w3id.org/italia/data/project/OntoPiA> rdf:type owl:NamedIndividual ,
+                                                        admsapit:Project ;
+                                               l0:name "OntoPiA - la rete di ontologie della pubblica amministrazione italiana"@it .
+
+
+###  https://w3id.org/italia/onto/RO
+<https://w3id.org/italia/onto/RO> rdf:type owl:NamedIndividual ,
+                                                       admsapit:SemanticAsset .
+
+
+
 #
 # Generated by the OWL API (version 4.2.8.20170104-2310) https://github.com/owlcs/owlapi
