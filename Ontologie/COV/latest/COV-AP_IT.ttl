@@ -7,7 +7,13 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
+@prefix schema: <http://schema.org/> .
+@prefix admsapit: <https://w3id.org/italia/onto/ADMS/> .
+@prefix dcatapit: <http://dati.gov.it/onto/dcatapit#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix roapit: <https://w3id.org/italia/onto/RO/> .
 @prefix smapit: <https://w3id.org/italia/onto/SM/> .
@@ -15,38 +21,62 @@
 @base <https://w3id.org/italia/onto/COV> .
 
 <https://w3id.org/italia/onto/COV> rdf:type owl:Ontology ;
-                                   
-                                   rdfs:label "Organization (Private & Public)"@en ,
-                                              "Organizzazioni (Pubbliche e Private)"@it ;
-                                   
-                                   dct:issued "2017-07-20"^^xsd:date ;
-                                   
-                                   dct:modified "2018-07-20" ;
-                                   
-                                   dc:creator "Agency for Digital Italy - AgID"@en ,
-                                              "Institute of Cognitive Sciences and Technologies of the Italian Research Council (CNR) - Semantic Technology Laboratory (STLab)"@en ,
-                                              "Italian Digital Transformation Team"@en ;
-                                   
-                                   rdfs:comment "Questa è l'ontologia del profilo applicativo italiano sulle organizzazioni (pubbliche e private)"@en ,
-                                                "This is the ontology of the Italian application profile for Organizations (Public and Private)"@en ;
-                                   
-                                   owl:versionInfo "Version 0.11 - 20 July 2018 - Refactoring of labels and minor fixes."@en ,
-                                                   "Versione 0.11 - 20 Luglio 2018 - Refactoring delle label e correzioni minori."@it ;
-                                   
-                                   dct:license <https://creativecommons.org/licenses/by/4.0/> ;
-                                   
-                                   owl:imports <https://w3id.org/italia/onto/CLV> ;
-                                   
-                                   rdfs:isDefinedBy <https://w3id.org/italia/onto/COV> ;
-                                   
+
                                    owl:imports <https://w3id.org/italia/onto/RO> ,
-                                               <https://w3id.org/italia/onto/SM> ,
-                                               <https://w3id.org/italia/onto/TI> ,
-                                               <https://w3id.org/italia/onto/l0> ;
-                                   
+                                                <https://w3id.org/italia/onto/SM> ,
+                                                <https://w3id.org/italia/onto/TI> ,
+                                                <https://w3id.org/italia/onto/CLV> ,
+                                                <https://w3id.org/italia/onto/l0> ;
+
                                    prov:wasDerivedFrom <https://w3id.org/italia/onto/COV/0.10> ;
-                                   
-                                   owl:versionIRI <https://w3id.org/italia/onto/COV/0.11> .
+
+                                   owl:versionIRI <https://w3id.org/italia/onto/COV/0.11> ;
+
+                                   admsapit:prefix "covapit" ;
+                                 	 dct:creator <http://spcdata.digitpa.gov.it/Amministrazione/agid> ;
+                                 	 admsapit:target "Cittadini"@it ;
+                                 	 dct:modified "2018-07-20"^^xsd:date ;
+                                 	 admsapit:hasTask admsapit:AnnotationTask ,
+                                 									  admsapit:QueryFormulationTask ;
+                                 	 admsapit:hasTask admsapit:SearchTask ;
+                                 	 admsapit:hasSemanticAssetDistribution <https://w3id,org/italia/data/distribution/COV-RDF-TURTLE> ;
+                                 	 admsapit:target "Pubbliche Amministrazioni"@it ;
+                                   rdfs:comment "This is the ontology of the Italian application profile for Organizations (Public and Private)"@en ;
+                                   admsapit:hasOntologyLanguage admsapit:OWL ;
+                                 	 admsapit:officialURI "https://w3id.org/italia/onto/COV"^^xsd:anyURI ;
+                                 	 dct:creator <https://w3id.org/italia/data/organization/support-unit/cnr-Z6HZEH/stlab> ;
+                                 	 dcat:keyword "organizzazione"@it , "pubblica amministrazione"@it , "azienda"@it , "impresa"@it ;
+                                 	 dct:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+                                 	 admsapit:hasFormalityLevel admsapit:Formal ;
+                                 	 admsapit:last <https://w3id.org/italia/onto/COV/0.11> ;
+                                 	 dct:title "Ontologia delle Organizzazioni - Profilo applicativo italiano"@it ;
+                                 	 admsapit:hasKeyClass :Organization , :PublicOrganization , :PrivateOrganization , :SupportUnit ;
+                                 	 rdfs:isDefinedBy <https://w3id.org/italia/onto/COV> ;
+                                 	 dct:publisher <http://spcdata.digitpa.gov.it/Amministrazione/agid> ;
+                                 	 dct:rightsHolder <http://spcdata.digitpa.gov.it/Amministrazione/agid> ;
+                                 	 dct:description "Questa è l'ontologia del profilo applicativo italiano sulle organizzazioni (pubbliche e private). Essa consente di modellare le principali informazioni sull'anagrafica delle organizzazioni pubbliche e private (inclusa l'articolazione degli uffici e dei relativi responsabili)."@it ;
+                                 	 owl:versionInfo "Versione 0.11 - 20 Luglio 2018 - Refactoring delle label e correzioni minori."@it , "Version 0.11 - 20 July 2018 - Refactoring of labels and minor fixes."@en ;
+                                 	 dcat:contactPoint <https://w3id.org/italia/data/contact-point/onto-agid> ;
+                                 	 admsapit:semanticAssetInUse <https://w3id.org/italia/data/project/DAF> ,
+                                 															<https://w3id.org/italia/data/project/OntoPiA> ;
+                                 	 dct:accrualPeriodicity <http://publications.europa.eu/resource/authority/frequency/IRREG> ;
+                                 	 rdfs:label "Ontologia del profilo italiano delle Organizzazioni (pubbliche e private)"@it ;
+                                 	 admsapit:hasSemanticAssetDistribution <https://w3id,org/italia/data/distribution/COV-RDF-XML> ;
+                                 	 dcat:theme <http://publications.europa.eu/resource/authority/data-theme/GOVE> , <http://publications.europa.eu/resource/authority/data-theme/ECON> ;
+                                 	 admsapit:acronym "COV-AP_IT" ;
+                                 	 admsapit:hasSemanticAssetDistribution <https://w3id,org/italia/data/distribution/COV-JSON-LD> ;
+                                 	 dct:issued "2017-07-20"^^xsd:date ;
+                                 	 admsapit:hasContributor <https://w3id.org/italia/data/organization/public-organization/td> ;
+                                 	 dct:description "This is the ontology of the Italian application profile for Organizations (Public and Private). It allows one to model the main information on organizations (public or private), including the organization of the offices and their head of units. "@en ;
+                                 	 rdfs:label "Italian Organization (Public or Private) ontology"@en ;
+                                 	 dct:language <http://publications.europa.eu/resource/authority/language/ITA> ;
+                                 	 admsapit:status "published" , "catalogued" ;
+                                 	 admsapit:target "Imprese"@it ;
+                                 	 admsapit:type admsapit:CoreOntology ;
+                                 	 rdfs:comment "Questa è l'ontologia del profilo applicativo italiano sulle organizzazioni (pubbliche e private). Essa consente di modellare le principali informazioni sull'anagrafica delle organizzazioni pubbliche e private (inclusa l'articolazione degli uffici e dei relativi responsabili)."@it ;
+                                 	 dct:title "Organization ontology - Italian application profile"@en .
+
+
 
 
 #################################################################
@@ -107,30 +137,30 @@ xsd:gYear rdf:type rdfs:Datatype .
 ###  https://w3id.org/italia/onto/CLV/hasSpatialCoverage
 
 clvapit:hasSpatialCoverage rdf:type owl:ObjectProperty ;
-                           
-                           rdfs:isDefinedBy <http://dati.gov.it/onto/clvapit> .
+
+                           rdfs:isDefinedBy <https://w3id.org/italia/onto/CLV> .
 
 
 
 ###  https://w3id.org/italia/onto/COV/actsOnBehalfOf
 
 :actsOnBehalfOf rdf:type owl:ObjectProperty ;
-                
+
                 rdfs:label "acts on behalf of"@en ,
                            "agisce per conto di"@it ;
-                
+
                 rdfs:comment "This property links an agent to another agent and it is used to represent  general reporting or accountability relationships"@en ;
-                
+
                 owl:versionInfo "stable"@en ;
-                
+
                 rdfs:comment "Questa proprietà lega un agent ad un altro agente ed è utilizzata per modellare relazioni generali di responsabilità e di resoconto."@it ;
-                
+
                 owl:versionInfo "stabile"@it ;
-                
+
                 rdfs:isDefinedBy <https://w3id.org/italia/onto/COV> ;
-                
+
                 rdfs:range l0:Agent ;
-                
+
                 rdfs:domain l0:Agent .
 
 
@@ -138,24 +168,24 @@ clvapit:hasSpatialCoverage rdf:type owl:ObjectProperty ;
 ###  https://w3id.org/italia/onto/COV/changedBy
 
 :changedBy rdf:type owl:ObjectProperty ;
-           
+
            rdfs:label "changed by"@en ,
                       "cambiata da"@it ;
-           
+
            rdfs:comment "This property is the inverse of orginal organization and it is used to link the organization with the change event."@en ;
-           
+
            owl:versionInfo "stable"@en ;
-           
+
            rdfs:comment "Questa proprietà è l'inversa di organizzazione d'origine e collega un'organizzazione a un evento di cambiamento."@it ;
-           
+
            owl:versionInfo "stabile"@it ;
-           
+
            rdfs:isDefinedBy <https://w3id.org/italia/onto/COV> ;
-           
+
            rdfs:range :ChangeEvent ;
-           
+
            rdfs:domain :Organization ;
-           
+
            owl:inverseOf :orginalOrganization .
 
 
@@ -163,24 +193,24 @@ clvapit:hasSpatialCoverage rdf:type owl:ObjectProperty ;
 ###  https://w3id.org/italia/onto/COV/employmentFor
 
 :employmentFor rdf:type owl:ObjectProperty ;
-               
+
                rdfs:label "employment for"@en ,
                           "membership for"@en ,
                           "appartenenza per"@it ,
                           "impiego per"@it ;
-               
+
                rdfs:comment "This property links the situation Membership to the organization."@en ;
-               
+
                owl:versionInfo "stable"@en ;
-               
+
                rdfs:comment "Questa proprietà lega la situazione appartenenza all'organizzazione."@it ;
-               
+
                owl:versionInfo "stabile"@it ;
-               
+
                rdfs:isDefinedBy <https://w3id.org/italia/onto/COV> ;
-               
+
                rdfs:domain :Employment ;
-               
+
                rdfs:range :Organization .
 
 
@@ -189,22 +219,22 @@ clvapit:hasSpatialCoverage rdf:type owl:ObjectProperty ;
 
 :follows rdf:type owl:ObjectProperty ,
                   owl:TransitiveProperty ;
-         
+
          rdfs:label "follows"@en ,
                     "segue"@it ;
-         
+
          rdfs:comment "This property models an ordered sequence of organizations that precede and succeed each other.. In particular this property represents the organization that follows another."@en ;
-         
+
          owl:versionInfo "stable"@en ;
-         
+
          rdfs:comment "Questa proprietà modella una sequenza ordinata di organizzazioni that precedono o si susseguono le un con le altre.  Nello specifico questa proprietà rappresenta un'organizzazione che segue un'altra."@it ;
-         
+
          owl:versionInfo "stabile"@it ;
-         
+
          rdfs:isDefinedBy <https://w3id.org/italia/onto/COV> ;
-         
+
          rdfs:domain :Organization ;
-         
+
          rdfs:range :Organization .
 
 
@@ -212,22 +242,22 @@ clvapit:hasSpatialCoverage rdf:type owl:ObjectProperty ;
 ###  https://w3id.org/italia/onto/COV/hasActivityType
 
 :hasActivityType rdf:type owl:ObjectProperty ;
-                 
+
                  rdfs:label "has activity type"@en ,
                             "ha tipo di attività"@it ;
-                 
+
                  rdfs:comment "This property links an organization with the type of function/activities it carries out."@en ;
-                 
+
                  owl:versionInfo "unstable"@en ;
-                 
+
                  rdfs:comment "Questa proprietà lega un'organizzazione con il tipo di funzioni/attività svolte."@it ;
-                 
+
                  owl:versionInfo "provvisoria"@it ;
-                 
+
                  rdfs:isDefinedBy <https://w3id.org/italia/onto/COV> ;
-                 
+
                  rdfs:range :ActivityType ;
-                 
+
                  rdfs:domain :Organization .
 
 
@@ -235,23 +265,23 @@ clvapit:hasSpatialCoverage rdf:type owl:ObjectProperty ;
 ###  https://w3id.org/italia/onto/COV/hasBalanceSheet
 
 :hasBalanceSheet rdf:type owl:ObjectProperty ;
-                 
+
                  rdfs:label "has balance sheet"@en ,
                             "foglio di bilancio"@it ,
                             "ha bilancio"@it ;
-                 
+
                  rdfs:comment "This property links the Organization with one or more balance sheets."@en ;
-                 
+
                  owl:versionInfo "stable"@en ;
-                 
+
                  rdfs:comment "Questa proprietà lega un'organizzazione a uno o più bilanci."@it ;
-                 
+
                  owl:versionInfo "stabile"@it ;
-                 
+
                  rdfs:isDefinedBy <https://w3id.org/italia/onto/COV> ;
-                 
+
                  rdfs:range :BalanceSheet ;
-                 
+
                  rdfs:domain :Organization .
 
 
@@ -259,22 +289,22 @@ clvapit:hasSpatialCoverage rdf:type owl:ObjectProperty ;
 ###  https://w3id.org/italia/onto/COV/hasCategory
 
 :hasCategory rdf:type owl:ObjectProperty ;
-             
+
              rdfs:label "has category"@en ,
-                        "ha categoria"@it ;
-             
+                        "ha categoria dell'organizzazione"@it ;
+
              rdfs:comment "This property links the public organization to its category."@en ;
-             
+
              owl:versionInfo "stable"@en ;
-             
+
              rdfs:comment "Questa proprietà lega l'organizzazione pubblica alla propria categoria."@it ;
-             
+
              owl:versionInfo "stabile"@it ;
-             
+
              rdfs:isDefinedBy <https://w3id.org/italia/onto/COV> ;
-             
+
              rdfs:domain :PublicOrganization ;
-             
+
              rdfs:range :PublicOrganizationCategory .
 
 
@@ -282,22 +312,22 @@ clvapit:hasSpatialCoverage rdf:type owl:ObjectProperty ;
 ###  https://w3id.org/italia/onto/COV/hasEInvoiceService
 
 :hasEInvoiceService rdf:type owl:ObjectProperty ;
-                    
+
                     rdfs:label "has eInvoice service"@en ,
                                "ha servizio di fatturazione elettronica"@it ;
-                    
+
                     rdfs:comment "This property links an office (or organizational unit) to a eInvoice Service. This property is materialized (it is mandatory) in the case of public organization."@en ;
-                    
+
                     owl:versionInfo "stable"@en ;
-                    
+
                     rdfs:comment "Questa proprietà lega l'ufficio o l'unità organizzativa al servizio di fatturazione elettronica. Questa proprietà è materializzata nello specifico per le organizzazioni pubbliche"@it ;
-                    
+
                     owl:versionInfo "stabile"@it ;
-                    
+
                     rdfs:isDefinedBy <https://w3id.org/italia/onto/COV> ;
-                    
+
                     rdfs:domain :Office ;
-                    
+
                     rdfs:range :eInvoiceService .
 
 
@@ -305,22 +335,22 @@ clvapit:hasSpatialCoverage rdf:type owl:ObjectProperty ;
 ###  https://w3id.org/italia/onto/COV/hasLegalStatus
 
 :hasLegalStatus rdf:type owl:ObjectProperty ;
-                
+
                 rdfs:label "has legal status"@en ,
                            "ha forma giuridica"@it ;
-                
+
                 rdfs:comment "This property links the private organization to its legal status"@en ;
-                
+
                 owl:versionInfo "stable"@en ;
-                
+
                 rdfs:comment "Questa proprietà lega l'organizzazione privata alla sua forma giuridica."@it ;
-                
+
                 owl:versionInfo "stabile"@it ;
-                
+
                 rdfs:isDefinedBy <https://w3id.org/italia/onto/COV> ;
-                
+
                 rdfs:range :LegalStatus ;
-                
+
                 rdfs:domain :Organization .
 
 
@@ -328,24 +358,24 @@ clvapit:hasSpatialCoverage rdf:type owl:ObjectProperty ;
 ###  https://w3id.org/italia/onto/COV/hasLogo
 
 :hasLogo rdf:type owl:ObjectProperty ;
-         
+
          rdfs:label "has logo"@en ,
                     "ha logo"@it ;
-         
+
          rdfs:comment "This property links the organization to the Image object representing the logo of the organization."@en ;
-         
+
          owl:versionInfo "stable"@en ;
-         
+
          rdfs:comment "Questa proprietà collega un'organizzazione a un oggetto immagine e rappresenta il logo dell'organizzazione."@it ;
-         
+
          owl:versionInfo "stabile"@it ;
-         
-         rdfs:isDefinedBy <http://dati.gov.it/onto/covapit/> ;
-         
+
+         rdfs:isDefinedBy <https://w3id.org/italia/onto/COV> ;
+
          rdfs:domain :Organization ;
-         
+
          rdfs:range smapit:Image ;
-         
+
          rdfs:subPropertyOf smapit:hasImage .
 
 
@@ -353,19 +383,19 @@ clvapit:hasSpatialCoverage rdf:type owl:ObjectProperty ;
 ###  https://w3id.org/italia/onto/COV/hasOrganization
 
 :hasOrganization rdf:type owl:ObjectProperty ;
-                 
+
                  rdfs:label "has organization"@en ,
                             "ha organizzazione"@it ;
-                 
+
                  rdfs:comment "The relation that allows to associate an organization with anything."@en ,
                               "La relaziona che permette di assoicare un'organizzazione a qualsiasi cosa."@it ;
-                 
+
                  rdfs:domain owl:Thing ;
-                 
+
                  rdfs:subPropertyOf owl:topObjectProperty ;
-                 
+
                  rdfs:isDefinedBy <https://w3id.org/italia/onto/COV> ;
-                 
+
                  rdfs:range :Organization .
 
 
@@ -373,22 +403,22 @@ clvapit:hasSpatialCoverage rdf:type owl:ObjectProperty ;
 ###  https://w3id.org/italia/onto/COV/hasParticipationType
 
 :hasParticipationType rdf:type owl:ObjectProperty ;
-                      
+
                       rdfs:label "has participation type"@en ,
-                                 "ha tipo di partecipazione"@it ;
-                      
+                                 "ha tipo di partecipazione nell'organizzazione"@it ;
+
                       rdfs:comment "This property links the Participation to its type (i.e., direct or indirect)."@en ;
-                      
+
                       owl:versionInfo "stable"@en ;
-                      
+
                       rdfs:comment "Questa proprietà collega la partecipazione al suo tipo (diretta o indiretta)."@it ;
-                      
+
                       owl:versionInfo "stabile"@it ;
-                      
+
                       rdfs:isDefinedBy <https://w3id.org/italia/onto/COV> ;
-                      
+
                       rdfs:domain :Participation ;
-                      
+
                       rdfs:range :ParticipationType .
 
 
@@ -396,26 +426,26 @@ clvapit:hasSpatialCoverage rdf:type owl:ObjectProperty ;
 ###  https://w3id.org/italia/onto/COV/hasPrivateOrgActivityType
 
 :hasPrivateOrgActivityType rdf:type owl:ObjectProperty ;
-                           
+
                            rdfs:label "has company activity type"@en ,
                                       "has private organization activty type"@en ,
                                       "ha tipo attività organizzazione privata"@it ,
                                       "tipo di attività di azienda"@it ;
-                           
+
                            rdfs:comment "Property that links the private organization to its purpose or type of activity"@en ;
-                           
+
                            owl:versionInfo "unstable"@en ;
-                           
+
                            rdfs:comment "Proprietà che lega l'organizzazione privata al suo scopo o tipo di attività svolta"@it ;
-                           
+
                            owl:versionInfo "provvisoria"@it ;
-                           
+
                            rdfs:isDefinedBy <https://w3id.org/italia/onto/COV> ;
-                           
+
                            rdfs:range :PrivateOrgActivityType ;
-                           
+
                            rdfs:domain :PrivateOrganization ;
-                           
+
                            rdfs:subPropertyOf :hasActivityType .
 
 
@@ -423,23 +453,24 @@ clvapit:hasSpatialCoverage rdf:type owl:ObjectProperty ;
 ###  https://w3id.org/italia/onto/COV/hasPrivateOrganization
 
 :hasPrivateOrganization rdf:type owl:ObjectProperty ;
-                        
+
                         rdfs:label "has company"@en ,
                                    "has private organization"@en ,
                                    "ha azienda"@it ,
                                    "ha compagnia"@it ,
                                    "ha ditta"@it ,
+                                   "ha associazione privata"@it ,
                                    "ha impresa"@it ;
-                        
+
                         rdfs:comment "Property that relates any kind of entity to a private organization or company."@en ,
                                      "Proprietà che collega una qualsiasi entità ad un organizzazione privata o azienda."@it ;
-                        
+
                         rdfs:domain owl:Thing ;
-                        
+
                         rdfs:isDefinedBy <https://w3id.org/italia/onto/COV> ;
-                        
+
                         rdfs:range :PrivateOrganization ;
-                        
+
                         rdfs:subPropertyOf :hasOrganization .
 
 
@@ -447,24 +478,24 @@ clvapit:hasSpatialCoverage rdf:type owl:ObjectProperty ;
 ###  https://w3id.org/italia/onto/COV/hasPublicOrgActivityType
 
 :hasPublicOrgActivityType rdf:type owl:ObjectProperty ;
-                          
+
                           rdfs:label "has public organization activty type"@en ,
                                      "ha tipo attività organizzazione pubblica"@it ;
-                          
+
                           rdfs:comment "Property that links the public organization to its purpose or type of activity"@en ;
-                          
+
                           owl:versionInfo "unstable"@en ;
-                          
+
                           rdfs:comment "Proprietà che lega l'organizzazione pubblica al suo scopo o tipo di attività svolta"@it ;
-                          
+
                           owl:versionInfo "provvisoria"@it ;
-                          
+
                           rdfs:isDefinedBy <https://w3id.org/italia/onto/COV> ;
-                          
+
                           rdfs:range :PublicOrgActivityType ;
-                          
+
                           rdfs:domain :PublicOrganization ;
-                          
+
                           rdfs:subPropertyOf :hasActivityType .
 
 
@@ -472,20 +503,20 @@ clvapit:hasSpatialCoverage rdf:type owl:ObjectProperty ;
 ###  https://w3id.org/italia/onto/COV/hasPublicOrganization
 
 :hasPublicOrganization rdf:type owl:ObjectProperty ;
-                       
+
                        rdfs:label "has public organization"@en ,
                                   "ha organizzazione pubblica"@it ,
                                   "ha pubblica amministrazione"@it ;
-                       
+
                        rdfs:comment "Proprerty meant for linking any entity to a public organization."@en ,
                                     "Proprietà che collega una qualsiasi entità ad un organizzazione pubblica."@it ;
-                       
+
                        rdfs:domain owl:Thing ;
-                       
+
                        rdfs:isDefinedBy <https://w3id.org/italia/onto/COV> ;
-                       
+
                        rdfs:range :PublicOrganization ;
-                       
+
                        rdfs:subPropertyOf :hasOrganization .
 
 
@@ -493,27 +524,27 @@ clvapit:hasSpatialCoverage rdf:type owl:ObjectProperty ;
 ###  https://w3id.org/italia/onto/COV/hasSubOrganization
 
 :hasSubOrganization rdf:type owl:ObjectProperty ;
-                    
+
                     rdfs:label "has sub company"@en ,
                                "has sub-organization"@en ,
                                "ha sotto azienda"@it ,
                                "ha sotto compagnia"@it ,
                                "ha sotto-organizzazione"@it ;
-                    
+
                     rdfs:comment "Organizations are often large and complex and may be a collection of smaller organizations, each of which has a specific identity that may be legally defined.  This property, together with its inverse subOrganizationOf allows one to model a hierarchical structure between organizations."@en ;
-                    
+
                     owl:versionInfo "stable"@en ;
-                    
+
                     rdfs:comment "Organizzazioni sono spesso grandi e complesse e possono essere viste come una collezione di organizzazioni più piccole, ognuna delle quali con una specifica identità legamente definita. Questa proprietà, insieme alla sua inversa sotto-organizzazione di, consente di modellare una struttura gerarchica tra organizzazioni. Si pensi per esempio ai concetti di holding per organizazioni private."@it ;
-                    
+
                     owl:versionInfo "stabile"@it ;
-                    
+
                     rdfs:isDefinedBy <https://w3id.org/italia/onto/COV> ;
-                    
+
                     rdfs:range :Organization ;
-                    
+
                     rdfs:domain :Organization ;
-                    
+
                     owl:inverseOf :subOrganizationOf .
 
 
@@ -521,26 +552,26 @@ clvapit:hasSpatialCoverage rdf:type owl:ObjectProperty ;
 ###  https://w3id.org/italia/onto/COV/hasSupportUnit
 
 :hasSupportUnit rdf:type owl:ObjectProperty ;
-                
+
                 rdfs:label "has department"@en ,
                            "has support unit"@en ,
                            "ha dipartimento"@it ,
-                           "ha unità di supperto (dipartimento)"@it ;
-                
+                           "ha divisione"@it ;
+
                 rdfs:comment "This property links an organization to its support units (or dividision or departments) that can be homogeneous organizational areas or offices."@en ;
-                
+
                 owl:versionInfo "stable"@en ;
-                
+
                 rdfs:comment "Questa proprietà lega un'organizzazione alle sue unità di supporto (o divisioni o dipartimenti) che possono essere areee organizzative omogenee o uffici"@it ;
-                
+
                 owl:versionInfo "stabile"@it ;
-                
+
                 rdfs:isDefinedBy <https://w3id.org/italia/onto/COV> ;
-                
+
                 rdfs:domain :Organization ;
-                
+
                 rdfs:range :SupportUnit ;
-                
+
                 owl:inverseOf :isSupportUnitOf .
 
 
@@ -548,24 +579,24 @@ clvapit:hasSpatialCoverage rdf:type owl:ObjectProperty ;
 ###  https://w3id.org/italia/onto/COV/holdEmployment
 
 :holdEmployment rdf:type owl:ObjectProperty ;
-                
+
                 rdfs:label "hold employment"@en ,
                            "hold membership"@en ,
                            "detiene una relazione di appartenenza"@it ,
                            "ha impiego"@it ;
-                
+
                 rdfs:comment "This property links an Agent to the situation Membership in an organization."@en ;
-                
+
                 owl:versionInfo "stable"@en ;
-                
+
                 rdfs:comment "Questa proprietà lega un agente alla sitauzione di appartenenza a un'organizzazione."@it ;
-                
+
                 owl:versionInfo "stabile"@it ;
-                
+
                 rdfs:isDefinedBy <https://w3id.org/italia/onto/COV> ;
-                
+
                 rdfs:range :Employment ;
-                
+
                 rdfs:domain l0:Agent .
 
 
@@ -573,18 +604,18 @@ clvapit:hasSpatialCoverage rdf:type owl:ObjectProperty ;
 ###  https://w3id.org/italia/onto/COV/isOrganizationOf
 
 :isOrganizationOf rdf:type owl:ObjectProperty ;
-                  
-                  rdfs:label "Relation that allows to associate anything to an organization."@en ,
-                             "is organization of"@en ,
-                             "Relazione che prevede un organizzazione come dominio di ogni cosa."@it ,
+
+                  rdfs:label "is organization of"@en ,
                              "è organizzazione di"@it ;
-                  
+                  rdfs:comment "Relation that allows to associate anything to an organization."@en ,
+                               "Relazione che prevede un organizzazione come dominio di ogni cosa."@it ;
+
                   rdfs:range owl:Thing ;
-                  
+
                   rdfs:isDefinedBy <https://w3id.org/italia/onto/COV> ;
-                  
+
                   rdfs:domain :Organization ;
-                  
+
                   owl:inverseOf :hasOrganization .
 
 
@@ -592,22 +623,22 @@ clvapit:hasSpatialCoverage rdf:type owl:ObjectProperty ;
 ###  https://w3id.org/italia/onto/COV/isPartOf
 
 :isPartOf rdf:type owl:ObjectProperty ;
-          
+
           rdfs:label "is part of"@en ,
                      "è parte di"@it ;
-          
+
           rdfs:comment "This property links an office (or organizational unit) to its homogeneous organizational area of reference. This may be applied in the specific case of public organizations."@en ;
-          
+
           owl:versionInfo "unstable"@en ;
-          
+
           rdfs:comment "Questa proprietà lega un ufficio (o unità organizzativa) alla sua AOO (area organizzativa omogenea) di riferimento. Questo caso potrebbe presentarsi nello specifico per le organizzazioni pubbliche."@it ;
-          
+
           owl:versionInfo "provvisoria"@it ;
-          
+
           rdfs:isDefinedBy <https://w3id.org/italia/onto/COV> ;
-          
+
           rdfs:range :HomogeneousOrganizationalArea ;
-          
+
           rdfs:domain :Office .
 
 
@@ -615,22 +646,23 @@ clvapit:hasSpatialCoverage rdf:type owl:ObjectProperty ;
 ###  https://w3id.org/italia/onto/COV/isPrivateOrganizationOf
 
 :isPrivateOrganizationOf rdf:type owl:ObjectProperty ;
-                         
+
                          rdfs:label "is company of"@en ,
                                     "is private organization of"@en ,
                                     "è azienda di"@it ,
                                     "è compagnia di"@it ,
                                     "è ditta di"@it ,
+                                    "è associazione privati di"@it ,
                                     "è organizzazione privata di"@it ;
-                         
+
                          rdfs:domain owl:Thing ;
-                         
+
                          rdfs:isDefinedBy <https://w3id.org/italia/onto/COV> ;
-                         
+
                          rdfs:range :PrivateOrganization ;
-                         
+
                          owl:inverseOf :hasPrivateOrganization ;
-                         
+
                          rdfs:subPropertyOf :isOrganizationOf .
 
 
@@ -638,22 +670,22 @@ clvapit:hasSpatialCoverage rdf:type owl:ObjectProperty ;
 ###  https://w3id.org/italia/onto/COV/isPublicOrganizationOf
 
 :isPublicOrganizationOf rdf:type owl:ObjectProperty ;
-                        
+
                         rdfs:label "is public organization of"@en ,
                                    "è organizzazione pubblica di"@it ,
                                    "è pubblica amministrazione di"@it ;
-                        
+
                         rdfs:comment "Property meant for linking a public organization to any kind of entity."@en ,
                                      "Proprietà pensata per collegare un'organizzazione pubblica ad una qualsiasi entità."@it ;
-                        
+
                         rdfs:range owl:Thing ;
-                        
+
                         rdfs:isDefinedBy <https://w3id.org/italia/onto/COV> ;
-                        
+
                         rdfs:domain :PublicOrganization ;
-                        
+
                         owl:inverseOf :hasPublicOrganization ;
-                        
+
                         rdfs:subPropertyOf :isOrganizationOf .
 
 
@@ -661,22 +693,22 @@ clvapit:hasSpatialCoverage rdf:type owl:ObjectProperty ;
 ###  https://w3id.org/italia/onto/COV/isSupportUnitOf
 
 :isSupportUnitOf rdf:type owl:ObjectProperty ;
-                 
+
                  rdfs:label "is support unit of"@en ,
-                            "è unità di supporto di"@it ;
-                 
+                            "è dipartimento di"@it , "è divisione di"@it ;
+
                  rdfs:comment "This property is the inverse of has support unit and links a support unit with its organization."@en ;
-                 
+
                  owl:versionInfo "stable"@en ;
-                 
+
                  rdfs:comment "Questa proprietà è l'inversa di ha unità di supporto e lega l'unità di supporto con la relativa organizzazione."@it ;
-                 
+
                  owl:versionInfo "stabile"@it ;
-                 
+
                  rdfs:isDefinedBy <https://w3id.org/italia/onto/COV> ;
-                 
+
                  rdfs:range :Organization ;
-                 
+
                  rdfs:domain :SupportUnit .
 
 
@@ -684,22 +716,22 @@ clvapit:hasSpatialCoverage rdf:type owl:ObjectProperty ;
 ###  https://w3id.org/italia/onto/COV/orginalOrganization
 
 :orginalOrganization rdf:type owl:ObjectProperty ;
-                     
+
                      rdfs:label "original organization"@en ,
                                 "organizzazione di origine"@it ;
-                     
+
                      rdfs:comment "The property links a Change Event to the organization that existed before the change. Although the Foundation Event class is defined as a sub class of Change Event, it is inappropriate to use this property with the Foundation Event class."@en ;
-                     
+
                      owl:versionInfo "stable"@en ;
-                     
+
                      rdfs:comment "Questa proprietà collega un evento del cambiamento all'organizzazione che esisteva prima del cambiamento. Sebbene la classe Costituzione sia sotto classe di Evento del Cambiamento, è inappropriato utilizzare tale classe con questa proprietà."@it ;
-                     
+
                      owl:versionInfo "stabile"@it ;
-                     
+
                      rdfs:isDefinedBy <https://w3id.org/italia/onto/COV> ;
-                     
+
                      rdfs:domain :ChangeEvent ;
-                     
+
                      rdfs:range :Organization .
 
 
@@ -707,22 +739,22 @@ clvapit:hasSpatialCoverage rdf:type owl:ObjectProperty ;
 ###  https://w3id.org/italia/onto/COV/participated
 
 :participated rdf:type owl:ObjectProperty ;
-              
+
               rdfs:label "participated"@en ,
                          "partecipata"@it ;
-              
+
               rdfs:comment "This property links the situation of participation of an organization to an organization. Specifically this property models the fact that an organization is participated by another one."@en ;
-              
+
               owl:versionInfo "unstable"@en ;
-              
+
               rdfs:comment "Questa proprietà collega la situazione partecipazione di un'organizzazione all0organizzazione. In particolare, questa proprietà modella il fatto che un'organizzazione è partecipata dall'altra."@it ;
-              
+
               owl:versionInfo "provvisoria"@it ;
-              
+
               rdfs:isDefinedBy <https://w3id.org/italia/onto/COV> ;
-              
+
               rdfs:range :Organization ;
-              
+
               rdfs:domain :Participation .
 
 
@@ -730,22 +762,22 @@ clvapit:hasSpatialCoverage rdf:type owl:ObjectProperty ;
 ###  https://w3id.org/italia/onto/COV/participating
 
 :participating rdf:type owl:ObjectProperty ;
-               
+
                rdfs:label "participating"@en ,
                           "partecipante"@it ;
-               
+
                rdfs:comment "This property links the organization to the situation partecipation. The property models the fact that an organization participates in another one."@en ;
-               
+
                owl:versionInfo "unstable"@en ;
-               
+
                rdfs:comment "Questa proprietà collega un'organizzazione alla situazione partecipazione. In particolare, la proprietà modella il fatto che un'organizzazione partecipa in un'altra."@it ;
-               
+
                owl:versionInfo "provvisoria"@it ;
-               
+
                rdfs:isDefinedBy <https://w3id.org/italia/onto/COV> ;
-               
+
                rdfs:domain :Organization ;
-               
+
                rdfs:range :Participation .
 
 
@@ -754,22 +786,22 @@ clvapit:hasSpatialCoverage rdf:type owl:ObjectProperty ;
 
 :precedes rdf:type owl:ObjectProperty ,
                    owl:TransitiveProperty ;
-          
+
           rdfs:label "precedes"@en ,
                      "precede"@it ;
-          
+
           rdfs:comment "This property models an ordered sequence of organizations that precede and succeed each other.. In particular this property represents the organization that precedes another."@en ;
-          
+
           owl:versionInfo "stable"@en ;
-          
+
           rdfs:comment "Questa proprietà modella una sequenza ordinata di organizzazioni that precedono o si susseguono le un con le altre.  Nello specifico questa proprietà rappresenta un'organizzazione che precede un'altra."@it ;
-          
+
           owl:versionInfo "stabile"@it ;
-          
+
           rdfs:isDefinedBy <https://w3id.org/italia/onto/COV> ;
-          
+
           rdfs:domain :Organization ;
-          
+
           rdfs:range :Organization .
 
 
@@ -777,24 +809,24 @@ clvapit:hasSpatialCoverage rdf:type owl:ObjectProperty ;
 ###  https://w3id.org/italia/onto/COV/resultedFrom
 
 :resultedFrom rdf:type owl:ObjectProperty ;
-              
+
               rdfs:label "resulted from"@en ,
                          "risultante da"@it ;
-              
+
               rdfs:comment "This property is the inverse of resulting organization and links an organization to the change event through which the organization has been created."@en ;
-              
+
               owl:versionInfo "stable"@en ;
-              
+
               rdfs:comment "Questa proprietà è l'inversa di organizzazione risultante e lega un'organizzazione all'evento di cambiameno attraverso cui l'organizzazione si è originata."@it ;
-              
+
               owl:versionInfo "stabile"@it ;
-              
+
               rdfs:isDefinedBy <https://w3id.org/italia/onto/COV> ;
-              
+
               rdfs:range :ChangeEvent ;
-              
+
               rdfs:domain :Organization ;
-              
+
               owl:inverseOf :resultingOrganization .
 
 
@@ -802,22 +834,22 @@ clvapit:hasSpatialCoverage rdf:type owl:ObjectProperty ;
 ###  https://w3id.org/italia/onto/COV/resultingOrganization
 
 :resultingOrganization rdf:type owl:ObjectProperty ;
-                       
+
                        rdfs:label "resulting organization"@en ,
                                   "organizzazione risultante"@it ;
-                       
+
                        rdfs:comment "This property links a Change Event  to the organization that resulted from it."@en ;
-                       
+
                        owl:versionInfo "stable"@en ;
-                       
+
                        rdfs:comment "Questa proprietà lega un evento di cambiamento alla organizzazione che risultante al termine del cambiamento."@it ;
-                       
+
                        owl:versionInfo "stabile"@it ;
-                       
+
                        rdfs:isDefinedBy <https://w3id.org/italia/onto/COV> ;
-                       
+
                        rdfs:domain :ChangeEvent ;
-                       
+
                        rdfs:range :Organization .
 
 
@@ -825,22 +857,22 @@ clvapit:hasSpatialCoverage rdf:type owl:ObjectProperty ;
 ###  https://w3id.org/italia/onto/COV/subOrganizationOf
 
 :subOrganizationOf rdf:type owl:ObjectProperty ;
-                   
+
                    rdfs:label "sub-organization of"@en ,
                               "sotto-organizzazione di"@it ;
-                   
+
                    rdfs:comment "Organizations are often large and complex and may be a collection of smaller organizations, each of which has a specific identity that may be legally defined.  This property, together with its inverse hasSubOrganization allows one to model a hierarchical structure between organizations."@en ;
-                   
+
                    owl:versionInfo "stable"@en ;
-                   
+
                    rdfs:comment "Organizzazioni sono spesso grandi e complesse e possono essere viste come una collezione di organizzazioni più piccole, ognuna delle quali con una specifica identità legamente definita. Questa proprietà, insieme alla sua inversa ha sotto-organizzazione, consente di modellare una struttura gerarchica tra organizzazioni. Si pensi per esempio ai concetti di holding per organizazioni private."@it ;
-                   
+
                    owl:versionInfo "stabile"@it ;
-                   
+
                    rdfs:isDefinedBy <https://w3id.org/italia/onto/COV> ;
-                   
+
                    rdfs:domain :Organization ;
-                   
+
                    rdfs:range :Organization .
 
 
@@ -848,7 +880,7 @@ clvapit:hasSpatialCoverage rdf:type owl:ObjectProperty ;
 ###  https://w3id.org/italia/onto/RO/withRole
 
 roapit:withRole rdf:type owl:ObjectProperty ;
-                
+
                 rdfs:isDefinedBy roapit: .
 
 
@@ -856,7 +888,7 @@ roapit:withRole rdf:type owl:ObjectProperty ;
 ###  https://w3id.org/italia/onto/SM/hasImage
 
 smapit:hasImage rdf:type owl:ObjectProperty ;
-                
+
                 rdfs:isDefinedBy smapit: .
 
 
@@ -864,7 +896,7 @@ smapit:hasImage rdf:type owl:ObjectProperty ;
 ###  https://w3id.org/italia/onto/SM/hasOnlineContactPoint
 
 smapit:hasOnlineContactPoint rdf:type owl:ObjectProperty ;
-                             
+
                              rdfs:isDefinedBy smapit: .
 
 
@@ -872,7 +904,7 @@ smapit:hasOnlineContactPoint rdf:type owl:ObjectProperty ;
 ###  https://w3id.org/italia/onto/TI/atTime
 
 ti:atTime rdf:type owl:ObjectProperty ;
-          
+
           rdfs:comment ti: .
 
 
@@ -890,24 +922,24 @@ ti:atTime rdf:type owl:ObjectProperty ;
 
 :AOOIdentifier rdf:type owl:DatatypeProperty ,
                         owl:FunctionalProperty ;
-               
+
                rdfs:label "homegeneous organizational area identifier"@en ,
-                          "codice AOO"@it ;
-               
+                          "codice AOO"@it , "codice area organizzativa omogenea"@it ;
+
                rdfs:comment "This property represents the unique code assigned to the homogeneous organizational area of a public organization."@en ;
-               
+
                owl:versionInfo "stable"@en ;
-               
+
                rdfs:comment "Questa proprietà rappresenta il codice univoco che viene assegnato alle AOO dall'organizzazione pubblica."@it ;
-               
+
                owl:versionInfo "stabile"@it ;
-               
+
                rdfs:range rdfs:Literal ;
-               
+
                rdfs:isDefinedBy <https://w3id.org/italia/onto/COV> ;
-               
+
                rdfs:domain :HomogeneousOrganizationalArea ;
-               
+
                rdfs:subPropertyOf l0:identifier .
 
 
@@ -916,24 +948,24 @@ ti:atTime rdf:type owl:ObjectProperty ;
 
 :IPAcode rdf:type owl:DatatypeProperty ,
                   owl:FunctionalProperty ;
-         
+
          rdfs:label "IPA code"@en ,
-                    "codice IPA (codice Indice PA)"@it ;
-         
+                    "codice IPA"@it , "codice Indice PA"@it ;
+
          rdfs:comment "This property represents the unique identifier of a public organization assigned when it is registered in the Italian national registry of Public Administrations (IPA)."@en ;
-         
+
          owl:versionInfo "stable"@en ;
-         
+
          rdfs:comment "Questa proprietà rappresenta il codice IPA, il codice univoco, assegnato all'organizzazione pubblica in fase di accreditamento presso l'indice nazionale PA (IPA). Il Codice IPA viene comunicato tramite e-mail dal Gestore dell'IPA al referente dell'Ente."@it ;
-         
+
          owl:versionInfo "stabile"@it ;
-         
+
          rdfs:range rdfs:Literal ;
-         
+
          rdfs:isDefinedBy <https://w3id.org/italia/onto/COV> ;
-         
+
          rdfs:domain :PublicOrganization ;
-         
+
          rdfs:subPropertyOf l0:identifier .
 
 
@@ -941,24 +973,24 @@ ti:atTime rdf:type owl:ObjectProperty ;
 ###  https://w3id.org/italia/onto/COV/REANumber
 
 :REANumber rdf:type owl:DatatypeProperty ;
-           
+
            rdfs:label "REA number"@en ,
                       "numero REA"@it ;
-           
+
            rdfs:comment "This property represents a specific code named REA number associated with the registration of a private organization in the related Italian national registry."@en ;
-           
+
            owl:versionInfo "stable"@en ;
-           
+
            rdfs:comment "Questa proprietà rappresenta il numero REA (Repertorio Economico Amministrativo) associato a un'impresa.  Il numero REA è costituito da un numero decimale progressivo ed è sempre associato ad una codifica, che precede il numero progressivo, della provincia/CCIAA che lo ha assegnato e, nella prassi, comprende anche tale codifica (ad es. RM-123456). Ogni soggetto/impresa obbligato per legge all´iscrizione al REA riceve un numero REA diverso per ogni provincia/CCIAA in cui apre Sede/Unità Locali."@it ;
-           
+
            owl:versionInfo "stabile"@it ;
-           
+
            rdfs:range rdfs:Literal ;
-           
+
            rdfs:comment <https://w3id.org/italia/onto/COV> ;
-           
+
            rdfs:domain :PrivateOrganization ;
-           
+
            rdfs:subPropertyOf l0:identifier .
 
 
@@ -967,24 +999,24 @@ ti:atTime rdf:type owl:ObjectProperty ;
 
 :VATnumber rdf:type owl:DatatypeProperty ,
                     owl:FunctionalProperty ;
-           
+
            rdfs:label "VAT number"@en ,
                       "Partita Iva"@it ;
-           
+
            rdfs:comment "This property represents the VAT number of a private organization."@en ;
-           
+
            owl:versionInfo "stable"@en ;
-           
+
            rdfs:comment "Questa proprietà rappresenta il numero di Partita IVA di un'organizzazione privata (impresa)."@it ;
-           
+
            owl:versionInfo "stabile"@it ;
-           
+
            rdfs:range rdfs:Literal ;
-           
+
            rdfs:comment <https://w3id.org/italia/onto/COV> ;
-           
+
            rdfs:domain :PrivateOrganization ;
-           
+
            rdfs:subPropertyOf l0:identifier .
 
 
@@ -992,24 +1024,24 @@ ti:atTime rdf:type owl:ObjectProperty ;
 ###  https://w3id.org/italia/onto/COV/accreditationDate
 
 :accreditationDate rdf:type owl:DatatypeProperty ;
-                   
+
                    rdfs:label "accreditation date"@en ,
                               "data di accreditamento"@it ;
-                   
+
                    rdfs:comment "This property represents the accreditation date of the organization in the public registry (e.g., in Italy in  \"IPA\" registry for public administrations, and in the \"Registro Imprese\" for private organizations)."@en ;
-                   
+
                    owl:versionInfo "stable"@en ;
-                   
+
                    rdfs:comment "Questa proprietà rappresenta la data di accreditamento dell'organizzazione nel pubblico registro (e.g., in \"IPA\" nel caso di pubbliche amministrazioni, in \"Registro Imprese\" nel caso di organizzazioni private)."@it ;
-                   
+
                    owl:versionInfo "stabile"@it ;
-                   
+
                    rdfs:range xsd:dateTime ;
-                   
+
                    rdfs:isDefinedBy <https://w3id.org/italia/onto/COV> ;
-                   
+
                    rdfs:domain :Organization ;
-                   
+
                    rdfs:subPropertyOf ti:date .
 
 
@@ -1018,24 +1050,24 @@ ti:atTime rdf:type owl:ObjectProperty ;
 
 :acronym rdf:type owl:DatatypeProperty ,
                   owl:FunctionalProperty ;
-         
+
          rdfs:label "acronym"@en ,
-                    "acronimo"@it ;
-         
+                    "acronimo organizzazione"@it ;
+
          rdfs:comment "This property represents the acronym of the organization."@en ;
-         
+
          owl:versionInfo "stable"@en ;
-         
+
          rdfs:comment "Questa proprietà rappresenta l'acronimo dell'organizzazione."@it ;
-         
+
          owl:versionInfo "stabile"@it ;
-         
+
          rdfs:range rdfs:Literal ;
-         
+
          rdfs:isDefinedBy <https://w3id.org/italia/onto/COV> ;
-         
+
          rdfs:domain :Organization ;
-         
+
          rdfs:subPropertyOf l0:name .
 
 
@@ -1043,22 +1075,22 @@ ti:atTime rdf:type owl:ObjectProperty ;
 ###  https://w3id.org/italia/onto/COV/altName
 
 :altName rdf:type owl:DatatypeProperty ;
-         
+
          rdfs:label "alternative name"@en ,
                     "nome alternativo"@it ;
-         
+
          rdfs:comment "This property represents an alternative name for the organization such as a colloquial name."@en ;
-         
+
          owl:versionInfo "stable"@en ,
                          "Questa proprietà rappresenta un nome alternativo dell'organizzazione (e.g., un nome colloquiale)."@it ,
                          "stabile"@it ;
-         
+
          rdfs:range rdfs:Literal ;
-         
+
          rdfs:isDefinedBy <https://w3id.org/italia/onto/COV> ;
-         
+
          rdfs:domain :Organization ;
-         
+
          rdfs:subPropertyOf l0:name .
 
 
@@ -1066,22 +1098,22 @@ ti:atTime rdf:type owl:ObjectProperty ;
 ###  https://w3id.org/italia/onto/COV/businessObjective
 
 :businessObjective rdf:type owl:DatatypeProperty ;
-                   
+
                    rdfs:label "business objective"@en ,
                               "oggetto sociale"@it ;
-                   
+
                    rdfs:comment "This property represents the business objectives or the corporate purpose of the private organization."@en ;
-                   
+
                    owl:versionInfo "unstable"@en ;
-                   
+
                    rdfs:comment "Questa proprietà rappresenta l'oggetto sociale dell'organizzazione privata (impresa)."@it ;
-                   
+
                    owl:versionInfo "provvisoria"@it ;
-                   
+
                    rdfs:range rdfs:Literal ;
-                   
+
                    rdfs:isDefinedBy <https://w3id.org/italia/onto/COV> ;
-                   
+
                    rdfs:domain :PrivateOrganization .
 
 
@@ -1089,24 +1121,24 @@ ti:atTime rdf:type owl:ObjectProperty ;
 ###  https://w3id.org/italia/onto/COV/eInvoiceServiceStartingDate
 
 :eInvoiceServiceStartingDate rdf:type owl:DatatypeProperty ;
-                             
+
                              rdfs:label "eInvoice service starting date"@en ,
-                                        "data di avivo del servizio"@it ;
-                             
+                                        "data di avvio del servizio"@it ;
+
                              rdfs:comment "This property is used to model the starting date of the eInvoice service."@en ;
-                             
+
                              owl:versionInfo "stable"@en ;
-                             
+
                              rdfs:comment "Questa proprietà è utilizzata per modellare la data di avvio del servizio di fatturazione elettronica."@it ;
-                             
+
                              owl:versionInfo "stabile"@it ;
-                             
+
                              rdfs:range xsd:dateTime ;
-                             
+
                              rdfs:isDefinedBy <https://w3id.org/italia/onto/COV> ;
-                             
+
                              rdfs:domain :eInvoiceService ;
-                             
+
                              rdfs:subPropertyOf ti:date .
 
 
@@ -1114,24 +1146,24 @@ ti:atTime rdf:type owl:ObjectProperty ;
 ###  https://w3id.org/italia/onto/COV/foundationDate
 
 :foundationDate rdf:type owl:DatatypeProperty ;
-                
+
                 rdfs:label "foundation  date"@en ,
                            "data di costituzione"@it ;
-                
+
                 rdfs:comment "This property represents the date in which the organization was founded."@en ;
-                
+
                 owl:versionInfo "stable"@en ;
-                
+
                 rdfs:comment "Questa proprietà rappresenta la data di costituzione dell'organizzazione privata (impresa)."@it ;
-                
+
                 owl:versionInfo "stabile"@it ;
-                
+
                 rdfs:range xsd:dateTime ;
-                
+
                 rdfs:isDefinedBy <https://w3id.org/italia/onto/COV> ;
-                
+
                 rdfs:domain :PrivateOrganization ;
-                
+
                 rdfs:subPropertyOf ti:date .
 
 
@@ -1139,24 +1171,24 @@ ti:atTime rdf:type owl:ObjectProperty ;
 ###  https://w3id.org/italia/onto/COV/legalName
 
 :legalName rdf:type owl:DatatypeProperty ;
-           
+
            rdfs:label "legal name"@en ,
                       "nome legale"@it ;
-           
+
            rdfs:comment "This is the primary or legal name for the organization or it can be used to indicate the primary label of a role."@en ;
-           
+
            owl:versionInfo "stable"@en ;
-           
+
            rdfs:comment "Questa proprietà rappresenta il nome primario o il nome legale dell'organizzazione oppure può essere utilizzata per rappresentare l'etichetta primaria per il ruolo."@it ;
-           
+
            owl:versionInfo "stabile"@it ;
-           
+
            rdfs:range rdfs:Literal ;
-           
+
            rdfs:isDefinedBy <https://w3id.org/italia/onto/COV> ;
-           
+
            rdfs:domain :Organization ;
-           
+
            rdfs:subPropertyOf l0:name .
 
 
@@ -1164,24 +1196,24 @@ ti:atTime rdf:type owl:ObjectProperty ;
 ###  https://w3id.org/italia/onto/COV/legalStatusCode
 
 :legalStatusCode rdf:type owl:DatatypeProperty ;
-                 
+
                  rdfs:label "legal status code"@en ,
-                            "codice (identificativo) forma giuridica"@it ;
-                 
+                            "codice forma giuridica"@it , "identificativo forma giuridica"@it ;
+
                  rdfs:comment "Questa proprietà è utilizzata per rappresentare il codice della forma giuridica utilizzato nel relativo vocabolario controllato https://w3id.org/italia/controlled-vocabulary/classifications-for-organizations/legal-status"@en ,
                               "This property is used to represent the code of legal status used in the related controlled vocabulary https://w3id.org/italia/controlled-vocabulary/classifications-for-organizations/legal-status"@en ;
-                 
+
                  owl:versionInfo "stable"@en ,
                                  "stabile"@it ;
-                 
+
                  rdfs:range rdfs:Literal ;
-                 
+
                  l0:controlledvocabulary <https://w3id.org/italia/controlled-vocabulary/classifications-for-organizations/legal-status> ;
-                 
+
                  rdfs:isDefinedBy <https://w3id.org/italia/onto/COV> ;
-                 
+
                  rdfs:domain :LegalStatus ;
-                 
+
                  rdfs:subPropertyOf l0:identifier .
 
 
@@ -1189,24 +1221,24 @@ ti:atTime rdf:type owl:ObjectProperty ;
 ###  https://w3id.org/italia/onto/COV/legalStatusDesc
 
 :legalStatusDesc rdf:type owl:DatatypeProperty ;
-                 
+
                  rdfs:label "preferred label legal status"@en ,
                             "denominazione forma giuridica"@it ;
-                 
+
                  rdfs:comment "Questa proprietà consente di specificare la denominazione ufficiale della forma giuridica per le organizzazioni, sia private che pubbliche. La denominazione ufficiale è definita nel vocabolario controllato https://w3id.org/italia/controlled-vocabulary/classifications-for-organizations/legal-status"@en ,
                               "This is the preferred label used in the controlled vocabulary on the Legal Status of organizations, both private and public https://w3id.org/italia/controlled-vocabulary/classifications-for-organizations/legal-status"@en ;
-                 
+
                  owl:versionInfo "stable"@en ,
                                  "stabile"@it ;
-                 
+
                  rdfs:range rdfs:Literal ;
-                 
+
                  l0:controlledvocabulary <https://w3id.org/italia/controlled-vocabulary/classifications-for-organizations/legal-status> ;
-                 
+
                  rdfs:isDefinedBy <https://w3id.org/italia/onto/COV> ;
-                 
+
                  rdfs:domain :LegalStatus ;
-                 
+
                  rdfs:subPropertyOf l0:description .
 
 
@@ -1214,22 +1246,22 @@ ti:atTime rdf:type owl:ObjectProperty ;
 ###  https://w3id.org/italia/onto/COV/mainFunction
 
 :mainFunction rdf:type owl:DatatypeProperty ;
-              
+
               rdfs:label "main function"@en ,
                          "funzione principale"@it ;
-              
+
               rdfs:comment "This property represents a general description of the main functions of the organization."@en ;
-              
+
               owl:versionInfo "stable"@en ;
-              
+
               rdfs:comment "Questa proprietà raappresenta una descrizione generale delle principali funzioni dell'organizzazione."@it ;
-              
+
               owl:versionInfo "stabile"@it ;
-              
+
               rdfs:range rdfs:Literal ;
-              
+
               rdfs:isDefinedBy <https://w3id.org/italia/onto/COV> ;
-              
+
               rdfs:domain :Organization .
 
 
@@ -1238,24 +1270,24 @@ ti:atTime rdf:type owl:ObjectProperty ;
 
 :officeIdentifier rdf:type owl:DatatypeProperty ,
                            owl:FunctionalProperty ;
-                  
+
                   rdfs:label "office identifier"@en ,
                              "codice univoco ufficio"@it ;
-                  
+
                   rdfs:comment "This property represents the unique code used to identify the office of the organization."@en ;
-                  
+
                   owl:versionInfo "stable"@en ;
-                  
+
                   rdfs:comment "Questa proprietà rappresenta il codice univoco dell'ufficio dell'organizzazione."@it ;
-                  
+
                   owl:versionInfo "stabile"@it ;
-                  
+
                   rdfs:range rdfs:Literal ;
-                  
+
                   rdfs:isDefinedBy <https://w3id.org/italia/onto/COV> ;
-                  
+
                   rdfs:domain :SupportUnit ;
-                  
+
                   rdfs:subPropertyOf l0:identifier .
 
 
@@ -1263,22 +1295,22 @@ ti:atTime rdf:type owl:ObjectProperty ;
 ###  https://w3id.org/italia/onto/COV/participationPercentage
 
 :participationPercentage rdf:type owl:DatatypeProperty ;
-                         
+
                          rdfs:label "participation percentage"@en ,
-                                    "percentuale partecipazione"@it ;
-                         
+                                    "percentuale di partecipazione"@it ;
+
                          rdfs:comment "This property represents the percentage of participation (share) of an organization in another during a time period."@en ;
-                         
+
                          owl:versionInfo "stable"@en ;
-                         
+
                          rdfs:comment "Questa proprietà rappresenta la percentuale (quota) di partecipazione di un'organizzazione in un'altra in un certo lasso temporale. Esempio \"2.38\"). La proprietà è molto utile nei casi di descrizione di società partecipate per esempio."@it ;
-                         
+
                          owl:versionInfo "stabile"@it ;
-                         
+
                          rdfs:range xsd:float ;
-                         
+
                          rdfs:isDefinedBy <https://w3id.org/italia/onto/COV> ;
-                         
+
                          rdfs:domain :Participation .
 
 
@@ -1286,22 +1318,22 @@ ti:atTime rdf:type owl:ObjectProperty ;
 ###  https://w3id.org/italia/onto/COV/remuneration
 
 :remuneration rdf:type owl:DatatypeProperty ;
-              
+
               rdfs:label "remuneration"@en ,
                          "compenso"@it ;
-              
+
               rdfs:comment "This property represents the remuneration of a member with a specific role on the organization."@en ;
-              
+
               owl:versionInfo "stable"@en ;
-              
+
               rdfs:comment "Questa proprietà rappresenta il compenso di un membro con uno specifico ruolo nell'organizzazione."@it ;
-              
+
               owl:versionInfo "stabile"@it ;
-              
+
               rdfs:range xsd:double ;
-              
+
               rdfs:isDefinedBy <https://w3id.org/italia/onto/COV> ;
-              
+
               rdfs:domain :Employment .
 
 
@@ -1309,24 +1341,24 @@ ti:atTime rdf:type owl:ObjectProperty ;
 ###  https://w3id.org/italia/onto/COV/startingActivityDate
 
 :startingActivityDate rdf:type owl:DatatypeProperty ;
-                      
+
                       rdfs:label "starting activity date"@en ,
                                  "data inizio attività impresa"@it ;
-                      
+
                       rdfs:comment "This property represents the date of the starting of the activity for a private organization."@en ;
-                      
+
                       owl:versionInfo "unstable"@en ;
-                      
+
                       rdfs:comment "Questa proprietà rappresenta la data di inizio di attività per un'organizzazione privata (impresa)."@it ;
-                      
+
                       owl:versionInfo "provvisoria"@it ;
-                      
+
                       rdfs:range xsd:dateTime ;
-                      
+
                       rdfs:isDefinedBy <https://w3id.org/italia/onto/COV> ;
-                      
+
                       rdfs:domain :PrivateOrganization ;
-                      
+
                       rdfs:subPropertyOf ti:date .
 
 
@@ -1335,24 +1367,24 @@ ti:atTime rdf:type owl:ObjectProperty ;
 
 :taxCode rdf:type owl:DatatypeProperty ,
                   owl:FunctionalProperty ;
-         
+
          rdfs:label "tax code"@en ,
-                    "codice fiscale"@it ;
-         
+                    "codice fiscale organizzazione"@it ;
+
          rdfs:comment "This property represents the tax code of an organization."@en ;
-         
+
          owl:versionInfo "stable"@en ;
-         
+
          rdfs:comment "Questa proprietà rappresenta il codice fiscale dell'organizzazione sia essa pubblica che privata. Nel caso di imprese private il codice fiscale e la partita iva, tranne eccezioni, sono sempre coincidenti per le società, e sempre differenti per le imprese individuali. Il numero \"Registro Imprese\", ovvero il numero di iscrizione attribuito dal Registro Imprese della Camera di Commercio per le organizzazioni private, è il Codice Fiscale; nel caso si tratti di impresa individuale sarà il Codice Fiscale del titolare."@it ;
-         
+
          owl:versionInfo "stabile"@it ;
-         
+
          rdfs:range rdfs:Literal ;
-         
+
          rdfs:isDefinedBy <https://w3id.org/italia/onto/COV> ;
-         
+
          rdfs:domain :Organization ;
-         
+
          rdfs:subPropertyOf l0:identifier .
 
 
@@ -1361,24 +1393,24 @@ ti:atTime rdf:type owl:ObjectProperty ;
 
 :taxCodeEInvoiceService rdf:type owl:DatatypeProperty ,
                                  owl:FunctionalProperty ;
-                        
+
                         rdfs:label "tax code of the eInvoice service"@en ,
                                    "codice fiscale servizio di fatturazione elettronica"@it ;
-                        
+
                         rdfs:comment "This property represents the tax code of the einvoice service."@en ;
-                        
+
                         owl:versionInfo "stable"@en ;
-                        
+
                         rdfs:comment "Questa proprietà rappresenta il codice fiscale del servizio di fatturazione elettronica."@it ;
-                        
+
                         owl:versionInfo "stabile"@it ;
-                        
+
                         rdfs:range rdfs:Literal ;
-                        
+
                         rdfs:isDefinedBy <https://w3id.org/italia/onto/COV> ;
-                        
+
                         rdfs:domain :eInvoiceService ;
-                        
+
                         rdfs:subPropertyOf l0:identifier .
 
 
@@ -1386,24 +1418,24 @@ ti:atTime rdf:type owl:ObjectProperty ;
 ###  https://w3id.org/italia/onto/COV/taxCodeValidationDate
 
 :taxCodeValidationDate rdf:type owl:DatatypeProperty ;
-                       
+
                        rdfs:label "tax code validation date"@en ,
                                   "ultima data validazione codice fiscale"@it ;
-                       
+
                        rdfs:comment "This property represents the last validation date for the tax code associated with the eInvoiceService."@en ;
-                       
+
                        owl:versionInfo "unstable"@en ;
-                       
+
                        rdfs:comment "Questa proprietà rappresenta l'utima data di validazione del codice fiscale per il servizio di fatturazione elettronica."@it ;
-                       
+
                        owl:versionInfo "provvisoria"@it ;
-                       
+
                        rdfs:range xsd:dateTime ;
-                       
+
                        rdfs:isDefinedBy <https://w3id.org/italia/onto/COV> ;
-                       
+
                        rdfs:domain :eInvoiceService ;
-                       
+
                        rdfs:subPropertyOf ti:modified .
 
 
@@ -1411,22 +1443,22 @@ ti:atTime rdf:type owl:ObjectProperty ;
 ###  https://w3id.org/italia/onto/COV/totalAmount
 
 :totalAmount rdf:type owl:DatatypeProperty ;
-             
+
              rdfs:label "total amount"@en ,
                         "ammontare totale"@it ;
-             
+
              rdfs:comment "This property represents the total amount of the balance sheet of an organization."@en ;
-             
+
              owl:versionInfo "stable"@en ;
-             
+
              rdfs:comment "Questa proprietà rappresenta l'ammontare totale del bilancio di un'organizzazione."@it ;
-             
+
              owl:versionInfo "stabile"@it ;
-             
+
              rdfs:range xsd:float ;
-             
+
              rdfs:isDefinedBy <https://w3id.org/italia/onto/COV> ;
-             
+
              rdfs:domain :BalanceSheet .
 
 
@@ -1434,22 +1466,22 @@ ti:atTime rdf:type owl:ObjectProperty ;
 ###  https://w3id.org/italia/onto/COV/totalTaxBurden
 
 :totalTaxBurden rdf:type owl:DatatypeProperty ;
-                
+
                 rdfs:label "total tax burden"@en ,
                            "onere complessivo"@it ;
-                
+
                 rdfs:comment "This property is used to model the total tax burden of the year which impacts on the balance of the organization. This data is required by specific Italian law."@en ;
-                
+
                 owl:versionInfo "unstable"@en ;
-                
+
                 rdfs:comment "Questa proprietà rappresenta l'onere complessivo a qualsiasi titolo gravante per l'anno sul bilancio dell'amministrazione. Questa informazione è richiesta per la pubblicazione ai sensi dell’art. 22, c. 2 del d.lgs. n. 33/2013."@it ;
-                
+
                 owl:versionInfo "provvisoria"@it ;
-                
+
                 rdfs:range xsd:float ;
-                
+
                 rdfs:isDefinedBy <https://w3id.org/italia/onto/COV> ;
-                
+
                 rdfs:domain :BalanceSheet .
 
 
@@ -1457,22 +1489,22 @@ ti:atTime rdf:type owl:ObjectProperty ;
 ###  https://w3id.org/italia/onto/COV/yearOfReference
 
 :yearOfReference rdf:type owl:DatatypeProperty ;
-                 
+
                  rdfs:label "year of reference"@en ,
                             "anno di riferimento"@it ;
-                 
+
                  rdfs:comment "This property represents the year of reference for an organization."@en ;
-                 
+
                  owl:versionInfo "stable"@en ;
-                 
+
                  rdfs:comment "Questa proprietà rappresenta l'anno di riferimento per il bilancio di un'organizzazione."@it ;
-                 
+
                  owl:versionInfo "stabile"@it ;
-                 
+
                  rdfs:range xsd:gYear ;
-                 
+
                  rdfs:isDefinedBy <https://w3id.org/italia/onto/COV> ;
-                 
+
                  rdfs:domain :BalanceSheet .
 
 
@@ -1480,15 +1512,15 @@ ti:atTime rdf:type owl:ObjectProperty ;
 ###  https://w3id.org/italia/onto/TI/date
 
 ti:date rdf:type owl:DatatypeProperty ;
-        
-        rdfs:isDefinedBy <htto://dati.gov.it/onto/tiapit/> .
+
+        rdfs:isDefinedBy <https://w3id.org/italia/onto/TI> .
 
 
 
 ###  https://w3id.org/italia/onto/TI/modified
 
 ti:modified rdf:type owl:DatatypeProperty ;
-            
+
             rdfs:isDefinedBy ti: .
 
 
@@ -1496,7 +1528,7 @@ ti:modified rdf:type owl:DatatypeProperty ;
 ###  https://w3id.org/italia/onto/l0/description
 
 l0:description rdf:type owl:DatatypeProperty ;
-               
+
                rdfs:isDefinedBy l0: .
 
 
@@ -1504,7 +1536,7 @@ l0:description rdf:type owl:DatatypeProperty ;
 ###  https://w3id.org/italia/onto/l0/identifier
 
 l0:identifier rdf:type owl:DatatypeProperty ;
-              
+
               rdfs:isDefinedBy l0: .
 
 
@@ -1512,7 +1544,7 @@ l0:identifier rdf:type owl:DatatypeProperty ;
 ###  https://w3id.org/italia/onto/l0/name
 
 l0:name rdf:type owl:DatatypeProperty ;
-        
+
         rdfs:isDefinedBy l0: .
 
 
@@ -1529,22 +1561,22 @@ l0:name rdf:type owl:DatatypeProperty ;
 ###  https://w3id.org/italia/onto/COV/ActivityType
 
 :ActivityType rdf:type owl:Class ;
-              
+
               rdfs:label "Activity Type"@en ,
                          "Tipo attività"@it ;
-              
+
               rdfs:subClassOf l0:Characteristic ;
-              
+
               rdfs:comment "This class represents the type of activities carried out  by the organization. The instances of this class can be modelled as skos concepts of a controlled vocabulary. In the case of private organization, this class is represented by the ATECO 2007 classification. In the case of public organizations, the COFOG classification can be used."@en ;
-              
+
               owl:versionInfo "unstable"@en ;
-              
+
               rdfs:comment "Questa classe rappresenta il tipo di attiità svolta dall'organizzazione. Le istanze di questa classe possono essere rappresentate come concetti dello standard skos di un vocabolario controllato. Nel caso di organizzazioni private (impresa) è necessario utilizzare la classificazione delle attività ATECO. Nel caso di organizzazioni pubbliche si può utilizzare la classificazione COFOG."@it ;
-              
+
               owl:versionInfo "provvisoria"@it ;
-              
+
               prov:wasDerivedFrom <http://www.w3.org/2004/02/skos/core#Concept> ;
-              
+
               rdfs:isDefinedBy <https://w3id.org/italia/onto/COV> .
 
 
@@ -1552,10 +1584,10 @@ l0:name rdf:type owl:DatatypeProperty ;
 ###  https://w3id.org/italia/onto/COV/BalanceSheet
 
 :BalanceSheet rdf:type owl:Class ;
-              
+
               rdfs:label "Balance sheet"@en ,
                          "Bilancio"@it ;
-              
+
               rdfs:subClassOf l0:Object ,
                               [ rdf:type owl:Restriction ;
                                 owl:onProperty :yearOfReference ;
@@ -1571,13 +1603,13 @@ l0:name rdf:type owl:DatatypeProperty ;
                                 owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                                 owl:onDataRange xsd:float
                               ] ;
-              
+
               owl:versionInfo "unstable"@en ;
-              
+
               rdfs:comment "Questa classe rappresenta le principali informazioni sul bilancio dell'organizzazione quali per esempio l'anno di riferimento, l'ammontare totale e l'onere complessivo."@it ;
-              
+
               owl:versionInfo "provvisoria"@it ;
-              
+
               rdfs:isDefinedBy <https://w3id.org/italia/onto/COV> .
 
 
@@ -1585,10 +1617,10 @@ l0:name rdf:type owl:DatatypeProperty ;
 ###  https://w3id.org/italia/onto/COV/ChangeEvent
 
 :ChangeEvent rdf:type owl:Class ;
-             
+
              rdfs:label "Change Event"@en ,
                         "Evento di cambiamento"@it ;
-             
+
              rdfs:subClassOf l0:Event ,
                              [ rdf:type owl:Restriction ;
                                owl:onProperty l0:description ;
@@ -1602,19 +1634,19 @@ l0:name rdf:type owl:DatatypeProperty ;
                                owl:onProperty :orginalOrganization ;
                                owl:allValuesFrom :Organization
                              ] ;
-             
+
              rdfs:comment "Organizations are formed and changed in response to events. This may be the result of new legislation, new policies, taking on new obligations etc. This class captures these events. Currently, the following events have been identified: Foundation, Scission, Merger, Replacement, Closing. This class is defined in the Core Public Organization Vocabulary."@en ;
-             
+
              owl:versionInfo "stable"@en ;
-             
+
              rdfs:comment "Organizzazioni sono formate o cambiano in risposta ad eventi. Questo potrebbe essere il risultato di nuove normative, di nuove obbligazioni, di riassetti ecc. Questa classe mira a catturare questi tipi di eventi di cambiamento nell'organizzazione. In particolare, al momento si sono individuati i seguenti tipi di eventi: Fondazione, Chiusura, Fusione, Scissione, Sostituzione. La semantica di questa classe è la stessa di quella fornita nell'ambito del vocabolario europeo Core Public Organization Vocabulary."@it ;
-             
+
              owl:versionInfo "stabile"@it ;
-             
+
              prov:wasInfluencedBy <http://www.ontologydesignpatterns.org/cp/owl/classification.owl> ;
-             
+
              prov:wasDerivedFrom <http://www.w3.org/ns/org#ChangeEvent> ;
-             
+
              rdfs:isDefinedBy <https://w3id.org/italia/onto/COV> .
 
 
@@ -1622,20 +1654,20 @@ l0:name rdf:type owl:DatatypeProperty ;
 ###  https://w3id.org/italia/onto/COV/Closing
 
 :Closing rdf:type owl:Class ;
-         
+
          rdfs:label "Closing"@en ,
                     "Chiusura"@it ;
-         
+
          rdfs:subClassOf :ChangeEvent ;
-         
+
          rdfs:comment "This class represents the Closing event for an organization."@en ;
-         
+
          owl:versionInfo "stable"@en ;
-         
+
          rdfs:comment "Questa classe rappresenta un evento di Chiusra per un'organizzazione."@it ;
-         
+
          owl:versionInfo "stabile"@it ;
-         
+
          rdfs:isDefinedBy <https://w3id.org/italia/onto/COV> .
 
 
@@ -1643,10 +1675,10 @@ l0:name rdf:type owl:DatatypeProperty ;
 ###  https://w3id.org/italia/onto/COV/Employment
 
 :Employment rdf:type owl:Class ;
-            
+
             rdfs:label "Employment"@en ,
                        "Appartenenza"@it ;
-            
+
             rdfs:subClassOf roapit:TimeIndexedRole ,
                             [ rdf:type owl:Restriction ;
                               owl:onProperty :employmentFor ;
@@ -1668,18 +1700,18 @@ l0:name rdf:type owl:DatatypeProperty ;
                               owl:onClass roapit:Role ;
                               owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger
                             ] ;
-            
+
             rdfs:comment "This class represents the nature of an Agent's membership of an organization. In particular, the class is an n-ary relationship (a situation) that involves an Agent, an Organization, a Role and a Time Period."@en ;
-            
+
             owl:versionInfo "stable"@en ;
-            
+
             rdfs:comment "Questa classe rappresenta la natura di appartenenza di un agente di un'organizzazione. In particolare, la classe è una relazione ennaria che rappresenta una situazione che coinvolge un agente, un'organizzazione, i l ruolo che l'agente ricopre nell'organizzazione ed eventualment eil lasso temporale in cui quel ruolo è svolto. Esempio: la classe consente di rappresentare il ruolo di amministratore delegato  di un'impresa in un certo lasso temporale oppure il ruolo di consigliere in una società partecipata di una pubblica amministrazione in un certo intervallo temporale."@it ;
-            
+
             owl:versionInfo "stabile"@it ;
-            
+
             prov:wasInfluencedBy <http://www.ontologydesignpatterns.org/cp/owl/timeindexedsituation.owl> ,
                                  <http://www.w3.org/ns/org#Membership> ;
-            
+
             rdfs:isDefinedBy <https://w3id.org/italia/onto/COV> .
 
 
@@ -1687,22 +1719,22 @@ l0:name rdf:type owl:DatatypeProperty ;
 ###  https://w3id.org/italia/onto/COV/Foundation
 
 :Foundation rdf:type owl:Class ;
-            
+
             rdfs:label "Foundation"@en ,
                        "Costituzione"@it ;
-            
+
             rdfs:subClassOf :ChangeEvent ;
-            
+
             rdfs:comment "This class represents the foundation event for an organization."@en ;
-            
+
             owl:versionInfo "stable"@en ;
-            
+
             rdfs:comment "Questa classe rappresenta un evento di costituzione di un'organizzazione."@it ;
-            
+
             owl:versionInfo "stabile"@it ;
-            
+
             prov:wasDerivedFrom <http://data.europa.eu/m8g/FoundationEvent> ;
-            
+
             rdfs:isDefinedBy <https://w3id.org/italia/onto/COV> .
 
 
@@ -1710,24 +1742,24 @@ l0:name rdf:type owl:DatatypeProperty ;
 ###  https://w3id.org/italia/onto/COV/Group
 
 :Group rdf:type owl:Class ;
-       
+
        rdfs:label "Group"@en ,
                   "Gruppo"@it ;
-       
+
        rdfs:subClassOf l0:Agent ;
-       
+
        owl:disjointWith :Organization ;
-       
+
        rdfs:comment "This class represents a group, a collection of individual agents. This concept is intentionally quite broad, covering informal and ad-hoc groups, long-lived communities, organizational groups within a workplace, etc."@en ;
-       
+
        owl:versionInfo "unstable"@en ;
-       
+
        rdfs:comment "Questa classe rappresenta un gruppo ossia una collezione di agenti individuatli. Il concetto è volutamente ampio per poter rappresentare gruppi informale ma anche gruppi formati ad-hoc, comunità, ecc."@it ;
-       
+
        owl:versionInfo "provvisoria"@it ;
-       
+
        prov:wasDerivedFrom <http://xmlns.com/foaf/0.1/Group> ;
-       
+
        rdfs:isDefinedBy <https://w3id.org/italia/onto/COV> .
 
 
@@ -1735,51 +1767,51 @@ l0:name rdf:type owl:DatatypeProperty ;
 ###  https://w3id.org/italia/onto/COV/HomogeneousOrganizationalArea
 
 :HomogeneousOrganizationalArea rdf:type owl:Class ;
-                               
+
                                rdfs:label "Homogeneous Organizational Area"@en ,
                                           "Area Organizzativa Omogenea (AOO)"@it ;
-                               
+
                                rdfs:subClassOf :SupportUnit ,
                                                [ rdf:type owl:Restriction ;
                                                  owl:onProperty :AOOIdentifier ;
                                                  owl:cardinality "1"^^xsd:nonNegativeInteger
                                                ] ;
-                               
+
                                owl:disjointWith :Office ;
-                               
+
                                rdfs:comment "This class represents what is called in the italian context the homogeneous organizational area that identifies the protocol office of a public organization. The protocol office manages the documental flows in input and output."@en ;
-                               
+
                                owl:versionInfo "stable"@en ;
-                               
+
                                rdfs:comment "Questa classe rappresenta quello che nel contesto italiano viene chiamato Area Organizzativa Omogenea (AOO).  Le Aree Organizzative Omogenee (AOO) identificano gli uffici di protocollo degli Enti che gestiscono i flussi documentali in entrata e in uscita dall'Ente. Esse sono le vie principali per instaurare rapporti con gli Enti e rappresentano i canali ufficiali per l'invio di istanze e l'avvio di procedimenti amministrativi. Come previsto dall'art. 47 comma 3 del CAD, le Amministrazioni devono istituire e pubblicare nell'IPA almeno una casella di posta elettronica certificata per ciascun registro di protocollo (e quindi per ciascuna AOO)."@it ;
-                               
+
                                owl:versionInfo "stabile"@it ;
-                               
-                               rdfs:isDefinedBy <http://dati.gov.it/onto/covapit/> .
+
+                               rdfs:isDefinedBy <https://w3id.org/italia/onto/COV> .
 
 
 
 ###  https://w3id.org/italia/onto/COV/LegalStatus
 
 :LegalStatus rdf:type owl:Class ;
-             
+
              rdfs:label "Legal Status"@en ,
                         "Forma Giuridica"@it ;
-             
+
              rdfs:subClassOf l0:Characteristic ;
-             
+
              rdfs:comment "This class represents the legal form/status of the private organization. The instances of this class can be represented as skos concepts of a controlled vocabulary."@en ;
-             
+
              owl:versionInfo "stable"@en ;
-             
+
              rdfs:comment "Questa classe rappresenta la forma giuridica di un'organizzazione privata (impresa). Le istanze di questa classe possono essere rappresentate da concetti dello standard skos di un vocabolario controllato. Esempi di forma giuridica per le imprese sono: \"Impresa Individuale\", \"società a responsabilità limitata\", ecc."@it ;
-             
+
              owl:versionInfo "stabile"@it ;
-             
+
              prov:wasDerivedFrom <http://www.w3.org/2004/02/skos/core#Concept> ;
-             
+
              l0:controlledvocabulary <https://w3id.org/italia/controlled-vocabulary/classifications-for-organizations/legal-status> ;
-             
+
              rdfs:isDefinedBy <https://w3id.org/italia/onto/COV> .
 
 
@@ -1787,20 +1819,20 @@ l0:name rdf:type owl:DatatypeProperty ;
 ###  https://w3id.org/italia/onto/COV/Merger
 
 :Merger rdf:type owl:Class ;
-        
+
         rdfs:label "Merger"@en ,
                    "Fusione"@it ;
-        
+
         rdfs:subClassOf :ChangeEvent ;
-        
+
         rdfs:comment "This class represents the merger event for an organization."@en ;
-        
+
         owl:versionInfo "stable"@en ;
-        
+
         rdfs:comment "Questa classe rappresenta un evento di fusione per un'organizzazione."@it ;
-        
+
         owl:versionInfo "stabile"@it ;
-        
+
         rdfs:isDefinedBy <https://w3id.org/italia/onto/COV> .
 
 
@@ -1808,10 +1840,10 @@ l0:name rdf:type owl:DatatypeProperty ;
 ###  https://w3id.org/italia/onto/COV/Office
 
 :Office rdf:type owl:Class ;
-        
+
         rdfs:label "Office"@en ,
-                   "Ufficio (Unità organizzativa)"@it ;
-        
+                   "Ufficio"@it , "Unità organizzativa"@it ;
+
         rdfs:subClassOf :SupportUnit ,
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :officeIdentifier ;
@@ -1827,26 +1859,26 @@ l0:name rdf:type owl:DatatypeProperty ;
                           owl:onClass :HomogeneousOrganizationalArea ;
                           owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger
                         ] ;
-        
+
         rdfs:comment "This class represents a specific office of an organization. In the public organization sector it can be also known as Organizational Unit."@en ;
-        
+
         owl:versionInfo "stable"@en ;
-        
+
         rdfs:comment "Questa classe rappresenta un ufficio dell'organizzazione (nell'ambito delle organizzazioni pubbliche è anche detto unità organizzativa)."@it ;
-        
+
         owl:versionInfo "stabile"@it ;
-        
-        rdfs:isDefinedBy <http://dati.gov.it/onto/covapit/> .
+
+        rdfs:isDefinedBy <https://w3id.org/italia/onto/COV> .
 
 
 
 ###  https://w3id.org/italia/onto/COV/Organization
 
 :Organization rdf:type owl:Class ;
-              
+
               rdfs:label "Organization"@en ,
                          "Organizzazione"@it ;
-              
+
               rdfs:subClassOf l0:Agent ,
                               [ rdf:type owl:Restriction ;
                                 owl:onProperty :resultedFrom ;
@@ -1921,21 +1953,21 @@ l0:name rdf:type owl:DatatypeProperty ;
                                 owl:onProperty :legalName ;
                                 owl:someValuesFrom rdfs:Literal
                               ] ;
-              
+
               rdfs:comment "This class represents an organization, be it public or private, usually registrated in a national public registry (e.g. in Italy \"indice delle PA\" for the public administrations, \"Registro imprese\" for the private organizations. Examples: \"Agenzia per l'Italia Digitale\", \"Comune di Roma\", \"TELECOM ITALIA SPA o TIM S.P.A.\""@en ;
-              
+
               owl:versionInfo "stable"@en ;
-              
+
               rdfs:comment "Questa è la classe che rappresenta un'organizzazione, sia essa pubblica che privata, tipicamente registrata all'interno di un registro pubblico (e.g., indice della PA per le pubbliche amministrazioni, registro imprese per le organizzazioni private). Esempio \"Agenzia per l'Ialia Digitale\", \"Comune di Bologna\", \"TELECOM ITALIA SPA O TIM S.P.A.\""@it ;
-              
+
               owl:versionInfo "stabile"@it ;
-              
+
               prov:wasDerivedFrom <http://schema.org/Organization> ;
-              
+
               prov:wasInfluencedBy <http://www.ontologydesignpatterns.org/cp/owl/classification.owl> ;
-              
+
               prov:wasDerivedFrom <http://www.w3.org/ns/org#Organization> ;
-              
+
               rdfs:isDefinedBy <https://w3id.org/italia/onto/COV> .
 
 
@@ -1943,10 +1975,10 @@ l0:name rdf:type owl:DatatypeProperty ;
 ###  https://w3id.org/italia/onto/COV/Participation
 
 :Participation rdf:type owl:Class ;
-               
+
                rdfs:label "Participation"@en ,
                           "Partecipazione"@it ;
-               
+
                rdfs:subClassOf l0:Event ,
                                [ rdf:type owl:Restriction ;
                                  owl:onProperty :hasParticipationType ;
@@ -1968,17 +2000,17 @@ l0:name rdf:type owl:DatatypeProperty ;
                                  owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                                  owl:onDataRange xsd:float
                                ] ;
-               
+
                rdfs:comment "This class represents a participation of an organization in another. It is a n-ary relationship (situation) between organizations in a certain time interval. The participation can be of a specific type. Example is the participation of a municipality in a controlled enterprise that provides public services such as water management or public transportation."@en ;
-               
+
                owl:versionInfo "unstable"@en ;
-               
+
                rdfs:comment "Questa classe rappresenta la situazione di partecipazione di un'organizzazione in un'altra. E? quindi una relazione ennaria tra organizazzioni in un certo lasso temporale. La partecipazione può essere di un certo tipo. Esempio: la classe può essere utilizzata per rappresentare le informazioni di partecipazione (e.g., quote) di comuni in società controllate/partecipate (società dei trasporti pubblici, società di gestione dell'acqua, ecc.)"@it ;
-               
+
                owl:versionInfo "provvisoria"@it ;
-               
+
                prov:wasInfluencedBy <http://www.ontologydesignpatterns.org/cp/owl/timeindexedsituation.owl> ;
-               
+
                rdfs:isDefinedBy <https://w3id.org/italia/onto/COV> .
 
 
@@ -1986,20 +2018,20 @@ l0:name rdf:type owl:DatatypeProperty ;
 ###  https://w3id.org/italia/onto/COV/ParticipationType
 
 :ParticipationType rdf:type owl:Class ;
-                   
+
                    rdfs:label "Participation Type"@en ,
                               "Tipo Partecipazione"@it ;
-                   
+
                    rdfs:subClassOf l0:Characteristic ;
-                   
+
                    rdfs:comment "This class represents the type of participation of an organization in another. The class is materialized with two possible values \"Direct\" \"Indirect\" participation."@en ;
-                   
+
                    owl:versionInfo "stable"@en ;
-                   
+
                    rdfs:comment "Questa classe rappresenta il tipo di partecipazione di un'organizzazione in un'altra. Essa assume al momento due valori \"Diretta\" e \"Indiretta\"."@it ;
-                   
+
                    owl:versionInfo "stabile"@it ;
-                   
+
                    rdfs:isDefinedBy <https://w3id.org/italia/onto/COV> .
 
 
@@ -2007,24 +2039,24 @@ l0:name rdf:type owl:DatatypeProperty ;
 ###  https://w3id.org/italia/onto/COV/PrivateOrgActivityType
 
 :PrivateOrgActivityType rdf:type owl:Class ;
-                        
+
                         rdfs:label "Private Organization Activity Type"@en ,
                                    "Tipo Attività Organizzazione Privata"@it ;
-                        
+
                         rdfs:subClassOf :ActivityType ;
-                        
+
                         prov:wasDerivedFrom "http://www.w3.org/2004/02/skos/core#Concept" ;
-                        
+
                         rdfs:comment "This class specializes the class Activity Type in order to represent the classification of the private organization based on its purpose or activity type. In the Italian context the istances of this class are those of the controlled vocabulary Ateco2007 (Italian variant of NACE v2.0) used in the Italian company registry. The controlled vocabulary is available at the following URI: https://w3id.org/italia/controlled-vocabulary/classifications-for-organizations/ateco-2007"@en ;
-                        
+
                         owl:versionInfo "unstable"@en ;
-                        
+
                         rdfs:comment "Questa classe specializza la classe Tipo di Attività per poter rappresentare la classificazione di un organizzazione privata sulla base del proprio scopo o tipo di attività svolta. Nel contesto italiano, le istanze di questa classe sono quelle del vocabolario controllato Ateco2007 utilizzato nel registro imprese. Il vocabolario controllato è disponibile al seguente URI https://w3id.org/italia/controlled-vocabulary/classifications-for-organizations/ateco-2007"@it ;
-                        
+
                         owl:versionInfo "provvisoria"@it ;
-                        
+
                         l0:controlledvocabulary <https://w3id.org/italia/controlled-vocabulary/classifications-for-organizations/ateco-2007> ;
-                        
+
                         rdfs:isDefinedBy <https://w3id.org/italia/onto/COV> .
 
 
@@ -2032,12 +2064,15 @@ l0:name rdf:type owl:DatatypeProperty ;
 ###  https://w3id.org/italia/onto/COV/PrivateOrganization
 
 :PrivateOrganization rdf:type owl:Class ;
-                     
+
                      rdfs:label "Company"@en ,
                                 "Private Organization"@en ,
                                 "Azienda"@it ,
+                                "Associazione privata"@it ,
+                                "Impresa"@it ,
+                                "Ditta"@it ,
                                 "Organizzazione Privata"@it ;
-                     
+
                      rdfs:subClassOf :Organization ,
                                      [ rdf:type owl:Restriction ;
                                        owl:onProperty :startingActivityDate ;
@@ -2060,19 +2095,19 @@ l0:name rdf:type owl:DatatypeProperty ;
                                        owl:onProperty :REANumber ;
                                        owl:someValuesFrom rdfs:Literal
                                      ] ;
-                     
+
                      owl:disjointWith :PublicOrganization ;
-                     
+
                      rdfs:comment "This class represents a private organization as registered in a national public registry."@en ;
-                     
+
                      owl:versionInfo "stable"@en ;
-                     
+
                      rdfs:comment "Questa classe rappresenta un'organizzazione privata ufficialmente registrata presso un registro nazionale (registro imprese)."@it ;
-                     
+
                      owl:versionInfo "stabile"@it ;
-                     
+
                      prov:wasInfluencedBy <http://www.w3.org/ns/regorg#RegisteredOrganization> ;
-                     
+
                      rdfs:isDefinedBy <https://w3id.org/italia/onto/COV> .
 
 
@@ -2080,24 +2115,24 @@ l0:name rdf:type owl:DatatypeProperty ;
 ###  https://w3id.org/italia/onto/COV/PublicOrgActivityType
 
 :PublicOrgActivityType rdf:type owl:Class ;
-                       
+
                        rdfs:label "Public Organization Activity Type"@en ,
                                   "Tipo Attività Organizzazione Pubblica"@it ;
-                       
+
                        rdfs:subClassOf :ActivityType ;
-                       
+
                        prov:wasDerivedFrom "http://www.w3.org/2004/02/skos/core#Concept" ;
-                       
+
                        rdfs:comment "This class specializes the class Activity Type in order to represent the classification of the public organization based on its purpose or activity type. In the Italian context the instances of this calss are those of the controlled vocabulary Cofog2009 available at the following URI: https://w3id.org/italia/controlled-vocabulary/classifications-for-organizations/cofog-2009"@en ;
-                       
+
                        owl:versionInfo "unstable"@en ;
-                       
+
                        rdfs:comment "Questa classe specializza la classe Tipo di Attività per poter rappresentare la classificazione di un organizzazione pubblica sulla base del proprio scopo o tipo di attività svolta. Nel contesto italiano le istanze di questa classe sono quelle del vocabolario controllato Cofog2009 disponibile al seguente URI: https://w3id.org/italia/controlled-vocabulary/classifications-for-organizations/cofog-2009"@it ;
-                       
+
                        owl:versionInfo "provvisoria"@it ;
-                       
+
                        l0:controlledvocabulary <https://w3id.org/italia/controlled-vocabulary/classifications-for-organizations/cofog-2009> ;
-                       
+
                        rdfs:isDefinedBy <https://w3id.org/italia/onto/COV> .
 
 
@@ -2105,11 +2140,11 @@ l0:name rdf:type owl:DatatypeProperty ;
 ###  https://w3id.org/italia/onto/COV/PublicOrganization
 
 :PublicOrganization rdf:type owl:Class ;
-                    
+
                     rdfs:label "public organization"@en ,
                                "Amministrazione pubblica"@it ,
                                "organizzazione pubblica"@it ;
-                    
+
                     rdfs:subClassOf :Organization ,
                                     [ rdf:type owl:Restriction ;
                                       owl:onProperty :hasPublicOrgActivityType ;
@@ -2124,19 +2159,19 @@ l0:name rdf:type owl:DatatypeProperty ;
                                       owl:onClass :PublicOrganizationCategory ;
                                       owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger
                                     ] ;
-                    
+
                     rdfs:comment """This class represents a public organization. Thus, a public administration is a public organization. Any other organization that is defined public can be modelled using this class.
 This class is derived from the Core Public Organization Vocabulary."""@en ;
-                    
+
                     owl:versionInfo "stable"@en ;
-                    
+
                     rdfs:comment """Questa classe rappresenta un'organizzazione pubblica. Una pubblica amministrazione e qualsiasi altra organizzazione di nautra pubblica può essere modellata utilizzando questa classe. In generale,  individui di questa classe sono organizzazioni registrate presso l'Indice della PA (IPA).
 Questa classe deriva dall'analoga classe del Core Public Organization Vocabulary."""@it ;
-                    
+
                     owl:versionInfo "stabile"@it ;
-                    
+
                     prov:wasDerivedFrom <http://data.europa.eu/m8g/PublicOrganisation> ;
-                    
+
                     rdfs:isDefinedBy <https://w3id.org/italia/onto/COV> .
 
 
@@ -2144,24 +2179,24 @@ Questa classe deriva dall'analoga classe del Core Public Organization Vocabulary
 ###  https://w3id.org/italia/onto/COV/PublicOrganizationCategory
 
 :PublicOrganizationCategory rdf:type owl:Class ;
-                            
+
                             rdfs:label "Public Organization Category"@en ,
                                        "Categoria Organizzazione Pubblica"@it ;
-                            
+
                             rdfs:subClassOf l0:Characteristic ;
-                            
+
                             rdfs:comment "This class represents the category of the public organization. The instances of this class can be modelled as concept of the skos standard of a controlled vocabulary."@en ;
-                            
+
                             owl:versionInfo "stable"@en ;
-                            
+
                             rdfs:comment "Questa classe rappresenta la cateogoria dell'organizzazione pubblica. Le istanze di questa classe possono essere modellate come concetti dello standard skos di un vocabolario controllato. Esempi includono: \"Agenzie ed Enti per il Turismo\", \"Città Metropolitane\", \"Presidenza del Consiglio, Minsiteri e Avvocatura dello Stato\"."@it ;
-                            
+
                             owl:versionInfo "stable"@it ;
-                            
+
                             prov:wasDerivedFrom <http://www.w3.org/2004/02/skos/core#Concept> ;
-                            
+
                             l0:controlledvocabulary <https://w3id.org/italia/controlled-vocabulary/classifications-for-organizations/S13> ;
-                            
+
                             rdfs:isDefinedBy <https://w3id.org/italia/onto/COV> .
 
 
@@ -2169,20 +2204,20 @@ Questa classe deriva dall'analoga classe del Core Public Organization Vocabulary
 ###  https://w3id.org/italia/onto/COV/PublicPrivateOrganization
 
 :PublicPrivateOrganization rdf:type owl:Class ;
-                           
+
                            rdfs:label "Public-Private Organization"@en ,
                                       "Organizzazione Pubbico-Privata"@it ;
-                           
+
                            rdfs:subClassOf :Organization ;
-                           
+
                            rdfs:comment "This class represents hybrid organization public-private"@en ;
-                           
+
                            owl:versionInfo "unstable"@en ;
-                           
+
                            rdfs:comment "Questa classe rappresenta organizzazioni miste pubblico-private."@it ;
-                           
+
                            owl:versionInfo "provvisoria"@it ;
-                           
+
                            rdfs:isDefinedBy <https://w3id.org/italia/onto/COV> .
 
 
@@ -2190,20 +2225,20 @@ Questa classe deriva dall'analoga classe del Core Public Organization Vocabulary
 ###  https://w3id.org/italia/onto/COV/Replacement
 
 :Replacement rdf:type owl:Class ;
-             
+
              rdfs:label "Replacement"@en ,
                         "Sostituzione"@it ;
-             
+
              rdfs:subClassOf :ChangeEvent ;
-             
+
              rdfs:comment "This class represents a replacement event for an organization."@en ;
-             
+
              owl:versionInfo "stable"@en ;
-             
+
              rdfs:comment "Questa classe rappresenta un evento di sostituzione per un'organizzazione. Come la sostituzione di una pubblica amministrazioe con un'altra."@it ;
-             
+
              owl:versionInfo "stabile"@it ;
-             
+
              rdfs:isDefinedBy <https://w3id.org/italia/onto/COV> .
 
 
@@ -2211,20 +2246,20 @@ Questa classe deriva dall'analoga classe del Core Public Organization Vocabulary
 ###  https://w3id.org/italia/onto/COV/Scission
 
 :Scission rdf:type owl:Class ;
-          
+
           rdfs:label "Scission"@en ,
                      "Scissione"@it ;
-          
+
           rdfs:subClassOf :ChangeEvent ;
-          
+
           rdfs:comment "This class represents a scission event for an organization."@en ;
-          
+
           owl:versionInfo "stable"@en ;
-          
+
           rdfs:comment "Questa classe rappresenta una scissione per un'organizzaizone."@it ;
-          
+
           owl:versionInfo "stabile"@it ;
-          
+
           rdfs:isDefinedBy <https://w3id.org/italia/onto/COV> .
 
 
@@ -2232,20 +2267,20 @@ Questa classe deriva dall'analoga classe del Core Public Organization Vocabulary
 ###  https://w3id.org/italia/onto/COV/Status
 
 :Status rdf:type owl:Class ;
-        
+
         rdfs:label "Status"@en ,
                    "Stato"@it ;
-        
+
         rdfs:subClassOf l0:Characteristic ;
-        
+
         rdfs:comment "This class is used to represent the status of a private organization. This class assumes the following values: \"registered\" \"cancelled\" and \"under registration\"."@en ;
-        
+
         owl:versionInfo "unstable"@en ;
-        
+
         rdfs:comment "Questa classe rappresenta lo stato di un'organizzazione privata (impresa). Essa assume i seguenti valori predefiniti: \"registrata\" \"cancellata\" \"in fase di registrazione\"."@it ;
-        
+
         owl:versionInfo "provvisoria"@it ;
-        
+
         rdfs:isDefinedBy <https://w3id.org/italia/onto/COV> .
 
 
@@ -2253,24 +2288,24 @@ Questa classe deriva dall'analoga classe del Core Public Organization Vocabulary
 ###  https://w3id.org/italia/onto/COV/SupportUnit
 
 :SupportUnit rdf:type owl:Class ;
-             
+
              rdfs:label "Department"@en ,
                         "Support Unit (Department)"@en ,
                         "Dipartimento"@it ,
-                        "Unità di supporto (dipartimento)"@it ;
-             
+                        "Unità di supporto"@it , "Divisione"@it ;
+
              rdfs:subClassOf :Organization ;
-             
+
              rdfs:comment "This class represents a generic support unit/division of an organization. An alternative name can be department. In the italian context there are two main types of support unit; namely, the homogeneous organizational area and the office. This is an astract class that is instantitate with the two above two types."@en ;
-             
+
              owl:versionInfo "stable"@en ;
-             
+
              rdfs:comment "Questa classe rappresenta una generica unità di supporto o unità/divisione dell'organizzazione. Un nome alternativo potrebbe essere anche Dipartimento. Essa, nel contesto italiano, si suddivide in due tipologie di unità di supporto: Area Organizzativa Omogena e Ufficio (unità organizzativa). Questa è una classe astratta istanziata nei dati con i due precedenti tipi."@it ;
-             
+
              owl:versionInfo "stabile"@it ;
-             
+
              prov:wasInfluencedBy <http://www.w3.org/ns/org#OrganizationalUnit> ;
-             
+
              rdfs:isDefinedBy <https://w3id.org/italia/onto/COV> .
 
 
@@ -2278,10 +2313,10 @@ Questa classe deriva dall'analoga classe del Core Public Organization Vocabulary
 ###  https://w3id.org/italia/onto/COV/eInvoiceService
 
 :eInvoiceService rdf:type owl:Class ;
-                 
+
                  rdfs:label "eInvoice Service"@en ,
                             "Servizio Fatturazione Elettronica"@it ;
-                 
+
                  rdfs:subClassOf l0:Object ,
                                  [ rdf:type owl:Restriction ;
                                    owl:onProperty :taxCodeEInvoiceService ;
@@ -2297,15 +2332,15 @@ Questa classe deriva dall'analoga classe del Core Public Organization Vocabulary
                                    owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                                    owl:onDataRange xsd:dateTime
                                  ] ;
-                 
+
                  rdfs:comment "This class represents the Italian references for the eInvoice service, as defined in the national registry of public administrations named IPA."@en ;
-                 
+
                  owl:versionInfo "stable"@en ;
-                 
+
                  rdfs:comment "Questa classe rappresenta il servizio di fatturazione elettronica così come definito nell'ambito dell'indice della pubblica amministrazione (IPA)."@it ;
-                 
+
                  owl:versionInfo "stabile"@it ;
-                 
+
                  rdfs:isDefinedBy <https://w3id.org/italia/onto/COV> .
 
 
@@ -2313,10 +2348,7 @@ Questa classe deriva dall'analoga classe del Core Public Organization Vocabulary
 ###  https://w3id.org/italia/onto/RO/Role
 
 roapit:Role rdf:type owl:Class ;
-            
-            rdfs:comment "This class is defined in http://dati.gov.it/onto/roapit/ and, in this ontology,  is used in the n-ary relationship involving the Employment, the Agent and the Organization. It is used to model the Role of a member of the organization in a certain time interval."@en ,
-                         "Questa classe è definita in http://dati.gov.it/onto/roapit/ e, in questa ontologia, rappresenta il ruolo nella relazione ennaria con l'Agente, l'Organizzazione, e la situazione di Appartenenza. Essa è utilizzata per modellare il Ruolo di un membro dell'organizzazione in un certo intervallo temporale."@it ;
-            
+
             rdfs:isDefinedBy roapit: .
 
 
@@ -2324,7 +2356,7 @@ roapit:Role rdf:type owl:Class ;
 ###  https://w3id.org/italia/onto/RO/TimeIndexedRole
 
 roapit:TimeIndexedRole rdf:type owl:Class ;
-                       
+
                        rdfs:isDefinedBy roapit: .
 
 
@@ -2332,7 +2364,7 @@ roapit:TimeIndexedRole rdf:type owl:Class ;
 ###  https://w3id.org/italia/onto/SM/Image
 
 smapit:Image rdf:type owl:Class ;
-             
+
              rdfs:isDefinedBy smapit: .
 
 
@@ -2340,7 +2372,7 @@ smapit:Image rdf:type owl:Class ;
 ###  https://w3id.org/italia/onto/SM/OnlineContactPoint
 
 smapit:OnlineContactPoint rdf:type owl:Class ;
-                          
+
                           rdfs:isDefinedBy smapit: .
 
 
@@ -2348,7 +2380,7 @@ smapit:OnlineContactPoint rdf:type owl:Class ;
 ###  https://w3id.org/italia/onto/TI/TimeInterval
 
 ti:TimeInterval rdf:type owl:Class ;
-                
+
                 rdfs:isDefinedBy ti: .
 
 
@@ -2356,7 +2388,7 @@ ti:TimeInterval rdf:type owl:Class ;
 ###  https://w3id.org/italia/onto/l0/Agent
 
 l0:Agent rdf:type owl:Class ;
-         
+
          rdfs:isDefinedBy l0: .
 
 
@@ -2364,7 +2396,7 @@ l0:Agent rdf:type owl:Class ;
 ###  https://w3id.org/italia/onto/l0/Characteristic
 
 l0:Characteristic rdf:type owl:Class ;
-                  
+
                   rdfs:isDefinedBy l0: .
 
 
@@ -2372,7 +2404,7 @@ l0:Characteristic rdf:type owl:Class ;
 ###  https://w3id.org/italia/onto/l0/Event
 
 l0:Event rdf:type owl:Class ;
-         
+
          rdfs:isDefinedBy l0: .
 
 
@@ -2380,7 +2412,7 @@ l0:Event rdf:type owl:Class ;
 ###  https://w3id.org/italia/onto/l0/Location
 
 l0:Location rdf:type owl:Class ;
-            
+
             rdfs:isDefinedBy l0: .
 
 
@@ -2388,7 +2420,7 @@ l0:Location rdf:type owl:Class ;
 ###  https://w3id.org/italia/onto/l0/Object
 
 l0:Object rdf:type owl:Class ;
-          
+
           rdfs:isDefinedBy l0: .
 
 
@@ -2400,6 +2432,103 @@ l0:Object rdf:type owl:Class ;
 #    Individuals
 #
 #################################################################
+
+
+
+### Metadata individuals
+###
+###
+###  http://spcdata.digitpa.gov.it/browse/page/Amministrazione/agid
+<http://spcdata.digitpa.gov.it/browse/page/Amministrazione/agid> rdf:type owl:NamedIndividual ,
+                                                                          dcatapit:Agent ,
+                                                                          foaf:Agent ;
+                                                                 dct:identifier "agid" ;
+                                                                 foaf:name "Agenzia per l'Italia Digitale"@it ,
+                                                                           "Italian Digital Agency"@en .
+
+
+###  https://w3id,org/italia/data/distribution/COV-JSON-LD
+<https://w3id,org/italia/data/distribution/COV-JSON-LD> rdf:type owl:NamedIndividual ,
+                                                                    admsapit:SemanticAssetDistribution ;
+                                                           dct:description "Questa è la distribuzione JSON-LD dell'ontologia delle organizzazioni (pubbliche e private)"@it ,
+                                                                           "This is the distribution in JSON-LD of the Organization (Public or Private) ontology"@en ;
+                                                           dct:format <http://publications.europa.eu/resource/authority/file-type/JSON_LD> ;
+                                                           dct:license <https://w3id.org/italia/controlled-vocabulary/licences/A21_CCBY40> ;
+                                                           dct:title "Distribuzione JSON-LD ontologia COV-AP_IT"@it ,
+                                                                     "JSON-LD distribution of COV-AP_IT Ontology"@en ;
+                                                           dcat:accessURL <https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/COV/latest> ;
+                                                           dcat:downloadURL <https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/COV/COV-AP_IT.jsonld> .
+
+
+###  https://w3id,org/italia/data/distribution/COV-RDF-TURTLE
+<https://w3id,org/italia/data/distribution/COV-RDF-TURTLE> rdf:type owl:NamedIndividual ,
+                                                                       admsapit:SemanticAssetDistribution ;
+                                                              dct:description "Questa è la distribuzione RDF/Turtle dell'ontologia delle organizzazioni (pubbliche e private)"@it ,
+                                                                              "This is the distribution in RDF/turtle of the Organization (Public or Private) ontology"@en ;
+                                                              dct:format <http://publications.europa.eu/resource/authority/file-type/RDF_TURTLE> ;
+                                                              dct:license <https://w3id.org/italia/controlled-vocabulary/licences/A21_CCBY40> ;
+                                                              dct:title "Distribuzione RDF/Turtle ontologia COV-AP_IT"@it ,
+                                                                        "RDF/Turtle distribution of COV-AP_IT Ontology"@en ;
+                                                              dcat:accessURL <https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/COV/latest> ;
+                                                              dcat:downloadURL <https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/COV/latest/COV-AP_IT.ttl> .
+
+
+###  https://w3id,org/italia/data/distribution/COV-RDF-XML
+<https://w3id,org/italia/data/distribution/COV-RDF-XML> rdf:type owl:NamedIndividual ,
+                                                                    admsapit:SemanticAssetDistribution ;
+                                                           dct:description "Questa è la distribuzione RDF/XML dell'ontologia dei organizzazioni (pubbliche e private)"@it ,
+                                                                           "This is the distribution in RDF/XML of the Organization (Public or Private) ontology"@en ;
+                                                           dct:format <http://publications.europa.eu/resource/authority/file-type/RDF_XML> ;
+                                                           dct:license <https://w3id.org/italia/controlled-vocabulary/licences/A21_CCBY40> ;
+                                                           dct:title "Distribuzione RDF/XML ontologia COV-AP_IT"@it ,
+                                                                     "RDF/XML distribution of COV-AP_IT Ontology"@en ;
+                                                           dcat:accessURL <https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/COV/latest> ;
+                                                           dcat:downloadURL <https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/COV/latest/COV-AP_IT.rdf> .
+
+
+###  https://w3id.org/italia/data/contact-point/onto-agid
+<https://w3id.org/italia/data/contact-point/onto-agid> rdf:type owl:NamedIndividual ,
+                                                                dcatapit:Organization ,
+                                                                vcard:Kind ,
+                                                                vcard:Organization ;
+                                                       vcard:fn "banche dati e open data" ;
+                                                       vcard:hasEmail <mailto:info@dati.gov.it> .
+
+
+###  https://w3id.org/italia/data/organization/public-organization/td
+<https://w3id.org/italia/data/organization/public-organization/td> rdf:type owl:NamedIndividual ,
+                                                                            dcatapit:Agent ,
+                                                                            foaf:Agent ;
+                                                                   dct:identifier "TD" ;
+                                                                   foaf:name "Digital Transformation Team"@en ,
+                                                                             "Team per la Trasformazione Digitale"@it .
+
+
+###  https://w3id.org/italia/data/organization/support-unit/cnr-Z6HZEH/stlab
+<https://w3id.org/italia/data/organization/support-unit/cnr-Z6HZEH/stlab> rdf:type owl:NamedIndividual ,
+                                                                                   dcatapit:Agent ;
+                                                                          foaf:name "Institute of Cognitive Sciences and Technologies of the Italian Research Council (CNR) - Semantic Technology Laboratory (STLab)"@en ,
+                                                                                  "Istituto di Scienze e Tecnologie della Cognizione del CNR - Semantic Technology Lab (STLab)"@it ;
+                                                                          dct:identifier "cnr - Z6HZEH - STLab" .
+
+
+###  https://w3id.org/italia/data/project/DAF
+<https://w3id.org/italia/data/project/DAF> rdf:type owl:NamedIndividual ,
+                                                    admsapit:Project ;
+                                           foaf:name "Data & Analytics Framework"@it .
+
+
+###  https://w3id.org/italia/data/project/OntoPiA
+<https://w3id.org/italia/data/project/OntoPiA> rdf:type owl:NamedIndividual ,
+                                                        admsapit:Project ;
+                                               l0:name "OntoPiA - la rete di ontologie della pubblica amministrazione italiana"@it .
+
+
+###  https://w3id.org/italia/onto/COV
+<https://w3id.org/italia/onto/COV> rdf:type owl:NamedIndividual ,
+                                                       admsapit:SemanticAsset .
+
+
 
 
 ###  https://w3id.org/italia/onto/COV/Cancelled
@@ -2419,16 +2548,16 @@ l0:Object rdf:type owl:Class ;
 ###  https://w3id.org/italia/onto/COV/Facebook
 
 :Facebook rdf:type owl:NamedIndividual ;
-          
-          rdfs:isDefinedBy <http://dati.gov.it/onto/covapit/> .
+
+          rdfs:isDefinedBy <https://w3id.org/italia/onto/COV> .
 
 
 
 ###  https://w3id.org/italia/onto/COV/GooglePlus
 
 :GooglePlus rdf:type owl:NamedIndividual ;
-            
-            rdfs:isDefinedBy <http://dati.gov.it/onto/covapit/> .
+
+            rdfs:isDefinedBy <https://w3id.org/italia/onto/COV> .
 
 
 
@@ -2442,8 +2571,8 @@ l0:Object rdf:type owl:Class ;
 ###  https://w3id.org/italia/onto/COV/LinkedIn
 
 :LinkedIn rdf:type owl:NamedIndividual ;
-          
-          rdfs:isDefinedBy <http://dati.gov.it/onto/covapit/> .
+
+          rdfs:isDefinedBy <https://w3id.org/italia/onto/COV> .
 
 
 
@@ -2457,8 +2586,8 @@ l0:Object rdf:type owl:Class ;
 ###  https://w3id.org/italia/onto/COV/Twitter
 
 :Twitter rdf:type owl:NamedIndividual ;
-         
-         rdfs:isDefinedBy <http://dati.gov.it/onto/covapit/> .
+
+         rdfs:isDefinedBy <https://w3id.org/italia/onto/COV> .
 
 
 
@@ -2472,8 +2601,8 @@ l0:Object rdf:type owl:Class ;
 ###  https://w3id.org/italia/onto/COV/YouTube
 
 :YouTube rdf:type owl:NamedIndividual ;
-         
-         rdfs:isDefinedBy <http://dati.gov.it/onto/covapit/> .
+
+         rdfs:isDefinedBy <https://w3id.org/italia/onto/COV> .
 
 
 
@@ -2485,4 +2614,3 @@ l0:Object rdf:type owl:Class ;
 ] .
 
 ###  Generated by the OWL API (version 3.5.1) http://owlapi.sourceforge.net
-
