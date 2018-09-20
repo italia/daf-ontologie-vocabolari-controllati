@@ -1,5 +1,7 @@
 @prefix : <https://w3id.org/italia/onto/Language/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
 @prefix l0: <https://w3id.org/italia/onto/l0/> .
+@prefix CLV: <https://w3id.org/italia/onto/CLV/> .
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -14,7 +16,7 @@
 @base <https://w3id.org/italia/onto/Language> .
 
 <https://w3id.org/italia/onto/Language> rdf:type owl:Ontology ;
-                                         owl:versionIRI <https://w3id.org/italia/onto/Language/0.1> ;
+                                         owl:versionIRI : ;
                                          owl:imports <https://w3id.org/italia/onto/CLV> ,
                                                      <https://w3id.org/italia/onto/l0> ;
                                          dct:modified "2018-06-27"^^xsd:date ;
@@ -160,7 +162,7 @@ l0:name rdf:type owl:AnnotationProperty .
 ###  https://w3id.org/italia/onto/Language/spokenIn
 :spokenIn rdf:type owl:ObjectProperty ;
           rdfs:domain :Language ;
-          rdfs:range <https://w3id.org/italia/onto/CLV/Country> ;
+          rdfs:range CLV:Country ;
           rdfs:comment "Property that links a language to the country in which it is spoken'."@en ,
                        "Proprietà che lega una lingua al paese in cui la lingua è parlata'."@it ;
           rdfs:isDefinedBy <https://w3id.org/italia/onto/Language> ;
@@ -205,7 +207,7 @@ admsapit:SemanticAssetDistribution rdf:type owl:Class .
 
 
 ###  https://w3id.org/italia/onto/CLV/Country
-<https://w3id.org/italia/onto/CLV/Country> rdf:type owl:Class .
+CLV:Country rdf:type owl:Class .
 
 
 ###  https://w3id.org/italia/onto/Language/Language
@@ -217,7 +219,7 @@ admsapit:SemanticAssetDistribution rdf:type owl:Class .
                           ] ,
                           [ rdf:type owl:Restriction ;
                             owl:onProperty :spokenIn ;
-                            owl:allValuesFrom <https://w3id.org/italia/onto/CLV/Country>
+                            owl:allValuesFrom CLV:Country
                           ] ;
           rdfs:comment "Questa classe è utilizzata per rappresentare una lingua (e.g., italiano, francese, tedesco, ecc.)."@it ,
                        "This class is used to model a language (e.g., Italian, French, German, etc.)"@en ;
@@ -250,8 +252,17 @@ l0:Characteristic rdf:type owl:Class .
                                                                            "Italian Digital Agency"@en .
 
 
-###  https://w3id,org/italia/data/distribution/LangAPIT-JSON-LD
-<https://w3id,org/italia/data/distribution/LangAPIT-JSON-LD> rdf:type owl:NamedIndividual ,
+###  https://w3id.org/italia/data/contact-point/onto-agid
+<https://w3id.org/italia/data/contact-point/onto-agid> rdf:type owl:NamedIndividual ,
+                                                                <http://dati.gov.it/onto/dcatapit#Organization> ,
+                                                                vcard:Kind ,
+                                                                vcard:Organization ;
+                                                       vcard:fn "banche dati e open data" ;
+                                                       vcard:hasEmail <mailto:info@dati.gov.it> .
+
+
+###  https://w3id.org/italia/data/distribution/LangAPIT-JSON-LD
+<https://w3id.org/italia/data/distribution/LangAPIT-JSON-LD> rdf:type owl:NamedIndividual ,
                                                                       admsapit:SemanticAssetDistribution ;
                                                              dct:description "Questa è la distribuzione JSON-LD dell'ontologia delle lingue"@it ,
                                                                              "This is the distribution in JSON-LD of the Language ontology"@en ;
@@ -263,8 +274,8 @@ l0:Characteristic rdf:type owl:Class .
                                                              dcat:downloadURL <https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/Language/latest/Language-AP_IT.jsonld> .
 
 
-###  https://w3id,org/italia/data/distribution/LangAPIT-RDF-TURTLE
-<https://w3id,org/italia/data/distribution/LangAPIT-RDF-TURTLE> rdf:type owl:NamedIndividual ,
+###  https://w3id.org/italia/data/distribution/LangAPIT-RDF-TURTLE
+<https://w3id.org/italia/data/distribution/LangAPIT-RDF-TURTLE> rdf:type owl:NamedIndividual ,
                                                                          admsapit:SemanticAssetDistribution ;
                                                                 dct:description "Questa è la distribuzione RDF/Turtle dell'ontologia delle lingue"@it ,
                                                                                 "This is the distribution in RDF/turtle of the Language ontology"@en ;
@@ -276,8 +287,8 @@ l0:Characteristic rdf:type owl:Class .
                                                                 dcat:downloadURL <https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/Language/latest/Language-AP_IT.ttl> .
 
 
-###  https://w3id,org/italia/data/distribution/LangAPIT-RDF-XML
-<https://w3id,org/italia/data/distribution/LangAPIT-RDF-XML> rdf:type owl:NamedIndividual ,
+###  https://w3id.org/italia/data/distribution/LangAPIT-RDF-XML
+<https://w3id.org/italia/data/distribution/LangAPIT-RDF-XML> rdf:type owl:NamedIndividual ,
                                                                       admsapit:SemanticAssetDistribution ;
                                                              dct:description "Questa è la distribuzione RDF/XML dell'ontologia delle lingue"@it ,
                                                                              "This is the distribution in RDF/XML of the Language ontology"@en ;
@@ -287,15 +298,6 @@ l0:Characteristic rdf:type owl:Class .
                                                                        "RDF/XML distribution of Lang-AP_IT Ontology"@en ;
                                                              dcat:accessURL <https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/Language/latest> ;
                                                              dcat:downloadURL <https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/Language/latest/Language-AP_IT.rdf> .
-
-
-###  https://w3id.org/italia/data/contact-point/onto-agid
-<https://w3id.org/italia/data/contact-point/onto-agid> rdf:type owl:NamedIndividual ,
-                                                                <http://dati.gov.it/onto/dcatapit#Organization> ,
-                                                                vcard:Kind ,
-                                                                vcard:Organization ;
-                                                       vcard:fn "banche dati e open data" ;
-                                                       vcard:hasEmail <mailto:info@dati.gov.it> .
 
 
 ###  https://w3id.org/italia/data/organization/public-organization/td
