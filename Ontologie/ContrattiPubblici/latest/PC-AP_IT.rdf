@@ -1,0 +1,1573 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://w3id.org/italia/onto/pcapit#"
+     xml:base="http://w3id.org/italia/onto/pcapit"
+     xmlns:l0="http://dati.gov.it/onto/l0/"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:terms="http://purl.org/dc/terms/"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:dc="http://purl.org/dc/elements/1.1/">
+    <owl:Ontology rdf:about="http://w3id.org/italia/onto/pcapit">
+        <owl:versionIRI rdf:resource="http://w3id.org/italia/onto/"/>
+        <owl:imports rdf:resource="http://dati.gov.it/onto/covapit/"/>
+        <owl:imports rdf:resource="http://dati.gov.it/onto/tiapit"/>
+        <owl:imports rdf:resource="http://dati.gov.it/onto/l0/"/>
+        <rdfs:comment xml:lang="en">This is the ontology of the Italian public contracts.</rdfs:comment>
+        <rdfs:label xml:lang="it">Ontologia dei contratti pubblici italiani</rdfs:label>
+        <owl:versionInfo xml:lang="en">unstable</owl:versionInfo>
+        <terms:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2018-04-27</terms:issued>
+        <rdfs:label xml:lang="en">Italian public contracts ontology</rdfs:label>
+        <owl:versionInfo xml:lang="it">instabile</owl:versionInfo>
+        <terms:license rdf:resource="https://creativecommons.org/licenses/by/4.0/"/>
+        <rdfs:isDefinedBy rdf:resource="http://w3id.org/italia/onto/"/>
+        <dc:creator xml:lang="en">CSI Piemonte</dc:creator>
+        <dc:creator xml:lang="en">Synapta Srl</dc:creator>
+        <rdfs:comment xml:lang="it">Questa è l&apos;ontologia dei contratti pubblici italiani.</rdfs:comment>
+        <owl:versionInfo xml:lang="it">Versione 0.1 - 27 Aprile 2018</owl:versionInfo>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://dati.gov.it/onto/l0/controlledVocabulary -->
+
+    <owl:AnnotationProperty rdf:about="http://dati.gov.it/onto/l0/controlledVocabulary"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Datatypes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.w3.org/2001/XMLSchema#boolean -->
+
+    <rdfs:Datatype rdf:about="http://www.w3.org/2001/XMLSchema#boolean"/>
+    
+
+
+    <!-- http://www.w3.org/2001/XMLSchema#date -->
+
+    <rdfs:Datatype rdf:about="http://www.w3.org/2001/XMLSchema#date"/>
+    
+
+
+    <!-- http://www.w3.org/2001/XMLSchema#float -->
+
+    <rdfs:Datatype rdf:about="http://www.w3.org/2001/XMLSchema#float"/>
+    
+
+
+    <!-- http://www.w3.org/2001/XMLSchema#string -->
+
+    <rdfs:Datatype rdf:about="http://www.w3.org/2001/XMLSchema#string"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://w3id.org/italia/onto/actualizes -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/italia/onto/actualizes">
+        <rdfs:domain rdf:resource="http://w3id.org/italia/onto/Procedure"/>
+        <rdfs:range rdf:resource="http://w3id.org/italia/onto/Intervention"/>
+        <rdfs:comment xml:lang="it">La proprietà che lega una procedura di realizzazione a un intervento che realizza.</rdfs:comment>
+        <rdfs:comment xml:lang="en">The property that links the procedure to the intervention actualized by the procedure.</rdfs:comment>
+        <rdfs:label xml:lang="en">actualizes</rdfs:label>
+        <rdfs:label xml:lang="it">realizza</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://w3id.org/italia/onto/approvedBy -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/italia/onto/approvedBy">
+        <rdfs:domain rdf:resource="http://w3id.org/italia/onto/PaymentCertificate"/>
+        <rdfs:range rdf:resource="http://w3id.org/italia/onto/WorkProgressReport"/>
+        <rdfs:comment xml:lang="it">La proprietà che collega il certificato di pagamento al SAL (Stato Avanzamento Lavori) documento che contiene la delibera al pagamento stesso.</rdfs:comment>
+        <rdfs:comment xml:lang="en">The property that links the certificate of payment to the work progress report whereby the payment is approved.</rdfs:comment>
+        <rdfs:label xml:lang="en">approved by</rdfs:label>
+        <rdfs:label xml:lang="it">deliberato in SAL</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://w3id.org/italia/onto/bidder -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/italia/onto/bidder">
+        <rdfs:domain rdf:resource="http://w3id.org/italia/onto/Tender"/>
+        <rdfs:range rdf:resource="http://dati.gov.it/onto/covapit/Organization"/>
+        <rdfs:comment xml:lang="it">La proprietà che indica l&apos;organizzazione offerente di un&apos;offerta.</rdfs:comment>
+        <rdfs:comment xml:lang="en">The property that links the tender to its bidder.</rdfs:comment>
+        <rdfs:label xml:lang="en">bidder</rdfs:label>
+        <rdfs:label xml:lang="it">offerente</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://w3id.org/italia/onto/changedBy -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/italia/onto/changedBy">
+        <owl:inverseOf rdf:resource="http://w3id.org/italia/onto/hasOriginalSummary"/>
+        <rdfs:domain rdf:resource="http://w3id.org/italia/onto/EconomicSummary"/>
+        <rdfs:range rdf:resource="http://w3id.org/italia/onto/ChangeEvent"/>
+        <rdfs:comment xml:lang="it">Questa proprietà è l&apos;inversa di &quot;prospetto economico di origine&quot; e indica un evento che ha contribuito al cambiamento di questo prospetto economico.</rdfs:comment>
+        <rdfs:comment xml:lang="en">This property is the inverse of &quot;has original summary&quot; and determines the change event which resulted in a change to this economic summary.</rdfs:comment>
+        <rdfs:label xml:lang="it">cambiato da</rdfs:label>
+        <rdfs:label xml:lang="en">changed by</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://w3id.org/italia/onto/hasAwardCriteria -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/italia/onto/hasAwardCriteria">
+        <rdfs:domain rdf:resource="http://w3id.org/italia/onto/Procedure"/>
+        <rdfs:range rdf:resource="http://w3id.org/italia/onto/AwardCriteria"/>
+        <rdfs:comment xml:lang="it">La proprietà che determina il criterio di aggiudicazione della procedura di realizzazione. Tale proprietà si applica solo nel caso di procedure che prevedono gare con bando e conseguente aggiudicazione, e fa riferimento a un vocabolario controllato.</rdfs:comment>
+        <rdfs:comment xml:lang="en">The property that determines the award criteria of the procedure. This property should be used in the case of procedures that include public calls followed by an awarding.</rdfs:comment>
+        <rdfs:label xml:lang="it">ha criterio di aggiudicazione</rdfs:label>
+        <rdfs:label xml:lang="en">has award criteria</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://w3id.org/italia/onto/hasCPV -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/italia/onto/hasCPV">
+        <rdfs:domain rdf:resource="http://w3id.org/italia/onto/Contract"/>
+        <rdfs:domain rdf:resource="http://w3id.org/italia/onto/Intervention"/>
+        <rdfs:domain rdf:resource="http://w3id.org/italia/onto/Notice"/>
+        <rdfs:domain rdf:resource="http://w3id.org/italia/onto/Procedure"/>
+        <rdfs:range rdf:resource="http://w3id.org/italia/onto/CPV"/>
+        <rdfs:comment xml:lang="it">La proprietà che associa un intervento, procedura di realizzazione, bando o contratto a un identificativo del vocabolario controllato dei CPV (Common Procurement Vocabulary), il sistema di classificazione per gli appalti pubblici.</rdfs:comment>
+        <rdfs:comment xml:lang="en">The property that links an intervention, procedure, notice or contract to the identifier within the controlled vocabulary of CPV (Common Procurement Vocabulary), a code describing the main object of a public procurement contract.</rdfs:comment>
+        <rdfs:label xml:lang="it">ha CPV</rdfs:label>
+        <rdfs:label xml:lang="en">has CPV</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://w3id.org/italia/onto/hasChangeDocument -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/italia/onto/hasChangeDocument">
+        <rdfs:domain rdf:resource="http://w3id.org/italia/onto/Contract"/>
+        <rdfs:domain rdf:resource="http://w3id.org/italia/onto/Intervention"/>
+        <rdfs:domain rdf:resource="http://w3id.org/italia/onto/Procedure"/>
+        <rdfs:domain rdf:resource="http://w3id.org/italia/onto/Project"/>
+        <rdfs:range rdf:resource="http://w3id.org/italia/onto/ModificationDocument"/>
+        <rdfs:comment xml:lang="it">La proprietà che indica il documento che descrive una modifica alle caratteristiche di un Progetto, Intervento, Procedura di realizzazione o Contratto.</rdfs:comment>
+        <rdfs:comment xml:lang="en">The property that determines the document describing a change to the characteristics of a project, intervention, procedure or contract.</rdfs:comment>
+        <rdfs:label xml:lang="it">ha documento di modifica</rdfs:label>
+        <rdfs:label xml:lang="en">has change document</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://w3id.org/italia/onto/hasContract -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/italia/onto/hasContract">
+        <rdfs:subPropertyOf rdf:resource="http://w3id.org/italia/onto/hasDocument"/>
+        <rdfs:domain rdf:resource="http://w3id.org/italia/onto/Procedure"/>
+        <rdfs:range rdf:resource="http://w3id.org/italia/onto/Contract"/>
+        <rdfs:comment xml:lang="it">La proprietà che determina il legame tra la procedura di realizzazione e il relativo contratto.</rdfs:comment>
+        <rdfs:comment xml:lang="en">The property that determines the link between a contract and the relative procedure.</rdfs:comment>
+        <rdfs:label xml:lang="it">ha contratto</rdfs:label>
+        <rdfs:label xml:lang="en">has contract</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://w3id.org/italia/onto/hasContractingAuthority -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/italia/onto/hasContractingAuthority">
+        <rdfs:domain rdf:resource="http://w3id.org/italia/onto/Procedure"/>
+        <rdfs:range rdf:resource="http://dati.gov.it/onto/covapit/Organization"/>
+        <rdfs:comment xml:lang="it">La proprietà che indica l&apos;istituzione che emette il contratto pubblico, riceve le offerte e sceglie il fornitore idoneo sulla base delle condizioni definite dal contratto.</rdfs:comment>
+        <rdfs:comment xml:lang="en">The property that determines the institution which issues a public contract, receives tenders and chooses a suitable supplier on the base of the conditions given by the contract.</rdfs:comment>
+        <rdfs:label xml:lang="it">ha stazione appaltante</rdfs:label>
+        <rdfs:label xml:lang="en">has contracting authority</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://w3id.org/italia/onto/hasDocument -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/italia/onto/hasDocument">
+        <rdfs:domain rdf:resource="http://w3id.org/italia/onto/Procedure"/>
+        <rdfs:range rdf:resource="http://w3id.org/italia/onto/Document"/>
+        <rdfs:comment xml:lang="it">La proprietà che indica gli atti emessi dalla stazione appaltante nell&apos;espletamento della procedura di realizzazione.</rdfs:comment>
+        <rdfs:comment xml:lang="en">The properties that links the procedure to the documents issued by the contracting authority during the course of the procedure.</rdfs:comment>
+        <rdfs:label xml:lang="it">ha atto</rdfs:label>
+        <rdfs:label xml:lang="it">has document</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://w3id.org/italia/onto/hasEconomicSummary -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/italia/onto/hasEconomicSummary">
+        <rdfs:domain rdf:resource="http://w3id.org/italia/onto/Contract"/>
+        <rdfs:domain rdf:resource="http://w3id.org/italia/onto/Intervention"/>
+        <rdfs:domain rdf:resource="http://w3id.org/italia/onto/Procedure"/>
+        <rdfs:domain rdf:resource="http://w3id.org/italia/onto/Project"/>
+        <rdfs:range rdf:resource="http://w3id.org/italia/onto/EconomicSummary"/>
+        <rdfs:comment xml:lang="it">Questa proprietà indica il prospetto economico di un progetto, intervento, procedura di realizzazione, o contratto.</rdfs:comment>
+        <rdfs:comment xml:lang="en">This property represents the economic summary of a project, intervention, procedure or contract.</rdfs:comment>
+        <rdfs:label xml:lang="it">ha prospetto economico</rdfs:label>
+        <rdfs:label xml:lang="en">has economic summary</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://w3id.org/italia/onto/hasFrameworkAgreement -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/italia/onto/hasFrameworkAgreement">
+        <rdfs:domain rdf:resource="http://w3id.org/italia/onto/Procedure"/>
+        <rdfs:range rdf:resource="http://w3id.org/italia/onto/FrameworkAgreement"/>
+        <rdfs:comment xml:lang="it">La proprietà che lega un&apos;istanza di procedura di realizzazione a un accordo quadro o convenzione.</rdfs:comment>
+        <rdfs:comment xml:lang="en">The properties that links the procedure to its framework agreement.</rdfs:comment>
+        <rdfs:label xml:lang="it">ha accordo quadro</rdfs:label>
+        <rdfs:label xml:lang="en">has framework agreement</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://w3id.org/italia/onto/hasNotice -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/italia/onto/hasNotice">
+        <rdfs:subPropertyOf rdf:resource="http://w3id.org/italia/onto/hasDocument"/>
+        <rdfs:domain rdf:resource="http://w3id.org/italia/onto/Procedure"/>
+        <rdfs:range rdf:resource="http://w3id.org/italia/onto/Notice"/>
+        <rdfs:comment xml:lang="it">La proprietà che indica il collegamento tra la procedura di realizzazione e un bando di gara o avviso. Diverse procedure di realizzazione possono fare riferimento ad un medesimo bando, allo stesso modo in cui, per quanto riguarda i dati applicativi SIMOG, più lotti (ciascuno dei quali corrisponde a una procedura di realizzazione) fanno riferimento allo stesso bando di gara.</rdfs:comment>
+        <rdfs:comment xml:lang="en">The property that determines links the procedure to the related announcement or notice. More procedure may be linked to the same announcement or notice.</rdfs:comment>
+        <rdfs:label xml:lang="it">ha bando</rdfs:label>
+        <rdfs:label xml:lang="en">has notice</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://w3id.org/italia/onto/hasNoticeType -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/italia/onto/hasNoticeType">
+        <rdfs:domain rdf:resource="http://w3id.org/italia/onto/Notice"/>
+        <rdfs:range rdf:resource="http://w3id.org/italia/onto/NoticeType"/>
+        <rdfs:comment xml:lang="it">La proprietà che indica il tipo di bando.</rdfs:comment>
+        <rdfs:comment xml:lang="en">The property that links a notice to its type.</rdfs:comment>
+        <rdfs:label xml:lang="it">ha tipo di bando</rdfs:label>
+        <rdfs:label xml:lang="en">has notice type</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://w3id.org/italia/onto/hasOriginalSummary -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/italia/onto/hasOriginalSummary">
+        <rdfs:domain rdf:resource="http://w3id.org/italia/onto/ChangeEvent"/>
+        <rdfs:range rdf:resource="http://w3id.org/italia/onto/EconomicSummary"/>
+        <rdfs:comment xml:lang="it">Questa proprietà è l&apos;inversa di &quot;cambiata da&quot; e collega un evento di cambiamento al prospetto economico precedente al cambiamento stesso.</rdfs:comment>
+        <rdfs:comment xml:lang="en">This property is the inverse of &quot;changed by&quot; and links a change event to the economic summary preceding the change event.</rdfs:comment>
+        <rdfs:label xml:lang="it">ha prospetto economico di origine</rdfs:label>
+        <rdfs:label xml:lang="en">has original summary</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://w3id.org/italia/onto/hasOutcome -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/italia/onto/hasOutcome">
+        <rdfs:domain rdf:resource="http://w3id.org/italia/onto/Procedure"/>
+        <rdfs:range rdf:resource="http://w3id.org/italia/onto/ProcedureOutcome"/>
+        <rdfs:comment xml:lang="it">La proprietà che collega la procedura di realizzazione all&apos;esito (aggiudicazione, affidamento o accordo-quadro) della procedura stessa.</rdfs:comment>
+        <rdfs:comment xml:lang="en">The property that links the procedure to its outcome (open tender award, direct award or framework agreement).</rdfs:comment>
+        <rdfs:label xml:lang="it">ha esito</rdfs:label>
+        <rdfs:label xml:lang="en">has outcome</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://w3id.org/italia/onto/hasPaymentCertificate -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/italia/onto/hasPaymentCertificate">
+        <rdfs:domain rdf:resource="http://w3id.org/italia/onto/Procedure"/>
+        <rdfs:range rdf:resource="http://w3id.org/italia/onto/PaymentCertificate"/>
+        <rdfs:comment xml:lang="it">La proprietà che collega la procedura di realizzazione al certificato di pagamento deliberato in un SAL.</rdfs:comment>
+        <rdfs:comment xml:lang="en">The property that links the procedure to the certificate of payment approved by the related progress of work report.</rdfs:comment>
+        <rdfs:label xml:lang="it">ha certificato di pagamento</rdfs:label>
+        <rdfs:label xml:lang="en">has certificate of payment</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://w3id.org/italia/onto/hasProcedureType -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/italia/onto/hasProcedureType">
+        <rdfs:domain rdf:resource="http://w3id.org/italia/onto/Procedure"/>
+        <rdfs:range rdf:resource="http://w3id.org/italia/onto/ProcedureType"/>
+        <rdfs:comment xml:lang="it">La proprietà che specifica i criteri di scelta di un contraente validi in una procedura di realizzazione.</rdfs:comment>
+        <rdfs:comment xml:lang="en">The property that links the procedure to its type.</rdfs:comment>
+        <rdfs:label xml:lang="it">ha scelta contraente</rdfs:label>
+        <rdfs:label xml:lang="en">has type of procedure</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://w3id.org/italia/onto/hasProject -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/italia/onto/hasProject">
+        <rdfs:domain rdf:resource="http://w3id.org/italia/onto/Intervention"/>
+        <rdfs:range rdf:resource="http://w3id.org/italia/onto/Project"/>
+        <rdfs:comment xml:lang="it">Questa proprietà è l&apos;inversa di &quot;è progetto di&quot; e lega un intervento a un progetto.</rdfs:comment>
+        <rdfs:comment xml:lang="en">This property is the inverse of &quot;is project for&quot; and links an intervention to a project.</rdfs:comment>
+        <rdfs:label xml:lang="it">ha progetto</rdfs:label>
+        <rdfs:label xml:lang="en">has project</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://w3id.org/italia/onto/hasResolution -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/italia/onto/hasResolution">
+        <rdfs:domain rdf:resource="http://w3id.org/italia/onto/Contract"/>
+        <rdfs:range rdf:resource="http://w3id.org/italia/onto/Resolution"/>
+        <rdfs:comment xml:lang="it">La proprietà che collega il contratto all&apos;evento che determina la risoluzione del contatto stesso</rdfs:comment>
+        <rdfs:comment xml:lang="en">The property that links the contract to the event that determines its resolution.</rdfs:comment>
+        <rdfs:label xml:lang="it">ha risoluzione</rdfs:label>
+        <rdfs:label xml:lang="en">has resolution</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://w3id.org/italia/onto/hasResolutionToContract -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/italia/onto/hasResolutionToContract">
+        <rdfs:subPropertyOf rdf:resource="http://w3id.org/italia/onto/hasDocument"/>
+        <rdfs:domain rdf:resource="http://w3id.org/italia/onto/Procedure"/>
+        <rdfs:range rdf:resource="http://w3id.org/italia/onto/ResolutionToContract"/>
+        <rdfs:comment xml:lang="it">La proprietà che determina il legame tra la procedura di realizzazione e una determina a contrarre relativa.</rdfs:comment>
+        <rdfs:comment xml:lang="en">The property that links the procedure to the document whereby the contracting authority expresses its resoultion to contract.</rdfs:comment>
+        <rdfs:label xml:lang="it">ha determina a contrarre</rdfs:label>
+        <rdfs:label xml:lang="en">has resolution to contract</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://w3id.org/italia/onto/hasResultingSummary -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/italia/onto/hasResultingSummary">
+        <owl:inverseOf rdf:resource="http://w3id.org/italia/onto/resultedFrom"/>
+        <rdfs:domain rdf:resource="http://w3id.org/italia/onto/ChangeEvent"/>
+        <rdfs:range rdf:resource="http://w3id.org/italia/onto/EconomicSummary"/>
+        <rdfs:comment xml:lang="it">Questa proprietà è l&apos;inversa di &quot;risultante da&quot; e indica un prospetto economico creato o ridefinito in seguito a un evento di cambiamento.</rdfs:comment>
+        <rdfs:comment xml:lang="en">This property is the inverse of &quot;resulted from&quot; and determines the economic summary which was created or changed as a result of the change event.</rdfs:comment>
+        <rdfs:label xml:lang="it">ha prospetto risultante</rdfs:label>
+        <rdfs:label xml:lang="en">has resulting summary</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://w3id.org/italia/onto/hasWorkProgressReport -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/italia/onto/hasWorkProgressReport">
+        <rdfs:domain rdf:resource="http://w3id.org/italia/onto/Procedure"/>
+        <rdfs:range rdf:resource="http://w3id.org/italia/onto/WorkProgressReport"/>
+        <rdfs:comment xml:lang="it">La proprietà che collega la procedura di realizzazione al documento che ne certifica lo Stato di Avanzamento Lavori (SAL).</rdfs:comment>
+        <rdfs:comment xml:lang="en">The property that links the procedure to its work progress report.</rdfs:comment>
+        <rdfs:label xml:lang="it">ha SAL</rdfs:label>
+        <rdfs:label xml:lang="en">has work progress report</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://w3id.org/italia/onto/isPrimaryTopicOf -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/italia/onto/isPrimaryTopicOf">
+        <rdfs:domain rdf:resource="http://w3id.org/italia/onto/ChangeEvent"/>
+        <rdfs:domain rdf:resource="http://w3id.org/italia/onto/Resolution"/>
+        <rdfs:range rdf:resource="http://w3id.org/italia/onto/ModificationDocument"/>
+        <rdfs:comment xml:lang="it">La proprietà che collega un evento (per esempio un evento di cambiamento del propetto economico, oppure un evento di risoluzione di un contratto) al documento di modifica che ne descrive le caratteristiche.</rdfs:comment>
+        <rdfs:comment xml:lang="en">The property that links an event (e.g., an event that modifies the economic summary of a procedure or the event that determines the resolution of a contract) to the document describing the characteristics of the event.</rdfs:comment>
+        <rdfs:label xml:lang="en">is primary topic of</rdfs:label>
+        <rdfs:label xml:lang="it">è argomento principale di</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://w3id.org/italia/onto/isProjectFor -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/italia/onto/isProjectFor">
+        <rdfs:domain rdf:resource="http://w3id.org/italia/onto/Project"/>
+        <rdfs:range rdf:resource="http://w3id.org/italia/onto/Intervention"/>
+        <rdfs:comment xml:lang="it">Questa proprietà è l&apos;inversa di &quot;ha progetto&quot; e lega un progetto a un intervento.</rdfs:comment>
+        <rdfs:comment xml:lang="en">This property is the inverse of &quot;has project&quot; and links a project to an intervention. </rdfs:comment>
+        <rdfs:label xml:lang="en">is project for</rdfs:label>
+        <rdfs:label xml:lang="it">è progetto per</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://w3id.org/italia/onto/resolutionReason -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/italia/onto/resolutionReason">
+        <rdfs:domain rdf:resource="http://w3id.org/italia/onto/ResolutionDocument"/>
+        <rdfs:range rdf:resource="http://w3id.org/italia/onto/ResolutionReason"/>
+        <rdfs:comment xml:lang="it">La proprietà che collega la risoluzione del contratto all&apos;identificativo nel vocabolario controllato delle motivazioni delle risoluzioni.</rdfs:comment>
+        <rdfs:comment xml:lang="en">The property that links the resolution to the identifier within the controlled vocabulary of resolution reasons.</rdfs:comment>
+        <rdfs:label xml:lang="it">ha motivazione</rdfs:label>
+        <rdfs:label xml:lang="en">has resolution motivation</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://w3id.org/italia/onto/resultedFrom -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/italia/onto/resultedFrom">
+        <rdfs:domain rdf:resource="http://w3id.org/italia/onto/EconomicSummary"/>
+        <rdfs:range rdf:resource="http://w3id.org/italia/onto/ChangeEvent"/>
+        <rdfs:comment xml:lang="it">Questa proprietà è l&apos;inversa di &quot;prospetto risultante&quot; e lega un prospetto economico all&apos;evento di cambiamento che lo ha ridefinito.</rdfs:comment>
+        <rdfs:comment xml:lang="en">This property is the inverse of &quot;has resulting summary&quot; and links an economic summary to the change event that ridefined it.</rdfs:comment>
+        <rdfs:label xml:lang="en">resulted from</rdfs:label>
+        <rdfs:label xml:lang="it">risultante da</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://w3id.org/italia/onto/selectedTender -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/italia/onto/selectedTender">
+        <rdfs:domain rdf:resource="http://w3id.org/italia/onto/ProcedureOutcome"/>
+        <rdfs:range rdf:resource="http://w3id.org/italia/onto/Tender"/>
+        <rdfs:comment xml:lang="it">La proprietà che indica l&apos;offerta selezionata per la realizzazione dell&apos;intervento, in seguito a un processo di aggiudicazione, affidamento o adesione ad un accordo quadro.</rdfs:comment>
+        <rdfs:comment xml:lang="en">The property that determines the selected tender submitted by a bidder.</rdfs:comment>
+        <rdfs:label xml:lang="it">ha offerta selezionata</rdfs:label>
+        <rdfs:label xml:lang="en">has selected tender</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://w3id.org/italia/onto/suspensionReason -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/italia/onto/suspensionReason">
+        <rdfs:domain rdf:resource="http://w3id.org/italia/onto/SuspensionDocument"/>
+        <rdfs:range rdf:resource="http://w3id.org/italia/onto/SuspensionReason"/>
+        <rdfs:comment xml:lang="it">La proprietà che collega la sospensione all&apos;dentificativo nel vocabolario controllato delle motivazioni delle sospensioni.</rdfs:comment>
+        <rdfs:comment xml:lang="en">The property that links the suspension to the identifier within the controlled vocabulary of suspension reasons.</rdfs:comment>
+        <rdfs:label xml:lang="it">ha motivazione</rdfs:label>
+        <rdfs:label xml:lang="en">has suspension reason</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://w3id.org/italia/onto/variantReason -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/italia/onto/variantReason">
+        <rdfs:domain rdf:resource="http://w3id.org/italia/onto/VariantDocument"/>
+        <rdfs:range rdf:resource="http://w3id.org/italia/onto/VariantReason"/>
+        <rdfs:comment xml:lang="it">La proprietà che collega la variante all&apos;identificativo nel vocabolario controllato delle motivazioni delle varianti.</rdfs:comment>
+        <rdfs:comment xml:lang="en">The property that links the variant to the identifier within the controlled vocabulary of variant reasons.</rdfs:comment>
+        <rdfs:label xml:lang="it">ha motivazione</rdfs:label>
+        <rdfs:label xml:lang="en">has variant reason</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://dati.gov.it/onto/tiapitdate -->
+
+    <owl:DatatypeProperty rdf:about="http://dati.gov.it/onto/tiapitdate">
+        <rdfs:isDefinedBy rdf:resource="htto://dati.gov.it/onto/tiapit/"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://dati.gov.it/onto/tiapitduration -->
+
+    <owl:DatatypeProperty rdf:about="http://dati.gov.it/onto/tiapitduration"/>
+    
+
+
+    <!-- http://dati.gov.it/onto/tiapitendTime -->
+
+    <owl:DatatypeProperty rdf:about="http://dati.gov.it/onto/tiapitendTime"/>
+    
+
+
+    <!-- http://dati.gov.it/onto/tiapitissued -->
+
+    <owl:DatatypeProperty rdf:about="http://dati.gov.it/onto/tiapitissued"/>
+    
+
+
+    <!-- http://dati.gov.it/onto/tiapitstartTime -->
+
+    <owl:DatatypeProperty rdf:about="http://dati.gov.it/onto/tiapitstartTime"/>
+    
+
+
+    <!-- http://dati.gov.it/onto/l0/description -->
+
+    <owl:DatatypeProperty rdf:about="http://dati.gov.it/onto/l0/description">
+        <rdfs:isDefinedBy rdf:resource="http://dati.gov.it/onto/l0/"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://dati.gov.it/onto/l0/identifier -->
+
+    <owl:DatatypeProperty rdf:about="http://dati.gov.it/onto/l0/identifier">
+        <rdfs:isDefinedBy rdf:resource="http://dati.gov.it/onto/l0/"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://dati.gov.it/onto/l0/name -->
+
+    <owl:DatatypeProperty rdf:about="http://dati.gov.it/onto/l0/name">
+        <rdfs:isDefinedBy rdf:resource="http://dati.gov.it/onto/l0/"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://w3id.org/italia/onto/additionalDays -->
+
+    <owl:DatatypeProperty rdf:about="http://w3id.org/italia/onto/additionalDays">
+        <rdfs:subPropertyOf rdf:resource="http://dati.gov.it/onto/tiapitduration"/>
+        <rdfs:domain rdf:resource="http://w3id.org/italia/onto/VariantDocument"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+        <rdfs:comment xml:lang="it">Questa proprietà indica i giorni aggiuntivi necessari per il completamento dell&apos;intervento, indicati nel documento di variante.</rdfs:comment>
+        <rdfs:comment xml:lang="en">The property that represents the additional days needed to complete the intervention, as reported by the variant document.</rdfs:comment>
+        <rdfs:label xml:lang="en">additional days</rdfs:label>
+        <rdfs:label xml:lang="it">giorni aggiuntivi</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://w3id.org/italia/onto/agreedAmount -->
+
+    <owl:DatatypeProperty rdf:about="http://w3id.org/italia/onto/agreedAmount">
+        <rdfs:domain rdf:resource="http://w3id.org/italia/onto/ProcedureOutcome"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+        <rdfs:comment xml:lang="it">La proprietà che determina il prezzo concordato (anche detto importo di aggiudicazione, nel caso di gare con bando) per la realizzazione dell&apos;intervento.</rdfs:comment>
+        <rdfs:comment xml:lang="en">The property that represents the agreed amount for the actualization of the intervention.</rdfs:comment>
+        <rdfs:label xml:lang="en">agreed amount</rdfs:label>
+        <rdfs:label xml:lang="it">prezzo concordato</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://w3id.org/italia/onto/auctionBaseAmount -->
+
+    <owl:DatatypeProperty rdf:about="http://w3id.org/italia/onto/auctionBaseAmount">
+        <rdfs:domain rdf:resource="http://w3id.org/italia/onto/Procedure"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+        <rdfs:comment xml:lang="it">La proprietà che determina l&apos;importo base dell&apos;asta.</rdfs:comment>
+        <rdfs:comment xml:lang="en">The property that determines the auction base amount.</rdfs:comment>
+        <rdfs:label xml:lang="en">auction base amount</rdfs:label>
+        <rdfs:label xml:lang="it">importo base asta</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://w3id.org/italia/onto/availableAmount -->
+
+    <owl:DatatypeProperty rdf:about="http://w3id.org/italia/onto/availableAmount">
+        <rdfs:domain rdf:resource="http://w3id.org/italia/onto/EconomicSummary"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+        <rdfs:comment xml:lang="it">La proprietà che determina la somma a disposizione per il completamento di un progetto, intervento, procedura o contratto, nell&apos;ambito di una versione del prospetto economico.</rdfs:comment>
+        <rdfs:comment xml:lang="en">The property that represents the amount available to complete a project, intervention, procedure or contract. It is valid within a version of the economic summary.</rdfs:comment>
+        <rdfs:label xml:lang="en">available amount</rdfs:label>
+        <rdfs:label xml:lang="it">somma a disposizione</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://w3id.org/italia/onto/currentAvailableAmount -->
+
+    <owl:DatatypeProperty rdf:about="http://w3id.org/italia/onto/currentAvailableAmount">
+        <rdfs:domain rdf:resource="http://w3id.org/italia/onto/Procedure"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+        <rdfs:comment xml:lang="it">La proprietà che indica la somma attualmente a disposizione per il completamento della procedura, riportata nell&apos;ultima versione del prospetto economico</rdfs:comment>
+        <rdfs:comment xml:lang="en">The property that represents the amount currently available for the completion of the procedure. The date is imported from the last economic summary related to the procedure.</rdfs:comment>
+        <rdfs:label xml:lang="it">attuale somma a disposizione</rdfs:label>
+        <rdfs:label xml:lang="en">current available amount</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://w3id.org/italia/onto/currentPlanningAmount -->
+
+    <owl:DatatypeProperty rdf:about="http://w3id.org/italia/onto/currentPlanningAmount">
+        <rdfs:domain rdf:resource="http://w3id.org/italia/onto/Procedure"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+        <rdfs:comment xml:lang="it">La proprietà che determina l&apos;importo attualmente previsto per la progettazione riportato nell&apos;ultima versione del prospetto economico</rdfs:comment>
+        <rdfs:comment xml:lang="en">The property that represents the currently estimated planning amount needed for the completion of the procedure. The date is imported from the last economic summary related to the procedure.</rdfs:comment>
+        <rdfs:label xml:lang="it">attuale importo progettazione</rdfs:label>
+        <rdfs:label xml:lang="en">current planning amount</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://w3id.org/italia/onto/currentProcedureEstimatedEndDate -->
+
+    <owl:DatatypeProperty rdf:about="http://w3id.org/italia/onto/currentProcedureEstimatedEndDate">
+        <rdfs:subPropertyOf rdf:resource="http://dati.gov.it/onto/tiapitendTime"/>
+        <rdfs:domain rdf:resource="http://w3id.org/italia/onto/Procedure"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
+        <rdfs:comment xml:lang="it">La proprietà che indica la data entro la quale si prevede di portare a termine la procedura di realizzazione di un intervento. Si deduce tale data dall&apos;attuale prospetto economico della procedura, o comunque si intende che essa indica la più recente e valida previsione fatta.</rdfs:comment>
+        <rdfs:comment xml:lang="en">The property that represents the estimated end date of the procedure. The date is imported from the last economic summary related to the procedure.</rdfs:comment>
+        <rdfs:label xml:lang="it">attuale previsione di fine procedura</rdfs:label>
+        <rdfs:label xml:lang="en">current procedure estimated end date</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://w3id.org/italia/onto/currentSafetyAmount -->
+
+    <owl:DatatypeProperty rdf:about="http://w3id.org/italia/onto/currentSafetyAmount">
+        <rdfs:domain rdf:resource="http://w3id.org/italia/onto/Procedure"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+        <rdfs:comment xml:lang="it">La proprietà che determina l&apos;importo attualmente previsto per la sicurezza riportato nell&apos;ultima versione del prospetto economico</rdfs:comment>
+        <rdfs:comment xml:lang="en">The property that represents the currently estimated safety amount needed for the completion of the procedure. The date is imported from the last economic summary related to the procedure.</rdfs:comment>
+        <rdfs:label xml:lang="it">attuale importo sicurezza</rdfs:label>
+        <rdfs:label xml:lang="en">current safety amount</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://w3id.org/italia/onto/currentServicesAmount -->
+
+    <owl:DatatypeProperty rdf:about="http://w3id.org/italia/onto/currentServicesAmount">
+        <rdfs:domain rdf:resource="http://w3id.org/italia/onto/Procedure"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+        <rdfs:comment xml:lang="it">La proprietà che determina l&apos;importo attualmente stimato per i servizi, riportato nell&apos;ultima versione del prospetto economico.</rdfs:comment>
+        <rdfs:comment xml:lang="en">The property that represents the currently estimated services amount needed for the completion of the procedure. The date is imported from the last economic summary related to the procedure.</rdfs:comment>
+        <rdfs:label xml:lang="it">attuale importo servizi</rdfs:label>
+        <rdfs:label xml:lang="en">current services amount</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://w3id.org/italia/onto/currentSuppliesAmount -->
+
+    <owl:DatatypeProperty rdf:about="http://w3id.org/italia/onto/currentSuppliesAmount">
+        <rdfs:domain rdf:resource="http://w3id.org/italia/onto/Procedure"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+        <rdfs:comment xml:lang="it">La proprietà che determina l&apos;importo attualmente stimato per le forniture, riportato nell&apos;ultima versione del prospetto economico.</rdfs:comment>
+        <rdfs:comment xml:lang="en">The property that represents the currently estimated supplies amount needed for the completion of the procedure. The date is imported from the last economic summary related to the procedure.</rdfs:comment>
+        <rdfs:label xml:lang="it">attuale importo forniture</rdfs:label>
+        <rdfs:label xml:lang="en">current supplies amount</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://w3id.org/italia/onto/currentTotalAmount -->
+
+    <owl:DatatypeProperty rdf:about="http://w3id.org/italia/onto/currentTotalAmount">
+        <rdfs:domain rdf:resource="http://w3id.org/italia/onto/Procedure"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+        <rdfs:comment xml:lang="it">La proprietà che determina l&apos;importo totale attualmente previsto per il completamento della procedura, così come è riportato nell&apos;ultima versione del prospetto economico.</rdfs:comment>
+        <rdfs:comment xml:lang="en">The property that represents the currently estimated total amount needed for the completion of the procedure. The date is imported from the last economic summary related to the procedure.</rdfs:comment>
+        <rdfs:label xml:lang="it">attuale importo totale</rdfs:label>
+        <rdfs:label xml:lang="en">current total amount</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://w3id.org/italia/onto/currentWorksAmount -->
+
+    <owl:DatatypeProperty rdf:about="http://w3id.org/italia/onto/currentWorksAmount">
+        <rdfs:domain rdf:resource="http://w3id.org/italia/onto/Procedure"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+        <rdfs:comment xml:lang="it">La proprietà che determina l&apos;importo attualmente stimato per i lavori, riportato nell&apos;ultima versione del prospetto economico.</rdfs:comment>
+        <rdfs:comment xml:lang="en">The property that represents the currently estimated works amount needed for the completion of the procedure. The date is imported from the last economic summary related to the procedure.</rdfs:comment>
+        <rdfs:label xml:lang="it">attuale importo lavori</rdfs:label>
+        <rdfs:label xml:lang="en">current works amount</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://w3id.org/italia/onto/estimatedEndDate -->
+
+    <owl:DatatypeProperty rdf:about="http://w3id.org/italia/onto/estimatedEndDate">
+        <rdfs:subPropertyOf rdf:resource="http://dati.gov.it/onto/tiapitendTime"/>
+        <rdfs:domain rdf:resource="http://w3id.org/italia/onto/EconomicSummary"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+        <rdfs:comment xml:lang="it">La proprietà che indica la data entro la quale si prevede di portare a termine un progetto, un intervento, una procedura di realizzazione o un contratto. La data è indicata nell&apos;ambito di una versione del prospetto economico, e può aggiornare (o essere aggiornata da) quella indicata nel prospetto economico precedente (o successivo).</rdfs:comment>
+        <rdfs:comment xml:lang="en">The property that represents the estimated end date of a project, intervention, procedure or contract. The date is valid within a version of the economic summary, and may update (or be updated by) the date reported by the former (or next) economic summary</rdfs:comment>
+        <rdfs:label xml:lang="it">previsione di fine procedura</rdfs:label>
+        <rdfs:label xml:lang="en">procedure estimated end date</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://w3id.org/italia/onto/expireDate -->
+
+    <owl:DatatypeProperty rdf:about="http://w3id.org/italia/onto/expireDate">
+        <rdfs:subPropertyOf rdf:resource="http://dati.gov.it/onto/tiapitissued"/>
+        <rdfs:domain rdf:resource="http://w3id.org/italia/onto/Notice"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
+        <rdfs:comment xml:lang="it">Proprietà che determina la data di scadenza del bando.</rdfs:comment>
+        <rdfs:comment xml:lang="en">The property that represents the expire date of the notice.</rdfs:comment>
+        <rdfs:label xml:lang="it">data di scadenza</rdfs:label>
+        <rdfs:label xml:lang="en">expire date</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://w3id.org/italia/onto/hasCIG -->
+
+    <owl:DatatypeProperty rdf:about="http://w3id.org/italia/onto/hasCIG">
+        <rdfs:subPropertyOf rdf:resource="http://dati.gov.it/onto/l0/identifier"/>
+        <rdfs:domain rdf:resource="http://w3id.org/italia/onto/Procedure"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment xml:lang="it">La proprietà che identifica la procedura di realizzazione tramite un CIG (Codice Identificativo di Gara). L&apos;eventuale relazione tra CIG padre e CIG figlio può essere dedotta dall&apos;analisi del contesto, laddove in presenza di una proprietà &quot;ha accordo quadro&quot; che collega due procedure si intende che, secondo la prassi più comune, il dominio può essere identificato da un CIG figlio e il range da un CIG padre.</rdfs:comment>
+        <rdfs:comment xml:lang="en">The property that represents the CIG (Codice Identificativo di Gara), the code used to identify the procedure.</rdfs:comment>
+        <rdfs:label xml:lang="it">ha CIG</rdfs:label>
+        <rdfs:label xml:lang="en">has CIG</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://w3id.org/italia/onto/increaseAmount -->
+
+    <owl:DatatypeProperty rdf:about="http://w3id.org/italia/onto/increaseAmount">
+        <rdfs:domain rdf:resource="http://w3id.org/italia/onto/VariantDocument"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+        <rdfs:comment xml:lang="it">Questa proprietà indica un aumento dell&apos;importo necessario per il completamento dell&apos;intervento, indicato nel documento di variante.</rdfs:comment>
+        <rdfs:comment xml:lang="en">The property thath represents the increase amount needed to complete the intervention, as reported by the variant document.</rdfs:comment>
+        <rdfs:label xml:lang="it">aumento importo</rdfs:label>
+        <rdfs:label xml:lang="en">increase amount</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://w3id.org/italia/onto/interventionEndDate -->
+
+    <owl:DatatypeProperty rdf:about="http://w3id.org/italia/onto/interventionEndDate">
+        <rdfs:subPropertyOf rdf:resource="http://dati.gov.it/onto/tiapitendTime"/>
+        <rdfs:domain rdf:resource="http://w3id.org/italia/onto/Intervention"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
+        <rdfs:comment xml:lang="it">Questa proprietà indica la data effettiva in cui l&apos;intervento è terminato.</rdfs:comment>
+        <rdfs:comment xml:lang="en">This property represents the actual end date of the intervention.</rdfs:comment>
+        <rdfs:label xml:lang="it">data di fine intervento</rdfs:label>
+        <rdfs:label xml:lang="en">intervention end date</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://w3id.org/italia/onto/interventionStartDate -->
+
+    <owl:DatatypeProperty rdf:about="http://w3id.org/italia/onto/interventionStartDate">
+        <rdfs:subPropertyOf rdf:resource="http://dati.gov.it/onto/tiapitstartTime"/>
+        <rdfs:domain rdf:resource="http://w3id.org/italia/onto/Intervention"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
+        <rdfs:comment xml:lang="it">La proprietà che determina la data effettiva di inizio dell&apos;intervento.</rdfs:comment>
+        <rdfs:comment xml:lang="en">This property represents the actual start date of the intervention.</rdfs:comment>
+        <rdfs:label xml:lang="it">data di inizio intervento</rdfs:label>
+        <rdfs:label xml:lang="en">intervention start date</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://w3id.org/italia/onto/nonDiscountableSum -->
+
+    <owl:DatatypeProperty rdf:about="http://w3id.org/italia/onto/nonDiscountableSum">
+        <rdfs:domain rdf:resource="http://w3id.org/italia/onto/EconomicSummary"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+        <rdfs:comment xml:lang="it">La proprietà che determina la somma di denaro che non è ribassabile.</rdfs:comment>
+        <rdfs:comment xml:lang="en">The property that determines the amount of the starting price that is not lowerable.</rdfs:comment>
+        <rdfs:label xml:lang="it">somma non ribassabile</rdfs:label>
+        <rdfs:label xml:lang="en">sum of non-discountable money</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://w3id.org/italia/onto/outcomeDate -->
+
+    <owl:DatatypeProperty rdf:about="http://w3id.org/italia/onto/outcomeDate">
+        <rdfs:subPropertyOf rdf:resource="http://dati.gov.it/onto/tiapitdate"/>
+        <rdfs:domain rdf:resource="http://w3id.org/italia/onto/ProcedureOutcome"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
+        <rdfs:comment xml:lang="it">Proprietà che indica la data di aggiudicazione o affidamento a un offerente, o di adesione a un accordo quadro da parte di un offerente.</rdfs:comment>
+        <rdfs:comment xml:lang="en">This property represents the date of the outcome of the procedure (e.g. the date of the award to a bidder, or the date of the framework agreement)</rdfs:comment>
+        <rdfs:label xml:lang="it">data esito procedura</rdfs:label>
+        <rdfs:label xml:lang="en">outcome date</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://w3id.org/italia/onto/paymentAmount -->
+
+    <owl:DatatypeProperty rdf:about="http://w3id.org/italia/onto/paymentAmount">
+        <rdfs:domain rdf:resource="http://w3id.org/italia/onto/PaymentCertificate"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
+        <rdfs:comment xml:lang="it">La proprietà che determina l&apos;importo del pagamento.</rdfs:comment>
+        <rdfs:comment xml:lang="en">The property that represents the amount of the payment.</rdfs:comment>
+        <rdfs:label xml:lang="en">amount of the payment</rdfs:label>
+        <rdfs:label xml:lang="it">importo del pagamento</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://w3id.org/italia/onto/paymentCetificateDate -->
+
+    <owl:DatatypeProperty rdf:about="http://w3id.org/italia/onto/paymentCetificateDate">
+        <rdfs:subPropertyOf rdf:resource="http://dati.gov.it/onto/tiapitdate"/>
+        <rdfs:domain rdf:resource="http://w3id.org/italia/onto/PaymentCertificate"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
+        <rdfs:comment xml:lang="it">La proprietà che indica la data di emissione del certificato di pagamento da parte della stazione appaltante.</rdfs:comment>
+        <rdfs:comment xml:lang="en">The property that represents the date of the certificate of the payment.</rdfs:comment>
+        <rdfs:label xml:lang="it">data del certificato di pagamento</rdfs:label>
+        <rdfs:label xml:lang="en">payment certificate date</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://w3id.org/italia/onto/planningAmount -->
+
+    <owl:DatatypeProperty rdf:about="http://w3id.org/italia/onto/planningAmount">
+        <rdfs:domain rdf:resource="http://w3id.org/italia/onto/EconomicSummary"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+        <rdfs:comment xml:lang="it">La proprietà che determina l&apos;importo stimato per la progettazione, nell&apos;ambito di una versione del prospetto economico.</rdfs:comment>
+        <rdfs:comment xml:lang="en">The property that represents the planning amount. It is valid within a version of the economic summary.</rdfs:comment>
+        <rdfs:label xml:lang="it">importo progettazione</rdfs:label>
+        <rdfs:label xml:lang="en">planning amount</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://w3id.org/italia/onto/procedureEndDate -->
+
+    <owl:DatatypeProperty rdf:about="http://w3id.org/italia/onto/procedureEndDate">
+        <rdfs:subPropertyOf rdf:resource="http://dati.gov.it/onto/tiapitendTime"/>
+        <rdfs:domain rdf:resource="http://w3id.org/italia/onto/Procedure"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
+        <rdfs:comment xml:lang="it">Questa proprietà indica la data effettiva in cui la procedura è terminata. Può essere dedotta dalle verifiche effettuate nel collaudo finale.</rdfs:comment>
+        <rdfs:comment xml:lang="en">This property represents the actual end date of the procedure, and it may be imported from the results of the testing stage.</rdfs:comment>
+        <rdfs:label xml:lang="it">data di fine procedura</rdfs:label>
+        <rdfs:label xml:lang="en">procedure end date</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://w3id.org/italia/onto/procedureStartDate -->
+
+    <owl:DatatypeProperty rdf:about="http://w3id.org/italia/onto/procedureStartDate">
+        <rdfs:subPropertyOf rdf:resource="http://dati.gov.it/onto/tiapitstartTime"/>
+        <rdfs:domain rdf:resource="http://w3id.org/italia/onto/Procedure"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
+        <rdfs:comment xml:lang="it">Questa proprietà indica la data effettiva in cui la procedura è iniziata. Può essere dedotta dalle verifiche effettuate nel collaudo finale.</rdfs:comment>
+        <rdfs:comment xml:lang="en">This property represents the actual start date of the procedure, and it may be imported from the results of the testing stage.</rdfs:comment>
+        <rdfs:label xml:lang="it">data di inizio procedura</rdfs:label>
+        <rdfs:label xml:lang="en">procedure start date</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://w3id.org/italia/onto/publicationDate -->
+
+    <owl:DatatypeProperty rdf:about="http://w3id.org/italia/onto/publicationDate">
+        <rdfs:subPropertyOf rdf:resource="http://dati.gov.it/onto/tiapitissued"/>
+        <rdfs:domain rdf:resource="http://w3id.org/italia/onto/Notice"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
+        <rdfs:comment xml:lang="it">La proprietà che indica la data di pubblicazione del bando o dell&apos;avviso.</rdfs:comment>
+        <rdfs:comment xml:lang="en">The property that represents the publication date of the notice.</rdfs:comment>
+        <rdfs:label xml:lang="it">data di pubblicazione</rdfs:label>
+        <rdfs:label xml:lang="en">publication date</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://w3id.org/italia/onto/reductionAmount -->
+
+    <owl:DatatypeProperty rdf:about="http://w3id.org/italia/onto/reductionAmount">
+        <rdfs:domain rdf:resource="http://w3id.org/italia/onto/VariantDocument"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+        <rdfs:comment xml:lang="it">Questa proprietà indica una diminuzione dell&apos;importo necessario per il completamento dell&apos;intervento, indicato nel documento di variante.</rdfs:comment>
+        <rdfs:comment xml:lang="en">The property thath represents the reduction amount needed to complete the intervention, as reported by the variant document.</rdfs:comment>
+        <rdfs:label xml:lang="it">diminuzione importo</rdfs:label>
+        <rdfs:label xml:lang="en">reduction amount</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://w3id.org/italia/onto/reductionPercentage -->
+
+    <owl:DatatypeProperty rdf:about="http://w3id.org/italia/onto/reductionPercentage">
+        <rdfs:domain rdf:resource="http://w3id.org/italia/onto/ProcedureOutcome"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+        <rdfs:comment xml:lang="it">La proprietà che determina la percentuale dichiarata di ribasso.</rdfs:comment>
+        <rdfs:comment xml:lang="en">The property that determines the declared percentage of price cut.</rdfs:comment>
+        <rdfs:label xml:lang="it">percentuale di ribasso</rdfs:label>
+        <rdfs:label xml:lang="en">reduction percentage</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://w3id.org/italia/onto/resumptionDate -->
+
+    <owl:DatatypeProperty rdf:about="http://w3id.org/italia/onto/resumptionDate">
+        <rdfs:subPropertyOf rdf:resource="http://dati.gov.it/onto/tiapitdate"/>
+        <rdfs:domain rdf:resource="http://w3id.org/italia/onto/SuspensionDocument"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
+        <rdfs:comment xml:lang="it">Questa proprietà indica la data di inizio di ripresa del contratto.</rdfs:comment>
+        <rdfs:comment xml:lang="en">The property that represents the starting date of the resumption of the contract.</rdfs:comment>
+        <rdfs:label xml:lang="it">data ripresa</rdfs:label>
+        <rdfs:label xml:lang="en">resumption date</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://w3id.org/italia/onto/safetyAmount -->
+
+    <owl:DatatypeProperty rdf:about="http://w3id.org/italia/onto/safetyAmount">
+        <rdfs:domain rdf:resource="http://w3id.org/italia/onto/EconomicSummary"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+        <rdfs:comment xml:lang="it">La proprietà che determina l&apos;importo stimato per la sicurezza, nell&apos;ambito di una versione del prospetto economico.</rdfs:comment>
+        <rdfs:comment xml:lang="en">The property that determines the amount of money to be spent for safety reason. It is valid within a version of the economic summary.</rdfs:comment>
+        <rdfs:label xml:lang="it">importo di sicurezza</rdfs:label>
+        <rdfs:label xml:lang="en">safety amount</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://w3id.org/italia/onto/servicesAmount -->
+
+    <owl:DatatypeProperty rdf:about="http://w3id.org/italia/onto/servicesAmount">
+        <rdfs:domain rdf:resource="http://w3id.org/italia/onto/EconomicSummary"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+        <rdfs:comment xml:lang="it">La proprietà che determina l&apos;importo stimato per i servizi, nell&apos;ambito di una versione del prospetto economico.</rdfs:comment>
+        <rdfs:comment xml:lang="en">The property that represents the services amount. It is valid within a version of the economic summary.</rdfs:comment>
+        <rdfs:label xml:lang="it">importo servizi</rdfs:label>
+        <rdfs:label xml:lang="en">services amount</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://w3id.org/italia/onto/specialSector -->
+
+    <owl:DatatypeProperty rdf:about="http://w3id.org/italia/onto/specialSector">
+        <rdfs:domain rdf:resource="http://w3id.org/italia/onto/Procedure"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+        <rdfs:comment xml:lang="it">La proprietà che determina se una procedura di realizzazione appartiene a uno dei settori speciali definiti dal DLGS 163/2006 Art3.</rdfs:comment>
+        <rdfs:comment xml:lang="en">The property that determines if a procedure belongs to a special sector, according to the DLGS 163/2006 Art3.</rdfs:comment>
+        <rdfs:label xml:lang="it">settore speciale</rdfs:label>
+        <rdfs:label xml:lang="en">special sector</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://w3id.org/italia/onto/suppliesAmount -->
+
+    <owl:DatatypeProperty rdf:about="http://w3id.org/italia/onto/suppliesAmount">
+        <rdfs:domain rdf:resource="http://w3id.org/italia/onto/EconomicSummary"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+        <rdfs:comment xml:lang="it">La proprietà che determina l&apos;importo stimato per le forniture, nell&apos;ambito di una versione del prospetto economico.</rdfs:comment>
+        <rdfs:comment xml:lang="en">The property that represents the supplies amount. It is valid within a version of the economic summary.</rdfs:comment>
+        <rdfs:label xml:lang="it">importo forniture</rdfs:label>
+        <rdfs:label xml:lang="en">supplies amount</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://w3id.org/italia/onto/suspensionDate -->
+
+    <owl:DatatypeProperty rdf:about="http://w3id.org/italia/onto/suspensionDate">
+        <rdfs:subPropertyOf rdf:resource="http://dati.gov.it/onto/tiapitdate"/>
+        <rdfs:domain rdf:resource="http://w3id.org/italia/onto/SuspensionDocument"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
+        <rdfs:comment xml:lang="it">Questa proprietà indica la data di inizio della sospensione del contratto.</rdfs:comment>
+        <rdfs:comment xml:lang="en">The property that represents the starting date of the suspension.</rdfs:comment>
+        <rdfs:label xml:lang="it">data sospensione</rdfs:label>
+        <rdfs:label xml:lang="en">suspension date</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://w3id.org/italia/onto/totalAmount -->
+
+    <owl:DatatypeProperty rdf:about="http://w3id.org/italia/onto/totalAmount">
+        <rdfs:domain rdf:resource="http://w3id.org/italia/onto/EconomicSummary"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+        <rdfs:comment xml:lang="it">La proprietà che determina l&apos;importo totale previsto per il completamento di un progetto, intervento, procedura o contratto, nell&apos;ambito di una versione del prospetto economico.</rdfs:comment>
+        <rdfs:comment xml:lang="en">The property that represents the total amount needed to complete a project, intervention, procedure or contract. It is valid within a version of the economic summary.</rdfs:comment>
+        <rdfs:label xml:lang="it">importo totale</rdfs:label>
+        <rdfs:label xml:lang="en">total amount</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://w3id.org/italia/onto/totalAmountPaid -->
+
+    <owl:DatatypeProperty rdf:about="http://w3id.org/italia/onto/totalAmountPaid">
+        <rdfs:domain rdf:resource="http://w3id.org/italia/onto/Procedure"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+        <rdfs:comment xml:lang="it">La proprietà che indica l&apos;importo totale liquidato per il completamento della procedura, che corrisponde alla sommatoria dei pagamenti effettuati.</rdfs:comment>
+        <rdfs:comment xml:lang="en">The property that represents the total amount paid, that corresponds to the sum of the payments done.</rdfs:comment>
+        <rdfs:label xml:lang="en">total amount paid</rdfs:label>
+        <rdfs:label xml:lang="it">totale importo liquidato</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://w3id.org/italia/onto/variantDate -->
+
+    <owl:DatatypeProperty rdf:about="http://w3id.org/italia/onto/variantDate">
+        <rdfs:subPropertyOf rdf:resource="http://dati.gov.it/onto/tiapitduration"/>
+        <rdfs:domain rdf:resource="http://w3id.org/italia/onto/VariantDocument"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
+        <rdfs:comment xml:lang="it">La proprietà che determina la data di inizio della variante.</rdfs:comment>
+        <rdfs:comment xml:lang="en">The property that represents the starting date of the variant.</rdfs:comment>
+        <rdfs:label xml:lang="it">data variante</rdfs:label>
+        <rdfs:label xml:lang="en">variant date</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://w3id.org/italia/onto/variantType -->
+
+    <owl:DatatypeProperty rdf:about="http://w3id.org/italia/onto/variantType">
+        <rdfs:domain rdf:resource="http://w3id.org/italia/onto/VariantDocument"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment xml:lang="it">La proprietà che determina il tipo di variante.</rdfs:comment>
+        <rdfs:comment xml:lang="en">The property that represents the type of the variant.</rdfs:comment>
+        <rdfs:label xml:lang="it">tipo variazione</rdfs:label>
+        <rdfs:label xml:lang="en">variant type</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://w3id.org/italia/onto/worksAmount -->
+
+    <owl:DatatypeProperty rdf:about="http://w3id.org/italia/onto/worksAmount">
+        <rdfs:domain rdf:resource="http://w3id.org/italia/onto/EconomicSummary"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+        <rdfs:comment xml:lang="it">La proprietà che determina l&apos;importo stimato per i lavori, nell&apos;ambito di una versione del prospetto economico.</rdfs:comment>
+        <rdfs:comment xml:lang="en">The property that represents the works amount. It is valid within a version of the economic summary.</rdfs:comment>
+        <rdfs:label xml:lang="it">importo lavori</rdfs:label>
+        <rdfs:label xml:lang="en">works amount</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://dati.gov.it/onto/covapit/Organization -->
+
+    <owl:Class rdf:about="http://dati.gov.it/onto/covapit/Organization">
+        <rdfs:subClassOf rdf:resource="http://dati.gov.it/onto/l0/Agent"/>
+        <rdfs:isDefinedBy rdf:resource="http://dati.gov.it/onto/covapit/"/>
+    </owl:Class>
+    
+
+
+    <!-- http://dati.gov.it/onto/l0/Activity -->
+
+    <owl:Class rdf:about="http://dati.gov.it/onto/l0/Activity"/>
+    
+
+
+    <!-- http://dati.gov.it/onto/l0/Agent -->
+
+    <owl:Class rdf:about="http://dati.gov.it/onto/l0/Agent"/>
+    
+
+
+    <!-- http://dati.gov.it/onto/l0/Characteristic -->
+
+    <owl:Class rdf:about="http://dati.gov.it/onto/l0/Characteristic"/>
+    
+
+
+    <!-- http://dati.gov.it/onto/l0/Event -->
+
+    <owl:Class rdf:about="http://dati.gov.it/onto/l0/Event"/>
+    
+
+
+    <!-- http://dati.gov.it/onto/l0/Object -->
+
+    <owl:Class rdf:about="http://dati.gov.it/onto/l0/Object"/>
+    
+
+
+    <!-- http://w3id.org/italia/onto/AwardCriteria -->
+
+    <owl:Class rdf:about="http://w3id.org/italia/onto/AwardCriteria">
+        <rdfs:subClassOf rdf:resource="http://dati.gov.it/onto/l0/Characteristic"/>
+        <rdfs:comment xml:lang="it">Le istanze di questa classe rappresentano il criterio di aggiudicazione (tipicamente, il criterio dell&apos;offerta economicamente più vantaggiosa o del prezzo più basso) adottato nell&apos;ambito di una procedura di realizzazione con gara e conseguente aggiudicazione. Le istanze di questa classe possono essere rappresentate come concetti dello standard skos di un vocabolario controllato.</rdfs:comment>
+        <rdfs:comment xml:lang="en">The class that represents the award criteria (e.g., &quot;most economically advantageous tender&quot; or &quot;lowest price&quot;) adopted for awarding. The instances of this class can be represented as skos concepts of a controlled vocabulary.</rdfs:comment>
+        <rdfs:label xml:lang="en">Award criteria</rdfs:label>
+        <rdfs:label xml:lang="it">Criterio di Aggiudicazione</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/italia/onto/CPV -->
+
+    <owl:Class rdf:about="http://w3id.org/italia/onto/CPV">
+        <rdfs:subClassOf rdf:resource="http://dati.gov.it/onto/l0/Characteristic"/>
+        <rdfs:comment xml:lang="it">La Classe che rappresenta il CPV (Common Procurement Vocabular) con cui è classificato un intervento, bando, procedura di realizzazione o contratto. Le istanze di questa classe possono essere rappresentate come concetti dello standard skos di un vocabolario controllato.</rdfs:comment>
+        <rdfs:comment xml:lang="en">The class that represents the CPV (Common Procurement Vocabulary), code describing the main object of an intervention, notice, procedure or contract. The instances of this class can be represented as skos concepts of a controlled vocabulary.</rdfs:comment>
+        <rdfs:label xml:lang="en">CPV</rdfs:label>
+        <rdfs:label xml:lang="it">CPV</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/italia/onto/ChangeEvent -->
+
+    <owl:Class rdf:about="http://w3id.org/italia/onto/ChangeEvent">
+        <rdfs:subClassOf rdf:resource="http://dati.gov.it/onto/l0/Event"/>
+        <rdfs:comment xml:lang="en">An instance of this class represents an event of modification, for example an event leading to the reshaping of the economic summary.</rdfs:comment>
+        <rdfs:comment xml:lang="it">Una istanza di questa classe rappresenta un evento di cambiamento, per esempio un evento che porta a una rimodulazione del prospetto economico di una procedura.</rdfs:comment>
+        <rdfs:label xml:lang="en">Change event</rdfs:label>
+        <rdfs:label xml:lang="it">Evento di cambiamento</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/italia/onto/Concession -->
+
+    <owl:Class rdf:about="http://w3id.org/italia/onto/Concession">
+        <rdfs:subClassOf rdf:resource="http://w3id.org/italia/onto/Procedure"/>
+        <rdfs:comment xml:lang="it">La classe che comprende le attività che una stazione appaltante mette in atto per realizzare un Intervento tramite una concessione.</rdfs:comment>
+        <rdfs:comment xml:lang="en">The class that includes the activities that a contracting authority carries out in order to actualize an intervention through a concession.</rdfs:comment>
+        <rdfs:label xml:lang="en">Concession</rdfs:label>
+        <rdfs:label xml:lang="it">Concessione</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/italia/onto/Contract -->
+
+    <owl:Class rdf:about="http://w3id.org/italia/onto/Contract">
+        <rdfs:subClassOf rdf:resource="http://w3id.org/italia/onto/Document"/>
+        <rdfs:comment xml:lang="en">An instance of this class is an abstract information entity about a realized contract between a contracting authority and their supplier.</rdfs:comment>
+        <rdfs:comment xml:lang="it">Una istanza di questa classe rappresenta un contratto realizzato tra due o più agenti: ad esempio, tra una stazione appaltante ed un fornitore.</rdfs:comment>
+        <rdfs:label xml:lang="en">Contract</rdfs:label>
+        <rdfs:label xml:lang="it">Contratto</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/italia/onto/DirectAdministration -->
+
+    <owl:Class rdf:about="http://w3id.org/italia/onto/DirectAdministration">
+        <rdfs:subClassOf rdf:resource="http://w3id.org/italia/onto/Procedure"/>
+        <rdfs:comment xml:lang="it">La classe che comprende le attività che una stazione appaltante mette in atto per realizzare un Intervento in amministrazione diretta.</rdfs:comment>
+        <rdfs:comment xml:lang="en">The class that includes the activities that a contracting authority carries out in order to actualize an intervention through a direct administration.</rdfs:comment>
+        <rdfs:label xml:lang="it">Amministrazione diretta</rdfs:label>
+        <rdfs:label xml:lang="en">Direct administration</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/italia/onto/Document -->
+
+    <owl:Class rdf:about="http://w3id.org/italia/onto/Document">
+        <rdfs:subClassOf rdf:resource="http://dati.gov.it/onto/l0/Object"/>
+        <rdfs:comment xml:lang="it">La classe che rappresenta un documento emesso dalla stazione appaltante nel corso di una procedura di realizzazione.</rdfs:comment>
+        <rdfs:comment xml:lang="en">The class that represents the document issued by the contracting authority during the course of a procedure.</rdfs:comment>
+        <rdfs:label xml:lang="en">Document</rdfs:label>
+        <rdfs:label xml:lang="it">Documento</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/italia/onto/EconomicSummary -->
+
+    <owl:Class rdf:about="http://w3id.org/italia/onto/EconomicSummary">
+        <rdfs:subClassOf rdf:resource="http://dati.gov.it/onto/l0/Characteristic"/>
+        <rdfs:comment xml:lang="en">An instance of this class represents the economic summary of a project, intervention, procedure or contract. Dates and amounts related to the economic summary are usually defined during the awarding and negotiation stages. Amounts may be imported from the &quot;economic framework&quot; that is periodically drawn up. The economic summary may be reshaped following a change event (e.g., a variant or a suspension). Such a modification creates a new economic summary which replaces the former and where dates and amounts are updated.</rdfs:comment>
+        <rdfs:comment xml:lang="it">Un&apos;istanza di questa classe rappresenta il prospetto economico di un Progetto, Intervento, Procedura di realizzazione o Contratto. Date e ammontari contenuti nel prospetto sono generalmente definiti nelle fasi preliminari di aggiudicazione, affidamento, contrattazione e redazione del quadro economico. Il prospetto economico, così come il quadro economico che eventualmente lo alimenta in merito agli ammontari, può essere rimodulato in seguito a un evento di cambiamento (per esempio, una variante in corso d&apos;opera o una sospensione). Tale modifica genera un nuovo prospetto economico che sostituisce il precedente, e aggiorna i valori di date e ammontari in base a quanto stabilito nei documenti di modifica corrispondenti all&apos;evento di cambiamento stesso</rdfs:comment>
+        <rdfs:label xml:lang="en">Economic summary</rdfs:label>
+        <rdfs:label xml:lang="it">Prospetto economico</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/italia/onto/FrameworkAgreement -->
+
+    <owl:Class rdf:about="http://w3id.org/italia/onto/FrameworkAgreement">
+        <rdfs:subClassOf rdf:resource="http://w3id.org/italia/onto/Procedure"/>
+        <rdfs:comment xml:lang="it">La classe che comprende le attività che una stazione appaltante mette in atto per realizzare un Intervento tramite un accordo quadro. Si noti che le attività svolte nell&apos;ambito di un&apos;adesione all&apos;accordo quadro non rientrano in questa Classe; rientrano invece in un&apos;altra procedura di realizzazione che è legata a questa classe dalla proprietà &quot;ha accordo quadro&quot;</rdfs:comment>
+        <rdfs:comment xml:lang="en">The class that includes the activities that a contracting authority carries out in order to actualize an intervention through a framework agreement.</rdfs:comment>
+        <rdfs:label xml:lang="it">Accordo quadro</rdfs:label>
+        <rdfs:label xml:lang="en">Framework agreement</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/italia/onto/Intervention -->
+
+    <owl:Class rdf:about="http://w3id.org/italia/onto/Intervention">
+        <rdfs:subClassOf rdf:resource="http://dati.gov.it/onto/l0/Activity"/>
+        <rdfs:comment xml:lang="it">La classe che comprende gli interventi che rispondono ad un fabbisogno individuato da un&apos;amministrazione.</rdfs:comment>
+        <rdfs:comment xml:lang="en">The class that includes the interventions planned by a public administration in order to satisfy detected needs.</rdfs:comment>
+        <rdfs:label xml:lang="en">Intervention</rdfs:label>
+        <rdfs:label xml:lang="it">Intervento</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/italia/onto/ModificationDocument -->
+
+    <owl:Class rdf:about="http://w3id.org/italia/onto/ModificationDocument">
+        <rdfs:subClassOf rdf:resource="http://w3id.org/italia/onto/Document"/>
+        <rdfs:comment xml:lang="it">La classe che rappresenta il documento che stabilisce una modifica nelle caratteristiche di un progetto, intervento, procedura di realizzazione o contratto.</rdfs:comment>
+        <rdfs:comment xml:lang="en">The class that represents the document setting a change in the characteristics of a project, intervention, procedure or contract.</rdfs:comment>
+        <rdfs:label xml:lang="it">Documento di modifica</rdfs:label>
+        <rdfs:label xml:lang="en">Modification document</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/italia/onto/Notice -->
+
+    <owl:Class rdf:about="http://w3id.org/italia/onto/Notice">
+        <rdfs:subClassOf rdf:resource="http://w3id.org/italia/onto/Document"/>
+        <rdfs:comment xml:lang="it">La classe che rappresenta qualunque tipo di annuncio o avviso relativo ad una procedura di realizzazione di un intervento. Tipicamente, un bando pubblico o un&apos;altra tipologia di avviso o invito.</rdfs:comment>
+        <rdfs:comment xml:lang="en">This class represents any kind of notice or announcement related to a procedure of actualization of an intervention. Usually, it refers to a public call or any kind of notice or invitation.</rdfs:comment>
+        <rdfs:label xml:lang="it">Bando</rdfs:label>
+        <rdfs:label xml:lang="en">Notice</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/italia/onto/NoticeType -->
+
+    <owl:Class rdf:about="http://w3id.org/italia/onto/NoticeType">
+        <rdfs:subClassOf rdf:resource="http://dati.gov.it/onto/l0/Characteristic"/>
+        <rdfs:comment xml:lang="it">La classe che rappresenta il tipo di bando o avviso.</rdfs:comment>
+        <rdfs:comment xml:lang="en">The class that represents the type of notice.</rdfs:comment>
+        <rdfs:label xml:lang="en">Notice type</rdfs:label>
+        <rdfs:label xml:lang="it">Tipologia del bando</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/italia/onto/Payment -->
+
+    <owl:Class rdf:about="http://w3id.org/italia/onto/Payment">
+        <rdfs:subClassOf rdf:resource="http://dati.gov.it/onto/l0/Event"/>
+        <rdfs:comment xml:lang="en">An instance of this class represents a payment made by the contracting authority.</rdfs:comment>
+        <rdfs:comment xml:lang="it">La classe che rappresenta il pagamento effettuato dalla stazione appaltante.</rdfs:comment>
+        <rdfs:label xml:lang="it">Pagamento</rdfs:label>
+        <rdfs:label xml:lang="en">Payment</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/italia/onto/PaymentCertificate -->
+
+    <owl:Class rdf:about="http://w3id.org/italia/onto/PaymentCertificate">
+        <rdfs:subClassOf rdf:resource="http://w3id.org/italia/onto/Document"/>
+        <rdfs:comment xml:lang="it">La classe che rappresenta il certificato di pagamento emesso dalla stazione appaltante, generalmente deliberato nell&apos;ambito di un SAL (Stato Avanzamento Lavori).</rdfs:comment>
+        <rdfs:comment xml:lang="en">The class that represents the certificate of payment issued by the contracting authority, usually approved by the work progress report.</rdfs:comment>
+        <rdfs:label xml:lang="it">Certificato di pagamento</rdfs:label>
+        <rdfs:label xml:lang="en">Payment certificate</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/italia/onto/Procedure -->
+
+    <owl:Class rdf:about="http://w3id.org/italia/onto/Procedure">
+        <rdfs:subClassOf rdf:resource="http://dati.gov.it/onto/l0/Activity"/>
+        <rdfs:comment xml:lang="it">La classe che comprende le attività che una stazione appaltante mette in atto per realizzare un intervento, ad esempio le attività svolte tramite un contratto di appalto o di concessione, le attività realizzate attraverso amministrazione diretta,  parternariato pubblico/privato o adesione ad un accordo quadro. Le attività prevedono step procedurali che possono variare in relazione alla modalità di realizzazione (si associano alla procedura di realizzazione informazioni che, in alcune banche dati, identificano il lotto e il suo iter di vita, dalle procedure di affidamento alla conclusione). In riferimento ai dati applicativi, ogni Lotto Simog, o ogni cosa che abbia un CIG (normale, padre o figlio) o uno SmartCIG, corrisponde a una procedura di realizzazione. Ci sono però anche procedure che non hanno un CIG, ad esempio tutti i contratti che ai sensi delle FAQ della L. 190/2012 potevano avere CIG 0000000000 oppure gli affidamenti diretti a società in house per i quali non sussiste l&apos;obbligo di richiedere il CIG ai fini della tracciabilità.</rdfs:comment>
+        <rdfs:comment xml:lang="en">The class that represents the activities that a contracting authority carries out in order to actualize an intervention, such as those carried out through public procurement, concession, direct administration, public/private partnership or framework agreement. The steps of the procedure may vary according to the type of the procedure. Information that in some databases are related to the lot or to the contract, should be connected to the procedure.</rdfs:comment>
+        <rdfs:label xml:lang="it">Procedura di realizzazione</rdfs:label>
+        <rdfs:label xml:lang="en">Procedure</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/italia/onto/ProcedureOutcome -->
+
+    <owl:Class rdf:about="http://w3id.org/italia/onto/ProcedureOutcome">
+        <rdfs:subClassOf rdf:resource="http://w3id.org/italia/onto/Document"/>
+        <rdfs:comment xml:lang="it">La classe che rappresenta l&apos;esito della procedura di realizzazione, ovvero il documento che attesta l&apos;attribuzione di una procedura a un offerente. L&apos;attribuzione può avvenire tramite aggiudicazione, affidamento o adesione a un accordo quadro, a seconda della tipologia di procedura.</rdfs:comment>
+        <rdfs:comment xml:lang="en">The class that represents the document that certifies the outcome of a procedure, namely the attribution of a procedure to a bidder. Depending on the type of the procedure, the attribution can be an open award, a direct award, or a framework agreement.</rdfs:comment>
+        <rdfs:label xml:lang="it">Esito procedura</rdfs:label>
+        <rdfs:label xml:lang="en">Procedure outcome</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/italia/onto/ProcedureType -->
+
+    <owl:Class rdf:about="http://w3id.org/italia/onto/ProcedureType">
+        <rdfs:subClassOf rdf:resource="http://dati.gov.it/onto/l0/Characteristic"/>
+        <rdfs:comment xml:lang="it">La Classe che rappresenta la modalità di scelta del contraente (per esempio, secondo la procedura dell&apos;affidamento diretto, della procedura aperta o della procedura ristretta), che caratterizza la procedura di realizzazione, secondo le specifiche tecniche degli XML ex L.190/2012 previste da ANAC. La modalità di scelta del contraente va indicata in compatibilità con le diverse sotto-classi della procedura di realizzazione, per cui ad ogni sotto-classe possono corrispondere solo alcune modalità. Le istanze di questa classe possono essere rappresentate come concetti dello standard skos di un vocabolario controllato. </rdfs:comment>
+        <rdfs:comment xml:lang="en">The class that represents the type of procedure (e.g, direct award, open tender procedure, restricted tender procedure) as provided for by XML ex L.190/2012 technical requirements exploited by ANAC. The instances of this class can be represented as skos concepts of a controlled vocabulary.</rdfs:comment>
+        <rdfs:label xml:lang="it">Modalita di Scelta del Contraente</rdfs:label>
+        <rdfs:label xml:lang="en">Procedure type</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/italia/onto/Project -->
+
+    <owl:Class rdf:about="http://w3id.org/italia/onto/Project">
+        <rdfs:comment xml:lang="it">La classe che comprende i progetti atti a soddisfare un fabbisogno individuato dall&apos;amministrazione tramite la realizzazione di interventi.</rdfs:comment>
+        <rdfs:comment xml:lang="en">The class that includes projects aiming at meet the needs detected by a public administration, through the actualization of interventions.</rdfs:comment>
+        <rdfs:label xml:lang="it">Progetto</rdfs:label>
+        <rdfs:label xml:lang="en">Project</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/italia/onto/PublicPrivatePartnership -->
+
+    <owl:Class rdf:about="http://w3id.org/italia/onto/PublicPrivatePartnership">
+        <rdfs:subClassOf rdf:resource="http://w3id.org/italia/onto/Procedure"/>
+        <rdfs:comment xml:lang="it">La classe che comprende le attività che una stazione appaltante mette in atto per realizzare un Intervento tramite un parternariato pubblico/privato.</rdfs:comment>
+        <rdfs:comment xml:lang="en">The class that includes the activities that a contracting authority carries out in order to actualize an intervention through a public/private partnership.</rdfs:comment>
+        <rdfs:label xml:lang="it">Parternariato Pubblico/Privato</rdfs:label>
+        <rdfs:label xml:lang="en">Public/Private Partnership</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/italia/onto/PublicProcurement -->
+
+    <owl:Class rdf:about="http://w3id.org/italia/onto/PublicProcurement">
+        <rdfs:subClassOf rdf:resource="http://w3id.org/italia/onto/Procedure"/>
+        <rdfs:comment xml:lang="it">La classe che comprende le attività che una stazione appaltante mette in atto per realizzare un Intervento tramite un contratto di appalto.</rdfs:comment>
+        <rdfs:comment xml:lang="en">The class that includes the activities that a contracting authority carries out in order to actualize an intervention through a public procurement.</rdfs:comment>
+        <rdfs:label xml:lang="it">Appalto</rdfs:label>
+        <rdfs:label xml:lang="en">Public procurement</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/italia/onto/Resolution -->
+
+    <owl:Class rdf:about="http://w3id.org/italia/onto/Resolution">
+        <rdfs:subClassOf rdf:resource="http://dati.gov.it/onto/l0/Event"/>
+        <rdfs:comment xml:lang="en">An instance of this class represents a resolution of contract.</rdfs:comment>
+        <rdfs:comment xml:lang="it">Una istanza di questa classe rappresenta una risoluzione di un contratto.</rdfs:comment>
+        <rdfs:label xml:lang="en">Resolution</rdfs:label>
+        <rdfs:label xml:lang="it">Risoluzione</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/italia/onto/ResolutionDocument -->
+
+    <owl:Class rdf:about="http://w3id.org/italia/onto/ResolutionDocument">
+        <rdfs:subClassOf rdf:resource="http://w3id.org/italia/onto/ModificationDocument"/>
+        <rdfs:comment xml:lang="it">La classe che rappresenta il documento che stabilisce la risoluzione di un contratto.</rdfs:comment>
+        <rdfs:comment xml:lang="en">The class that represents the document setting the resolution of a contract.</rdfs:comment>
+        <rdfs:label xml:lang="it">Documento di risoluzione</rdfs:label>
+        <rdfs:label xml:lang="en">Resolution document</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/italia/onto/ResolutionReason -->
+
+    <owl:Class rdf:about="http://w3id.org/italia/onto/ResolutionReason">
+        <rdfs:subClassOf rdf:resource="http://dati.gov.it/onto/l0/Characteristic"/>
+        <rdfs:comment xml:lang="it">La Classe che rappresenta la motivazione della risoluzione del contratto. Le istanze di questa classe possono essere rappresentate come concetti dello standard skos di un vocabolario controllato.</rdfs:comment>
+        <rdfs:comment xml:lang="en">The class that represents the reason of the suspension. The instances of this class can be represented as skos concepts of a controlled vocabulary.</rdfs:comment>
+        <rdfs:label xml:lang="it">Motivazione Risoluzione</rdfs:label>
+        <rdfs:label xml:lang="en">Resolution reason</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/italia/onto/ResolutionToContract -->
+
+    <owl:Class rdf:about="http://w3id.org/italia/onto/ResolutionToContract">
+        <rdfs:subClassOf rdf:resource="http://w3id.org/italia/onto/Document"/>
+        <rdfs:comment xml:lang="it">La classe che comprende gli atti con i quali la stazione appaltante manifesta la propria volontà di stipulare un contratto, individuando gli elementi essenziali del contratto e i criteri di selezione degli operatori economici e delle offerte.</rdfs:comment>
+        <rdfs:comment xml:lang="en">The class that includes the documents by means of which the contracting authority expresses that it wants to conclude a contract.</rdfs:comment>
+        <rdfs:label xml:lang="it">Determina a contrarre</rdfs:label>
+        <rdfs:label xml:lang="en">Resolution to contract</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/italia/onto/Service -->
+
+    <owl:Class rdf:about="http://w3id.org/italia/onto/Service">
+        <rdfs:subClassOf rdf:resource="http://w3id.org/italia/onto/Intervention"/>
+        <rdfs:comment xml:lang="it">La classe che comprende gli interventi che consistono nell&apos;acquisizione di servizi.</rdfs:comment>
+        <rdfs:comment xml:lang="en">The class that includes those interventions concerning the acquisition of services.</rdfs:comment>
+        <rdfs:label xml:lang="en">Service</rdfs:label>
+        <rdfs:label xml:lang="it">Servizio</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/italia/onto/Supply -->
+
+    <owl:Class rdf:about="http://w3id.org/italia/onto/Supply">
+        <rdfs:subClassOf rdf:resource="http://w3id.org/italia/onto/Intervention"/>
+        <rdfs:comment xml:lang="it">La classe che comprende gli interventi che consistono nell&apos;acquisto di beni.</rdfs:comment>
+        <rdfs:comment xml:lang="en">The class that includes those interventions concerning the purchase of goods.</rdfs:comment>
+        <rdfs:label xml:lang="it">Fornitura di beni</rdfs:label>
+        <rdfs:label xml:lang="en">Supply</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/italia/onto/Suspension -->
+
+    <owl:Class rdf:about="http://w3id.org/italia/onto/Suspension">
+        <rdfs:subClassOf rdf:resource="http://w3id.org/italia/onto/ChangeEvent"/>
+        <rdfs:comment xml:lang="en">An instance of this class represents a suspension.</rdfs:comment>
+        <rdfs:comment xml:lang="it">Una istanza di questa classe rappresenta una sospensione.</rdfs:comment>
+        <rdfs:label xml:lang="it">Sospensione</rdfs:label>
+        <rdfs:label xml:lang="en">Suspension</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/italia/onto/SuspensionDocument -->
+
+    <owl:Class rdf:about="http://w3id.org/italia/onto/SuspensionDocument">
+        <rdfs:subClassOf rdf:resource="http://w3id.org/italia/onto/ModificationDocument"/>
+        <rdfs:comment xml:lang="it">La classe che rappresenta il documento che stabilisce la sospensione di un contratto.</rdfs:comment>
+        <rdfs:comment xml:lang="en">The class that represents the document setting the suspension.</rdfs:comment>
+        <rdfs:label xml:lang="it">Documento di sospensione</rdfs:label>
+        <rdfs:label xml:lang="en">Suspension Document</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/italia/onto/SuspensionReason -->
+
+    <owl:Class rdf:about="http://w3id.org/italia/onto/SuspensionReason">
+        <rdfs:subClassOf rdf:resource="http://dati.gov.it/onto/l0/Characteristic"/>
+        <rdfs:comment xml:lang="it">La Classe che rappresenta la motivazione della sospensione. Le istanze di questa classe possono essere rappresentate come concetti dello standard skos di un vocabolario controllato</rdfs:comment>
+        <rdfs:comment xml:lang="en">The class that represents the reason of the suspension. The instances of this class can be represented as skos concepts of a controlled vocabulary.</rdfs:comment>
+        <rdfs:label xml:lang="it">Motivazione Sospensione</rdfs:label>
+        <rdfs:label xml:lang="en">Suspension reason</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/italia/onto/Tender -->
+
+    <owl:Class rdf:about="http://w3id.org/italia/onto/Tender">
+        <rdfs:subClassOf rdf:resource="http://dati.gov.it/onto/l0/Object"/>
+        <rdfs:comment xml:lang="en">An instance of this class rapresents a tender in a call for tenders or other procedure.</rdfs:comment>
+        <rdfs:comment xml:lang="it">Una istanza di questa classe rappresenta una offerta relativa a una procedura di realizzazione.</rdfs:comment>
+        <rdfs:label xml:lang="it">Offerta</rdfs:label>
+        <rdfs:label xml:lang="en">Tender</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/italia/onto/Variant -->
+
+    <owl:Class rdf:about="http://w3id.org/italia/onto/Variant">
+        <rdfs:subClassOf rdf:resource="http://w3id.org/italia/onto/ChangeEvent"/>
+        <rdfs:comment xml:lang="en">An instance of this class represents a variant.</rdfs:comment>
+        <rdfs:comment xml:lang="it">Una istanza di questa classe rappresenta una variante in corso d&apos;opera.</rdfs:comment>
+        <rdfs:label xml:lang="en">Variant</rdfs:label>
+        <rdfs:label xml:lang="it">Variante</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/italia/onto/VariantDocument -->
+
+    <owl:Class rdf:about="http://w3id.org/italia/onto/VariantDocument">
+        <rdfs:subClassOf rdf:resource="http://w3id.org/italia/onto/ModificationDocument"/>
+        <rdfs:comment xml:lang="it">La classe che rappresenta il documento che stabilisce la variante di un contratto.</rdfs:comment>
+        <rdfs:comment xml:lang="en">The class that represents the document setting the variant.</rdfs:comment>
+        <rdfs:label xml:lang="it">Documento di Variante</rdfs:label>
+        <rdfs:label xml:lang="en">Variant Document</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/italia/onto/VariantReason -->
+
+    <owl:Class rdf:about="http://w3id.org/italia/onto/VariantReason">
+        <rdfs:subClassOf rdf:resource="http://dati.gov.it/onto/l0/Characteristic"/>
+        <rdfs:comment xml:lang="it">La Classe che rappresenta la motivazione della variante in corso d&apos;opera. Le istanze di questa classe possono essere rappresentate come concetti dello standard skos di un vocabolario controllato</rdfs:comment>
+        <rdfs:comment xml:lang="en">The class that represents the reason of the variant. The instances of this class can be represented as skos concepts of a controlled vocabulary.</rdfs:comment>
+        <rdfs:label xml:lang="it">Motivazione Variante</rdfs:label>
+        <rdfs:label xml:lang="en">Variant reason</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/italia/onto/Work -->
+
+    <owl:Class rdf:about="http://w3id.org/italia/onto/Work">
+        <rdfs:subClassOf rdf:resource="http://w3id.org/italia/onto/Intervention"/>
+        <rdfs:comment xml:lang="it">La classe che comprende gli interventi che consistono nella realizzazione di lavori pubblici.</rdfs:comment>
+        <rdfs:comment xml:lang="en">The class that includes those interventions concerning the actualization of public works.</rdfs:comment>
+        <rdfs:label xml:lang="it">Lavoro</rdfs:label>
+        <rdfs:label xml:lang="en">Work</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/italia/onto/WorkProgressReport -->
+
+    <owl:Class rdf:about="http://w3id.org/italia/onto/WorkProgressReport">
+        <rdfs:subClassOf rdf:resource="http://w3id.org/italia/onto/Document"/>
+        <rdfs:comment xml:lang="it">La classe che comprende il documento che attesta lo stato di avanzamento dei lavori.</rdfs:comment>
+        <rdfs:comment xml:lang="en">The class that represents the document reporting the progress of work.</rdfs:comment>
+        <rdfs:label xml:lang="it">Stato avanzamento lavori</rdfs:label>
+        <rdfs:label xml:lang="en">Work Progress Report</rdfs:label>
+    </owl:Class>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.2.8.20170104-2310) https://github.com/owlcs/owlapi -->
+
