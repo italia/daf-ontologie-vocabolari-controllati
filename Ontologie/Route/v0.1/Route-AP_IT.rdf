@@ -44,12 +44,37 @@
     
 
 
-    <!-- https://w3id.org/italia/onto/Route/containsPoint -->
+    <!-- https://w3id.org/italia/onto/CLV/hasGeometryType -->
 
-    <owl:ObjectProperty rdf:about="https://w3id.org/italia/onto/Route/containsPoint">
-        <owl:inverseOf rdf:resource="https://w3id.org/italia/onto/Route/isContainedByRoute"/>
+    <owl:ObjectProperty rdf:about="https://w3id.org/italia/onto/CLV/hasGeometryType"/>
+    
+
+
+    <!-- https://w3id.org/italia/onto/Route/crosses -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/italia/onto/Route/crosses">
+        <owl:inverseOf rdf:resource="https://w3id.org/italia/onto/Route/isCrossedBy"/>
         <rdfs:domain rdf:resource="https://w3id.org/italia/onto/Route/Route"/>
-        <rdfs:range rdf:resource="https://w3id.org/italia/onto/Route/RoutePoint"/>
+        <rdfs:range rdf:resource="https://w3id.org/italia/onto/Route/GeospatialPoint"/>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description rdf:about="https://w3id.org/italia/onto/Route/enumeratesPoint"/>
+            <rdf:Description rdf:about="https://w3id.org/italia/onto/Route/hasGeospatialPoint"/>
+        </owl:propertyChainAxiom>
+        <rdfs:label xml:lang="it">La relazione che permette di asserire che un percorso attraversa un certo punto geospaziale.</rdfs:label>
+        <rdfs:label xml:lang="en">The relation between a route and a geospatial point. I.e. a route &apos;crosses&apos; a certain geospatial point.</rdfs:label>
+        <rdfs:label xml:lang="it">attraversa</rdfs:label>
+        <rdfs:label xml:lang="en">crosses</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/italia/onto/Route/enumeratesPoint -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/italia/onto/Route/enumeratesPoint">
+        <owl:inverseOf rdf:resource="https://w3id.org/italia/onto/Route/isEnumeratedByRoute"/>
+        <rdfs:domain rdf:resource="https://w3id.org/italia/onto/Route/Route"/>
+        <rdfs:range rdf:resource="https://w3id.org/italia/onto/Route/PointSequencingInRoute"/>
+        <rdfs:label xml:lang="en">enumerates point</rdfs:label>
     </owl:ObjectProperty>
     
 
@@ -57,10 +82,10 @@
     <!-- https://w3id.org/italia/onto/Route/hasEndPoint -->
 
     <owl:ObjectProperty rdf:about="https://w3id.org/italia/onto/Route/hasEndPoint">
-        <rdfs:subPropertyOf rdf:resource="https://w3id.org/italia/onto/Route/containsPoint"/>
+        <rdfs:subPropertyOf rdf:resource="https://w3id.org/italia/onto/Route/enumeratesPoint"/>
         <owl:inverseOf rdf:resource="https://w3id.org/italia/onto/Route/isEndPointOf"/>
         <rdfs:domain rdf:resource="https://w3id.org/italia/onto/Route/Route"/>
-        <rdfs:range rdf:resource="https://w3id.org/italia/onto/Route/RoutePoint"/>
+        <rdfs:range rdf:resource="https://w3id.org/italia/onto/Route/PointSequencingInRoute"/>
     </owl:ObjectProperty>
     
 
@@ -70,6 +95,20 @@
     <owl:ObjectProperty rdf:about="https://w3id.org/italia/onto/Route/hasExtimatedDuration">
         <rdfs:domain rdf:resource="https://w3id.org/italia/onto/Route/Route"/>
         <rdfs:range rdf:resource="https://w3id.org/italia/onto/TI/Duration"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/italia/onto/Route/hasGeospatialPoint -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/italia/onto/Route/hasGeospatialPoint">
+        <owl:inverseOf rdf:resource="https://w3id.org/italia/onto/Route/isGeospatialPointOf"/>
+        <rdfs:domain rdf:resource="https://w3id.org/italia/onto/Route/PointSequencingInRoute"/>
+        <rdfs:range rdf:resource="https://w3id.org/italia/onto/Route/GeospatialPoint"/>
+        <rdfs:comment xml:lang="it">La relazione che associa l&apos;elemento della sequenza rappresentato da un PointSequencingInRoute ad un GeospatialPoint.</rdfs:comment>
+        <rdfs:comment xml:lang="en">The relation tha associates a PointSequencingInRoute with a GeospatialPoint.</rdfs:comment>
+        <rdfs:label xml:lang="en">has geospatial point</rdfs:label>
+        <rdfs:label xml:lang="it">has punto geospaziale</rdfs:label>
     </owl:ObjectProperty>
     
 
@@ -92,9 +131,10 @@
     <!-- https://w3id.org/italia/onto/Route/hasNextPoint -->
 
     <owl:ObjectProperty rdf:about="https://w3id.org/italia/onto/Route/hasNextPoint">
+        <rdfs:subPropertyOf rdf:resource="https://w3id.org/italia/onto/l0/follows"/>
         <owl:inverseOf rdf:resource="https://w3id.org/italia/onto/Route/hasPreviousPoint"/>
-        <rdfs:domain rdf:resource="https://w3id.org/italia/onto/Route/RoutePoint"/>
-        <rdfs:range rdf:resource="https://w3id.org/italia/onto/Route/RoutePoint"/>
+        <rdfs:domain rdf:resource="https://w3id.org/italia/onto/Route/PointSequencingInRoute"/>
+        <rdfs:range rdf:resource="https://w3id.org/italia/onto/Route/PointSequencingInRoute"/>
     </owl:ObjectProperty>
     
 
@@ -102,8 +142,9 @@
     <!-- https://w3id.org/italia/onto/Route/hasPreviousPoint -->
 
     <owl:ObjectProperty rdf:about="https://w3id.org/italia/onto/Route/hasPreviousPoint">
-        <rdfs:domain rdf:resource="https://w3id.org/italia/onto/Route/RoutePoint"/>
-        <rdfs:range rdf:resource="https://w3id.org/italia/onto/Route/RoutePoint"/>
+        <rdfs:subPropertyOf rdf:resource="https://w3id.org/italia/onto/l0/precedes"/>
+        <rdfs:domain rdf:resource="https://w3id.org/italia/onto/Route/PointSequencingInRoute"/>
+        <rdfs:range rdf:resource="https://w3id.org/italia/onto/Route/PointSequencingInRoute"/>
     </owl:ObjectProperty>
     
 
@@ -130,10 +171,10 @@
     <!-- https://w3id.org/italia/onto/Route/hasStartPoint -->
 
     <owl:ObjectProperty rdf:about="https://w3id.org/italia/onto/Route/hasStartPoint">
-        <rdfs:subPropertyOf rdf:resource="https://w3id.org/italia/onto/Route/containsPoint"/>
+        <rdfs:subPropertyOf rdf:resource="https://w3id.org/italia/onto/Route/enumeratesPoint"/>
         <owl:inverseOf rdf:resource="https://w3id.org/italia/onto/Route/isStartPointOf"/>
         <rdfs:domain rdf:resource="https://w3id.org/italia/onto/Route/Route"/>
-        <rdfs:range rdf:resource="https://w3id.org/italia/onto/Route/RoutePoint"/>
+        <rdfs:range rdf:resource="https://w3id.org/italia/onto/Route/PointSequencingInRoute"/>
     </owl:ObjectProperty>
     
 
@@ -159,18 +200,51 @@
     
 
 
-    <!-- https://w3id.org/italia/onto/Route/isContainedByRoute -->
+    <!-- https://w3id.org/italia/onto/Route/isCrossedBy -->
 
-    <owl:ObjectProperty rdf:about="https://w3id.org/italia/onto/Route/isContainedByRoute"/>
+    <owl:ObjectProperty rdf:about="https://w3id.org/italia/onto/Route/isCrossedBy">
+        <rdfs:domain rdf:resource="https://w3id.org/italia/onto/Route/GeospatialPoint"/>
+        <rdfs:range rdf:resource="https://w3id.org/italia/onto/Route/Route"/>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description rdf:about="https://w3id.org/italia/onto/Route/isGeospatialPointOf"/>
+            <rdf:Description rdf:about="https://w3id.org/italia/onto/Route/isEnumeratedByRoute"/>
+        </owl:propertyChainAxiom>
+        <rdfs:comment xml:lang="it">La relazione inversa di crosses.</rdfs:comment>
+        <rdfs:comment xml:lang="en">The inverse relation of crosses.</rdfs:comment>
+        <rdfs:label xml:lang="it">attraversato da</rdfs:label>
+        <rdfs:label xml:lang="en">is crossed by</rdfs:label>
+    </owl:ObjectProperty>
     
 
 
     <!-- https://w3id.org/italia/onto/Route/isEndPointOf -->
 
     <owl:ObjectProperty rdf:about="https://w3id.org/italia/onto/Route/isEndPointOf">
-        <rdfs:subPropertyOf rdf:resource="https://w3id.org/italia/onto/Route/isContainedByRoute"/>
-        <rdfs:domain rdf:resource="https://w3id.org/italia/onto/Route/RoutePoint"/>
+        <rdfs:subPropertyOf rdf:resource="https://w3id.org/italia/onto/Route/isEnumeratedByRoute"/>
+        <rdfs:domain rdf:resource="https://w3id.org/italia/onto/Route/PointSequencingInRoute"/>
         <rdfs:range rdf:resource="https://w3id.org/italia/onto/Route/Route"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/italia/onto/Route/isEnumeratedByRoute -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/italia/onto/Route/isEnumeratedByRoute">
+        <rdfs:domain rdf:resource="https://w3id.org/italia/onto/Route/PointSequencingInRoute"/>
+        <rdfs:range rdf:resource="https://w3id.org/italia/onto/Route/Route"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/italia/onto/Route/isGeospatialPointOf -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/italia/onto/Route/isGeospatialPointOf">
+        <rdfs:domain rdf:resource="https://w3id.org/italia/onto/Route/GeospatialPoint"/>
+        <rdfs:range rdf:resource="https://w3id.org/italia/onto/Route/PointSequencingInRoute"/>
+        <rdfs:comment xml:lang="en">Inverse relation of has gespatial point.</rdfs:comment>
+        <rdfs:comment xml:lang="it">Relazione inversa di has geospatial point.</rdfs:comment>
+        <rdfs:label xml:lang="en">is geospatial point of</rdfs:label>
+        <rdfs:label xml:lang="it">punto geospaziale di</rdfs:label>
     </owl:ObjectProperty>
     
 
@@ -187,10 +261,22 @@
     <!-- https://w3id.org/italia/onto/Route/isStartPointOf -->
 
     <owl:ObjectProperty rdf:about="https://w3id.org/italia/onto/Route/isStartPointOf">
-        <rdfs:subPropertyOf rdf:resource="https://w3id.org/italia/onto/Route/isContainedByRoute"/>
-        <rdfs:domain rdf:resource="https://w3id.org/italia/onto/Route/RoutePoint"/>
+        <rdfs:subPropertyOf rdf:resource="https://w3id.org/italia/onto/Route/isEnumeratedByRoute"/>
+        <rdfs:domain rdf:resource="https://w3id.org/italia/onto/Route/PointSequencingInRoute"/>
         <rdfs:range rdf:resource="https://w3id.org/italia/onto/Route/Route"/>
     </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/italia/onto/l0/follows -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/italia/onto/l0/follows"/>
+    
+
+
+    <!-- https://w3id.org/italia/onto/l0/precedes -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/italia/onto/l0/precedes"/>
     
 
 
@@ -202,6 +288,18 @@
     ///////////////////////////////////////////////////////////////////////////////////////
      -->
 
+    
+
+
+    <!-- https://w3id.org/italia/onto/CLV/lat -->
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/italia/onto/CLV/lat"/>
+    
+
+
+    <!-- https://w3id.org/italia/onto/CLV/long -->
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/italia/onto/CLV/long"/>
     
 
 
@@ -224,11 +322,15 @@
     
 
 
-    <!-- https://w3id.org/italia/onto/Route/position -->
+    <!-- https://w3id.org/italia/onto/Route/ordering -->
 
-    <owl:DatatypeProperty rdf:about="https://w3id.org/italia/onto/Route/position">
-        <rdfs:domain rdf:resource="https://w3id.org/italia/onto/Route/RoutePoint"/>
+    <owl:DatatypeProperty rdf:about="https://w3id.org/italia/onto/Route/ordering">
+        <rdfs:domain rdf:resource="https://w3id.org/italia/onto/Route/PointSequencingInRoute"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+        <rdfs:comment xml:lang="it">L&apos;ordinamento dell&apos;elemento all&apos;interno della sequenza espresso come intero.</rdfs:comment>
+        <rdfs:comment xml:lang="en">The integer that expresses the ordering of an item in a certain sequence.</rdfs:comment>
+        <rdfs:label xml:lang="en">ordering</rdfs:label>
+        <rdfs:label xml:lang="it">ordinamento</rdfs:label>
     </owl:DatatypeProperty>
     
 
@@ -282,22 +384,85 @@
     
 
 
+    <!-- https://w3id.org/italia/onto/Route/GeospatialPoint -->
+
+    <owl:Class rdf:about="https://w3id.org/italia/onto/Route/GeospatialPoint">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="https://w3id.org/italia/onto/CLV/hasGeometryType"/>
+                        <owl:hasValue rdf:resource="https://w3id.org/italia/onto/CLV/Point"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="https://w3id.org/italia/onto/CLV/lat"/>
+                        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="https://w3id.org/italia/onto/CLV/long"/>
+                        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="https://w3id.org/italia/onto/CLV/Geometry"/>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/italia/onto/Route/PointSequencingInRoute -->
+
+    <owl:Class rdf:about="https://w3id.org/italia/onto/Route/PointSequencingInRoute">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/italia/onto/l0/Event"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/Route/hasGeospatialPoint"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="https://w3id.org/italia/onto/Route/GeospatialPoint"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/Route/hasNextPoint"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="https://w3id.org/italia/onto/Route/GeospatialPoint"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/Route/hasPreviousPoint"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="https://w3id.org/italia/onto/Route/GeospatialPoint"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/Route/ordering"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
     <!-- https://w3id.org/italia/onto/Route/Route -->
 
     <owl:Class rdf:about="https://w3id.org/italia/onto/Route/Route">
         <rdfs:subClassOf rdf:resource="https://w3id.org/italia/onto/CLV/Geometry"/>
+        <rdfs:subClassOf rdf:resource="https://w3id.org/italia/onto/l0/Sequence"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/Route/containsPoint"/>
+                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/Route/enumeratesPoint"/>
                 <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">2</owl:minQualifiedCardinality>
-                <owl:onClass rdf:resource="https://w3id.org/italia/onto/Route/RoutePoint"/>
+                <owl:onClass rdf:resource="https://w3id.org/italia/onto/Route/GeospatialPoint"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="https://w3id.org/italia/onto/Route/hasEndPoint"/>
                 <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onClass rdf:resource="https://w3id.org/italia/onto/Route/RoutePoint"/>
+                <owl:onClass rdf:resource="https://w3id.org/italia/onto/Route/GeospatialPoint"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -311,7 +476,7 @@
             <owl:Restriction>
                 <owl:onProperty rdf:resource="https://w3id.org/italia/onto/Route/hasStartPoint"/>
                 <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onClass rdf:resource="https://w3id.org/italia/onto/Route/RoutePoint"/>
+                <owl:onClass rdf:resource="https://w3id.org/italia/onto/Route/GeospatialPoint"/>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
@@ -322,33 +487,6 @@
 
     <owl:Class rdf:about="https://w3id.org/italia/onto/Route/RouteDuration">
         <rdfs:subClassOf rdf:resource="https://w3id.org/italia/onto/TI/Duration"/>
-    </owl:Class>
-    
-
-
-    <!-- https://w3id.org/italia/onto/Route/RoutePoint -->
-
-    <owl:Class rdf:about="https://w3id.org/italia/onto/Route/RoutePoint">
-        <rdfs:subClassOf rdf:resource="https://w3id.org/italia/onto/CLV/Geometry"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/Route/hasNextPoint"/>
-                <owl:allValuesFrom rdf:resource="https://w3id.org/italia/onto/Route/RoutePoint"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/Route/hasPreviousPoint"/>
-                <owl:allValuesFrom rdf:resource="https://w3id.org/italia/onto/Route/RoutePoint"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/Route/position"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
     </owl:Class>
     
 
@@ -399,15 +537,52 @@
     
 
 
+    <!-- https://w3id.org/italia/onto/l0/Collection -->
+
+    <owl:Class rdf:about="https://w3id.org/italia/onto/l0/Collection"/>
+    
+
+
     <!-- https://w3id.org/italia/onto/l0/Description -->
 
     <owl:Class rdf:about="https://w3id.org/italia/onto/l0/Description"/>
     
 
 
+    <!-- https://w3id.org/italia/onto/l0/Event -->
+
+    <owl:Class rdf:about="https://w3id.org/italia/onto/l0/Event"/>
+    
+
+
     <!-- https://w3id.org/italia/onto/l0/Location -->
 
     <owl:Class rdf:about="https://w3id.org/italia/onto/l0/Location"/>
+    
+
+
+    <!-- https://w3id.org/italia/onto/l0/Sequence -->
+
+    <owl:Class rdf:about="https://w3id.org/italia/onto/l0/Sequence">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/italia/onto/l0/Collection"/>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- https://w3id.org/italia/onto/CLV/Point -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/italia/onto/CLV/Point"/>
 </rdf:RDF>
 
 
