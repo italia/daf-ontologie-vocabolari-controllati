@@ -1,9 +1,16 @@
 @prefix : <https://w3id.org/italia/onto/l0-aligns#> .
+@prefix l0: <https://w3id.org/italia/onto/l0/> .
+@prefix ns: <http://www.w3.org/2006/vcard/ns#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix ADMS: <https://w3id.org/italia/onto/ADMS/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix terms: <http://purl.org/dc/terms/> .
 @base <https://w3id.org/italia/onto/l0-aligns> .
 
 <https://w3id.org/italia/onto/l0-aligns> rdf:type owl:Ontology ;
@@ -16,27 +23,35 @@
 #################################################################
 
 ###  http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#describes
-<http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#describes> owl:equivalentProperty <https://w3id.org/italia/onto/l0/isDescriptionOf> .
+<http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#describes> owl:equivalentProperty l0:isDescriptionOf .
 
 
 ###  http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#directlyFollows
-<http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#directlyFollows> owl:equivalentProperty <https://w3id.org/italia/onto/l0/directlyFollows> .
+<http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#directlyFollows> owl:equivalentProperty l0:directlyFollows .
 
 
 ###  http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#directlyPrecedes
-<http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#directlyPrecedes> owl:equivalentProperty <https://w3id.org/italia/onto/l0/directlyPrecedes> .
+<http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#directlyPrecedes> owl:equivalentProperty l0:directlyPrecedes .
 
 
 ###  http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#follows
-<http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#follows> owl:equivalentProperty <https://w3id.org/italia/onto/l0/follows> .
+<http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#follows> owl:equivalentProperty l0:follows .
+
+
+###  http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#hasMember
+<http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#hasMember> owl:equivalentProperty l0:hasMember .
 
 
 ###  http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#isDescribedBy
-<http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#isDescribedBy> owl:equivalentProperty <https://w3id.org/italia/onto/l0/hasDescription> .
+<http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#isDescribedBy> owl:equivalentProperty l0:hasDescription .
+
+
+###  http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#isMemberOf
+<http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#isMemberOf> owl:equivalentProperty l0:isMemberOf .
 
 
 ###  http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#precedes
-<http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#precedes> owl:equivalentProperty <https://w3id.org/italia/onto/l0/precedes> .
+<http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#precedes> owl:equivalentProperty l0:precedes .
 
 
 ###  https://w3id.org/italia/onto/l0/directlyFollows
@@ -47,7 +62,11 @@
 
 ###  https://w3id.org/italia/onto/l0/hasDescription
 
+###  https://w3id.org/italia/onto/l0/hasMember
+
 ###  https://w3id.org/italia/onto/l0/isDescriptionOf
+
+###  https://w3id.org/italia/onto/l0/isMemberOf
 
 ###  https://w3id.org/italia/onto/l0/precedes
 
@@ -56,15 +75,15 @@
 #################################################################
 
 ###  https://w3id.org/italia/onto/l0/description
-<https://w3id.org/italia/onto/l0/description> rdfs:subPropertyOf <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#hasDataValue> .
+l0:description rdfs:subPropertyOf <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#hasDataValue> .
 
 
 ###  https://w3id.org/italia/onto/l0/identifier
-<https://w3id.org/italia/onto/l0/identifier> rdfs:subPropertyOf <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#hasDataValue> .
+l0:identifier rdfs:subPropertyOf <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#hasDataValue> .
 
 
 ###  https://w3id.org/italia/onto/l0/name
-<https://w3id.org/italia/onto/l0/name> rdfs:subPropertyOf <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#hasDataValue> .
+l0:name rdfs:subPropertyOf <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#hasDataValue> .
 
 
 #################################################################
@@ -72,47 +91,47 @@
 #################################################################
 
 ###  http://www.ontologydesignpatterns.org/ont/d0.owl#Activity
-<http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> owl:equivalentClass <https://w3id.org/italia/onto/l0/Activity> .
+<http://www.ontologydesignpatterns.org/ont/d0.owl#Activity> owl:equivalentClass l0:Activity .
 
 
 ###  http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic
-<http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> owl:equivalentClass <https://w3id.org/italia/onto/l0/Characteristic> .
+<http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic> owl:equivalentClass l0:Characteristic .
 
 
 ###  http://www.ontologydesignpatterns.org/ont/d0.owl#Location
-<http://www.ontologydesignpatterns.org/ont/d0.owl#Location> owl:equivalentClass <https://w3id.org/italia/onto/l0/Location> .
+<http://www.ontologydesignpatterns.org/ont/d0.owl#Location> owl:equivalentClass l0:Location .
 
 
 ###  http://www.ontologydesignpatterns.org/ont/d0.owl#System
-<http://www.ontologydesignpatterns.org/ont/d0.owl#System> owl:equivalentClass <https://w3id.org/italia/onto/l0/System> .
+<http://www.ontologydesignpatterns.org/ont/d0.owl#System> owl:equivalentClass l0:System .
 
 
 ###  http://www.ontologydesignpatterns.org/ont/d0.owl#Topic
-<http://www.ontologydesignpatterns.org/ont/d0.owl#Topic> owl:equivalentClass <https://w3id.org/italia/onto/l0/Topic> .
+<http://www.ontologydesignpatterns.org/ont/d0.owl#Topic> owl:equivalentClass l0:Topic .
 
 
 ###  http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Agent
-<http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Agent> owl:equivalentClass <https://w3id.org/italia/onto/l0/Agent> .
+<http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Agent> owl:equivalentClass l0:Agent .
 
 
 ###  http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Collection
-<http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Collection> owl:equivalentClass <https://w3id.org/italia/onto/l0/Collection> .
+<http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Collection> owl:equivalentClass l0:Collection .
 
 
 ###  http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Description
-<http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Description> owl:equivalentClass <https://w3id.org/italia/onto/l0/Description> .
+<http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Description> owl:equivalentClass l0:Description .
 
 
 ###  http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Entity
-<http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Entity> owl:equivalentClass <https://w3id.org/italia/onto/l0/Entity> .
+<http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Entity> owl:equivalentClass l0:Entity .
 
 
 ###  http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Event
-<http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Event> owl:equivalentClass <https://w3id.org/italia/onto/l0/Event> .
+<http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Event> owl:equivalentClass l0:Event .
 
 
 ###  http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Object
-<http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Object> owl:equivalentClass <https://w3id.org/italia/onto/l0/Object> .
+<http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Object> owl:equivalentClass l0:Object .
 
 
 ###  https://w3id.org/italia/onto/l0/Activity

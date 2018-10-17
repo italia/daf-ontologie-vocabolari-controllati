@@ -192,6 +192,50 @@ foaf:name rdf:type owl:AnnotationProperty .
                                 "stable"@en .
 
 
+###  https://w3id.org/italia/onto/l0/hasFirstMember
+:hasFirstMember rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf :hasMember ;
+                owl:inverseOf :isFirstMemberOf ;
+                rdfs:domain :Sequence ;
+                rdfs:range :Entity ;
+                rdfs:comment "La object property che permette di rappresentare il primo membro di una sequenza."@it ,
+                             "The object property that enables to represent the first member of a sequence."@en ;
+                rdfs:isDefinedBy <https://w3id.org/italia/onto/l0> ;
+                rdfs:label "has first member"@en ,
+                           "primo membro"@it ;
+                owl:versionInfo "stabile"@it ,
+                                "stable"@en .
+
+
+###  https://w3id.org/italia/onto/l0/hasLastMember
+:hasLastMember rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf :hasMember ;
+               owl:inverseOf :isLastMemberOf ;
+               rdfs:domain :Entity ;
+               rdfs:range :Sequence ;
+               rdfs:comment "Object property che permette di rappresentare una specifica entità come l'ultimo membro di una sequenza."@it ,
+                            "Object property for representing an entity as the last member of a sequence."@en ;
+               rdfs:isDefinedBy <https://w3id.org/italia/onto/l0> ;
+               rdfs:label "ha ultimo membro"@it ,
+                          "has last member"@en ;
+               owl:versionInfo "stabile"@it ,
+                               "stable"@en .
+
+
+###  https://w3id.org/italia/onto/l0/hasMember
+:hasMember rdf:type owl:ObjectProperty ;
+           owl:inverseOf :isMemberOf ;
+           rdfs:domain :Collection ;
+           rdfs:range :Entity ;
+           rdfs:comment "La proprietà che modella la relazione di membership."@it ,
+                        "The object property that models the membership relation."@en ;
+           rdfs:isDefinedBy <https://w3id.org/italia/onto/l0> ;
+           rdfs:label "ha membro"@it ,
+                      "has member"@en ;
+           owl:versionInfo "stabile"@it ,
+                           "stable"@en .
+
+
 ###  https://w3id.org/italia/onto/l0/isDescriptionOf
 :isDescriptionOf rdf:type owl:ObjectProperty ;
                  rdfs:domain :Description ;
@@ -203,6 +247,47 @@ foaf:name rdf:type owl:AnnotationProperty .
                             "è descrizione di"@it ;
                  owl:versionInfo "stabile"@it ,
                                  "stable"@en .
+
+
+###  https://w3id.org/italia/onto/l0/isFirstMemberOf
+:isFirstMemberOf rdf:type owl:ObjectProperty ;
+                 rdfs:subPropertyOf :isMemberOf ;
+                 rdfs:domain :Entity ;
+                 rdfs:range :Sequence ;
+                 rdfs:isDefinedBy <https://w3id.org/italia/onto/l0> ;
+                 rdfs:label "Inverse object property of has first member."@en ,
+                            "Proprietà inversa di has first member."@it ,
+                            "is first member of"@en ,
+                            "primo membro di"@it ;
+                 owl:versionInfo "stabile"@it ,
+                                 "stable"@en .
+
+
+###  https://w3id.org/italia/onto/l0/isLastMemberOf
+:isLastMemberOf rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf :isMemberOf ;
+                rdfs:domain :Entity ;
+                rdfs:range :Sequence ;
+                rdfs:comment "Inverse object property of has last member"@en ,
+                             "Object property inversa di has last member."@it ;
+                rdfs:isDefinedBy <https://w3id.org/italia/onto/l0> ;
+                rdfs:label "is last member of"@en ,
+                           "ultimo membro di"@it ;
+                owl:versionInfo "stabile"@it ,
+                                "stable"@en .
+
+
+###  https://w3id.org/italia/onto/l0/isMemberOf
+:isMemberOf rdf:type owl:ObjectProperty ;
+            rdfs:domain :Entity ;
+            rdfs:range :Collection ;
+            rdfs:comment "Inverse object property of has member."@en ,
+                         "Relazione inversa di has member."@it ;
+            rdfs:isDefinedBy <https://w3id.org/italia/onto/l0> ;
+            rdfs:label "is member of"@en ,
+                       "membro di"@it ;
+            owl:versionInfo "stabile"@it ,
+                            "stable"@en .
 
 
 ###  https://w3id.org/italia/onto/l0/precedes
@@ -336,7 +421,11 @@ admsapit:SemanticAssetDistribution rdf:type owl:Class .
 
 ###  https://w3id.org/italia/onto/l0/Collection
 :Collection rdf:type owl:Class ;
-            rdfs:subClassOf :Entity ;
+            rdfs:subClassOf :Entity ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :hasMember ;
+                              owl:someValuesFrom :Entity
+                            ] ;
             rdfs:comment "La classe che include collezioni di qualsiasi cosa, ex. gruppi, raccolte, comunità, etc."@it ,
                          "The class includes all collections of any entities: e.g. groups, repositories, communities, etc,"@en ;
             rdfs:isDefinedBy <https://w3id.org/italia/onto/l0> ;
@@ -418,7 +507,17 @@ GLi oggetti si possono contrapporre agli eventi, che invece scorrono nel tempo, 
 
 ###  https://w3id.org/italia/onto/l0/Sequence
 :Sequence rdf:type owl:Class ;
-          rdfs:subClassOf :Collection .
+          rdfs:subClassOf :Collection ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :hasFirstMember ;
+                            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                            owl:onClass :Entity
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :hasLastMember ;
+                            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                            owl:onClass :Entity
+                          ] .
 
 
 ###  https://w3id.org/italia/onto/l0/System
