@@ -1,6 +1,7 @@
 @prefix : <https://w3id.org/italia/onto/AtlasOfPaths/> .
 @prefix l0: <https://w3id.org/italia/onto/l0/> .
 @prefix mu: <https://w3id.org/italia/onto/MU/> .
+@prefix ns: <http://www.w3.org/2006/vcard/ns#> .
 @prefix sm: <https://w3id.org/italia/onto/SM/> .
 @prefix ti: <https://w3id.org/italia/onto/TI/> .
 @prefix clv: <https://w3id.org/italia/onto/CLV/> .
@@ -10,9 +11,14 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix ADMS: <https://w3id.org/italia/onto/ADMS/> .
 @prefix acco: <https://w3id.org/italia/onto/ACCO/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix route: <https://w3id.org/italia/onto/Route/> .
+@prefix terms: <http://purl.org/dc/terms/> .
 @base <https://w3id.org/italia/onto/AtlasOfPaths/> .
 
 <https://w3id.org/italia/onto/AtlasOfPaths/> rdf:type owl:Ontology ;
@@ -30,32 +36,16 @@ owl:hasValue rdf:type owl:AnnotationProperty .
 #    Object Properties
 #################################################################
 
-###  https://w3id.org/italia/onto/AtlasOfPaths/crossesFeature
-:crossesFeature rdf:type owl:ObjectProperty ;
-                owl:inverseOf :isFeatureCrossedBy ;
-                rdfs:domain route:Route ;
-                rdfs:range clv:Feature ;
-                rdfs:comment "La relazione che permette di asserire quali luoghi sono attraversati da un percorso."@it ,
-                             "The relation that allows to specify which features are crossed by a route."@en ;
-                rdfs:label "attraversa luogo"@it ,
-                           "crosses feature"@en .
-
-
-###  https://w3id.org/italia/onto/AtlasOfPaths/crossesRegion
-:crossesRegion rdf:type owl:ObjectProperty ;
-               rdfs:subPropertyOf :crossesFeature ;
-               owl:inverseOf :isRegionCrossedBy ;
-               rdfs:domain route:Route ;
-               rdfs:range clv:Region ;
-               rdfs:comment "La relazione che permette di definire quali regioni attraversa un certo percorso."@it ,
-                            "The relation that allows to specify which regions are crossed by a certain route."@en ;
-               rdfs:label "attraversa regione"@it ,
-                          "crosses region"@en .
+###  https://w3id.org/italia/onto/AtlasOfPaths/bestWhen
+:bestWhen rdf:type owl:ObjectProperty ;
+          rdfs:domain :PathPlan ;
+          rdfs:range ti:TemporalEntity .
 
 
 ###  https://w3id.org/italia/onto/AtlasOfPaths/encountersPath
 :encountersPath rdf:type owl:ObjectProperty ;
                 owl:inverseOf :isPathEncounteredBy ;
+                rdf:type owl:SymmetricProperty ;
                 rdfs:domain :Path ;
                 rdfs:range :Path ;
                 rdfs:comment "La object property encountersPath permette di definire quali sono i cammini incontrati da un specifico cammino che rappresenta il soggetto delle triple aventi come predicato encountersPath."@it ,
@@ -64,64 +54,58 @@ owl:hasValue rdf:type owl:AnnotationProperty .
                            "incontra cammino"@it .
 
 
-###  https://w3id.org/italia/onto/AtlasOfPaths/forPaving
-:forPaving rdf:type owl:ObjectProperty ;
-           rdfs:domain :ValuedRoutePaving ;
-           rdfs:range :RoutePaving .
+###  https://w3id.org/italia/onto/AtlasOfPaths/encountersPathStage
+:encountersPathStage rdf:type owl:ObjectProperty ,
+                              owl:SymmetricProperty ;
+                     rdfs:domain :PathStage .
 
 
-###  https://w3id.org/italia/onto/AtlasOfPaths/hasCurrentGovernanceOrgan
-:hasCurrentGovernanceOrgan rdf:type owl:ObjectProperty ;
-                           owl:inverseOf :isCurrentGovernanceOrganOf ;
-                           rdfs:domain :Path ;
-                           rdfs:range :GovernanceOrgan .
+###  https://w3id.org/italia/onto/AtlasOfPaths/forPathway
+:forPathway rdf:type owl:ObjectProperty ;
+            rdfs:subPropertyOf owl:topObjectProperty ;
+            rdfs:domain :QuantifiedPathwayPaving ;
+            rdfs:range :Pathway .
 
 
 ###  https://w3id.org/italia/onto/AtlasOfPaths/hasGovernanceOrgan
 :hasGovernanceOrgan rdf:type owl:ObjectProperty ;
                     rdfs:subPropertyOf owl:topObjectProperty ;
                     owl:inverseOf :isGovernanceOrganOf ;
-                    rdfs:domain :GovernanceOrganInTime ;
+                    rdfs:domain :Path ;
                     rdfs:range :GovernanceOrgan .
 
 
-###  https://w3id.org/italia/onto/AtlasOfPaths/hasGovernanceOrganInTime
-:hasGovernanceOrganInTime rdf:type owl:ObjectProperty ;
-                          rdfs:domain :Path ;
-                          rdfs:range :GovernanceOrganInTime .
+###  https://w3id.org/italia/onto/AtlasOfPaths/hasMaintainer
+:hasMaintainer rdf:type owl:ObjectProperty ;
+               owl:inverseOf :isMaintainerOf ;
+               rdfs:domain :Pathway ;
+               rdfs:range l0:Agent .
 
 
 ###  https://w3id.org/italia/onto/AtlasOfPaths/hasNearbyAccommodation
 :hasNearbyAccommodation rdf:type owl:ObjectProperty ;
                         rdfs:subPropertyOf :hasNearbyPointOfInterest ;
-                        rdfs:domain route:Route ;
+                        rdfs:domain :PathStage ;
                         rdfs:range acco:Accommodation .
 
 
 ###  https://w3id.org/italia/onto/AtlasOfPaths/hasNearbyPointOfInterest
 :hasNearbyPointOfInterest rdf:type owl:ObjectProperty ;
-                          rdfs:domain route:Route ;
+                          rdfs:domain :PathStage ;
                           rdfs:range poi:PointOfInterest .
 
 
 ###  https://w3id.org/italia/onto/AtlasOfPaths/hasNearbyRestaurant
 :hasNearbyRestaurant rdf:type owl:ObjectProperty ;
                      rdfs:subPropertyOf :hasNearbyPointOfInterest ;
-                     rdfs:domain route:Route ;
+                     rdfs:domain :PathStage ;
                      rdfs:range :Restaurant .
 
 
-###  https://w3id.org/italia/onto/AtlasOfPaths/hasPathPlan
-:hasPathPlan rdf:type owl:ObjectProperty ;
-             rdfs:subPropertyOf route:hasTripPlan ;
-             rdfs:domain :Path ;
-             rdfs:range :PathPlan .
-
-
-###  https://w3id.org/italia/onto/AtlasOfPaths/hasSeason
-:hasSeason rdf:type owl:ObjectProperty ;
-           rdfs:domain :PathPlan ;
-           rdfs:range ti:TemporalEntity .
+###  https://w3id.org/italia/onto/AtlasOfPaths/hasSecurityLevel
+:hasSecurityLevel rdf:type owl:ObjectProperty ;
+                  rdfs:domain :Pathway ;
+                  rdfs:range :SecurityLevel .
 
 
 ###  https://w3id.org/italia/onto/AtlasOfPaths/hasServiceType
@@ -132,19 +116,25 @@ owl:hasValue rdf:type owl:AnnotationProperty .
 
 ###  https://w3id.org/italia/onto/AtlasOfPaths/hasSignposting
 :hasSignposting rdf:type owl:ObjectProperty ;
-                rdfs:domain route:Route ;
+                rdfs:domain :PathStage ;
                 rdfs:range :Signposting .
 
 
 ###  https://w3id.org/italia/onto/AtlasOfPaths/hasSupportService
 :hasSupportService rdf:type owl:ObjectProperty ;
                    owl:inverseOf :isSupportServiceOf ;
-                   rdfs:domain :PathPlan ;
+                   rdfs:domain :PathStage ;
                    rdfs:range :SupportService ;
                    rdfs:comment "La object property mette in relazione uno specifico oggetto con un servizio associato."@it ,
                                 "The object property relates anything to a service."@en ;
                    rdfs:label "ha servizio"@en ,
                               "has service"@en .
+
+
+###  https://w3id.org/italia/onto/AtlasOfPaths/hasSurveillance
+:hasSurveillance rdf:type owl:ObjectProperty ;
+                 rdfs:domain :Pathway ;
+                 rdfs:range l0:Agent .
 
 
 ###  https://w3id.org/italia/onto/AtlasOfPaths/hasTheme
@@ -166,44 +156,24 @@ owl:hasValue rdf:type owl:AnnotationProperty .
 
 ###  https://w3id.org/italia/onto/AtlasOfPaths/hasValuedRoutePaving
 :hasValuedRoutePaving rdf:type owl:ObjectProperty ;
-                      rdfs:domain route:Route ;
-                      rdfs:range :ValuedRoutePaving .
-
-
-###  https://w3id.org/italia/onto/AtlasOfPaths/intersectsWith
-:intersectsWith rdf:type owl:ObjectProperty ;
-                rdfs:domain route:GeospatialPoint ;
-                rdfs:range route:GeospatialPoint ;
-                rdfs:comment "La relazione di intersezione tra due punti di un percorso fisico."@it ,
-                             "The relation of intersection between two route points."@en ;
-                rdfs:label "incrocia"@it ,
-                           "intersects with"@en .
-
-
-###  https://w3id.org/italia/onto/AtlasOfPaths/isCurrentGovernanceOrganOf
-:isCurrentGovernanceOrganOf rdf:type owl:ObjectProperty ;
-                            rdfs:domain :GovernanceOrgan ;
-                            rdfs:range :Path .
-
-
-###  https://w3id.org/italia/onto/AtlasOfPaths/isFeatureCrossedBy
-:isFeatureCrossedBy rdf:type owl:ObjectProperty ;
-                    rdfs:domain clv:Feature ;
-                    rdfs:range route:Route ;
-                    rdfs:comment "La relazione isFeatureCrossedBy permette di specificare quali sono i percorsi che attraversano un luogo. Quest'ultimo (istanza di clv:Feature) diviene il soggetto delle triple aventi isFeatureCrossedBy come predicato. L'oggetto di tali triple sono istanze della classe route:Route"@en ,
-                                 "The isFeatureCrossedBy relation allows to specify which features are crossed by a route."@en ;
-                    rdfs:label "is feature crossed by"@en ,
-                               "luogo attraversato da"@it .
+                      rdfs:domain :Path ;
+                      rdfs:range :QuantifiedPathwayPaving .
 
 
 ###  https://w3id.org/italia/onto/AtlasOfPaths/isGovernanceOrganOf
 :isGovernanceOrganOf rdf:type owl:ObjectProperty ;
                      rdfs:domain :GovernanceOrgan ;
-                     rdfs:range :GovernanceOrganInTime ;
+                     rdfs:range :Path ;
                      rdfs:comment "Inverse object property of hasGovernanceOrgan"@en ,
                                   "Proprietà inversa di hasGovernanceOrgan"@it ;
                      rdfs:label "is governance orga of"@en ,
                                 "è organo di governo di"@it .
+
+
+###  https://w3id.org/italia/onto/AtlasOfPaths/isMaintainerOf
+:isMaintainerOf rdf:type owl:ObjectProperty ;
+                rdfs:domain l0:Agent ;
+                rdfs:range :Pathway .
 
 
 ###  https://w3id.org/italia/onto/AtlasOfPaths/isPathEncounteredBy
@@ -216,25 +186,20 @@ owl:hasValue rdf:type owl:AnnotationProperty .
                                 "is path encountered by"@en .
 
 
-###  https://w3id.org/italia/onto/AtlasOfPaths/isRegionCrossedBy
-:isRegionCrossedBy rdf:type owl:ObjectProperty ;
-                   rdfs:subPropertyOf :isFeatureCrossedBy ;
-                   rdfs:domain clv:Region ;
-                   rdfs:range route:Route ;
-                   rdfs:comment "Inverse property of crossesRegion. This property allows to state that a region is crossed by a specific route."@en ,
-                                "Proprietà inversa di crossesRegion. Permette di associare un persorso ad una regione che, pertanto, viene attraversata da tale percorso."@it ;
-                   rdfs:label "is region crossed by"@en ,
-                              "regione attraversata da"@it .
-
-
 ###  https://w3id.org/italia/onto/AtlasOfPaths/isSupportServiceOf
 :isSupportServiceOf rdf:type owl:ObjectProperty ;
                     rdfs:domain :SupportService ;
-                    rdfs:range :PathPlan ;
+                    rdfs:range :PathStage ;
                     rdfs:comment "Inverse property of has service."@en ,
                                  "Proprietà inversa di has service."@it ,
                                  "is service of"@en ,
                                  "è servizio di"@it .
+
+
+###  https://w3id.org/italia/onto/AtlasOfPaths/isSurveillanceOf
+:isSurveillanceOf rdf:type owl:ObjectProperty ;
+                  rdfs:domain l0:Agent ;
+                  rdfs:range :Pathway .
 
 
 ###  https://w3id.org/italia/onto/AtlasOfPaths/isThemeOf
@@ -248,18 +213,22 @@ owl:hasValue rdf:type owl:AnnotationProperty .
 
 
 ###  https://w3id.org/italia/onto/AtlasOfPaths/isUpdatedBy
-:isUpdatedBy rdf:type owl:ObjectProperty ;
-             rdfs:range :GovernanceOrganInTime .
+:isUpdatedBy rdf:type owl:ObjectProperty .
 
 
 ###  https://w3id.org/italia/onto/AtlasOfPaths/refersToPath
 :refersToPath rdf:type owl:ObjectProperty ;
-              rdfs:domain :GovernanceOrganInTime ;
               rdfs:range :Path ;
               rdfs:comment "Questa proprietà collega una situazione che rappresenta una Governance Organ in Tine ad un cammino specifico."@it ,
                            "This property links a Governance Organ in Tine to a specific path."@en ;
               rdfs:label "refers to path"@en ,
                          "si riferisce a cammino"@it .
+
+
+###  https://w3id.org/italia/onto/AtlasOfPaths/withPaving
+:withPaving rdf:type owl:ObjectProperty ;
+            rdfs:domain :QuantifiedPathwayPaving ;
+            rdfs:range :Paving .
 
 
 ###  https://w3id.org/italia/onto/CLV/hasSpatialCoverage
@@ -274,29 +243,6 @@ mu:hasMeasurementUnit rdf:type owl:ObjectProperty .
 
 ###  https://w3id.org/italia/onto/MU/hasValue
 mu:hasValue rdf:type owl:ObjectProperty .
-
-
-###  https://w3id.org/italia/onto/Route/hasGeoreferencing
-route:hasGeoreferencing rdf:type owl:ObjectProperty ;
-                        rdfs:domain route:Route .
-
-
-###  https://w3id.org/italia/onto/Route/hasRoute
-route:hasRoute rdf:type owl:ObjectProperty .
-
-
-###  https://w3id.org/italia/onto/Route/hasRouteType
-route:hasRouteType rdf:type owl:ObjectProperty .
-
-
-###  https://w3id.org/italia/onto/Route/hasTripPlan
-route:hasTripPlan rdf:type owl:ObjectProperty ;
-                  rdfs:domain :Path ;
-                  rdfs:range route:TripPlan ;
-                  rdfs:comment "Relation between a path and a trip plan."@en ,
-                               "Relazione tra un path e un piano di percorso."@it ;
-                  rdfs:label "ha piano di percorso"@it ,
-                             "has trip plan"@en .
 
 
 ###  https://w3id.org/italia/onto/SM/hasWebSite
@@ -350,87 +296,61 @@ acco:Accommodation rdf:type owl:Class ;
 
 ###  https://w3id.org/italia/onto/AtlasOfPaths/GovernanceOrgan
 :GovernanceOrgan rdf:type owl:Class ;
-                 rdfs:subClassOf cov:Organization ,
-                                 [ rdf:type owl:Restriction ;
-                                   owl:onProperty :isCurrentGovernanceOrganOf ;
-                                   owl:allValuesFrom :Path
-                                 ] ,
-                                 [ rdf:type owl:Restriction ;
-                                   owl:onProperty :isGovernanceOrganOf ;
-                                   owl:allValuesFrom :GovernanceOrganInTime
-                                 ] .
-
-
-###  https://w3id.org/italia/onto/AtlasOfPaths/GovernanceOrganInTime
-:GovernanceOrganInTime rdf:type owl:Class ;
-                       rdfs:subClassOf l0:Event ,
-                                       [ rdf:type owl:Restriction ;
-                                         owl:onProperty :hasGovernanceOrgan ;
-                                         owl:someValuesFrom :GovernanceOrgan
-                                       ] ,
-                                       [ rdf:type owl:Restriction ;
-                                         owl:onProperty :refersToPath ;
-                                         owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                         owl:onClass :Path
-                                       ] ,
-                                       [ rdf:type owl:Restriction ;
-                                         owl:onProperty ti:atTime ;
-                                         owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                         owl:onClass ti:TemporalEntity
-                                       ] ;
-                       rdfs:comment "Classe che rappresenta la situazione dell'associazione dell'organo di governo di un cammino nel tempo."@it ,
-                                    "This class represent the situation that assocaites a governance organ to a path over time."@en ;
-                       rdfs:label "Governance organ in time"@en ,
-                                  "Organo di Governo nel tempo"@it .
+                 rdfs:subClassOf cov:Organization .
 
 
 ###  https://w3id.org/italia/onto/AtlasOfPaths/Intersection
 :Intersection rdf:type owl:Class ;
-              rdfs:subClassOf route:GeospatialPoint ,
-                              [ rdf:type owl:Restriction ;
-                                owl:onProperty :intersectsWith ;
-                                owl:someValuesFrom route:RoutePoint
-                              ] ;
+              rdfs:subClassOf route:GeospatialPoint ;
               rdfs:comment "Il concetto che rappresenta un punto di intersezione."@it ,
                            "The concept that represents an intersection point."@en ;
               rdfs:label "Intersection point"@en ,
                          "Punto di intersezione"@it .
 
 
-###  https://w3id.org/italia/onto/AtlasOfPaths/NotPavedRoute
-:NotPavedRoute rdf:type owl:Class ;
-               rdfs:subClassOf route:RouteType ,
-                               [ rdf:type owl:Restriction ;
-                                 owl:onProperty :hasValuedRoutePaving ;
-                                 owl:someValuesFrom [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
-                                                                             owl:onProperty :forPaving ;
-                                                                             owl:hasValue :asphalt
-                                                                           ]
-                                                                           [ rdf:type owl:Restriction ;
-                                                                             owl:onProperty mu:hasMeasurementUnit ;
-                                                                             owl:hasValue :percentage
-                                                                           ]
-                                                                           [ rdf:type owl:Restriction ;
-                                                                             owl:onProperty mu:value ;
-                                                                             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                                                             owl:onDataRange [ rdf:type rdfs:Datatype ;
-                                                                                               owl:onDatatype xsd:double ;
-                                                                                               owl:withRestrictions ( [ xsd:maxExclusive "40.0"^^xsd:double
-                                                                                                                      ]
-                                                                                                                    )
-                                                                                             ]
-                                                                           ]
-                                                                         ) ;
-                                                      rdf:type owl:Class
-                                                    ]
-                               ] .
-
-
 ###  https://w3id.org/italia/onto/AtlasOfPaths/Path
 :Path rdf:type owl:Class ;
       rdfs:subClassOf l0:Description ,
                       [ rdf:type owl:Restriction ;
-                        owl:onProperty :hasPathPlan ;
+                        owl:onProperty :hasGovernanceOrgan ;
+                        owl:someValuesFrom :GovernanceOrgan
+                      ] ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :hasValuedRoutePaving ;
+                        owl:someValuesFrom [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                                    owl:onProperty mu:hasValue ;
+                                                                    owl:someValuesFrom [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                                                                                owl:onProperty mu:hasMeasurementUnit ;
+                                                                                                                owl:hasValue :percentage
+                                                                                                              ]
+                                                                                                              [ rdf:type owl:Restriction ;
+                                                                                                                owl:onProperty mu:value ;
+                                                                                                                owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                                                                                owl:onDataRange [ rdf:type rdfs:Datatype ;
+                                                                                                                                  owl:onDatatype xsd:double ;
+                                                                                                                                  owl:withRestrictions ( [ xsd:maxExclusive "40.0"^^xsd:double
+                                                                                                                                                         ]
+                                                                                                                                                       )
+                                                                                                                                ]
+                                                                                                              ]
+                                                                                                            ) ;
+                                                                                         rdf:type owl:Class
+                                                                                       ]
+                                                                  ]
+                                                                  [ rdf:type owl:Restriction ;
+                                                                    owl:onProperty :withPaving ;
+                                                                    owl:hasValue :asphalt
+                                                                  ]
+                                                                ) ;
+                                             rdf:type owl:Class
+                                           ]
+                      ] ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty route:hasRoute ;
+                        owl:someValuesFrom :Pathway
+                      ] ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty route:hasTripPlan ;
                         owl:someValuesFrom :PathPlan
                       ] ,
                       [ rdf:type owl:Restriction ;
@@ -442,16 +362,12 @@ acco:Accommodation rdf:type owl:Class ;
                         owl:allValuesFrom :Path
                       ] ,
                       [ rdf:type owl:Restriction ;
-                        owl:onProperty :hasPathPlan ;
-                        owl:allValuesFrom :PathPlan
-                      ] ,
-                      [ rdf:type owl:Restriction ;
-                        owl:onProperty l0:name ;
+                        owl:onProperty l0:description ;
                         owl:someValuesFrom rdfs:Literal
                       ] ,
                       [ rdf:type owl:Restriction ;
                         owl:onProperty l0:name ;
-                        owl:allValuesFrom rdfs:Literal
+                        owl:someValuesFrom rdfs:Literal
                       ] ;
       owl:disjointWith :TravellingMethod ,
                        route:TripPlan .
@@ -461,31 +377,44 @@ acco:Accommodation rdf:type owl:Class ;
 :PathPlan rdf:type owl:Class ;
           rdfs:subClassOf route:TripPlan ,
                           [ rdf:type owl:Restriction ;
-                            owl:onProperty :hasSeason ;
+                            owl:onProperty :bestWhen ;
                             owl:someValuesFrom ti:TemporalEntity
                           ] ,
                           [ rdf:type owl:Restriction ;
-                            owl:onProperty route:hasRoute ;
-                            owl:someValuesFrom [ rdf:type owl:Restriction ;
-                                                 owl:onProperty route:hasRouteType ;
-                                                 owl:someValuesFrom :NotPavedRoute
-                                               ]
+                            owl:onProperty :hasTravellingMethod ;
+                            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                            owl:onClass :TravellingMethod
                           ] ,
                           [ rdf:type owl:Restriction ;
-                            owl:onProperty :hasSeason ;
-                            owl:allValuesFrom ti:TemporalEntity
-                          ] ,
-                          [ rdf:type owl:Restriction ;
-                            owl:onProperty :hasSupportService ;
-                            owl:allValuesFrom :SupportService
-                          ] ,
-                          [ rdf:type owl:Restriction ;
-                            owl:onProperty route:hasRoute ;
-                            owl:allValuesFrom [ rdf:type owl:Restriction ;
-                                                owl:onProperty route:hasRouteType ;
-                                                owl:someValuesFrom :NotPavedRoute
-                                              ]
+                            owl:onProperty route:isTripPlanOf ;
+                            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                            owl:onClass :Path
                           ] .
+
+
+###  https://w3id.org/italia/onto/AtlasOfPaths/PathStage
+:PathStage rdf:type owl:Class ;
+           rdfs:subClassOf route:Stage ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :hasSignposting ;
+                             owl:someValuesFrom :Signposting
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :hasSupportService ;
+                             owl:someValuesFrom :SupportService
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :hasNearbyAccommodation ;
+                             owl:allValuesFrom acco:Accommodation
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :hasNearbyPointOfInterest ;
+                             owl:allValuesFrom poi:PointOfInterest
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :hasNearbyRestaurant ;
+                             owl:allValuesFrom :Restaurant
+                           ] .
 
 
 ###  https://w3id.org/italia/onto/AtlasOfPaths/PathTheme
@@ -493,19 +422,64 @@ acco:Accommodation rdf:type owl:Class ;
            rdfs:subClassOf l0:Topic .
 
 
+###  https://w3id.org/italia/onto/AtlasOfPaths/Pathway
+:Pathway rdf:type owl:Class ;
+         rdfs:subClassOf route:Route ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :hasMaintainer ;
+                           owl:someValuesFrom l0:Agent
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :hasSurveillance ;
+                           owl:someValuesFrom l0:Agent
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty l0:hasMember ;
+                           owl:someValuesFrom :PathStage
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty l0:hasFirstMember ;
+                           owl:allValuesFrom :PathStage
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty l0:hasLastMember ;
+                           owl:allValuesFrom :PathStage
+                         ] .
+
+
+###  https://w3id.org/italia/onto/AtlasOfPaths/Paving
+:Paving rdf:type owl:Class ;
+        rdfs:subClassOf l0:Characteristic .
+
+
+###  https://w3id.org/italia/onto/AtlasOfPaths/QuantifiedPathwayPaving
+:QuantifiedPathwayPaving rdf:type owl:Class ;
+                         rdfs:subClassOf l0:Object ,
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty :forPathway ;
+                                           owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                           owl:onClass :Pathway
+                                         ] ,
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty :withPaving ;
+                                           owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                           owl:onClass :Paving
+                                         ] ,
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty mu:hasValue ;
+                                           owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                           owl:onClass mu:Value
+                                         ] .
+
+
 ###  https://w3id.org/italia/onto/AtlasOfPaths/Restaurant
 :Restaurant rdf:type owl:Class ;
             rdfs:subClassOf poi:PointOfInterest .
 
 
-###  https://w3id.org/italia/onto/AtlasOfPaths/RoutePaving
-:RoutePaving rdf:type owl:Class ;
-             rdfs:subClassOf l0:Characteristic .
-
-
-###  https://w3id.org/italia/onto/AtlasOfPaths/RouteSecurityLevel
-:RouteSecurityLevel rdf:type owl:Class ;
-                    rdfs:subClassOf l0:Characteristic .
+###  https://w3id.org/italia/onto/AtlasOfPaths/SecurityLevel
+:SecurityLevel rdf:type owl:Class ;
+               rdfs:subClassOf l0:Characteristic .
 
 
 ###  https://w3id.org/italia/onto/AtlasOfPaths/ServiceType
@@ -547,29 +521,9 @@ acco:Accommodation rdf:type owl:Class ;
                   owl:disjointWith route:TripPlan .
 
 
-###  https://w3id.org/italia/onto/AtlasOfPaths/ValuedRoutePaving
-:ValuedRoutePaving rdf:type owl:Class ;
-                   rdfs:subClassOf l0:Event ,
-                                   [ rdf:type owl:Restriction ;
-                                     owl:onProperty :forPaving ;
-                                     owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                     owl:onClass :RoutePaving
-                                   ] ,
-                                   [ rdf:type owl:Restriction ;
-                                     owl:onProperty mu:hasValue ;
-                                     owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                     owl:onClass mu:Value
-                                   ] .
-
-
 ###  https://w3id.org/italia/onto/CLV/Feature
 clv:Feature rdf:type owl:Class ;
             rdfs:subClassOf clv:SpatialObject .
-
-
-###  https://w3id.org/italia/onto/CLV/Region
-clv:Region rdf:type owl:Class ;
-           rdfs:subClassOf clv:Feature .
 
 
 ###  https://w3id.org/italia/onto/CLV/SpatialObject
@@ -600,27 +554,7 @@ route:GeospatialPoint rdf:type owl:Class .
 
 
 ###  https://w3id.org/italia/onto/Route/Route
-route:Route rdf:type owl:Class ;
-            rdfs:subClassOf [ rdf:type owl:Restriction ;
-                              owl:onProperty :crossesRegion ;
-                              owl:someValuesFrom clv:Region
-                            ] ,
-                            [ rdf:type owl:Restriction ;
-                              owl:onProperty :hasNearbyAccommodation ;
-                              owl:allValuesFrom acco:Accommodation
-                            ] ,
-                            [ rdf:type owl:Restriction ;
-                              owl:onProperty :hasNearbyPointOfInterest ;
-                              owl:allValuesFrom poi:PointOfInterest
-                            ] ,
-                            [ rdf:type owl:Restriction ;
-                              owl:onProperty :hasNearbyRestaurant ;
-                              owl:allValuesFrom :Restaurant
-                            ] .
-
-
-###  https://w3id.org/italia/onto/Route/RoutePoint
-route:RoutePoint rdf:type owl:Class .
+route:Route rdf:type owl:Class .
 
 
 ###  https://w3id.org/italia/onto/Route/RouteType
@@ -736,7 +670,7 @@ l0:Topic rdf:type owl:Class ;
 
 ###  https://w3id.org/italia/onto/AtlasOfPaths/asphalt
 :asphalt rdf:type owl:NamedIndividual ,
-                  :RoutePaving .
+                  :Paving .
 
 
 ###  https://w3id.org/italia/onto/AtlasOfPaths/percentage

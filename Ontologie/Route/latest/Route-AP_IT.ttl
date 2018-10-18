@@ -1,13 +1,19 @@
 @prefix : <https://w3id.org/italia/onto/Route/> .
 @prefix l0: <https://w3id.org/italia/onto/l0/> .
 @prefix mu: <https://w3id.org/italia/onto/MU/> .
+@prefix ns: <http://www.w3.org/2006/vcard/ns#> .
 @prefix ti: <https://w3id.org/italia/onto/TI/> .
 @prefix clv: <https://w3id.org/italia/onto/CLV/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix ADMS: <https://w3id.org/italia/onto/ADMS/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix terms: <http://purl.org/dc/terms/> .
 @base <https://w3id.org/italia/onto/Route/> .
 
 <https://w3id.org/italia/onto/Route/> rdf:type owl:Ontology ;
@@ -26,6 +32,10 @@ xsd:duration rdf:type rdfs:Datatype .
 #    Object Properties
 #################################################################
 
+###  https://w3id.org/italia/onto/CLV/hasGeometry
+clv:hasGeometry rdf:type owl:ObjectProperty .
+
+
 ###  https://w3id.org/italia/onto/CLV/hasGeometryType
 clv:hasGeometryType rdf:type owl:ObjectProperty .
 
@@ -43,7 +53,7 @@ clv:hasGeometryType rdf:type owl:ObjectProperty .
 
 ###  https://w3id.org/italia/onto/Route/hasExtimatedDuration
 :hasExtimatedDuration rdf:type owl:ObjectProperty ;
-                      rdfs:domain :Route ;
+                      rdfs:domain :TripPlan ;
                       rdfs:range ti:Duration .
 
 
@@ -60,7 +70,7 @@ clv:hasGeometryType rdf:type owl:ObjectProperty .
 ###  https://w3id.org/italia/onto/Route/hasRoute
 :hasRoute rdf:type owl:ObjectProperty ;
           owl:inverseOf :isRouteOf ;
-          rdfs:domain :TripPlan ;
+          rdfs:domain owl:Thing ;
           rdfs:range :Route .
 
 
@@ -85,6 +95,13 @@ clv:hasGeometryType rdf:type owl:ObjectProperty .
                   rdfs:range :TripPlan .
 
 
+###  https://w3id.org/italia/onto/Route/hasTripPlan
+:hasTripPlan rdf:type owl:ObjectProperty ;
+             owl:inverseOf :isTripPlanOf ;
+             rdfs:domain owl:Thing ;
+             rdfs:range :TripPlan .
+
+
 ###  https://w3id.org/italia/onto/Route/isCrossedBy
 :isCrossedBy rdf:type owl:ObjectProperty ;
              rdfs:domain :GeospatialPoint ;
@@ -98,7 +115,13 @@ clv:hasGeometryType rdf:type owl:ObjectProperty .
 ###  https://w3id.org/italia/onto/Route/isRouteOf
 :isRouteOf rdf:type owl:ObjectProperty ;
            rdfs:domain :Route ;
-           rdfs:range :TripPlan .
+           rdfs:range owl:Thing .
+
+
+###  https://w3id.org/italia/onto/Route/isTripPlanOf
+:isTripPlanOf rdf:type owl:ObjectProperty ;
+              rdfs:domain :TripPlan ;
+              rdfs:range owl:Thing .
 
 
 ###  https://w3id.org/italia/onto/l0/follows
@@ -211,6 +234,15 @@ mu:Value rdf:type owl:Class ;
                          owl:someValuesFrom :Stage
                        ] ,
                        [ rdf:type owl:Restriction ;
+                         owl:onProperty :crosses ;
+                         owl:allValuesFrom clv:SpatialObject
+                       ] ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty clv:hasGeometry ;
+                         owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                         owl:onClass clv:Geometry
+                       ] ,
+                       [ rdf:type owl:Restriction ;
                          owl:onProperty l0:hasFirstMember ;
                          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                          owl:onClass :Stage
@@ -256,6 +288,11 @@ mu:Value rdf:type owl:Class ;
                          owl:allValuesFrom :Stage
                        ] ,
                        [ rdf:type owl:Restriction ;
+                         owl:onProperty clv:hasGeometry ;
+                         owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                         owl:onClass clv:Geometry
+                       ] ,
+                       [ rdf:type owl:Restriction ;
                          owl:onProperty :ordering ;
                          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                          owl:onDataRange xsd:int
@@ -276,6 +313,11 @@ mu:Value rdf:type owl:Class ;
                           [ rdf:type owl:Restriction ;
                             owl:onProperty :hasSuperTripPlan ;
                             owl:allValuesFrom :TripPlan
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :hasExtimatedDuration ;
+                            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                            owl:onClass ti:Duration
                           ] .
 
 

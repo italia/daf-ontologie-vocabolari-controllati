@@ -4,6 +4,7 @@
      xmlns:acco="https://w3id.org/italia/onto/ACCO/"
      xmlns:l0="https://w3id.org/italia/onto/l0/"
      xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:ns="http://www.w3.org/2006/vcard/ns#"
      xmlns:mu="https://w3id.org/italia/onto/MU/"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
@@ -12,11 +13,16 @@
      xmlns:clv="https://w3id.org/italia/onto/CLV/"
      xmlns:route="https://w3id.org/italia/onto/Route/"
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:terms="http://purl.org/dc/terms/"
      xmlns:ti="https://w3id.org/italia/onto/TI/"
      xmlns:xml="http://www.w3.org/XML/1998/namespace"
-     xmlns:sm="https://w3id.org/italia/onto/SM/">
+     xmlns:ADMS="https://w3id.org/italia/onto/ADMS/"
+     xmlns:sm="https://w3id.org/italia/onto/SM/"
+     xmlns:dcat="http://www.w3.org/ns/dcat#"
+     xmlns:prov="http://www.w3.org/ns/prov#"
+     xmlns:foaf="http://xmlns.com/foaf/0.1/">
     <owl:Ontology rdf:about="https://w3id.org/italia/onto/AtlasOfPaths/">
-        <owl:imports rdf:resource="https://w3id.org/italia/onto/Route/0.1"/>
+        <owl:imports rdf:resource="https://w3id.org/italia/onto/Route/"/>
     </owl:Ontology>
     
 
@@ -49,31 +55,11 @@
     
 
 
-    <!-- https://w3id.org/italia/onto/AtlasOfPaths/crossesFeature -->
+    <!-- https://w3id.org/italia/onto/AtlasOfPaths/bestWhen -->
 
-    <owl:ObjectProperty rdf:about="https://w3id.org/italia/onto/AtlasOfPaths/crossesFeature">
-        <owl:inverseOf rdf:resource="https://w3id.org/italia/onto/AtlasOfPaths/isFeatureCrossedBy"/>
-        <rdfs:domain rdf:resource="https://w3id.org/italia/onto/Route/Route"/>
-        <rdfs:range rdf:resource="https://w3id.org/italia/onto/CLV/Feature"/>
-        <rdfs:comment xml:lang="it">La relazione che permette di asserire quali luoghi sono attraversati da un percorso.</rdfs:comment>
-        <rdfs:comment xml:lang="en">The relation that allows to specify which features are crossed by a route.</rdfs:comment>
-        <rdfs:label xml:lang="it">attraversa luogo</rdfs:label>
-        <rdfs:label xml:lang="en">crosses feature</rdfs:label>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- https://w3id.org/italia/onto/AtlasOfPaths/crossesRegion -->
-
-    <owl:ObjectProperty rdf:about="https://w3id.org/italia/onto/AtlasOfPaths/crossesRegion">
-        <rdfs:subPropertyOf rdf:resource="https://w3id.org/italia/onto/AtlasOfPaths/crossesFeature"/>
-        <owl:inverseOf rdf:resource="https://w3id.org/italia/onto/AtlasOfPaths/isRegionCrossedBy"/>
-        <rdfs:domain rdf:resource="https://w3id.org/italia/onto/Route/Route"/>
-        <rdfs:range rdf:resource="https://w3id.org/italia/onto/CLV/Region"/>
-        <rdfs:comment xml:lang="it">La relazione che permette di definire quali regioni attraversa un certo percorso.</rdfs:comment>
-        <rdfs:comment xml:lang="en">The relation that allows to specify which regions are crossed by a certain route.</rdfs:comment>
-        <rdfs:label xml:lang="it">attraversa regione</rdfs:label>
-        <rdfs:label xml:lang="en">crosses region</rdfs:label>
+    <owl:ObjectProperty rdf:about="https://w3id.org/italia/onto/AtlasOfPaths/bestWhen">
+        <rdfs:domain rdf:resource="https://w3id.org/italia/onto/AtlasOfPaths/PathPlan"/>
+        <rdfs:range rdf:resource="https://w3id.org/italia/onto/TI/TemporalEntity"/>
     </owl:ObjectProperty>
     
 
@@ -82,6 +68,7 @@
 
     <owl:ObjectProperty rdf:about="https://w3id.org/italia/onto/AtlasOfPaths/encountersPath">
         <owl:inverseOf rdf:resource="https://w3id.org/italia/onto/AtlasOfPaths/isPathEncounteredBy"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#SymmetricProperty"/>
         <rdfs:domain rdf:resource="https://w3id.org/italia/onto/AtlasOfPaths/Path"/>
         <rdfs:range rdf:resource="https://w3id.org/italia/onto/AtlasOfPaths/Path"/>
         <rdfs:comment xml:lang="it">La object property encountersPath permette di definire quali sono i cammini incontrati da un specifico cammino che rappresenta il soggetto delle triple aventi come predicato encountersPath.</rdfs:comment>
@@ -92,21 +79,21 @@
     
 
 
-    <!-- https://w3id.org/italia/onto/AtlasOfPaths/forPaving -->
+    <!-- https://w3id.org/italia/onto/AtlasOfPaths/encountersPathStage -->
 
-    <owl:ObjectProperty rdf:about="https://w3id.org/italia/onto/AtlasOfPaths/forPaving">
-        <rdfs:domain rdf:resource="https://w3id.org/italia/onto/AtlasOfPaths/ValuedRoutePaving"/>
-        <rdfs:range rdf:resource="https://w3id.org/italia/onto/AtlasOfPaths/RoutePaving"/>
+    <owl:ObjectProperty rdf:about="https://w3id.org/italia/onto/AtlasOfPaths/encountersPathStage">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#SymmetricProperty"/>
+        <rdfs:domain rdf:resource="https://w3id.org/italia/onto/AtlasOfPaths/PathStage"/>
     </owl:ObjectProperty>
     
 
 
-    <!-- https://w3id.org/italia/onto/AtlasOfPaths/hasCurrentGovernanceOrgan -->
+    <!-- https://w3id.org/italia/onto/AtlasOfPaths/forPathway -->
 
-    <owl:ObjectProperty rdf:about="https://w3id.org/italia/onto/AtlasOfPaths/hasCurrentGovernanceOrgan">
-        <owl:inverseOf rdf:resource="https://w3id.org/italia/onto/AtlasOfPaths/isCurrentGovernanceOrganOf"/>
-        <rdfs:domain rdf:resource="https://w3id.org/italia/onto/AtlasOfPaths/Path"/>
-        <rdfs:range rdf:resource="https://w3id.org/italia/onto/AtlasOfPaths/GovernanceOrgan"/>
+    <owl:ObjectProperty rdf:about="https://w3id.org/italia/onto/AtlasOfPaths/forPathway">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="https://w3id.org/italia/onto/AtlasOfPaths/QuantifiedPathwayPaving"/>
+        <rdfs:range rdf:resource="https://w3id.org/italia/onto/AtlasOfPaths/Pathway"/>
     </owl:ObjectProperty>
     
 
@@ -116,17 +103,18 @@
     <owl:ObjectProperty rdf:about="https://w3id.org/italia/onto/AtlasOfPaths/hasGovernanceOrgan">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
         <owl:inverseOf rdf:resource="https://w3id.org/italia/onto/AtlasOfPaths/isGovernanceOrganOf"/>
-        <rdfs:domain rdf:resource="https://w3id.org/italia/onto/AtlasOfPaths/GovernanceOrganInTime"/>
+        <rdfs:domain rdf:resource="https://w3id.org/italia/onto/AtlasOfPaths/Path"/>
         <rdfs:range rdf:resource="https://w3id.org/italia/onto/AtlasOfPaths/GovernanceOrgan"/>
     </owl:ObjectProperty>
     
 
 
-    <!-- https://w3id.org/italia/onto/AtlasOfPaths/hasGovernanceOrganInTime -->
+    <!-- https://w3id.org/italia/onto/AtlasOfPaths/hasMaintainer -->
 
-    <owl:ObjectProperty rdf:about="https://w3id.org/italia/onto/AtlasOfPaths/hasGovernanceOrganInTime">
-        <rdfs:domain rdf:resource="https://w3id.org/italia/onto/AtlasOfPaths/Path"/>
-        <rdfs:range rdf:resource="https://w3id.org/italia/onto/AtlasOfPaths/GovernanceOrganInTime"/>
+    <owl:ObjectProperty rdf:about="https://w3id.org/italia/onto/AtlasOfPaths/hasMaintainer">
+        <owl:inverseOf rdf:resource="https://w3id.org/italia/onto/AtlasOfPaths/isMaintainerOf"/>
+        <rdfs:domain rdf:resource="https://w3id.org/italia/onto/AtlasOfPaths/Pathway"/>
+        <rdfs:range rdf:resource="https://w3id.org/italia/onto/l0/Agent"/>
     </owl:ObjectProperty>
     
 
@@ -135,7 +123,7 @@
 
     <owl:ObjectProperty rdf:about="https://w3id.org/italia/onto/AtlasOfPaths/hasNearbyAccommodation">
         <rdfs:subPropertyOf rdf:resource="https://w3id.org/italia/onto/AtlasOfPaths/hasNearbyPointOfInterest"/>
-        <rdfs:domain rdf:resource="https://w3id.org/italia/onto/Route/Route"/>
+        <rdfs:domain rdf:resource="https://w3id.org/italia/onto/AtlasOfPaths/PathStage"/>
         <rdfs:range rdf:resource="https://w3id.org/italia/onto/ACCO/Accommodation"/>
     </owl:ObjectProperty>
     
@@ -144,7 +132,7 @@
     <!-- https://w3id.org/italia/onto/AtlasOfPaths/hasNearbyPointOfInterest -->
 
     <owl:ObjectProperty rdf:about="https://w3id.org/italia/onto/AtlasOfPaths/hasNearbyPointOfInterest">
-        <rdfs:domain rdf:resource="https://w3id.org/italia/onto/Route/Route"/>
+        <rdfs:domain rdf:resource="https://w3id.org/italia/onto/AtlasOfPaths/PathStage"/>
         <rdfs:range rdf:resource="https://w3id.org/italia/onto/POI/PointOfInterest"/>
     </owl:ObjectProperty>
     
@@ -154,27 +142,17 @@
 
     <owl:ObjectProperty rdf:about="https://w3id.org/italia/onto/AtlasOfPaths/hasNearbyRestaurant">
         <rdfs:subPropertyOf rdf:resource="https://w3id.org/italia/onto/AtlasOfPaths/hasNearbyPointOfInterest"/>
-        <rdfs:domain rdf:resource="https://w3id.org/italia/onto/Route/Route"/>
+        <rdfs:domain rdf:resource="https://w3id.org/italia/onto/AtlasOfPaths/PathStage"/>
         <rdfs:range rdf:resource="https://w3id.org/italia/onto/AtlasOfPaths/Restaurant"/>
     </owl:ObjectProperty>
     
 
 
-    <!-- https://w3id.org/italia/onto/AtlasOfPaths/hasPathPlan -->
+    <!-- https://w3id.org/italia/onto/AtlasOfPaths/hasSecurityLevel -->
 
-    <owl:ObjectProperty rdf:about="https://w3id.org/italia/onto/AtlasOfPaths/hasPathPlan">
-        <rdfs:subPropertyOf rdf:resource="https://w3id.org/italia/onto/Route/hasTripPlan"/>
-        <rdfs:domain rdf:resource="https://w3id.org/italia/onto/AtlasOfPaths/Path"/>
-        <rdfs:range rdf:resource="https://w3id.org/italia/onto/AtlasOfPaths/PathPlan"/>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- https://w3id.org/italia/onto/AtlasOfPaths/hasSeason -->
-
-    <owl:ObjectProperty rdf:about="https://w3id.org/italia/onto/AtlasOfPaths/hasSeason">
-        <rdfs:domain rdf:resource="https://w3id.org/italia/onto/AtlasOfPaths/PathPlan"/>
-        <rdfs:range rdf:resource="https://w3id.org/italia/onto/TI/TemporalEntity"/>
+    <owl:ObjectProperty rdf:about="https://w3id.org/italia/onto/AtlasOfPaths/hasSecurityLevel">
+        <rdfs:domain rdf:resource="https://w3id.org/italia/onto/AtlasOfPaths/Pathway"/>
+        <rdfs:range rdf:resource="https://w3id.org/italia/onto/AtlasOfPaths/SecurityLevel"/>
     </owl:ObjectProperty>
     
 
@@ -191,7 +169,7 @@
     <!-- https://w3id.org/italia/onto/AtlasOfPaths/hasSignposting -->
 
     <owl:ObjectProperty rdf:about="https://w3id.org/italia/onto/AtlasOfPaths/hasSignposting">
-        <rdfs:domain rdf:resource="https://w3id.org/italia/onto/Route/Route"/>
+        <rdfs:domain rdf:resource="https://w3id.org/italia/onto/AtlasOfPaths/PathStage"/>
         <rdfs:range rdf:resource="https://w3id.org/italia/onto/AtlasOfPaths/Signposting"/>
     </owl:ObjectProperty>
     
@@ -201,12 +179,21 @@
 
     <owl:ObjectProperty rdf:about="https://w3id.org/italia/onto/AtlasOfPaths/hasSupportService">
         <owl:inverseOf rdf:resource="https://w3id.org/italia/onto/AtlasOfPaths/isSupportServiceOf"/>
-        <rdfs:domain rdf:resource="https://w3id.org/italia/onto/AtlasOfPaths/PathPlan"/>
+        <rdfs:domain rdf:resource="https://w3id.org/italia/onto/AtlasOfPaths/PathStage"/>
         <rdfs:range rdf:resource="https://w3id.org/italia/onto/AtlasOfPaths/SupportService"/>
         <rdfs:comment xml:lang="it">La object property mette in relazione uno specifico oggetto con un servizio associato.</rdfs:comment>
         <rdfs:comment xml:lang="en">The object property relates anything to a service.</rdfs:comment>
         <rdfs:label xml:lang="en">ha servizio</rdfs:label>
         <rdfs:label xml:lang="en">has service</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/italia/onto/AtlasOfPaths/hasSurveillance -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/italia/onto/AtlasOfPaths/hasSurveillance">
+        <rdfs:domain rdf:resource="https://w3id.org/italia/onto/AtlasOfPaths/Pathway"/>
+        <rdfs:range rdf:resource="https://w3id.org/italia/onto/l0/Agent"/>
     </owl:ObjectProperty>
     
 
@@ -237,43 +224,8 @@
     <!-- https://w3id.org/italia/onto/AtlasOfPaths/hasValuedRoutePaving -->
 
     <owl:ObjectProperty rdf:about="https://w3id.org/italia/onto/AtlasOfPaths/hasValuedRoutePaving">
-        <rdfs:domain rdf:resource="https://w3id.org/italia/onto/Route/Route"/>
-        <rdfs:range rdf:resource="https://w3id.org/italia/onto/AtlasOfPaths/ValuedRoutePaving"/>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- https://w3id.org/italia/onto/AtlasOfPaths/intersectsWith -->
-
-    <owl:ObjectProperty rdf:about="https://w3id.org/italia/onto/AtlasOfPaths/intersectsWith">
-        <rdfs:domain rdf:resource="https://w3id.org/italia/onto/Route/GeospatialPoint"/>
-        <rdfs:range rdf:resource="https://w3id.org/italia/onto/Route/GeospatialPoint"/>
-        <rdfs:comment xml:lang="it">La relazione di intersezione tra due punti di un percorso fisico.</rdfs:comment>
-        <rdfs:comment xml:lang="en">The relation of intersection between two route points.</rdfs:comment>
-        <rdfs:label xml:lang="it">incrocia</rdfs:label>
-        <rdfs:label xml:lang="en">intersects with</rdfs:label>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- https://w3id.org/italia/onto/AtlasOfPaths/isCurrentGovernanceOrganOf -->
-
-    <owl:ObjectProperty rdf:about="https://w3id.org/italia/onto/AtlasOfPaths/isCurrentGovernanceOrganOf">
-        <rdfs:domain rdf:resource="https://w3id.org/italia/onto/AtlasOfPaths/GovernanceOrgan"/>
-        <rdfs:range rdf:resource="https://w3id.org/italia/onto/AtlasOfPaths/Path"/>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- https://w3id.org/italia/onto/AtlasOfPaths/isFeatureCrossedBy -->
-
-    <owl:ObjectProperty rdf:about="https://w3id.org/italia/onto/AtlasOfPaths/isFeatureCrossedBy">
-        <rdfs:domain rdf:resource="https://w3id.org/italia/onto/CLV/Feature"/>
-        <rdfs:range rdf:resource="https://w3id.org/italia/onto/Route/Route"/>
-        <rdfs:comment xml:lang="en">La relazione isFeatureCrossedBy permette di specificare quali sono i percorsi che attraversano un luogo. Quest&apos;ultimo (istanza di clv:Feature) diviene il soggetto delle triple aventi isFeatureCrossedBy come predicato. L&apos;oggetto di tali triple sono istanze della classe route:Route</rdfs:comment>
-        <rdfs:comment xml:lang="en">The isFeatureCrossedBy relation allows to specify which features are crossed by a route.</rdfs:comment>
-        <rdfs:label xml:lang="en">is feature crossed by</rdfs:label>
-        <rdfs:label xml:lang="it">luogo attraversato da</rdfs:label>
+        <rdfs:domain rdf:resource="https://w3id.org/italia/onto/AtlasOfPaths/Path"/>
+        <rdfs:range rdf:resource="https://w3id.org/italia/onto/AtlasOfPaths/QuantifiedPathwayPaving"/>
     </owl:ObjectProperty>
     
 
@@ -282,11 +234,20 @@
 
     <owl:ObjectProperty rdf:about="https://w3id.org/italia/onto/AtlasOfPaths/isGovernanceOrganOf">
         <rdfs:domain rdf:resource="https://w3id.org/italia/onto/AtlasOfPaths/GovernanceOrgan"/>
-        <rdfs:range rdf:resource="https://w3id.org/italia/onto/AtlasOfPaths/GovernanceOrganInTime"/>
+        <rdfs:range rdf:resource="https://w3id.org/italia/onto/AtlasOfPaths/Path"/>
         <rdfs:comment xml:lang="en">Inverse object property of hasGovernanceOrgan</rdfs:comment>
         <rdfs:comment xml:lang="it">Proprietà inversa di hasGovernanceOrgan</rdfs:comment>
         <rdfs:label xml:lang="en">is governance orga of</rdfs:label>
         <rdfs:label xml:lang="it">è organo di governo di</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/italia/onto/AtlasOfPaths/isMaintainerOf -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/italia/onto/AtlasOfPaths/isMaintainerOf">
+        <rdfs:domain rdf:resource="https://w3id.org/italia/onto/l0/Agent"/>
+        <rdfs:range rdf:resource="https://w3id.org/italia/onto/AtlasOfPaths/Pathway"/>
     </owl:ObjectProperty>
     
 
@@ -304,29 +265,24 @@
     
 
 
-    <!-- https://w3id.org/italia/onto/AtlasOfPaths/isRegionCrossedBy -->
-
-    <owl:ObjectProperty rdf:about="https://w3id.org/italia/onto/AtlasOfPaths/isRegionCrossedBy">
-        <rdfs:subPropertyOf rdf:resource="https://w3id.org/italia/onto/AtlasOfPaths/isFeatureCrossedBy"/>
-        <rdfs:domain rdf:resource="https://w3id.org/italia/onto/CLV/Region"/>
-        <rdfs:range rdf:resource="https://w3id.org/italia/onto/Route/Route"/>
-        <rdfs:comment xml:lang="en">Inverse property of crossesRegion. This property allows to state that a region is crossed by a specific route.</rdfs:comment>
-        <rdfs:comment xml:lang="it">Proprietà inversa di crossesRegion. Permette di associare un persorso ad una regione che, pertanto, viene attraversata da tale percorso.</rdfs:comment>
-        <rdfs:label xml:lang="en">is region crossed by</rdfs:label>
-        <rdfs:label xml:lang="it">regione attraversata da</rdfs:label>
-    </owl:ObjectProperty>
-    
-
-
     <!-- https://w3id.org/italia/onto/AtlasOfPaths/isSupportServiceOf -->
 
     <owl:ObjectProperty rdf:about="https://w3id.org/italia/onto/AtlasOfPaths/isSupportServiceOf">
         <rdfs:domain rdf:resource="https://w3id.org/italia/onto/AtlasOfPaths/SupportService"/>
-        <rdfs:range rdf:resource="https://w3id.org/italia/onto/AtlasOfPaths/PathPlan"/>
+        <rdfs:range rdf:resource="https://w3id.org/italia/onto/AtlasOfPaths/PathStage"/>
         <rdfs:comment xml:lang="en">Inverse property of has service.</rdfs:comment>
         <rdfs:comment xml:lang="it">Proprietà inversa di has service.</rdfs:comment>
         <rdfs:comment xml:lang="en">is service of</rdfs:comment>
         <rdfs:comment xml:lang="it">è servizio di</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/italia/onto/AtlasOfPaths/isSurveillanceOf -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/italia/onto/AtlasOfPaths/isSurveillanceOf">
+        <rdfs:domain rdf:resource="https://w3id.org/italia/onto/l0/Agent"/>
+        <rdfs:range rdf:resource="https://w3id.org/italia/onto/AtlasOfPaths/Pathway"/>
     </owl:ObjectProperty>
     
 
@@ -346,21 +302,27 @@
 
     <!-- https://w3id.org/italia/onto/AtlasOfPaths/isUpdatedBy -->
 
-    <owl:ObjectProperty rdf:about="https://w3id.org/italia/onto/AtlasOfPaths/isUpdatedBy">
-        <rdfs:range rdf:resource="https://w3id.org/italia/onto/AtlasOfPaths/GovernanceOrganInTime"/>
-    </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="https://w3id.org/italia/onto/AtlasOfPaths/isUpdatedBy"/>
     
 
 
     <!-- https://w3id.org/italia/onto/AtlasOfPaths/refersToPath -->
 
     <owl:ObjectProperty rdf:about="https://w3id.org/italia/onto/AtlasOfPaths/refersToPath">
-        <rdfs:domain rdf:resource="https://w3id.org/italia/onto/AtlasOfPaths/GovernanceOrganInTime"/>
         <rdfs:range rdf:resource="https://w3id.org/italia/onto/AtlasOfPaths/Path"/>
         <rdfs:comment xml:lang="it">Questa proprietà collega una situazione che rappresenta una Governance Organ in Tine ad un cammino specifico.</rdfs:comment>
         <rdfs:comment xml:lang="en">This property links a Governance Organ in Tine to a specific path.</rdfs:comment>
         <rdfs:label xml:lang="en">refers to path</rdfs:label>
         <rdfs:label xml:lang="it">si riferisce a cammino</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/italia/onto/AtlasOfPaths/withPaving -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/italia/onto/AtlasOfPaths/withPaving">
+        <rdfs:domain rdf:resource="https://w3id.org/italia/onto/AtlasOfPaths/QuantifiedPathwayPaving"/>
+        <rdfs:range rdf:resource="https://w3id.org/italia/onto/AtlasOfPaths/Paving"/>
     </owl:ObjectProperty>
     
 
@@ -383,33 +345,6 @@
     <!-- https://w3id.org/italia/onto/MU/hasValue -->
 
     <owl:ObjectProperty rdf:about="https://w3id.org/italia/onto/MU/hasValue"/>
-    
-
-
-    <!-- https://w3id.org/italia/onto/Route/hasGeoreferencing -->
-
-    <owl:ObjectProperty rdf:about="https://w3id.org/italia/onto/Route/hasGeoreferencing">
-        <rdfs:domain rdf:resource="https://w3id.org/italia/onto/Route/Route"/>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- https://w3id.org/italia/onto/Route/hasRoute -->
-
-    <owl:ObjectProperty rdf:about="https://w3id.org/italia/onto/Route/hasRoute"/>
-    
-
-
-    <!-- https://w3id.org/italia/onto/Route/hasTripPlan -->
-
-    <owl:ObjectProperty rdf:about="https://w3id.org/italia/onto/Route/hasTripPlan">
-        <rdfs:domain rdf:resource="https://w3id.org/italia/onto/AtlasOfPaths/Path"/>
-        <rdfs:range rdf:resource="https://w3id.org/italia/onto/Route/TripPlan"/>
-        <rdfs:comment xml:lang="en">Relation between a path and a trip plan.</rdfs:comment>
-        <rdfs:comment xml:lang="it">Relazione tra un path e un piano di percorso.</rdfs:comment>
-        <rdfs:label xml:lang="it">ha piano di percorso</rdfs:label>
-        <rdfs:label xml:lang="en">has trip plan</rdfs:label>
-    </owl:ObjectProperty>
     
 
 
@@ -500,50 +435,6 @@
 
     <owl:Class rdf:about="https://w3id.org/italia/onto/AtlasOfPaths/GovernanceOrgan">
         <rdfs:subClassOf rdf:resource="https://w3id.org/italia/onto/COV/Organization"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/AtlasOfPaths/isCurrentGovernanceOrganOf"/>
-                <owl:allValuesFrom rdf:resource="https://w3id.org/italia/onto/AtlasOfPaths/Path"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/AtlasOfPaths/isGovernanceOrganOf"/>
-                <owl:allValuesFrom rdf:resource="https://w3id.org/italia/onto/AtlasOfPaths/GovernanceOrganInTime"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
-    
-
-
-    <!-- https://w3id.org/italia/onto/AtlasOfPaths/GovernanceOrganInTime -->
-
-    <owl:Class rdf:about="https://w3id.org/italia/onto/AtlasOfPaths/GovernanceOrganInTime">
-        <rdfs:subClassOf rdf:resource="https://w3id.org/italia/onto/l0/Event"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/AtlasOfPaths/hasGovernanceOrgan"/>
-                <owl:someValuesFrom rdf:resource="https://w3id.org/italia/onto/AtlasOfPaths/GovernanceOrgan"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/AtlasOfPaths/refersToPath"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onClass rdf:resource="https://w3id.org/italia/onto/AtlasOfPaths/Path"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/TI/atTime"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onClass rdf:resource="https://w3id.org/italia/onto/TI/TemporalEntity"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:comment xml:lang="it">Classe che rappresenta la situazione dell&apos;associazione dell&apos;organo di governo di un cammino nel tempo.</rdfs:comment>
-        <rdfs:comment xml:lang="en">This class represent the situation that assocaites a governance organ to a path over time.</rdfs:comment>
-        <rdfs:label xml:lang="en">Governance organ in time</rdfs:label>
-        <rdfs:label xml:lang="it">Organo di Governo nel tempo</rdfs:label>
     </owl:Class>
     
 
@@ -552,57 +443,10 @@
 
     <owl:Class rdf:about="https://w3id.org/italia/onto/AtlasOfPaths/Intersection">
         <rdfs:subClassOf rdf:resource="https://w3id.org/italia/onto/Route/GeospatialPoint"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/AtlasOfPaths/intersectsWith"/>
-                <owl:someValuesFrom rdf:resource="https://w3id.org/italia/onto/Route/RoutePoint"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
         <rdfs:comment xml:lang="it">Il concetto che rappresenta un punto di intersezione.</rdfs:comment>
         <rdfs:comment xml:lang="en">The concept that represents an intersection point.</rdfs:comment>
         <rdfs:label xml:lang="en">Intersection point</rdfs:label>
         <rdfs:label xml:lang="it">Punto di intersezione</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- https://w3id.org/italia/onto/AtlasOfPaths/NotPavedRoute -->
-
-    <owl:Class rdf:about="https://w3id.org/italia/onto/AtlasOfPaths/NotPavedRoute">
-        <rdfs:subClassOf rdf:resource="https://w3id.org/italia/onto/Route/RouteType"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/AtlasOfPaths/hasValuedRoutePaving"/>
-                <owl:someValuesFrom>
-                    <owl:Class>
-                        <owl:intersectionOf rdf:parseType="Collection">
-                            <owl:Restriction>
-                                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/AtlasOfPaths/forPaving"/>
-                                <owl:hasValue rdf:resource="https://w3id.org/italia/onto/AtlasOfPaths/asphalt"/>
-                            </owl:Restriction>
-                            <owl:Restriction>
-                                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/MU/hasMeasurementUnit"/>
-                                <owl:hasValue rdf:resource="https://w3id.org/italia/onto/AtlasOfPaths/percentage"/>
-                            </owl:Restriction>
-                            <owl:Restriction>
-                                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/MU/value"/>
-                                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                                <owl:onDataRange>
-                                    <rdfs:Datatype>
-                                        <owl:onDatatype rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
-                                        <owl:withRestrictions rdf:parseType="Collection">
-                                            <rdf:Description>
-                                                <xsd:maxExclusive rdf:datatype="http://www.w3.org/2001/XMLSchema#double">40.0</xsd:maxExclusive>
-                                            </rdf:Description>
-                                        </owl:withRestrictions>
-                                    </rdfs:Datatype>
-                                </owl:onDataRange>
-                            </owl:Restriction>
-                        </owl:intersectionOf>
-                    </owl:Class>
-                </owl:someValuesFrom>
-            </owl:Restriction>
-        </rdfs:subClassOf>
     </owl:Class>
     
 
@@ -613,7 +457,61 @@
         <rdfs:subClassOf rdf:resource="https://w3id.org/italia/onto/l0/Description"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/AtlasOfPaths/hasPathPlan"/>
+                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/AtlasOfPaths/hasGovernanceOrgan"/>
+                <owl:someValuesFrom rdf:resource="https://w3id.org/italia/onto/AtlasOfPaths/GovernanceOrgan"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/AtlasOfPaths/hasValuedRoutePaving"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/MU/hasValue"/>
+                                <owl:someValuesFrom>
+                                    <owl:Class>
+                                        <owl:intersectionOf rdf:parseType="Collection">
+                                            <owl:Restriction>
+                                                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/MU/hasMeasurementUnit"/>
+                                                <owl:hasValue rdf:resource="https://w3id.org/italia/onto/AtlasOfPaths/percentage"/>
+                                            </owl:Restriction>
+                                            <owl:Restriction>
+                                                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/MU/value"/>
+                                                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                                                <owl:onDataRange>
+                                                    <rdfs:Datatype>
+                                                        <owl:onDatatype rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+                                                        <owl:withRestrictions rdf:parseType="Collection">
+                                                            <rdf:Description>
+                                                                <xsd:maxExclusive rdf:datatype="http://www.w3.org/2001/XMLSchema#double">40.0</xsd:maxExclusive>
+                                                            </rdf:Description>
+                                                        </owl:withRestrictions>
+                                                    </rdfs:Datatype>
+                                                </owl:onDataRange>
+                                            </owl:Restriction>
+                                        </owl:intersectionOf>
+                                    </owl:Class>
+                                </owl:someValuesFrom>
+                            </owl:Restriction>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/AtlasOfPaths/withPaving"/>
+                                <owl:hasValue rdf:resource="https://w3id.org/italia/onto/AtlasOfPaths/asphalt"/>
+                            </owl:Restriction>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/Route/hasRoute"/>
+                <owl:someValuesFrom rdf:resource="https://w3id.org/italia/onto/AtlasOfPaths/Pathway"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/Route/hasTripPlan"/>
                 <owl:someValuesFrom rdf:resource="https://w3id.org/italia/onto/AtlasOfPaths/PathPlan"/>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -631,20 +529,14 @@
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/AtlasOfPaths/hasPathPlan"/>
-                <owl:allValuesFrom rdf:resource="https://w3id.org/italia/onto/AtlasOfPaths/PathPlan"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/l0/name"/>
+                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/l0/description"/>
                 <owl:someValuesFrom rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="https://w3id.org/italia/onto/l0/name"/>
-                <owl:allValuesFrom rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="https://w3id.org/italia/onto/AtlasOfPaths/TravellingMethod"/>
@@ -659,42 +551,60 @@
         <rdfs:subClassOf rdf:resource="https://w3id.org/italia/onto/Route/TripPlan"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/AtlasOfPaths/hasSeason"/>
+                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/AtlasOfPaths/bestWhen"/>
                 <owl:someValuesFrom rdf:resource="https://w3id.org/italia/onto/TI/TemporalEntity"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/Route/hasRoute"/>
-                <owl:someValuesFrom>
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="https://w3id.org/italia/onto/Route/hasRouteType"/>
-                        <owl:someValuesFrom rdf:resource="https://w3id.org/italia/onto/AtlasOfPaths/NotPavedRoute"/>
-                    </owl:Restriction>
-                </owl:someValuesFrom>
+                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/AtlasOfPaths/hasTravellingMethod"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="https://w3id.org/italia/onto/AtlasOfPaths/TravellingMethod"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/AtlasOfPaths/hasSeason"/>
-                <owl:allValuesFrom rdf:resource="https://w3id.org/italia/onto/TI/TemporalEntity"/>
+                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/Route/isTripPlanOf"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="https://w3id.org/italia/onto/AtlasOfPaths/Path"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/italia/onto/AtlasOfPaths/PathStage -->
+
+    <owl:Class rdf:about="https://w3id.org/italia/onto/AtlasOfPaths/PathStage">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/italia/onto/Route/Stage"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/AtlasOfPaths/hasSignposting"/>
+                <owl:someValuesFrom rdf:resource="https://w3id.org/italia/onto/AtlasOfPaths/Signposting"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="https://w3id.org/italia/onto/AtlasOfPaths/hasSupportService"/>
-                <owl:allValuesFrom rdf:resource="https://w3id.org/italia/onto/AtlasOfPaths/SupportService"/>
+                <owl:someValuesFrom rdf:resource="https://w3id.org/italia/onto/AtlasOfPaths/SupportService"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/Route/hasRoute"/>
-                <owl:allValuesFrom>
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="https://w3id.org/italia/onto/Route/hasRouteType"/>
-                        <owl:someValuesFrom rdf:resource="https://w3id.org/italia/onto/AtlasOfPaths/NotPavedRoute"/>
-                    </owl:Restriction>
-                </owl:allValuesFrom>
+                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/AtlasOfPaths/hasNearbyAccommodation"/>
+                <owl:allValuesFrom rdf:resource="https://w3id.org/italia/onto/ACCO/Accommodation"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/AtlasOfPaths/hasNearbyPointOfInterest"/>
+                <owl:allValuesFrom rdf:resource="https://w3id.org/italia/onto/POI/PointOfInterest"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/AtlasOfPaths/hasNearbyRestaurant"/>
+                <owl:allValuesFrom rdf:resource="https://w3id.org/italia/onto/AtlasOfPaths/Restaurant"/>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
@@ -709,6 +619,81 @@
     
 
 
+    <!-- https://w3id.org/italia/onto/AtlasOfPaths/Pathway -->
+
+    <owl:Class rdf:about="https://w3id.org/italia/onto/AtlasOfPaths/Pathway">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/italia/onto/Route/Route"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/AtlasOfPaths/hasMaintainer"/>
+                <owl:someValuesFrom rdf:resource="https://w3id.org/italia/onto/l0/Agent"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/AtlasOfPaths/hasSurveillance"/>
+                <owl:someValuesFrom rdf:resource="https://w3id.org/italia/onto/l0/Agent"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/l0/hasMember"/>
+                <owl:someValuesFrom rdf:resource="https://w3id.org/italia/onto/AtlasOfPaths/PathStage"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/l0/hasFirstMember"/>
+                <owl:allValuesFrom rdf:resource="https://w3id.org/italia/onto/AtlasOfPaths/PathStage"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/l0/hasLastMember"/>
+                <owl:allValuesFrom rdf:resource="https://w3id.org/italia/onto/AtlasOfPaths/PathStage"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/italia/onto/AtlasOfPaths/Paving -->
+
+    <owl:Class rdf:about="https://w3id.org/italia/onto/AtlasOfPaths/Paving">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/italia/onto/l0/Characteristic"/>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/italia/onto/AtlasOfPaths/QuantifiedPathwayPaving -->
+
+    <owl:Class rdf:about="https://w3id.org/italia/onto/AtlasOfPaths/QuantifiedPathwayPaving">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/italia/onto/l0/Object"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/AtlasOfPaths/forPathway"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="https://w3id.org/italia/onto/AtlasOfPaths/Pathway"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/AtlasOfPaths/withPaving"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="https://w3id.org/italia/onto/AtlasOfPaths/Paving"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/MU/hasValue"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="https://w3id.org/italia/onto/MU/Value"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
     <!-- https://w3id.org/italia/onto/AtlasOfPaths/Restaurant -->
 
     <owl:Class rdf:about="https://w3id.org/italia/onto/AtlasOfPaths/Restaurant">
@@ -717,17 +702,9 @@
     
 
 
-    <!-- https://w3id.org/italia/onto/AtlasOfPaths/RoutePaving -->
+    <!-- https://w3id.org/italia/onto/AtlasOfPaths/SecurityLevel -->
 
-    <owl:Class rdf:about="https://w3id.org/italia/onto/AtlasOfPaths/RoutePaving">
-        <rdfs:subClassOf rdf:resource="https://w3id.org/italia/onto/l0/Characteristic"/>
-    </owl:Class>
-    
-
-
-    <!-- https://w3id.org/italia/onto/AtlasOfPaths/RouteSecurityLevel -->
-
-    <owl:Class rdf:about="https://w3id.org/italia/onto/AtlasOfPaths/RouteSecurityLevel">
+    <owl:Class rdf:about="https://w3id.org/italia/onto/AtlasOfPaths/SecurityLevel">
         <rdfs:subClassOf rdf:resource="https://w3id.org/italia/onto/l0/Characteristic"/>
     </owl:Class>
     
@@ -791,28 +768,6 @@
     
 
 
-    <!-- https://w3id.org/italia/onto/AtlasOfPaths/ValuedRoutePaving -->
-
-    <owl:Class rdf:about="https://w3id.org/italia/onto/AtlasOfPaths/ValuedRoutePaving">
-        <rdfs:subClassOf rdf:resource="https://w3id.org/italia/onto/l0/Event"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/AtlasOfPaths/forPaving"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onClass rdf:resource="https://w3id.org/italia/onto/AtlasOfPaths/RoutePaving"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/MU/hasValue"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onClass rdf:resource="https://w3id.org/italia/onto/MU/Value"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
-    
-
-
     <!-- https://w3id.org/italia/onto/CLV/Feature -->
 
     <owl:Class rdf:about="https://w3id.org/italia/onto/CLV/Feature">
@@ -821,11 +776,9 @@
     
 
 
-    <!-- https://w3id.org/italia/onto/CLV/Region -->
+    <!-- https://w3id.org/italia/onto/CLV/SpatialObject -->
 
-    <owl:Class rdf:about="https://w3id.org/italia/onto/CLV/Region">
-        <rdfs:subClassOf rdf:resource="https://w3id.org/italia/onto/CLV/Feature"/>
-    </owl:Class>
+    <owl:Class rdf:about="https://w3id.org/italia/onto/CLV/SpatialObject"/>
     
 
 
@@ -845,6 +798,12 @@
     
 
 
+    <!-- https://w3id.org/italia/onto/MU/Value -->
+
+    <owl:Class rdf:about="https://w3id.org/italia/onto/MU/Value"/>
+    
+
+
     <!-- https://w3id.org/italia/onto/POI/PointOfInterest -->
 
     <owl:Class rdf:about="https://w3id.org/italia/onto/POI/PointOfInterest">
@@ -853,40 +812,21 @@
     
 
 
-    <!-- https://w3id.org/italia/onto/Route/Route -->
+    <!-- https://w3id.org/italia/onto/Route/GeospatialPoint -->
 
-    <owl:Class rdf:about="https://w3id.org/italia/onto/Route/Route">
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/AtlasOfPaths/crossesRegion"/>
-                <owl:someValuesFrom rdf:resource="https://w3id.org/italia/onto/CLV/Region"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/AtlasOfPaths/hasNearbyAccommodation"/>
-                <owl:allValuesFrom rdf:resource="https://w3id.org/italia/onto/ACCO/Accommodation"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/AtlasOfPaths/hasNearbyPointOfInterest"/>
-                <owl:allValuesFrom rdf:resource="https://w3id.org/italia/onto/POI/PointOfInterest"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/AtlasOfPaths/hasNearbyRestaurant"/>
-                <owl:allValuesFrom rdf:resource="https://w3id.org/italia/onto/AtlasOfPaths/Restaurant"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
+    <owl:Class rdf:about="https://w3id.org/italia/onto/Route/GeospatialPoint"/>
     
 
 
-    <!-- https://w3id.org/italia/onto/Route/RoutePoint -->
+    <!-- https://w3id.org/italia/onto/Route/Route -->
 
-    <owl:Class rdf:about="https://w3id.org/italia/onto/Route/RoutePoint"/>
+    <owl:Class rdf:about="https://w3id.org/italia/onto/Route/Route"/>
+    
+
+
+    <!-- https://w3id.org/italia/onto/Route/RouteType -->
+
+    <owl:Class rdf:about="https://w3id.org/italia/onto/Route/RouteType"/>
     
 
 
@@ -906,9 +846,9 @@
 
     <!-- https://w3id.org/italia/onto/TI/Duration -->
 
-    <rdf:Description rdf:about="https://w3id.org/italia/onto/TI/Duration">
+    <owl:Class rdf:about="https://w3id.org/italia/onto/TI/Duration">
         <rdfs:subClassOf rdf:resource="https://w3id.org/italia/onto/TI/TemporalEntity"/>
-    </rdf:Description>
+    </owl:Class>
     
 
 
@@ -930,25 +870,25 @@
 
     <!-- https://w3id.org/italia/onto/l0/Characteristic -->
 
-    <rdf:Description rdf:about="https://w3id.org/italia/onto/l0/Characteristic">
+    <owl:Class rdf:about="https://w3id.org/italia/onto/l0/Characteristic">
         <rdfs:subClassOf rdf:resource="https://w3id.org/italia/onto/l0/Entity"/>
-    </rdf:Description>
+    </owl:Class>
     
 
 
     <!-- https://w3id.org/italia/onto/l0/Collection -->
 
-    <rdf:Description rdf:about="https://w3id.org/italia/onto/l0/Collection">
+    <owl:Class rdf:about="https://w3id.org/italia/onto/l0/Collection">
         <rdfs:subClassOf rdf:resource="https://w3id.org/italia/onto/l0/Entity"/>
-    </rdf:Description>
+    </owl:Class>
     
 
 
     <!-- https://w3id.org/italia/onto/l0/Description -->
 
-    <rdf:Description rdf:about="https://w3id.org/italia/onto/l0/Description">
+    <owl:Class rdf:about="https://w3id.org/italia/onto/l0/Description">
         <rdfs:subClassOf rdf:resource="https://w3id.org/italia/onto/l0/Object"/>
-    </rdf:Description>
+    </owl:Class>
     
 
 
@@ -968,9 +908,9 @@
 
     <!-- https://w3id.org/italia/onto/l0/Location -->
 
-    <rdf:Description rdf:about="https://w3id.org/italia/onto/l0/Location">
+    <owl:Class rdf:about="https://w3id.org/italia/onto/l0/Location">
         <rdfs:subClassOf rdf:resource="https://w3id.org/italia/onto/l0/Entity"/>
-    </rdf:Description>
+    </owl:Class>
     
 
 
@@ -1068,7 +1008,7 @@
     <!-- https://w3id.org/italia/onto/AtlasOfPaths/asphalt -->
 
     <owl:NamedIndividual rdf:about="https://w3id.org/italia/onto/AtlasOfPaths/asphalt">
-        <rdf:type rdf:resource="https://w3id.org/italia/onto/AtlasOfPaths/RoutePaving"/>
+        <rdf:type rdf:resource="https://w3id.org/italia/onto/AtlasOfPaths/Paving"/>
     </owl:NamedIndividual>
     
 
