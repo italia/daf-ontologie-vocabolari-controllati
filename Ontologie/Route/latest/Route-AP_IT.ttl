@@ -1,4 +1,8 @@
 @prefix : <https://w3id.org/italia/onto/Route/> .
+@prefix l0: <https://w3id.org/italia/onto/l0/> .
+@prefix mu: <https://w3id.org/italia/onto/mu/> .
+@prefix ti: <https://w3id.org/italia/onto/ti/> .
+@prefix clv: <https://w3id.org/italia/onto/clv/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
@@ -7,7 +11,7 @@
 @base <https://w3id.org/italia/onto/Route/> .
 
 <https://w3id.org/italia/onto/Route/> rdf:type owl:Ontology ;
-                                       owl:versionIRI : .
+                                       owl:versionIRI <https://w3id.org/italia/onto/Route/> .
 
 #################################################################
 #    Datatypes
@@ -43,8 +47,11 @@ xsd:duration rdf:type rdfs:Datatype .
 :enumeratesPoint rdf:type owl:ObjectProperty ;
                  owl:inverseOf :isEnumeratedByRoute ;
                  rdfs:domain :Route ;
-                 rdfs:range :PointSequencingInRoute ;
-                 rdfs:label "enumerates point"@en .
+                 rdfs:range :GeospatialPointItem ;
+                 rdfs:comment "La relazione generica tra un percorso e una relazione n-aria che rappresenta un punto in una sequenza."@it ,
+                              "The generic relation between a route and a point sequencing in route."@en ;
+                 rdfs:label "enumera punti"@it ,
+                            "enumerates point"@en .
 
 
 ###  https://w3id.org/italia/onto/Route/hasEndPoint
@@ -52,7 +59,7 @@ xsd:duration rdf:type rdfs:Datatype .
              rdfs:subPropertyOf :enumeratesPoint ;
              owl:inverseOf :isEndPointOf ;
              rdfs:domain :Route ;
-             rdfs:range :PointSequencingInRoute .
+             rdfs:range :GeospatialPointItem .
 
 
 ###  https://w3id.org/italia/onto/Route/hasExtimatedDuration
@@ -64,7 +71,7 @@ xsd:duration rdf:type rdfs:Datatype .
 ###  https://w3id.org/italia/onto/Route/hasGeospatialPoint
 :hasGeospatialPoint rdf:type owl:ObjectProperty ;
                     owl:inverseOf :isGeospatialPointOf ;
-                    rdfs:domain :PointSequencingInRoute ;
+                    rdfs:domain :GeospatialPointItem ;
                     rdfs:range :GeospatialPoint ;
                     rdfs:comment "La relazione che associa l'elemento della sequenza rappresentato da un PointSequencingInRoute ad un GeospatialPoint."@it ,
                                  "The relation tha associates a PointSequencingInRoute with a GeospatialPoint."@en ;
@@ -84,17 +91,17 @@ xsd:duration rdf:type rdfs:Datatype .
 
 ###  https://w3id.org/italia/onto/Route/hasNextPoint
 :hasNextPoint rdf:type owl:ObjectProperty ;
-              rdfs:subPropertyOf <https://w3id.org/italia/onto/l0/follows> ;
+              rdfs:subPropertyOf l0:follows ;
               owl:inverseOf :hasPreviousPoint ;
-              rdfs:domain :PointSequencingInRoute ;
-              rdfs:range :PointSequencingInRoute .
+              rdfs:domain :GeospatialPointItem ;
+              rdfs:range :GeospatialPointItem .
 
 
 ###  https://w3id.org/italia/onto/Route/hasPreviousPoint
 :hasPreviousPoint rdf:type owl:ObjectProperty ;
-                  rdfs:subPropertyOf <https://w3id.org/italia/onto/l0/precedes> ;
-                  rdfs:domain :PointSequencingInRoute ;
-                  rdfs:range :PointSequencingInRoute .
+                  rdfs:subPropertyOf l0:precedes ;
+                  rdfs:domain :GeospatialPointItem ;
+                  rdfs:range :GeospatialPointItem .
 
 
 ###  https://w3id.org/italia/onto/Route/hasRoute
@@ -115,7 +122,7 @@ xsd:duration rdf:type rdfs:Datatype .
                rdfs:subPropertyOf :enumeratesPoint ;
                owl:inverseOf :isStartPointOf ;
                rdfs:domain :Route ;
-               rdfs:range :PointSequencingInRoute .
+               rdfs:range :GeospatialPointItem .
 
 
 ###  https://w3id.org/italia/onto/Route/hasSubTripPlan
@@ -149,20 +156,20 @@ xsd:duration rdf:type rdfs:Datatype .
 ###  https://w3id.org/italia/onto/Route/isEndPointOf
 :isEndPointOf rdf:type owl:ObjectProperty ;
               rdfs:subPropertyOf :isEnumeratedByRoute ;
-              rdfs:domain :PointSequencingInRoute ;
+              rdfs:domain :GeospatialPointItem ;
               rdfs:range :Route .
 
 
 ###  https://w3id.org/italia/onto/Route/isEnumeratedByRoute
 :isEnumeratedByRoute rdf:type owl:ObjectProperty ;
-                     rdfs:domain :PointSequencingInRoute ;
+                     rdfs:domain :GeospatialPointItem ;
                      rdfs:range :Route .
 
 
 ###  https://w3id.org/italia/onto/Route/isGeospatialPointOf
 :isGeospatialPointOf rdf:type owl:ObjectProperty ;
                      rdfs:domain :GeospatialPoint ;
-                     rdfs:range :PointSequencingInRoute ;
+                     rdfs:range :GeospatialPointItem ;
                      rdfs:comment "Inverse relation of has gespatial point."@en ,
                                   "Relazione inversa di has geospatial point."@it ;
                      rdfs:label "is geospatial point of"@en ,
@@ -178,16 +185,16 @@ xsd:duration rdf:type rdfs:Datatype .
 ###  https://w3id.org/italia/onto/Route/isStartPointOf
 :isStartPointOf rdf:type owl:ObjectProperty ;
                 rdfs:subPropertyOf :isEnumeratedByRoute ;
-                rdfs:domain :PointSequencingInRoute ;
+                rdfs:domain :GeospatialPointItem ;
                 rdfs:range :Route .
 
 
 ###  https://w3id.org/italia/onto/l0/follows
-<https://w3id.org/italia/onto/l0/follows> rdf:type owl:ObjectProperty .
+l0:follows rdf:type owl:ObjectProperty .
 
 
 ###  https://w3id.org/italia/onto/l0/precedes
-<https://w3id.org/italia/onto/l0/precedes> rdf:type owl:ObjectProperty .
+l0:precedes rdf:type owl:ObjectProperty .
 
 
 #################################################################
@@ -217,7 +224,7 @@ xsd:duration rdf:type rdfs:Datatype .
 
 ###  https://w3id.org/italia/onto/Route/ordering
 :ordering rdf:type owl:DatatypeProperty ;
-          rdfs:domain :PointSequencingInRoute ;
+          rdfs:domain :GeospatialPointItem ;
           rdfs:range xsd:int ;
           rdfs:comment "L'ordinamento dell'elemento all'interno della sequenza espresso come intero."@it ,
                        "The integer that expresses the ordering of an item in a certain sequence."@en ;
@@ -240,17 +247,17 @@ xsd:duration rdf:type rdfs:Datatype .
 
 ###  https://w3id.org/italia/onto/CLV/GeometryType
 <https://w3id.org/italia/onto/CLV/GeometryType> rdf:type owl:Class ;
-                                                rdfs:subClassOf <https://w3id.org/italia/onto/l0/Characteristic> .
+                                                rdfs:subClassOf l0:Characteristic .
 
 
 ###  https://w3id.org/italia/onto/CLV/SpatialObject
 <https://w3id.org/italia/onto/CLV/SpatialObject> rdf:type owl:Class ;
-                                                 rdfs:subClassOf <https://w3id.org/italia/onto/l0/Location> .
+                                                 rdfs:subClassOf l0:Location .
 
 
 ###  https://w3id.org/italia/onto/MU/Value
 <https://w3id.org/italia/onto/MU/Value> rdf:type owl:Class ;
-                                        rdfs:subClassOf <https://w3id.org/italia/onto/l0/Characteristic> .
+                                        rdfs:subClassOf l0:Characteristic .
 
 
 ###  https://w3id.org/italia/onto/Route/GeospatialPoint
@@ -273,44 +280,44 @@ xsd:duration rdf:type rdfs:Datatype .
                  rdfs:subClassOf <https://w3id.org/italia/onto/CLV/Geometry> .
 
 
-###  https://w3id.org/italia/onto/Route/PointSequencingInRoute
-:PointSequencingInRoute rdf:type owl:Class ;
-                        rdfs:subClassOf <https://w3id.org/italia/onto/l0/Event> ,
-                                        [ rdf:type owl:Restriction ;
-                                          owl:onProperty :hasGeospatialPoint ;
-                                          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                          owl:onClass :GeospatialPoint
-                                        ] ,
-                                        [ rdf:type owl:Restriction ;
-                                          owl:onProperty :hasNextPoint ;
-                                          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                          owl:onClass :GeospatialPoint
-                                        ] ,
-                                        [ rdf:type owl:Restriction ;
-                                          owl:onProperty :hasPreviousPoint ;
-                                          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                          owl:onClass :GeospatialPoint
-                                        ] ,
-                                        [ rdf:type owl:Restriction ;
-                                          owl:onProperty :ordering ;
-                                          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                          owl:onDataRange xsd:int
-                                        ] .
+###  https://w3id.org/italia/onto/Route/GeospatialPointItem
+:GeospatialPointItem rdf:type owl:Class ;
+                     rdfs:subClassOf l0:Description ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty :hasGeospatialPoint ;
+                                       owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                       owl:onClass :GeospatialPoint
+                                     ] ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty :hasNextPoint ;
+                                       owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                       owl:onClass :GeospatialPoint
+                                     ] ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty :hasPreviousPoint ;
+                                       owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                       owl:onClass :GeospatialPoint
+                                     ] ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty :ordering ;
+                                       owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                       owl:onDataRange xsd:int
+                                     ] .
 
 
 ###  https://w3id.org/italia/onto/Route/Route
 :Route rdf:type owl:Class ;
        rdfs:subClassOf <https://w3id.org/italia/onto/CLV/Geometry> ,
-                       <https://w3id.org/italia/onto/l0/Sequence> ,
+                       l0:Sequence ,
                        [ rdf:type owl:Restriction ;
                          owl:onProperty :enumeratesPoint ;
                          owl:minQualifiedCardinality "2"^^xsd:nonNegativeInteger ;
-                         owl:onClass :GeospatialPoint
+                         owl:onClass :GeospatialPointItem
                        ] ,
                        [ rdf:type owl:Restriction ;
                          owl:onProperty :hasEndPoint ;
                          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                         owl:onClass :GeospatialPoint
+                         owl:onClass :GeospatialPointItem
                        ] ,
                        [ rdf:type owl:Restriction ;
                          owl:onProperty :hasLength ;
@@ -320,7 +327,7 @@ xsd:duration rdf:type rdfs:Datatype .
                        [ rdf:type owl:Restriction ;
                          owl:onProperty :hasStartPoint ;
                          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                         owl:onClass :GeospatialPoint
+                         owl:onClass :GeospatialPointItem
                        ] .
 
 
@@ -331,12 +338,12 @@ xsd:duration rdf:type rdfs:Datatype .
 
 ###  https://w3id.org/italia/onto/Route/RouteType
 :RouteType rdf:type owl:Class ;
-           rdfs:subClassOf <https://w3id.org/italia/onto/l0/Characteristic> .
+           rdfs:subClassOf l0:Characteristic .
 
 
 ###  https://w3id.org/italia/onto/Route/TripPlan
 :TripPlan rdf:type owl:Class ;
-          rdfs:subClassOf <https://w3id.org/italia/onto/l0/Description> ,
+          rdfs:subClassOf l0:Description ,
                           [ rdf:type owl:Restriction ;
                             owl:onProperty :hasRoute ;
                             owl:someValuesFrom :Route
@@ -356,28 +363,28 @@ xsd:duration rdf:type rdfs:Datatype .
 
 
 ###  https://w3id.org/italia/onto/l0/Characteristic
-<https://w3id.org/italia/onto/l0/Characteristic> rdf:type owl:Class .
+l0:Characteristic rdf:type owl:Class .
 
 
 ###  https://w3id.org/italia/onto/l0/Collection
-<https://w3id.org/italia/onto/l0/Collection> rdf:type owl:Class .
+l0:Collection rdf:type owl:Class .
 
 
 ###  https://w3id.org/italia/onto/l0/Description
-<https://w3id.org/italia/onto/l0/Description> rdf:type owl:Class .
+l0:Description rdf:type owl:Class .
 
 
 ###  https://w3id.org/italia/onto/l0/Event
-<https://w3id.org/italia/onto/l0/Event> rdf:type owl:Class .
+l0:Event rdf:type owl:Class .
 
 
 ###  https://w3id.org/italia/onto/l0/Location
-<https://w3id.org/italia/onto/l0/Location> rdf:type owl:Class .
+l0:Location rdf:type owl:Class .
 
 
 ###  https://w3id.org/italia/onto/l0/Sequence
-<https://w3id.org/italia/onto/l0/Sequence> rdf:type owl:Class ;
-                                           rdfs:subClassOf <https://w3id.org/italia/onto/l0/Collection> .
+l0:Sequence rdf:type owl:Class ;
+            rdfs:subClassOf l0:Collection .
 
 
 #################################################################
