@@ -1,8 +1,8 @@
 @prefix : <https://w3id.org/italia/onto/Route/> .
 @prefix l0: <https://w3id.org/italia/onto/l0/> .
-@prefix mu: <https://w3id.org/italia/onto/mu/> .
-@prefix ti: <https://w3id.org/italia/onto/ti/> .
-@prefix clv: <https://w3id.org/italia/onto/clv/> .
+@prefix mu: <https://w3id.org/italia/onto/MU/> .
+@prefix ti: <https://w3id.org/italia/onto/TI/> .
+@prefix clv: <https://w3id.org/italia/onto/CLV/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
@@ -26,7 +26,7 @@ xsd:duration rdf:type rdfs:Datatype .
 #################################################################
 
 ###  https://w3id.org/italia/onto/CLV/hasGeometryType
-<https://w3id.org/italia/onto/CLV/hasGeometryType> rdf:type owl:ObjectProperty .
+clv:hasGeometryType rdf:type owl:ObjectProperty .
 
 
 ###  https://w3id.org/italia/onto/Route/crosses
@@ -65,7 +65,7 @@ xsd:duration rdf:type rdfs:Datatype .
 ###  https://w3id.org/italia/onto/Route/hasExtimatedDuration
 :hasExtimatedDuration rdf:type owl:ObjectProperty ;
                       rdfs:domain :Route ;
-                      rdfs:range <https://w3id.org/italia/onto/TI/Duration> .
+                      rdfs:range ti:Duration .
 
 
 ###  https://w3id.org/italia/onto/Route/hasGeospatialPoint
@@ -82,7 +82,7 @@ xsd:duration rdf:type rdfs:Datatype .
 ###  https://w3id.org/italia/onto/Route/hasLength
 :hasLength rdf:type owl:ObjectProperty ;
            rdfs:domain :Route ;
-           rdfs:range <https://w3id.org/italia/onto/MU/Value> .
+           rdfs:range mu:Value .
 
 
 ###  https://w3id.org/italia/onto/Route/hasMeansOfTransportation
@@ -202,16 +202,16 @@ l0:precedes rdf:type owl:ObjectProperty .
 #################################################################
 
 ###  https://w3id.org/italia/onto/CLV/lat
-<https://w3id.org/italia/onto/CLV/lat> rdf:type owl:DatatypeProperty .
+clv:lat rdf:type owl:DatatypeProperty .
 
 
 ###  https://w3id.org/italia/onto/CLV/long
-<https://w3id.org/italia/onto/CLV/long> rdf:type owl:DatatypeProperty .
+clv:long rdf:type owl:DatatypeProperty .
 
 
 ###  https://w3id.org/italia/onto/Route/extimatedDuration
 :extimatedDuration rdf:type owl:DatatypeProperty ;
-                   rdfs:subPropertyOf <https://w3id.org/italia/onto/TI/duration> ;
+                   rdfs:subPropertyOf ti:duration ;
                    rdfs:domain :Route ;
                    rdfs:range xsd:duration .
 
@@ -233,7 +233,7 @@ l0:precedes rdf:type owl:ObjectProperty .
 
 
 ###  https://w3id.org/italia/onto/TI/duration
-<https://w3id.org/italia/onto/TI/duration> rdf:type owl:DatatypeProperty .
+ti:duration rdf:type owl:DatatypeProperty .
 
 
 #################################################################
@@ -241,43 +241,43 @@ l0:precedes rdf:type owl:ObjectProperty .
 #################################################################
 
 ###  https://w3id.org/italia/onto/CLV/Geometry
-<https://w3id.org/italia/onto/CLV/Geometry> rdf:type owl:Class ;
-                                            rdfs:subClassOf <https://w3id.org/italia/onto/CLV/SpatialObject> .
+clv:Geometry rdf:type owl:Class ;
+             rdfs:subClassOf clv:SpatialObject .
 
 
 ###  https://w3id.org/italia/onto/CLV/GeometryType
-<https://w3id.org/italia/onto/CLV/GeometryType> rdf:type owl:Class ;
-                                                rdfs:subClassOf l0:Characteristic .
+clv:GeometryType rdf:type owl:Class ;
+                 rdfs:subClassOf l0:Characteristic .
 
 
 ###  https://w3id.org/italia/onto/CLV/SpatialObject
-<https://w3id.org/italia/onto/CLV/SpatialObject> rdf:type owl:Class ;
-                                                 rdfs:subClassOf l0:Location .
+clv:SpatialObject rdf:type owl:Class ;
+                  rdfs:subClassOf l0:Location .
 
 
 ###  https://w3id.org/italia/onto/MU/Value
-<https://w3id.org/italia/onto/MU/Value> rdf:type owl:Class ;
-                                        rdfs:subClassOf l0:Characteristic .
+mu:Value rdf:type owl:Class ;
+         rdfs:subClassOf l0:Characteristic .
 
 
 ###  https://w3id.org/italia/onto/Route/GeospatialPoint
 :GeospatialPoint rdf:type owl:Class ;
                  owl:equivalentClass [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
-                                                              owl:onProperty <https://w3id.org/italia/onto/CLV/hasGeometryType> ;
-                                                              owl:hasValue <https://w3id.org/italia/onto/CLV/Point>
+                                                              owl:onProperty clv:hasGeometryType ;
+                                                              owl:hasValue clv:Point
                                                             ]
                                                             [ rdf:type owl:Restriction ;
-                                                              owl:onProperty <https://w3id.org/italia/onto/CLV/lat> ;
+                                                              owl:onProperty clv:lat ;
                                                               owl:cardinality "1"^^xsd:nonNegativeInteger
                                                             ]
                                                             [ rdf:type owl:Restriction ;
-                                                              owl:onProperty <https://w3id.org/italia/onto/CLV/long> ;
+                                                              owl:onProperty clv:long ;
                                                               owl:cardinality "1"^^xsd:nonNegativeInteger
                                                             ]
                                                           ) ;
                                        rdf:type owl:Class
                                      ] ;
-                 rdfs:subClassOf <https://w3id.org/italia/onto/CLV/Geometry> .
+                 rdfs:subClassOf clv:Geometry .
 
 
 ###  https://w3id.org/italia/onto/Route/GeospatialPointItem
@@ -307,7 +307,7 @@ l0:precedes rdf:type owl:ObjectProperty .
 
 ###  https://w3id.org/italia/onto/Route/Route
 :Route rdf:type owl:Class ;
-       rdfs:subClassOf <https://w3id.org/italia/onto/CLV/Geometry> ,
+       rdfs:subClassOf clv:Geometry ,
                        l0:Sequence ,
                        [ rdf:type owl:Restriction ;
                          owl:onProperty :enumeratesPoint ;
@@ -322,7 +322,7 @@ l0:precedes rdf:type owl:ObjectProperty .
                        [ rdf:type owl:Restriction ;
                          owl:onProperty :hasLength ;
                          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                         owl:onClass <https://w3id.org/italia/onto/MU/Value>
+                         owl:onClass mu:Value
                        ] ,
                        [ rdf:type owl:Restriction ;
                          owl:onProperty :hasStartPoint ;
@@ -333,7 +333,7 @@ l0:precedes rdf:type owl:ObjectProperty .
 
 ###  https://w3id.org/italia/onto/Route/RouteDuration
 :RouteDuration rdf:type owl:Class ;
-               rdfs:subClassOf <https://w3id.org/italia/onto/TI/Duration> .
+               rdfs:subClassOf ti:Duration .
 
 
 ###  https://w3id.org/italia/onto/Route/RouteType
@@ -359,7 +359,7 @@ l0:precedes rdf:type owl:ObjectProperty .
 
 
 ###  https://w3id.org/italia/onto/TI/Duration
-<https://w3id.org/italia/onto/TI/Duration> rdf:type owl:Class .
+ti:Duration rdf:type owl:Class .
 
 
 ###  https://w3id.org/italia/onto/l0/Characteristic
@@ -392,7 +392,7 @@ l0:Sequence rdf:type owl:Class ;
 #################################################################
 
 ###  https://w3id.org/italia/onto/CLV/Point
-<https://w3id.org/italia/onto/CLV/Point> rdf:type owl:NamedIndividual .
+clv:Point rdf:type owl:NamedIndividual .
 
 
 ###  Generated by the OWL API (version 4.2.8.20170104-2310) https://github.com/owlcs/owlapi
