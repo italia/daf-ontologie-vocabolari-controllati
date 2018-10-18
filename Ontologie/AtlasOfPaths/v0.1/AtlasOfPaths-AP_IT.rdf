@@ -400,6 +400,12 @@
     
 
 
+    <!-- https://w3id.org/italia/onto/Route/hasRouteType -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/italia/onto/Route/hasRouteType"/>
+    
+
+
     <!-- https://w3id.org/italia/onto/Route/hasTripPlan -->
 
     <owl:ObjectProperty rdf:about="https://w3id.org/italia/onto/Route/hasTripPlan">
@@ -619,6 +625,48 @@
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/AtlasOfPaths/hasValuedRoutePaving"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/MU/hasValue"/>
+                                <owl:someValuesFrom>
+                                    <owl:Class>
+                                        <owl:intersectionOf rdf:parseType="Collection">
+                                            <owl:Restriction>
+                                                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/MU/hasMeasurementUnit"/>
+                                                <owl:hasValue rdf:resource="https://w3id.org/italia/onto/AtlasOfPaths/percentage"/>
+                                            </owl:Restriction>
+                                            <owl:Restriction>
+                                                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/MU/value"/>
+                                                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                                                <owl:onDataRange>
+                                                    <rdfs:Datatype>
+                                                        <owl:onDatatype rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+                                                        <owl:withRestrictions rdf:parseType="Collection">
+                                                            <rdf:Description>
+                                                                <xsd:maxExclusive rdf:datatype="http://www.w3.org/2001/XMLSchema#double">40.0</xsd:maxExclusive>
+                                                            </rdf:Description>
+                                                        </owl:withRestrictions>
+                                                    </rdfs:Datatype>
+                                                </owl:onDataRange>
+                                            </owl:Restriction>
+                                        </owl:intersectionOf>
+                                    </owl:Class>
+                                </owl:someValuesFrom>
+                            </owl:Restriction>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/AtlasOfPaths/forPaving"/>
+                                <owl:hasValue rdf:resource="https://w3id.org/italia/onto/AtlasOfPaths/asphalt"/>
+                            </owl:Restriction>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
                 <owl:onProperty rdf:resource="https://w3id.org/italia/onto/SM/hasWebSite"/>
                 <owl:someValuesFrom rdf:resource="https://w3id.org/italia/onto/SM/WebSite"/>
             </owl:Restriction>
@@ -829,6 +877,12 @@
     
 
 
+    <!-- https://w3id.org/italia/onto/CLV/SpatialObject -->
+
+    <owl:Class rdf:about="https://w3id.org/italia/onto/CLV/SpatialObject"/>
+    
+
+
     <!-- https://w3id.org/italia/onto/COV/Organization -->
 
     <owl:Class rdf:about="https://w3id.org/italia/onto/COV/Organization">
@@ -845,11 +899,23 @@
     
 
 
+    <!-- https://w3id.org/italia/onto/MU/Value -->
+
+    <owl:Class rdf:about="https://w3id.org/italia/onto/MU/Value"/>
+    
+
+
     <!-- https://w3id.org/italia/onto/POI/PointOfInterest -->
 
     <owl:Class rdf:about="https://w3id.org/italia/onto/POI/PointOfInterest">
         <rdfs:subClassOf rdf:resource="https://w3id.org/italia/onto/l0/Entity"/>
     </owl:Class>
+    
+
+
+    <!-- https://w3id.org/italia/onto/Route/GeospatialPoint -->
+
+    <owl:Class rdf:about="https://w3id.org/italia/onto/Route/GeospatialPoint"/>
     
 
 
@@ -890,6 +956,12 @@
     
 
 
+    <!-- https://w3id.org/italia/onto/Route/RouteType -->
+
+    <owl:Class rdf:about="https://w3id.org/italia/onto/Route/RouteType"/>
+    
+
+
     <!-- https://w3id.org/italia/onto/Route/TripPlan -->
 
     <owl:Class rdf:about="https://w3id.org/italia/onto/Route/TripPlan"/>
@@ -906,9 +978,9 @@
 
     <!-- https://w3id.org/italia/onto/TI/Duration -->
 
-    <rdf:Description rdf:about="https://w3id.org/italia/onto/TI/Duration">
+    <owl:Class rdf:about="https://w3id.org/italia/onto/TI/Duration">
         <rdfs:subClassOf rdf:resource="https://w3id.org/italia/onto/TI/TemporalEntity"/>
-    </rdf:Description>
+    </owl:Class>
     
 
 
@@ -930,25 +1002,25 @@
 
     <!-- https://w3id.org/italia/onto/l0/Characteristic -->
 
-    <rdf:Description rdf:about="https://w3id.org/italia/onto/l0/Characteristic">
+    <owl:Class rdf:about="https://w3id.org/italia/onto/l0/Characteristic">
         <rdfs:subClassOf rdf:resource="https://w3id.org/italia/onto/l0/Entity"/>
-    </rdf:Description>
+    </owl:Class>
     
 
 
     <!-- https://w3id.org/italia/onto/l0/Collection -->
 
-    <rdf:Description rdf:about="https://w3id.org/italia/onto/l0/Collection">
+    <owl:Class rdf:about="https://w3id.org/italia/onto/l0/Collection">
         <rdfs:subClassOf rdf:resource="https://w3id.org/italia/onto/l0/Entity"/>
-    </rdf:Description>
+    </owl:Class>
     
 
 
     <!-- https://w3id.org/italia/onto/l0/Description -->
 
-    <rdf:Description rdf:about="https://w3id.org/italia/onto/l0/Description">
+    <owl:Class rdf:about="https://w3id.org/italia/onto/l0/Description">
         <rdfs:subClassOf rdf:resource="https://w3id.org/italia/onto/l0/Object"/>
-    </rdf:Description>
+    </owl:Class>
     
 
 
@@ -968,9 +1040,9 @@
 
     <!-- https://w3id.org/italia/onto/l0/Location -->
 
-    <rdf:Description rdf:about="https://w3id.org/italia/onto/l0/Location">
+    <owl:Class rdf:about="https://w3id.org/italia/onto/l0/Location">
         <rdfs:subClassOf rdf:resource="https://w3id.org/italia/onto/l0/Entity"/>
-    </rdf:Description>
+    </owl:Class>
     
 
 
