@@ -44,11 +44,34 @@ clv:hasGeometryType rdf:type owl:ObjectProperty .
 :crosses rdf:type owl:ObjectProperty ;
          owl:inverseOf :isCrossedBy ;
          rdfs:domain :Route ;
-         rdfs:range :GeospatialPoint ;
          rdfs:label "La relazione che permette di asserire che un percorso attraversa un certo punto geospaziale."@it ,
                     "The relation between a route and a geospatial point. I.e. a route 'crosses' a certain geospatial point."@en ,
                     "attraversa"@it ,
                     "crosses"@en .
+
+
+###  https://w3id.org/italia/onto/Route/hasAltRoute
+:hasAltRoute rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf :hasRoute ;
+             owl:inverseOf :isAltRouteOf ;
+             rdfs:domain owl:Thing ;
+             rdfs:range :Route ;
+             rdfs:comment "La object property che permette di identificare un percorso alternativo"@it ,
+                          "The object property that allows to identify an alternative route."@en ;
+             rdfs:label "has alternative route"@en ,
+                        "percorso alternativo"@it .
+
+
+###  https://w3id.org/italia/onto/Route/hasDeviation
+:hasDeviation rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf :hasAltRoute ;
+              owl:inverseOf :isDeviationOf ;
+              rdfs:domain owl:Thing ;
+              rdfs:range :Route ;
+              rdfs:comment "La object property che permette di identificare una deviazione."@it ,
+                           "The object property that allows to represent a deviation."@en ,
+                           "deviazione"@it ,
+                           "has deviation"@en .
 
 
 ###  https://w3id.org/italia/onto/Route/hasExtimatedDuration
@@ -65,6 +88,18 @@ clv:hasGeometryType rdf:type owl:ObjectProperty .
 
 ###  https://w3id.org/italia/onto/Route/hasMeansOfTransportation
 :hasMeansOfTransportation rdf:type owl:ObjectProperty .
+
+
+###  https://w3id.org/italia/onto/Route/hasPrefRoute
+:hasPrefRoute rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf :hasRoute ;
+              owl:inverseOf :isPrefRouteOf ;
+              rdfs:domain owl:Thing ;
+              rdfs:range :Route ;
+              rdfs:comment "La object property che permette di specificare un percorso preferenziale."@it ,
+                           "The object property that allows to specify the preferred route."@en ;
+              rdfs:label "has preferred route"@en ,
+                         "percorso preferenziale"@it .
 
 
 ###  https://w3id.org/italia/onto/Route/hasRoute
@@ -102,14 +137,32 @@ clv:hasGeometryType rdf:type owl:ObjectProperty .
              rdfs:range :TripPlan .
 
 
+###  https://w3id.org/italia/onto/Route/isAltRouteOf
+:isAltRouteOf rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf :isRouteOf .
+
+
 ###  https://w3id.org/italia/onto/Route/isCrossedBy
 :isCrossedBy rdf:type owl:ObjectProperty ;
-             rdfs:domain :GeospatialPoint ;
              rdfs:range :Route ;
              rdfs:comment "La relazione inversa di crosses."@it ,
                           "The inverse relation of crosses."@en ;
              rdfs:label "attraversato da"@it ,
                         "is crossed by"@en .
+
+
+###  https://w3id.org/italia/onto/Route/isDeviationOf
+:isDeviationOf rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf :isAltRouteOf ;
+               rdfs:domain :Route ;
+               rdfs:range owl:Thing .
+
+
+###  https://w3id.org/italia/onto/Route/isPrefRouteOf
+:isPrefRouteOf rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf :isRouteOf ;
+               rdfs:domain :Route ;
+               rdfs:range owl:Thing .
 
 
 ###  https://w3id.org/italia/onto/Route/isRouteOf
@@ -199,26 +252,6 @@ clv:SpatialObject rdf:type owl:Class ;
 ###  https://w3id.org/italia/onto/MU/Value
 mu:Value rdf:type owl:Class ;
          rdfs:subClassOf l0:Characteristic .
-
-
-###  https://w3id.org/italia/onto/Route/GeospatialPoint
-:GeospatialPoint rdf:type owl:Class ;
-                 owl:equivalentClass [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
-                                                              owl:onProperty clv:hasGeometryType ;
-                                                              owl:hasValue clv:Point
-                                                            ]
-                                                            [ rdf:type owl:Restriction ;
-                                                              owl:onProperty clv:lat ;
-                                                              owl:cardinality "1"^^xsd:nonNegativeInteger
-                                                            ]
-                                                            [ rdf:type owl:Restriction ;
-                                                              owl:onProperty clv:long ;
-                                                              owl:cardinality "1"^^xsd:nonNegativeInteger
-                                                            ]
-                                                          ) ;
-                                       rdf:type owl:Class
-                                     ] ;
-                 rdfs:subClassOf clv:Geometry .
 
 
 ###  https://w3id.org/italia/onto/Route/Route
@@ -322,7 +355,8 @@ mu:Value rdf:type owl:Class ;
 
 
 ###  https://w3id.org/italia/onto/TI/Duration
-ti:Duration rdf:type owl:Class .
+ti:Duration rdf:type owl:Class ;
+            rdfs:subClassOf l0:Entity .
 
 
 ###  https://w3id.org/italia/onto/l0/Characteristic

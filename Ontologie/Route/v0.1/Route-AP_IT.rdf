@@ -68,11 +68,40 @@
     <owl:ObjectProperty rdf:about="https://w3id.org/italia/onto/Route/crosses">
         <owl:inverseOf rdf:resource="https://w3id.org/italia/onto/Route/isCrossedBy"/>
         <rdfs:domain rdf:resource="https://w3id.org/italia/onto/Route/Route"/>
-        <rdfs:range rdf:resource="https://w3id.org/italia/onto/Route/GeospatialPoint"/>
         <rdfs:label xml:lang="it">La relazione che permette di asserire che un percorso attraversa un certo punto geospaziale.</rdfs:label>
         <rdfs:label xml:lang="en">The relation between a route and a geospatial point. I.e. a route &apos;crosses&apos; a certain geospatial point.</rdfs:label>
         <rdfs:label xml:lang="it">attraversa</rdfs:label>
         <rdfs:label xml:lang="en">crosses</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/italia/onto/Route/hasAltRoute -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/italia/onto/Route/hasAltRoute">
+        <rdfs:subPropertyOf rdf:resource="https://w3id.org/italia/onto/Route/hasRoute"/>
+        <owl:inverseOf rdf:resource="https://w3id.org/italia/onto/Route/isAltRouteOf"/>
+        <rdfs:domain rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <rdfs:range rdf:resource="https://w3id.org/italia/onto/Route/Route"/>
+        <rdfs:comment xml:lang="it">La object property che permette di identificare un percorso alternativo</rdfs:comment>
+        <rdfs:comment xml:lang="en">The object property that allows to identify an alternative route.</rdfs:comment>
+        <rdfs:label xml:lang="en">has alternative route</rdfs:label>
+        <rdfs:label xml:lang="it">percorso alternativo</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/italia/onto/Route/hasDeviation -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/italia/onto/Route/hasDeviation">
+        <rdfs:subPropertyOf rdf:resource="https://w3id.org/italia/onto/Route/hasAltRoute"/>
+        <owl:inverseOf rdf:resource="https://w3id.org/italia/onto/Route/isDeviationOf"/>
+        <rdfs:domain rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <rdfs:range rdf:resource="https://w3id.org/italia/onto/Route/Route"/>
+        <rdfs:comment xml:lang="it">La object property che permette di identificare una deviazione.</rdfs:comment>
+        <rdfs:comment xml:lang="en">The object property that allows to represent a deviation.</rdfs:comment>
+        <rdfs:comment xml:lang="it">deviazione</rdfs:comment>
+        <rdfs:comment xml:lang="en">has deviation</rdfs:comment>
     </owl:ObjectProperty>
     
 
@@ -98,6 +127,21 @@
     <!-- https://w3id.org/italia/onto/Route/hasMeansOfTransportation -->
 
     <owl:ObjectProperty rdf:about="https://w3id.org/italia/onto/Route/hasMeansOfTransportation"/>
+    
+
+
+    <!-- https://w3id.org/italia/onto/Route/hasPrefRoute -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/italia/onto/Route/hasPrefRoute">
+        <rdfs:subPropertyOf rdf:resource="https://w3id.org/italia/onto/Route/hasRoute"/>
+        <owl:inverseOf rdf:resource="https://w3id.org/italia/onto/Route/isPrefRouteOf"/>
+        <rdfs:domain rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <rdfs:range rdf:resource="https://w3id.org/italia/onto/Route/Route"/>
+        <rdfs:comment xml:lang="it">La object property che permette di specificare un percorso preferenziale.</rdfs:comment>
+        <rdfs:comment xml:lang="en">The object property that allows to specify the preferred route.</rdfs:comment>
+        <rdfs:label xml:lang="en">has preferred route</rdfs:label>
+        <rdfs:label xml:lang="it">percorso preferenziale</rdfs:label>
+    </owl:ObjectProperty>
     
 
 
@@ -151,15 +195,42 @@
     
 
 
+    <!-- https://w3id.org/italia/onto/Route/isAltRouteOf -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/italia/onto/Route/isAltRouteOf">
+        <rdfs:subPropertyOf rdf:resource="https://w3id.org/italia/onto/Route/isRouteOf"/>
+    </owl:ObjectProperty>
+    
+
+
     <!-- https://w3id.org/italia/onto/Route/isCrossedBy -->
 
     <owl:ObjectProperty rdf:about="https://w3id.org/italia/onto/Route/isCrossedBy">
-        <rdfs:domain rdf:resource="https://w3id.org/italia/onto/Route/GeospatialPoint"/>
         <rdfs:range rdf:resource="https://w3id.org/italia/onto/Route/Route"/>
         <rdfs:comment xml:lang="it">La relazione inversa di crosses.</rdfs:comment>
         <rdfs:comment xml:lang="en">The inverse relation of crosses.</rdfs:comment>
         <rdfs:label xml:lang="it">attraversato da</rdfs:label>
         <rdfs:label xml:lang="en">is crossed by</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/italia/onto/Route/isDeviationOf -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/italia/onto/Route/isDeviationOf">
+        <rdfs:subPropertyOf rdf:resource="https://w3id.org/italia/onto/Route/isAltRouteOf"/>
+        <rdfs:domain rdf:resource="https://w3id.org/italia/onto/Route/Route"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/italia/onto/Route/isPrefRouteOf -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/italia/onto/Route/isPrefRouteOf">
+        <rdfs:subPropertyOf rdf:resource="https://w3id.org/italia/onto/Route/isRouteOf"/>
+        <rdfs:domain rdf:resource="https://w3id.org/italia/onto/Route/Route"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
     </owl:ObjectProperty>
     
 
@@ -303,32 +374,6 @@
 
     <owl:Class rdf:about="https://w3id.org/italia/onto/MU/Value">
         <rdfs:subClassOf rdf:resource="https://w3id.org/italia/onto/l0/Characteristic"/>
-    </owl:Class>
-    
-
-
-    <!-- https://w3id.org/italia/onto/Route/GeospatialPoint -->
-
-    <owl:Class rdf:about="https://w3id.org/italia/onto/Route/GeospatialPoint">
-        <owl:equivalentClass>
-            <owl:Class>
-                <owl:intersectionOf rdf:parseType="Collection">
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="https://w3id.org/italia/onto/CLV/hasGeometryType"/>
-                        <owl:hasValue rdf:resource="https://w3id.org/italia/onto/CLV/Point"/>
-                    </owl:Restriction>
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="https://w3id.org/italia/onto/CLV/lat"/>
-                        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality>
-                    </owl:Restriction>
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="https://w3id.org/italia/onto/CLV/long"/>
-                        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality>
-                    </owl:Restriction>
-                </owl:intersectionOf>
-            </owl:Class>
-        </owl:equivalentClass>
-        <rdfs:subClassOf rdf:resource="https://w3id.org/italia/onto/CLV/Geometry"/>
     </owl:Class>
     
 
@@ -483,7 +528,9 @@
 
     <!-- https://w3id.org/italia/onto/TI/Duration -->
 
-    <owl:Class rdf:about="https://w3id.org/italia/onto/TI/Duration"/>
+    <owl:Class rdf:about="https://w3id.org/italia/onto/TI/Duration">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/italia/onto/l0/Entity"/>
+    </owl:Class>
     
 
 
