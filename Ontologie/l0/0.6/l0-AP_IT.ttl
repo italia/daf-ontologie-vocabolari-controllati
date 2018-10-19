@@ -33,7 +33,6 @@
                                    admsapit:target "Pubbliche Amministrazioni"@it ;
                                    admsapit:hasOntologyLanguage admsapit:OWL ;
                                    dct:creator <https://w3id.org/italia/data/organization/support-unit/cnr-Z6HZEH/stlab> ;
-                                   admsapit:last : ;
                                    dcat:keyword "Oggetto"@it ;
                                    admsapit:hasSemanticAssetDistribution <https://w3id.org/italia/data/distribution/l0-RDF-TURTLE> ;
                                    dct:language <http://publications.europa.eu/resource/authority/language/ENG> ;
@@ -49,6 +48,7 @@
                                    dct:publisher <http://spcdata.digitpa.gov.it/Amministrazione/agid> ;
                                    owl:versionInfo "0.6 - 17 Ottobre 2018 - Aggiunta delle sequenze."@it ;
                                    admsapit:prefix "l0" ;
+                                   admsapit:last : ;
                                    dcat:contactPoint <https://w3id.org/italia/data/contact-point/onto-agid> ;
                                    admsapit:type admsapit:UpperLevelOntology ;
                                    admsapit:semanticAssetInUse <https://w3id.org/italia/data/project/DAF> ,
@@ -181,7 +181,7 @@ foaf:name rdf:type owl:AnnotationProperty .
 ###  https://w3id.org/italia/onto/l0/hasDescription
 :hasDescription rdf:type owl:ObjectProperty ;
                 owl:inverseOf :isDescriptionOf ;
-                rdfs:domain owl:Thing ;
+                rdfs:domain :Entity ;
                 rdfs:range :Description ;
                 rdfs:comment "Property that associates an entity with its description."@en ,
                              "Proprietà che associa un'entità alla sua descrizione."@it ;
@@ -236,10 +236,24 @@ foaf:name rdf:type owl:AnnotationProperty .
                            "stable"@en .
 
 
+###  https://w3id.org/italia/onto/l0/hasTopic
+:hasTopic rdf:type owl:ObjectProperty ;
+          owl:inverseOf :isTopicOf ;
+          rdfs:domain :Entity ;
+          rdfs:range :Topic ;
+          rdfs:comment "Questa object property permette di associare un entità ad un topic."@it ,
+                       "This object property allows to associate an entity with a topic."@en ;
+          rdfs:isDefinedBy <https://w3id.org/italia/onto/l0> ;
+          rdfs:label "ha tema"@it ,
+                     "has topic"@en ;
+          owl:versionInfo "stabile"@it ,
+                          "stable"@en .
+
+
 ###  https://w3id.org/italia/onto/l0/isDescriptionOf
 :isDescriptionOf rdf:type owl:ObjectProperty ;
                  rdfs:domain :Description ;
-                 rdfs:range owl:Thing ;
+                 rdfs:range :Entity ;
                  rdfs:comment "Inverse property of 'has description'."@en ,
                               "Proprietà inversa di 'ha descrizione'."@it ;
                  rdfs:isDefinedBy <https://w3id.org/italia/onto/l0> ;
@@ -288,6 +302,19 @@ foaf:name rdf:type owl:AnnotationProperty .
                        "membro di"@it ;
             owl:versionInfo "stabile"@it ,
                             "stable"@en .
+
+
+###  https://w3id.org/italia/onto/l0/isTopicOf
+:isTopicOf rdf:type owl:ObjectProperty ;
+           rdfs:domain :Topic ;
+           rdfs:range :Entity ;
+           rdfs:isDefinedBy <https://w3id.org/italia/onto/l0> ;
+           rdfs:label "La object property che permette di associare un tema ad un'entità. E' l'inversa di hasTopic."@it ,
+                      "The object property that associates a topic with an entity. This is the inverse property of hasTopic."@en ,
+                      "is topic of"@en ,
+                      "è tema di"@it ;
+           owl:versionInfo "stabile"@it ,
+                           "stable"@en .
 
 
 ###  https://w3id.org/italia/onto/l0/precedes
