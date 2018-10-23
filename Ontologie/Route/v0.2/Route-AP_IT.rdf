@@ -53,7 +53,8 @@
         <admsapit:semanticAssetInUse rdf:resource="https://w3id.org/italia/data/project/DAF"/>
         <admsapit:semanticAssetInUse rdf:resource="https://w3id.org/italia/data/project/OntoPiA"/>
         <dct:accrualPeriodicity rdf:resource="http://publications.europa.eu/resource/authority/frequency/IRREG"/>
-        <admsapit:last rdf:resource="https://w3id.org/italia/onto/Route/0.1"/>
+        <admsapit:last rdf:resource="https://w3id.org/italia/onto/Route/0.2"/>
+        <admsapit:prev rdf:resource="https://w3id.org/italia/onto/Route/0.1"/>
         <admsapit:hasSemanticAssetDistribution rdf:resource="https://w3id.org/italia/data/distribution/RTAPIT-JSON-LD"/>
         <dct:title xml:lang="en">Routes Ontology - Italian Application Profile</dct:title>
         <rdfs:label xml:lang="en">Routes Ontology - Italian Application Profile</rdfs:label>
@@ -73,10 +74,10 @@
         <dct:description xml:lang="en">This is the Italian application profile of the routes. They are transit routes that can be followed using different means of transportation such as bus routes, metro routes, walking routes, hourseback routes, etc.</dct:description>
         <admsapit:hasKeyClass rdf:resource="https://w3id.org/italia/onto/Route/TripPlan"/>
     </owl:Ontology>
-    
 
 
-    <!-- 
+
+    <!--
     ///////////////////////////////////////////////////////////////////////////////////////
     //
     // Datatypes
@@ -84,16 +85,16 @@
     ///////////////////////////////////////////////////////////////////////////////////////
      -->
 
-    
+
 
 
     <!-- http://www.w3.org/2001/XMLSchema#duration -->
 
     <rdfs:Datatype rdf:about="http://www.w3.org/2001/XMLSchema#duration"/>
-    
 
 
-    <!-- 
+
+    <!--
     ///////////////////////////////////////////////////////////////////////////////////////
     //
     // Object Properties
@@ -101,19 +102,19 @@
     ///////////////////////////////////////////////////////////////////////////////////////
      -->
 
-    
+
 
 
     <!-- https://w3id.org/italia/onto/CLV/hasGeometry -->
 
     <owl:ObjectProperty rdf:about="https://w3id.org/italia/onto/CLV/hasGeometry"/>
-    
+
 
 
     <!-- https://w3id.org/italia/onto/CLV/hasGeometryType -->
 
     <owl:ObjectProperty rdf:about="https://w3id.org/italia/onto/CLV/hasGeometryType"/>
-    
+
 
 
     <!-- https://w3id.org/italia/onto/Route/crosses -->
@@ -130,7 +131,7 @@
         <owl:versionInfo xml:lang="it">provvisoria</owl:versionInfo>
         <owl:versionInfo xml:lang="en">unstable</owl:versionInfo>
     </owl:ObjectProperty>
-    
+
 
 
     <!-- https://w3id.org/italia/onto/Route/hasAltRoute -->
@@ -148,7 +149,7 @@
         <owl:versionInfo xml:lang="it">stabile</owl:versionInfo>
         <owl:versionInfo xml:lang="en">stable</owl:versionInfo>
     </owl:ObjectProperty>
-    
+
 
 
     <!-- https://w3id.org/italia/onto/Route/hasDeviation -->
@@ -166,7 +167,7 @@
         <owl:versionInfo xml:lang="it">stabile</owl:versionInfo>
         <owl:versionInfo xml:lang="en">stable</owl:versionInfo>
     </owl:ObjectProperty>
-    
+
 
 
     <!-- https://w3id.org/italia/onto/Route/hasEstimatedDuration -->
@@ -182,7 +183,7 @@
         <owl:versionInfo xml:lang="it">provvisoria</owl:versionInfo>
         <owl:versionInfo xml:lang="en">unstable</owl:versionInfo>
     </owl:ObjectProperty>
-    
+
 
 
     <!-- https://w3id.org/italia/onto/Route/hasLength -->
@@ -198,7 +199,7 @@
         <owl:versionInfo xml:lang="it">stabile</owl:versionInfo>
         <owl:versionInfo xml:lang="en">stable</owl:versionInfo>
     </owl:ObjectProperty>
-    
+
 
 
     <!-- https://w3id.org/italia/onto/Route/hasPrefRoute -->
@@ -216,7 +217,7 @@
         <owl:versionInfo xml:lang="it">stabile</owl:versionInfo>
         <owl:versionInfo xml:lang="en">stable</owl:versionInfo>
     </owl:ObjectProperty>
-    
+
 
 
     <!-- https://w3id.org/italia/onto/Route/hasRoute -->
@@ -233,7 +234,7 @@
         <owl:versionInfo xml:lang="it">stabile</owl:versionInfo>
         <owl:versionInfo xml:lang="en">stable</owl:versionInfo>
     </owl:ObjectProperty>
-    
+
 
 
     <!-- https://w3id.org/italia/onto/Route/hasRouteType -->
@@ -249,7 +250,7 @@
         <owl:versionInfo xml:lang="it">stabile</owl:versionInfo>
         <owl:versionInfo xml:lang="en">stable</owl:versionInfo>
     </owl:ObjectProperty>
-    
+
 
 
     <!-- https://w3id.org/italia/onto/Route/hasSubTripPlan -->
@@ -259,8 +260,15 @@
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
         <rdfs:domain rdf:resource="https://w3id.org/italia/onto/Route/TripPlan"/>
         <rdfs:range rdf:resource="https://w3id.org/italia/onto/Route/TripPlan"/>
+        <rdfs:comment xml:lang="en">Property used to specify additional trip plans that compose a bigger one.</rdfs:comment>
+        <rdfs:comment xml:lang="it">Proprietà utilizzata per suddividere un piano di viaggio in ulteriori piani</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/italia/onto/Route"/>
+        <rdfs:label xml:lang="en">has sub trip plan</rdfs:label>
+        <rdfs:label xml:lang="it">sotto piano di viaggio</rdfs:label>
+        <owl:versionInfo xml:lang="it">stabile</owl:versionInfo>
+        <owl:versionInfo xml:lang="en">stable</owl:versionInfo>
     </owl:ObjectProperty>
-    
+
 
 
     <!-- https://w3id.org/italia/onto/Route/hasSuperTripPlan -->
@@ -269,8 +277,15 @@
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
         <rdfs:domain rdf:resource="https://w3id.org/italia/onto/Route/TripPlan"/>
         <rdfs:range rdf:resource="https://w3id.org/italia/onto/Route/TripPlan"/>
+        <rdfs:comment xml:lang="en">Property used to indicate the super trip plan which contains other trip plans</rdfs:comment>
+        <rdfs:comment xml:lang="it">Proprietà utilizzata per indicare il piano di viaggio che contiene altri piani di viaggio</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/italia/onto/Route"/>
+        <rdfs:label xml:lang="en">has super trip plan</rdfs:label>
+        <rdfs:label xml:lang="it">super piano di viaggio</rdfs:label>
+        <owl:versionInfo xml:lang="it">stabile</owl:versionInfo>
+        <owl:versionInfo xml:lang="en">stable</owl:versionInfo>
     </owl:ObjectProperty>
-    
+
 
 
     <!-- https://w3id.org/italia/onto/Route/hasTripPlan -->
@@ -279,16 +294,30 @@
         <owl:inverseOf rdf:resource="https://w3id.org/italia/onto/Route/isTripPlanOf"/>
         <rdfs:domain rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
         <rdfs:range rdf:resource="https://w3id.org/italia/onto/Route/TripPlan"/>
+        <rdfs:comment xml:lang="en">Property that links any thing to a trip plan</rdfs:comment>
+        <rdfs:comment xml:lang="it">Proprietà che lega qualsiasi cosa a un piano di viaggio</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/italia/onto/Route"/>
+        <rdfs:label xml:lang="it">ha piano di viaggio</rdfs:label>
+        <rdfs:label xml:lang="en">has trip plan</rdfs:label>
+        <owl:versionInfo xml:lang="it">stabile</owl:versionInfo>
+        <owl:versionInfo xml:lang="en">stable</owl:versionInfo>
     </owl:ObjectProperty>
-    
+
 
 
     <!-- https://w3id.org/italia/onto/Route/isAltRouteOf -->
 
     <owl:ObjectProperty rdf:about="https://w3id.org/italia/onto/Route/isAltRouteOf">
         <rdfs:subPropertyOf rdf:resource="https://w3id.org/italia/onto/Route/isRouteOf"/>
+        <rdfs:comment xml:lang="en">Inverse property of has alternative route</rdfs:comment>
+        <rdfs:comment xml:lang="it">Proprietà inversa di percorso alternativo</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/italia/onto/Route"/>
+        <rdfs:label xml:lang="en">is alternative route of</rdfs:label>
+        <rdfs:label xml:lang="it">percorso alternativo di</rdfs:label>
+        <owl:versionInfo xml:lang="it">stabile</owl:versionInfo>
+        <owl:versionInfo xml:lang="en">stable</owl:versionInfo>
     </owl:ObjectProperty>
-    
+
 
 
     <!-- https://w3id.org/italia/onto/Route/isCrossedBy -->
@@ -304,7 +333,7 @@
         <owl:versionInfo xml:lang="it">stabile</owl:versionInfo>
         <owl:versionInfo xml:lang="en">stable</owl:versionInfo>
     </owl:ObjectProperty>
-    
+
 
 
     <!-- https://w3id.org/italia/onto/Route/isDeviationOf -->
@@ -313,8 +342,15 @@
         <rdfs:subPropertyOf rdf:resource="https://w3id.org/italia/onto/Route/isAltRouteOf"/>
         <rdfs:domain rdf:resource="https://w3id.org/italia/onto/Route/Route"/>
         <rdfs:range rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <rdfs:comment xml:lang="en">Inverse property of has deviation</rdfs:comment>
+        <rdfs:comment xml:lang="it">Proprietà inversa di deviazione</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/italia/onto/Route"/>
+        <rdfs:label xml:lang="it">deviazione di</rdfs:label>
+        <rdfs:label xml:lang="en">is deviation of</rdfs:label>
+        <owl:versionInfo xml:lang="it">stabile</owl:versionInfo>
+        <owl:versionInfo xml:lang="en">stable</owl:versionInfo>
     </owl:ObjectProperty>
-    
+
 
 
     <!-- https://w3id.org/italia/onto/Route/isPrefRouteOf -->
@@ -323,8 +359,15 @@
         <rdfs:subPropertyOf rdf:resource="https://w3id.org/italia/onto/Route/isRouteOf"/>
         <rdfs:domain rdf:resource="https://w3id.org/italia/onto/Route/Route"/>
         <rdfs:range rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <rdfs:comment xml:lang="en">Inverse property of has preferred route</rdfs:comment>
+        <rdfs:comment xml:lang="it">Proprietà inversa di percorso preferenziale</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/italia/onto/Route"/>
+        <rdfs:label xml:lang="en">is preferred route of</rdfs:label>
+        <rdfs:label xml:lang="it">percorso preferenziale di</rdfs:label>
+        <owl:versionInfo xml:lang="it">stabile</owl:versionInfo>
+        <owl:versionInfo xml:lang="en">stable</owl:versionInfo>
     </owl:ObjectProperty>
-    
+
 
 
     <!-- https://w3id.org/italia/onto/Route/isRouteOf -->
@@ -332,8 +375,15 @@
     <owl:ObjectProperty rdf:about="https://w3id.org/italia/onto/Route/isRouteOf">
         <rdfs:domain rdf:resource="https://w3id.org/italia/onto/Route/Route"/>
         <rdfs:range rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <rdfs:comment xml:lang="en">Inverse property of has route</rdfs:comment>
+        <rdfs:comment xml:lang="it">Proprietà inversa di ha percorso</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/italia/onto/Route"/>
+        <rdfs:label xml:lang="en">is route of</rdfs:label>
+        <rdfs:label xml:lang="it">è percorso di</rdfs:label>
+        <owl:versionInfo xml:lang="it">stabile</owl:versionInfo>
+        <owl:versionInfo xml:lang="en">stable</owl:versionInfo>
     </owl:ObjectProperty>
-    
+
 
 
     <!-- https://w3id.org/italia/onto/Route/isTripPlanOf -->
@@ -341,23 +391,30 @@
     <owl:ObjectProperty rdf:about="https://w3id.org/italia/onto/Route/isTripPlanOf">
         <rdfs:domain rdf:resource="https://w3id.org/italia/onto/Route/TripPlan"/>
         <rdfs:range rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <rdfs:comment rdf:resource="https://w3id.org/italia/onto/Route"/>
+        <rdfs:comment xml:lang="en">Inverse property of has trip plan</rdfs:comment>
+        <rdfs:comment xml:lang="it">Proprietà inversa di ha piano di viaggio</rdfs:comment>
+        <rdfs:label xml:lang="en">is trip plan of</rdfs:label>
+        <rdfs:label xml:lang="it">piano viaggio di</rdfs:label>
+        <owl:versionInfo xml:lang="it">stabile</owl:versionInfo>
+        <owl:versionInfo xml:lang="en">stable</owl:versionInfo>
     </owl:ObjectProperty>
-    
+
 
 
     <!-- https://w3id.org/italia/onto/l0/follows -->
 
     <owl:ObjectProperty rdf:about="https://w3id.org/italia/onto/l0/follows"/>
-    
+
 
 
     <!-- https://w3id.org/italia/onto/l0/precedes -->
 
     <owl:ObjectProperty rdf:about="https://w3id.org/italia/onto/l0/precedes"/>
-    
 
 
-    <!-- 
+
+    <!--
     ///////////////////////////////////////////////////////////////////////////////////////
     //
     // Data properties
@@ -365,19 +422,19 @@
     ///////////////////////////////////////////////////////////////////////////////////////
      -->
 
-    
+
 
 
     <!-- https://w3id.org/italia/onto/CLV/lat -->
 
     <owl:DatatypeProperty rdf:about="https://w3id.org/italia/onto/CLV/lat"/>
-    
+
 
 
     <!-- https://w3id.org/italia/onto/CLV/long -->
 
     <owl:DatatypeProperty rdf:about="https://w3id.org/italia/onto/CLV/long"/>
-    
+
 
 
     <!-- https://w3id.org/italia/onto/Route#routeLongName -->
@@ -394,7 +451,7 @@
         <owl:versionInfo xml:lang="it">stabile</owl:versionInfo>
         <owl:versionInfo xml:lang="en">stable</owl:versionInfo>
     </owl:DatatypeProperty>
-    
+
 
 
     <!-- https://w3id.org/italia/onto/Route#routeShortName -->
@@ -411,7 +468,7 @@
         <owl:versionInfo xml:lang="it">stabile</owl:versionInfo>
         <owl:versionInfo xml:lang="en">stable</owl:versionInfo>
     </owl:DatatypeProperty>
-    
+
 
 
     <!-- https://w3id.org/italia/onto/Route/numberOfStages -->
@@ -427,7 +484,7 @@
         <owl:versionInfo xml:lang="it">provvisoria</owl:versionInfo>
         <owl:versionInfo xml:lang="en">unstable</owl:versionInfo>
     </owl:DatatypeProperty>
-    
+
 
 
     <!-- https://w3id.org/italia/onto/Route/ordering -->
@@ -443,7 +500,7 @@
         <owl:versionInfo xml:lang="it">stabile</owl:versionInfo>
         <owl:versionInfo xml:lang="en">stable</owl:versionInfo>
     </owl:DatatypeProperty>
-    
+
 
 
     <!-- https://w3id.org/italia/onto/Route/routeEstDuration -->
@@ -460,7 +517,7 @@
         <owl:versionInfo xml:lang="it">provvisoria</owl:versionInfo>
         <owl:versionInfo xml:lang="en">unstable</owl:versionInfo>
     </owl:DatatypeProperty>
-    
+
 
 
     <!-- https://w3id.org/italia/onto/Route/routelLength -->
@@ -476,16 +533,16 @@
         <owl:versionInfo xml:lang="it">stabile</owl:versionInfo>
         <owl:versionInfo xml:lang="en">stable</owl:versionInfo>
     </owl:DatatypeProperty>
-    
+
 
 
     <!-- https://w3id.org/italia/onto/TI/duration -->
 
     <owl:DatatypeProperty rdf:about="https://w3id.org/italia/onto/TI/duration"/>
-    
 
 
-    <!-- 
+
+    <!--
     ///////////////////////////////////////////////////////////////////////////////////////
     //
     // Classes
@@ -493,7 +550,7 @@
     ///////////////////////////////////////////////////////////////////////////////////////
      -->
 
-    
+
 
 
     <!-- https://w3id.org/italia/onto/CLV/Geometry -->
@@ -501,7 +558,7 @@
     <owl:Class rdf:about="https://w3id.org/italia/onto/CLV/Geometry">
         <rdfs:subClassOf rdf:resource="https://w3id.org/italia/onto/CLV/SpatialObject"/>
     </owl:Class>
-    
+
 
 
     <!-- https://w3id.org/italia/onto/CLV/GeometryType -->
@@ -509,7 +566,7 @@
     <owl:Class rdf:about="https://w3id.org/italia/onto/CLV/GeometryType">
         <rdfs:subClassOf rdf:resource="https://w3id.org/italia/onto/l0/Characteristic"/>
     </owl:Class>
-    
+
 
 
     <!-- https://w3id.org/italia/onto/CLV/SpatialObject -->
@@ -517,7 +574,7 @@
     <owl:Class rdf:about="https://w3id.org/italia/onto/CLV/SpatialObject">
         <rdfs:subClassOf rdf:resource="https://w3id.org/italia/onto/l0/Location"/>
     </owl:Class>
-    
+
 
 
     <!-- https://w3id.org/italia/onto/MU/Value -->
@@ -525,13 +582,13 @@
     <owl:Class rdf:about="https://w3id.org/italia/onto/MU/Value">
         <rdfs:subClassOf rdf:resource="https://w3id.org/italia/onto/l0/Characteristic"/>
     </owl:Class>
-    
+
 
 
     <!-- https://w3id.org/italia/onto/POI/MultiplePointOfInterest -->
 
     <owl:Class rdf:about="https://w3id.org/italia/onto/POI/MultiplePointOfInterest"/>
-    
+
 
 
     <!-- https://w3id.org/italia/onto/Route/Route -->
@@ -631,7 +688,7 @@
         <owl:versionInfo xml:lang="en">stable</owl:versionInfo>
         <prov:wasDerivedFrom rdf:resource="http://vocab.gtfs.org/terms#Route"/>
     </owl:Class>
-    
+
 
 
     <!-- https://w3id.org/italia/onto/Route/RouteType -->
@@ -649,7 +706,7 @@ Il vocabolario controllato si base su quanto proposto nella specifica GTFS (con 
         <prov:wasInfluencedBy rdf:resource="http://vocab.gtfs.org/terms#RouteType"/>
         <l0:controlledVocabulary rdf:resource="https://w3id.org/italia/controlled-vocabulary/classifications-for-routes/route-types"/>
     </owl:Class>
-    
+
 
 
     <!-- https://w3id.org/italia/onto/Route/Stage -->
@@ -697,7 +754,7 @@ Il vocabolario controllato si base su quanto proposto nella specifica GTFS (con 
         <owl:versionInfo xml:lang="en">stable</owl:versionInfo>
         <prov:wasInfluencedBy rdf:resource="http://vocab.gtfs.org/terms#Stop"/>
     </owl:Class>
-    
+
 
 
     <!-- https://w3id.org/italia/onto/Route/TripPlan -->
@@ -737,7 +794,7 @@ Il vocabolario controllato si base su quanto proposto nella specifica GTFS (con 
         <owl:versionInfo xml:lang="it">stabile</owl:versionInfo>
         <owl:versionInfo xml:lang="en">stable</owl:versionInfo>
     </owl:Class>
-    
+
 
 
     <!-- https://w3id.org/italia/onto/TI/Duration -->
@@ -745,37 +802,37 @@ Il vocabolario controllato si base su quanto proposto nella specifica GTFS (con 
     <owl:Class rdf:about="https://w3id.org/italia/onto/TI/Duration">
         <rdfs:subClassOf rdf:resource="https://w3id.org/italia/onto/l0/Entity"/>
     </owl:Class>
-    
+
 
 
     <!-- https://w3id.org/italia/onto/l0/Characteristic -->
 
     <owl:Class rdf:about="https://w3id.org/italia/onto/l0/Characteristic"/>
-    
+
 
 
     <!-- https://w3id.org/italia/onto/l0/Collection -->
 
     <owl:Class rdf:about="https://w3id.org/italia/onto/l0/Collection"/>
-    
+
 
 
     <!-- https://w3id.org/italia/onto/l0/Description -->
 
     <owl:Class rdf:about="https://w3id.org/italia/onto/l0/Description"/>
-    
+
 
 
     <!-- https://w3id.org/italia/onto/l0/Event -->
 
     <owl:Class rdf:about="https://w3id.org/italia/onto/l0/Event"/>
-    
+
 
 
     <!-- https://w3id.org/italia/onto/l0/Location -->
 
     <owl:Class rdf:about="https://w3id.org/italia/onto/l0/Location"/>
-    
+
 
 
     <!-- https://w3id.org/italia/onto/l0/Sequence -->
@@ -783,10 +840,10 @@ Il vocabolario controllato si base su quanto proposto nella specifica GTFS (con 
     <owl:Class rdf:about="https://w3id.org/italia/onto/l0/Sequence">
         <rdfs:subClassOf rdf:resource="https://w3id.org/italia/onto/l0/Collection"/>
     </owl:Class>
-    
 
 
-    <!-- 
+
+    <!--
     ///////////////////////////////////////////////////////////////////////////////////////
     //
     // Individuals
@@ -794,7 +851,7 @@ Il vocabolario controllato si base su quanto proposto nella specifica GTFS (con 
     ///////////////////////////////////////////////////////////////////////////////////////
      -->
 
-    
+
 
 
     <!-- http://spcdata.digitpa.gov.it/Amministrazione/m_bac -->
@@ -805,7 +862,7 @@ Il vocabolario controllato si base su quanto proposto nella specifica GTFS (con 
         <dct:identifier>m_bac</dct:identifier>
         <foaf:name xml:lang="it">Ministero dei Beni e delle Attivita&apos; Culturali</foaf:name>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://spcdata.digitpa.gov.it/browse/page/Amministrazione/agid -->
@@ -817,7 +874,7 @@ Il vocabolario controllato si base su quanto proposto nella specifica GTFS (con 
         <foaf:name xml:lang="it">Agenzia per l&apos;Italia Digitale</foaf:name>
         <foaf:name xml:lang="en">Italian Digital Agency</foaf:name>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- https://w3id.org/italia/data/contact-point/onto-dgt -->
@@ -829,7 +886,7 @@ Il vocabolario controllato si base su quanto proposto nella specifica GTFS (con 
         <vcard:fn>MIBAC - Direzine Generale Turismo</vcard:fn>
         <vcard:hasEmail rdf:resource="mailto:dg-t@beniculturali.it"/>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- https://w3id.org/italia/data/distribution/RTAPIT-JSON-LD -->
@@ -845,7 +902,7 @@ Il vocabolario controllato si base su quanto proposto nella specifica GTFS (con 
         <dcat:accessURL rdf:resource="https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/Route/latest"/>
         <dcat:downloadURL rdf:resource="https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/Route/Route-AP_IT.jsonld"/>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- https://w3id.org/italia/data/distribution/RTAPIT-RDF-TURTLE -->
@@ -861,7 +918,7 @@ Il vocabolario controllato si base su quanto proposto nella specifica GTFS (con 
         <dcat:accessURL rdf:resource="https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/Route/latest"/>
         <dcat:downloadURL rdf:resource="https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/Route/latest/Route-AP_IT.ttl"/>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- https://w3id.org/italia/data/distribution/RTAPIT-RDF-XML -->
@@ -877,7 +934,7 @@ Il vocabolario controllato si base su quanto proposto nella specifica GTFS (con 
         <dcat:accessURL rdf:resource="https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/Route/latest"/>
         <dcat:downloadURL rdf:resource="https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/Route/latest/Route-AP_IT.rdf"/>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- https://w3id.org/italia/data/organization/support-unit/cnr-Z6HZEH/stlab -->
@@ -888,7 +945,7 @@ Il vocabolario controllato si base su quanto proposto nella specifica GTFS (con 
         <l0:name xml:lang="it">Istituto di Scienze e Tecnologie della Cognizione del CNR - Semantic Technology Lab (STLab)</l0:name>
         <dct:identifier>cnr - Z6HZEH - STLab</dct:identifier>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- https://w3id.org/italia/data/project/AtlanteCammini -->
@@ -897,7 +954,7 @@ Il vocabolario controllato si base su quanto proposto nella specifica GTFS (con 
         <rdf:type rdf:resource="https://w3id.org/italia/onto/ADMS/Project"/>
         <l0:name xml:lang="it">Atlante dei Cammini d&apos;Italia</l0:name>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- https://w3id.org/italia/data/project/DAF -->
@@ -906,7 +963,7 @@ Il vocabolario controllato si base su quanto proposto nella specifica GTFS (con 
         <rdf:type rdf:resource="https://w3id.org/italia/onto/ADMS/Project"/>
         <l0:name xml:lang="it">Data &amp; Analytics Framework</l0:name>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- https://w3id.org/italia/data/project/OntoPiA -->
@@ -915,7 +972,7 @@ Il vocabolario controllato si base su quanto proposto nella specifica GTFS (con 
         <rdf:type rdf:resource="https://w3id.org/italia/onto/ADMS/Project"/>
         <l0:name xml:lang="it">OntoPiA - la rete di ontologie della pubblica amministrazione italiana</l0:name>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- https://w3id.org/italia/onto/Route -->
@@ -923,7 +980,7 @@ Il vocabolario controllato si base su quanto proposto nella specifica GTFS (con 
     <owl:NamedIndividual rdf:about="https://w3id.org/italia/onto/Route">
         <rdf:type rdf:resource="https://w3id.org/italia/onto/ADMS/SemanticAsset"/>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- https://w3id.org/italia/onto/CLV/Point -->
@@ -934,4 +991,3 @@ Il vocabolario controllato si base su quanto proposto nella specifica GTFS (con 
 
 
 <!-- Generated by the OWL API (version 4.2.8.20170104-2310) https://github.com/owlcs/owlapi -->
-
