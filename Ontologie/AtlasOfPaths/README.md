@@ -9,4 +9,4 @@ L'STLab ha proposto al Ministero lo sviluppo dell'ontologia nell'ecosistema di o
 3. Visibilità maggiore a livello di tutte le pubbliche amministrazioni italiane
 4. I Linked Open Data sui cammini potranno essere arricchiti creando collegamenti con dati provenienti da altre banche dati (e.g., luoghi ed eventi della cultura, vocabolari controllati sui toponimi, sui comuni, regioni e province dell'ISTAT, ecc.)
 
-Per ulteriori dettagli si può far riferimento al [sito web] (http://wit.istc.cnr.it/atlas-of-paths) di progetto che racchiude tutte le informazioni sullo stato di avanzamento anche in merito alla produzione dei dati.
+Per ulteriori dettagli si può far riferimento al [sito web](http://wit.istc.cnr.it/atlas-of-paths) di progetto che racchiude tutte le informazioni sullo stato di avanzamento anche in merito alla produzione dei dati.
