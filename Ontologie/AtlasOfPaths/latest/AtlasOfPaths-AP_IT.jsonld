@@ -1,18 +1,16 @@
 {
   "@context": {
-    "ADMS": "https://w3id.org/italia/onto/ADMS/",
     "acco": "https://w3id.org/italia/onto/ACCO/",
     "admsapit": "https://w3id.org/italia/onto/ADMS/",
     "clv": "https://w3id.org/italia/onto/CLV/",
     "cov": "https://w3id.org/italia/onto/COV/",
     "dcat": "http://www.w3.org/ns/dcat#",
     "dcatapit": "http://dati.gov.it/onto/dcatapit#",
-    "dct": "http://purl.org/dc/terms/",
     "dcterms": "http://purl.org/dc/terms/",
     "foaf": "http://xmlns.com/foaf/0.1/",
     "l0": "https://w3id.org/italia/onto/l0/",
     "mu": "https://w3id.org/italia/onto/MU/",
-    "ns": "http://www.w3.org/2006/vcard/ns#",
+    "opla": "http://ontologydesignpatterns.org/opla#",
     "owl": "http://www.w3.org/2002/07/owl#",
     "poi": "https://w3id.org/italia/onto/POI/",
     "prov": "http://www.w3.org/ns/prov#",
@@ -27,134 +25,62 @@
   },
   "@graph": [
     {
-      "@id": "https://w3id.org/italia/onto/AtlasOfPaths/isThemeOf",
+      "@id": "https://w3id.org/italia/onto/AtlasOfPaths/isTravellingMethodOf",
       "@type": "owl:ObjectProperty",
-      "rdfs:comment": [
+      "owl:versionInfo": [
         {
           "@language": "it",
-          "@value": "Proprietà inversa di has theme"
+          "@value": "provvisoria"
         },
         {
           "@language": "en",
-          "@value": "Inverse object property of has theme."
+          "@value": "unstable"
         }
       ],
-      "rdfs:domain": {
-        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/PathTheme"
-      },
-      "rdfs:label": [
-        {
-          "@language": "it",
-          "@value": "è tema di"
-        },
-        {
-          "@language": "en",
-          "@value": "is theme of"
-        }
-      ],
-      "rdfs:range": {
-        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/Path"
-      }
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/AtlasOfPaths/pathNumber",
-      "@type": [
-        "owl:DatatypeProperty",
-        "owl:FunctionalProperty"
-      ],
-      "rdfs:domain": {
-        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/Path"
-      },
-      "rdfs:range": {
-        "@id": "rdfs:Literal"
-      }
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/AtlasOfPaths/testPathway",
-      "@type": "owl:NamedIndividual"
-    },
-    {
-      "@id": "_:ub920bL377C23",
-      "@type": "owl:Restriction",
-      "owl:onProperty": {
-        "@id": "route:hasRoute"
-      },
-      "owl:someValuesFrom": {
-        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/Pathway"
-      }
-    },
-    {
-      "@id": "https://w3id.org/italia/data/project/OntoPiA",
-      "@type": [
-        "owl:NamedIndividual",
-        "admsapit:Project"
-      ],
-      "l0:name": {
-        "@language": "it",
-        "@value": "OntoPiA - la rete di ontologie della pubblica amministrazione italiana"
-      }
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/AtlasOfPaths/Paving",
-      "@type": "owl:Class",
-      "rdfs:subClassOf": {
-        "@id": "l0:Characteristic"
-      }
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/AtlasOfPaths/SupportService",
-      "@type": "owl:Class",
       "rdfs:comment": [
         {
           "@language": "en",
-          "@value": "The concept that descrives a service. A service might be for instance the availability of the WiFi along the Path."
+          "@value": "Inverse object property of hasTravellingMethod."
         },
         {
           "@language": "it",
-          "@value": "Il concetto che descrive un servizio. Un servizio può essere per esempio la presenza del WiFi lungo il cammino."
+          "@value": "Proprietà inversa di hasTravellingMethod."
         }
       ],
+      "rdfs:domain": {
+        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/TravellingMethod"
+      },
       "rdfs:label": [
         {
+          "@language": "en",
+          "@value": "is travelling method of"
+        },
+        {
           "@language": "it",
-          "@value": "Servizio"
+          "@value": "è metodo di viaggio di"
+        }
+      ],
+      "rdfs:range": {
+        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/PathPlan"
+      }
+    },
+    {
+      "@id": "https://w3id.org/italia/data/organization/support-unit/cnr-Z6HZEH/stlab",
+      "@type": [
+        "l0:Agent",
+        "owl:NamedIndividual"
+      ],
+      "dcterms:identifier": "cnr - Z6HZEH - STLab",
+      "l0:name": [
+        {
+          "@language": "it",
+          "@value": "Istituto di Scienze e Tecnologie della Cognizione del CNR - Semantic Technology Lab (STLab)"
         },
         {
           "@language": "en",
-          "@value": "Service"
+          "@value": "Institute of Cognitive Sciences and Technologies of the Italian Research Council (CNR) - Semantic Technology Laboratory (STLab)"
         }
-      ],
-      "rdfs:subClassOf": {
-        "@id": "l0:Object"
-      }
-    },
-    {
-      "@id": "_:ub920bL507C109",
-      "@type": "rdfs:Datatype",
-      "owl:onDatatype": {
-        "@id": "xsd:double"
-      },
-      "owl:withRestrictions": {
-        "@list": [
-          {
-            "@id": "_:ub920bL509C134"
-          }
-        ]
-      }
-    },
-    {
-      "@id": "_:ub920bL409C23",
-      "@type": "owl:Restriction",
-      "owl:onClass": {
-        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/Pathway"
-      },
-      "owl:onProperty": {
-        "@id": "route:hasPrefRoute"
-      },
-      "owl:qualifiedCardinality": {
-        "@type": "xsd:nonNegativeInteger",
-        "@value": "1"
-      }
+      ]
     },
     {
       "@id": "clv:hasSpatialCoverage",
@@ -164,271 +90,352 @@
       }
     },
     {
-      "@id": "_:ub920bL461C28",
-      "@type": "owl:Restriction",
-      "owl:allValuesFrom": {
-        "@id": "poi:PointOfInterest"
-      },
-      "owl:onProperty": {
-        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/hasNearbyPointOfInterest"
-      }
-    },
-    {
-      "@id": "_:ub920bL397C23",
+      "@id": "_:N4eeb8c49a767478983a2ac61f73b03c1",
       "@type": "owl:Restriction",
       "owl:allValuesFrom": {
         "@id": "https://w3id.org/italia/onto/AtlasOfPaths/Pathway"
       },
       "owl:onProperty": {
-        "@id": "route:hasDeviation"
+        "@id": "route:hasAltRoute"
       }
     },
     {
-      "@id": "https://w3id.org/italia/onto/AtlasOfPaths/hasQuantifiedPathwayPaving",
+      "@id": "l0:Description",
+      "@type": "owl:Class"
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/AtlasOfPaths/Cycling",
+      "@type": [
+        "https://w3id.org/italia/onto/AtlasOfPaths/TravellingMethod",
+        "owl:NamedIndividual"
+      ],
+      "owl:versionInfo": [
+        {
+          "@language": "it",
+          "@value": "provvisoria"
+        },
+        {
+          "@language": "en",
+          "@value": "unstable"
+        }
+      ],
+      "rdfs:comment": [
+        {
+          "@language": "it",
+          "@value": "Questo individuo rappresenta un tipo di metodo di viaggio possibile lungo un certo percorso."
+        },
+        {
+          "@language": "en",
+          "@value": "This individual represents a type of possible travel method along a certain pathway."
+        }
+      ],
+      "rdfs:label": [
+        {
+          "@language": "en",
+          "@value": "cycling"
+        },
+        {
+          "@language": "it",
+          "@value": "in bicicletta"
+        }
+      ]
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/AtlasOfPaths/isNearbyRestaurantOf",
       "@type": "owl:ObjectProperty",
+      "owl:versionInfo": [
+        {
+          "@language": "en",
+          "@value": "unstable"
+        },
+        {
+          "@language": "it",
+          "@value": "provvisoria"
+        }
+      ],
+      "rdfs:comment": [
+        {
+          "@language": "en",
+          "@value": "Inverse object property of hasNearbyRestaurant."
+        },
+        {
+          "@language": "it",
+          "@value": "Proprietà inversa di hasNearbyRestaurant."
+        }
+      ],
       "rdfs:domain": {
-        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/Path"
+        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/Restaurant"
       },
+      "rdfs:label": [
+        {
+          "@language": "en",
+          "@value": "is nearby restaurant of"
+        },
+        {
+          "@language": "it",
+          "@value": "è ristorante nelle vicinanze di"
+        }
+      ],
       "rdfs:range": {
-        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/QuantifiedPathwayPaving"
-      }
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/AtlasOfPaths/TravellingMethod",
-      "@type": "owl:Class",
-      "owl:disjointWith": {
-        "@id": "route:TripPlan"
-      },
-      "rdfs:subClassOf": {
-        "@id": "l0:Description"
-      }
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/AtlasOfPaths/isSurveillanceOf",
-      "@type": "owl:ObjectProperty",
-      "rdfs:domain": {
-        "@id": "l0:Agent"
-      },
-      "rdfs:range": {
-        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/Pathway"
-      }
-    },
-    {
-      "@id": "_:ub920bL831C1",
-      "owl:hasValue": 1
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/AtlasOfPaths/Restaurant",
-      "@type": "owl:Class",
-      "rdfs:subClassOf": {
-        "@id": "poi:PointOfInterest"
-      }
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/AtlasOfPaths/hasNearbyAccommodation",
-      "@type": "owl:ObjectProperty",
-      "rdfs:domain": {
         "@id": "https://w3id.org/italia/onto/AtlasOfPaths/PathStage"
       },
+      "rdfs:subPropertyOf": {
+        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/isNearbyPointOfInterestOf"
+      }
+    },
+    {
+      "@id": "foaf:Agent",
+      "@type": "owl:Class"
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/AtlasOfPaths/PathPlan",
+      "@type": "owl:Class",
+      "owl:versionInfo": [
+        {
+          "@language": "en",
+          "@value": "unstable"
+        },
+        {
+          "@language": "it",
+          "@value": "provvisoria"
+        }
+      ],
+      "rdfs:comment": [
+        {
+          "@language": "it",
+          "@value": "Questa classe rappresenta le informazioni relative alla pianificazione del percorso del cammino da intraprendere quali, ad esempio, il possibile metodo di viaggio o il periodo dell'anno preferibile."
+        },
+        {
+          "@language": "en",
+          "@value": "This class represents the information related to the path planning such as, for example, the possible travel method or the preferable period of the year."
+        }
+      ],
+      "rdfs:label": [
+        {
+          "@language": "it",
+          "@value": "Piano di viaggio del percorso"
+        },
+        {
+          "@language": "en",
+          "@value": "Path Plan"
+        }
+      ],
+      "rdfs:subClassOf": [
+        {
+          "@id": "_:N9fc3993fab744200966bd9befa044454"
+        },
+        {
+          "@id": "_:N4dc65995e9a5433eb757b126642527ff"
+        },
+        {
+          "@id": "route:TripPlan"
+        },
+        {
+          "@id": "_:Nb24c3f477ec74bad9b757a5f1e80507b"
+        }
+      ]
+    },
+    {
+      "@id": "dcat:downloadURL",
+      "@type": "owl:AnnotationProperty"
+    },
+    {
+      "@id": "_:Ne842063df5f04c42815c06781bc506a0",
+      "xsd:maxExclusive": 40.0
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/AtlasOfPaths/isGovernanceOrganOf",
+      "@type": "owl:ObjectProperty",
+      "owl:versionInfo": [
+        {
+          "@language": "it",
+          "@value": "provvisoria"
+        },
+        {
+          "@language": "en",
+          "@value": "unstable"
+        }
+      ],
+      "rdfs:comment": [
+        {
+          "@language": "it",
+          "@value": "Proprietà inversa di hasGovernanceOrgan."
+        },
+        {
+          "@language": "en",
+          "@value": "Inverse object property of hasGovernanceOrgan."
+        }
+      ],
+      "rdfs:domain": {
+        "@id": "cov:Organization"
+      },
+      "rdfs:label": [
+        {
+          "@language": "en",
+          "@value": "is governance organ of"
+        },
+        {
+          "@language": "it",
+          "@value": "è organo di governo di"
+        }
+      ],
       "rdfs:range": {
-        "@id": "acco:Accommodation"
+        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/Path"
       },
       "rdfs:subPropertyOf": {
-        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/hasNearbyPointOfInterest"
+        "@id": "cov:isOrganizationOf"
       }
     },
     {
-      "@id": "_:ub920bL546C42",
-      "@type": "owl:Restriction",
-      "owl:onClass": {
-        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/Paving"
-      },
-      "owl:onProperty": {
-        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/withPaving"
-      },
-      "owl:qualifiedCardinality": {
-        "@type": "xsd:nonNegativeInteger",
-        "@value": "1"
+      "@id": "https://w3id.org/italia/onto/AtlasOfPaths/PathTheme",
+      "@type": "owl:Class",
+      "owl:versionInfo": [
+        {
+          "@language": "it",
+          "@value": "stabile"
+        },
+        {
+          "@language": "en",
+          "@value": "stable"
+        }
+      ],
+      "rdfs:comment": [
+        {
+          "@language": "it",
+          "@value": "Questa classe rappresenta il tema d'interesse del cammino che può essere di tipo naturalistico, archeologico, culturale, storico e religioso."
+        },
+        {
+          "@language": "en",
+          "@value": "This class represents the path theme of interest that can be of naturalistic, archaeological, cultural, historical and religious type."
+        }
+      ],
+      "rdfs:label": [
+        {
+          "@language": "en",
+          "@value": "Path Theme"
+        },
+        {
+          "@language": "it",
+          "@value": "Tema di interesse del cammino"
+        }
+      ],
+      "rdfs:subClassOf": {
+        "@id": "l0:Topic"
       }
     },
     {
-      "@id": "_:ub920bL430C27",
+      "@id": "_:N03482f9b196a48758620e811e9762b8e",
       "@type": "owl:Restriction",
-      "owl:onProperty": {
-        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/bestWhen"
+      "owl:allValuesFrom": {
+        "@id": "acco:Accommodation"
       },
-      "owl:someValuesFrom": {
+      "owl:onProperty": {
+        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/hasNearbyAccommodation"
+      }
+    },
+    {
+      "@id": "vcard:fn",
+      "@type": "owl:AnnotationProperty"
+    },
+    {
+      "@id": "l0:name",
+      "@type": "owl:DatatypeProperty"
+    },
+    {
+      "@id": "_:N23c6ec2f26be4d8999c209ef1b80aa04",
+      "@type": "owl:Restriction",
+      "owl:allValuesFrom": {
+        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/PathPlan"
+      },
+      "owl:onProperty": {
+        "@id": "route:hasTripPlan"
+      }
+    },
+    {
+      "@id": "admsapit:SemanticAssetDistribution",
+      "@type": "owl:Class"
+    },
+    {
+      "@id": "ti:Duration",
+      "@type": "owl:Class",
+      "rdfs:subClassOf": {
         "@id": "ti:TemporalEntity"
       }
     },
     {
-      "@id": "https://w3id.org/italia/onto/AtlasOfPaths/forPathway",
-      "@type": "owl:ObjectProperty",
-      "rdfs:domain": {
-        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/QuantifiedPathwayPaving"
-      },
-      "rdfs:range": {
-        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/Pathway"
-      },
-      "rdfs:subPropertyOf": {
-        "@id": "owl:topObjectProperty"
-      }
-    },
-    {
-      "@id": "https://w3id.org/italia/data/distribution/AOPAPIT-RDF-XML",
-      "@type": [
-        "owl:NamedIndividual",
-        "admsapit:SemanticAssetDistribution"
-      ],
-      "dcat:accessURL": {
-        "@id": "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/AtlasOfPaths/latest"
-      },
-      "dcat:downloadURL": {
-        "@id": "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/AtlasOfPaths/latest/AtlasOfPaths-AP_IT.rdf"
-      },
-      "dct:description": [
-        {
-          "@language": "it",
-          "@value": "Questa è la distribuzione RDF/XML dell'ontologia sull'atlante dei cammini"
-        },
-        {
-          "@language": "en",
-          "@value": "This is the distribution in RDF/XML of the Atlas of Paths ontology"
-        }
-      ],
-      "dct:format": {
-        "@id": "http://publications.europa.eu/resource/authority/file-type/RDF_XML"
-      },
-      "dct:license": {
-        "@id": "https://w3id.org/italia/controlled-vocabulary/licences/A21_CCBY40"
-      },
-      "dct:title": [
-        {
-          "@language": "en",
-          "@value": "RDF/XML distribution of AtlasOfPaths-AP_IT Ontology"
-        },
-        {
-          "@language": "it",
-          "@value": "Distribuzione RDF/XML ontologia AtlasOfPaths-AP_IT"
-        }
-      ]
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/AtlasOfPaths/Historical",
-      "@type": [
-        "https://w3id.org/italia/onto/AtlasOfPaths/PathTheme",
-        "owl:NamedIndividual"
-      ]
-    },
-    {
-      "@id": "clv:Feature",
-      "@type": "owl:Class",
-      "rdfs:subClassOf": {
-        "@id": "clv:SpatialObject"
-      }
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/AtlasOfPaths/stageNumber",
-      "@type": "owl:DatatypeProperty",
-      "rdfs:range": {
-        "@id": "xsd:int"
-      },
-      "rdfs:subPropertyOf": {
-        "@id": "route:position"
-      }
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/AtlasOfPaths/Archaeological",
-      "@type": [
-        "https://w3id.org/italia/onto/AtlasOfPaths/PathTheme",
-        "owl:NamedIndividual"
-      ]
-    },
-    {
-      "@id": "_:ub920bL453C28",
-      "@type": "owl:Restriction",
-      "owl:onProperty": {
-        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/hasSupportService"
-      },
-      "owl:someValuesFrom": {
-        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/SupportService"
-      }
-    },
-    {
-      "@id": "_:ub920bL385C23",
-      "@type": "owl:Restriction",
-      "owl:onProperty": {
-        "@id": "sm:hasWebSite"
-      },
-      "owl:someValuesFrom": {
-        "@id": "sm:WebSite"
-      }
+      "@id": "route:Stage",
+      "@type": "owl:Class"
     },
     {
       "@id": "https://w3id.org/italia/onto/AtlasOfPaths/Walking",
       "@type": [
-        "https://w3id.org/italia/onto/AtlasOfPaths/TravellingMethod",
-        "owl:NamedIndividual"
-      ]
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/AtlasOfPaths/asphalt",
-      "@type": [
         "owl:NamedIndividual",
-        "https://w3id.org/italia/onto/AtlasOfPaths/Paving"
-      ]
-    },
-    {
-      "@id": "https://w3id.org/italia/data/distribution/AOPAPIT-RDF-TURTLE",
-      "@type": [
-        "owl:NamedIndividual",
-        "admsapit:SemanticAssetDistribution"
+        "https://w3id.org/italia/onto/AtlasOfPaths/TravellingMethod"
       ],
-      "dcat:accessURL": {
-        "@id": "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/AtlasOfPaths/latest"
-      },
-      "dcat:downloadURL": {
-        "@id": "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/AtlasOfPaths/latest/AtlasOfPaths-AP_IT.ttl"
-      },
-      "dct:description": [
+      "owl:versionInfo": [
         {
           "@language": "en",
-          "@value": "This is the distribution in RDF/turtle of the Atlas of Paths ontology"
+          "@value": "unstable"
         },
         {
           "@language": "it",
-          "@value": "Questa è la distribuzione RDF/Turtle dell'ontologia sull'atlante dei cammini"
+          "@value": "provvisorio"
         }
       ],
-      "dct:format": {
-        "@id": "http://publications.europa.eu/resource/authority/file-type/RDF_TURTLE"
-      },
-      "dct:license": {
-        "@id": "https://w3id.org/italia/controlled-vocabulary/licences/A21_CCBY40"
-      },
-      "dct:title": [
-        {
-          "@language": "it",
-          "@value": "Distribuzione RDF/Turtle ontologia AtlasOfPaths-AP_IT"
-        },
+      "rdfs:comment": [
         {
           "@language": "en",
-          "@value": "RDF/Turtle distribution of AtlasOfPaths-AP_IT Ontology"
+          "@value": "This individual represents a type of possible travel method  along a certain pathway."
+        },
+        {
+          "@language": "it",
+          "@value": "Questo individuo rappresenta un tipo di metodo di viaggio possibile lungo un certo percorso."
+        }
+      ],
+      "rdfs:label": [
+        {
+          "@language": "en",
+          "@value": "walking"
+        },
+        {
+          "@language": "it",
+          "@value": "a piedi"
         }
       ]
     },
     {
-      "@id": "ti:TemporalEntity",
-      "@type": "owl:Class",
-      "rdfs:subClassOf": {
-        "@id": "l0:Entity"
+      "@id": "foaf:name",
+      "@type": "owl:AnnotationProperty"
+    },
+    {
+      "@id": "_:Nadb31145ffed426f91078cf272a3cb4e",
+      "@type": "owl:Restriction",
+      "owl:onProperty": {
+        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/hasSurveillance"
+      },
+      "owl:someValuesFrom": {
+        "@id": "l0:Agent"
+      }
+    },
+    {
+      "@id": "route:hasRoute",
+      "@type": "owl:ObjectProperty"
+    },
+    {
+      "@id": "_:N571fbd009c23499da8fc94c4a9e2936f",
+      "@type": "owl:Restriction",
+      "owl:onProperty": {
+        "@id": "route:hasTripPlan"
+      },
+      "owl:someValuesFrom": {
+        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/PathPlan"
       }
     },
     {
       "@id": "https://w3id.org/italia/onto/AtlasOfPaths/encountersPath",
       "@type": [
-        "owl:SymmetricProperty",
-        "owl:ObjectProperty"
+        "owl:ObjectProperty",
+        "owl:SymmetricProperty"
       ],
       "owl:propertyChainAxiom": {
         "@list": [
@@ -442,21 +449,31 @@
             "@id": "https://w3id.org/italia/onto/AtlasOfPaths/encountersPathStage"
           },
           {
-            "@id": "_:ub920bL106C42"
+            "@id": "_:Ne876a081f34046eb9cb3e00b656e8895"
           },
           {
-            "@id": "_:ub920bL108C42"
+            "@id": "_:Nc68d422f35ff42808cc04a5a8a1a1ee0"
           }
         ]
       },
-      "rdfs:comment": [
+      "owl:versionInfo": [
         {
           "@language": "it",
-          "@value": "La object property encountersPath permette di definire quali sono i cammini incontrati da un specifico cammino che rappresenta il soggetto delle triple aventi come predicato encountersPath."
+          "@value": "stabile"
         },
         {
           "@language": "en",
-          "@value": "The encountersPath object property specifies which paths are encountered by a subject path."
+          "@value": "stable"
+        }
+      ],
+      "rdfs:comment": [
+        {
+          "@language": "it",
+          "@value": "Questa object property permette di collegare un cammino con gli altri cammini incontrati."
+        },
+        {
+          "@language": "en",
+          "@value": "This object property specifies which paths encounter a considered path, which is the subject of triples having as predicate encountersPath."
         }
       ],
       "rdfs:domain": {
@@ -477,115 +494,52 @@
       }
     },
     {
-      "@id": "_:ub920bL519C26",
-      "@type": "owl:Restriction",
-      "owl:allValuesFrom": {
-        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/PathStage"
-      },
-      "owl:onProperty": {
-        "@id": "l0:hasFirstMember"
-      }
+      "@id": "dcterms:identifier",
+      "@type": "owl:AnnotationProperty"
     },
     {
-      "@id": "https://w3id.org/italia/onto/AtlasOfPaths/PathStage",
-      "@type": "owl:Class",
-      "rdfs:subClassOf": [
+      "@id": "dcterms:description",
+      "@type": "owl:AnnotationProperty"
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/AtlasOfPaths/asphalt",
+      "@type": [
+        "https://w3id.org/italia/onto/AtlasOfPaths/Paving",
+        "owl:NamedIndividual"
+      ],
+      "owl:versionInfo": [
         {
-          "@id": "_:ub920bL465C28"
+          "@language": "en",
+          "@value": "unstable"
         },
         {
-          "@id": "_:ub920bL449C28"
+          "@language": "it",
+          "@value": "provvisoria"
+        }
+      ],
+      "rdfs:comment": [
+        {
+          "@language": "en",
+          "@value": "This individual represents a specific type of paving, i.e. the asphalt."
         },
         {
-          "@id": "_:ub920bL453C28"
+          "@language": "it",
+          "@value": "Questo individuo rappresenta uno spefifico tipo di pavimentazione, ovvero l'asfalto."
+        }
+      ],
+      "rdfs:label": [
+        {
+          "@language": "it",
+          "@value": "asfalto"
         },
         {
-          "@id": "_:ub920bL461C28"
-        },
-        {
-          "@id": "_:ub920bL457C28"
-        },
-        {
-          "@id": "route:Stage"
+          "@language": "en",
+          "@value": "asphalt"
         }
       ]
     },
     {
-      "@id": "poi:PointOfInterest",
-      "@type": "owl:Class",
-      "rdfs:subClassOf": {
-        "@id": "l0:Entity"
-      }
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/AtlasOfPaths/hasSupportService",
-      "@type": "owl:ObjectProperty",
-      "owl:inverseOf": {
-        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/isSupportServiceOf"
-      },
-      "rdfs:comment": [
-        {
-          "@language": "en",
-          "@value": "The object property relates anything to a service."
-        },
-        {
-          "@language": "it",
-          "@value": "La object property mette in relazione uno specifico oggetto con un servizio associato."
-        }
-      ],
-      "rdfs:domain": {
-        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/PathStage"
-      },
-      "rdfs:label": [
-        {
-          "@language": "en",
-          "@value": "has service"
-        },
-        {
-          "@language": "en",
-          "@value": "ha servizio"
-        }
-      ],
-      "rdfs:range": {
-        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/SupportService"
-      }
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/AtlasOfPaths/Signposting",
-      "@type": "owl:Class",
-      "rdfs:subClassOf": {
-        "@id": "l0:Characteristic"
-      }
-    },
-    {
-      "@id": "_:ub920bL106C42",
-      "owl:inverseOf": {
-        "@id": "l0:hasMember"
-      }
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/AtlasOfPaths/hasMaintainer",
-      "@type": "owl:ObjectProperty",
-      "owl:inverseOf": {
-        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/isMaintainerOf"
-      },
-      "rdfs:domain": {
-        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/Pathway"
-      },
-      "rdfs:range": {
-        "@id": "l0:Agent"
-      }
-    },
-    {
-      "@id": "clv:SpatialObject",
-      "@type": "owl:Class"
-    },
-    {
-      "@id": "l0:name",
-      "@type": "owl:DatatypeProperty"
-    },
-    {
-      "@id": "https://w3id.org/italia/data/distribution/AOPAPIT-JSON-LD",
+      "@id": "https://w3id.org/italia/data/distribution/AOPAPIT-RDF-TURTLE",
       "@type": [
         "owl:NamedIndividual",
         "admsapit:SemanticAssetDistribution"
@@ -594,25 +548,290 @@
         "@id": "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/AtlasOfPaths/latest"
       },
       "dcat:downloadURL": {
-        "@id": "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/AtlasOfPaths/latest/AtlasOfPaths-AP_IT.jsonld"
+        "@id": "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/AtlasOfPaths/latest/AtlasOfPaths-AP_IT.ttl"
       },
-      "dct:description": [
+      "dcterms:description": [
         {
           "@language": "it",
-          "@value": "Questa è la distribuzione JSON-LD dell'ontologia sull'atlante dei cammini"
+          "@value": "Questa è la distribuzione RDF/Turtle dell'ontologia sull'atlante dei cammini"
         },
         {
           "@language": "en",
-          "@value": "This is the distribution in JSON-LD of the Atlas of Paths ontology"
+          "@value": "This is the distribution in RDF/turtle of the Atlas of Paths ontology"
         }
       ],
-      "dct:format": {
-        "@id": "http://publications.europa.eu/resource/authority/file-type/JSON_LD"
+      "dcterms:format": {
+        "@id": "http://publications.europa.eu/resource/authority/file-type/RDF_TURTLE"
       },
-      "dct:license": {
+      "dcterms:license": {
         "@id": "https://w3id.org/italia/controlled-vocabulary/licences/A21_CCBY40"
       },
-      "dct:title": [
+      "dcterms:title": [
+        {
+          "@language": "en",
+          "@value": "RDF/Turtle distribution of AtlasOfPaths-AP_IT Ontology"
+        },
+        {
+          "@language": "it",
+          "@value": "Distribuzione RDF/Turtle ontologia AtlasOfPaths-AP_IT"
+        }
+      ]
+    },
+    {
+      "@id": "l0:Agent",
+      "@type": "owl:Class"
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/AtlasOfPaths/Signposting",
+      "@type": "owl:Class",
+      "owl:versionInfo": [
+        {
+          "@language": "en",
+          "@value": "unstable"
+        },
+        {
+          "@language": "it",
+          "@value": "provvisoria"
+        }
+      ],
+      "rdfs:comment": [
+        {
+          "@language": "en",
+          "@value": "This class describes the information related to the signposting of a path stage."
+        },
+        {
+          "@language": "it",
+          "@value": "Questa classe rappresenta le informazioni relative alla segnaletica di una tappa del cammino."
+        }
+      ],
+      "rdfs:label": [
+        {
+          "@language": "it",
+          "@value": "Segnaletica"
+        },
+        {
+          "@language": "en",
+          "@value": "Signposting"
+        }
+      ],
+      "rdfs:subClassOf": {
+        "@id": "l0:Characteristic"
+      }
+    },
+    {
+      "@id": "_:N381a9042c5b34eeb85182021f346cb58",
+      "@type": "owl:Restriction",
+      "owl:allValuesFrom": {
+        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/PathStage"
+      },
+      "owl:onProperty": {
+        "@id": "l0:hasMember"
+      }
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/AtlasOfPaths/PathStage",
+      "@type": "owl:Class",
+      "owl:versionInfo": [
+        {
+          "@language": "en",
+          "@value": "unstable"
+        },
+        {
+          "@language": "it",
+          "@value": "provvisoria"
+        }
+      ],
+      "rdfs:comment": [
+        {
+          "@language": "it",
+          "@value": "Questa classe rappresenta una tappa georeferenziata di un cammino. Ad essa sono associate ulteriori informazioni: la presenza di segnaletica (indicante successive tappe, eventuali snodi verso altri cammini, percorsi alternativi o deviazioni) e di alloggi, ristoranti e servizi di supporto al camminatore nelle vicinanze."
+        },
+        {
+          "@language": "en",
+          "@value": "This class represents a georeferenced stage of a path. Further information is associated with it: the presence of signposting (indicating a successive stage, possible path intersections, alternative pathways or detours) and of accommodation, restaurants and walker support services nearby."
+        }
+      ],
+      "rdfs:label": [
+        {
+          "@language": "en",
+          "@value": "Path Stage"
+        },
+        {
+          "@language": "it",
+          "@value": "Tappa del percorso"
+        }
+      ],
+      "rdfs:subClassOf": [
+        {
+          "@id": "_:Nfa7a20a336c942dab8b49b6fab0d91a8"
+        },
+        {
+          "@id": "_:N03482f9b196a48758620e811e9762b8e"
+        },
+        {
+          "@id": "_:Na5c15a487cba412c8849fd982fe82075"
+        },
+        {
+          "@id": "_:Nd256940141884c3a9f19b111f6890d1b"
+        },
+        {
+          "@id": "_:N6682fc66cdcc4eb9a2af0937b64b3542"
+        },
+        {
+          "@id": "route:Stage"
+        }
+      ]
+    },
+    {
+      "@id": "_:N9642bb060af247f79e81fd395f42cc35",
+      "@type": "owl:Restriction",
+      "owl:onProperty": {
+        "@id": "l0:name"
+      },
+      "owl:someValuesFrom": {
+        "@id": "rdfs:Literal"
+      }
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/AtlasOfPaths/hasSupportService",
+      "@type": "owl:ObjectProperty",
+      "owl:inverseOf": {
+        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/isSupportServiceOf"
+      },
+      "owl:versionInfo": [
+        {
+          "@language": "it",
+          "@value": "provvisoria"
+        },
+        {
+          "@language": "en",
+          "@value": "unstable"
+        }
+      ],
+      "rdfs:comment": [
+        {
+          "@language": "it",
+          "@value": "Questa object property associa uno specifico oggetto con un servizio di supporto al camminatore."
+        },
+        {
+          "@language": "en",
+          "@value": "This object property associates a specific object to a walker support service."
+        }
+      ],
+      "rdfs:domain": {
+        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/PathStage"
+      },
+      "rdfs:label": [
+        {
+          "@language": "en",
+          "@value": "has support service"
+        },
+        {
+          "@language": "it",
+          "@value": "ha servizio di supporto"
+        }
+      ],
+      "rdfs:range": {
+        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/SupportService"
+      }
+    },
+    {
+      "@id": "clv:SpatialObject",
+      "@type": "owl:Class"
+    },
+    {
+      "@id": "route:TripPlan",
+      "@type": "owl:Class"
+    },
+    {
+      "@id": "clv:Feature",
+      "@type": "owl:Class",
+      "rdfs:subClassOf": {
+        "@id": "clv:SpatialObject"
+      }
+    },
+    {
+      "@id": "_:N6c7a8b22d54e4e29a290dfbe5a70026d",
+      "@type": "owl:Restriction",
+      "owl:hasValue": {
+        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/asphalt"
+      },
+      "owl:onProperty": {
+        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/withPaving"
+      }
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/AtlasOfPaths/hasMaintainer",
+      "@type": "owl:ObjectProperty",
+      "owl:inverseOf": {
+        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/isMaintainerOf"
+      },
+      "owl:versionInfo": [
+        {
+          "@language": "it",
+          "@value": "provvisoria"
+        },
+        {
+          "@language": "en",
+          "@value": "unstable"
+        }
+      ],
+      "rdfs:comment": [
+        {
+          "@language": "it",
+          "@value": "Questa object property permette di associare un percorso con il suo ente di manutenzione."
+        },
+        {
+          "@language": "en",
+          "@value": "This object property allows to associate a pathway with its maintenance organization."
+        }
+      ],
+      "rdfs:domain": {
+        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/Pathway"
+      },
+      "rdfs:label": [
+        {
+          "@language": "en",
+          "@value": "has maintainer"
+        },
+        {
+          "@language": "it",
+          "@value": "ha manutentore"
+        }
+      ],
+      "rdfs:range": {
+        "@id": "l0:Agent"
+      }
+    },
+    {
+      "@id": "https://w3id.org/italia/data/distribution/AOPAPIT-JSON-LD",
+      "@type": [
+        "admsapit:SemanticAssetDistribution",
+        "owl:NamedIndividual"
+      ],
+      "dcat:accessURL": {
+        "@id": "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/AtlasOfPaths/latest"
+      },
+      "dcat:downloadURL": {
+        "@id": "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/AtlasOfPaths/latest/AtlasOfPaths-AP_IT.jsonld"
+      },
+      "dcterms:description": [
+        {
+          "@language": "en",
+          "@value": "This is the distribution in JSON-LD of the Atlas of Paths ontology"
+        },
+        {
+          "@language": "it",
+          "@value": "Questa è la distribuzione JSON-LD dell'ontologia sull'atlante dei cammini"
+        }
+      ],
+      "dcterms:format": {
+        "@id": "http://publications.europa.eu/resource/authority/file-type/JSON_LD"
+      },
+      "dcterms:license": {
+        "@id": "https://w3id.org/italia/controlled-vocabulary/licences/A21_CCBY40"
+      },
+      "dcterms:title": [
         {
           "@language": "it",
           "@value": "Distribuzione JSON-LD ontologia AtlasOfPaths-AP_IT"
@@ -624,82 +843,158 @@
       ]
     },
     {
-      "@id": "https://w3id.org/italia/onto/AtlasOfPaths/testValue",
-      "@type": "owl:NamedIndividual",
-      "mu:hasMeasurementUnit": {
-        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/percentage"
-      },
-      "mu:value": 1
+      "@id": "l0:Topic",
+      "@type": "owl:Class"
     },
     {
-      "@id": "_:ub920bL509C134",
-      "xsd:maxExclusive": 40.0
-    },
-    {
-      "@id": "_:ub920bL491C26",
+      "@id": "_:Nbaf70d52b55e4bb2a31cc1a6c781742c",
       "@type": "owl:Restriction",
       "owl:onProperty": {
-        "@id": "_:ub920bL492C43"
+        "@id": "mu:hasValue"
       },
       "owl:someValuesFrom": {
-        "@id": "_:ub920bL494C47"
+        "@id": "_:N70006a47939941bc9e83a0a1cba1bc8a"
       }
     },
     {
-      "@id": "https://w3id.org/italia/data/contact-point/onto-agid",
-      "@type": [
-        "dcatapit:Organization",
-        "vcard:Kind",
-        "owl:NamedIndividual",
-        "vcard:Organization"
-      ],
-      "vcard:fn": "banche dati e open data",
-      "vcard:hasEmail": {
-        "@id": "mailto:info@dati.gov.it"
+      "@id": "_:N1c99fd703c0c42a886634d761ac67acb",
+      "owl:hasValue": 1
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/AtlasOfPaths/Restaurant",
+      "@type": "owl:Class",
+      "rdfs:subClassOf": {
+        "@id": "poi:PointOfInterest"
       }
     },
     {
-      "@id": "https://w3id.org/italia/data/organization/support-unit/cnr-Z6HZEH/stlab",
-      "@type": [
-        "l0:Agent",
-        "owl:NamedIndividual"
-      ],
-      "dct:identifier": "cnr - Z6HZEH - STLab",
-      "l0:name": [
+      "@id": "https://w3id.org/italia/onto/AtlasOfPaths/hasNearbyAccommodation",
+      "@type": "owl:ObjectProperty",
+      "owl:inverseOf": {
+        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/isNearbyAccomodationOf"
+      },
+      "owl:versionInfo": [
+        {
+          "@language": "it",
+          "@value": "provvisoria"
+        },
         {
           "@language": "en",
-          "@value": "Institute of Cognitive Sciences and Technologies of the Italian Research Council (CNR) - Semantic Technology Laboratory (STLab)"
+          "@value": "unstable"
+        }
+      ],
+      "rdfs:comment": [
+        {
+          "@language": "en",
+          "@value": "This object property connects a path stage with a nearby hotel."
         },
         {
           "@language": "it",
-          "@value": "Istituto di Scienze e Tecnologie della Cognizione del CNR - Semantic Technology Lab (STLab)"
+          "@value": "Questa object property collega una tappa del cammino con una struttura alberghiera nelle vicinanze."
         }
-      ]
+      ],
+      "rdfs:domain": {
+        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/PathStage"
+      },
+      "rdfs:label": [
+        {
+          "@language": "en",
+          "@value": "has nearby accomodation"
+        },
+        {
+          "@language": "it",
+          "@value": "ha struttura alberghiera nelle vicinanze"
+        }
+      ],
+      "rdfs:range": {
+        "@id": "acco:Accommodation"
+      },
+      "rdfs:subPropertyOf": {
+        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/hasNearbyPointOfInterest"
+      }
     },
     {
-      "@id": "route:position",
-      "@type": "owl:DatatypeProperty"
+      "@id": "dcat:accessURL",
+      "@type": "owl:AnnotationProperty"
     },
     {
-      "@id": "https://w3id.org/italia/onto/AtlasOfPaths/PathPlan",
+      "@id": "_:Na5c15a487cba412c8849fd982fe82075",
+      "@type": "owl:Restriction",
+      "owl:onProperty": {
+        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/hasSignposting"
+      },
+      "owl:someValuesFrom": {
+        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/Signposting"
+      }
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/AtlasOfPaths/forPathway",
+      "@type": "owl:ObjectProperty",
+      "owl:versionInfo": [
+        {
+          "@language": "en",
+          "@value": "unstable"
+        },
+        {
+          "@language": "it",
+          "@value": "provvisoria"
+        }
+      ],
+      "rdfs:comment": [
+        {
+          "@language": "it",
+          "@value": "Questa object property mette in relazione un percorso con la quantità di una sua specifica pavimentazione, ovvero l'asfalto."
+        },
+        {
+          "@language": "en",
+          "@value": "This object property correlates a pathway with the quantity of its specific paving, i.e. the asphalt."
+        }
+      ],
+      "rdfs:domain": {
+        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/QuantifiedPathwayPaving"
+      },
+      "rdfs:label": [
+        {
+          "@language": "it",
+          "@value": "per percorso"
+        },
+        {
+          "@language": "en",
+          "@value": "for pathway"
+        }
+      ],
+      "rdfs:range": {
+        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/Pathway"
+      },
+      "rdfs:subPropertyOf": {
+        "@id": "owl:topObjectProperty"
+      }
+    },
+    {
+      "@id": "ti:TemporalEntity",
       "@type": "owl:Class",
-      "rdfs:subClassOf": [
-        {
-          "@id": "_:ub920bL434C27"
-        },
-        {
-          "@id": "route:TripPlan"
-        },
-        {
-          "@id": "_:ub920bL430C27"
-        },
-        {
-          "@id": "_:ub920bL439C27"
-        }
-      ]
+      "rdfs:subClassOf": {
+        "@id": "l0:Entity"
+      }
     },
     {
-      "@id": "_:ub920bL487C26",
+      "@id": "_:N059f352d6c60490ba8fb651523ec8a5e",
+      "owl:inverseOf": {
+        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/forPathway"
+      }
+    },
+    {
+      "@id": "_:N40c4ad5dc419450b849f73fc0961b43e",
+      "@type": "owl:Restriction",
+      "owl:hasValue": {
+        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/percentage"
+      },
+      "owl:onProperty": {
+        "@id": "mu:hasMeasurementUnit"
+      }
+    },
+    {
+      "@id": "_:Nb9936e04da2b41c4a95beefe2fc458bc",
       "@type": "owl:Restriction",
       "owl:onProperty": {
         "@id": "l0:hasMember"
@@ -709,37 +1004,659 @@
       }
     },
     {
-      "@id": "_:ub920bL381C23",
-      "@type": "owl:Restriction",
-      "owl:onProperty": {
-        "@id": "route:hasTripPlan"
+      "@id": "https://w3id.org/italia/onto/AtlasOfPaths/hasServiceType",
+      "@type": "owl:ObjectProperty",
+      "owl:inverseOf": {
+        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/isServiceTypeOf"
       },
-      "owl:someValuesFrom": {
-        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/PathPlan"
+      "owl:versionInfo": [
+        {
+          "@language": "it",
+          "@value": "provvisoria"
+        },
+        {
+          "@language": "en",
+          "@value": "unstable"
+        }
+      ],
+      "rdfs:comment": [
+        {
+          "@language": "en",
+          "@value": "This object property associates a walker support service along the path with its type."
+        },
+        {
+          "@language": "it",
+          "@value": "Questa object property associare un servizio di supporto al camminatore lungo il percorso con il suo tipo."
+        }
+      ],
+      "rdfs:domain": {
+        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/SupportService"
+      },
+      "rdfs:label": [
+        {
+          "@language": "it",
+          "@value": "ha tipo di servizio"
+        },
+        {
+          "@language": "en",
+          "@value": "has service type"
+        }
+      ],
+      "rdfs:range": {
+        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/ServiceType"
       }
     },
     {
-      "@id": "https://w3id.org/italia/onto/AtlasOfPaths/Cycling",
+      "@id": "dcatapit:Organization",
+      "@type": "owl:Class"
+    },
+    {
+      "@id": "_:Nc68d422f35ff42808cc04a5a8a1a1ee0",
+      "owl:inverseOf": {
+        "@id": "route:hasRoute"
+      }
+    },
+    {
+      "@id": "_:Nc74f887eb27a42e8998431d7af2e5d94",
+      "@type": "owl:Restriction",
+      "owl:allValuesFrom": {
+        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/Pathway"
+      },
+      "owl:onProperty": {
+        "@id": "route:hasRoute"
+      }
+    },
+    {
+      "@id": "https://w3id.org/italia/data/distribution/AOPAPIT-RDF-XML",
       "@type": [
         "owl:NamedIndividual",
-        "https://w3id.org/italia/onto/AtlasOfPaths/TravellingMethod"
+        "admsapit:SemanticAssetDistribution"
+      ],
+      "dcat:accessURL": {
+        "@id": "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/AtlasOfPaths/latest"
+      },
+      "dcat:downloadURL": {
+        "@id": "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/AtlasOfPaths/latest/AtlasOfPaths-AP_IT.rdf"
+      },
+      "dcterms:description": [
+        {
+          "@language": "en",
+          "@value": "This is the distribution in RDF/XML of the Atlas of Paths ontology"
+        },
+        {
+          "@language": "it",
+          "@value": "Questa è la distribuzione RDF/XML dell'ontologia sull'atlante dei cammini"
+        }
+      ],
+      "dcterms:format": {
+        "@id": "http://publications.europa.eu/resource/authority/file-type/RDF_XML"
+      },
+      "dcterms:license": {
+        "@id": "https://w3id.org/italia/controlled-vocabulary/licences/A21_CCBY40"
+      },
+      "dcterms:title": [
+        {
+          "@language": "it",
+          "@value": "Distribuzione RDF/XML ontologia AtlasOfPaths-AP_IT"
+        },
+        {
+          "@language": "en",
+          "@value": "RDF/XML distribution of AtlasOfPaths-AP_IT Ontology"
+        }
       ]
     },
     {
-      "@id": "https://w3id.org/italia/onto/AtlasOfPaths/PathTheme",
-      "@type": "owl:Class",
-      "rdfs:subClassOf": {
-        "@id": "l0:Topic"
+      "@id": "_:Ne876a081f34046eb9cb3e00b656e8895",
+      "owl:inverseOf": {
+        "@id": "l0:hasMember"
       }
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/AtlasOfPaths/Archaeological",
+      "@type": [
+        "owl:NamedIndividual",
+        "https://w3id.org/italia/onto/AtlasOfPaths/PathTheme"
+      ],
+      "owl:versionInfo": [
+        {
+          "@language": "en",
+          "@value": "unstable"
+        },
+        {
+          "@language": "it",
+          "@value": "provvisoria"
+        }
+      ],
+      "rdfs:comment": [
+        {
+          "@language": "en",
+          "@value": "This individual represents the definition of the type of theme associated with each path."
+        },
+        {
+          "@language": "it",
+          "@value": "Questo individuo rappresenta la definizione del tipo di tematica associata a ciascun cammino."
+        }
+      ],
+      "rdfs:label": [
+        {
+          "@language": "en",
+          "@value": "archeological"
+        },
+        {
+          "@language": "it",
+          "@value": "archeologico"
+        }
+      ]
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/AtlasOfPaths/isNearbyAccomodationOf",
+      "@type": "owl:ObjectProperty",
+      "owl:versionInfo": [
+        {
+          "@language": "it",
+          "@value": "provvisoria"
+        },
+        {
+          "@language": "en",
+          "@value": "unstable"
+        }
+      ],
+      "rdfs:comment": [
+        {
+          "@language": "it",
+          "@value": "Proprietà inversa di hasNearbyAccomodation."
+        },
+        {
+          "@language": "en",
+          "@value": "Inverse object property of hasNearbyAccomodation."
+        }
+      ],
+      "rdfs:domain": {
+        "@id": "acco:Accommodation"
+      },
+      "rdfs:label": [
+        {
+          "@language": "it",
+          "@value": "è struttura alberghiera nelle vicinanze di"
+        },
+        {
+          "@language": "en",
+          "@value": "is nearby accomodation of"
+        }
+      ],
+      "rdfs:range": {
+        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/PathStage"
+      },
+      "rdfs:subPropertyOf": {
+        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/isNearbyPointOfInterestOf"
+      }
+    },
+    {
+      "@id": "http://spcdata.digitpa.gov.it/Amministrazione/m_bac",
+      "@type": [
+        "owl:NamedIndividual",
+        "foaf:Agent",
+        "dcatapit:Agent"
+      ],
+      "dcterms:identifier": "m_bac",
+      "foaf:name": {
+        "@language": "it",
+        "@value": "Ministero dei Beni e delle Attivita' Culturali"
+      }
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/AtlasOfPaths/isServiceTypeOf",
+      "@type": "owl:ObjectProperty",
+      "owl:versionInfo": [
+        {
+          "@language": "en",
+          "@value": "unstable"
+        },
+        {
+          "@language": "it",
+          "@value": "provvisoria"
+        }
+      ],
+      "rdfs:comment": [
+        {
+          "@language": "it",
+          "@value": "Proprietà inversa di hasServiceType."
+        },
+        {
+          "@language": "en",
+          "@value": "Inverse object property hasServiceType."
+        }
+      ],
+      "rdfs:domain": {
+        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/ServiceType"
+      },
+      "rdfs:label": [
+        {
+          "@language": "it",
+          "@value": "è tipo di servizio di supporto di"
+        },
+        {
+          "@language": "en",
+          "@value": "is support service type of"
+        }
+      ],
+      "rdfs:range": {
+        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/SupportService"
+      }
+    },
+    {
+      "@id": "_:N21fb5df745924c6d961d023cd6b02ece",
+      "@type": "owl:Restriction",
+      "owl:allValuesFrom": {
+        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/PathStage"
+      },
+      "owl:onProperty": {
+        "@id": "l0:hasLastMember"
+      }
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/AtlasOfPaths/Historical",
+      "@type": [
+        "owl:NamedIndividual",
+        "https://w3id.org/italia/onto/AtlasOfPaths/PathTheme"
+      ],
+      "owl:versionInfo": [
+        {
+          "@language": "en",
+          "@value": "unstable"
+        },
+        {
+          "@language": "it",
+          "@value": "provvisoria"
+        }
+      ],
+      "rdfs:comment": [
+        {
+          "@language": "it",
+          "@value": "Questo individuo rappresenta la definizione del tipo di tematica associata a ciascun cammino."
+        },
+        {
+          "@language": "en",
+          "@value": "This individual represents the definition of the type of theme associated with each path."
+        }
+      ],
+      "rdfs:label": [
+        {
+          "@language": "it",
+          "@value": "storico"
+        },
+        {
+          "@language": "en",
+          "@value": "historical"
+        }
+      ]
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/AtlasOfPaths/stageNumber",
+      "@type": "owl:DatatypeProperty",
+      "owl:versionInfo": [
+        {
+          "@language": "it",
+          "@value": "provvisoria"
+        },
+        {
+          "@language": "en",
+          "@value": "unstable"
+        }
+      ],
+      "rdfs:comment": [
+        {
+          "@language": "it",
+          "@value": "Questa proprietà rappresenta il numero identificativo di una tappa del cammino."
+        },
+        {
+          "@language": "en",
+          "@value": "This data property represents the identification number of a path stage."
+        }
+      ],
+      "rdfs:domain": {
+        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/PathStage"
+      },
+      "rdfs:label": [
+        {
+          "@language": "en",
+          "@value": "stage number"
+        },
+        {
+          "@language": "it",
+          "@value": "numero della tappa"
+        }
+      ],
+      "rdfs:range": {
+        "@id": "xsd:int"
+      },
+      "rdfs:subPropertyOf": {
+        "@id": "route:position"
+      }
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/AtlasOfPaths/isSignpostingOf",
+      "@type": "owl:ObjectProperty",
+      "owl:versionInfo": [
+        {
+          "@language": "en",
+          "@value": "stable"
+        },
+        {
+          "@language": "it",
+          "@value": "stabile"
+        }
+      ],
+      "rdfs:comment": [
+        {
+          "@language": "it",
+          "@value": "Proprietà inversa di hasSignposting."
+        },
+        {
+          "@language": "en",
+          "@value": "Inverse object property of hasSingposting."
+        }
+      ],
+      "rdfs:domain": {
+        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/Signposting"
+      },
+      "rdfs:label": [
+        {
+          "@language": "en",
+          "@value": "is signposting of"
+        },
+        {
+          "@language": "it",
+          "@value": "è segnaletica di"
+        }
+      ],
+      "rdfs:range": {
+        "@id": "owl:Thing"
+      }
+    },
+    {
+      "@id": "_:N5f5adcead544435e801879183d879ee2",
+      "@type": "owl:Restriction",
+      "owl:onClass": {
+        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/Pathway"
+      },
+      "owl:onProperty": {
+        "@id": "route:hasPrefRoute"
+      },
+      "owl:qualifiedCardinality": {
+        "@type": "xsd:nonNegativeInteger",
+        "@value": "1"
+      }
+    },
+    {
+      "@id": "_:Na5ba25bce7514f94905e4900e7f82f98",
+      "@type": "owl:Restriction",
+      "owl:onClass": {
+        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/Paving"
+      },
+      "owl:onProperty": {
+        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/withPaving"
+      },
+      "owl:qualifiedCardinality": {
+        "@type": "xsd:nonNegativeInteger",
+        "@value": "1"
+      }
+    },
+    {
+      "@id": "https://w3id.org/italia/data/project/OntoPiA",
+      "@type": [
+        "admsapit:Project",
+        "owl:NamedIndividual"
+      ],
+      "l0:name": {
+        "@language": "it",
+        "@value": "OntoPiA - la rete di ontologie della pubblica amministrazione italiana"
+      }
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/AtlasOfPaths/isThemeOf",
+      "@type": "owl:ObjectProperty",
+      "owl:versionInfo": [
+        {
+          "@language": "en",
+          "@value": "unstable"
+        },
+        {
+          "@language": "it",
+          "@value": "provvisoria"
+        }
+      ],
+      "rdfs:comment": [
+        {
+          "@language": "en",
+          "@value": "Inverse object property of hasTheme."
+        },
+        {
+          "@language": "it",
+          "@value": "Proprietà inversa di hasTheme."
+        }
+      ],
+      "rdfs:domain": {
+        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/PathTheme"
+      },
+      "rdfs:label": [
+        {
+          "@language": "it",
+          "@value": "è tema di"
+        },
+        {
+          "@language": "en",
+          "@value": "is theme of"
+        }
+      ],
+      "rdfs:range": {
+        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/Path"
+      }
+    },
+    {
+      "@id": "_:N6682fc66cdcc4eb9a2af0937b64b3542",
+      "@type": "owl:Restriction",
+      "owl:onProperty": {
+        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/hasSupportService"
+      },
+      "owl:someValuesFrom": {
+        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/SupportService"
+      }
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/AtlasOfPaths/pathNumber",
+      "@type": [
+        "owl:FunctionalProperty",
+        "owl:DatatypeProperty"
+      ],
+      "owl:versionInfo": [
+        {
+          "@language": "en",
+          "@value": "unstable"
+        },
+        {
+          "@language": "it",
+          "@value": "provvisoria"
+        }
+      ],
+      "rdfs:comment": [
+        {
+          "@language": "it",
+          "@value": "Questa proprietà rappresenta il numero identificativo di un cammino."
+        },
+        {
+          "@language": "en",
+          "@value": "This data property represents the identification number of a path."
+        }
+      ],
+      "rdfs:domain": {
+        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/Path"
+      },
+      "rdfs:label": [
+        {
+          "@language": "en",
+          "@value": "path number"
+        },
+        {
+          "@language": "it",
+          "@value": "numero del cammino"
+        }
+      ],
+      "rdfs:range": {
+        "@id": "rdfs:Literal"
+      }
+    },
+    {
+      "@id": "route:position",
+      "@type": "owl:DatatypeProperty"
+    },
+    {
+      "@id": "_:N4dc65995e9a5433eb757b126642527ff",
+      "@type": "owl:Restriction",
+      "owl:onProperty": {
+        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/bestWhen"
+      },
+      "owl:someValuesFrom": {
+        "@id": "ti:TemporalEntity"
+      }
+    },
+    {
+      "@id": "route:hasTripPlan",
+      "@type": "owl:ObjectProperty"
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/AtlasOfPaths/Paving",
+      "@type": "owl:Class",
+      "owl:versionInfo": [
+        {
+          "@language": "en",
+          "@value": "stable"
+        },
+        {
+          "@language": "it",
+          "@value": "stabile"
+        }
+      ],
+      "rdfs:comment": [
+        {
+          "@language": "it",
+          "@value": "Questa classe rappresenta uno specifico tipo di pavimentazione, ovvero l'asfalto."
+        },
+        {
+          "@language": "en",
+          "@value": "This class represents a specific type of paving, i.e. the asphalt."
+        }
+      ],
+      "rdfs:label": [
+        {
+          "@language": "en",
+          "@value": "Paving"
+        },
+        {
+          "@language": "it",
+          "@value": "Pavimentazione"
+        }
+      ],
+      "rdfs:subClassOf": {
+        "@id": "l0:Characteristic"
+      }
+    },
+    {
+      "@id": "_:N40d6130228954209ade3078203aaed0e",
+      "@type": "owl:Restriction",
+      "owl:onProperty": {
+        "@id": "_:N059f352d6c60490ba8fb651523ec8a5e"
+      },
+      "owl:someValuesFrom": {
+        "@id": "_:Nbaf70d52b55e4bb2a31cc1a6c781742c"
+      }
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/AtlasOfPaths/SupportService",
+      "@type": "owl:Class",
+      "owl:versionInfo": [
+        {
+          "@language": "en",
+          "@value": "unstable"
+        },
+        {
+          "@language": "it",
+          "@value": "provvisoria"
+        }
+      ],
+      "rdfs:comment": [
+        {
+          "@language": "it",
+          "@value": "Questa classe descrive un servizio di supporto al camminatore lungo il percorso."
+        },
+        {
+          "@language": "en",
+          "@value": "This class describes a walker support service along the pathway."
+        }
+      ],
+      "rdfs:label": [
+        {
+          "@language": "it",
+          "@value": "Servizio di supporto"
+        },
+        {
+          "@language": "en",
+          "@value": "Support Service"
+        }
+      ],
+      "rdfs:subClassOf": {
+        "@id": "l0:Object"
+      }
+    },
+    {
+      "@id": "l0:hasMember",
+      "@type": "owl:ObjectProperty"
     },
     {
       "@id": "l0:description",
       "@type": "owl:DatatypeProperty"
     },
     {
-      "@id": "_:ub920bL108C42",
+      "@id": "https://w3id.org/italia/onto/AtlasOfPaths/hasQuantifiedPathwayPaving",
+      "@type": "owl:ObjectProperty",
       "owl:inverseOf": {
-        "@id": "route:hasRoute"
+        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/isQuantifiedPathwayPavingOf"
+      },
+      "owl:versionInfo": [
+        {
+          "@language": "it",
+          "@value": "provvisoria"
+        },
+        {
+          "@language": "en",
+          "@value": "unstable"
+        }
+      ],
+      "rdfs:comment": [
+        {
+          "@language": "en",
+          "@value": "This object property correlates a path with the quantity of its specific paving, i.e. the asphalt."
+        },
+        {
+          "@language": "it",
+          "@value": "Questa object property mette in relazione un cammino con la quantità di una sua specifica pavimentazione, ovvero l'asfalto."
+        }
+      ],
+      "rdfs:domain": {
+        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/Path"
+      },
+      "rdfs:label": [
+        {
+          "@language": "en",
+          "@value": "has quantified pathway paving"
+        },
+        {
+          "@language": "it",
+          "@value": "ha quatificata pavimentazione del percorso"
+        }
+      ],
+      "rdfs:range": {
+        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/QuantifiedPathwayPaving"
       }
     },
     {
@@ -748,14 +1665,24 @@
       "owl:inverseOf": {
         "@id": "https://w3id.org/italia/onto/AtlasOfPaths/isThemeOf"
       },
-      "rdfs:comment": [
+      "owl:versionInfo": [
         {
           "@language": "en",
-          "@value": "This relation allows to associate a theme (e.g. archeological, naturalistic) to a path."
+          "@value": "unstable"
         },
         {
           "@language": "it",
-          "@value": "Questa object property permette di associare un tema ad un cammino (ex. archeologico, naturalistico, ecc...)."
+          "@value": "provvisoria"
+        }
+      ],
+      "rdfs:comment": [
+        {
+          "@language": "it",
+          "@value": "Questa object property permette di associare un tema d'interesse a un cammino, quale, ad esempio, archeologico, naturalistico, culturale ecc."
+        },
+        {
+          "@language": "en",
+          "@value": "This object property allows to associate a theme of interest to a path, such as, for example, archaeological, naturalistic, cultural, etc."
         }
       ],
       "rdfs:domain": {
@@ -776,624 +1703,187 @@
       }
     },
     {
-      "@id": "_:ub920bL414C23",
-      "@type": "owl:Restriction",
-      "owl:onProperty": {
-        "@id": "l0:description"
+      "@id": "dcterms:title",
+      "@type": "owl:AnnotationProperty"
+    },
+    {
+      "@id": "route:Route",
+      "@type": "owl:Class"
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/AtlasOfPaths/TravellingMethod",
+      "@type": "owl:Class",
+      "owl:disjointWith": {
+        "@id": "route:TripPlan"
       },
-      "owl:someValuesFrom": {
-        "@id": "rdfs:Literal"
-      }
-    },
-    {
-      "@id": "https://w3id.org/italia/data/project/DAF",
-      "@type": [
-        "owl:NamedIndividual",
-        "admsapit:Project"
-      ],
-      "l0:name": {
-        "@language": "it",
-        "@value": "Data & Analytics Framework"
-      }
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/AtlasOfPaths/refersToPath",
-      "@type": "owl:ObjectProperty",
-      "rdfs:comment": [
+      "owl:versionInfo": [
         {
           "@language": "it",
-          "@value": "Questa proprietà collega una situazione che rappresenta una Governance Organ in Tine ad un cammino specifico."
+          "@value": "provvisoria"
         },
         {
           "@language": "en",
-          "@value": "This property links a Governance Organ in Tine to a specific path."
+          "@value": "unstable"
+        }
+      ],
+      "rdfs:comment": [
+        {
+          "@language": "it",
+          "@value": "Questa classe rappresenta un metodo di viaggio possibile lungo un certo percorso."
+        },
+        {
+          "@language": "en",
+          "@value": "This class represents a possible travel method along a certain pathway."
+        }
+      ],
+      "rdfs:label": [
+        {
+          "@language": "en",
+          "@value": "Travelling method"
+        },
+        {
+          "@language": "it",
+          "@value": "Metodo di viaggio"
+        }
+      ],
+      "rdfs:subClassOf": {
+        "@id": "l0:Description"
+      }
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/AtlasOfPaths/isSurveillanceOf",
+      "@type": "owl:ObjectProperty",
+      "owl:versionInfo": [
+        {
+          "@language": "it",
+          "@value": "provvisoria"
+        },
+        {
+          "@language": "en",
+          "@value": "unstable"
+        }
+      ],
+      "rdfs:comment": [
+        {
+          "@language": "it",
+          "@value": "Proprietà inversa di hasSurveillance."
+        },
+        {
+          "@language": "en",
+          "@value": "Inverse property of hasSurveillance."
+        }
+      ],
+      "rdfs:domain": {
+        "@id": "l0:Agent"
+      },
+      "rdfs:label": [
+        {
+          "@language": "en",
+          "@value": "is surveillance of"
+        },
+        {
+          "@language": "it",
+          "@value": "è sorverglianza di"
+        }
+      ],
+      "rdfs:range": {
+        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/Pathway"
+      }
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/AtlasOfPaths/percentage",
+      "@type": [
+        "mu:MeasurementUnit",
+        "owl:NamedIndividual"
+      ],
+      "owl:versionInfo": [
+        {
+          "@language": "en",
+          "@value": "unstable"
+        },
+        {
+          "@language": "it",
+          "@value": "provvisoria"
+        }
+      ],
+      "rdfs:comment": [
+        {
+          "@language": "it",
+          "@value": "Questo individuo rappresenta le informazioni relative alla percentuale di asfalto presente in un cammino."
+        },
+        {
+          "@language": "en",
+          "@value": "This individual represents information related to the percentage of asphalt composing a path."
         }
       ],
       "rdfs:label": [
         {
           "@language": "it",
-          "@value": "si riferisce a cammino"
+          "@value": "percentuale"
         },
         {
           "@language": "en",
-          "@value": "refers to path"
+          "@value": "percentage"
         }
-      ],
-      "rdfs:range": {
-        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/Path"
-      }
+      ]
     },
     {
-      "@id": "http://spcdata.digitpa.gov.it/Amministrazione/m_bac",
-      "@type": [
-        "owl:NamedIndividual",
-        "dcatapit:Agent",
-        "foaf:Agent"
-      ],
-      "dct:identifier": "m_bac",
-      "foaf:name": {
-        "@language": "it",
-        "@value": "Ministero dei Beni e delle Attivita' Culturali"
-      }
-    },
-    {
-      "@id": "cov:hasOrganization",
+      "@id": "route:hasDeviation",
       "@type": "owl:ObjectProperty"
-    },
-    {
-      "@id": "_:ub920bL496C68",
-      "@type": "owl:Class",
-      "owl:intersectionOf": {
-        "@list": [
-          {
-            "@id": "_:ub920bL496C91"
-          },
-          {
-            "@id": "_:ub920bL500C91"
-          },
-          {
-            "@id": "_:ub920bL504C91"
-          }
-        ]
-      }
-    },
-    {
-      "@id": "_:ub920bL541C42",
-      "@type": "owl:Restriction",
-      "owl:onClass": {
-        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/Pathway"
-      },
-      "owl:onProperty": {
-        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/forPathway"
-      },
-      "owl:qualifiedCardinality": {
-        "@type": "xsd:nonNegativeInteger",
-        "@value": "1"
-      }
     },
     {
       "@id": "owl:hasValue",
       "@type": "owl:AnnotationProperty"
     },
     {
-      "@id": "mu:Value",
-      "@type": "owl:Class"
-    },
-    {
-      "@id": "https://w3id.org/italia/data/project/AtlanteCammini",
-      "@type": [
-        "admsapit:Project",
-        "owl:NamedIndividual"
-      ],
-      "l0:name": {
-        "@language": "it",
-        "@value": "Atlante dei Cammini d'Italia"
-      }
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/AtlasOfPaths/hasGovernanceOrgan",
+      "@id": "https://w3id.org/italia/onto/AtlasOfPaths/hasSecurityLevel",
       "@type": "owl:ObjectProperty",
       "owl:inverseOf": {
-        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/isGovernanceOrganOf"
+        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/isSecurityLevelOf"
       },
-      "rdfs:domain": {
-        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/Path"
-      },
-      "rdfs:range": {
-        "@id": "cov:Organization"
-      },
-      "rdfs:subPropertyOf": {
-        "@id": "cov:hasOrganization"
-      }
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/AtlasOfPaths/Natural",
-      "@type": [
-        "https://w3id.org/italia/onto/AtlasOfPaths/PathTheme",
-        "owl:NamedIndividual"
-      ]
-    },
-    {
-      "@id": "mu:hasValue",
-      "@type": "owl:ObjectProperty"
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/AtlasOfPaths/isSupportServiceOf",
-      "@type": "owl:ObjectProperty",
+      "owl:versionInfo": [
+        {
+          "@language": "it",
+          "@value": "provvisoria"
+        },
+        {
+          "@language": "en",
+          "@value": "unstable"
+        }
+      ],
       "rdfs:comment": [
         {
           "@language": "it",
-          "@value": "è servizio di"
+          "@value": "Questa object property associa un percorso alle informazioni relative al suo livello di sicurezza."
         },
         {
           "@language": "en",
-          "@value": "is service of"
-        },
-        {
-          "@language": "en",
-          "@value": "Inverse property of has service."
-        },
-        {
-          "@language": "it",
-          "@value": "Proprietà inversa di has service."
+          "@value": "This object property associates a pathway with information related to its security level."
         }
       ],
       "rdfs:domain": {
-        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/SupportService"
-      },
-      "rdfs:range": {
-        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/PathStage"
-      }
-    },
-    {
-      "@id": "ti:hasTemporalCoverage",
-      "@type": "owl:ObjectProperty"
-    },
-    {
-      "@id": "_:ub920bL496C91",
-      "@type": "owl:Restriction",
-      "owl:hasValue": {
-        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/asphalt"
-      },
-      "owl:onProperty": {
-        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/withPaving"
-      }
-    },
-    {
-      "@id": "mu:hasMeasurementUnit",
-      "@type": "owl:ObjectProperty"
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/AtlasOfPaths/testQuantifiedPathwayPaving",
-      "@type": "owl:NamedIndividual",
-      "https://w3id.org/italia/onto/AtlasOfPaths/forPathway": {
-        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/testPathway"
-      },
-      "https://w3id.org/italia/onto/AtlasOfPaths/withPaving": {
-        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/asphalt"
-      },
-      "mu:hasValue": {
-        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/testValue"
-      }
-    },
-    {
-      "@id": "_:ub920bL449C28",
-      "@type": "owl:Restriction",
-      "owl:onProperty": {
-        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/hasSignposting"
-      },
-      "owl:someValuesFrom": {
-        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/Signposting"
-      }
-    },
-    {
-      "@id": "mu:value",
-      "@type": "owl:DatatypeProperty"
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/AtlasOfPaths/hasServiceType",
-      "@type": "owl:ObjectProperty",
-      "rdfs:domain": {
-        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/SupportService"
-      },
-      "rdfs:range": {
-        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/ServiceType"
-      }
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/AtlasOfPaths/Religious",
-      "@type": [
-        "https://w3id.org/italia/onto/AtlasOfPaths/PathTheme",
-        "owl:NamedIndividual"
-      ]
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/AtlasOfPaths/hasNearbyRestaurant",
-      "@type": "owl:ObjectProperty",
-      "rdfs:domain": {
-        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/PathStage"
-      },
-      "rdfs:range": {
-        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/Restaurant"
-      },
-      "rdfs:subPropertyOf": {
-        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/hasNearbyPointOfInterest"
-      }
-    },
-    {
-      "@id": "_:ub920bL418C23",
-      "@type": "owl:Restriction",
-      "owl:onProperty": {
-        "@id": "l0:name"
-      },
-      "owl:someValuesFrom": {
-        "@id": "rdfs:Literal"
-      }
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/AtlasOfPaths/Cultural",
-      "@type": [
-        "https://w3id.org/italia/onto/AtlasOfPaths/PathTheme",
-        "owl:NamedIndividual"
-      ]
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/AtlasOfPaths/withPaving",
-      "@type": "owl:ObjectProperty",
-      "rdfs:domain": {
-        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/QuantifiedPathwayPaving"
-      },
-      "rdfs:range": {
-        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/Paving"
-      }
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/AtlasOfPaths/Horseback",
-      "@type": [
-        "owl:NamedIndividual",
-        "https://w3id.org/italia/onto/AtlasOfPaths/TravellingMethod"
-      ]
-    },
-    {
-      "@id": "sm:hasWebSite",
-      "@type": "owl:ObjectProperty",
-      "rdfs:domain": {
-        "@id": "owl:Thing"
-      },
-      "rdfs:range": {
-        "@id": "sm:WebSite"
-      }
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/AtlasOfPaths/QuantifiedPathwayPaving",
-      "@type": "owl:Class",
-      "rdfs:subClassOf": [
-        {
-          "@id": "_:ub920bL541C42"
-        },
-        {
-          "@id": "_:ub920bL551C42"
-        },
-        {
-          "@id": "l0:Object"
-        },
-        {
-          "@id": "_:ub920bL546C42"
-        }
-      ]
-    },
-    {
-      "@id": "_:ub920bL500C91",
-      "@type": "owl:Restriction",
-      "owl:hasValue": {
-        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/percentage"
-      },
-      "owl:onProperty": {
-        "@id": "mu:hasMeasurementUnit"
-      }
-    },
-    {
-      "@id": "_:ub920bL523C26",
-      "@type": "owl:Restriction",
-      "owl:allValuesFrom": {
-        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/PathStage"
-      },
-      "owl:onProperty": {
-        "@id": "l0:hasLastMember"
-      }
-    },
-    {
-      "@id": "_:ub920bL389C23",
-      "@type": "owl:Restriction",
-      "owl:allValuesFrom": {
-        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/Path"
-      },
-      "owl:onProperty": {
-        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/encountersPath"
-      }
-    },
-    {
-      "@id": "l0:Agent",
-      "@type": "owl:Class"
-    },
-    {
-      "@id": "_:ub920bL504C91",
-      "@type": "owl:Restriction",
-      "owl:onDataRange": {
-        "@id": "_:ub920bL507C109"
-      },
-      "owl:onProperty": {
-        "@id": "mu:value"
-      },
-      "owl:qualifiedCardinality": {
-        "@type": "xsd:nonNegativeInteger",
-        "@value": "1"
-      }
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/AtlasOfPaths/isMaintainerOf",
-      "@type": "owl:ObjectProperty",
-      "rdfs:domain": {
-        "@id": "l0:Agent"
-      },
-      "rdfs:range": {
         "@id": "https://w3id.org/italia/onto/AtlasOfPaths/Pathway"
-      }
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/AtlasOfPaths/SecurityLevel",
-      "@type": "owl:Class",
-      "rdfs:subClassOf": {
-        "@id": "l0:Characteristic"
-      }
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/AtlasOfPaths/hasSignposting",
-      "@type": "owl:ObjectProperty",
-      "rdfs:domain": {
-        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/PathStage"
-      },
-      "rdfs:range": {
-        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/Signposting"
-      }
-    },
-    {
-      "@id": "_:ub920bL479C26",
-      "@type": "owl:Restriction",
-      "owl:onProperty": {
-        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/hasMaintainer"
-      },
-      "owl:someValuesFrom": {
-        "@id": "l0:Agent"
-      }
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/AtlasOfPaths/Path",
-      "@type": "owl:Class",
-      "owl:disjointWith": [
-        {
-          "@id": "route:TripPlan"
-        },
-        {
-          "@id": "https://w3id.org/italia/onto/AtlasOfPaths/TravellingMethod"
-        },
-        {
-          "@id": "route:Route"
-        }
-      ],
-      "rdfs:subClassOf": [
-        {
-          "@id": "_:ub920bL385C23"
-        },
-        {
-          "@id": "_:ub920bL401C23"
-        },
-        {
-          "@id": "l0:Description"
-        },
-        {
-          "@id": "_:ub920bL377C23"
-        },
-        {
-          "@id": "_:ub920bL373C23"
-        },
-        {
-          "@id": "_:ub920bL393C23"
-        },
-        {
-          "@id": "_:ub920bL405C23"
-        },
-        {
-          "@id": "_:ub920bL418C23"
-        },
-        {
-          "@id": "_:ub920bL397C23"
-        },
-        {
-          "@id": "_:ub920bL409C23"
-        },
-        {
-          "@id": "_:ub920bL381C23"
-        },
-        {
-          "@id": "_:ub920bL389C23"
-        },
-        {
-          "@id": "_:ub920bL414C23"
-        }
-      ]
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/AtlasOfPaths/percentage",
-      "@type": [
-        "owl:NamedIndividual",
-        "mu:MeasurementUnit"
-      ]
-    },
-    {
-      "@id": "_:ub920bL405C23",
-      "@type": "owl:Restriction",
-      "owl:allValuesFrom": {
-        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/PathPlan"
-      },
-      "owl:onProperty": {
-        "@id": "route:hasTripPlan"
-      }
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/AtlasOfPaths/hasNearbyPointOfInterest",
-      "@type": "owl:ObjectProperty",
-      "rdfs:domain": {
-        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/PathStage"
-      },
-      "rdfs:range": {
-        "@id": "poi:PointOfInterest"
-      }
-    },
-    {
-      "@id": "l0:Topic",
-      "@type": "owl:Class"
-    },
-    {
-      "@id": "ti:Duration",
-      "@type": "owl:Class",
-      "rdfs:subClassOf": {
-        "@id": "ti:TemporalEntity"
-      }
-    },
-    {
-      "@id": "_:ub920bL527C26",
-      "@type": "owl:Restriction",
-      "owl:allValuesFrom": {
-        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/PathStage"
-      },
-      "owl:onProperty": {
-        "@id": "l0:hasMember"
-      }
-    },
-    {
-      "@id": "_:ub920bL492C43",
-      "owl:inverseOf": {
-        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/forPathway"
-      }
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/AtlasOfPaths/isGovernanceOrganOf",
-      "@type": "owl:ObjectProperty",
-      "rdfs:comment": [
-        {
-          "@language": "en",
-          "@value": "Inverse object property of hasGovernanceOrgan"
-        },
-        {
-          "@language": "it",
-          "@value": "Proprietà inversa di hasGovernanceOrgan"
-        }
-      ],
-      "rdfs:domain": {
-        "@id": "cov:Organization"
       },
       "rdfs:label": [
         {
           "@language": "it",
-          "@value": "è organo di governo di"
+          "@value": "ha livello di sicurezza"
         },
         {
           "@language": "en",
-          "@value": "is governance orga of"
+          "@value": "has security level"
         }
       ],
       "rdfs:range": {
-        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/Path"
-      },
-      "rdfs:subPropertyOf": {
-        "@id": "cov:isOrganizationOf"
+        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/SecurityLevel"
       }
     },
     {
-      "@id": "https://w3id.org/italia/onto/AtlasOfPaths/ServiceType",
-      "@type": "owl:Class",
-      "rdfs:subClassOf": {
-        "@id": "l0:Characteristic"
-      }
+      "@id": "mu:Value",
+      "@type": "owl:Class"
     },
     {
-      "@id": "_:ub920bL439C27",
-      "@type": "owl:Restriction",
-      "owl:onClass": {
-        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/Path"
-      },
-      "owl:onProperty": {
-        "@id": "route:isTripPlanOf"
-      },
-      "owl:qualifiedCardinality": {
-        "@type": "xsd:nonNegativeInteger",
-        "@value": "1"
-      }
-    },
-    {
-      "@id": "_:ub920bL483C26",
-      "@type": "owl:Restriction",
-      "owl:onProperty": {
-        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/hasSurveillance"
-      },
-      "owl:someValuesFrom": {
-        "@id": "l0:Agent"
-      }
-    },
-    {
-      "@id": "_:ub920bL434C27",
-      "@type": "owl:Restriction",
-      "owl:onClass": {
-        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/TravellingMethod"
-      },
-      "owl:onProperty": {
-        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/hasTravellingMethod"
-      },
-      "owl:qualifiedCardinality": {
-        "@type": "xsd:nonNegativeInteger",
-        "@value": "1"
-      }
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/AtlasOfPaths/Pathway",
-      "@type": "owl:Class",
-      "rdfs:subClassOf": [
-        {
-          "@id": "_:ub920bL479C26"
-        },
-        {
-          "@id": "_:ub920bL487C26"
-        },
-        {
-          "@id": "route:Route"
-        },
-        {
-          "@id": "_:ub920bL527C26"
-        },
-        {
-          "@id": "_:ub920bL483C26"
-        },
-        {
-          "@id": "_:ub920bL491C26"
-        },
-        {
-          "@id": "_:ub920bL519C26"
-        },
-        {
-          "@id": "_:ub920bL523C26"
-        }
-      ]
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/AtlasOfPaths/testPath",
-      "@type": "owl:NamedIndividual",
-      "route:hasRoute": {
-        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/testPathway"
-      }
-    },
-    {
-      "@id": "_:ub920bL373C23",
+      "@id": "_:N237cb58d4d514a4a8f2bac76f6553af1",
       "@type": "owl:Restriction",
       "owl:onProperty": {
         "@id": "https://w3id.org/italia/onto/AtlasOfPaths/hasGovernanceOrgan"
@@ -1403,122 +1893,151 @@
       }
     },
     {
-      "@id": "cov:Organization",
-      "@type": "owl:Class",
-      "rdfs:subClassOf": {
-        "@id": "l0:Agent"
-      }
+      "@id": "dcterms:format",
+      "@type": "owl:AnnotationProperty"
     },
     {
-      "@id": "_:ub920bL457C28",
-      "@type": "owl:Restriction",
-      "owl:allValuesFrom": {
-        "@id": "acco:Accommodation"
-      },
-      "owl:onProperty": {
-        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/hasNearbyAccommodation"
-      }
+      "@id": "l0:Entity",
+      "@type": "owl:Class"
     },
     {
-      "@id": "https://w3id.org/italia/onto/AtlasOfPaths/hasSecurityLevel",
-      "@type": "owl:ObjectProperty",
-      "rdfs:domain": {
-        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/Pathway"
-      },
-      "rdfs:range": {
-        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/SecurityLevel"
-      }
-    },
-    {
-      "@id": "sm:WebSite",
-      "@type": "owl:Class",
-      "rdfs:subClassOf": {
-        "@id": "l0:Object"
-      }
-    },
-    {
-      "@id": "_:ub920bL401C23",
-      "@type": "owl:Restriction",
-      "owl:allValuesFrom": {
-        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/Pathway"
-      },
-      "owl:onProperty": {
-        "@id": "route:hasRoute"
-      }
-    },
-    {
-      "@id": "_:ub920bL465C28",
-      "@type": "owl:Restriction",
-      "owl:allValuesFrom": {
-        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/Restaurant"
-      },
-      "owl:onProperty": {
-        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/hasNearbyRestaurant"
-      }
-    },
-    {
-      "@id": "_:ub920bL494C47",
-      "@type": "owl:Restriction",
-      "owl:onProperty": {
-        "@id": "mu:hasValue"
-      },
-      "owl:someValuesFrom": {
-        "@id": "_:ub920bL496C68"
-      }
-    },
-    {
-      "@id": "_:ub920bL393C23",
-      "@type": "owl:Restriction",
-      "owl:allValuesFrom": {
-        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/Pathway"
-      },
-      "owl:onProperty": {
-        "@id": "route:hasAltRoute"
-      }
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/AtlasOfPaths/encountersPathStage",
+      "@id": "https://w3id.org/italia/onto/AtlasOfPaths/Cultural",
       "@type": [
-        "owl:ObjectProperty",
-        "owl:SymmetricProperty"
+        "owl:NamedIndividual",
+        "https://w3id.org/italia/onto/AtlasOfPaths/PathTheme"
       ],
-      "rdfs:domain": {
-        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/PathStage"
+      "owl:versionInfo": [
+        {
+          "@language": "it",
+          "@value": "provvisoria"
+        },
+        {
+          "@language": "en",
+          "@value": "unstable"
+        }
+      ],
+      "rdfs:comment": [
+        {
+          "@language": "en",
+          "@value": "This individual represents the definition of the type of theme associated with each path."
+        },
+        {
+          "@language": "it",
+          "@value": "Questo individuo rappresenta la definizione del tipo di tematica associata a ciascun cammino."
+        }
+      ],
+      "rdfs:label": [
+        {
+          "@language": "en",
+          "@value": "cultural"
+        },
+        {
+          "@language": "it",
+          "@value": "culturale"
+        }
+      ]
+    },
+    {
+      "@id": "mu:hasValue",
+      "@type": "owl:ObjectProperty"
+    },
+    {
+      "@id": "ti:hasTemporalCoverage",
+      "@type": "owl:ObjectProperty"
+    },
+    {
+      "@id": "_:Ndbd06874c0014919a48d4573ea8c18cc",
+      "@type": "owl:Restriction",
+      "owl:allValuesFrom": {
+        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/Pathway"
       },
-      "rdfs:range": {
-        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/PathStage"
+      "owl:onProperty": {
+        "@id": "route:hasDeviation"
       }
     },
     {
-      "@id": "mu:MeasurementUnit",
-      "@type": "owl:Class",
-      "rdfs:subClassOf": {
-        "@id": "l0:Characteristic"
-      }
+      "@id": "mu:hasMeasurementUnit",
+      "@type": "owl:ObjectProperty"
     },
     {
       "@id": "https://w3id.org/italia/onto/AtlasOfPaths/hasSurveillance",
       "@type": "owl:ObjectProperty",
+      "owl:inverseOf": {
+        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/isSurveillanceOf"
+      },
+      "owl:versionInfo": [
+        {
+          "@language": "it",
+          "@value": "provvisoria"
+        },
+        {
+          "@language": "en",
+          "@value": "unstable"
+        }
+      ],
+      "rdfs:comment": [
+        {
+          "@language": "en",
+          "@value": "This object property allows to associate a pathway with its surveillance organization."
+        },
+        {
+          "@language": "it",
+          "@value": "Questa object property permette di associare un percorso con il suo ente di sorveglianza."
+        }
+      ],
       "rdfs:domain": {
         "@id": "https://w3id.org/italia/onto/AtlasOfPaths/Pathway"
       },
+      "rdfs:label": [
+        {
+          "@language": "it",
+          "@value": "ha sorveglianza"
+        },
+        {
+          "@language": "en",
+          "@value": "has surveillance"
+        }
+      ],
       "rdfs:range": {
         "@id": "l0:Agent"
-      }
-    },
-    {
-      "@id": "acco:Accommodation",
-      "@type": "owl:Class",
-      "rdfs:subClassOf": {
-        "@id": "poi:PointOfInterest"
       }
     },
     {
       "@id": "https://w3id.org/italia/onto/AtlasOfPaths/bestWhen",
       "@type": "owl:ObjectProperty",
+      "owl:versionInfo": [
+        {
+          "@language": "it",
+          "@value": "provvisoria"
+        },
+        {
+          "@language": "en",
+          "@value": "unstable"
+        }
+      ],
+      "rdfs:comment": [
+        {
+          "@language": "en",
+          "@value": "This object property correlates a path plan with a temporal entity that specifies the best period of the year to walk a certain pathway."
+        },
+        {
+          "@language": "it",
+          "@value": "Questa object property collega un piano di viaggio con un'entità temporale che specifica quale sia il periodo migliore dell'anno per percorrere un certo percorso."
+        }
+      ],
       "rdfs:domain": {
         "@id": "https://w3id.org/italia/onto/AtlasOfPaths/PathPlan"
       },
+      "rdfs:label": [
+        {
+          "@language": "it",
+          "@value": "periodo migliore"
+        },
+        {
+          "@language": "en",
+          "@value": "best when"
+        }
+      ],
       "rdfs:range": {
         "@id": "ti:TemporalEntity"
       },
@@ -1527,7 +2046,50 @@
       }
     },
     {
-      "@id": "_:ub920bL551C42",
+      "@id": "https://w3id.org/italia/onto/AtlasOfPaths/hasTravellingMethod",
+      "@type": "owl:ObjectProperty",
+      "owl:inverseOf": {
+        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/isTravellingMethodOf"
+      },
+      "owl:versionInfo": [
+        {
+          "@language": "en",
+          "@value": "unstable"
+        },
+        {
+          "@language": "it",
+          "@value": "provvisoria"
+        }
+      ],
+      "rdfs:comment": [
+        {
+          "@language": "en",
+          "@value": "This object property connects a travel plan with a possible travel method such as, for example, on foot, on horseback, on a bike, etc."
+        },
+        {
+          "@language": "it",
+          "@value": "Questa object property collega un piano di viaggio con un possibile metodo di viaggio quale, ad esempio, a piedi, a cavallo, in bicicletta ecc."
+        }
+      ],
+      "rdfs:domain": {
+        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/PathPlan"
+      },
+      "rdfs:label": [
+        {
+          "@language": "it",
+          "@value": "ha metodo di viaggio"
+        },
+        {
+          "@language": "en",
+          "@value": "has travelling method"
+        }
+      ],
+      "rdfs:range": {
+        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/TravellingMethod"
+      }
+    },
+    {
+      "@id": "_:Nc351f928251144d5a0749267a4966c0b",
       "@type": "owl:Restriction",
       "owl:onClass": {
         "@id": "mu:Value"
@@ -1541,38 +2103,79 @@
       }
     },
     {
-      "@id": "https://w3id.org/italia/onto/AtlasOfPaths/hasTravellingMethod",
-      "@type": "owl:ObjectProperty",
+      "@id": "mu:value",
+      "@type": "owl:DatatypeProperty"
+    },
+    {
+      "@id": "l0:hasLastMember",
+      "@type": "owl:ObjectProperty"
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/AtlasOfPaths/encountersPathStage",
+      "@type": [
+        "owl:SymmetricProperty",
+        "owl:ObjectProperty"
+      ],
+      "owl:versionInfo": [
+        {
+          "@language": "it",
+          "@value": "provvisoria"
+        },
+        {
+          "@language": "en",
+          "@value": "unstable"
+        }
+      ],
+      "rdfs:comment": [
+        {
+          "@language": "en",
+          "@value": "This object property allows to associate a stage of a path with that of a different path located in the same place."
+        },
+        {
+          "@language": "it",
+          "@value": "Questa object property permette di associare una tappa di un cammino con quella di un cammino differente localizzata nello stesso luogo."
+        }
+      ],
       "rdfs:domain": {
-        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/PathPlan"
+        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/PathStage"
       },
+      "rdfs:label": [
+        {
+          "@language": "it",
+          "@value": "incontra tappa del cammino"
+        },
+        {
+          "@language": "en",
+          "@value": "encounters path stage"
+        }
+      ],
       "rdfs:range": {
-        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/TravellingMethod"
+        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/PathStage"
       }
     },
     {
-      "@id": "cov:isOrganizationOf",
+      "@id": "route:hasPrefRoute",
       "@type": "owl:ObjectProperty"
     },
     {
       "@id": "https://w3id.org/italia/data/contact-point/onto-dgt",
       "@type": [
+        "vcard:Kind",
+        "vcard:Organization",
         "dcatapit:Organization",
-        "ns:Organization",
-        "ns:Kind",
         "owl:NamedIndividual"
       ],
-      "ns:fn": "Direzione Generale Turismo",
-      "ns:hasEmail": {
+      "vcard:fn": "Direzione Generale Turismo",
+      "vcard:hasEmail": {
         "@id": "mailto:dg-t@beniculturali.it"
       }
     },
     {
       "@id": "https://w3id.org/italia/onto/AtlasOfPaths",
       "@type": [
-        "admsapit:SemanticAsset",
+        "owl:NamedIndividual",
         "owl:Ontology",
-        "owl:NamedIndividual"
+        "admsapit:SemanticAsset"
       ],
       "admsapit:acronym": "AtlasOfPaths-AP_IT",
       "admsapit:depiction": {
@@ -1586,13 +2189,13 @@
       },
       "admsapit:hasKeyClass": [
         {
+          "@id": "https://w3id.org/italia/onto/AtlasOfPaths/Pathway"
+        },
+        {
           "@id": "https://w3id.org/italia/onto/AtlasOfPaths/PathStage"
         },
         {
           "@id": "https://w3id.org/italia/onto/AtlasOfPaths/PathPlan"
-        },
-        {
-          "@id": "https://w3id.org/italia/onto/AtlasOfPaths/Pathway"
         }
       ],
       "admsapit:hasOntologyLanguage": {
@@ -1603,10 +2206,10 @@
           "@id": "https://w3id.org/italia/data/distribution/AOPAPIT-JSON-LD"
         },
         {
-          "@id": "https://w3id.org/italia/data/distribution/AOPAPIT-RDF-XML"
+          "@id": "https://w3id.org/italia/data/distribution/AOPAPIT-RDF-TURTLE"
         },
         {
-          "@id": "https://w3id.org/italia/data/distribution/AOPAPIT-RDF-TURTLE"
+          "@id": "https://w3id.org/italia/data/distribution/AOPAPIT-RDF-XML"
         }
       ],
       "admsapit:hasTask": [
@@ -1630,10 +2233,10 @@
       "admsapit:prefix": "aopapit",
       "admsapit:semanticAssetInUse": [
         {
-          "@id": "https://w3id.org/italia/data/project/OntoPiA"
+          "@id": "https://w3id.org/italia/data/project/AtlanteCammini"
         },
         {
-          "@id": "https://w3id.org/italia/data/project/AtlanteCammini"
+          "@id": "https://w3id.org/italia/data/project/OntoPiA"
         },
         {
           "@id": "https://w3id.org/italia/data/project/DAF"
@@ -1643,7 +2246,7 @@
       "admsapit:target": [
         {
           "@language": "it",
-          "@value": "Imprese"
+          "@value": "Pubbliche Amministrazioni"
         },
         {
           "@language": "it",
@@ -1651,7 +2254,7 @@
         },
         {
           "@language": "it",
-          "@value": "Pubbliche Amministrazioni"
+          "@value": "Imprese"
         }
       ],
       "admsapit:type": {
@@ -1663,7 +2266,11 @@
       "dcat:keyword": [
         {
           "@language": "it",
-          "@value": "Percorso"
+          "@value": "Atlante cammini"
+        },
+        {
+          "@language": "it",
+          "@value": "Cammino"
         },
         {
           "@language": "it",
@@ -1671,81 +2278,77 @@
         },
         {
           "@language": "it",
-          "@value": "Atlante cammini"
+          "@value": "Percorso"
         },
         {
           "@language": "it",
           "@value": "Tappa"
-        },
-        {
-          "@language": "it",
-          "@value": "Cammino"
         }
       ],
       "dcat:theme": {
         "@id": "http://publications.europa.eu/resource/authority/data-theme/EDUC"
       },
-      "dct:accrualPeriodicity": {
+      "dcterms:accrualPeriodicity": {
         "@id": "http://publications.europa.eu/resource/authority/frequency/IRREG"
       },
-      "dct:creator": [
-        {
-          "@id": "https://w3id.org/italia/data/organization/support-unit/cnr-Z6HZEH/stlab"
-        },
+      "dcterms:creator": [
         {
           "@id": "http://spcdata.digitpa.gov.it/Amministrazione/m_bac"
+        },
+        {
+          "@id": "https://w3id.org/italia/data/organization/support-unit/cnr-Z6HZEH/stlab"
         }
       ],
-      "dct:description": [
+      "dcterms:description": [
         {
-          "@id": "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/AtlasOfPaths/v0.1/AtlasOfPaths-AP_IT.png"
+          "@language": "it",
+          "@value": "Questo è il profilo applicativo italiano dell'ontologia sull'atlante digitale dei cammini d'italia. I cammini possono essere storici, naturalistici, culturali e religiosi, attraversano il Paese da nord a sud e rappresentano una parte fondamentale nell’offerta del turismo lento. L'atlante digitale dei cammini non è altro che un contenitore di percorsi e vie pensato e realizzato sulle linee guida indicate dalla direttiva ministeriale e regolamentato – con la messa a punto degli opportuni criteri – nell’ambito del Comitato Cammini, coordinamento inter-istituzionale formato da MiBAC, Regioni e Provincie autonome"
         },
         {
           "@language": "en",
           "@value": "This is the Italian application profile of the ontology on the digital atlas of paths of Italy. The paths can be historical, naturalistic, cultural and religious, they cross the country from north to south and represent a fundamental part of the slow tourism offer. The digital atlas of paths is nothing more than a container of routes and ways designed and built on the guidelines indicated by the ministerial directive and regulated - with the development of appropriate criteria - within the related Committee, inter-institutional coordination formed by MiBAC, Regions and Autonomous Provinces"
         },
         {
-          "@language": "it",
-          "@value": "Questo è il profilo applicativo italiano dell'ontologia sull'atlante digitale dei cammini d'italia. I cammini possono essere storici, naturalistici, culturali e religiosi, attraversano il Paese da nord a sud e rappresentano una parte fondamentale nell’offerta del turismo lento. L'atlante digitale dei cammini non è altro che un contenitore di percorsi e vie pensato e realizzato sulle linee guida indicate dalla direttiva ministeriale e regolamentato – con la messa a punto degli opportuni criteri – nell’ambito del Comitato Cammini, coordinamento inter-istituzionale formato da MiBAC, Regioni e Provincie autonome"
+          "@id": "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/AtlasOfPaths/v0.1/AtlasOfPaths-AP_IT.png"
         }
       ],
-      "dct:issued": {
+      "dcterms:issued": {
         "@type": "xsd:date",
         "@value": "2018-10-18"
       },
-      "dct:language": [
-        {
-          "@id": "http://publications.europa.eu/resource/authority/language/ITA"
-        },
+      "dcterms:language": [
         {
           "@id": "http://publications.europa.eu/resource/authority/language/ENG"
+        },
+        {
+          "@id": "http://publications.europa.eu/resource/authority/language/ITA"
         }
       ],
-      "dct:modified": {
+      "dcterms:modified": {
         "@type": "xsd:date",
         "@value": "2018-10-23"
       },
-      "dct:publisher": {
+      "dcterms:publisher": {
         "@id": "https://w3id.org/italia/data/organization/support-unit/cnr-Z6HZEH/stlab"
       },
-      "dct:rightsHolder": {
+      "dcterms:rightsHolder": {
         "@id": "http://spcdata.digitpa.gov.it/Amministrazione/m_bac"
       },
-      "dct:title": [
-        {
-          "@language": "en",
-          "@value": "Atlas of Paths Ontology - Italian Application Profile"
-        },
+      "dcterms:title": [
         {
           "@language": "it",
           "@value": "Ontologia dell'Atlante dei Cammini - Profilo applicativo italiano"
+        },
+        {
+          "@language": "en",
+          "@value": "Atlas of Paths Ontology - Italian Application Profile"
         }
       ],
       "owl:imports": {
         "@id": "https://w3id.org/italia/onto/Route"
       },
       "owl:versionIRI": {
-        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/0.1"
+        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/0.2"
       },
       "owl:versionInfo": {
         "@language": "it",
@@ -1753,12 +2356,12 @@
       },
       "rdfs:comment": [
         {
-          "@language": "en",
-          "@value": "This is the Italian application profile of the ontology on the digital atlas of paths of Italy. The paths can be historical, naturalistic, cultural and religious, they cross the country from north to south and represent a fundamental part of the slow tourism offer. The digital atlas of paths is nothing more than a container of routes and ways designed and built on the guidelines indicated by the ministerial directive and regulated - with the development of appropriate criteria - within the related Committee, inter-institutional coordination formed by MiBAC, Regions and Autonomous Provinces"
-        },
-        {
           "@language": "it",
           "@value": "Questo è il profilo applicativo italiano dell'ontologia sull'atlante digitale dei cammini d'italia. I cammini possono essere storici, naturalistici, culturali e religiosi, attraversano il Paese da nord a sud e rappresentano una parte fondamentale nell’offerta del turismo lento. L'atlante digitale dei cammini non è altro che un contenitore di percorsi e vie pensato e realizzato sulle linee guida indicate dalla direttiva ministeriale e regolamentato – con la messa a punto degli opportuni criteri – nell’ambito del Comitato Cammini, coordinamento inter-istituzionale formato da MiBAC, Regioni e Provincie autonome"
+        },
+        {
+          "@language": "en",
+          "@value": "This is the Italian application profile of the ontology on the digital atlas of paths of Italy. The paths can be historical, naturalistic, cultural and religious, they cross the country from north to south and represent a fundamental part of the slow tourism offer. The digital atlas of paths is nothing more than a container of routes and ways designed and built on the guidelines indicated by the ministerial directive and regulated - with the development of appropriate criteria - within the related Committee, inter-institutional coordination formed by MiBAC, Regions and Autonomous Provinces"
         }
       ],
       "rdfs:isDefinedBy": {
@@ -1774,6 +2377,1118 @@
           "@value": "Atlas of Paths Ontology - Italian Application Profile"
         }
       ]
+    },
+    {
+      "@id": "_:N80eb97413b32481aad92183319dcb4c9",
+      "@type": "owl:Restriction",
+      "owl:allValuesFrom": {
+        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/Path"
+      },
+      "owl:onProperty": {
+        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/encountersPath"
+      }
+    },
+    {
+      "@id": "admsapit:SemanticAsset",
+      "@type": "owl:Class"
+    },
+    {
+      "@id": "vcard:Organization",
+      "@type": "owl:Class"
+    },
+    {
+      "@id": "dcterms:license",
+      "@type": "owl:AnnotationProperty"
+    },
+    {
+      "@id": "_:N921bf35056f64a3d98e86798f7712c5e",
+      "@type": "owl:Restriction",
+      "owl:onDataRange": {
+        "@id": "_:Na4a1e771b1894939b01392ae7be70f72"
+      },
+      "owl:onProperty": {
+        "@id": "mu:value"
+      },
+      "owl:qualifiedCardinality": {
+        "@type": "xsd:nonNegativeInteger",
+        "@value": "1"
+      }
+    },
+    {
+      "@id": "route:hasAltRoute",
+      "@type": "owl:ObjectProperty"
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/AtlasOfPaths/hasNearbyPointOfInterest",
+      "@type": "owl:ObjectProperty",
+      "owl:inverseOf": {
+        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/isNearbyPointOfInterestOf"
+      },
+      "owl:versionInfo": [
+        {
+          "@language": "it",
+          "@value": "provvisoria"
+        },
+        {
+          "@language": "en",
+          "@value": "unstable"
+        }
+      ],
+      "rdfs:comment": [
+        {
+          "@language": "en",
+          "@value": "This object property connects a path stage with a point of interest nearby."
+        },
+        {
+          "@language": "en",
+          "@value": "Questa object property collega una tappa del cammino con un punto d'interesse nelle vicinanze."
+        }
+      ],
+      "rdfs:domain": {
+        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/PathStage"
+      },
+      "rdfs:label": [
+        {
+          "@language": "it",
+          "@value": "ha un punto d'interesse nelle vicinanze"
+        },
+        {
+          "@language": "en",
+          "@value": "has nearby point of interest"
+        }
+      ],
+      "rdfs:range": {
+        "@id": "poi:PointOfInterest"
+      }
+    },
+    {
+      "@id": "sm:hasWebSite",
+      "@type": "owl:ObjectProperty",
+      "rdfs:domain": {
+        "@id": "owl:Thing"
+      },
+      "rdfs:range": {
+        "@id": "sm:WebSite"
+      }
+    },
+    {
+      "@id": "_:Na4a1e771b1894939b01392ae7be70f72",
+      "@type": "rdfs:Datatype",
+      "owl:onDatatype": {
+        "@id": "xsd:double"
+      },
+      "owl:withRestrictions": {
+        "@list": [
+          {
+            "@id": "_:Ne842063df5f04c42815c06781bc506a0"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "https://w3id.org/italia/data/project/DAF",
+      "@type": [
+        "owl:NamedIndividual",
+        "admsapit:Project"
+      ],
+      "l0:name": {
+        "@language": "it",
+        "@value": "Data & Analytics Framework"
+      }
+    },
+    {
+      "@id": "_:N8dcba6aedaf945c2a7898d882b1789b4",
+      "@type": "owl:Restriction",
+      "owl:onProperty": {
+        "@id": "route:hasRoute"
+      },
+      "owl:someValuesFrom": {
+        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/Pathway"
+      }
+    },
+    {
+      "@id": "_:Nf5c90645a522419497d601cd493ee056",
+      "@type": "owl:Restriction",
+      "owl:onProperty": {
+        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/hasMaintainer"
+      },
+      "owl:someValuesFrom": {
+        "@id": "l0:Agent"
+      }
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/AtlasOfPaths/ServiceType",
+      "@type": "owl:Class",
+      "owl:versionInfo": [
+        {
+          "@language": "it",
+          "@value": "provvisoria"
+        },
+        {
+          "@language": "en",
+          "@value": "unstable"
+        }
+      ],
+      "rdfs:comment": [
+        {
+          "@language": "it",
+          "@value": "Questa classe descrive il tipo di servizio di supporto al camminatore lungo il percorso."
+        },
+        {
+          "@language": "en",
+          "@value": "This class describes the type of walker support service along the pathway."
+        }
+      ],
+      "rdfs:label": [
+        {
+          "@language": "it",
+          "@value": "Tipo di servizio di supporto"
+        },
+        {
+          "@language": "en",
+          "@value": "Support Service Type"
+        }
+      ],
+      "rdfs:subClassOf": {
+        "@id": "l0:Characteristic"
+      }
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/AtlasOfPaths/Pathway",
+      "@type": "owl:Class",
+      "owl:versionInfo": [
+        {
+          "@language": "it",
+          "@value": "stabile"
+        },
+        {
+          "@language": "en",
+          "@value": "stable"
+        }
+      ],
+      "rdfs:comment": [
+        {
+          "@language": "en",
+          "@value": "This class describes a pathway of a path in its purely physical meaning, which can be represented as an ordered sequence of georeferenced stages."
+        },
+        {
+          "@language": "it",
+          "@value": "Questa classe descrive un percorso di un cammino nella sua accezione prettamente fisica e rappresentabile come sequenza ordinata di tappe georeferenziate."
+        }
+      ],
+      "rdfs:label": [
+        {
+          "@language": "it",
+          "@value": "Percorso"
+        },
+        {
+          "@language": "en",
+          "@value": "Pathway"
+        }
+      ],
+      "rdfs:subClassOf": [
+        {
+          "@id": "_:Nf5c90645a522419497d601cd493ee056"
+        },
+        {
+          "@id": "_:N21fb5df745924c6d961d023cd6b02ece"
+        },
+        {
+          "@id": "_:N40d6130228954209ade3078203aaed0e"
+        },
+        {
+          "@id": "_:Nb9936e04da2b41c4a95beefe2fc458bc"
+        },
+        {
+          "@id": "_:Nd3c01b169bd64cddbcd8659a3624cdb6"
+        },
+        {
+          "@id": "_:N381a9042c5b34eeb85182021f346cb58"
+        },
+        {
+          "@id": "_:Nadb31145ffed426f91078cf272a3cb4e"
+        },
+        {
+          "@id": "route:Route"
+        }
+      ]
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/AtlasOfPaths/Naturalistic",
+      "@type": [
+        "owl:NamedIndividual",
+        "https://w3id.org/italia/onto/AtlasOfPaths/PathTheme"
+      ],
+      "owl:versionInfo": [
+        {
+          "@language": "it",
+          "@value": "provvisoria"
+        },
+        {
+          "@language": "en",
+          "@value": "unstable"
+        }
+      ],
+      "rdfs:comment": [
+        {
+          "@language": "en",
+          "@value": "This individual represents the definition of the type of theme associated with each path."
+        },
+        {
+          "@language": "it",
+          "@value": "Questo individuo rappresenta la definizione del tipo di tematica associata a ciascun cammino."
+        }
+      ],
+      "rdfs:label": [
+        {
+          "@language": "it",
+          "@value": "naturalistico"
+        },
+        {
+          "@language": "en",
+          "@value": "naturalistic"
+        }
+      ]
+    },
+    {
+      "@id": "_:N567126ee17e945489a337038c3a3135d",
+      "@type": "owl:Restriction",
+      "owl:onClass": {
+        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/Pathway"
+      },
+      "owl:onProperty": {
+        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/forPathway"
+      },
+      "owl:qualifiedCardinality": {
+        "@type": "xsd:nonNegativeInteger",
+        "@value": "1"
+      }
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/AtlasOfPaths/isSecurityLevelOf",
+      "@type": "owl:ObjectProperty",
+      "owl:versionInfo": [
+        {
+          "@language": "en",
+          "@value": "unstable"
+        },
+        {
+          "@language": "it",
+          "@value": "provvisoria"
+        }
+      ],
+      "rdfs:comment": [
+        {
+          "@language": "it",
+          "@value": "Proprietà inversa di hasSecurityLevel."
+        },
+        {
+          "@language": "en",
+          "@value": "Inverse object property of hasSecurityLevel."
+        }
+      ],
+      "rdfs:domain": {
+        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/SecurityLevel"
+      },
+      "rdfs:label": [
+        {
+          "@language": "it",
+          "@value": "è livello di sicurezza di"
+        },
+        {
+          "@language": "en",
+          "@value": "is security level of"
+        }
+      ],
+      "rdfs:range": {
+        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/Pathway"
+      }
+    },
+    {
+      "@id": "_:Nfa7a20a336c942dab8b49b6fab0d91a8",
+      "@type": "owl:Restriction",
+      "owl:allValuesFrom": {
+        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/Restaurant"
+      },
+      "owl:onProperty": {
+        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/hasNearbyRestaurant"
+      }
+    },
+    {
+      "@id": "admsapit:Project",
+      "@type": "owl:Class"
+    },
+    {
+      "@id": "vcard:Kind",
+      "@type": "owl:Class"
+    },
+    {
+      "@id": "route:isTripPlanOf",
+      "@type": "owl:ObjectProperty"
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/AtlasOfPaths/isNearbyPointOfInterestOf",
+      "@type": "owl:ObjectProperty",
+      "owl:versionInfo": [
+        {
+          "@language": "it",
+          "@value": "provvisoria"
+        },
+        {
+          "@language": "en",
+          "@value": "unstable"
+        }
+      ],
+      "rdfs:comment": [
+        {
+          "@language": "en",
+          "@value": "Inverse object property of hasNearbyPointOfInterest."
+        },
+        {
+          "@language": "it",
+          "@value": "Proprietà inversa di hasNearbyPointOfInterest."
+        }
+      ],
+      "rdfs:domain": {
+        "@id": "poi:PointOfInterest"
+      },
+      "rdfs:label": [
+        {
+          "@language": "en",
+          "@value": "is nearby point of interest of"
+        },
+        {
+          "@language": "it",
+          "@value": "è punto di interesse nelle vicinanze di"
+        }
+      ],
+      "rdfs:range": {
+        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/PathStage"
+      }
+    },
+    {
+      "@id": "l0:Object",
+      "@type": "owl:Class"
+    },
+    {
+      "@id": "_:N9fc3993fab744200966bd9befa044454",
+      "@type": "owl:Restriction",
+      "owl:onClass": {
+        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/Path"
+      },
+      "owl:onProperty": {
+        "@id": "route:isTripPlanOf"
+      },
+      "owl:qualifiedCardinality": {
+        "@type": "xsd:nonNegativeInteger",
+        "@value": "1"
+      }
+    },
+    {
+      "@id": "_:Nb24195610b0d44f7892b877db0138b1a",
+      "@type": "owl:Restriction",
+      "owl:onProperty": {
+        "@id": "l0:description"
+      },
+      "owl:someValuesFrom": {
+        "@id": "rdfs:Literal"
+      }
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/AtlasOfPaths/isQuantifiedPathwayPavingOf",
+      "@type": "owl:ObjectProperty",
+      "owl:versionInfo": [
+        {
+          "@language": "en",
+          "@value": "unstable"
+        },
+        {
+          "@language": "it",
+          "@value": "provvisoria"
+        }
+      ],
+      "rdfs:comment": [
+        {
+          "@language": "en",
+          "@value": "Inverse object property of hasQuantifiedPathwayPaving."
+        },
+        {
+          "@language": "it",
+          "@value": "Proprietà inversa di hasQuantifiedPathwayPaving."
+        }
+      ],
+      "rdfs:domain": {
+        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/QuantifiedPathwayPaving"
+      },
+      "rdfs:label": [
+        {
+          "@language": "it",
+          "@value": "è quantificata pavimentazione del percorso di"
+        },
+        {
+          "@language": "en",
+          "@value": "is quantified pathway paving of"
+        }
+      ],
+      "rdfs:range": {
+        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/Path"
+      }
+    },
+    {
+      "@id": "dcatapit:Agent",
+      "@type": "owl:Class"
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/AtlasOfPaths/withPaving",
+      "@type": "owl:ObjectProperty",
+      "owl:versionInfo": [
+        {
+          "@language": "en",
+          "@value": "unstable"
+        },
+        {
+          "@language": "it",
+          "@value": "provvisoria"
+        }
+      ],
+      "rdfs:comment": [
+        {
+          "@language": "it",
+          "@value": "Questa object property mette in relazione una specifica pavimentazione, ovvero l'asfalto, con la sua quantità in un certo percorso."
+        },
+        {
+          "@language": "en",
+          "@value": "This object property correlates a specific paving, i.e. asphalt, with its quantity in a certain path."
+        }
+      ],
+      "rdfs:domain": {
+        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/QuantifiedPathwayPaving"
+      },
+      "rdfs:label": [
+        {
+          "@language": "en",
+          "@value": "with paving"
+        },
+        {
+          "@language": "it",
+          "@value": "con pavimentazione"
+        }
+      ],
+      "rdfs:range": {
+        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/Paving"
+      }
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/AtlasOfPaths/Horseback",
+      "@type": [
+        "https://w3id.org/italia/onto/AtlasOfPaths/TravellingMethod",
+        "owl:NamedIndividual"
+      ],
+      "owl:versionInfo": [
+        {
+          "@language": "it",
+          "@value": "provvisoria"
+        },
+        {
+          "@language": "en",
+          "@value": "unstable"
+        }
+      ],
+      "rdfs:comment": [
+        {
+          "@language": "en",
+          "@value": "This individual represents a type of possible travel method along a certain pathway."
+        },
+        {
+          "@language": "it",
+          "@value": "Questo individuo rappresenta un tipo di metodo di viaggio possibile lungo un certo percorso."
+        }
+      ],
+      "rdfs:label": [
+        {
+          "@language": "en",
+          "@value": "horseback"
+        },
+        {
+          "@language": "it",
+          "@value": "a cavallo"
+        }
+      ]
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/AtlasOfPaths/QuantifiedPathwayPaving",
+      "@type": "owl:Class",
+      "owl:versionInfo": [
+        {
+          "@language": "en",
+          "@value": "stable"
+        },
+        {
+          "@language": "it",
+          "@value": "stabile"
+        }
+      ],
+      "rdfs:comment": [
+        {
+          "@language": "it",
+          "@value": "Questa classe rappresenta la relazione n-aria capace di quantificare la percentuale di una specifica pavimentazione, ovvero l'asfalto, di un percorso."
+        },
+        {
+          "@language": "en",
+          "@value": "This class represents the n-air relation able to quantify the percentage of a pathway specific paving, i.e. the asphalt."
+        }
+      ],
+      "rdfs:label": [
+        {
+          "@language": "en",
+          "@value": "Quantified Pathway Paving"
+        },
+        {
+          "@language": "it",
+          "@value": "Quantificazione della pavimentazione del percorso"
+        }
+      ],
+      "rdfs:subClassOf": [
+        {
+          "@id": "_:N567126ee17e945489a337038c3a3135d"
+        },
+        {
+          "@id": "_:Na5ba25bce7514f94905e4900e7f82f98"
+        },
+        {
+          "@id": "_:Nc351f928251144d5a0749267a4966c0b"
+        },
+        {
+          "@id": "l0:Object"
+        }
+      ]
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/AtlasOfPaths/isMaintainerOf",
+      "@type": "owl:ObjectProperty",
+      "owl:versionInfo": [
+        {
+          "@language": "en",
+          "@value": "unstable"
+        },
+        {
+          "@language": "it",
+          "@value": "provvisoria"
+        }
+      ],
+      "rdfs:comment": [
+        {
+          "@language": "it",
+          "@value": "Proprietà inversa di hasMaintainer."
+        },
+        {
+          "@language": "en",
+          "@value": "Inverse object property of hasMaintainer"
+        }
+      ],
+      "rdfs:domain": {
+        "@id": "l0:Agent"
+      },
+      "rdfs:label": [
+        {
+          "@language": "it",
+          "@value": "è manutentore di"
+        },
+        {
+          "@language": "en",
+          "@value": "is maintainer of"
+        }
+      ],
+      "rdfs:range": {
+        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/Pathway"
+      }
+    },
+    {
+      "@id": "l0:hasFirstMember",
+      "@type": "owl:ObjectProperty",
+      "rdfs:subPropertyOf": {
+        "@id": "l0:hasLastMember"
+      }
+    },
+    {
+      "@id": "vcard:hasEmail",
+      "@type": "owl:AnnotationProperty"
+    },
+    {
+      "@id": "_:Nb24c3f477ec74bad9b757a5f1e80507b",
+      "@type": "owl:Restriction",
+      "owl:onClass": {
+        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/TravellingMethod"
+      },
+      "owl:onProperty": {
+        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/hasTravellingMethod"
+      },
+      "owl:qualifiedCardinality": {
+        "@type": "xsd:nonNegativeInteger",
+        "@value": "1"
+      }
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/AtlasOfPaths/Path",
+      "@type": "owl:Class",
+      "owl:disjointWith": [
+        {
+          "@id": "https://w3id.org/italia/onto/AtlasOfPaths/TravellingMethod"
+        },
+        {
+          "@id": "route:TripPlan"
+        },
+        {
+          "@id": "route:Route"
+        }
+      ],
+      "owl:versionInfo": [
+        {
+          "@language": "it",
+          "@value": "stabile"
+        },
+        {
+          "@language": "en",
+          "@value": "stable"
+        }
+      ],
+      "rdfs:comment": [
+        {
+          "@language": "it",
+          "@value": "Questa classe rappresenta il concetto di cammino che ricomprende: la sua tematica d'interesse, i suoi diversi percorsi (principale, alternativo e deviazione), i cammini che lo incrociano, gli enti di gestione e manutenzione, il sito web."
+        },
+        {
+          "@language": "en",
+          "@value": "This class represents the concept of a path that includes: its theme of interest, its different pathways (main, alternative and deviation), its encountered paths, its management and maintenance's entities, its website."
+        }
+      ],
+      "rdfs:label": [
+        {
+          "@language": "it",
+          "@value": "Cammino"
+        },
+        {
+          "@language": "en",
+          "@value": "Path"
+        }
+      ],
+      "rdfs:subClassOf": [
+        {
+          "@id": "_:Nb24195610b0d44f7892b877db0138b1a"
+        },
+        {
+          "@id": "_:N9642bb060af247f79e81fd395f42cc35"
+        },
+        {
+          "@id": "_:N571fbd009c23499da8fc94c4a9e2936f"
+        },
+        {
+          "@id": "_:Ndbd06874c0014919a48d4573ea8c18cc"
+        },
+        {
+          "@id": "_:N237cb58d4d514a4a8f2bac76f6553af1"
+        },
+        {
+          "@id": "_:Nc74f887eb27a42e8998431d7af2e5d94"
+        },
+        {
+          "@id": "l0:Description"
+        },
+        {
+          "@id": "_:N8dcba6aedaf945c2a7898d882b1789b4"
+        },
+        {
+          "@id": "_:N69b93c6cc48e490595eb72b71f0d976c"
+        },
+        {
+          "@id": "_:N4eeb8c49a767478983a2ac61f73b03c1"
+        },
+        {
+          "@id": "_:N5f5adcead544435e801879183d879ee2"
+        },
+        {
+          "@id": "_:N80eb97413b32481aad92183319dcb4c9"
+        },
+        {
+          "@id": "_:N23c6ec2f26be4d8999c209ef1b80aa04"
+        }
+      ]
+    },
+    {
+      "@id": "_:N69b93c6cc48e490595eb72b71f0d976c",
+      "@type": "owl:Restriction",
+      "owl:onProperty": {
+        "@id": "sm:hasWebSite"
+      },
+      "owl:someValuesFrom": {
+        "@id": "sm:WebSite"
+      }
+    },
+    {
+      "@id": "cov:Organization",
+      "@type": "owl:Class",
+      "rdfs:subClassOf": {
+        "@id": "l0:Agent"
+      }
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/AtlasOfPaths/SecurityLevel",
+      "@type": "owl:Class",
+      "owl:versionInfo": [
+        {
+          "@language": "it",
+          "@value": "provvisoria"
+        },
+        {
+          "@language": "en",
+          "@value": "unstable"
+        }
+      ],
+      "rdfs:comment": [
+        {
+          "@language": "it",
+          "@value": "Questa classe rappresenta le informazioni relative al livello di sicurezza del percorso."
+        },
+        {
+          "@language": "en",
+          "@value": "This class represents information related to the pathway security level."
+        }
+      ],
+      "rdfs:label": [
+        {
+          "@language": "en",
+          "@value": "Security Level"
+        },
+        {
+          "@language": "it",
+          "@value": "Livello di sicurezza"
+        }
+      ],
+      "rdfs:subClassOf": {
+        "@id": "l0:Characteristic"
+      }
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/AtlasOfPaths/hasSignposting",
+      "@type": "owl:ObjectProperty",
+      "owl:inverseOf": {
+        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/isSignpostingOf"
+      },
+      "owl:versionInfo": [
+        {
+          "@language": "en",
+          "@value": "stable"
+        },
+        {
+          "@language": "it",
+          "@value": "stabile"
+        }
+      ],
+      "rdfs:comment": [
+        {
+          "@language": "it",
+          "@value": "Questa object property collega un'entità con la sua segnaletica."
+        },
+        {
+          "@language": "en",
+          "@value": "This object property connects an entity with its signposting."
+        }
+      ],
+      "rdfs:domain": {
+        "@id": "owl:Thing"
+      },
+      "rdfs:label": [
+        {
+          "@language": "en",
+          "@value": "has signposting"
+        },
+        {
+          "@language": "it",
+          "@value": "ha segnaletica"
+        }
+      ],
+      "rdfs:range": {
+        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/Signposting"
+      }
+    },
+    {
+      "@id": "_:Nd256940141884c3a9f19b111f6890d1b",
+      "@type": "owl:Restriction",
+      "owl:allValuesFrom": {
+        "@id": "poi:PointOfInterest"
+      },
+      "owl:onProperty": {
+        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/hasNearbyPointOfInterest"
+      }
+    },
+    {
+      "@id": "http://spcdata.digitpa.gov.it/browse/page/Amministrazione/agid",
+      "@type": [
+        "foaf:Agent",
+        "owl:NamedIndividual",
+        "dcatapit:Agent"
+      ],
+      "dcterms:identifier": "agid",
+      "foaf:name": [
+        {
+          "@language": "it",
+          "@value": "Agenzia per l'Italia Digitale"
+        },
+        {
+          "@language": "en",
+          "@value": "Italian Digital Agency"
+        }
+      ]
+    },
+    {
+      "@id": "https://w3id.org/italia/data/project/AtlanteCammini",
+      "@type": [
+        "owl:NamedIndividual",
+        "admsapit:Project"
+      ],
+      "l0:name": {
+        "@language": "it",
+        "@value": "Atlante dei Cammini d'Italia"
+      }
+    },
+    {
+      "@id": "l0:Characteristic",
+      "@type": "owl:Class"
+    },
+    {
+      "@id": "poi:PointOfInterest",
+      "@type": "owl:Class",
+      "rdfs:subClassOf": {
+        "@id": "l0:Entity"
+      }
+    },
+    {
+      "@id": "sm:WebSite",
+      "@type": "owl:Class",
+      "rdfs:subClassOf": {
+        "@id": "l0:Object"
+      }
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/AtlasOfPaths/Religious",
+      "@type": [
+        "https://w3id.org/italia/onto/AtlasOfPaths/PathTheme",
+        "owl:NamedIndividual"
+      ],
+      "owl:versionInfo": [
+        {
+          "@language": "en",
+          "@value": "unstable"
+        },
+        {
+          "@language": "it",
+          "@value": "provvisoria"
+        }
+      ],
+      "rdfs:comment": [
+        {
+          "@language": "it",
+          "@value": "Questo individuo rappresenta la definizione del tipo di tematica associata a ciascun cammino."
+        },
+        {
+          "@language": "en",
+          "@value": "This individual represents the definition of the type of theme associated with each path."
+        }
+      ],
+      "rdfs:label": [
+        {
+          "@language": "en",
+          "@value": "religious"
+        },
+        {
+          "@language": "it",
+          "@value": "religioso"
+        }
+      ]
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/AtlasOfPaths/hasGovernanceOrgan",
+      "@type": "owl:ObjectProperty",
+      "owl:inverseOf": {
+        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/isGovernanceOrganOf"
+      },
+      "owl:versionInfo": [
+        {
+          "@language": "en",
+          "@value": "unstable"
+        },
+        {
+          "@language": "it",
+          "@value": "provvisoria"
+        }
+      ],
+      "rdfs:comment": [
+        {
+          "@language": "en",
+          "@value": "This object property connects a path with its governance organ."
+        },
+        {
+          "@language": "it",
+          "@value": "Questa object property collega un cammino con il suo organo di governo."
+        }
+      ],
+      "rdfs:domain": {
+        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/Path"
+      },
+      "rdfs:label": [
+        {
+          "@language": "it",
+          "@value": "ha organo di governo"
+        },
+        {
+          "@language": "en",
+          "@value": "has governance organ"
+        }
+      ],
+      "rdfs:range": {
+        "@id": "cov:Organization"
+      },
+      "rdfs:subPropertyOf": {
+        "@id": "cov:hasOrganization"
+      }
+    },
+    {
+      "@id": "_:N70006a47939941bc9e83a0a1cba1bc8a",
+      "@type": "owl:Class",
+      "owl:intersectionOf": {
+        "@list": [
+          {
+            "@id": "_:N6c7a8b22d54e4e29a290dfbe5a70026d"
+          },
+          {
+            "@id": "_:N40c4ad5dc419450b849f73fc0961b43e"
+          },
+          {
+            "@id": "_:N921bf35056f64a3d98e86798f7712c5e"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/AtlasOfPaths/isSupportServiceOf",
+      "@type": "owl:ObjectProperty",
+      "owl:versionInfo": [
+        {
+          "@language": "en",
+          "@value": "unstable"
+        },
+        {
+          "@language": "it",
+          "@value": "provvisoria"
+        }
+      ],
+      "rdfs:comment": [
+        {
+          "@language": "en",
+          "@value": "Inverse property of hasSupportService."
+        },
+        {
+          "@language": "it",
+          "@value": "Proprietà inversa di hasSupportService."
+        }
+      ],
+      "rdfs:domain": {
+        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/SupportService"
+      },
+      "rdfs:label": [
+        {
+          "@language": "it",
+          "@value": "è servizio di supporto di"
+        },
+        {
+          "@language": "en",
+          "@value": "is support service of"
+        }
+      ],
+      "rdfs:range": {
+        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/PathStage"
+      }
+    },
+    {
+      "@id": "_:Nd3c01b169bd64cddbcd8659a3624cdb6",
+      "@type": "owl:Restriction",
+      "owl:allValuesFrom": {
+        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/PathStage"
+      },
+      "owl:onProperty": {
+        "@id": "l0:hasFirstMember"
+      }
+    },
+    {
+      "@id": "mu:MeasurementUnit",
+      "@type": "owl:Class",
+      "rdfs:subClassOf": {
+        "@id": "l0:Characteristic"
+      }
+    },
+    {
+      "@id": "cov:hasOrganization",
+      "@type": "owl:ObjectProperty",
+      "owl:inverseOf": {
+        "@id": "cov:isOrganizationOf"
+      }
+    },
+    {
+      "@id": "acco:Accommodation",
+      "@type": "owl:Class",
+      "rdfs:subClassOf": {
+        "@id": "poi:PointOfInterest"
+      }
+    },
+    {
+      "@id": "cov:isOrganizationOf",
+      "@type": "owl:ObjectProperty"
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/AtlasOfPaths/hasNearbyRestaurant",
+      "@type": "owl:ObjectProperty",
+      "owl:inverseOf": {
+        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/isNearbyRestaurantOf"
+      },
+      "owl:versionInfo": [
+        {
+          "@language": "it",
+          "@value": "provvisoria"
+        },
+        {
+          "@language": "en",
+          "@value": "unstable"
+        }
+      ],
+      "rdfs:comment": [
+        {
+          "@language": "it",
+          "@value": "Questa object property collega una tappa del cammino con un ristorante nelle vicinanze."
+        },
+        {
+          "@language": "en",
+          "@value": "This object property connects a path stage with a nearby restaurant."
+        }
+      ],
+      "rdfs:domain": {
+        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/PathStage"
+      },
+      "rdfs:label": [
+        {
+          "@language": "it",
+          "@value": "ha un ristorante nelle vicinanze"
+        },
+        {
+          "@language": "en",
+          "@value": "has nearby restaurant"
+        }
+      ],
+      "rdfs:range": {
+        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/Restaurant"
+      },
+      "rdfs:subPropertyOf": {
+        "@id": "https://w3id.org/italia/onto/AtlasOfPaths/hasNearbyPointOfInterest"
+      }
     }
   ]
 }
