@@ -1,8 +1,8 @@
 ### Vocabolario Controllato del Titolario di Classificazione per le Università Italiane (TITULUS)
 
-*Il titolario di classificazione, secondo la legge italiana, è uno strumento dell'archivio corrente, che serve per dividere la documentazione prodotta o ricevuta da un soggetto in settori e categorie, schematizzando in maniera logica le sue competenze e funzioni.
+*Il titolario di classificazione, secondo la legge italiana, è uno strumento dell'archivio corrente, che serve per dividere la documentazione prodotta o ricevuta da un soggetto in settori e categorie, schematizzando in maniera logica le sue competenze e funzioni.*
 
-La predisposizione di un titolario è necessaria per smistare i documenti ai vari uffici che compongono un ente e per ricomporla, a fine anno, quando vengono recuperate le pratiche chiuse e trasferite nell'archivio di deposito. Il titolario è necessario per l'archiviazione in Italia per tutti gli enti dotati di registro di protocollo (gli enti pubblici), fin dalla circolare del 1 marzo 1897, n. 17100/2* [Wikipedia](https://it.wikipedia.org/wiki/Titolario_di_classificazione)
+*La predisposizione di un titolario è necessaria per smistare i documenti ai vari uffici che compongono un ente e per ricomporla, a fine anno, quando vengono recuperate le pratiche chiuse e trasferite nell'archivio di deposito. Il titolario è necessario per l'archiviazione in Italia per tutti gli enti dotati di registro di protocollo (gli enti pubblici), fin dalla circolare del 1 marzo 1897, n. 17100/2* [Wikipedia](https://it.wikipedia.org/wiki/Titolario_di_classificazione)
 
 
 A seguito della riforma del settore universitario (legge 240/2010 e nuovi statuti), si è reso necessario revisionare il piano di classificazione delle università italiane Titulus 97, a suo tempo elaborato da un gruppo di lavoro interistituzionale, al fine di adattarlo alle modifiche intervenute.
