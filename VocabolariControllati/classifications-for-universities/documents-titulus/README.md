@@ -2,7 +2,7 @@
 
 Il titolario è l’insieme delle voci logiche gerarchicamente strutturate e articolate in gradi divisionali (titolo/classe/eventuale sottoclasse) stabilite sulla base delle funzioni dell’ente. Ciascun documento, registrato in modalità arrivo, partenza, interno, anche non protocollato, è classificato in ordine alla corrispondenza tra il suo contenuto e la relativa voce attribuibile, desunta dal titolario e successivamente fascicolato. ([Fonte Procedamus](http://www.procedamus.it/))
 
-Il titolario di classificazione modellato in questo documento si riferisce a quello approvato dal Ministero per i Beni e le Attività Culturali, con nota del 14/12/2012 prot.18708, relativa all'aggiornamento del piano di classificazione delle Università italiane Titulus97 (Edizione 8, in vigore dal 1° gennaio 2013) ()[Titolario](http://unidoc.coinfo.net/joomla/titolario2013/DGA%20-%20Approvazione%20titolario%202012.pdf))
+Il titolario di classificazione modellato in questo documento si riferisce a quello approvato dal Ministero per i Beni e le Attività Culturali, con nota del 14/12/2012 prot.18708, relativa all'aggiornamento del piano di classificazione delle Università italiane Titulus97 (Edizione 8, in vigore dal 1° gennaio 2013) ([Titolario](http://unidoc.coinfo.net/joomla/titolario2013/DGA%20-%20Approvazione%20titolario%202012.pdf))
 
 A seguito della riforma del settore universitario (legge 240/2010 e nuovi statuti), si è reso necessario revisionare il piano di classificazione delle università italiane Titulus 97, a suo tempo elaborato da un gruppo di lavoro interistituzionale, al fine di adattarlo alle modifiche intervenute.
 
