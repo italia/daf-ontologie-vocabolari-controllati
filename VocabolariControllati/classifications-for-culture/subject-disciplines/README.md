@@ -89,6 +89,18 @@ Le categorie del III livello sono state individuate a partire dal Thesaurus Pico
 I termini mutuati da Pico e collegati gerarchicamente al sopra-livello arti applicate sono stati integrati con altri termini ripresi dal Nuovo Soggettario, collegati gerarchicamente al termine arti decorative, in quanto categorie affini.
 
 
+## Traduzione voci in inglese
+
+La versione inglese dei termini del vocabolario ottenuta nel seguente modo:
+
+* per le voci del MIUR, usando la [traduzione inglese](https://www.cun.it/uploads/storico/settori_scientifico_disciplinari_english.pdf) presente sul sito del CUN (Consiglio Universitario Nazionale);
+* per le voci del tesauro PICO, usando il file [RDF/XML](http://www.culturaitalia.it/pico/thesaurus/4.3/thesaurus_4.3.0.skos.xml)
+
+Nel processo di mapping automatico, su un totale di 447 voci del vocabolario controllato, si è trovata perfetta corrispondenza in 422 voci, con 9 duplicazioni, cioè in 9 voci sono state inserite due traduzioni distinte in inglese, una da fonte MIUR e una da fonte PICO, per un totale di 413 traduzioni singole.
+
+Le 34 voci rimanenti sono state tradotte manualmente.
+
+
 ## Appendice 1 - Discrepanze tra elenco MIUR e Thesaurus Pico
 
 Lista URI Pico che non appartengono alle stesse macrocategorie di MIUR:
