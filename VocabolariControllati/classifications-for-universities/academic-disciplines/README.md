@@ -1,6 +1,6 @@
 I settori scientifico-disciplinari (S.S.D.) sono una distinzione disciplinare utilizzata in Italia per organizzare l'insegnamento superiore.
 I settori sono introdotti dalla legge n. 341 del 19 novembre 1990, anche se un raggruppamento per aree tematiche esisteva già dal 1973.
-I settori attuali sono stabiliti dal decreto ministeriale n. 855 del 30 ottobre 2015 e sono in vigore dal 20 novembre 2015, data di pubblicazione sulla Gazzetta Ufficiale.
+I settori attuali sono stabiliti dal decreto ministeriale n. [855 del 30 ottobre 2015](http://attiministeriali.miur.it/anno-2015/ottobre/dm-30102015.aspx) e sono in vigore dal 20 novembre 2015, data di pubblicazione sulla Gazzetta Ufficiale.
 
 Il D.M. 855 del 13/10/2015 definisce la seguente struttura:
 
@@ -8,7 +8,7 @@ Il D.M. 855 del 13/10/2015 definisce la seguente struttura:
 2) Settori Concorsuali (SC)
 3) Settori Scientifico disciplinari (SSD)
 
-# Allegati
+### Allegati
 * Allegato A - [Tabella Macrosettori, Settori Concorsuali e Settori Scientifico-disciplinari](http://attiministeriali.miur.it/media/265754/allegato_a.pdf)
 * Allegato B - [Declaratorie dei settori concorsuali](http://attiministeriali.miur.it/media/265757/allegato_b.pdf)
 * Allegato D - [Tabella Macrosettori, Settori Concorsuali e Settori Scientifico-disciplinari - **versione inglese**](http://attiministeriali.miur.it/media/265763/allegato_d.pdf)
