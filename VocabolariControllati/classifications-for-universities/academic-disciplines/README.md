@@ -15,11 +15,11 @@ Il D.M. 855 del 13/10/2015 definisce la seguente struttura:
 
 A sua volta i Macrosettori sono suddivisi per Aree definite dal Consorzio Universitario Nazionale ([CUN](https://www.cun.it)), per cui la tassonomia completa sarà a 4 livelli.
 
-**Livello 1**: Aree (CUN)
-**Livello 2**: Macrosettori
-**Livello 3**: Settori Concorsuali
-**Livello 4**: Settori Scientifico disciplinari
+* **Livello 1**: Aree (CUN)
+* **Livello 2**: Macrosettori
+* **Livello 3**: Settori Concorsuali
+* **Livello 4**: Settori Scientifico disciplinari
 
 [Documentazione CUN](https://www.cun.it/uploads/4079/Allegato_CAcademicFieldsandDisciplines.pdf?v=)
 
-Una rappresentazione completa di tutti i livelli è visibile in questa [pagina] (https://it.wikipedia.org/wiki/Settore_scientifico-disciplinare).
+Una rappresentazione completa di tutti i livelli è visibile in questa [pagina](https://it.wikipedia.org/wiki/Settore_scientifico-disciplinare).
