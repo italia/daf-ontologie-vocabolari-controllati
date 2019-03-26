@@ -1,0 +1,142 @@
+
+@prefix: <https://w3id.org/italia/onto/Transparency/> .
+
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xkos: <http://rdf-vocabulary.ddialliance.org/xkos#> .
+
+@prefix adms: <http://www.w3.org/ns/adms#> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix vcard: <http://www.w3.org/2006/vcard/ns#> . 
+
+@prefix admsapit: <https://w3id.org/italia/onto/ADMS/> . 
+@prefix dcatapit: <http://dati.gov.it/onto/dcatapit#> .
+@prefix clvapit: <https://w3id.org/italia/onto/CLV/> .
+@prefix covapit: <https://w3id.org/italia/onto/COV/> .
+@prefix cpsvapit: <https://w3id.org/italia/onto/CPSV/> .
+@prefix smapit: <https://w3id.org/italia/onto/SM/> .
+@prefix tiapit: <https://w3id.org/italia/onto/TI/> .
+@prefix l0: <https://w3id.org/italia/onto/l0/> .
+
+@prefix onto: <https://w3id.org/italia/onto/Transparency/> .
+
+@base <https://w3id.org/italia/onto/Transparency/> .
+
+
+<https://w3id.org/italia/onto/Transparency/> a owl:Ontology ;
+	.
+
+
+	
+#### ESEMPI
+	
+
+:res-01 a :Content ;
+	rdfs:label "CV Elisabetta Trenta" ;
+	tiapit:issued "2019-01-09" ;
+	tiapit:modified "2019-01-09" ;
+	:sourceURL "https://www.difesa.it/Il_Ministro/Pagine/Biografia.aspx" ;
+	:comply :cnt-obb-01 ;
+	:hasSubject :subj-01 ;
+	:publisher :min-dif ;
+	.
+	
+:res-02 a :Content ;
+	rdfs:label "Atto di nomina di Elisabetta Trenta" ;
+	tiapit:issued "2019-01-09" ;
+	tiapit:modified "2019-01-09" ;
+	:sourceURL "https://www.difesa.it/Amministrazionetrasparente/direttacollaborazioneministro/Pagine/il_ministro.aspx" ;
+	:comply :cnt-obb-02 ;
+	:hasSubject :subj-01 ;
+	:publisher :min-dif ;
+	.
+		
+
+:subj-01 a :Entity ;
+	rdfs:label "titolare: ministro della difesa Elisabetta Trenta" ;
+	:refersTo :p1 ;
+	:isObjectOfObligation :obb-01 ;
+	.	
+
+	
+#### CONTENUTI OBBLIGO
+
+:cnt-obb-01 a :ObligationContent ;
+	rdfs:label "curriculum vitae (incarico politico)" ;
+	:accrualPeriodicity <http://publications.europa.eu/resource/authority/frequency/CONT> ;
+	:regulationReference "Art. 14, c. 1, lett. b), d.lgs. n. 33/2013" ;
+	.
+	
+:cnt-obb-02 a :ObligationContent ;
+	rdfs:label "atto di nomina o di proclamazione" ;
+	:accrualPeriodicity <http://publications.europa.eu/resource/authority/frequency/CONT> ;
+	:regulationReference "Art. 14, c. 1, lett. a), d.lgs. n. 33/2013" ;
+	.
+	
+	
+:obb-01 a :ObbligoTrasparenza ;
+	rdfs:label "titolari di incarichi politici" ;
+	:regulationReference "Art. 14, co. 1, del dlgs n. 33/2013 " ;
+	:hasObligationContent :cnt-obb-01 ;
+	:hasTransparencySubSection <https://w3id.org/italia/controlled-vocabulary/classifications-for-trasparency/transparency-titulus/0201> ;	
+	:isAppliedTo :min-dif ;
+	.
+	
+	
+#### agents
+
+:min-dif a covapit:Organization ;
+	rdfs:label "Ministero della Difesa" ;
+	foaf:site "https://www.difesa.it/Pagine/default.aspx" ;
+	.
+	
+:p1 a foaf:Person ;
+	rdfs:label "Elisabetta Trenta";
+	foaf:firstName "Elisabetta" ;
+	foaf:lastName "Trenta" ;
+	.
+	
+
+
+#### tassonomia SKOS
+
+<https://w3id.org/italia/controlled-vocabulary/classifications-for-trasparency/0201> a skos:Concept, :TransparencyTitulus ;
+	skos:notation "02.01" ;
+	dct:identifier "02.01" ;
+	skos:broader :02  ;
+	skos:prefLabel "Titolari di incarichi politici, di amministrazione, di direzione o di governo"@it ;
+	# skos:prefLabel "Governing bodies"@en ;
+	skos:prefLabel "Political and administrative bodies"@en ;
+	skos:prefLabel "Inhaber politischer Ämter"@de ;
+	skos:definition "Titolari di incarichi politici, di amministrazione, di direzione o di governo"@it ;
+	skos:scopeNote "Art. 13, c. 1, lett. a" ;
+	skos:scopeNote "Art. 14" ;
+	clvapit:hasRankOrder 2 ;
+	skos:inScheme <https://w3id.org/italia/controlled-vocabulary/classifications-for-trasparency> 
+.
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+
+
+
