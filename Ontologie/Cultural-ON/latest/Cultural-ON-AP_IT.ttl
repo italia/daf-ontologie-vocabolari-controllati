@@ -25,7 +25,7 @@
 @base <http://dati.beniculturali.it/cis> .
 
 <http://dati.beniculturali.it/cis> rdf:type owl:Ontology ;
-                                    owl:versionIRI : ;
+                                    owl:versionIRI  <http://dati.beniculturali.it/cis/3.2>;
                                     owl:imports <https://w3id.org/italia/onto/TI> ,
                                                 <https://w3id.org/italia/onto/POT> ,
                                                 <https://w3id.org/italia/RO> ,
@@ -616,7 +616,11 @@ tiapit:atTime rdf:type owl:ObjectProperty ;
 ###  http://dati.beniculturali.it/cis/altCISName
 :altCISName rdf:type owl:DatatypeProperty ;
             rdfs:subPropertyOf l0:name ;
-            rdfs:domain :CISNameInTime ;
+            rdfs:domain [ rdf:type owl:Class ;
+                          owl:unionOf ( :CISNameInTime
+                                        :CulturalInstituteOrSite
+                                      )
+                        ] ;
             rdfs:range rdfs:Literal ;
             rdfs:comment "Property used to associate the situation name in time with the alternative name of the cultural institute or site"@en ,
                          "Proprietà utilizzata per associare la situazione name in time a una denominazione alternativa dell'istituto e luogo della cultura."@it ;
