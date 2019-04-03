@@ -28,7 +28,7 @@
     {
       "@id": "clvapit:District",
       "@type": "owl:Class",
-      "owl:equivalentClass": {
+      "owl:subClass": {
         "@id": "skos:Concept"
       },
       "rdfs:isDefinedBy": {
@@ -60,8 +60,8 @@
       }
     },
     {
-      "@id": "locn:geometry",
-      "@type": "owl:ObjectProperty"
+      "@id": "ad:Address",
+      "@type": "owl:Class"
     },
     {
       "@id": "clvapit:hasGeometry",
@@ -104,7 +104,7 @@
     {
       "@id": "clvapit:City",
       "@type": "owl:Class",
-      "owl:equivalentClass": {
+      "owl:subClass": {
         "@id": "skos:Concept"
       },
       "rdfs:isDefinedBy": {
@@ -116,10 +116,10 @@
       "@type": "owl:Class",
       "owl:subClassOf": [
         {
-          "@id": "gsp:Geometry"
+          "@id": "locn:Geometry"
         },
         {
-          "@id": "locn:Geometry"
+          "@id": "gsp:Geometry"
         }
       ],
       "rdfs:isDefinedBy": {
@@ -137,7 +137,7 @@
     {
       "@id": "clvapit:Region",
       "@type": "owl:Class",
-      "owl:equivalentClass": {
+      "owl:subClass": {
         "@id": "skos:Concept"
       },
       "rdfs:isDefinedBy": {
@@ -155,8 +155,14 @@
       }
     },
     {
-      "@id": "au:AdministrativeUnit",
-      "@type": "owl:Class"
+      "@id": "clvapit:StreetToponym",
+      "@type": "owl:Class",
+      "owl:subClassOf": {
+        "@id": "ad:ThoroughfareName"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "clvapit:"
+      }
     },
     {
       "@id": "ad:parentAddress",
@@ -167,24 +173,18 @@
       "@type": "owl:Class"
     },
     {
-      "@id": "clvapit:Identifier",
-      "@type": "owl:Class",
-      "owl:subClassOf": {
-        "@id": "gn:Code"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "clvapit:"
-      }
+      "@id": "skos:Concept",
+      "@type": "owl:Class"
     },
     {
       "@id": "gn:Feature",
       "@type": "owl:Class"
     },
     {
-      "@id": "clvapit:AddressArea",
-      "@type": "owl:Class",
-      "owl:subClassOf": {
-        "@id": "ad:AddressAreaName"
+      "@id": "clvapit:lat",
+      "@type": "owl:DatatypeProperty",
+      "owl:equivalentProperty": {
+        "@id": "geo:lat"
       },
       "rdfs:isDefinedBy": {
         "@id": "clvapit:"
@@ -205,7 +205,7 @@
     {
       "@id": "clvapit:Country",
       "@type": "owl:Class",
-      "owl:equivalentClass": {
+      "owl:subClass": {
         "@id": "skos:Concept"
       },
       "rdfs:isDefinedBy": {
@@ -215,6 +215,16 @@
     {
       "@id": "gsp:hasSerialization",
       "@type": "owl:DatatypeProperty"
+    },
+    {
+      "@id": "clvapit:Identifier",
+      "@type": "owl:Class",
+      "owl:subClassOf": {
+        "@id": "gn:Code"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "clvapit:"
+      }
     },
     {
       "@id": "locn:address",
@@ -240,35 +250,9 @@
       }
     },
     {
-      "@id": "geo:lat",
-      "@type": "owl:DatatypeProperty"
-    },
-    {
-      "@id": "locn:fullAddress",
-      "@type": "owl:DatatypeProperty"
-    },
-    {
-      "@id": "clvapit:hasAddressComponent",
-      "@type": "owl:ObjectProperty",
-      "owl:subPropertyOf": {
-        "@id": "ad:Address.component"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "clvapit:"
-      }
-    },
-    {
-      "@id": "locn:location",
-      "@type": "owl:ObjectProperty"
-    },
-    {
       "@id": "https://w3id.org/italia/onto/CLV-aligns",
       "@type": "owl:Ontology",
       "dc:creator": [
-        {
-          "@language": "en",
-          "@value": "Italian Digital Transformation Team"
-        },
         {
           "@language": "en",
           "@value": "Institute of Cognitive Sciences and Technologies of the Italian Research Council (CNR) - Semantic Technology Laboratory (STLab)"
@@ -276,6 +260,10 @@
         {
           "@language": "en",
           "@value": "Agency for Digital Italy - AgID"
+        },
+        {
+          "@language": "en",
+          "@value": "Italian Digital Transformation Team"
         }
       ],
       "dc:issued": {
@@ -299,6 +287,28 @@
       "owl:versionIRI": {
         "@id": "https://w3id.org/italia/onto/CLV-aligns/0.1"
       }
+    },
+    {
+      "@id": "geo:lat",
+      "@type": "owl:DatatypeProperty"
+    },
+    {
+      "@id": "locn:fullAddress",
+      "@type": "owl:DatatypeProperty"
+    },
+    {
+      "@id": "clvapit:hasAddressComponent",
+      "@type": "owl:ObjectProperty",
+      "owl:subPropertyOf": {
+        "@id": "ad:Address.component"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "clvapit:"
+      }
+    },
+    {
+      "@id": "locn:location",
+      "@type": "owl:ObjectProperty"
     },
     {
       "@id": "clvapit:Feature",
@@ -345,20 +355,14 @@
       }
     },
     {
-      "@id": "clvapit:StreetToponym",
-      "@type": "owl:Class",
-      "owl:subClassOf": {
-        "@id": "ad:ThoroughfareName"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "clvapit:"
-      }
+      "@id": "au:AdministrativeUnit",
+      "@type": "owl:Class"
     },
     {
-      "@id": "clvapit:lat",
-      "@type": "owl:DatatypeProperty",
-      "owl:equivalentProperty": {
-        "@id": "geo:lat"
+      "@id": "clvapit:AddressArea",
+      "@type": "owl:Class",
+      "owl:subClassOf": {
+        "@id": "ad:AddressAreaName"
       },
       "rdfs:isDefinedBy": {
         "@id": "clvapit:"
@@ -405,7 +409,7 @@
     {
       "@id": "clvapit:Province",
       "@type": "owl:Class",
-      "owl:equivalentClass": {
+      "owl:subClass": {
         "@id": "skos:Concept"
       },
       "rdfs:isDefinedBy": {
@@ -433,8 +437,8 @@
       }
     },
     {
-      "@id": "ad:Address",
-      "@type": "owl:Class"
+      "@id": "locn:geometry",
+      "@type": "owl:ObjectProperty"
     },
     {
       "@id": "clvapit:SpatialObject",
@@ -452,8 +456,19 @@
       }
     },
     {
+      "@id": "clvapit:GeographicalDistribution",
+      "@type": "owl:Class",
+      "owl:subClassOf": {
+        "@id": "skos:Concept"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "clvapit:"
+      }
+    },
+    {
       "@id": "gn:Code",
       "@type": "owl:Class"
     }
   ]
 }
+
