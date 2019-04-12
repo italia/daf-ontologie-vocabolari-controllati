@@ -23,3 +23,23 @@ A sua volta i Macrosettori sono suddivisi per Aree definite dal Consorzio Univer
 [Documentazione CUN](https://www.cun.it/uploads/4079/Allegato_CAcademicFieldsandDisciplines.pdf?v=)
 
 Una rappresentazione completa di tutti i livelli è visibile in questa [pagina](https://it.wikipedia.org/wiki/Settore_scientifico-disciplinare).
+
+### Allineamento
+
+Il vocabolario controllato è inoltre allineato con il vocabolario [subject-disciplines](https://github.com/italia/daf-ontologie-vocabolari-controllati/tree/master/VocabolariControllati/classifications-for-culture/subject-disciplines).
+
+L'allineamento è relativo a:
+
+* 9 Aree CUN
+* 19 Macrosettori
+* 90 Settori Concorsuali
+* 329 Settori scientifico disciplinari
+
+
+L'allineamento è basato sulla perfetta corrispondenza della proprietà *skos:prefLabel* in lingua italiana. 
+
+**Esempio:**
+
+
+`https://w3id.org/italia/controlled-vocabulary/classifications-for-universities/academic-disciplines/SSD-AGR-05
+skos:relatedMatch <https://w3id.org/italia/controlled-vocabulary/classifications-for-culture/subject-disciplines/008-006`
