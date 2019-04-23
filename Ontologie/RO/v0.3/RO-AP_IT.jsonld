@@ -4,7 +4,6 @@
     "dc": "http://purl.org/dc/elements/1.1/",
     "dcat": "http://www.w3.org/ns/dcat#",
     "dcatapit": "http://dati.gov.it/onto/dcatapit#",
-    "dct": "http://purl.org/dc/terms/",
     "dcterms": "http://purl.org/dc/terms/",
     "foaf": "http://xmlns.com/foaf/0.1/",
     "l0": "https://w3id.org/italia/onto/l0/",
@@ -20,26 +19,62 @@
   },
   "@graph": [
     {
+      "@id": "https://w3id.org/italia/onto/RO/isRoleInTimeOf",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "owl:versionInfo": [
+        {
+          "@language": "en",
+          "@value": "stable"
+        },
+        {
+          "@language": "it",
+          "@value": "stabile"
+        }
+      ],
+      "rdfs:comment": [
+        {
+          "@language": "it",
+          "@value": "Proprietà inversa di ha ruolo nel tempo"
+        },
+        {
+          "@language": "en",
+          "@value": "Inverse property of holds role in time"
+        }
+      ],
+      "rdfs:domain": {
+        "@id": "https://w3id.org/italia/onto/RO/TimeIndexedRole"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/italia/onto/RO"
+      },
+      "rdfs:label": [
+        {
+          "@language": "en",
+          "@value": "is role in time of"
+        },
+        {
+          "@language": "it",
+          "@value": "è ruolo nel tempo di"
+        }
+      ],
+      "rdfs:range": {
+        "@id": "l0:Agent"
+      }
+    },
+    {
       "@id": "https://w3id.org/italia/data/contact-point/onto-agid",
       "@type": [
-        "vcard:Kind",
-        "owl:NamedIndividual",
         "vcard:Organization",
-        "dcatapit:Organization"
+        "dcatapit:Organization",
+        "owl:NamedIndividual",
+        "vcard:Kind"
       ],
       "vcard:fn": "banche dati e open data",
       "vcard:hasEmail": {
         "@id": "mailto:info@dati.gov.it"
-      }
-    },
-    {
-      "@id": "_:ub59bL270C34",
-      "@type": "owl:Restriction",
-      "owl:onProperty": {
-        "@id": "https://w3id.org/italia/onto/RO/withRole"
-      },
-      "owl:someValuesFrom": {
-        "@id": "https://w3id.org/italia/onto/RO/Role"
       }
     },
     {
@@ -51,92 +86,27 @@
       "dcterms:identifier": "cnr - Z6HZEH - STLab",
       "foaf:name": [
         {
-          "@language": "it",
-          "@value": "Istituto di Scienze e Tecnologie della Cognizione del CNR - Semantic Technology Lab (STLab)"
-        },
-        {
           "@language": "en",
           "@value": "Institute of Cognitive Sciences and Technologies of the Italian Research Council (CNR) - Semantic Technology Laboratory (STLab)"
+        },
+        {
+          "@language": "it",
+          "@value": "Istituto di Scienze e Tecnologie della Cognizione del CNR - Semantic Technology Lab (STLab)"
         }
       ]
     },
     {
-      "@id": "https://w3id.org/italia/data/distribution/RO-RDF-TURTLE",
-      "@type": [
-        "admsapit:SemanticAssetDistribution",
-        "owl:NamedIndividual"
-      ],
-      "dcat:accessURL": {
-        "@id": "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/RO/latest"
+      "@id": "_:N4fe22d88e417493dbceeffdecb9124fc",
+      "@type": "owl:Restriction",
+      "owl:allValuesFrom": {
+        "@id": "https://w3id.org/italia/onto/RO/TimeIndexedRole"
       },
-      "dcat:downloadURL": {
-        "@id": "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/RO/latest/RO-AP_IT.ttl"
-      },
-      "dcterms:description": [
-        {
-          "@language": "it",
-          "@value": "Questa è la distribuzione RDF/Turtle dell'ontologia dei ruoli"
-        },
-        {
-          "@language": "en",
-          "@value": "This is the distribution in RDF/turtle of the Roles ontology"
-        }
-      ],
-      "dcterms:format": {
-        "@id": "http://publications.europa.eu/resource/authority/file-type/RDF_TURTLE"
-      },
-      "dcterms:license": {
-        "@id": "https://w3id.org/italia/controlled-vocabulary/licences/A21_CCBY40"
-      },
-      "dcterms:title": [
-        {
-          "@language": "en",
-          "@value": "RDF/Turtle distribution of RO-AP_IT Ontology"
-        },
-        {
-          "@language": "it",
-          "@value": "Distribuzione RDF/Turtle ontologia RO-AP_IT"
-        }
-      ]
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/RO/holdsRole",
-      "@type": "owl:ObjectProperty",
-      "owl:inverseOf": {
-        "@id": "https://w3id.org/italia/onto/RO/isRoleOf"
-      },
-      "rdfs:comment": [
-        {
-          "@language": "it",
-          "@value": "La relazione tra un'entità e un ruolo."
-        },
-        {
-          "@language": "en",
-          "@value": "The relation existing between an entity and a role."
-        }
-      ],
-      "rdfs:domain": {
-        "@id": "l0:Entity"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "https://w3id.org/italia/onto/RO"
-      },
-      "rdfs:label": [
-        {
-          "@language": "en",
-          "@value": "holds role"
-        },
-        {
-          "@language": "it",
-          "@value": "ricopre ruolo"
-        }
-      ],
-      "rdfs:range": {
-        "@id": "https://w3id.org/italia/onto/RO/Role"
+      "owl:onProperty": {
+        "@id": "https://w3id.org/italia/onto/RO/holdsRoleInTime"
       }
     },
     {
-      "@id": "l0:Event",
+      "@id": "l0:Entity",
       "@type": "owl:Class"
     },
     {
@@ -154,12 +124,12 @@
       ],
       "rdfs:comment": [
         {
-          "@language": "en",
-          "@value": "Inverse property of \"with role\""
-        },
-        {
           "@language": "it",
           "@value": "Proprietà inversa di \"con ruolo\""
+        },
+        {
+          "@language": "en",
+          "@value": "Inverse property of \"with role\""
         }
       ],
       "rdfs:domain": {
@@ -183,26 +153,72 @@
       }
     },
     {
+      "@id": "https://w3id.org/italia/onto/RO/holdsRole",
+      "@type": "owl:ObjectProperty",
+      "owl:inverseOf": {
+        "@id": "https://w3id.org/italia/onto/RO/isRoleOf"
+      },
+      "rdfs:comment": [
+        {
+          "@language": "en",
+          "@value": "The relation existing between an entity and a role."
+        },
+        {
+          "@language": "it",
+          "@value": "La relazione tra un'entità e un ruolo."
+        }
+      ],
+      "rdfs:domain": {
+        "@id": "l0:Entity"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/italia/onto/RO"
+      },
+      "rdfs:label": [
+        {
+          "@language": "it",
+          "@value": "ricopre ruolo"
+        },
+        {
+          "@language": "en",
+          "@value": "holds role"
+        }
+      ],
+      "rdfs:range": {
+        "@id": "https://w3id.org/italia/onto/RO/Role"
+      }
+    },
+    {
+      "@id": "_:Na5814808da084b2eb0a0c163b19b28ba",
+      "@type": "owl:Restriction",
+      "owl:allValuesFrom": {
+        "@id": "l0:Entity"
+      },
+      "owl:onProperty": {
+        "@id": "https://w3id.org/italia/onto/RO/isRoleOf"
+      }
+    },
+    {
       "@id": "https://w3id.org/italia/onto/RO/hasRiT",
       "@type": "owl:ObjectProperty",
       "owl:versionInfo": [
         {
-          "@language": "it",
-          "@value": "versione non definitiva"
-        },
-        {
           "@language": "en",
           "@value": "unstable"
+        },
+        {
+          "@language": "it",
+          "@value": "versione non definitiva"
         }
       ],
       "rdfs:comment": [
         {
-          "@language": "it",
-          "@value": "Proprietà inverse di \"per entità\""
-        },
-        {
           "@language": "en",
           "@value": "Inverse property of \"for entity\""
+        },
+        {
+          "@language": "it",
+          "@value": "Proprietà inverse di \"per entità\""
         }
       ],
       "rdfs:domain": {
@@ -226,212 +242,53 @@
       }
     },
     {
-      "@id": "_:ub59bL262C34",
-      "@type": "owl:Restriction",
-      "owl:onProperty": {
-        "@id": "https://w3id.org/italia/onto/RO/forEntity"
-      },
-      "owl:someValuesFrom": {
-        "@id": "l0:Entity"
-      }
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/RO",
+      "@id": "https://w3id.org/italia/data/distribution/RO-RDF-TURTLE",
       "@type": [
         "owl:NamedIndividual",
-        "admsapit:SemanticAsset",
-        "owl:Ontology"
+        "admsapit:SemanticAssetDistribution"
       ],
-      "admsapit:acronym": "RO-AP_IT",
-      "admsapit:hasContributor": {
-        "@id": "https://w3id.org/italia/data/organization/public-organization/td"
+      "dcat:accessURL": {
+        "@id": "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/RO/latest"
       },
-      "admsapit:hasFormalityLevel": {
-        "@id": "admsapit:Formal"
+      "dcat:downloadURL": {
+        "@id": "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/RO/latest/RO-AP_IT.ttl"
       },
-      "admsapit:hasKeyClass": [
-        {
-          "@id": "https://w3id.org/italia/onto/RO/Role"
-        },
-        {
-          "@id": "https://w3id.org/italia/onto/RO/RoleInTime"
-        }
-      ],
-      "admsapit:hasOntologyLanguage": {
-        "@id": "admsapit:OWL"
-      },
-      "admsapit:hasSemanticAssetDistribution": [
-        {
-          "@id": "https://w3id.org/italia/data/distribution/RO-JSON-LD"
-        },
-        {
-          "@id": "https://w3id.org/italia/data/distribution/RO-RDF-TURTLE"
-        },
-        {
-          "@id": "https://w3id.org/italia/data/distribution/RO-RDF-XML"
-        }
-      ],
-      "admsapit:hasTask": [
-        {
-          "@id": "admsapit:SearchTask"
-        },
-        {
-          "@id": "admsapit:QueryFormulationTask"
-        },
-        {
-          "@id": "admsapit:AnnotationTask"
-        }
-      ],
-      "admsapit:last": {
-        "@id": "https://w3id.org/italia/onto/RO/"
-      },
-      "admsapit:officialURI": {
-        "@type": "xsd:anyURI",
-        "@value": "https://w3id.org/italia/onto/RO"
-      },
-      "admsapit:prefix": "roapit",
-      "admsapit:semanticAssetInUse": [
-        {
-          "@id": "https://w3id.org/italia/data/project/DAF"
-        },
-        {
-          "@id": "https://w3id.org/italia/data/project/OntoPiA"
-        }
-      ],
-      "admsapit:status": [
-        "catalogued",
-        "published"
-      ],
-      "admsapit:target": [
-        {
-          "@language": "it",
-          "@value": "Pubbliche Amministrazioni"
-        },
-        {
-          "@language": "it",
-          "@value": "Cittadini"
-        },
-        {
-          "@language": "it",
-          "@value": "Imprese"
-        }
-      ],
-      "admsapit:type": {
-        "@id": "admsapit:ServiceOntology"
-      },
-      "dcat:contactPoint": {
-        "@id": "https://w3id.org/italia/data/contact-point/onto-agid"
-      },
-      "dcat:keyword": {
-        "@language": "it",
-        "@value": "ruolo"
-      },
-      "dcat:theme": {
-        "@id": "http://publications.europa.eu/resource/authority/data-theme/SOCI"
-      },
-      "dcterms:accrualPeriodicity": {
-        "@id": "http://publications.europa.eu/resource/authority/frequency/IRREG"
-      },
-      "dcterms:creator": [
-        {
-          "@id": "http://spcdata.digitpa.gov.it/Amministrazione/agid"
-        },
-        {
-          "@id": "https://w3id.org/italia/data/organization/support-unit/cnr-Z6HZEH/stlab"
-        }
-      ],
       "dcterms:description": [
         {
           "@language": "en",
-          "@value": "This is the Italian application profile of the roles ontology. It can be used to model roles of people or organizations in specific context. The ontology allows one to also represent roles that evolve over time."
+          "@value": "This is the distribution in RDF/turtle of the Roles ontology"
         },
         {
           "@language": "it",
-          "@value": "Questo il profilo applicativo italiano dell'ontologia dei ruoli. Esso per rappresentare ruoli di persone, organizazzioni in determinati contesti. L'ontologia consente di rappresentare anche ruoli che evolvono nel tempo"
+          "@value": "Questa è la distribuzione RDF/Turtle dell'ontologia dei ruoli"
         }
       ],
-      "dcterms:issued": {
-        "@type": "xsd:date",
-        "@value": "2017-11-21"
+      "dcterms:format": {
+        "@id": "http://publications.europa.eu/resource/authority/file-type/RDF_TURTLE"
       },
-      "dcterms:language": [
-        {
-          "@id": "http://publications.europa.eu/resource/authority/language/ITA"
-        },
-        {
-          "@id": "http://publications.europa.eu/resource/authority/language/ENG"
-        }
-      ],
-      "dcterms:modified": {
-        "@type": "xsd:date",
-        "@value": "2018-03-03"
-      },
-      "dcterms:publisher": {
-        "@id": "http://spcdata.digitpa.gov.it/Amministrazione/agid"
-      },
-      "dcterms:rightsHolder": {
-        "@id": "http://spcdata.digitpa.gov.it/Amministrazione/agid"
+      "dcterms:license": {
+        "@id": "https://w3id.org/italia/controlled-vocabulary/licences/A21_CCBY40"
       },
       "dcterms:title": [
         {
           "@language": "en",
-          "@value": "Role ontology - Italian application profile"
+          "@value": "RDF/Turtle distribution of RO-AP_IT Ontology"
         },
         {
           "@language": "it",
-          "@value": "Ontologia dei Ruoli - Profilo applicativo italiano"
-        }
-      ],
-      "owl:imports": [
-        {
-          "@id": "https://w3id.org/italia/onto/l0"
-        },
-        {
-          "@id": "https://w3id.org/italia/onto/TI"
-        }
-      ],
-      "owl:versionIRI": {
-        "@id": "https://w3id.org/italia/onto/RO/0.3"
-      },
-      "owl:versionInfo": [
-        {
-          "@language": "it",
-          "@value": "Versione 0.3 - 12 Marzo 2019 - definizione più puntuale per le proprietà \"per entità\" \"ha ruolo nel tempo\", \"riveste ruolo nel tempo\". In particolare, \"riveste ruolo nel tempo\" è associata ad Agenti mentre le prime due proprietà, che sono tra loro inverse, sono utilizzate per associare un ruolo che varia nel tempo a delle generiche entità. \"riveste ruolo nel tempo\" è sotto proprietà della generica \"ha ruolo nel tempo\"."
-        },
-        {
-          "@language": "en",
-          "@value": "Version 0.3 - March 12 2019 - better definition of the property forEntity, hasRiT and holdsRoleInTime. This latter is linked to an Agent while forEntity and hasRiT are linked to generic Entities and they are inverse of each other."
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@language": "it",
-          "@value": "Questa è l'ontologia del profilo applicativo dei ruoli (di persone, organizzazioni)"
-        },
-        {
-          "@language": "en",
-          "@value": "This is the ontology used to represent roles"
-        }
-      ],
-      "rdfs:isDefinedBy": {
-        "@id": "https://w3id.org/italia/onto/RO"
-      },
-      "rdfs:label": [
-        {
-          "@language": "en",
-          "@value": "Italian Role ontology"
-        },
-        {
-          "@language": "it",
-          "@value": "Ontologia dei Ruoli"
+          "@value": "Distribuzione RDF/Turtle ontologia RO-AP_IT"
         }
       ]
     },
     {
+      "@id": "dc:creator",
+      "@type": "owl:AnnotationProperty"
+    },
+    {
       "@id": "https://w3id.org/italia/data/distribution/RO-RDF-XML",
       "@type": [
-        "admsapit:SemanticAssetDistribution",
-        "owl:NamedIndividual"
+        "owl:NamedIndividual",
+        "admsapit:SemanticAssetDistribution"
       ],
       "dcat:accessURL": {
         "@id": "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/RO/latest"
@@ -441,12 +298,12 @@
       },
       "dcterms:description": [
         {
-          "@language": "en",
-          "@value": "This is the distribution in RDF/XML of the Roles ontology"
-        },
-        {
           "@language": "it",
           "@value": "Questa è la distribuzione RDF/XML dell'ontologia dei ruoli"
+        },
+        {
+          "@language": "en",
+          "@value": "This is the distribution in RDF/XML of the Roles ontology"
         }
       ],
       "dcterms:format": {
@@ -457,133 +314,20 @@
       },
       "dcterms:title": [
         {
-          "@language": "en",
-          "@value": "RDF/XML distribution of RO-AP_IT Ontology"
-        },
-        {
           "@language": "it",
           "@value": "Distribuzione RDF/XML ontologia RO-AP_IT"
-        }
-      ]
-    },
-    {
-      "@id": "dc:creator",
-      "@type": "owl:AnnotationProperty"
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/RO/Role",
-      "@type": "owl:Class",
-      "rdfs:comment": [
-        {
-          "@language": "en",
-          "@value": "A role."
-        },
-        {
-          "@language": "it",
-          "@value": "Un ruolo."
-        }
-      ],
-      "rdfs:isDefinedBy": {
-        "@id": "https://w3id.org/italia/onto/RO/"
-      },
-      "rdfs:label": [
-        {
-          "@language": "it",
-          "@value": "Ruolo"
         },
         {
           "@language": "en",
-          "@value": "Role"
-        }
-      ],
-      "rdfs:subClassOf": [
-        {
-          "@id": "l0:Object"
-        },
-        {
-          "@id": "_:ub59bL238C23"
-        },
-        {
-          "@id": "_:ub59bL246C23"
-        },
-        {
-          "@id": "_:ub59bL242C23"
+          "@value": "RDF/XML distribution of RO-AP_IT Ontology"
         }
       ]
-    },
-    {
-      "@id": "https://w3id.org/italia/data/project/OntoPiA",
-      "@type": [
-        "admsapit:Project",
-        "owl:NamedIndividual"
-      ],
-      "l0:name": {
-        "@language": "it",
-        "@value": "OntoPiA - la rete di ontologie della pubblica amministrazione italiana"
-      }
     },
     {
       "@id": "l0:name",
       "@type": "owl:DatatypeProperty",
       "rdfs:isDefinedBy": {
         "@id": "l0:"
-      }
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/RO/forEntity",
-      "@type": "owl:ObjectProperty",
-      "owl:inverseOf": {
-        "@id": "https://w3id.org/italia/onto/RO/hasRiT"
-      },
-      "owl:versionInfo": [
-        {
-          "@language": "en",
-          "@value": "unstable"
-        },
-        {
-          "@language": "it",
-          "@value": "versione non definitiva"
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@language": "it",
-          "@value": "Proprietà che collega la situazione (per la gestione del ruolo) a un'entità per cui un'altra ha un ruolo."
-        },
-        {
-          "@language": "en",
-          "@value": "Property that links a time indexed role to an entity (for which onother plays a role)."
-        }
-      ],
-      "rdfs:domain": {
-        "@id": "https://w3id.org/italia/onto/RO/TimeIndexedRole"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "https://w3id.org/italia/onto/RO"
-      },
-      "rdfs:label": [
-        {
-          "@language": "en",
-          "@value": "for entity"
-        },
-        {
-          "@language": "it",
-          "@value": "per entità"
-        }
-      ],
-      "rdfs:range": {
-        "@id": "l0:Entity"
-      }
-    },
-    {
-      "@id": "https://w3id.org/italia/data/project/DAF",
-      "@type": [
-        "admsapit:Project",
-        "owl:NamedIndividual"
-      ],
-      "foaf:name": {
-        "@language": "it",
-        "@value": "Data & Analytics Framework"
       }
     },
     {
@@ -616,34 +360,60 @@
       },
       "dcterms:title": [
         {
-          "@language": "it",
-          "@value": "Distribuzione JSON-LD ontologia RO-AP_IT"
-        },
-        {
           "@language": "en",
           "@value": "JSON-LD distribution of RO-AP_IT Ontology"
+        },
+        {
+          "@language": "it",
+          "@value": "Distribuzione JSON-LD ontologia RO-AP_IT"
         }
       ]
     },
     {
-      "@id": "_:ub59bL242C23",
+      "@id": "_:Na0824447495144f7b3286abdea92fd57",
       "@type": "owl:Restriction",
-      "owl:allValuesFrom": {
-        "@id": "https://w3id.org/italia/onto/RO/TimeIndexedRole"
-      },
       "owl:onProperty": {
-        "@id": "tiapit:isRoleIn"
+        "@id": "https://w3id.org/italia/onto/RO/forEntity"
+      },
+      "owl:someValuesFrom": {
+        "@id": "l0:Entity"
       }
     },
     {
-      "@id": "_:ub59bL246C23",
+      "@id": "https://w3id.org/italia/data/project/DAF",
+      "@type": [
+        "owl:NamedIndividual",
+        "admsapit:Project"
+      ],
+      "foaf:name": {
+        "@language": "it",
+        "@value": "Data & Analytics Framework"
+      }
+    },
+    {
+      "@id": "https://w3id.org/italia/data/project/OntoPiA",
+      "@type": [
+        "owl:NamedIndividual",
+        "admsapit:Project"
+      ],
+      "l0:name": {
+        "@language": "it",
+        "@value": "OntoPiA - la rete di ontologie della pubblica amministrazione italiana"
+      }
+    },
+    {
+      "@id": "_:N68b791381385414595787ba534258ba1",
       "@type": "owl:Restriction",
       "owl:onProperty": {
-        "@id": "l0:name"
+        "@id": "https://w3id.org/italia/onto/RO/withRole"
       },
       "owl:someValuesFrom": {
-        "@id": "rdfs:Literal"
+        "@id": "https://w3id.org/italia/onto/RO/Role"
       }
+    },
+    {
+      "@id": "dcterms:license",
+      "@type": "owl:AnnotationProperty"
     },
     {
       "@id": "http://spcdata.digitpa.gov.it/Amministrazione/agid",
@@ -655,28 +425,338 @@
       "dcterms:identifier": "agid",
       "foaf:name": [
         {
-          "@language": "it",
-          "@value": "Agenzia per l'Italia Digitale"
-        },
-        {
           "@language": "en",
           "@value": "Italian Digital Agency"
+        },
+        {
+          "@language": "it",
+          "@value": "Agenzia per l'Italia Digitale"
         }
       ]
     },
     {
-      "@id": "dcterms:license",
-      "@type": "owl:AnnotationProperty"
+      "@id": "https://w3id.org/italia/data/organization/public-organization/td",
+      "@type": [
+        "dcatapit:Agent",
+        "owl:NamedIndividual",
+        "foaf:Agent"
+      ],
+      "dcterms:identifier": "TD",
+      "foaf:name": [
+        {
+          "@language": "it",
+          "@value": "Team per la Trasformazione Digitale"
+        },
+        {
+          "@language": "en",
+          "@value": "Digital Transformation Team"
+        }
+      ]
     },
     {
-      "@id": "_:ub59bL296C26",
+      "@id": "_:N046e674fcfb0479799c3514949ff887a",
       "@type": "owl:Restriction",
       "owl:allValuesFrom": {
         "@id": "https://w3id.org/italia/onto/RO/TimeIndexedRole"
       },
       "owl:onProperty": {
-        "@id": "https://w3id.org/italia/onto/RO/holdsRoleInTime"
+        "@id": "tiapit:isRoleIn"
       }
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/RO",
+      "@type": [
+        "owl:NamedIndividual",
+        "admsapit:SemanticAsset",
+        "owl:Ontology"
+      ],
+      "admsapit:acronym": "RO-AP_IT",
+      "admsapit:hasContributor": {
+        "@id": "https://w3id.org/italia/data/organization/public-organization/td"
+      },
+      "admsapit:hasFormalityLevel": {
+        "@id": "admsapit:Formal"
+      },
+      "admsapit:hasKeyClass": [
+        {
+          "@id": "https://w3id.org/italia/onto/RO/RoleInTime"
+        },
+        {
+          "@id": "https://w3id.org/italia/onto/RO/Role"
+        }
+      ],
+      "admsapit:hasOntologyLanguage": {
+        "@id": "admsapit:OWL"
+      },
+      "admsapit:hasSemanticAssetDistribution": [
+        {
+          "@id": "https://w3id.org/italia/data/distribution/RO-JSON-LD"
+        },
+        {
+          "@id": "https://w3id.org/italia/data/distribution/RO-RDF-XML"
+        },
+        {
+          "@id": "https://w3id.org/italia/data/distribution/RO-RDF-TURTLE"
+        }
+      ],
+      "admsapit:hasTask": [
+        {
+          "@id": "admsapit:SearchTask"
+        },
+        {
+          "@id": "admsapit:AnnotationTask"
+        },
+        {
+          "@id": "admsapit:QueryFormulationTask"
+        }
+      ],
+      "admsapit:last": {
+        "@id": "https://w3id.org/italia/onto/RO/"
+      },
+      "admsapit:officialURI": {
+        "@type": "xsd:anyURI",
+        "@value": "https://w3id.org/italia/onto/RO"
+      },
+      "admsapit:prefix": "roapit",
+      "admsapit:semanticAssetInUse": [
+        {
+          "@id": "https://w3id.org/italia/data/project/DAF"
+        },
+        {
+          "@id": "https://w3id.org/italia/data/project/OntoPiA"
+        }
+      ],
+      "admsapit:status": [
+        "catalogued",
+        "published"
+      ],
+      "admsapit:target": [
+        {
+          "@language": "it",
+          "@value": "Cittadini"
+        },
+        {
+          "@language": "it",
+          "@value": "Pubbliche Amministrazioni"
+        },
+        {
+          "@language": "it",
+          "@value": "Imprese"
+        }
+      ],
+      "admsapit:type": {
+        "@id": "admsapit:ServiceOntology"
+      },
+      "dcat:contactPoint": {
+        "@id": "https://w3id.org/italia/data/contact-point/onto-agid"
+      },
+      "dcat:keyword": {
+        "@language": "it",
+        "@value": "ruolo"
+      },
+      "dcat:theme": {
+        "@id": "http://publications.europa.eu/resource/authority/data-theme/SOCI"
+      },
+      "dcterms:accrualPeriodicity": {
+        "@id": "http://publications.europa.eu/resource/authority/frequency/IRREG"
+      },
+      "dcterms:creator": [
+        {
+          "@id": "https://w3id.org/italia/data/organization/support-unit/cnr-Z6HZEH/stlab"
+        },
+        {
+          "@id": "http://spcdata.digitpa.gov.it/Amministrazione/agid"
+        }
+      ],
+      "dcterms:description": [
+        {
+          "@language": "it",
+          "@value": "Questo il profilo applicativo italiano dell'ontologia dei ruoli. Esso per rappresentare ruoli di persone, organizazzioni in determinati contesti. L'ontologia consente di rappresentare anche ruoli che evolvono nel tempo"
+        },
+        {
+          "@language": "en",
+          "@value": "This is the Italian application profile of the roles ontology. It can be used to model roles of people or organizations in specific context. The ontology allows one to also represent roles that evolve over time."
+        }
+      ],
+      "dcterms:issued": {
+        "@type": "xsd:date",
+        "@value": "2017-11-21"
+      },
+      "dcterms:language": [
+        {
+          "@id": "http://publications.europa.eu/resource/authority/language/ENG"
+        },
+        {
+          "@id": "http://publications.europa.eu/resource/authority/language/ITA"
+        }
+      ],
+      "dcterms:modified": {
+        "@type": "xsd:date",
+        "@value": "2019-04-23"
+      },
+      "dcterms:publisher": {
+        "@id": "http://spcdata.digitpa.gov.it/Amministrazione/agid"
+      },
+      "dcterms:rightsHolder": {
+        "@id": "http://spcdata.digitpa.gov.it/Amministrazione/agid"
+      },
+      "dcterms:title": [
+        {
+          "@language": "it",
+          "@value": "Ontologia dei Ruoli - Profilo applicativo italiano"
+        },
+        {
+          "@language": "en",
+          "@value": "Role ontology - Italian application profile"
+        }
+      ],
+      "owl:imports": [
+        {
+          "@id": "https://w3id.org/italia/onto/TI"
+        },
+        {
+          "@id": "https://w3id.org/italia/onto/l0"
+        }
+      ],
+      "owl:versionIRI": {
+        "@id": "https://w3id.org/italia/onto/RO/0.3"
+      },
+      "owl:versionInfo": [
+        {
+          "@language": "en",
+          "@value": "Version 0.3 - Modified on April 23 2019 - Refactoring l0:Event in l0:EventOrSituation."
+        },
+        {
+          "@language": "it",
+          "@value": "Versione 0.3 - Modificata il 23 Aprile 2019 -  Rifattorizzazione di l0:Event in l0:EventOrSituation."
+        }
+      ],
+      "rdfs:comment": [
+        {
+          "@language": "it",
+          "@value": "Questa è l'ontologia del profilo applicativo dei ruoli (di persone, organizzazioni)"
+        },
+        {
+          "@language": "en",
+          "@value": "This is the ontology used to represent roles"
+        }
+      ],
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/italia/onto/RO"
+      },
+      "rdfs:label": [
+        {
+          "@language": "it",
+          "@value": "Ontologia dei Ruoli"
+        },
+        {
+          "@language": "en",
+          "@value": "Italian Role ontology"
+        }
+      ]
+    },
+    {
+      "@id": "tiapit:hasTemporalEntity",
+      "@type": "owl:ObjectProperty"
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/RO/isRoleOf",
+      "@type": "owl:ObjectProperty",
+      "rdfs:comment": [
+        {
+          "@language": "en",
+          "@value": "The relation existing between a role and an entity. This is the inverse property of holdsRole."
+        },
+        {
+          "@language": "it",
+          "@value": "La relazione tra un ruolo ed un'entità. E' la proprietà inversa di holdsRole."
+        }
+      ],
+      "rdfs:domain": {
+        "@id": "https://w3id.org/italia/onto/RO/Role"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/italia/onto/RO"
+      },
+      "rdfs:label": [
+        {
+          "@language": "en",
+          "@value": "is role of"
+        },
+        {
+          "@language": "it",
+          "@value": "è ruolo di"
+        }
+      ],
+      "rdfs:range": {
+        "@id": "l0:Entity"
+      }
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/RO/Role",
+      "@type": "owl:Class",
+      "rdfs:comment": [
+        {
+          "@language": "en",
+          "@value": "A role."
+        },
+        {
+          "@language": "it",
+          "@value": "Un ruolo."
+        }
+      ],
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/italia/onto/RO/"
+      },
+      "rdfs:label": [
+        {
+          "@language": "en",
+          "@value": "Role"
+        },
+        {
+          "@language": "it",
+          "@value": "Ruolo"
+        }
+      ],
+      "rdfs:subClassOf": [
+        {
+          "@id": "_:Na5814808da084b2eb0a0c163b19b28ba"
+        },
+        {
+          "@id": "_:N424e1483f3ef48ff93889ff8af97f48a"
+        },
+        {
+          "@id": "l0:Object"
+        },
+        {
+          "@id": "_:N046e674fcfb0479799c3514949ff887a"
+        }
+      ]
+    },
+    {
+      "@id": "dcterms:issued",
+      "@type": "owl:AnnotationProperty"
+    },
+    {
+      "@id": "l0:Agent",
+      "@type": "owl:Class",
+      "rdfs:subClassOf": {
+        "@id": "_:N4fe22d88e417493dbceeffdecb9124fc"
+      }
+    },
+    {
+      "@id": "_:N424e1483f3ef48ff93889ff8af97f48a",
+      "@type": "owl:Restriction",
+      "owl:onProperty": {
+        "@id": "l0:name"
+      },
+      "owl:someValuesFrom": {
+        "@id": "rdfs:Literal"
+      }
+    },
+    {
+      "@id": "tiapit:TemporalEntity",
+      "@type": "owl:Class"
     },
     {
       "@id": "https://w3id.org/italia/onto/RO/TimeIndexedRole",
@@ -716,217 +796,27 @@
       ],
       "rdfs:subClassOf": [
         {
-          "@id": "_:ub59bL262C34"
+          "@id": "_:N450da9f727cb4a339dbb26524ec55999"
         },
         {
-          "@id": "_:ub59bL270C34"
+          "@id": "_:N68b791381385414595787ba534258ba1"
         },
         {
-          "@id": "_:ub59bL266C34"
+          "@id": "_:Nccd0af247b9c478f9732feeebde626ea"
         },
         {
-          "@id": "_:ub59bL274C34"
+          "@id": "l0:EventOrSituation"
         },
         {
-          "@id": "l0:Event"
+          "@id": "_:Na0824447495144f7b3286abdea92fd57"
         }
       ]
-    },
-    {
-      "@id": "_:ub59bL266C34",
-      "@type": "owl:Restriction",
-      "owl:onProperty": {
-        "@id": "https://w3id.org/italia/onto/RO/isRoleInTimeOf"
-      },
-      "owl:someValuesFrom": {
-        "@id": "l0:Agent"
-      }
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/RO/isRoleOf",
-      "@type": "owl:ObjectProperty",
-      "rdfs:comment": [
-        {
-          "@language": "en",
-          "@value": "The relation existing between a role and an entity. This is the inverse property of holdsRole."
-        },
-        {
-          "@language": "it",
-          "@value": "La relazione tra un ruolo ed un'entità. E' la proprietà inversa di holdsRole."
-        }
-      ],
-      "rdfs:domain": {
-        "@id": "https://w3id.org/italia/onto/RO/Role"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "https://w3id.org/italia/onto/RO"
-      },
-      "rdfs:label": [
-        {
-          "@language": "it",
-          "@value": "è ruolo di"
-        },
-        {
-          "@language": "en",
-          "@value": "is role of"
-        }
-      ],
-      "rdfs:range": {
-        "@id": "l0:Entity"
-      }
-    },
-    {
-      "@id": "tiapit:hasTemporalEntity",
-      "@type": "owl:ObjectProperty"
-    },
-    {
-      "@id": "dcterms:issued",
-      "@type": "owl:AnnotationProperty"
-    },
-    {
-      "@id": "l0:Agent",
-      "@type": "owl:Class",
-      "rdfs:subClassOf": {
-        "@id": "_:ub59bL296C26"
-      }
-    },
-    {
-      "@id": "tiapit:TemporalEntity",
-      "@type": "owl:Class"
-    },
-    {
-      "@id": "_:ub59bL274C34",
-      "@type": "owl:Restriction",
-      "owl:onProperty": {
-        "@id": "tiapit:hasTemporalEntity"
-      },
-      "owl:someValuesFrom": {
-        "@id": "tiapit:TemporalEntity"
-      }
-    },
-    {
-      "@id": "l0:Entity",
-      "@type": "owl:Class"
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/RO/isRoleInTimeOf",
-      "@type": [
-        "owl:ObjectProperty",
-        "owl:FunctionalProperty"
-      ],
-      "owl:versionInfo": [
-        {
-          "@language": "it",
-          "@value": "stabile"
-        },
-        {
-          "@language": "en",
-          "@value": "stable"
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@language": "en",
-          "@value": "Inverse property of holds role in time"
-        },
-        {
-          "@language": "it",
-          "@value": "Proprietà inversa di ha ruolo nel tempo"
-        }
-      ],
-      "rdfs:domain": {
-        "@id": "https://w3id.org/italia/onto/RO/TimeIndexedRole"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "https://w3id.org/italia/onto/RO"
-      },
-      "rdfs:label": [
-        {
-          "@language": "en",
-          "@value": "is role in time of"
-        },
-        {
-          "@language": "it",
-          "@value": "è ruolo nel tempo di"
-        }
-      ],
-      "rdfs:range": {
-        "@id": "l0:Agent"
-      }
-    },
-    {
-      "@id": "https://w3id.org/italia/data/organization/public-organization/td",
-      "@type": [
-        "foaf:Agent",
-        "owl:NamedIndividual",
-        "dcatapit:Agent"
-      ],
-      "dcterms:identifier": "TD",
-      "foaf:name": [
-        {
-          "@language": "en",
-          "@value": "Digital Transformation Team"
-        },
-        {
-          "@language": "it",
-          "@value": "Team per la Trasformazione Digitale"
-        }
-      ]
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/RO/holdsRoleInTime",
-      "@type": "owl:ObjectProperty",
-      "owl:inverseOf": {
-        "@id": "https://w3id.org/italia/onto/RO/isRoleInTimeOf"
-      },
-      "rdfs:comment": [
-        {
-          "@language": "it",
-          "@value": "Relazione tra un'entità generica ed un ruolo nel tempo."
-        },
-        {
-          "@language": "en",
-          "@value": "The relation between an entity and a role in time."
-        }
-      ],
-      "rdfs:domain": {
-        "@id": "l0:Agent"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "https://w3id.org/italia/onto/RO/"
-      },
-      "rdfs:label": [
-        {
-          "@language": "it",
-          "@value": "riveste ruolo nel tempo"
-        },
-        {
-          "@language": "en",
-          "@value": "holds role in time"
-        }
-      ],
-      "rdfs:range": {
-        "@id": "https://w3id.org/italia/onto/RO/TimeIndexedRole"
-      },
-      "rdfs:subPropertyOf": {
-        "@id": "https://w3id.org/italia/onto/RO/hasRiT"
-      }
-    },
-    {
-      "@id": "_:ub59bL238C23",
-      "@type": "owl:Restriction",
-      "owl:allValuesFrom": {
-        "@id": "l0:Entity"
-      },
-      "owl:onProperty": {
-        "@id": "https://w3id.org/italia/onto/RO/isRoleOf"
-      }
     },
     {
       "@id": "https://w3id.org/italia/onto/RO/withRole",
       "@type": [
-        "owl:ObjectProperty",
-        "owl:FunctionalProperty"
+        "owl:FunctionalProperty",
+        "owl:ObjectProperty"
       ],
       "owl:inverseOf": {
         "@id": "tiapit:isRoleIn"
@@ -949,17 +839,87 @@
       },
       "rdfs:label": [
         {
-          "@language": "en",
-          "@value": "with role"
-        },
-        {
           "@language": "it",
           "@value": "con ruolo"
+        },
+        {
+          "@language": "en",
+          "@value": "with role"
         }
       ],
       "rdfs:range": {
         "@id": "https://w3id.org/italia/onto/RO/Role"
       }
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/RO/forEntity",
+      "@type": "owl:ObjectProperty",
+      "owl:inverseOf": {
+        "@id": "https://w3id.org/italia/onto/RO/hasRiT"
+      },
+      "owl:versionInfo": [
+        {
+          "@language": "it",
+          "@value": "versione non definitiva"
+        },
+        {
+          "@language": "en",
+          "@value": "unstable"
+        }
+      ],
+      "rdfs:comment": [
+        {
+          "@language": "it",
+          "@value": "Proprietà che collega la situazione (per la gestione del ruolo) a un'entità per cui un'altra ha un ruolo."
+        },
+        {
+          "@language": "en",
+          "@value": "Property that links a time indexed role to an entity (for which onother plays a role)."
+        }
+      ],
+      "rdfs:domain": {
+        "@id": "https://w3id.org/italia/onto/RO/TimeIndexedRole"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/italia/onto/RO"
+      },
+      "rdfs:label": [
+        {
+          "@language": "it",
+          "@value": "per entità"
+        },
+        {
+          "@language": "en",
+          "@value": "for entity"
+        }
+      ],
+      "rdfs:range": {
+        "@id": "l0:Entity"
+      }
+    },
+    {
+      "@id": "_:N450da9f727cb4a339dbb26524ec55999",
+      "@type": "owl:Restriction",
+      "owl:onProperty": {
+        "@id": "https://w3id.org/italia/onto/RO/isRoleInTimeOf"
+      },
+      "owl:someValuesFrom": {
+        "@id": "l0:Agent"
+      }
+    },
+    {
+      "@id": "_:Nccd0af247b9c478f9732feeebde626ea",
+      "@type": "owl:Restriction",
+      "owl:onProperty": {
+        "@id": "tiapit:hasTemporalEntity"
+      },
+      "owl:someValuesFrom": {
+        "@id": "tiapit:TemporalEntity"
+      }
+    },
+    {
+      "@id": "l0:EventOrSituation",
+      "@type": "owl:Class"
     },
     {
       "@id": "l0:Object",
@@ -968,6 +928,45 @@
     {
       "@id": "dcterms:modified",
       "@type": "owl:AnnotationProperty"
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/RO/holdsRoleInTime",
+      "@type": "owl:ObjectProperty",
+      "owl:inverseOf": {
+        "@id": "https://w3id.org/italia/onto/RO/isRoleInTimeOf"
+      },
+      "rdfs:comment": [
+        {
+          "@language": "en",
+          "@value": "The relation between an entity and a role in time."
+        },
+        {
+          "@language": "it",
+          "@value": "Relazione tra un'entità generica ed un ruolo nel tempo."
+        }
+      ],
+      "rdfs:domain": {
+        "@id": "l0:Agent"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/italia/onto/RO/"
+      },
+      "rdfs:label": [
+        {
+          "@language": "en",
+          "@value": "holds role in time"
+        },
+        {
+          "@language": "it",
+          "@value": "riveste ruolo nel tempo"
+        }
+      ],
+      "rdfs:range": {
+        "@id": "https://w3id.org/italia/onto/RO/TimeIndexedRole"
+      },
+      "rdfs:subPropertyOf": {
+        "@id": "https://w3id.org/italia/onto/RO/hasRiT"
+      }
     }
   ]
 }
