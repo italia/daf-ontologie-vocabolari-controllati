@@ -1,6 +1,6 @@
 @prefix : <https://w3id.org/italia/onto/ADMS/> .
 @prefix dct: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://w3id.org/italia/onto/> .
+@prefix l0: <https://w3id.org/italia/onto/l0/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
@@ -18,7 +18,7 @@
 
                                     dct:issued "2018-02-26"^^xsd:date ;
 
-                                    dct:modified "2018-03-23"^^xsd:date ;
+                                    dct:modified "2019-04-23"^^xsd:date ;
 
                                     :officialURI "https://w3id.org/italia/onto/ADMS"^^xsd:anyURI ;
 
@@ -35,9 +35,9 @@
                                                  "metadati"@it ,
                                                  "ontologie"@it ;
 
-                                    owl:versionInfo "versione 0.1" ;
+                                    owl:versionInfo "versione 0.1 del 23-04-2019 - corretti alcuni prefissi" ;
 
-                                    dcat:contactPoint <http://dati.gov.it/data/resource/ContactPoint/onto_AgID> ;
+                                    dcat:contactPoint <https://w3id.org/italia/data/resource/contact-point/onto_AgID> ;
 
                                     owl:imports <http://dati.gov.it/onto/dcatapit#> ;
 
@@ -63,10 +63,10 @@
                                     prov:wasInfluencedBy <http://www.isibang.ac.in/ns/mod> ,
                                                          <http://www.w3.org/ns/adms> ;
 
-                                    owl:imports ns1:SM ,
-                                                ns1:l0 ;
+                                    owl:imports <https://w3id.org/italia/onto/SM> ,
+                                                <https://w3id.org/italia/onto/l0> ;
 
-                                    owl:versionIRI <https://w3id.org/italia/onto/ADMS/0.1/> .
+                                    owl:versionIRI <https://w3id.org/italia/onto/ADMS/0.1> .
 
 
 #################################################################
@@ -148,9 +148,9 @@ foaf:name rdf:type owl:AnnotationProperty .
 
 
 
-###  https://w3id.org/italia/onto/l0name
+###  https://w3id.org/italia/onto/l0/name
 
-ns1:l0name rdf:type owl:AnnotationProperty .
+l0:name rdf:type owl:AnnotationProperty .
 
 
 
@@ -348,7 +348,7 @@ xsd:date rdf:type rdfs:Datatype .
             rdfs:comment "The parties that have expressed support or approval to this ontology."@en ,
                          "Gli agenti che hanno supportato o approvato l'ontologia."@it ;
 
-            rdfs:range <http://w3id.org/italia/onto/l0/Agent> ;
+            rdfs:range <https://w3id.org/italia/onto/l0/Agent> ;
 
             rdfs:isDefinedBy : ;
 
@@ -368,7 +368,7 @@ xsd:date rdf:type rdfs:Datatype .
           rdfs:comment "The parties that have expressed support or approval to this ontology."@en ,
                        "Gli agenti che hanno supportato o approvato l'ontologia."@it ;
 
-          rdfs:domain <http://w3id.org/italia/onto/l0/Agent> ;
+          rdfs:domain <https://w3id.org/italia/onto/l0/Agent> ;
 
           rdfs:isDefinedBy : ;
 
@@ -386,7 +386,7 @@ xsd:date rdf:type rdfs:Datatype .
              rdfs:comment "An agent that have participated in an evaluation."@en ,
                           "Un agente che ha partecipato alla valutazione dell'asset semantico."@it ;
 
-             rdfs:range <http://w3id.org/italia/onto/l0/Agent> ;
+             rdfs:range <https://w3id.org/italia/onto/l0/Agent> ;
 
              rdfs:isDefinedBy : ;
 
@@ -406,7 +406,7 @@ xsd:date rdf:type rdfs:Datatype .
            rdfs:comment "An agent that have participated in an evaluation."@en ,
                         "Un agente che ha partecipato alla valutazione dell'asset semantico."@it ;
 
-           rdfs:domain <http://w3id.org/italia/onto/l0/Agent> ;
+           rdfs:domain <https://w3id.org/italia/onto/l0/Agent> ;
 
            rdfs:isDefinedBy : ;
 
@@ -520,7 +520,7 @@ xsd:date rdf:type rdfs:Datatype .
           rdfs:comment "Link between a semantic asset and the agent who funds it."@en ,
                        "Collegamento tra un asset semantico e l'agente lo finanzia."@it ;
 
-          rdfs:range <http://w3id.org/italia/onto/l0/Agent> ;
+          rdfs:range <https://w3id.org/italia/onto/l0/Agent> ;
 
           rdfs:isDefinedBy : ;
 
@@ -540,7 +540,7 @@ xsd:date rdf:type rdfs:Datatype .
        rdfs:comment "Link between the agent who funds the asset and the semantic asset."@en ,
                     "Collegamento tra l'agente che finanzia l'asset e l'asset semantico."@it ;
 
-       rdfs:domain <http://w3id.org/italia/onto/l0/Agent> ;
+       rdfs:domain <https://w3id.org/italia/onto/l0/Agent> ;
 
        rdfs:isDefinedBy : ;
 
@@ -558,7 +558,7 @@ xsd:date rdf:type rdfs:Datatype .
                 rdfs:comment "Link between a semantic asset and the responsible for making contributions to the asset."@en ,
                              "Collegamento tra l'asset semantico e l'agente responsabile per aver dato un contributo alla risorsa."@it ;
 
-                rdfs:range <http://w3id.org/italia/onto/l0/Agent> ;
+                rdfs:range <https://w3id.org/italia/onto/l0/Agent> ;
 
                 rdfs:isDefinedBy : ;
 
@@ -673,7 +673,7 @@ xsd:date rdf:type rdfs:Datatype .
 
               rdfs:comment """Fornisce la classe radice di un asset semantico. E' popolata automaticamente prendendo le sottoclassi dirette della classe owl:Thing.
 Può essere impostata manualmente considerando la classe a partire dalla quale è più agevole leggere lo schema dell'ontologia
-Se l'ontologia è anche definita come skos:Concept, allora questa proprietà vierne considerata equivalente a skos:hasTopConcept."""@en ,
+Se l'ontologia è anche definita come skos:Concept, allora questa proprietà viene considerata equivalente a skos:hasTopConcept."""@en ,
                            """This property is to provide the root class(es) of a semantic asset. This is automatically populated by taking the direct subclasses of owl:Thing.
 It can be set manually considering the class from which it is easier to read the ontology
 If the ontology is also defined as a unique skos:ConceptScheme, then this property should become equivalent of skos:hasTopConcept."""@en ;
@@ -793,7 +793,7 @@ If the ontology is also defined as a unique skos:ConceptScheme, then this proper
                  rdfs:comment "Link between the responsible for making contributions to the asset and the semantic asset."@en ,
                               "Collegamento tra l'agente responsabile per aver dato un contributo all'asset e l'asset semantico."@it ;
 
-                 rdfs:domain <http://w3id.org/italia/onto/l0/Agent> ;
+                 rdfs:domain <https://w3id.org/italia/onto/l0/Agent> ;
 
                  rdfs:isDefinedBy : ;
 
@@ -1160,7 +1160,7 @@ If the ontology is also defined as a unique skos:ConceptScheme, then this proper
                 rdfs:comment "Generation is the completion of production of a new entity by an activity. This entity did not exist before generation and becomes available for usage after this generation."@en ,
                              "La generazione è il completamento della produzione di una nuova entità attraverso un'attività. Questa entità non esisteva prima della generazione e diventa disponibile all'uso dopo questa generazione."@it ;
 
-                rdfs:range <http://w3id.org/italia/onto/l0/Activity> ;
+                rdfs:range <https://w3id.org/italia/onto/l0/Activity> ;
 
                 rdfs:isDefinedBy : ;
 
@@ -1178,7 +1178,7 @@ If the ontology is also defined as a unique skos:ConceptScheme, then this proper
                   rdfs:comment "Invalidation is the start of the destruction, cessation, or expiry of an existing entity by an activity. The entity is no longer available for use (or further invalidation) after invalidation. Any generation or usage of an entity precedes its invalidation."@en ,
                                "L'invalidazione è l'inizio della distruzione, cessazione o la scadenza di un entità esistente attraverso un'attività. l'entità non è più accessibile all'uso."@it ;
 
-                  rdfs:range <http://w3id.org/italia/onto/l0/Activity> ;
+                  rdfs:range <https://w3id.org/italia/onto/l0/Activity> ;
 
                   rdfs:isDefinedBy : ;
 
@@ -1300,7 +1300,7 @@ An annotation with the owl:deprecated annotation property and the value equal to
                    rdfs:comment "Property used to indicate the file with the external alignmnets of the semantic asset, if present"@en ,
                                 "Proprietà che indica il file di allineamento esterno ad altre ontologie, se presente."@it ;
 
-                   rdfs:isDefinedBy <http://w3id.org/italia/onto/ADMS/> ;
+                   rdfs:isDefinedBy <https://w3id.org/italia/onto/ADMS> ;
 
                    rdfs:range xsd:anyURI ;
 
@@ -1667,7 +1667,7 @@ An annotation with the owl:deprecated annotation property and the value equal to
               rdfs:comment "A description of changes between this version and the previous version of the semantic assets."@en ,
                            "Descrizione dei cambiamenti tra questa versione e la precedente versione dell'asset semantico."@it ;
 
-              rdfs:isDefinedBy <http://dati.gov.it/onto/admsapit/> ;
+              rdfs:isDefinedBy <https://w3id.org/italia/onto/ADMS> ;
 
               rdfs:range rdfs:Literal ;
 
@@ -1714,29 +1714,29 @@ An annotation with the owl:deprecated annotation property and the value equal to
 
 
 
-###  http://w3id.org/italia/onto/l0/Activity
+###  https://w3id.org/italia/onto/l0/Activity
 
-<http://w3id.org/italia/onto/l0/Activity> rdf:type owl:Class ;
+<https://w3id.org/italia/onto/l0/Activity> rdf:type owl:Class ;
 
-                                          rdfs:subClassOf <http://w3id.org/italia/onto/l0/Entity> ;
+                                          rdfs:subClassOf <https://w3id.org/italia/onto/l0/Entity> ;
 
                                           rdfs:isDefinedBy <https://w3id.org/italia/onto/l0/> .
 
 
 
-###  http://w3id.org/italia/onto/l0/Agent
+###  https://w3id.org/italia/onto/l0/Agent
 
-<http://w3id.org/italia/onto/l0/Agent> rdf:type owl:Class ;
+<https://w3id.org/italia/onto/l0/Agent> rdf:type owl:Class ;
 
-                                       rdfs:subClassOf <http://w3id.org/italia/onto/l0/Entity> ;
+                                       rdfs:subClassOf <https://w3id.org/italia/onto/l0/Entity> ;
 
                                        rdfs:isDefinedBy <https://w3id.org/italia/onto/l0/> .
 
 
 
-###  http://w3id.org/italia/onto/l0/Entity
+###  https://w3id.org/italia/onto/l0/Entity
 
-<http://w3id.org/italia/onto/l0/Entity> rdf:type owl:Class ;
+<https://w3id.org/italia/onto/l0/Entity> rdf:type owl:Class ;
 
                                         rdfs:isDefinedBy <https://w3id.org/italia/onto/l0/> .
 
@@ -1768,12 +1768,6 @@ foaf:Agent rdf:type owl:Class .
 
 
 
-###  https://w3id.org/italia/onto/l0Agent
-
-ns1:l0Agent rdf:type owl:Class .
-
-
-
 ###  https://w3id.org/italia/onto/ADMS/Concept
 
 :Concept rdf:type owl:Class ;
@@ -1781,7 +1775,7 @@ ns1:l0Agent rdf:type owl:Class .
          rdfs:label "Concept"@en ,
                     "Concetto"@it ;
 
-         rdfs:subClassOf <http://w3id.org/italia/onto/l0/Entity> ;
+         rdfs:subClassOf <https://w3id.org/italia/onto/l0/Entity> ;
 
          prov:wasInfluencedBy "http://www.w3.org/2004/02/skos/core#Concept" ;
 
@@ -2086,7 +2080,7 @@ N.B. essendo un'unità di pensiero un concetto soggettivo, questa definizione è
                                          ] ,
                                          [ rdf:type owl:Restriction ;
                                            owl:onProperty :evaluatedBy ;
-                                           owl:allValuesFrom <http://w3id.org/italia/onto/l0/Agent>
+                                           owl:allValuesFrom <https://w3id.org/italia/onto/l0/Agent>
                                          ] ;
 
                          rdfs:comment """The results of evaluating a semantic asset.
@@ -2176,21 +2170,21 @@ N.B. Un asset semantico può avere più di una valutazione."""@it ;
 #################################################################
 
 
-###  http://dati.gov.it/data/resource/Amministrazione/STLab
+###  https://w3id.org/italia/data/resource/organization/public-organization/STLab
 
-<http://dati.gov.it/data/resource/Amministrazione/STLab> rdf:type owl:NamedIndividual ,
-                                                                  ns1:l0Agent ;
+<https://w3id.org/italia/data/resource/organization/public-organization/STLab> rdf:type owl:NamedIndividual ,
+                                                                  <http://dati.gov.it/onto/dcatapit#Agent> , foaf:Agent ;
 
-                                                         ns1:l0name "Institute of Cognitive Sciences and Technologies of the Italian Research Council (CNR) - Semantic Technology Laboratory (STLab)"@en ,
+                                                         foaf:name "Institute of Cognitive Sciences and Technologies of the Italian Research Council (CNR) - Semantic Technology Laboratory (STLab)"@en ,
                                                                     "Istituto di Scienze e Tecnologie della Cognizione del CNR - Semantic Technology Lab (STLab)"@it ;
 
                                                          dct:identifier "cnr - Z6HZEH" .
 
 
 
-###  http://dati.gov.it/data/resource/ContactPoint/onto_AgID
+###  https://w3id.org/italia/data/resource/contact-point/onto_AgID
 
-<http://dati.gov.it/data/resource/ContactPoint/onto_AgID> rdf:type <http://dati.gov.it/onto/dcatapit#Organization> ,
+<https://w3id.org/italia/data/resource/contact-point/onto_AgID> rdf:type <http://dati.gov.it/onto/dcatapit#Organization> ,
                                                                    owl:NamedIndividual ,
                                                                    vcard:Kind ,
                                                                    vcard:Organization ;
@@ -2201,9 +2195,9 @@ N.B. Un asset semantico può avere più di una valutazione."""@it ;
 
 
 
-###  http://dati.gov.it/data/resource/Distribution/ADMSAPIT-JSON-LD
+###  https://w3id.org/italia/data/resource/Distribution/ADMSAPIT-JSON-LD
 
-<http://dati.gov.it/data/resource/Distribution/ADMSAPIT-JSON-LD> rdf:type owl:NamedIndividual ,
+<https://w3id.org/italia/data/resource/Distribution/ADMSAPIT-JSON-LD> rdf:type owl:NamedIndividual ,
                                                                           :SemanticAssetDistribution ;
 
                                                                  dct:title "JSON-LD distribution of ADMS-AP_IT Ontology"@en ;
@@ -2216,7 +2210,7 @@ N.B. Un asset semantico può avere più di una valutazione."""@it ;
 
                                                                  dct:format <http://publications.europa.eu/resource/authority/file-type/JSON_LD> ;
 
-                                                                 dct:license <http://w3id.org/italia/controlled-vocabulary/licences/A21_CCBY40> ;
+                                                                 dct:license <https://w3id.org/italia/controlled-vocabulary/licences/A21_CCBY40> ;
 
                                                                  dcat:accessURL <https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/ADMS/latest> ;
 
@@ -2224,9 +2218,9 @@ N.B. Un asset semantico può avere più di una valutazione."""@it ;
 
 
 
-###  http://dati.gov.it/data/resource/Distribution/ADMSAPIT-RDF-TURTLE
+###  https://w3id.org/italia/data/resource/Distribution/ADMSAPIT-RDF-TURTLE
 
-<http://dati.gov.it/data/resource/Distribution/ADMSAPIT-RDF-TURTLE> rdf:type owl:NamedIndividual ,
+<https://w3id.org/italia/data/resource/Distribution/ADMSAPIT-RDF-TURTLE> rdf:type owl:NamedIndividual ,
                                                                              :SemanticAssetDistribution ;
 
                                                                     dct:title "RDF/Turtle distribution of ADMS-AP_IT Ontology"@en ;
@@ -2239,7 +2233,7 @@ N.B. Un asset semantico può avere più di una valutazione."""@it ;
 
                                                                     dct:format <http://publications.europa.eu/resource/authority/file-type/RDF_TURTLE> ;
 
-                                                                    dct:license <http://w3id.org/italia/controlled-vocabulary/licences/A21_CCBY40> ;
+                                                                    dct:license <https://w3id.org/italia/controlled-vocabulary/licences/A21_CCBY40> ;
 
                                                                     dcat:accessURL <https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/ADMS/latest> ;
 
@@ -2247,9 +2241,9 @@ N.B. Un asset semantico può avere più di una valutazione."""@it ;
 
 
 
-###  http://dati.gov.it/data/resource/Distribution/ADMSAPIT-RDF-XML
+###  hhttps://w3id.org/italia/data/resource/Distribution/ADMSAPIT-RDF-XML
 
-<http://dati.gov.it/data/resource/Distribution/ADMSAPIT-RDF-XML> rdf:type owl:NamedIndividual ,
+<https://w3id.org/italia/data/resource/Distribution/ADMSAPIT-RDF-XML> rdf:type owl:NamedIndividual ,
                                                                           :SemanticAssetDistribution ;
 
                                                                  dct:title "RDF/XML distribution of ADMS-AP_IT Ontology"@en ;
@@ -2262,7 +2256,7 @@ N.B. Un asset semantico può avere più di una valutazione."""@it ;
 
                                                                  dct:format <http://publications.europa.eu/resource/authority/file-type/RDF_XML> ;
 
-                                                                 dct:license <http://w3id.org/italia/controlled-vocabulary/licences/A21_CCBY40> ;
+                                                                 dct:license <https://w3id.org/italia/controlled-vocabulary/licences/A21_CCBY40> ;
 
                                                                  dcat:accessURL <https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/ADMS/latest> ;
 
@@ -2270,21 +2264,21 @@ N.B. Un asset semantico può avere più di una valutazione."""@it ;
 
 
 
-###  http://dati.gov.it/data/resource/project/DAF
+###  https://w3id.org/italia/data/resource/project/DAF
 
-<http://dati.gov.it/data/resource/project/DAF> rdf:type owl:NamedIndividual ,
+<https://w3id.org/italia/data/resource/project/DAF> rdf:type owl:NamedIndividual ,
                                                         :Project ;
 
-                                               ns1:l0name "Data & Analytics Framework"@it .
+                                               l0:name "Data & Analytics Framework"@it .
 
 
 
-###  http://dati.gov.it/data/resource/project/OntoPiA
+###  https://w3id.org/italia/data/resource/project/OntoPiA
 
-<http://dati.gov.it/data/resource/project/OntoPiA> rdf:type owl:NamedIndividual ,
+<https://w3id.org/italia/data/resource/project/OntoPiA> rdf:type owl:NamedIndividual ,
                                                             :Project ;
 
-                                                   ns1:l0name "OntoPiA - la rete di ontologie della pubblica amministrazione italiana"@it .
+                                                   l0:name "OntoPiA - la rete di ontologie della pubblica amministrazione italiana"@it .
 
 
 
@@ -2354,14 +2348,14 @@ N.B. Un asset semantico può avere più di una valutazione."""@it ;
 
                                     :prefix "admsapit" ;
 
-                                    :hasContributor <http://dati.gov.it/data/resource/Amministrazione/STLab> ;
+                                    :hasContributor <https://w3id.org/italia/data/resource/organization/public-organization/STLab> ;
 
-                                    :hasSemanticAssetDistribution <http://dati.gov.it/data/resource/Distribution/ADMSAPIT-JSON-LD> ,
-                                                                  <http://dati.gov.it/data/resource/Distribution/ADMSAPIT-RDF-TURTLE> ,
-                                                                  <http://dati.gov.it/data/resource/Distribution/ADMSAPIT-RDF-XML> ;
+                                    :hasSemanticAssetDistribution <https://w3id.org/italia/data/resource/Distribution/ADMSAPIT-JSON-LD> ,
+                                                                  <https://w3id.org/italia/data/resource/Distribution/ADMSAPIT-RDF-TURTLE> ,
+                                                                  <https://w3id.org/italia/data/resource/Distribution/ADMSAPIT-RDF-XML> ;
 
-                                    :semanticAssetInUse <http://dati.gov.it/data/resource/project/DAF> ,
-                                                        <http://dati.gov.it/data/resource/project/OntoPiA> ;
+                                    :semanticAssetInUse <https://w3id.org/italia/data/resource/project/DAF> ,
+                                                        <https://w3id.org/italia/data/resource/project/OntoPiA> ;
 
                                     :hasTask :AnnotationTask ;
 
@@ -2378,7 +2372,7 @@ N.B. Un asset semantico può avere più di una valutazione."""@it ;
                                                  :SemanticAssetRepository ,
                                                  :SemanticTerm ;
 
-                                    :last <https://w3id.org/italia/onto/ADMS/0.1/> .
+                                    :last <https://w3id.org/italia/onto/ADMS/0.1> .
 
 
 
@@ -2852,7 +2846,7 @@ N.B. Un asset semantico può avere più di una valutazione."""@it ;
 
 ###  https://w3id.org/italia/onto/ADMS/0.1/
 
-<https://w3id.org/italia/onto/ADMS/0.1/> rdf:type owl:NamedIndividual .
+<https://w3id.org/italia/onto/ADMS/0.1> rdf:type owl:NamedIndividual .
 
 
 
@@ -2879,7 +2873,7 @@ Ogni volta che cambia il contenuto intellettuale, il risultato è considerato un
 
                prov:wasInfluencedBy "http://purl.org/vocommons/voaf#Vocabulary" ;
 
-               rdfs:isDefinedBy : .
+               rdfs:isDefinedBy <https://w3id.org/italia/onto/ADMS> .
 
 
 
@@ -2887,10 +2881,9 @@ Ogni volta che cambia il contenuto intellettuale, il risultato è considerato un
                          "Termine semantico"@it ;
 
               rdfs:comment "An abstract entity that reflects the intellectual content of the semantic asset components (classes, properties, individuals, concepts)."@en ,
-                           "Entità astratta che fa riferimento sia alle classi di un asset semantico, che alle sue proprietà e ai suoi individui nonchè ai concetti presenti in vocabolari controllati espressi usando  linguaggi  formali."@en ;
+                           "Entità astratta che fa riferimento sia alle classi di un asset semantico, che alle sue proprietà e ai suoi individui nonché ai concetti presenti in vocabolari controllati espressi usando linguaggi formali."@it ;
 
-              rdfs:isDefinedBy <http://dati.gov.it/onto/admsapit> ,
-                               : .
+              rdfs:isDefinedBy <https://w3id.org/italia/onto/ADMS> .
 
 
 
@@ -2902,7 +2895,7 @@ Ogni volta che cambia il contenuto intellettuale, il risultato è considerato un
 
                          prov:wasInfluencedBy <http://www.w3.org/ns/adms#AssetRepository> ;
 
-                         rdfs:isDefinedBy : .
+                         rdfs:isDefinedBy <https://w3id.org/italia/onto/ADMS> .
 
 
 
@@ -2919,7 +2912,7 @@ Semantic Asset Distributions themselves are not versioned."""@en ;
 Una particolare distribuzione di un asset semantico, è associata a uno e un solo asset, mentre tutte le distribuzioni di un asset semantico condividono lo stesso contenuto intellettuale in formati differenti.
 Le distribuzioni degli asset semantici non hanno versioni."""@it ;
 
-                           rdfs:isDefinedBy : .
+                           rdfs:isDefinedBy <https://w3id.org/italia/onto/ADMS> .
 
 
 

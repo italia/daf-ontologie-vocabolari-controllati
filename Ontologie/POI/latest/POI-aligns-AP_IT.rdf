@@ -1,20 +1,4 @@
 <?xml version="1.0"?>
-
-
-<!DOCTYPE rdf:RDF [
-    <!ENTITY schema "http://schema.org/" >
-    <!ENTITY dct "http://purl.org/dc/terms/" >
-    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
-    <!ENTITY dc "http://purl.org/dc/elements/1.1/" >
-    <!ENTITY poiapit "https://w3id.org/italia/onto/POI/" >
-    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
-    <!ENTITY xml "http://www.w3.org/XML/1998/namespace" >
-    <!ENTITY skos "http://www.w3.org/2004/02/skos/core#" >
-    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
-    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
-]>
-
-
 <rdf:RDF xmlns="https://w3id.org/italia/onto/POI-aligns/"
      xml:base="https://w3id.org/italia/onto/POI-aligns/"
      xmlns:schema="http://schema.org/"
@@ -28,20 +12,20 @@
      xmlns:poiapit="https://w3id.org/italia/onto/POI/"
      xmlns:dc="http://purl.org/dc/elements/1.1/">
     <owl:Ontology rdf:about="https://w3id.org/italia/onto/POI-aligns">
-        <dct:issued>2017-10-20</dct:issued>
-        <dc:modified>2018-03-13</dc:modified>
-        <dc:creator xml:lang="en">Agency for Digital Italy - AgID</dc:creator>
-        <dc:creator xml:lang="en">Institute of Cognitive Sciences and Technologies of the Italian Research Council (CNR) - Semantic Technology Laboratory (STLab)</dc:creator>
-        <dc:creator xml:lang="en">Italian Digital Transformation Team</dc:creator>
-        <dc:title xml:lang="en">These are the alignments to external ontologies widely used and available at the state of the art for the POI-AP_IT ontology</dc:title>
-        <dc:title xml:lang="it">Questi sono gli allineamenti dell&apos;ontologia sui punti di interesse Point of Interest - Italian Application Profile  (POI-AP_IT) verso ontologie esterne del Web semantico standard e ampiamente utilizzate.</dc:title>
-        <owl:imports rdf:resource="https://w3id.org/italia/onto/POI"/>
         <owl:versionIRI rdf:resource="https://w3id.org/italia/onto/POI-aligns/0.3"/>
+        <owl:imports rdf:resource="https://w3id.org/italia/onto/POI"/>
+        <dc:title xml:lang="en">These are the alignments to external ontologies widely used and available at the state of the art for the POI-AP_IT ontology</dc:title>
+        <dc:creator xml:lang="en">Institute of Cognitive Sciences and Technologies of the Italian Research Council (CNR) - Semantic Technology Laboratory (STLab)</dc:creator>
+        <dc:modified>2019-04-23</dc:modified>
+        <dc:creator xml:lang="en">Italian Digital Transformation Team</dc:creator>
+        <dct:issued>2017-10-20</dct:issued>
+        <dc:title xml:lang="it">Questi sono gli allineamenti dell&apos;ontologia sui punti di interesse Point of Interest - Italian Application Profile  (POI-AP_IT) verso ontologie esterne del Web semantico standard e ampiamente utilizzate.</dc:title>
+        <dc:creator xml:lang="en">Agency for Digital Italy - AgID</dc:creator>
     </owl:Ontology>
-    
 
 
-    <!-- 
+
+    <!--
     ///////////////////////////////////////////////////////////////////////////////////////
     //
     // Data properties
@@ -49,91 +33,86 @@
     ///////////////////////////////////////////////////////////////////////////////////////
      -->
 
-    
+
 
 
     <!-- http://purl.org/dc/terms/description -->
 
-    <owl:DatatypeProperty rdf:about="&dct;description">
-        <owl:equivalentProperty rdf:resource="&poiapit;POIdescription"/>
-    </owl:DatatypeProperty>
-    
+    <owl:DatatypeProperty rdf:about="http://purl.org/dc/terms/description"/>
+
 
 
     <!-- http://purl.org/dc/terms/identifier -->
 
-    <owl:DatatypeProperty rdf:about="&dct;identifier">
-        <owl:equivalentProperty rdf:resource="&poiapit;POIID"/>
-        <owl:equivalentProperty rdf:resource="&poiapit;POIcategoryIdentifier"/>
-    </owl:DatatypeProperty>
-    
+    <owl:DatatypeProperty rdf:about="http://purl.org/dc/terms/identifier"/>
+
 
 
     <!-- http://www.w3.org/2004/02/skos/core#altLabel -->
 
-    <owl:DatatypeProperty rdf:about="&skos;altLabel">
-        <owl:equivalentProperty rdf:resource="&poiapit;POIalternativeName"/>
-    </owl:DatatypeProperty>
-    
+    <owl:DatatypeProperty rdf:about="http://www.w3.org/2004/02/skos/core#altLabel"/>
+
 
 
     <!-- http://www.w3.org/2004/02/skos/core#notation -->
 
-    <owl:DatatypeProperty rdf:about="&skos;notation">
-        <owl:equivalentProperty rdf:resource="&poiapit;POIcategoryIdentifier"/>
-    </owl:DatatypeProperty>
-    
+    <owl:DatatypeProperty rdf:about="http://www.w3.org/2004/02/skos/core#notation"/>
+
 
 
     <!-- http://www.w3.org/2004/02/skos/core#prefLabel -->
 
-    <owl:DatatypeProperty rdf:about="&skos;prefLabel">
-        <owl:equivalentProperty rdf:resource="&poiapit;POIcategoryName"/>
-    </owl:DatatypeProperty>
-    
+    <owl:DatatypeProperty rdf:about="http://www.w3.org/2004/02/skos/core#prefLabel"/>
+
 
 
     <!-- https://w3id.org/italia/onto/POI/POIID -->
 
-    <owl:DatatypeProperty rdf:about="&poiapit;POIID">
-        <rdfs:isDefinedBy rdf:resource="https://w3id.org/italia/onto/POI/"/>
+    <owl:DatatypeProperty rdf:about="https://w3id.org/italia/onto/POI/POIID">
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/terms/identifier"/>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/italia/onto/POI"/>
     </owl:DatatypeProperty>
-    
+
 
 
     <!-- https://w3id.org/italia/onto/POI/POIalternativeName -->
 
-    <owl:DatatypeProperty rdf:about="&poiapit;POIalternativeName">
-        <rdfs:isDefinedBy rdf:resource="https://w3id.org/italia/onto/POI/"/>
+    <owl:DatatypeProperty rdf:about="https://w3id.org/italia/onto/POI/POIalternativeName">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2004/02/skos/core#altLabel"/>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/italia/onto/POI"/>
     </owl:DatatypeProperty>
-    
+
 
 
     <!-- https://w3id.org/italia/onto/POI/POIcategoryIdentifier -->
 
-    <owl:DatatypeProperty rdf:about="&poiapit;POIcategoryIdentifier">
-        <rdfs:isDefinedBy rdf:resource="https://w3id.org/italia/onto/POI/"/>
+    <owl:DatatypeProperty rdf:about="https://w3id.org/italia/onto/POI/POIcategoryIdentifier">
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/terms/identifier"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2004/02/skos/core#notation"/>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/italia/onto/POI"/>
     </owl:DatatypeProperty>
-    
+
 
 
     <!-- https://w3id.org/italia/onto/POI/POIcategoryName -->
 
-    <owl:DatatypeProperty rdf:about="&poiapit;POIcategoryName">
-        <rdfs:isDefinedBy rdf:resource="https://w3id.org/italia/onto/POI/"/>
+    <owl:DatatypeProperty rdf:about="https://w3id.org/italia/onto/POI/POIcategoryName">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2004/02/skos/core#prefLabel"/>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/italia/onto/POI"/>
     </owl:DatatypeProperty>
-    
+
 
 
     <!-- https://w3id.org/italia/onto/POI/POIdescription -->
 
-    <owl:DatatypeProperty rdf:about="&poiapit;POIdescription">
-        <rdfs:isDefinedBy rdf:resource="https://w3id.org/italia/onto/POI/"/>
+    <owl:DatatypeProperty rdf:about="https://w3id.org/italia/onto/POI/POIdescription">
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/terms/description"/>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/italia/onto/POI"/>
     </owl:DatatypeProperty>
-    
 
 
-    <!-- 
+
+    <!--
     ///////////////////////////////////////////////////////////////////////////////////////
     //
     // Classes
@@ -141,25 +120,23 @@
     ///////////////////////////////////////////////////////////////////////////////////////
      -->
 
-    
+
 
 
     <!-- http://www.w3.org/2004/02/skos/core#Concept -->
 
-    <owl:Class rdf:about="&skos;Concept">
-        <owl:equivalentClass rdf:resource="&poiapit;PointOfInterestCategory"/>
-    </owl:Class>
-    
+    <owl:Class rdf:about="http://www.w3.org/2004/02/skos/core#Concept"/>
+
 
 
     <!-- https://w3id.org/italia/onto/POI/PointOfInterestCategory -->
 
-    <owl:Class rdf:about="&poiapit;PointOfInterestCategory">
-        <rdfs:isDefinedBy rdf:resource="https://w3id.org/italia/onto/POI/"/>
+    <owl:Class rdf:about="https://w3id.org/italia/onto/POI/PointOfInterestCategory">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/italia/onto/POI"/>
     </owl:Class>
 </rdf:RDF>
 
 
 
-<!-- Generated by the OWL API (version 3.5.1) http://owlapi.sourceforge.net -->
-
+<!-- Generated by the OWL API (version 4.2.6.20160910-2108) https://github.com/owlcs/owlapi -->

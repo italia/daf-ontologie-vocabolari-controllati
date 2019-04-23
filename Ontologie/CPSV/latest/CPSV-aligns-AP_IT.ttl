@@ -1,177 +1,304 @@
+@prefix : <https://w3id.org/italia/onto/CPSV-aligns#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix schema: <http://schema.org/> .
-@prefix dct: <http://purl.org/dc/terms/> .
-@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix dc: <http://purl.org/dc/elements/1.1/> .
-@prefix dcat: <http://www.w3.org/ns/dcat#> .
-@prefix cpsvapit: <https://w3id.org/italia/onto/CPSV/> .
-@prefix cv: <http://data.europa.eu/m8g/> .
-@prefix cpsv: <http://purl.org/vocab/cpsv#> .
-@prefix eli: <http://data.europa.eu/eli/ontology#> .
 @base <https://w3id.org/italia/onto/CPSV-aligns> .
 
-
 <https://w3id.org/italia/onto/CPSV-aligns> rdf:type owl:Ontology ;
+                                            owl:versionIRI <https://w3id.org/italia/onto/CPSV-aligns/0.1> ;
+                                            dc:creator "Agency for Digital Italy - AgID"@en ,
+                                                       "Institute of Cognitive Sciences and Technologies of the Italian Research Council (CNR) - Semantic Technology Laboratory (STLab)"@en ,
+                                                       "Italian Digital Transformation Team"@en ;
+                                            dc:issued "2018-07-31"^^xsd:date ;
+                                            dc:modified "2019-04-23"^^xsd:date ;
+                                            dc:title "Questi sono gli allineamenti dell'ontologia sui servizi pubblici Core Public Service Vocabulary - Italian Application Profile  (CLV-AP_IT) verso ontologie esterne del Web semantico standard e ampiamente utilizzate." ,
+                                                     "These are the alignments to external ontologies widely used and available at the state of the art"@en .
 
-    owl:versionIRI <https://w3id.org/italia/onto/CPSV-aligns/0.1> ;
-    dc:creator "Institute of Cognitive Sciences and Technologies of the Italian Research Council (CNR) - Semantic Technology Laboratory (STLab)"@en ;
-    dc:creator "Agency for Digital Italy - AgID"@en ;
-    dc:creator "Italian Digital Transformation Team"@en ;
-    dc:issued "2018-07-31"^^xsd:date ;
-    dc:modified "2018-07-31"^^xsd:date ;
-    dc:title "These are the alignments to external ontologies widely used and available at the state of the art"@en ;
-    dc:title "Questi sono gli allineamenti dell'ontologia sui servizi pubblici Core Public Service Vocabulary - Italian Application Profile  (CLV-AP_IT) verso ontologie esterne del Web semantico standard e ampiamente utilizzate." ;
+#################################################################
+#    Annotation properties
+#################################################################
 
-    owl:imports <https://w3id.org/italia/onto/CPSV> .
-
-
-# Classes - Alignments
-cpsvapit:ChannelType a owl:Class ;
-    rdfs:isDefinedBy cpsvapit: ;
-    owl:equivalentClass skos:Concept .
-
-cpsvapit:Cost a owl:Class ;
-  rdfs:isDefinedBy cpsvapit: ;
-  owl:subClassOf cv:Cost .
-
-cpsvapit:InteractivityLevel a owl:Class ;
-     rdfs:isDefinedBy cpsvapit: ;
-     owl:equivalentClass skos:Concept .
-
-cpsvapit:Requirement a owl:Class ;
-     rdfs:isDefinedBy cpsvapit: ;
-     owl:subClassOf cv:CriterionRequirement .
-
-cpsvapit:ServiceInputOutputType a owl:Class ;
-     rdfs:isDefinedBy cpsvapit: ;
-     owl:equivalentClass skos:Concept .
-
-cpsvapit:ServiceSector a owl:Class ;
-     rdfs:isDefinedBy cpsvapit: ;
-     owl:equivalentClass skos:Concept .
-
-cpsvapit:ServiceTheme a owl:Class ;
-     rdfs:isDefinedBy cpsvapit: ;
-     owl:equivalentClass skos:Concept .
-
-cpsvapit:ServiceStatus a owl:Class ;
-    rdfs:isDefinedBy cpsvapit: ;
-    owl:equivalentClass skos:Concept .
-
-cpsvapit:BusinessEvent a owl:Class ;
-    rdfs:isDefinedBy cpsvapit: ;
-    owl:equivalentClass skos:Concept ;
-    owl:subClassOf cv:BusinessEvent .
-
-cpsvapit:LifeEvent a owl:Class ;
-    rdfs:isDefinedBy cpsvapit: ;
-    owl:equivalentClass skos:Concept ;
-    owl:subClassOf cv:LifeEvent .
-
-cpsvapit:LifeEvent a owl:Class ;
-    rdfs:isDefinedBy cpsvapit: ;
-    owl:subClassOf cv:Channel .
-
-cpsvapit:Input a owl:Class ;
-    rdfs:isDefinedBy cpsvapit: ;
-    owl:subClassOf cv:Evidence .
-
-cpsvapit:Output a owl:Class ;
-    rdfs:isDefinedBy cpsvapit: ;
-    owl:subClassOf cv:Output .
-
-cpsvapit:Service a owl:Class ;
-    rdfs:isDefinedBy cpsvapit: ;
-    owl:subClassOf schema:Service .
-
-cpsvapit:PublicService a owl:Class ;
-    rdfs:isDefinedBy cpsvapit: ;
-    owl:subClassOf cpsv:PublicService .
-
-cpsvapit:Rule a owl:Class ;
-    rdfs:isDefinedBy cpsvapit: ;
-    owl:subClassOf cpsv:Rule .
-
-cpsvapit:FormalFramework a owl:Class ;
-    rdfs:isDefinedBy cpsvapit: ;
-    owl:subClassOf eli:LegalResource .
-
-# Object Properties - Alignments
-cpsvapit:hasChannel a owl:ObjectProperty ;
-    rdfs:isDefinedBy cpsvapit: ;
-    owl:equivalentProperty cv:hasChannel .
-
-cpsvapit:hasCost a owl:ObjectProperty ;
-        rdfs:isDefinedBy cpsvapit: ;
-        owl:equivalentProperty cv:hasCost .
-
-cpsvapit:specifiesReq a owl:ObjectProperty ;
-        rdfs:isDefinedBy cpsvapit: ;
-        owl:subPropertyOf cv:hasCriterion .
-
-cpsvapit:serviceSector a owl:ObjectProperty ;
-        rdfs:isDefinedBy cpsvapit: ;
-        owl:equivalentProperty cv:sector .
-
-cpsvapit:serviceTheme a owl:ObjectProperty ;
-        rdfs:isDefinedBy cpsvapit: ;
-        owl:equivalentProperty cv:thematicArea .
-
-cpsvapit:isCompliantWithRule a owl:ObjectProperty ;
-        rdfs:isDefinedBy cpsvapit: ;
-        owl:subPropertyOf cpsv:follows .
-
-cpsvapit:hasInput a owl:ObjectProperty ;
-        rdfs:isDefinedBy cpsvapit: ;
-        owl:equivalentProperty cv:hasInput .
-
-cpsvapit:implementsFF a owl:ObjectProperty ;
-        rdfs:isDefinedBy cpsvapit: ;
-        owl:subPropertyOf cpsv:implements .
-
-cpsvapit:producesOutput a owl:ObjectProperty ;
-        rdfs:isDefinedBy cpsvapit: ;
-        owl:equivalentProperty cpsv:produces .
-
-cpsvapit:relationService a owl:ObjectProperty ;
-        rdfs:isDefinedBy cpsvapit: ;
-        owl:equivalentProperty dct:relation .
-
-cpsvapit:requiresService a owl:ObjectProperty ;
-        rdfs:isDefinedBy cpsvapit: ;
-        owl:equivalentProperty dct:requires .
-
-#Data Type Properties - Alignments
-cpsvapit:serviceKeyword a owl:DatatypeProperty ;
-        rdfs:isDefinedBy cpsvapit: ;
-        owl:subPropertyOf dcat:keyword .
+###  http://purl.org/dc/elements/1.1/creator
+dc:creator rdf:type owl:AnnotationProperty .
 
 
-skos:Concept a owl:Class .
-cv:Cost a owl:Class .
-cv:CriterionRequirement a owl:Class .
-cv:BusinessEvent a owl:Class .
-cv:LifeEvent a owl:Class .
-cv:Channel a owl:Class .
-cv:Evidence a owl:Class .
-cv:Output a owl:Class .
-schema:Service a owl:Class .
-cpsv:PublicService a owl:Class .
-cpsv:Rule a owl:Class .
-eli:LegalResource a owl:Class .
-cv:hasChannel a owl:ObjectProperty .
-cv:hasCost a owl:ObjectProperty .
-cv:hasCriterion a owl:ObjectProperty .
-cv:sector a owl:ObjectProperty .
-cv:thematicArea a owl:ObjectProperty .
-cpsv:follows a owl:ObjectProperty .
-cv:hasInput a owl:ObjectProperty .
-cpsv:implements a owl:ObjectProperty .
-cpsv:produces a owl:ObjectProperty .
-dct:relation a owl:ObjectProperty .
-dct:requires a owl:ObjectProperty .
-dcat:keyword a owl:DatatypeProperty .
+###  http://purl.org/dc/elements/1.1/issued
+dc:issued rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/elements/1.1/modified
+dc:modified rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/elements/1.1/title
+dc:title rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://data.europa.eu/m8g/hasChannel
+<http://data.europa.eu/m8g/hasChannel> rdf:type owl:ObjectProperty ;
+                                       owl:equivalentProperty <https://w3id.org/italia/onto/CPSV/hasChannel> .
+
+
+###  http://data.europa.eu/m8g/hasCost
+<http://data.europa.eu/m8g/hasCost> rdf:type owl:ObjectProperty ;
+                                    owl:equivalentProperty <https://w3id.org/italia/onto/CPSV/hasCost> .
+
+
+###  http://data.europa.eu/m8g/hasCriterion
+<http://data.europa.eu/m8g/hasCriterion> rdf:type owl:ObjectProperty .
+
+
+###  http://data.europa.eu/m8g/hasInput
+<http://data.europa.eu/m8g/hasInput> rdf:type owl:ObjectProperty ;
+                                     owl:equivalentProperty <https://w3id.org/italia/onto/CPSV/hasInput> .
+
+
+###  http://data.europa.eu/m8g/sector
+<http://data.europa.eu/m8g/sector> rdf:type owl:ObjectProperty ;
+                                   owl:equivalentProperty <https://w3id.org/italia/onto/CPSV/serviceSector> .
+
+
+###  http://data.europa.eu/m8g/thematicArea
+<http://data.europa.eu/m8g/thematicArea> rdf:type owl:ObjectProperty ;
+                                         owl:equivalentProperty <https://w3id.org/italia/onto/CPSV/serviceTheme> .
+
+
+###  http://purl.org/dc/terms/relation
+<http://purl.org/dc/terms/relation> rdf:type owl:ObjectProperty ;
+                                    owl:equivalentProperty <https://w3id.org/italia/onto/CPSV/relationService> .
+
+
+###  http://purl.org/dc/terms/requires
+<http://purl.org/dc/terms/requires> rdf:type owl:ObjectProperty ;
+                                    owl:equivalentProperty <https://w3id.org/italia/onto/CPSV/requiresService> .
+
+
+###  http://purl.org/vocab/cpsv#follows
+<http://purl.org/vocab/cpsv#follows> rdf:type owl:ObjectProperty .
+
+
+###  http://purl.org/vocab/cpsv#implements
+<http://purl.org/vocab/cpsv#implements> rdf:type owl:ObjectProperty .
+
+
+###  http://purl.org/vocab/cpsv#produces
+<http://purl.org/vocab/cpsv#produces> rdf:type owl:ObjectProperty ;
+                                      owl:equivalentProperty <https://w3id.org/italia/onto/CPSV/producesOutput> .
+
+
+###  https://w3id.org/italia/onto/CPSV/hasChannel
+<https://w3id.org/italia/onto/CPSV/hasChannel> rdf:type owl:ObjectProperty ;
+                                               rdfs:isDefinedBy <https://w3id.org/italia/onto/CPSV> .
+
+
+###  https://w3id.org/italia/onto/CPSV/hasCost
+<https://w3id.org/italia/onto/CPSV/hasCost> rdf:type owl:ObjectProperty ;
+                                            rdfs:isDefinedBy <https://w3id.org/italia/onto/CPSV> .
+
+
+###  https://w3id.org/italia/onto/CPSV/hasInput
+<https://w3id.org/italia/onto/CPSV/hasInput> rdf:type owl:ObjectProperty ;
+                                             rdfs:isDefinedBy <https://w3id.org/italia/onto/CPSV> .
+
+
+###  https://w3id.org/italia/onto/CPSV/implementsFF
+<https://w3id.org/italia/onto/CPSV/implementsFF> rdf:type owl:ObjectProperty ;
+                                                 rdfs:isDefinedBy <https://w3id.org/italia/onto/CPSV> .
+
+
+###  https://w3id.org/italia/onto/CPSV/isCompliantWithRule
+<https://w3id.org/italia/onto/CPSV/isCompliantWithRule> rdf:type owl:ObjectProperty ;
+                                                        rdfs:isDefinedBy <https://w3id.org/italia/onto/CPSV> .
+
+
+###  https://w3id.org/italia/onto/CPSV/producesOutput
+<https://w3id.org/italia/onto/CPSV/producesOutput> rdf:type owl:ObjectProperty ;
+                                                   rdfs:isDefinedBy <https://w3id.org/italia/onto/CPSV> .
+
+
+###  https://w3id.org/italia/onto/CPSV/relationService
+<https://w3id.org/italia/onto/CPSV/relationService> rdf:type owl:ObjectProperty ;
+                                                    rdfs:isDefinedBy <https://w3id.org/italia/onto/CPSV> .
+
+
+###  https://w3id.org/italia/onto/CPSV/requiresService
+<https://w3id.org/italia/onto/CPSV/requiresService> rdf:type owl:ObjectProperty ;
+                                                    rdfs:isDefinedBy <https://w3id.org/italia/onto/CPSV> .
+
+
+###  https://w3id.org/italia/onto/CPSV/serviceSector
+<https://w3id.org/italia/onto/CPSV/serviceSector> rdf:type owl:ObjectProperty ;
+                                                  rdfs:isDefinedBy <https://w3id.org/italia/onto/CPSV> .
+
+
+###  https://w3id.org/italia/onto/CPSV/serviceTheme
+<https://w3id.org/italia/onto/CPSV/serviceTheme> rdf:type owl:ObjectProperty ;
+                                                 rdfs:isDefinedBy <https://w3id.org/italia/onto/CPSV> .
+
+
+###  https://w3id.org/italia/onto/CPSV/specifiesReq
+<https://w3id.org/italia/onto/CPSV/specifiesReq> rdf:type owl:ObjectProperty ;
+                                                 rdfs:isDefinedBy <https://w3id.org/italia/onto/CPSV> .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.w3.org/ns/dcat#keyword
+<http://www.w3.org/ns/dcat#keyword> rdf:type owl:DatatypeProperty .
+
+
+###  https://w3id.org/italia/onto/CPSV/serviceKeyword
+<https://w3id.org/italia/onto/CPSV/serviceKeyword> rdf:type owl:DatatypeProperty ;
+                                                   rdfs:isDefinedBy <https://w3id.org/italia/onto/CPSV> .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://data.europa.eu/eli/ontology#LegalResource
+<http://data.europa.eu/eli/ontology#LegalResource> rdf:type owl:Class .
+
+
+###  http://data.europa.eu/m8g/BusinessEvent
+<http://data.europa.eu/m8g/BusinessEvent> rdf:type owl:Class .
+
+
+###  http://data.europa.eu/m8g/Channel
+<http://data.europa.eu/m8g/Channel> rdf:type owl:Class .
+
+
+###  http://data.europa.eu/m8g/Cost
+<http://data.europa.eu/m8g/Cost> rdf:type owl:Class .
+
+
+###  http://data.europa.eu/m8g/CriterionRequirement
+<http://data.europa.eu/m8g/CriterionRequirement> rdf:type owl:Class .
+
+
+###  http://data.europa.eu/m8g/Evidence
+<http://data.europa.eu/m8g/Evidence> rdf:type owl:Class .
+
+
+###  http://data.europa.eu/m8g/LifeEvent
+<http://data.europa.eu/m8g/LifeEvent> rdf:type owl:Class .
+
+
+###  http://data.europa.eu/m8g/Output
+<http://data.europa.eu/m8g/Output> rdf:type owl:Class .
+
+
+###  http://purl.org/vocab/cpsv#PublicService
+<http://purl.org/vocab/cpsv#PublicService> rdf:type owl:Class .
+
+
+###  http://purl.org/vocab/cpsv#Rule
+<http://purl.org/vocab/cpsv#Rule> rdf:type owl:Class .
+
+
+###  http://schema.org/Service
+<http://schema.org/Service> rdf:type owl:Class .
+
+
+###  http://www.w3.org/2004/02/skos/core#Concept
+<http://www.w3.org/2004/02/skos/core#Concept> rdf:type owl:Class .
+
+
+###  https://w3id.org/italia/onto/CPSV/BusinessEvent
+<https://w3id.org/italia/onto/CPSV/BusinessEvent> rdf:type owl:Class ;
+                                                  rdfs:subClassOf <http://www.w3.org/2004/02/skos/core#Concept> ;
+                                                  rdfs:isDefinedBy <https://w3id.org/italia/onto/CPSV> .
+
+
+###  https://w3id.org/italia/onto/CPSV/ChannelType
+<https://w3id.org/italia/onto/CPSV/ChannelType> rdf:type owl:Class ;
+                                                rdfs:subClassOf <http://www.w3.org/2004/02/skos/core#Concept> ;
+                                                rdfs:isDefinedBy <https://w3id.org/italia/onto/CPSV> .
+
+
+###  https://w3id.org/italia/onto/CPSV/Cost
+<https://w3id.org/italia/onto/CPSV/Cost> rdf:type owl:Class ;
+                                         rdfs:isDefinedBy <https://w3id.org/italia/onto/CPSV> .
+
+
+###  https://w3id.org/italia/onto/CPSV/FormalFramework
+<https://w3id.org/italia/onto/CPSV/FormalFramework> rdf:type owl:Class ;
+                                                    rdfs:isDefinedBy <https://w3id.org/italia/onto/CPSV> .
+
+
+###  https://w3id.org/italia/onto/CPSV/Input
+<https://w3id.org/italia/onto/CPSV/Input> rdf:type owl:Class ;
+                                          rdfs:isDefinedBy <https://w3id.org/italia/onto/CPSV> .
+
+
+###  https://w3id.org/italia/onto/CPSV/InteractivityLevel
+<https://w3id.org/italia/onto/CPSV/InteractivityLevel> rdf:type owl:Class ;
+                                                       rdfs:subClassOf <http://www.w3.org/2004/02/skos/core#Concept> ;
+                                                       rdfs:isDefinedBy <https://w3id.org/italia/onto/CPSV> .
+
+
+###  https://w3id.org/italia/onto/CPSV/LifeEvent
+<https://w3id.org/italia/onto/CPSV/LifeEvent> rdf:type owl:Class ;
+                                              rdfs:subClassOf <http://www.w3.org/2004/02/skos/core#Concept> ;
+                                              rdfs:isDefinedBy <https://w3id.org/italia/onto/CPSV> .
+
+
+###  https://w3id.org/italia/onto/CPSV/Output
+<https://w3id.org/italia/onto/CPSV/Output> rdf:type owl:Class ;
+                                           rdfs:isDefinedBy <https://w3id.org/italia/onto/CPSV> .
+
+
+###  https://w3id.org/italia/onto/CPSV/PublicService
+<https://w3id.org/italia/onto/CPSV/PublicService> rdf:type owl:Class ;
+                                                  rdfs:isDefinedBy <https://w3id.org/italia/onto/CPSV> .
+
+
+###  https://w3id.org/italia/onto/CPSV/Requirement
+<https://w3id.org/italia/onto/CPSV/Requirement> rdf:type owl:Class ;
+                                                rdfs:isDefinedBy <https://w3id.org/italia/onto/CPSV> .
+
+
+###  https://w3id.org/italia/onto/CPSV/Rule
+<https://w3id.org/italia/onto/CPSV/Rule> rdf:type owl:Class ;
+                                         rdfs:isDefinedBy <https://w3id.org/italia/onto/CPSV> .
+
+
+###  https://w3id.org/italia/onto/CPSV/Service
+<https://w3id.org/italia/onto/CPSV/Service> rdf:type owl:Class ;
+                                            rdfs:isDefinedBy <https://w3id.org/italia/onto/CPSV> .
+
+
+###  https://w3id.org/italia/onto/CPSV/ServiceInputOutputType
+<https://w3id.org/italia/onto/CPSV/ServiceInputOutputType> rdf:type owl:Class ;
+                                                           rdfs:subClassOf <http://www.w3.org/2004/02/skos/core#Concept> ;
+                                                           rdfs:isDefinedBy <https://w3id.org/italia/onto/CPSV> .
+
+
+###  https://w3id.org/italia/onto/CPSV/ServiceSector
+<https://w3id.org/italia/onto/CPSV/ServiceSector> rdf:type owl:Class ;
+                                                  rdfs:subClassOf <http://www.w3.org/2004/02/skos/core#Concept> ;
+                                                  rdfs:isDefinedBy <https://w3id.org/italia/onto/CPSV> .
+
+
+###  https://w3id.org/italia/onto/CPSV/ServiceStatus
+<https://w3id.org/italia/onto/CPSV/ServiceStatus> rdf:type owl:Class ;
+                                                  rdfs:subClassOf <http://www.w3.org/2004/02/skos/core#Concept> ;
+                                                  rdfs:isDefinedBy <https://w3id.org/italia/onto/CPSV> .
+
+
+###  https://w3id.org/italia/onto/CPSV/ServiceTheme
+<https://w3id.org/italia/onto/CPSV/ServiceTheme> rdf:type owl:Class ;
+                                                 rdfs:subClassOf <http://www.w3.org/2004/02/skos/core#Concept> ;
+                                                 rdfs:isDefinedBy <https://w3id.org/italia/onto/CPSV> .
+
+
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi

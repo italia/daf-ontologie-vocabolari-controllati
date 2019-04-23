@@ -1,23 +1,17 @@
 {
   "@context": {
-    "cpev": "http://data.europa.eu/m8g/PublicEvent",
-    "cpevapit": "https://w3id.org/italia/onto/CPEV/",
     "dc": "http://purl.org/dc/elements/1.1/",
-    "dct": "http://purl.org/dc/terms/",
     "dcterms": "http://purl.org/dc/terms/",
-    "dul": "http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#",
     "owl": "http://www.w3.org/2002/07/owl#",
     "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
     "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
     "schema": "http://schema.org/",
-    "skos": "http://www.w3.org/2004/02/skos/core#",
-    "ti": "http://www.ontologydesignpatterns.org/cp/owl/timeinterval.owl",
     "xsd": "http://www.w3.org/2001/XMLSchema#"
   },
   "@graph": [
     {
       "@id": "http://data.europa.eu/m8g/PublicEventformat",
-      "@type": "owl:Property"
+      "@type": "owl:ObjectProperty"
     },
     {
       "@id": "https://w3id.org/italia/onto/CPEV-aligns",
@@ -29,11 +23,11 @@
         },
         {
           "@language": "en",
-          "@value": "Italian Digital Transformation Team"
+          "@value": "Agency for Digital Italy - AgID"
         },
         {
           "@language": "en",
-          "@value": "Agency for Digital Italy - AgID"
+          "@value": "Italian Digital Transformation Team"
         }
       ],
       "dc:issued": {
@@ -42,7 +36,7 @@
       },
       "dc:modified": {
         "@type": "xsd:date",
-        "@value": "2018-06-25"
+        "@value": "2019-04-23"
       },
       "dcterms:description": [
         {
@@ -72,27 +66,54 @@
       }
     },
     {
-      "@id": "cpevapit:subEventOf",
-      "@type": "owl:Property",
-      "owl:equivalentProperty": {
-        "@id": "schema:subEvent"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "cpevapit:"
-      }
-    },
-    {
       "@id": "http://data.europa.eu/m8g/PublicEventPublicEvent",
       "@type": "owl:Class"
     },
     {
-      "@id": "cpevapit:targetAudience",
-      "@type": "owl:Property",
-      "owl:subPropertyOf": {
-        "@id": "schema:audience"
+      "@id": "https://w3id.org/italia/onto/CPEV/Audience",
+      "@type": "owl:Class",
+      "owl:subClassOf": {
+        "@id": "schema:Audience"
       },
       "rdfs:isDefinedBy": {
-        "@id": "cpevapit:"
+        "@id": "https://w3id.org/italia/onto/CPEV"
+      }
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/CPEV/PublicEvent",
+      "@type": "owl:Class",
+      "owl:subClassOf": [
+        {
+          "@id": "schema:Event"
+        },
+        {
+          "@id": "http://data.europa.eu/m8g/PublicEvent"
+        }
+      ],
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/italia/onto/CPEV"
+      }
+    },
+    {
+      "@id": "schema:subEvent",
+      "@type": "owl:ObjectProperty"
+    },
+    {
+      "@id": "schema:audience",
+      "@type": "owl:ObjectProperty"
+    },
+    {
+      "@id": "schema:Event",
+      "@type": "owl:Class"
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/CPEV/hasFormat",
+      "@type": "owl:ObjectProperty",
+      "owl:subPropertyOf": {
+        "@id": "http://data.europa.eu/m8g/PublicEventformat"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/italia/onto/CPEV"
       }
     },
     {
@@ -100,50 +121,23 @@
       "@type": "owl:Class"
     },
     {
-      "@id": "cpevapit:hasFormat",
-      "@type": "owl:Property",
+      "@id": "https://w3id.org/italia/onto/CPEV/targetAudience",
+      "@type": "owl:ObjectProperty",
       "owl:subPropertyOf": {
-        "@id": "http://data.europa.eu/m8g/PublicEventformat"
+        "@id": "schema:audience"
       },
       "rdfs:isDefinedBy": {
-        "@id": "cpevapit:"
+        "@id": "https://w3id.org/italia/onto/CPEV"
       }
     },
     {
-      "@id": "schema:Event",
-      "@type": "owl:Class"
-    },
-    {
-      "@id": "schema:subEvent",
-      "@type": "owl:Property"
-    },
-    {
-      "@id": "schema:audience",
-      "@type": "owl:Property"
-    },
-    {
-      "@id": "cpevapit:PublicEvent",
-      "@type": "owl:Class",
-      "owl:subClassOf": [
-        {
-          "@id": "schema:Event"
-        },
-        {
-          "@id": "http://data.europa.eu/m8g/PublicEventPublicEvent"
-        }
-      ],
-      "rdfs:isDefinedBy": {
-        "@id": "cpevapit:"
-      }
-    },
-    {
-      "@id": "cpevapit:Audience",
-      "@type": "owl:Class",
-      "owl:subClassOf": {
-        "@id": "schema:Audience"
+      "@id": "https://w3id.org/italia/onto/CPEV/subEventOf",
+      "@type": "owl:ObjectProperty",
+      "owl:equivalentProperty": {
+        "@id": "schema:subEvent"
       },
       "rdfs:isDefinedBy": {
-        "@id": "cpevapit:"
+        "@id": "https://w3id.org/italia/onto/CPEV"
       }
     }
   ]

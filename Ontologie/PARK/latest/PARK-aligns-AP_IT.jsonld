@@ -1,12 +1,8 @@
 {
   "@context": {
     "dc": "http://purl.org/dc/elements/1.1/",
-    "dct": "http://purl.org/dc/terms/",
     "dcterms": "http://purl.org/dc/terms/",
-    "dul": "http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#",
     "owl": "http://www.w3.org/2002/07/owl#",
-    "parkapit": "https://w3id.org/italia/onto/PARK/",
-    "pto": "http://www.productontology.org/id/",
     "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
     "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
     "schema": "http://schema.org/",
@@ -15,12 +11,50 @@
   },
   "@graph": [
     {
+      "@id": "https://w3id.org/italia/onto/PARK/CarPark",
+      "@type": "owl:Class",
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/italia/onto/PARK"
+      }
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/PARK/carParkName",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:NamedIndividual"
+      ],
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/italia/onto/PARK"
+      }
+    },
+    {
+      "@id": "dcterms:title",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:NamedIndividual"
+      ]
+    },
+    {
+      "@id": "schema:ParkingFacility",
+      "@type": "owl:Class"
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/PARK/CarParkTypology",
+      "@type": "owl:Class",
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/italia/onto/PARK"
+      },
+      "rdfs:subClassOf": {
+        "@id": "skos:Concept"
+      }
+    },
+    {
       "@id": "https://w3id.org/italia/onto/PARK-aligns",
       "@type": "owl:Ontology",
       "dc:creator": [
         {
           "@language": "en",
-          "@value": "Institute of Cognitive Sciences and Technologies of the Italian Research Council (CNR) - Semantic Technology Laboratory (STLab)"
+          "@value": "Agency for Digital Italy - AgID"
         },
         {
           "@language": "en",
@@ -28,7 +62,7 @@
         },
         {
           "@language": "en",
-          "@value": "Agency for Digital Italy - AgID"
+          "@value": "Institute of Cognitive Sciences and Technologies of the Italian Research Council (CNR) - Semantic Technology Laboratory (STLab)"
         }
       ],
       "dc:issued": {
@@ -37,16 +71,16 @@
       },
       "dc:modified": {
         "@type": "xsd:date",
-        "@value": "2018-06-25"
+        "@value": "2019-04-23"
       },
       "dcterms:description": [
         {
-          "@language": "en",
-          "@value": "These are the alignments to external ontologies widely used and available at the state of the art for the car park ontology"
-        },
-        {
           "@language": "it",
           "@value": "Questi sono gli allineamenti dell'ontologia sui parcheggi Car Park- Italian Application Profile  (PARK-AP_IT) verso ontologie esterne del Web semantico standard e ampiamente utilizzate."
+        },
+        {
+          "@language": "en",
+          "@value": "These are the alignments to external ontologies widely used and available at the state of the art for the car park ontology"
         }
       ],
       "dcterms:title": [
@@ -67,61 +101,21 @@
       }
     },
     {
-      "@id": "parkapit:carParkDescription",
-      "@type": "owl:Property",
-      "owl:equivalentProperty": {
-        "@id": "dcterms:description"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "parkapit:"
-      }
+      "@id": "dcterms:identifier",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:NamedIndividual"
+      ]
     },
     {
-      "@id": "parkapit:CarPark",
-      "@type": "owl:Class",
-      "owl:subClassOf": [
-        {
-          "@id": "pto:Parking_lot"
-        },
-        {
-          "@id": "schema:ParkingFacility"
-        }
+      "@id": "https://w3id.org/italia/onto/PARK/carParkDescription",
+      "@type": [
+        "owl:NamedIndividual",
+        "owl:ObjectProperty"
       ],
       "rdfs:isDefinedBy": {
-        "@id": "parkapit:"
+        "@id": "https://w3id.org/italia/onto/PARK"
       }
-    },
-    {
-      "@id": "parkapit:carParkID",
-      "@type": "owl:Property",
-      "owl:equivalentProperty": {
-        "@id": "dcterms:identifier"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "parkapit:"
-      }
-    },
-    {
-      "@id": "parkapit:carParkName",
-      "@type": "owl:Property",
-      "owl:equivalentProperty": {
-        "@id": "dcterms:title"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "parkapit:"
-      }
-    },
-    {
-      "@id": "schema:ParkingFacility",
-      "@type": "owl:Class"
-    },
-    {
-      "@id": "dcterms:title",
-      "@type": "owl:Property"
-    },
-    {
-      "@id": "dcterms:identifier",
-      "@type": "owl:Property"
     },
     {
       "@id": "skos:Concept",
@@ -129,21 +123,24 @@
     },
     {
       "@id": "dcterms:description",
-      "@type": "owl:Property"
+      "@type": [
+        "owl:NamedIndividual",
+        "owl:ObjectProperty"
+      ]
     },
     {
-      "@id": "parkapit:CarParkTypology",
-      "@type": "owl:Class",
-      "owl:equivalentClass": {
-        "@id": "skos:Concept"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "parkapit:"
-      }
-    },
-    {
-      "@id": "pto:Parking_lot",
+      "@id": "http://www.productontology.org/id/Parking_lot",
       "@type": "owl:Class"
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/PARK/carParkID",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:NamedIndividual"
+      ],
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/italia/onto/PARK"
+      }
     }
   ]
 }

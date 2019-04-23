@@ -1,59 +1,53 @@
-@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix schema: <http://schema.org/> .
-@prefix dct: <http://purl.org/dc/terms/> .
-@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix dc: <http://purl.org/dc/elements/1.1/> .
-@prefix ti: <http://www.ontologydesignpatterns.org/cp/owl/timeinterval.owl> .
-@prefix cpevapit: <https://w3id.org/italia/onto/CPEV/> .
-@prefix cpev: <http://data.europa.eu/m8g/PublicEvent> .
-@base <https://w3id.org/italia/onto/CPEV-aligns/> .
 
+<http://data.europa.eu/m8g/PublicEventPublicEvent> a owl:Class .
 
-<https://w3id.org/italia/onto/CPEV-aligns> rdf:type owl:Ontology ;
-
-    owl:versionIRI <https://w3id.org/italia/onto/CPEV-aligns/0.1> ;
-    dc:creator "Institute of Cognitive Sciences and Technologies of the Italian Research Council (CNR) - Semantic Technology Laboratory (STLab)"@en ;
-    dc:creator "Agency for Digital Italy - AgID"@en ;
-    dc:creator "Italian Digital Transformation Team"@en ;
+<https://w3id.org/italia/onto/CPEV-aligns> a owl:Ontology ;
+    dc:creator "Agency for Digital Italy - AgID"@en,
+        "Institute of Cognitive Sciences and Technologies of the Italian Research Council (CNR) - Semantic Technology Laboratory (STLab)"@en,
+        "Italian Digital Transformation Team"@en ;
     dc:issued "2018-06-25"^^xsd:date ;
-    dc:modified "2018-06-25"^^xsd:date ;
-    dct:title "Public Event Ontology Alignments"@en , "Allinemaneti per l'Ontologia degli Eventi Pubblici"@it ;
-    dct:description "These are the alignments to external ontologies widely used and available at the state of the art for the Core Public Event Vocabulary - Italian Application Profile"@en , "Questi sono gli allineamenti dell'ontologia sugli eventi pubblici Core Public Event Vocabulary - Italian Application Profile  (CPEV-AP_IT) verso ontologie esterne del Web semantico standard e ampiamente utilizzate."@it ;
+    dc:modified "2019-04-23"^^xsd:date ;
+    dcterms:description "These are the alignments to external ontologies widely used and available at the state of the art for the Core Public Event Vocabulary - Italian Application Profile"@en,
+        "Questi sono gli allineamenti dell'ontologia sugli eventi pubblici Core Public Event Vocabulary - Italian Application Profile  (CPEV-AP_IT) verso ontologie esterne del Web semantico standard e ampiamente utilizzate."@it ;
+    dcterms:title "Public Event Ontology Alignments"@en,
+        "Allinemaneti per l'Ontologia degli Eventi Pubblici"@it ;
+    owl:imports <https://w3id.org/italia/onto/CPEV> ;
+    owl:versionIRI <https://w3id.org/italia/onto/CPEV-aligns/0.1> .
 
-    owl:imports <https://w3id.org/italia/onto/CPEV> .
+<https://w3id.org/italia/onto/CPEV/Audience> a owl:Class ;
+    rdfs:isDefinedBy <https://w3id.org/italia/onto/CPEV> ;
+    owl:subClassOf <http://schema.org/Audience> .
 
+<https://w3id.org/italia/onto/CPEV/PublicEvent> a owl:Class ;
+    rdfs:isDefinedBy <https://w3id.org/italia/onto/CPEV> ;
+    owl:subClassOf <http://data.europa.eu/m8g/PublicEvent>,
+        <http://schema.org/Event> .
 
-# Classes - Alignments
-cpevapit:PublicEvent a owl:Class ;
-  rdfs:isDefinedBy cpevapit: ;
-  owl:subClassOf schema:Event , cpev:PublicEvent .
+<https://w3id.org/italia/onto/CPEV/hasFormat> a owl:ObjectProperty ;
+    rdfs:isDefinedBy <https://w3id.org/italia/onto/CPEV> ;
+    owl:subPropertyOf <http://data.europa.eu/m8g/PublicEventformat> .
 
-cpevapit:Audience a owl:Class ;
-  rdfs:isDefinedBy cpevapit: ;
-  owl:subClassOf schema:Audience .
+<https://w3id.org/italia/onto/CPEV/subEventOf> a owl:ObjectProperty ;
+    rdfs:isDefinedBy <https://w3id.org/italia/onto/CPEV> ;
+    owl:equivalentProperty <http://schema.org/subEvent> .
 
-#Object Property - alignments
+<https://w3id.org/italia/onto/CPEV/targetAudience> a owl:ObjectProperty ;
+    rdfs:isDefinedBy <https://w3id.org/italia/onto/CPEV> ;
+    owl:subPropertyOf <http://schema.org/audience> .
 
-cpevapit:subEventOf a owl:Property ;
-  rdfs:isDefinedBy cpevapit: ;
-  owl:equivalentProperty schema:subEvent .
+<http://data.europa.eu/m8g/PublicEventformat> a owl:ObjectProperty .
 
-cpevapit:targetAudience a owl:Property ;
-  rdfs:isDefinedBy cpevapit: ;
-  owl:subPropertyOf schema:audience .
+<http://schema.org/Audience> a owl:Class .
 
-cpevapit:hasFormat a owl:Property ;
-    rdfs:isDefinedBy cpevapit: ;
-    owl:subPropertyOf cpev:format .
+<http://schema.org/Event> a owl:Class .
 
-schema:Event a owl:Class .
-schema:Audience a owl:Class .
-cpev:PublicEvent a owl:Class .
-schema:subEvent a owl:Property .
-schema:audience a owl:Property .
-cpev:format a owl:Property .
+<http://schema.org/audience> a owl:ObjectProperty .
+
+<http://schema.org/subEvent> a owl:ObjectProperty .

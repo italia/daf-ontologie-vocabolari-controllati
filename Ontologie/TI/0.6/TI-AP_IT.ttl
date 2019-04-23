@@ -17,7 +17,7 @@
 @base <https://w3id.org/italia/onto/TI> .
 
 <https://w3id.org/italia/onto/TI> rdf:type owl:Ontology ;
-                                   owl:versionIRI : ;
+                                   owl:versionIRI <https://w3id.org/italia/onto/TI/0.6>  ;
                                    owl:imports <https://w3id.org/italia/onto/l0> ,
                                                <https://w3id.org/italia/onto/MU> ;
                                    admsapit:prefix "tiapit" ;
@@ -29,10 +29,10 @@
                                    admsapit:hasKeyClass :TimeIndexedEvent ;
                                    dcat:keyword "anno"@it ;
                                    admsapit:hasTask admsapit:SearchTask ;
-                                   owl:versionInfo "Version 0.6 - 18 June 2018 - change of the domain of the property hasTemporalEntity and of all its subproperties"@en ;
+                                   owl:versionInfo "Version 0.6 - Modified on 23 April 2019 - Refactoring l0:Event in l0:EventOrSituation"@en ;
                                    dcat:keyword "mese"@it ;
                                    admsapit:target "Pubbliche Amministrazioni"@it ;
-                                   dct:modified "2018-06-18"^^xsd:date ;
+                                   dct:modified "2019-04-23"^^xsd:date ;
                                    admsapit:hasOntologyLanguage admsapit:OWL ;
                                    dct:creator <https://w3id.org/italia/data/organization/support-unit/cnr-Z6HZEH/stlab> ;
                                    rdfs:comment "This is the ontology of the Italian application profile for time"@en ;
@@ -59,7 +59,7 @@
                                    dct:accrualPeriodicity <http://publications.europa.eu/resource/authority/frequency/IRREG> ;
                                    rdfs:label "Italian Time ontology"@en ;
                                    admsapit:last : ;
-                                   owl:versionInfo "Versione 0.6 - 18 Giugno 2018 - Cambiamento del dominio della proprietà hasTemporalEntity e di tutte le sue sottoproprietà"@it ;
+                                   owl:versionInfo "Versione 0.6 - Modificata il 23 Aprile 2019 - Rifattorizzato l0:Event in l0:EventOrSituation"@it ;
                                    admsapit:acronym "TI-AP_IT" ;
                                    admsapit:hasSemanticAssetDistribution <https://w3id.org/italia/data/distribution/TI-RDF-TURTLE> ;
                                    admsapit:hasContributor <https://w3id.org/italia/data/organization/public-organization/td> ;
@@ -464,7 +464,7 @@ xsd:time rdf:type rdfs:Datatype .
 
 ###  https://w3id.org/italia/onto/TI/TimeIndexedEvent
 :TimeIndexedEvent rdf:type owl:Class ;
-                  rdfs:subClassOf l0:Event ,
+                  rdfs:subClassOf l0:EventOrSituation ,
                                   [ rdf:type owl:Restriction ;
                                     owl:onProperty :atTime ;
                                     owl:someValuesFrom :TimeInterval
@@ -520,7 +520,7 @@ l0:Entity rdf:type owl:Class .
 
 
 ###  https://w3id.org/italia/onto/l0/Event
-l0:Event rdf:type owl:Class .
+l0:EventOrSituation rdf:type owl:Class .
 
 
 #################################################################

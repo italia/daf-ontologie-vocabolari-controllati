@@ -1,70 +1,114 @@
 @prefix : <https://w3id.org/italia/onto/POI-aligns/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix schema: <http://schema.org/> .
-@prefix dct: <http://purl.org/dc/terms/> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix dc: <http://purl.org/dc/elements/1.1/> .
-@prefix dct: <http://purl.org/dc/terms/> .
+@prefix schema: <http://schema.org/> .
 @prefix poiapit: <https://w3id.org/italia/onto/POI/> .
-@base <https://w3id.org/italia/onto/POI-aligns/> .
-
+@base <https://w3id.org/italia/onto/POI-aligns> .
 
 <https://w3id.org/italia/onto/POI-aligns> rdf:type owl:Ontology ;
+                                           owl:versionIRI <https://w3id.org/italia/onto/POI-aligns/0.3> ;
+                                           owl:imports <https://w3id.org/italia/onto/POI> ;
+                                           dc:creator "Agency for Digital Italy - AgID"@en ,
+                                                      "Institute of Cognitive Sciences and Technologies of the Italian Research Council (CNR) - Semantic Technology Laboratory (STLab)"@en ,
+                                                      "Italian Digital Transformation Team"@en ;
+                                           dc:modified "2019-04-23" ;
+                                           dc:title "Questi sono gli allineamenti dell'ontologia sui punti di interesse Point of Interest - Italian Application Profile  (POI-AP_IT) verso ontologie esterne del Web semantico standard e ampiamente utilizzate."@it ,
+                                                    "These are the alignments to external ontologies widely used and available at the state of the art for the POI-AP_IT ontology"@en ;
+                                           dct:issued "2017-10-20" .
 
-    owl:versionIRI <https://w3id.org/italia/onto/POI-aligns/0.3> ;
-    dc:creator "Institute of Cognitive Sciences and Technologies of the Italian Research Council (CNR) - Semantic Technology Laboratory (STLab)"@en ;
-    dc:creator "Agency for Digital Italy - AgID"@en ;
-    dc:creator "Italian Digital Transformation Team"@en ;
-    dct:issued "2017-10-20" ;
-    dc:modified "2018-03-13" ;
-    dc:title "These are the alignments to external ontologies widely used and available at the state of the art for the POI-AP_IT ontology"@en ;
-    dc:title "Questi sono gli allineamenti dell'ontologia sui punti di interesse Point of Interest - Italian Application Profile  (POI-AP_IT) verso ontologie esterne del Web semantico standard e ampiamente utilizzate."@it ;
+#################################################################
+#    Annotation properties
+#################################################################
 
-    owl:imports <https://w3id.org/italia/onto/POI> .
-
-
-# Classes - Alignments
-poiapit:PointOfInterestCategory a owl:Class ;
-  rdfs:isDefinedBy poiapit: ;
-  owl:equivalentClass skos:Concept .
-
-
-# Datatype Properties - Alignments
-poiapit:POIdescription a owl:DatatypeProperty ;
-  rdfs:isDefinedBy poiapit: ;
-  owl:equivalentProperty dct:description .
-
-poiapit:POIID a owl:DatatypeProperty ;
-  rdfs:isDefinedBy poiapit: ;
-  owl:equivalentProperty dct:identifier .
-
-poiapit:POIalternativeName a owl:DatatypeProperty ;
-  rdfs:isDefinedBy poiapit: ;
-  owl:equivalentProperty skos:altLabel .
-
-poiapit:POIcategoryName a owl:DatatypeProperty ;
-  rdfs:isDefinedBy poiapit: ;
-  owl:equivalentProperty skos:prefLabel .
-
-poiapit:POIcategoryIdentifier a owl:DatatypeProperty ;
-    rdfs:isDefinedBy poiapit: ;
-    owl:equivalentProperty skos:notation , dct:identifier .
+###  http://purl.org/dc/elements/1.1/creator
+dc:creator rdf:type owl:AnnotationProperty .
 
 
-skos:Concept a owl:Class .
+###  http://purl.org/dc/elements/1.1/modified
+dc:modified rdf:type owl:AnnotationProperty .
 
-dct:description a owl:DatatypeProperty .
 
-dct:identifier a owl:DatatypeProperty .
+###  http://purl.org/dc/elements/1.1/title
+dc:title rdf:type owl:AnnotationProperty .
 
-skos:altLabel a owl:DatatypeProperty .
 
-skos:prefLabel a owl:DatatypeProperty .
+###  http://purl.org/dc/terms/issued
+dct:issued rdf:type owl:AnnotationProperty .
 
-skos:notation a owl:DatatypeProperty .
 
-dct:identifier a owl:DatatypeProperty .
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://purl.org/dc/terms/description
+dct:description rdf:type owl:DatatypeProperty .
+
+
+###  http://purl.org/dc/terms/identifier
+dct:identifier rdf:type owl:DatatypeProperty .
+
+
+###  http://www.w3.org/2004/02/skos/core#altLabel
+skos:altLabel rdf:type owl:DatatypeProperty .
+
+
+###  http://www.w3.org/2004/02/skos/core#notation
+skos:notation rdf:type owl:DatatypeProperty .
+
+
+###  http://www.w3.org/2004/02/skos/core#prefLabel
+skos:prefLabel rdf:type owl:DatatypeProperty .
+
+
+###  https://w3id.org/italia/onto/POI/POIID
+poiapit:POIID rdf:type owl:DatatypeProperty ;
+              rdfs:subPropertyOf dct:identifier ;
+              rdfs:isDefinedBy <https://w3id.org/italia/onto/POI> .
+
+
+###  https://w3id.org/italia/onto/POI/POIalternativeName
+poiapit:POIalternativeName rdf:type owl:DatatypeProperty ;
+                           rdfs:subPropertyOf skos:altLabel ;
+                           rdfs:isDefinedBy <https://w3id.org/italia/onto/POI> .
+
+
+###  https://w3id.org/italia/onto/POI/POIcategoryIdentifier
+poiapit:POIcategoryIdentifier rdf:type owl:DatatypeProperty ;
+                              rdfs:subPropertyOf dct:identifier ,
+                                                 skos:notation ;
+                              rdfs:isDefinedBy <https://w3id.org/italia/onto/POI> .
+
+
+###  https://w3id.org/italia/onto/POI/POIcategoryName
+poiapit:POIcategoryName rdf:type owl:DatatypeProperty ;
+                        rdfs:subPropertyOf skos:prefLabel ;
+                        rdfs:isDefinedBy <https://w3id.org/italia/onto/POI> .
+
+
+###  https://w3id.org/italia/onto/POI/POIdescription
+poiapit:POIdescription rdf:type owl:DatatypeProperty ;
+                       rdfs:subPropertyOf dct:description ;
+                       rdfs:isDefinedBy <https://w3id.org/italia/onto/POI> .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.w3.org/2004/02/skos/core#Concept
+skos:Concept rdf:type owl:Class .
+
+
+###  https://w3id.org/italia/onto/POI/PointOfInterestCategory
+poiapit:PointOfInterestCategory rdf:type owl:Class ;
+                                rdfs:subClassOf skos:Concept ;
+                                rdfs:isDefinedBy <https://w3id.org/italia/onto/POI> .
+
+
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi

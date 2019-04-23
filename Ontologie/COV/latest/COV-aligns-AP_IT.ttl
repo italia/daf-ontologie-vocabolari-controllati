@@ -1,208 +1,326 @@
 @prefix : <https://w3id.org/italia/onto/COV-aligns/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
 @prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix org: <http://www.w3.org/ns/org#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix org: <http://www.w3.org/ns/org#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix cpov: <http://data.europa.eu/m8g/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix schema: <http://schema.org/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix time: <http://www.w3.org/2006/time#> .
-@prefix dct: <http://purl.org/dc/terms/> .
-@prefix covapit: <https://w3id.org/italia/onto/COV/> .
-@prefix cpvapit: <https://w3id.org/italia/onto/CPV/> .
-@prefix clvapit: <https://w3id.org/italia/onto/CLV/> .
 @prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
 @prefix regorg: <http://www.w3.org/ns/regorg#> .
-@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix foaf: <http://xmlns.com/foaf/0.1/> .
-@prefix dc: <http://purl.org/dc/elements/1.1/> .
-@prefix cpov: <http://data.europa.eu/m8g/> .
-@base <https://w3id.org/italia/onto/COV-aligns/> .
+@prefix schema: <http://schema.org/> .
+@prefix clvapit: <https://w3id.org/italia/onto/CLV/> .
+@prefix covapit: <https://w3id.org/italia/onto/COV/> .
+@prefix cpvapit: <https://w3id.org/italia/onto/CPV/> .
+@base <https://w3id.org/italia/onto/COV-aligns> .
+
+<https://w3id.org/italia/onto/COV-aligns> rdf:type owl:Ontology ;
+                                           owl:versionIRI <https://w3id.org/italia/onto/COV-aligns/0.10> ;
+                                           owl:imports <https://w3id.org/italia/onto/COV> ;
+                                           dc:creator "Agency for Digital Italy - AgID"@en ,
+                                                      "Institute of Cognitive Sciences and Technologies of the Italian Research Council (CNR) - Semantic Technology Laboratory (STLab)"@en ,
+                                                      "Italian Digital Transformation Team"@en ;
+                                           dc:modified "2019-04-23"^^xsd:date ;
+                                           dc:title "Questi sono gli allineamenti dell'ontologia sulle organizzazioni (pubbliche, private) Core Organization Vocabulary - Italian Application Profile  (COV-AP_IT) verso ontologie esterne del Web semantico standard e ampiamente utilizzate."@it ,
+                                                    "These are the alignments to external ontologies widely used and available at the state of the art"@en .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://purl.org/dc/elements/1.1/modified
+dc:modified rdf:type owl:AnnotationProperty .
 
 
-<https://w3id.org/italia/onto/COV-aligns/> rdf:type owl:Ontology ;
-
-    owl:versionIRI <http://dati.gov.it/onto/covapit-aligns/0.10> ;
-    dc:creator "Institute of Cognitive Sciences and Technologies of the Italian Research Council (CNR) - Semantic Technology Laboratory (STLab)"@en ;
-    dc:creator "Agency for Digital Italy - AgID"@en ;
-    dc:creator "Italian Digital Transformation Team"@en ;
-    dc:modified "2018-03-03"^^xsd:date ;
-    dc:title "These are the alignments to external ontologies widely used and available at the state of the art"@en ;
-    dc:title "Questi sono gli allineamenti dell'ontologia sulle organizzazioni (pubbliche, private) Core Organization Vocabulary - Italian Application Profile  (COV-AP_IT) verso ontologie esterne del Web semantico standard e ampiamente utilizzate."@it ;
-
-    owl:imports <https://w3id.org/italia/onto/COV> .
+###  http://purl.org/dc/elements/1.1/title
+dc:title rdf:type owl:AnnotationProperty .
 
 
-# Classes - Alignments
-covapit:Organization a owl:Class ;
-  rdfs:isDefinedBy covapit: ;
-  rdfs:subClassOf org:Organization , schema:Organization .
+#################################################################
+#    Object Properties
+#################################################################
 
-covapit:Group a owl:Class ;
-  rdfs:isDefinedBy covapit: ;
-  owl:equivalentClass foaf:Group .
-
-covapit:PrivateOrganization a owl:Class ;
-    rdfs:isDefinedBy covapit: ;
-    rdfs:subClassOf regorg:RegisteredOrganization .
-
-covapit:PublicOrganization a owl:Class ;
-    rdfs:isDefinedBy covapit: ;
-    rdfs:subClassOf cpov:PublicOrganization .
-
-covapit:SupportUnit a owl:Class ;
-    rdfs:isDefinedBy covapit: ;
-    rdfs:subClassOf org:OrganizationalUnit .
-
-covapit:ChangeEvent a owl:Class ;
-    rdfs:isDefinedBy covapit: ;
-    rdfs:subClassOf org:ChangeEvent .
-
-covapit:Foundation a owl:Class ;
-    rdfs:isDefinedBy covapit: ;
-    owl:equivalentClass cpov:FoundationEvent .
-
-covapit:LegalStatus a owl:Class ;
-    rdfs:isDefinedBy covapit: ;
-    rdfs:equivalentClass skos:Concept .
-
-covapit:ActivityType a owl:Class ;
-    rdfs:isDefinedBy covapit: ;
-    rdfs:equivalentClass skos:Concept .
-
-covapit:PublicOrgActivityType a owl:Class ;
-    rdfs:isDefinedBy covapit: ;
-    rdfs:equivalentClass skos:Concept .
-
-covapit:PrivateOrgActivityType a owl:Class ;
-    rdfs:isDefinedBy covapit: ;
-    rdfs:equivalentClass skos:Concept .
-
-covapit:PublicOrganizationCategory a owl:Class ;
-    rdfs:isDefinedBy covapit: ;
-    rdfs:equivalentClass skos:Concept .
+###  http://schema.org/logo
+schema:logo rdf:type owl:ObjectProperty .
 
 
-# Object Properties - Alignments
-covapit:actsOnBehalfOf a owl:ObjectProperty ;
-    rdfs:isDefinedBy covapit: ;
-    rdfs:subPropertyOf org:reportsTo .
-
-covapit:hasLogo a owl:ObjectProperty ;
-    rdfs:isDefinedBy covapit: ;
-    owl:equivalentClass schema:logo .
-
-covapit:changedBy a owl:ObjectProperty ;
-    rdfs:isDefinedBy covapit: ;
-    owl:equivalentProperty org:changedBy .
-
-covapit:hasActivityType a owl:ObjectProperty ;
-    rdfs:isDefinedBy covapit: ;
-    owl:equivalentProperty org:purpose .
-
-covapit:hasPublicOrgActivityType a owl:ObjectProperty ;
-    rdfs:isDefinedBy covapit: ;
-    owl:equivalentProperty org:purpose .
-
-covapit:hasPrivateOrgActivityType a owl:ObjectProperty ;
-    rdfs:isDefinedBy covapit: ;
-    owl:equivalentProperty org:purpose .
-
-covapit:hasCategory a owl:ObjectProperty ;
-    rdfs:isDefinedBy covapit: ;
-    owl:equivalentProperty org:classification .
-
-covapit:hasSubOrganization a owl:ObjectProperty ;
-    rdfs:isDefinedBy covapit: ;
-    owl:equivalentProperty org:hasSubOrganization .
-
-covapit:subOrganizationOf a owl:ObjectProperty ;
-    rdfs:isDefinedBy covapit: ;
-    owl:equivalentProperty org:subOrganizationOf .
-
-covapit:originalOrganization a owl:ObjectProperty ;
-    rdfs:isDefinedBy covapit: ;
-    owl:equivalentProperty org:orginalOrganization .
-
-covapit:hasSupportUnit a owl:ObjectProperty ;
-    rdfs:isDefinedBy covapit: ;
-    owl:equivalentProperty org:hasUnit .
-
-covapit:isSupportUnitOf a owl:ObjectProperty ;
-    rdfs:isDefinedBy covapit: ;
-    owl:equivalentProperty org:unitOf .
-
-covapit:resultedFrom a owl:ObjectProperty ;
-    rdfs:isDefinedBy covapit: ;
-    owl:equivalentProperty org:resultedFrom .
-
-covapit:resultingOrganization a owl:ObjectProperty ;
-    rdfs:isDefinedBy covapit: ;
-    owl:equivalentProperty org:resultingOrganization .
-
-# Datatype Properties - Alignments
-covapit:altName a owl:DatatypeProperty ;
-  rdfs:isDefinedBy covapit: ;
-  rdfs:subPropertyOf skos:altLabel .
-
-covapit:legalName a owl:DatatypeProperty ;
-  rdfs:isDefinedBy covapit: ;
-  rdfs:subPropertyOf skos:prefLabel .
-
-covapit:hasLegalStatusCode a owl:DatatypeProperty ;
-  rdfs:isDefinedBy covapit: ;
-  rdfs:equivalentProperty skos:notation .
-
-covapit:hasLegalStatusDesc a owl:DatatypeProperty ;
-  rdfs:isDefinedBy covapit: ;
-  rdfs:equivalentProperty skos:prefLabel .
+###  http://www.w3.org/ns/org#changedBy
+org:changedBy rdf:type owl:ObjectProperty ;
+              owl:equivalentProperty covapit:changedBy .
 
 
-org:Organization a owl:Class .
+###  http://www.w3.org/ns/org#classification
+org:classification rdf:type owl:ObjectProperty ;
+                   owl:equivalentProperty covapit:hasCategory .
 
-schema:Organization a owl:Class .
 
-foaf:Group a owl:Class .
+###  http://www.w3.org/ns/org#hasSubOrganization
+org:hasSubOrganization rdf:type owl:ObjectProperty ;
+                       owl:equivalentProperty covapit:hasSubOrganization .
 
-regorg:RegisteredOrganization a owl:Class .
 
-cpov:PublicOrganization a owl:Class .
+###  http://www.w3.org/ns/org#hasUnit
+org:hasUnit rdf:type owl:ObjectProperty .
 
-org:OrganizationalUnit a owl:Class .
 
-org:ChangeEvent a owl:Class .
+###  http://www.w3.org/ns/org#orginalOrganization
+org:orginalOrganization rdf:type owl:ObjectProperty ;
+                        owl:equivalentProperty covapit:originalOrganization .
 
-cpov:FoundationEvent a owl:Class .
 
-skos:Concept a owl:Class .
+###  http://www.w3.org/ns/org#purpose
+org:purpose rdf:type owl:ObjectProperty .
 
-org:reportsTo a owl:ObjectProperty .
 
-schema:logo a owl:ObjectProperty .
+###  http://www.w3.org/ns/org#reportsTo
+org:reportsTo rdf:type owl:ObjectProperty .
 
-org:changedBy a owl:ObjectProperty .
 
-org:purpose a owl:ObjectProperty .
+###  http://www.w3.org/ns/org#resultedFrom
+org:resultedFrom rdf:type owl:ObjectProperty ;
+                 owl:equivalentProperty covapit:resultedFrom .
 
-org:classification a owl:ObjectProperty .
 
-org:hasSubOrganization a owl:ObjectProperty .
+###  http://www.w3.org/ns/org#resultingOrganization
+org:resultingOrganization rdf:type owl:ObjectProperty ;
+                          owl:equivalentProperty covapit:resultingOrganization .
 
-org:subOrganizationOf a owl:ObjectProperty .
 
-org:orginalOrganization a owl:ObjectProperty .
+###  http://www.w3.org/ns/org#subOrganizationOf
+org:subOrganizationOf rdf:type owl:ObjectProperty ;
+                      owl:equivalentProperty covapit:subOrganizationOf .
 
-org:hasUnit a owl:ObjectProperty .
 
-org:unitOf a owl:ObjectProperty .
+###  http://www.w3.org/ns/org#unitOf
+org:unitOf rdf:type owl:ObjectProperty .
 
-org:resultedFrom a owl:ObjectProperty .
 
-org:resultingOrganization a owl:ObjectProperty .
+###  https://w3id.org/italia/onto/COV/actsOnBehalfOf
+covapit:actsOnBehalfOf rdf:type owl:ObjectProperty ;
+                       rdfs:subPropertyOf org:reportsTo ;
+                       rdfs:isDefinedBy <https://w3id.org/italia/onto/COV> .
 
-skos:altLabel a owl:DatatypeProperty .
 
-skos:prefLabel a owl:DatatypeProperty .
+###  https://w3id.org/italia/onto/COV/changedBy
+covapit:changedBy rdf:type owl:ObjectProperty ;
+                  rdfs:isDefinedBy <https://w3id.org/italia/onto/COV> .
 
-skos:notation a owl:DatatypeProperty .
+
+###  https://w3id.org/italia/onto/COV/hasActivityType
+covapit:hasActivityType rdf:type owl:ObjectProperty ;
+                        rdfs:subPropertyOf org:purpose ;
+                        rdfs:isDefinedBy <https://w3id.org/italia/onto/COV> .
+
+
+###  https://w3id.org/italia/onto/COV/hasCategory
+covapit:hasCategory rdf:type owl:ObjectProperty ;
+                    rdfs:isDefinedBy <https://w3id.org/italia/onto/COV> .
+
+
+###  https://w3id.org/italia/onto/COV/hasLogo
+covapit:hasLogo rdf:type owl:ObjectProperty ;
+                rdfs:isDefinedBy <https://w3id.org/italia/onto/COV> .
+
+
+###  https://w3id.org/italia/onto/COV/hasPrivateOrgActivityType
+covapit:hasPrivateOrgActivityType rdf:type owl:ObjectProperty ;
+                                  rdfs:subPropertyOf org:purpose ;
+                                  rdfs:isDefinedBy <https://w3id.org/italia/onto/COV> .
+
+
+###  https://w3id.org/italia/onto/COV/hasPublicOrgActivityType
+covapit:hasPublicOrgActivityType rdf:type owl:ObjectProperty ;
+                                 rdfs:subPropertyOf org:purpose ;
+                                 rdfs:isDefinedBy <https://w3id.org/italia/onto/COV> .
+
+
+###  https://w3id.org/italia/onto/COV/hasSubOrganization
+covapit:hasSubOrganization rdf:type owl:ObjectProperty ;
+                           rdfs:isDefinedBy <https://w3id.org/italia/onto/COV> .
+
+
+###  https://w3id.org/italia/onto/COV/hasSupportUnit
+covapit:hasSupportUnit rdf:type owl:ObjectProperty ;
+                       rdfs:subPropertyOf org:hasUnit ;
+                       rdfs:isDefinedBy <https://w3id.org/italia/onto/COV> .
+
+
+###  https://w3id.org/italia/onto/COV/isSupportUnitOf
+covapit:isSupportUnitOf rdf:type owl:ObjectProperty ;
+                        rdfs:subPropertyOf org:unitOf ;
+                        rdfs:isDefinedBy <https://w3id.org/italia/onto/COV> .
+
+
+###  https://w3id.org/italia/onto/COV/originalOrganization
+covapit:originalOrganization rdf:type owl:ObjectProperty ;
+                             rdfs:isDefinedBy <https://w3id.org/italia/onto/COV> .
+
+
+###  https://w3id.org/italia/onto/COV/resultedFrom
+covapit:resultedFrom rdf:type owl:ObjectProperty ;
+                     rdfs:isDefinedBy <https://w3id.org/italia/onto/COV> .
+
+
+###  https://w3id.org/italia/onto/COV/resultingOrganization
+covapit:resultingOrganization rdf:type owl:ObjectProperty ;
+                              rdfs:isDefinedBy <https://w3id.org/italia/onto/COV> .
+
+
+###  https://w3id.org/italia/onto/COV/subOrganizationOf
+covapit:subOrganizationOf rdf:type owl:ObjectProperty ;
+                          rdfs:isDefinedBy <https://w3id.org/italia/onto/COV> .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.w3.org/2004/02/skos/core#altLabel
+skos:altLabel rdf:type owl:DatatypeProperty .
+
+
+###  http://www.w3.org/2004/02/skos/core#notation
+skos:notation rdf:type owl:DatatypeProperty .
+
+
+###  http://www.w3.org/2004/02/skos/core#prefLabel
+skos:prefLabel rdf:type owl:DatatypeProperty .
+
+
+###  https://w3id.org/italia/onto/COV/altName
+covapit:altName rdf:type owl:DatatypeProperty ;
+                rdfs:subPropertyOf skos:altLabel ;
+                rdfs:isDefinedBy <https://w3id.org/italia/onto/COV> .
+
+
+###  https://w3id.org/italia/onto/COV/hasLegalStatusCode
+covapit:hasLegalStatusCode rdf:type owl:DatatypeProperty ;
+                           rdfs:isDefinedBy <https://w3id.org/italia/onto/COV> .
+
+
+###  https://w3id.org/italia/onto/COV/hasLegalStatusDesc
+covapit:hasLegalStatusDesc rdf:type owl:DatatypeProperty ;
+                           rdfs:isDefinedBy <https://w3id.org/italia/onto/COV> .
+
+
+###  https://w3id.org/italia/onto/COV/legalName
+covapit:legalName rdf:type owl:DatatypeProperty ;
+                  rdfs:subPropertyOf skos:prefLabel ;
+                  rdfs:isDefinedBy <https://w3id.org/italia/onto/COV> .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://data.europa.eu/m8g/FoundationEvent
+cpov:FoundationEvent rdf:type owl:Class ;
+                     owl:equivalentClass covapit:Foundation .
+
+
+###  http://data.europa.eu/m8g/PublicOrganization
+cpov:PublicOrganization rdf:type owl:Class .
+
+
+###  http://schema.org/Organization
+schema:Organization rdf:type owl:Class .
+
+
+###  http://www.w3.org/2004/02/skos/core#Concept
+skos:Concept rdf:type owl:Class .
+
+
+###  http://www.w3.org/ns/org#ChangeEvent
+org:ChangeEvent rdf:type owl:Class .
+
+
+###  http://www.w3.org/ns/org#Organization
+org:Organization rdf:type owl:Class .
+
+
+###  http://www.w3.org/ns/org#OrganizationalUnit
+org:OrganizationalUnit rdf:type owl:Class .
+
+
+###  http://www.w3.org/ns/regorg#RegisteredOrganization
+regorg:RegisteredOrganization rdf:type owl:Class .
+
+
+###  http://xmlns.com/foaf/0.1/Group
+foaf:Group rdf:type owl:Class ;
+           owl:equivalentClass covapit:Group .
+
+
+###  https://w3id.org/italia/onto/COV/ActivityType
+covapit:ActivityType rdf:type owl:Class ;
+                     rdfs:isDefinedBy <https://w3id.org/italia/onto/COV> .
+
+
+###  https://w3id.org/italia/onto/COV/ChangeEvent
+covapit:ChangeEvent rdf:type owl:Class ;
+                    rdfs:subClassOf org:ChangeEvent ;
+                    rdfs:isDefinedBy <https://w3id.org/italia/onto/COV> .
+
+
+###  https://w3id.org/italia/onto/COV/Foundation
+covapit:Foundation rdf:type owl:Class ;
+                   rdfs:isDefinedBy <https://w3id.org/italia/onto/COV> .
+
+
+###  https://w3id.org/italia/onto/COV/Group
+covapit:Group rdf:type owl:Class ;
+              rdfs:isDefinedBy <https://w3id.org/italia/onto/COV> .
+
+
+###  https://w3id.org/italia/onto/COV/LegalStatus
+covapit:LegalStatus rdf:type owl:Class ;
+                    rdfs:isDefinedBy <https://w3id.org/italia/onto/COV> .
+
+
+###  https://w3id.org/italia/onto/COV/Organization
+covapit:Organization rdf:type owl:Class ;
+                     rdfs:subClassOf schema:Organization ,
+                                     org:Organization ;
+                     rdfs:isDefinedBy <https://w3id.org/italia/onto/COV> .
+
+
+###  https://w3id.org/italia/onto/COV/PrivateOrgActivityType
+covapit:PrivateOrgActivityType rdf:type owl:Class ;
+                               rdfs:isDefinedBy <https://w3id.org/italia/onto/COV> .
+
+
+###  https://w3id.org/italia/onto/COV/PrivateOrganization
+covapit:PrivateOrganization rdf:type owl:Class ;
+                            rdfs:subClassOf regorg:RegisteredOrganization ;
+                            rdfs:isDefinedBy <https://w3id.org/italia/onto/COV> .
+
+
+###  https://w3id.org/italia/onto/COV/PublicOrgActivityType
+covapit:PublicOrgActivityType rdf:type owl:Class ;
+                              rdfs:isDefinedBy <https://w3id.org/italia/onto/COV> .
+
+
+###  https://w3id.org/italia/onto/COV/PublicOrganization
+covapit:PublicOrganization rdf:type owl:Class ;
+                           rdfs:subClassOf cpov:PublicOrganization ;
+                           rdfs:isDefinedBy <https://w3id.org/italia/onto/COV> .
+
+
+###  https://w3id.org/italia/onto/COV/PublicOrganizationCategory
+covapit:PublicOrganizationCategory rdf:type owl:Class ;
+                                   rdfs:isDefinedBy <https://w3id.org/italia/onto/COV> .
+
+
+###  https://w3id.org/italia/onto/COV/SupportUnit
+covapit:SupportUnit rdf:type owl:Class ;
+                    rdfs:subClassOf org:OrganizationalUnit ;
+                    rdfs:isDefinedBy <https://w3id.org/italia/onto/COV> .
+
+
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
