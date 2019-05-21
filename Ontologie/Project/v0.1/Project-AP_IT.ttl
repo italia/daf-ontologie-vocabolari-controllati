@@ -1,0 +1,457 @@
+@prefix : <https://w3id.org/italia/onto/Project/> .
+@prefix l0: <https://w3id.org/italia/onto/l0/> .
+@prefix CLV: <https://w3id.org/italia/onto/CLV/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
+@prefix admsapit: <https://w3id.org/italia/onto/ADMS/> .
+@base <https://w3id.org/italia/onto/Project> .
+
+<https://w3id.org/italia/onto/Project> rdf:type owl:Ontology ;
+                                         owl:versionIRI <https://w3id.org/italia/onto/Project/0.1> ;
+                                         owl:imports <https://w3id.org/italia/onto/COV> ,
+                                                     <https://w3id.org/italia/onto/SM> ,
+                                                     <https://w3id.org/italia/onto/TI> ,
+                                                     <https://w3id.org/italia/onto/l0> ;
+                                         dct:accrualPeriodicity <http://publications.europa.eu/resource/authority/frequency/IRREG> ;
+                                         dct:creator <http://spcdata.digitpa.gov.it/browse/page/Amministrazione/agid> ;
+                                         dct:description "Questa è l'ontologia del profilo applicativo italiano sui progetti pubblici"@it ,
+                                                         "This is the ontology of the Italian application profile for Public Project"@en ;
+                                         dct:identifier "https://w3id.org/italia/onto/Project" ;
+                                         dct:issued "2019-05-14"^^xsd:date ;
+                                         dct:language <http://publications.europa.eu/resource/authority/language/ENG> ,
+                                                      <http://publications.europa.eu/resource/authority/language/ITA> ;
+                                         dct:modified "2019-05-21"^^xsd:date ;
+                                         dct:publisher <http://spcdata.digitpa.gov.it/browse/page/Amministrazione/agid> ;
+                                         dct:rightsHolder <http://spcdata.digitpa.gov.it/browse/page/Amministrazione/agid> ;
+                                         dct:title "Project-AP_IT - Project Ontology - Italian Application Profile "@en ,
+                                                   "Project-AP_IT: Profilo applicativo italiano - Ontologia dei progetti"@it ;
+                                         rdfs:comment "Questa è l'ontologia del profilo applicativo italiano sui progetti pubblici."@it ,
+                                                      "This is the ontology of the Italian application profile for (public) Projects"@en ;
+                                         rdfs:isDefinedBy <https://w3id.org/italia/onto/Project> ;
+                                         rdfs:label "Ontologia dei progetti (pubblici)"@it ,
+                                                    "Project ontology"@en ;
+                                         owl:versionInfo "Version 0.1 - 14  May 2019 - creation of the ontology and preliminary modelling of requirements R1-R10 as identified in https://github.com/italia/daf-ontologie-vocabolari-controllati/issues/59"@en ,
+                                                         "Versione 0.1 - 14 Maggio 2019 - creazione dell'ontologia e modellazione preliminare dei requisiti R1-R10 come identificati in https://github.com/italia/daf-ontologie-vocabolari-controllati/issues/59"@it ;
+                                         dcat:contactPoint <https://w3id.org/italia/data/contact-point/onto-agid> ;
+                                         dcat:keyword "cup"@it ,
+                                                      "progetti"@it ,
+                                                      "progetto"@it ;
+                                         dcat:theme <http://publications.europa.eu/resource/authority/data-theme/GOVE> ,
+                                                    <http://publications.europa.eu/resource/authority/data-theme/TECH> ;
+                                         admsapit:acronym "PRJ-AP_IT" ;
+                                         admsapit:hasContributor <https://w3id.org/italia/data/organization/support-unit/cnr-Z6HZEH/stlab> ;
+                                         admsapit:hasFormalityLevel admsapit:Formal ;
+                                         admsapit:hasKeyClass :PublicInvestmentProject ,
+                                                              :UniqueProjectCode ;
+                                         admsapit:hasOntologyLanguage admsapit:OWL ;
+                                         admsapit:hasSemanticAssetDistribution <https://w3id.org/italia/data/distribution/PROJECTAPIT-JSON-LD> ,
+                                                                               <https://w3id.org/italia/data/distribution/PROJECTAPIT-RDF-TURTLE> ,
+                                                                               <https://w3id.org/italia/data/distribution/PROJECTAPIT-RDF-XML> ;
+                                         admsapit:hasTask admsapit:AnnotationTask ,
+                                                          admsapit:QueryFormulationTask ;
+                                         admsapit:last <https://w3id.org/italia/onto/Project/0.1> ;
+                                         admsapit:officialURI "https://w3id.org/italia/onto/Project"^^xsd:anyURI ;
+                                         admsapit:prefix "prjapit" ;
+                                         admsapit:semanticAssetInUse <https://w3id.org/italia/data/project/DAF> ,
+                                                                     <https://w3id.org/italia/data/project/OntoPiA> ;
+                                         admsapit:status "initial draft" ;
+                                         admsapit:target "Imprese" ,
+                                                         "Pubbliche Amministrazioni" ;
+                                         admsapit:type admsapit:DomainOntology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  https://w3id.org/italia/onto/Project/hasParticipantingAgent
+:hasParticipantingAgent rdf:type owl:ObjectProperty ;
+                        rdfs:subPropertyOf :involvesEntity ;
+                        owl:inverseOf :isParticipantingAgentOfProject ;
+                        rdfs:domain :PublicInvestmentProject ;
+                        rdfs:range l0:Agent ;
+                        rdfs:comment "Property that allows one to link the project to agents. Specializes the generic property of involvement in order to indicate, for the project, the agents participating in it."@en ,
+                                     "Proprietà che consente di collegare il progetto agli agenti. Specializza la proprietà generica di coinvolgimento al fine di indicare, per il progetto, gli agenti che vi partecipano."@it ;
+                        rdfs:isDefinedBy <https://w3id.org/italia/onto/Project> ;
+                        rdfs:label "ha agente participante"@it ,
+                                   "has participanting agent"@en ;
+                        owl:versionInfo "provvisoria"@it ,
+                                        "unstable"@en .
+
+
+###  https://w3id.org/italia/onto/Project/hasUniqueProjectCode
+:hasUniqueProjectCode rdf:type owl:ObjectProperty ;
+                      rdfs:domain :PublicInvestmentProject ;
+                      rdfs:range :UniqueProjectCode ;
+                      rdfs:comment "Property used to connect the project with the varous information (value and type) of the Unique Project Code (in Italian the acronym CUP)"@en ,
+                                   "Proprietà utilizzata per collegare il progetto alle varie informazioni (valore e tipo) del CUP"@it ;
+                      rdfs:isDefinedBy <https://w3id.org/italia/onto/Project> ;
+                      rdfs:label "ha CUP"@it ,
+                                 "has unique project code"@en ;
+                      owl:versionInfo "provvisoria"@it ,
+                                      "unstable"@en .
+
+
+###  https://w3id.org/italia/onto/Project/involvesEntity
+:involvesEntity rdf:type owl:ObjectProperty ;
+                owl:inverseOf :isInvolvedInProject ;
+                rdfs:domain :PublicInvestmentProject ;
+                rdfs:range l0:Entity ;
+                rdfs:comment "Property that allows one to connect a project with the entities (persons, organizations, cultural institute or site, etc.) that are involved in the project"@en ,
+                             "Proprietà che consente di collegare il progetto alle entittà (e.g., persone, organizzazioni, luoghi della cultura, ecc.) che sono coinvolte nel progetto stesso."@it ;
+                rdfs:isDefinedBy <https://w3id.org/italia/onto/Project> ;
+                rdfs:label "coinvolge entità"@it ,
+                           "involves entity"@en ;
+                owl:versionInfo "provvisoria"@it ,
+                                "unstable"@en .
+
+
+###  https://w3id.org/italia/onto/Project/isInvolvedInProject
+:isInvolvedInProject rdf:type owl:ObjectProperty ;
+                     rdfs:domain l0:Entity ;
+                     rdfs:range :PublicInvestmentProject ;
+                     rdfs:comment "Inverse property of \"involves entity\" that links the entity to the project in which it is involved"@en ,
+                                  "Proprietà inversa di \"coinvolge entità\"; consente di collegare l'entità al progetto"@it ;
+                     rdfs:isDefinedBy <https://w3id.org/italia/onto/Project> ;
+                     rdfs:label "is involved in project"@en ,
+                                "è coinvolta in progetto"@it ;
+                     owl:versionInfo "provvisoria"@it ,
+                                     "unstable"@en .
+
+
+###  https://w3id.org/italia/onto/Project/isParticipantingAgentOfProject
+:isParticipantingAgentOfProject rdf:type owl:ObjectProperty ;
+                                rdfs:subPropertyOf :isInvolvedInProject ;
+                                rdfs:domain l0:Agent ;
+                                rdfs:range :PublicInvestmentProject ;
+                                rdfs:comment "Inverse property of has participating agent that links the Agent to the project"@en ,
+                                             "Proprietà inversa di \"ha agente partecipante\" che collega l'agente al progetto in cui partecipa"@it ;
+                                rdfs:isDefinedBy <https://w3id.org/italia/onto/Project> ;
+                                rdfs:label "is participating agent of project"@en ,
+                                           "è agente partecipante al progetto"@it ;
+                                owl:versionInfo "provvisoria"@it ,
+                                                "unstable"@en .
+
+
+###  https://w3id.org/italia/onto/Project/projectFunder
+:projectFunder rdf:type owl:ObjectProperty ;
+               rdfs:domain :PublicInvestmentProject ;
+               rdfs:range <https://w3id.org/italia/onto/COV/Organization> ;
+               rdfs:comment "Property used to directly link a project with the organization that funds it"@en ,
+                            "Proprietà utilizzata per collegare direttamente il progetto all'organizzazione finanziatrice del progetto"@it ;
+               rdfs:isDefinedBy <https://w3id.org/italia/onto/Project> ;
+               rdfs:label "finanziatore del progetto"@it ,
+                          "project funder"@en ;
+               owl:versionInfo "provvisoria"@it ,
+                               "unstable"@en .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  https://w3id.org/italia/onto/Project/projectAcronym
+:projectAcronym rdf:type owl:DatatypeProperty ;
+                rdfs:subPropertyOf l0:name ;
+                rdfs:domain :PublicInvestmentProject ;
+                rdfs:range rdfs:Literal ;
+                rdfs:comment "E' l'acronimo con cui identificare il progetto"@it ,
+                             "It is the acronym of the project"@en ;
+                rdfs:isDefinedBy <https://w3id.org/italia/onto/Project> ;
+                rdfs:label "acronimo progetto"@it ,
+                           "project acronym"@en ;
+                owl:versionInfo "stabile"@it ,
+                                "stable"@en .
+
+
+###  https://w3id.org/italia/onto/Project/projectTitle
+:projectTitle rdf:type owl:DatatypeProperty ;
+              rdfs:subPropertyOf l0:name ;
+              rdfs:domain :PublicInvestmentProject ;
+              rdfs:range rdfs:Literal ;
+              rdfs:comment "Il titolo, per esteso, del progetto"@it ,
+                           "The full title of the project"@en ;
+              rdfs:isDefinedBy <https://w3id.org/italia/onto/Project> ;
+              rdfs:label "project title"@en ,
+                         "titolo del progetto"@it ;
+              owl:versionInfo "stabile"@it ,
+                              "stable"@en .
+
+
+###  https://w3id.org/italia/onto/Project/projectTotalCost
+:projectTotalCost rdf:type owl:DatatypeProperty ;
+                  rdfs:subPropertyOf <https://w3id.org/italia/onto/MU/value> ;
+                  rdfs:domain :PublicInvestmentProject ;
+                  rdfs:range xsd:float ;
+                  rdfs:comment "Property that represents the total cost of the project"@en ,
+                               "Proprietà che consente di rappresentare il costo totale del progetto"@it ;
+                  rdfs:isDefinedBy <https://w3id.org/italia/onto/Project> ;
+                  rdfs:label "costo totale progetto"@it ,
+                             "project total cost"@en ;
+                  owl:versionInfo "provvisoria"@it ,
+                                  "unstable"@en .
+
+
+###  https://w3id.org/italia/onto/Project/uniqueProjectCodeType
+:uniqueProjectCodeType rdf:type owl:DatatypeProperty ,
+                                owl:FunctionalProperty ;
+                       rdfs:domain :UniqueProjectCode ;
+                       rdfs:range [ rdf:type rdfs:Datatype ;
+                                    owl:oneOf [ rdf:type rdf:List ;
+                                                rdf:first "linked" ;
+                                                rdf:rest [ rdf:type rdf:List ;
+                                                           rdf:first "master" ;
+                                                           rdf:rest [ rdf:type rdf:List ;
+                                                                      rdf:first "normal" ;
+                                                                      rdf:rest rdf:nil
+                                                                    ]
+                                                         ]
+                                              ]
+                                  ] ;
+                       rdfs:comment "Il tipo associato al CUP del progetto. Esso può assumere uno dei seguenti tre valori: \"normale\" (normal), \"master\" (master), \"collegato\" (linked)"@it ,
+                                    "The type of the unique code of the project (CUP acronym in Italian). It can assume one of the following three values: normal, master, linked"@en ;
+                       rdfs:label "Tipo CUP"@it ,
+                                  "Type of Unique Project Code"@en ;
+                       owl:versionInfo "provvisoria"@it ,
+                                       "unstable"@en .
+
+
+###  https://w3id.org/italia/onto/Project/uniqueProjectCodeValue
+:uniqueProjectCodeValue rdf:type owl:DatatypeProperty ;
+                        rdfs:subPropertyOf l0:identifier ;
+                        rdf:type owl:FunctionalProperty ;
+                        rdfs:domain [ rdf:type owl:Class ;
+                                      owl:unionOf ( :PublicInvestmentProject
+                                                    :UniqueProjectCode
+                                                  )
+                                    ] ;
+                        rdfs:range rdfs:Literal ;
+                        rdfs:comment "It is the alfanumeric string representing the value of the unique code for the project (in Italian CUP acronym)"@en ,
+                                     "La stringa alfanumerica che rappresenta il valore del Codice Unico di Progetto"@it ;
+                        rdfs:isDefinedBy <https://w3id.org/italia/onto/Project> ;
+                        rdfs:label "unique project code value"@en ,
+                                   "valore del Codice Unico di Progetto"@it ;
+                        owl:versionInfo "stabile"@it ,
+                                        "stable"@en .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  https://w3id.org/italia/onto/Project/ProcurementProject
+:ProcurementProject rdf:type owl:Class ;
+                    rdfs:subClassOf :PublicInvestmentProject ;
+                    owl:disjointWith :PublicResearchProject ;
+                    rdfs:comment "La classe che comprende i progetti atti a soddisfare un fabbisogno individuato dall'amministrazione."@it ,
+                                 "The class that includes projects aiming at meet the needs detected by a public administration."@en ;
+                    rdfs:isDefinedBy <https://w3id.org/italia/onto/Project> ;
+                    rdfs:label "Procurement Project"@en ,
+                               "Progetto di approvigionamento"@it ;
+                    owl:versionInfo "provvisoria"@it ,
+                                    "unstable"@en .
+
+
+###  https://w3id.org/italia/onto/Project/PublicInvestmentProject
+:PublicInvestmentProject rdf:type owl:Class ;
+                         rdfs:subClassOf l0:Object ,
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty :projectFunder ;
+                                           owl:someValuesFrom <https://w3id.org/italia/onto/COV/Organization>
+                                         ] ,
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty CLV:hasSpatialCoverage ;
+                                           owl:allValuesFrom CLV:Feature
+                                         ] ,
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty :hasParticipantingAgent ;
+                                           owl:allValuesFrom l0:Agent
+                                         ] ,
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty <https://w3id.org/italia/onto/RO/hasRiT> ;
+                                           owl:allValuesFrom <https://w3id.org/italia/onto/RO/TimeIndexedRole>
+                                         ] ,
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty <https://w3id.org/italia/onto/TI/hasDuration> ;
+                                           owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                           owl:onClass <https://w3id.org/italia/onto/TI/Duration>
+                                         ] ,
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty :hasUniqueProjectCode ;
+                                           owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                           owl:onClass :UniqueProjectCode
+                                         ] ,
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty <https://w3id.org/italia/onto/SM/hasOnlineContactPoint> ;
+                                           owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                           owl:onClass <https://w3id.org/italia/onto/SM/OnlineContactPoint>
+                                         ] ,
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty :projectTitle ;
+                                           owl:someValuesFrom rdfs:Literal
+                                         ] ,
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty l0:description ;
+                                           owl:someValuesFrom rdfs:Literal
+                                         ] ,
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty :uniqueProjectCodeValue ;
+                                           owl:cardinality "1"^^xsd:nonNegativeInteger
+                                         ] ,
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty :projectAcronym ;
+                                           owl:maxCardinality "1"^^xsd:nonNegativeInteger
+                                         ] ,
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty :projectTotalCost ;
+                                           owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                           owl:onDataRange xsd:float
+                                         ] ;
+                         rdfs:comment "La classe consente di rappresentare progetti di investimento pubblico."@it ,
+                                      "The class allows one to model a public investmnet project."@en ;
+                         rdfs:isDefinedBy <https://w3id.org/italia/onto/Project> ;
+                         rdfs:label "Progetto d'Investimento Pubblico"@it ,
+                                    "Public Investment Project"@en ;
+                         owl:versionInfo "stabile"@it ,
+                                         "stable"@en .
+
+
+###  https://w3id.org/italia/onto/Project/PublicResearchProject
+:PublicResearchProject rdf:type owl:Class ;
+                       rdfs:subClassOf :PublicInvestmentProject ;
+                       rdfs:comment "La classe rappresenta progetti di ricerca finanziati con programmi pubblici (es. Horizon2020,  FETOpen, FTI, ecc.)"@it ,
+                                    "The class represents the research projects funded with public programmes (e.g., Horizon2020, FET Open, FTI, etc.)"@en ;
+                       rdfs:isDefinedBy <https://w3id.org/italia/onto/Project> ;
+                       rdfs:label "Progetto di Ricerca Pubblica"@it ,
+                                  "Public Research Project"@en ;
+                       owl:versionInfo "provvisoria"@it ,
+                                       "unstable"@en .
+
+
+###  https://w3id.org/italia/onto/Project/UniqueProjectCode
+:UniqueProjectCode rdf:type owl:Class ;
+                   rdfs:subClassOf l0:Characteristic ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty :uniqueProjectCodeValue ;
+                                     owl:cardinality "1"^^xsd:nonNegativeInteger
+                                   ] ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty :uniqueProjectCodeType ;
+                                     owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                     owl:onDataRange [ rdf:type rdfs:Datatype ;
+                                                       owl:oneOf [ rdf:type rdf:List ;
+                                                                   rdf:first "linked" ;
+                                                                   rdf:rest [ rdf:type rdf:List ;
+                                                                              rdf:first "master" ;
+                                                                              rdf:rest [ rdf:type rdf:List ;
+                                                                                         rdf:first "normal" ;
+                                                                                         rdf:rest rdf:nil
+                                                                                       ]
+                                                                            ]
+                                                                 ]
+                                                     ]
+                                   ] ;
+                   rdfs:comment "La classe che rappresenta il Codice Univoco del Progetto (CUP). Secondo i dati di open cup un cup può essere di diversi tipi, in particolare esso può essere \"Normale\" (normal nell'ontologia), \"Master\" (master nell'ontologia) e \"Collegato\" (linked nell'ontologia)"@it ,
+                                "The unique identifier of the project (in Italian the acronym CUP). It can be of different types; namely, \"normal\", \"master\" and \"linked\"."@en ;
+                   rdfs:isDefinedBy <https://w3id.org/italia/onto/Project> ;
+                   rdfs:label "CUP"@it ,
+                              "Codice Unico di Progetto"@it ,
+                              "Unique Project Code"@en ;
+                   owl:versionInfo "provvisoria"@it ,
+                                   "unstable"@en .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://spcdata.digitpa.gov.it/browse/page/Amministrazione/agid
+<http://spcdata.digitpa.gov.it/browse/page/Amministrazione/agid> rdf:type owl:NamedIndividual ,
+                                                                          <http://dati.gov.it/onto/dcatapit#Agent> ,
+                                                                          foaf:Agent ;
+                                                                 dct:identifier "agid" ;
+                                                                 foaf:name "Agenzia per l'Italia Digitale"@it ,
+                                                                           "Italian Digital Agency"@en .
+
+
+###  https://w3id.org/italia/data/contact-point/onto-agid
+<https://w3id.org/italia/data/contact-point/onto-agid> rdf:type owl:NamedIndividual ,
+                                                                <http://dati.gov.it/onto/dcatapit#Organization> ,
+                                                                vcard:Kind ,
+                                                                vcard:Organization ;
+                                                       vcard:fn "banche dati e open data" ;
+                                                       vcard:hasEmail <mailto:info@dati.gov.it> .
+
+
+###  https://w3id.org/italia/data/distribution/PROJECTAPIT-JSON-LD
+<https://w3id.org/italia/data/distribution/PROJECTAPIT-JSON-LD> rdf:type owl:NamedIndividual ,
+                                                                         admsapit:SemanticAssetDistribution ;
+                                                                dct:description "Questa è la distribuzione JSON-LD dell'ontologia dei Progetti"@it ,
+                                                                                "This is the distribution in JSON-LD of the project ontology"@en ;
+                                                                dct:format <http://publications.europa.eu/resource/authority/file-type/JSON_LD> ;
+                                                                dct:license <https://w3id.org/italia/controlled-vocabulary/licences/A21_CCBY40> ;
+                                                                dct:title "Distribuzione JSON-LD ontologia PRJ-AP_IT"@it ,
+                                                                          "JSON-LD distribution of PRJ-AP_IT Ontology"@en ;
+                                                                dcat:accessURL <https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/Project/latest> ;
+                                                                dcat:downloadURL <https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/Project/latest/Project-AP_IT.jsonld> .
+
+
+###  https://w3id.org/italia/data/distribution/PROJECTAPIT-RDF-TURTLE
+<https://w3id.org/italia/data/distribution/PROJECTAPIT-RDF-TURTLE> rdf:type owl:NamedIndividual ,
+                                                                            admsapit:SemanticAssetDistribution ;
+                                                                   dct:description "Questa è la distribuzione RDF/Turtle dell'ontologia dei Progetti"@it ,
+                                                                                   "This is the distribution in RDF/turtle of the project ontology"@en ;
+                                                                   dct:format <http://publications.europa.eu/resource/authority/file-type/RDF_TURTLE> ;
+                                                                   dct:license <https://w3id.org/italia/controlled-vocabulary/licences/A21_CCBY40> ;
+                                                                   dct:title "Distribuzione RDF/Turtle ontologia PRJ-AP_IT"@it ,
+                                                                             "RDF/Turtle distribution of PRJ-AP_IT Ontology"@en ;
+                                                                   dcat:accessURL <https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/Project/latest> ;
+                                                                   dcat:downloadURL <https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/Project/latest/Project-AP_IT.ttl> .
+
+
+###  https://w3id.org/italia/data/distribution/PROJECTAPIT-RDF-XML
+<https://w3id.org/italia/data/distribution/PROJECTAPIT-RDF-XML> rdf:type owl:NamedIndividual ,
+                                                                         admsapit:SemanticAssetDistribution ;
+                                                                dct:description "Questa è la distribuzione RDF/XML dell'ontologia dei Progetti"@it ,
+                                                                                "This is the distribution in RDF/XML of the project ontology"@en ;
+                                                                dct:format <http://publications.europa.eu/resource/authority/file-type/RDF_XML> ;
+                                                                dct:license <https://w3id.org/italia/controlled-vocabulary/licences/A21_CCBY40> ;
+                                                                dct:title "Distribuzione RDF/XML ontologia PRJ-AP_IT"@it ,
+                                                                          "RDF/XML distribution of PRJ-AP_IT Ontology"@en ;
+                                                                dcat:accessURL <https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/Project/latest> ;
+                                                                dcat:downloadURL <https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/Project/latest/Project-AP_IT.rdf> .
+
+
+###  https://w3id.org/italia/data/organization/support-unit/cnr-Z6HZEH/stlab
+<https://w3id.org/italia/data/organization/support-unit/cnr-Z6HZEH/stlab> rdf:type owl:NamedIndividual ,
+                                                                                   l0:Agent ;
+                                                                          l0:name "Institute of Cognitive Sciences and Technologies of the Italian Research Council (CNR) - Semantic Technology Laboratory (STLab)"@en ,
+                                                                                  "Istituto di Scienze e Tecnologie della Cognizione del CNR - Semantic Technology Lab (STLab)"@it ;
+                                                                          dct:identifier "cnr - Z6HZEH - STLab" .
+
+
+###  https://w3id.org/italia/data/project/DAF
+<https://w3id.org/italia/data/project/DAF> rdf:type owl:NamedIndividual ,
+                                                    admsapit:Project ;
+                                           l0:name "Data & Analytics Framework"@it .
+
+
+###  https://w3id.org/italia/data/project/OntoPiA
+<https://w3id.org/italia/data/project/OntoPiA> rdf:type owl:NamedIndividual ,
+                                                        admsapit:Project ;
+                                               l0:name "OntoPiA - la rete di ontologie della pubblica amministrazione italiana"@it .
+
+
+###  https://w3id.org/italia/onto/Project
+<https://w3id.org/italia/onto/Project> rdf:type owl:NamedIndividual ,
+                                                admsapit:SemanticAsset .
+
+
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
