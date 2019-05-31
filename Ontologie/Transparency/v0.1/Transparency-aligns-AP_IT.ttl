@@ -1,0 +1,49 @@
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix l0: <https://w3id.org/italia/onto/l0/> .
+@prefix trapit: <https://w3id.org/italia/onto/Transparency/> .
+@prefix euvoc: <http://publications.europa.eu/ontology/euvoc#> .
+@prefix prov: <http://www.w3.org/ns/prov#>.
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+
+
+<https://w3id.org/italia/onto/Transparency-aligns> rdf:type owl:Ontology ;
+
+    owl:versionIRI <https://w3id.org/italia/onto/Transparency-aligns/0.1> ;
+    dc:creator "Agency for Digital Italy - AgID"@en ;
+    dc:creator "Almawave"@en ;
+    dc:creator "Almaviva - The Italian Innovation Company"@en ;
+    dc:issued "2019-05-29"^^xsd:date ;
+    dc:modified "2019-05-29"^^xsd:date ;
+    dc:title "These are the alignments to external ontologies widely used and available at the state of the art for the Transparency ontology."@en ;
+    dc:title "Questi sono gli allineamenti dell'ontologia  della trasparenza verso ontologie esterne del Web semantico standard e ampiamente utilizzate."@it ;
+	owl:imports <https://w3id.org/italia/onto/Transparency> .
+
+
+trapit:TransparencyObligation a owl:Class ;
+	rdfs:subClassOf skos:Concept ;
+	rdfs:isDefinedBy <https://w3id.org/italia/onto/Transparency> ;
+	.
+
+trapit:TrasnsparencySubject a owl:Class ;
+	rdfs:subClassOf skos:Concept ;
+	rdfs:isDefinedBy <https://w3id.org/italia/onto/Transparency> ;
+	.
+
+
+trapit:isPartOfObligation a owl:ObjectProperty ;
+ 	rdfs:subPropertyOf skos:related ;
+ 	.
+
+## ISSUE: rifattorizzare isPartOf in l0 
+## l0:isPartOf rdfs:subPropertyOf dul:isMemberOf .
+
+trapit:UpdateFrequency a owl:Class ;
+    rdfs:subClassOf skos:Concept ;
+    owl:equivalentClass euvoc:Frequency ;
+	rdfs:isDefinedBy <https://w3id.org/italia/onto/Transparency> ;
+    .
+
+trapit:updatedVersionOf a owl:ObjectProperty ;
+    rdfs:subPropertyOf prov:wasRevisionOf ;
+	rdfs:isDefinedBy <https://w3id.org/italia/onto/Transparency> ;
+    .
