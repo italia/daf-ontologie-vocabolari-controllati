@@ -7,19 +7,20 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix xkos: <http://rdf-vocabulary.ddialliance.org/xkos#> .
+@prefix prov: <http://www.w3.org/ns/prov#>.
 
 @prefix adms: <http://www.w3.org/ns/adms#> .
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
 @prefix dc: <http://purl.org/dc/elements/1.1/> .
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
-@prefix vcard: <http://www.w3.org/2006/vcard/ns#> . 
+# @prefix vcard: <http://www.w3.org/2006/vcard/ns#> . 
 
 @prefix admsapit: <https://w3id.org/italia/onto/ADMS/> . 
 @prefix dcatapit: <http://dati.gov.it/onto/dcatapit#> .
-@prefix clvapit: <https://w3id.org/italia/onto/CLV/> .
-@prefix covapit: <https://w3id.org/italia/onto/COV/> .
-@prefix cpsvapit: <https://w3id.org/italia/onto/CPSV/> .
+# @prefix clvapit: <https://w3id.org/italia/onto/CLV/> .
+# @prefix covapit: <https://w3id.org/italia/onto/COV/> .
+# @prefix cpsvapit: <https://w3id.org/italia/onto/CPSV/> .
 @prefix smapit: <https://w3id.org/italia/onto/SM/> .
 @prefix tiapit: <https://w3id.org/italia/onto/TI/> .
 @prefix l0: <https://w3id.org/italia/onto/l0/> .
@@ -27,57 +28,55 @@
 @base <https://w3id.org/italia/onto/Transparency/> .
 
 
-
 <https://w3id.org/italia/onto/Transparency> rdf:type owl:Ontology ;
-                                             owl:versionIRI <https://w3id.org/italia/onto/Transparency/0.1> ;
-                                             owl:imports 
-												<https://w3id.org/italia/onto/COV> ,
-												<https://w3id.org/italia/onto/TI> ,
-												<https://w3id.org/italia/onto/l0> ;
-                                             admsapit:status "draft" ;
-                                             dcat:keyword 	"trasparenza"@it, "trasparenza pubblica amministrazione"@it, "trasparenza PA"@it, "trasparenza pa"@it, "transparency"@en, "transparency for public administration"@en ;
-                                             admsapit:hasTask admsapit:AnnotationTask, admsapit:QueryFormulationTask ;
-                                             admsapit:prefix "trapit" ;
-                                             admsapit:hasTask admsapit:SearchTask ;
-                                             dct:rightsHolder <http://spcdata.digitpa.gov.it/Amministrazione/agid> ;
-                                             admsapit:hasOntologyLanguage admsapit:OWL ;
-                                             admsapit:officialURI "https://w3id.org/italia/onto/Transparency"^^xsd:anyURI ;
-                                             admsapit:hasSemanticAssetDistribution <https://w3id.org/italia/data/distribution/TRAPIT-RDF-TURTLE>,
-																				   <https://w3id.org/italia/data/distribution/TRAPIT-JSON-LD>,
-																				   <https://w3id.org/italia/data/distribution/TRAPIT-RDF-XML>;
-                                             rdfs:label "Ontologia dell'Amministrazione Trasparente - profilo applicativo italiano"@it, 
-														"Transparent Administration Ontology - Italian application profile"@en ;
-                                             admsapit:acronym "Transparency-AP_IT" ;
-                                             dct:language 	<http://publications.europa.eu/resource/authority/language/ENG>,
-															<http://publications.europa.eu/resource/authority/language/ITA>;
-                                             admsapit:hasFormalityLevel admsapit:Formal ;
-                                             dct:description "Questo è il profilo applicativo italiano dell'ontologia sull'amministrazione trasparente. L'ontologia di OntoPiA implementa le disposizioni in merito all'obbligo di pubblicazione di contenuti informativi nella sezione 'Amministrazione Trasparente' dei siti istituzioonali delle publiche amministrazioni."@it,
-															 "This is the Italian application profile of the ontology on the transparent administration. This ontology of OntoPiA implements the dispositions about the publication obligation of informative contents on the section 'Transparent Administration' of the official website of the public administrations."@en;
-                                             dct:description <./latest/img/Transparency-AP_IT.png> ;
-											 dct:description "Questa versione dell'ontologia è in attesa di essere visionata da ANAC.@it",
-															 "This ontology version is a draft waiting for the ANAC validation."@en;
-											 rdfs:comment "Questo è il profilo applicativo italiano dell'ontologia sull'amministrazione trasparente. L'ontologia di OntoPiA implementa le disposizioni in merito all'obbligo di pubblicazione di contenuti informativi nella sezione 'Amministrazione Trasparente' dei siti istituzionali delle publiche amministrazioni."@it,
-														  "This is the Italian application profile of the ontology on the transparent administration. This ontology of OntoPiA implements the dispositions about the publication obligation of informative contents on the section 'Transparent Administration' of the official website of the public administrations."@en;
-											 rdfs:comment "Questa versione dell'ontologia è in attesa di essere visionata da ANAC.@it",
-														  "This ontology version is a draft waiting for the ANAC validation."@en;
-											 dct:title "Ontologia dell'Amministrazione Trasparente - profilo applicativo italiano"@it;
-                                             dcat:theme <http://publications.europa.eu/resource/authority/data-theme/GOVE>, 
-														<http://publications.europa.eu/resource/authority/data-theme/TECH> ;
-                                             dct:modified "2019-03-04"^^xsd:date ; 
-                                             rdfs:isDefinedBy <https://w3id.org/italia/onto/Transparency> ;
-                                             admsapit:semanticAssetInUse <https://w3id.org/italia/data/project/DAF>, <https://w3id.org/italia/data/project/OntoPiA> ;
-                                             dct:accrualPeriodicity <http://publications.europa.eu/resource/authority/frequency/IRREG> ;
-                                             admsapit:last <https://w3id.org/italia/onto/Transparency/0.1> ;
-                                             dct:publisher <http://spcdata.digitpa.gov.it/Amministrazione/agid> ;
-                                             dcat:contactPoint <http://dati.gov.it/data/resource/ContactPoint/voc_AgID> ;
-                                             owl:versionInfo "La presente versione dell'ontologia è un draft in attesa di revisone da parte di ANAC."@it ;
-                                             dct:issued "2019-05-29"^^xsd:date ;
-                                             admsapit:target "Pubbliche amministrazioni"@it, "Cittadini"@it ;
-                                             admsapit:type admsapit:DomainOntology ;
-                                             dct:creator <http://spcdata.digitpa.gov.it/Amministrazione/agid>;
-											 dct:creator <https://w3id.org/italia/data/organization/private-organization/05481840964> ;	
-											 .
+	owl:versionIRI <https://w3id.org/italia/onto/Transparency/0.1> ;
+	owl:imports 
+		<https://w3id.org/italia/onto/COV> ,
+		<https://w3id.org/italia/onto/TI> ,
+		<https://w3id.org/italia/onto/l0> ;
+	admsapit:status "draft" ;
+	dcat:keyword "trasparenza"@it, "trasparenza pubblica amministrazione"@it, "trasparenza PA"@it, "trasparenza pa"@it, "transparency"@en, "transparency for public administration"@en ;
+	admsapit:hasTask admsapit:AnnotationTask, admsapit:QueryFormulationTask ;
+	admsapit:prefix "trapit" ;
+	admsapit:hasTask admsapit:SearchTask ;
+	dct:rightsHolder <http://spcdata.digitpa.gov.it/Amministrazione/agid> ;
+	admsapit:hasOntologyLanguage admsapit:OWL ;
+	admsapit:officialURI "https://w3id.org/italia/onto/Transparency"^^xsd:anyURI ;
+	admsapit:hasSemanticAssetDistribution 
+		<https://w3id.org/italia/data/distribution/TRAPIT-RDF-TURTLE>,
+		<https://w3id.org/italia/data/distribution/TRAPIT-JSON-LD>,
+		<https://w3id.org/italia/data/distribution/TRAPIT-RDF-XML>;
+	rdfs:label "Ontologia degli Obblighi della Trasparenza - profilo applicativo italiano"@it, 
+		"Transparency Obligations Ontology - Italian application profile"@en ;
+	admsapit:acronym "Transparency-AP_IT" ;
+	dct:language <http://publications.europa.eu/resource/authority/language/ENG>,
+		<http://publications.europa.eu/resource/authority/language/ITA>;
+	admsapit:hasFormalityLevel admsapit:Formal ;
+	dct:description "Questo è il profilo applicativo italiano dell'Ontologia degli Obblighi della Trasparenza. L'ontologia di OntoPiA implementa le disposizioni in merito all'obbligo di pubblicazione di contenuti informativi nella sezione 'Amministrazione Trasparente' dei siti istituzioonali delle publiche amministrazioni. Questa versione dell'ontologia è in attesa di essere visionata da ANAC."@it,
+		"This is the Italian application profile of the Transparency Obligations Ontology. This ontology of OntoPiA implements the dispositions about the publication obligation of informative contents on the section 'Transparent Administration' of the official website of the public administrations. This ontology version is a draft waiting for the ANAC validation."@en;
+	dct:description <./latest/img/Transparency-AP_IT.png> ;
+	rdfs:comment "Questo è il profilo applicativo italiano dell'Ontologia degli Obblighi della Trasparenza. L'ontologia di OntoPiA implementa le disposizioni in merito all'obbligo di pubblicazione di contenuti informativi nella sezione 'Amministrazione Trasparente' dei siti istituzionali delle publiche amministrazioni. Questa versione dell'ontologia è in attesa di essere visionata da ANAC."@it,
+		"This is the Italian application profile of the Transparency Obligations Ontology. This ontology of OntoPiA implements the dispositions about the publication obligation of informative contents on the section 'Transparent Administration' of the official website of the public administrations. This ontology version is a draft waiting for the ANAC validation."@en;
+	dct:title "Ontologia dell'Amministrazione Trasparente - profilo applicativo italiano"@it;
+	dcat:theme <http://publications.europa.eu/resource/authority/data-theme/GOVE>, 
+		<http://publications.europa.eu/resource/authority/data-theme/TECH> ;
+	admsapit:semanticAssetInUse <https://w3id.org/italia/data/project/DAF>, <https://w3id.org/italia/data/project/OntoPiA> ;
+	dct:accrualPeriodicity <http://publications.europa.eu/resource/authority/frequency/IRREG> ;
+	admsapit:last <https://w3id.org/italia/onto/Transparency/0.1> ;
+	dct:publisher <http://spcdata.digitpa.gov.it/Amministrazione/agid> ;
+	dcat:contactPoint <http://dati.gov.it/data/resource/ContactPoint/voc_AgID> ;
+	owl:versionInfo "La presente versione dell'ontologia è un draft in attesa di revisone da parte di ANAC."@it ;
+	dct:issued "2019-05-30"^^xsd:date ;
+	dct:modified "2019-06-06"^^xsd:date ; 
+	admsapit:target "Pubbliche amministrazioni"@it, "Cittadini"@it ;
+	admsapit:type admsapit:DomainOntology ;
+	dct:creator <http://spcdata.digitpa.gov.it/Amministrazione/agid>;
+	dct:creator <https://w3id.org/italia/data/organization/private-organization/05481840964> ;	
+	rdfs:isDefinedBy <https://w3id.org/italia/onto/Transparency> ;
+	.
 
+
+## agents
 
 <http://spcdata.digitpa.gov.it/Amministrazione/agid> a dcatapit:Agent, foaf:Agent, owl:NamedIndividual ; 
 	dct:identifier "agid" ; 
@@ -89,40 +88,43 @@
 	foaf:name "Almawave Srl"@it ;
 	.
 
+## formats
 
 <https://w3id.org/italia/data/distribution/TRAPIT-JSON-LD> rdf:type owl:NamedIndividual ,
-                                                                    admsapit:SemanticAssetDistribution ;
-                                                           dct:description "Questa è la distribuzione JSON-LD dell'ontologia dell'amministrazione trasparente"@it ,
-                                                                           "This is the distribution in JSON-LD of the transparent administration"@en ;
-                                                           dct:format <http://publications.europa.eu/resource/authority/file-type/JSON_LD> ;
-                                                           dct:license <https://w3id.org/italia/controlled-vocabulary/licences/A21_CCBY40> ;
-                                                           dct:title "Distribuzione JSON-LD ontologia Transparency-AP_IT"@it ,
-                                                                     "JSON-LD distribution of Transparency-AP_IT Ontology"@en ;
-                                                           dcat:accessURL <https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/Transparency/latest> ;
-                                                           dcat:downloadURL <https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/Transparency/Transparency-AP_IT.jsonld> .
+	admsapit:SemanticAssetDistribution ;
+	dct:description "Questa è la distribuzione JSON-LD dell'Ontologia degli Obblighi della Trasparenza"@it ,
+		"This is the distribution in JSON-LD of the Transparency Obligations Ontology"@en ;
+	dct:format <http://publications.europa.eu/resource/authority/file-type/JSON_LD> ;
+	dct:license <https://w3id.org/italia/controlled-vocabulary/licences/A21_CCBY40> ;
+	dct:title "Distribuzione JSON-LD ontologia Transparency-AP_IT"@it ,
+		"JSON-LD distribution of Transparency-AP_IT Ontology"@en ;
+	dcat:accessURL <https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/Transparency/latest> ;
+	dcat:downloadURL <https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/Transparency/Transparency-AP_IT.jsonld> ;
+	.
 
 <https://w3id.org/italia/data/distribution/TRAPIT-RDF-XML> rdf:type owl:NamedIndividual ,
-                                                                    admsapit:SemanticAssetDistribution ;
-                                                           dct:description "Questa è la distribuzione RDF/XML dell'ontologia dell'amministrazione trasparente"@it ,
-                                                                           "This is the distribution in RDF/XML of the transparent administration"@en ;
-                                                           dct:format <http://publications.europa.eu/resource/authority/file-type/RDF_XML> ;
-                                                           dct:license <https://w3id.org/italia/controlled-vocabulary/licences/A21_CCBY40> ;
-                                                           dct:title "Distribuzione RDF/XML ontologia Transparency-AP_IT"@it ,
-                                                                     "RDF/XML distribution of Transparency-AP_IT Ontology"@en ;
-                                                           dcat:accessURL <https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/Transparency/latest> ;
-                                                           dcat:downloadURL <https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/Transparency/Transparency-AP_IT.rdf> .
+	admsapit:SemanticAssetDistribution ;
+	dct:description "Questa è la distribuzione RDF/XML dell'Ontologia degli Obblighi della Trasparenza"@it ,
+		"This is the distribution in RDF/XML of the Transparency Obligations Ontology"@en ;
+	dct:format <http://publications.europa.eu/resource/authority/file-type/RDF_XML> ;
+	dct:license <https://w3id.org/italia/controlled-vocabulary/licences/A21_CCBY40> ;
+	dct:title "Distribuzione RDF/XML ontologia Transparency-AP_IT"@it ,
+		"RDF/XML distribution of Transparency-AP_IT Ontology"@en ;
+	dcat:accessURL <https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/Transparency/latest> ;
+	dcat:downloadURL <https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/Transparency/Transparency-AP_IT.rdf> ;
+	.
 
 <https://w3id.org/italia/data/distribution/TRAPIT-RDF-TURTLE> rdf:type owl:NamedIndividual ,
-                                                                    admsapit:SemanticAssetDistribution ;
-                                                           dct:description "Questa è la distribuzione RDF/Turtle dell'ontologia dell'amministrazione trasparente"@it ,
-                                                                           "This is the distribution in RDF/Turtle of the transparent administration"@en ;
-                                                           dct:format <http://publications.europa.eu/resource/authority/file-type/RDF_TURTLE> ;
-                                                           dct:license <https://w3id.org/italia/controlled-vocabulary/licences/A21_CCBY40> ;
-                                                           dct:title "Distribuzione RDF/Turtle ontologia Transparency-AP_IT"@it ,
-                                                                     "RDF/Turtle distribution of Transparency-AP_IT Ontology"@en ;
-                                                           dcat:accessURL <https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/Transparency/latest> ;
-                                                           dcat:downloadURL <https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/Transparency/Transparency-AP_IT.ttl> .
-														   
+	admsapit:SemanticAssetDistribution ;
+	dct:description "Questa è la distribuzione RDF/Turtle dell'Ontologia degli Obblighi della Trasparenza"@it ,
+		"This is the distribution in RDF/Turtle of the Transparency Obligations Ontology"@en ;
+	dct:format <http://publications.europa.eu/resource/authority/file-type/RDF_TURTLE> ;
+	dct:license <https://w3id.org/italia/controlled-vocabulary/licences/A21_CCBY40> ;
+	dct:title "Distribuzione RDF/Turtle ontologia Transparency-AP_IT"@it ,
+		"RDF/Turtle distribution of Transparency-AP_IT Ontology"@en ;
+	dcat:accessURL <https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/Transparency/latest> ;
+	dcat:downloadURL <https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/Transparency/Transparency-AP_IT.ttl> ;
+	.
 
 
 #################################################################
@@ -135,103 +137,96 @@ xsd:date a rdfs:Datatype .
 ###  http://www.w3.org/2001/XMLSchema#time
 xsd:time a rdfs:Datatype .
 
-###  https://w3id.org/italia/onto/Transparency/regulationReference
-:regulationReference a owl:DatatypeProperty ;
-	rdfs:label "riferimento normativo" @it;
-	rdfs:label "normative reference" @en;
-	rdfs:comment "riferimento normativo all'obbligo di pubblicazione."@it ;
-	rdfs:comment "regulation referred to the transparency obligation."@en;
-	rdfs:domain :TransparencyObligation ;
-	rdfs:range rdfs:Literal ;
-	rdfs:isDefinedBy <https://w3id.org/italia/onto/Transparency> ;
-	.
-
 
 #################################################################
 #    Object Properties
 #################################################################
 
-###  https://w3id.org/italia/onto/Transparency/isPerformedBy
-:isPerformedBy a owl:ObjectProperty;
+###  https://w3id.org/italia/onto/Transparency/regulationReference
+:regulationReference a owl:ObjectProperty ;
+	rdfs:label "riferimento normativo" @it;
+	rdfs:label "normative reference" @en;
+	rdfs:comment "Questa proprietà lega un obbligo di trasparenza al riferimento normativo da cui deriva."@it ;
+	rdfs:comment "This property links a transparency obligation to the law that defines it."@en;
+	rdfs:domain :TransparencyObligation ;
+	rdfs:range :FormalFramework ;
+	rdfs:isDefinedBy <https://w3id.org/italia/onto/Transparency> ;
+	owl:versionInfo "instabile"@it ,"unstable"@en ;
+	.
+
+###  https://w3id.org/italia/onto/Transparency/isPerformedByAgent
+:isPerformedByAgent a owl:ObjectProperty;
 	rdfs:label "è eseguita da"@it,
-			    "is performed by"@en ;
+		"is performed by"@en ;
 	rdfs:comment "Questa proprietà lega una attività al soggetto che la esegue."@it,
-				 "This property links a transparency activity to the agent that performs it."@en;
+		"This property links a transparency activity to the agent that performs it."@en;
 	rdfs:domain :TransparencyActivity ;
 	rdfs:range l0:Agent ;
 	rdfs:inverseOf :performsTransparencyActivity; 
 	rdfs:isDefinedBy <https://w3id.org/italia/onto/Transparency> ;
+	owl:versionInfo "instabile"@it ,"unstable"@en ;
 	.
 
 ###  https://w3id.org/italia/onto/Transparency/performsTransparencyActivity
 :performsTransparencyActivity a owl:ObjectProperty;
 	rdfs:label "esegue attività della trasparenza"@it,
-			    "performs transparency activity"@en ;
+		"performs transparency activity"@en ;
 	rdfs:comment "Questa proprietà lega una attività al soggetto che la esegue."@it,
-				 "This property links a transparency activity to the agent that performs it."@en;
+		"This property links a transparency activity to the agent that performs it."@en;
 	rdfs:domain l0:Agent ;
 	rdfs:range :TransparencyActivity ;
-	rdfs:inverseOf :isPerformedBy ;
+	rdfs:inverseOf :isPerformedByAgent ;
 	rdfs:isDefinedBy <https://w3id.org/italia/onto/Transparency> ;
+	owl:versionInfo "instabile"@it ,"unstable"@en ;
 	.
-
 
 ###  https://w3id.org/italia/onto/Transparency/hasTransparencyActivityTypology
 :hasTransparencyActivityTypology a owl:ObjectProperty;
 	rdfs:label "ha tipologia di attività della trasparenza"@it,
-			    "has transparency activity typology"@en ;
+		"has transparency activity typology"@en ;
 	rdfs:comment "Questa proprietà lega una attività della trasparenza alla sua tipologia."@it,
-				 "This property links a transparency activity to its typology."@en;
+		"This property links a transparency activity to its typology."@en;
 	rdfs:domain :TransparencyActivity ;
 	rdfs:range :TransparencyActivityTypology ;
 	rdfs:isDefinedBy <https://w3id.org/italia/onto/Transparency> ;
+	owl:versionInfo "instabile"@it ,"unstable"@en ;
 	.
 
-
-###  https://w3id.org/italia/onto/Transparency/updatedVersionOf
-:updatedVersionOf a owl:ObjectProperty;
-	rdfs:label "versione aggiornata di"@it,
-			    "updated version of"@en ;
-	rdfs:comment "Questa proprietà lega una risorsa alla sua versione precedente."@it,
-				 "This property links a transparency resource to its previous version."@en;
-	rdfs:inverseOf :previousVersionOf;
+###  https://w3id.org/italia/onto/Transparency/isVersionOf
+:isVersionOf a owl:ObjectProperty;
+	rdfs:label "versione di"@it,
+		"version of"@en ;
+	rdfs:comment "Questa proprietà lega una risorsa ad una sua versione."@it,
+		"This property links a transparency resource to its other version."@en;
 	rdfs:domain :TransparencyResource ;
 	rdfs:range :TransparencyResource ;
 	rdfs:isDefinedBy <https://w3id.org/italia/onto/Transparency> ;
-	.
-
-###  https://w3id.org/italia/onto/Transparency/previousVersionOf
-:previousVersionOf a owl:ObjectProperty;
-	rdfs:label "versione precedente di"@it,
-			    "previous version of"@en ;
-	rdfs:comment "Questa proprietà lega una risorsa alla sua versione successiva."@it,
-				 "This property links a transparency resource to its next version."@en;
-	rdfs:inverseOf :updatedvVersionOf;
-	rdfs:domain :TransparencyResource ;
-	rdfs:range :TransparencyResource ;
-	rdfs:isDefinedBy <https://w3id.org/italia/onto/Transparency> ;
+	prov:wasDerivedFrom dcat:isVersionOf;
+	owl:versionInfo "instabile"@it ,"unstable"@en ;
 	.
 
 ###  https://w3id.org/italia/onto/Transparency/appliesToPA
 :appliesToPA a owl:ObjectProperty ;
 	rdfs:label "si applica alla PA"@it,
-			    "applies to PA"@en ;
+		"applies to PA"@en ;
 	rdfs:comment "Questa proprietà lega un obbligo di trasparenza alla pubblica amministrazione a cui si applica."@it,
-				 "This property links a transparency obligation to a public administration to whom is applied."@en;	
+		"This property links a transparency obligation to a public administration to whom is applied."@en;	
 	owl:inverseOf :obligedToEnforce ;
 	rdfs:domain :TransparencyObligation ;
 	rdfs:range <https://w3id.org/italia/onto/COV/PublicOrganization> ;
 	rdfs:isDefinedBy <https://w3id.org/italia/onto/Transparency> ;
+	owl:versionInfo "instabile"@it ,"unstable"@en ;
 	.
 
 ###  https://w3id.org/italia/onto/Transparency/definesUpdateFrequency
 :definesUpdateFrequency a owl:ObjectProperty ;
 	rdfs:label "defines update frequency"@en, "definisce frequenza di aggiornamento"@it;
 	rdfs:comment "This property links a transparency obligation to the update frequency which it defines."@en,
-				 "Questa proprietà collega un obbligo di trasparenza alla frequenza di aggiornamento da esso definita."@it;
+		"Questa proprietà collega un obbligo di trasparenza alla frequenza di aggiornamento da esso definita."@it;
 	rdfs:domain :TransparencyObligation ;
 	rdfs:range :UpdateFrequency ;
 	rdfs:isDefinedBy <https://w3id.org/italia/onto/Transparency> ; 
+	owl:versionInfo "instabile"@it ,"unstable"@en ;
 	.
 
 
@@ -239,97 +234,99 @@ xsd:time a rdfs:Datatype .
 :generatesResource a owl:ObjectProperty ;
 	rdfs:label "generates resource"@en, "produce risorsa"@it;
 	rdfs:comment "This property links a transparency activity to the resource generated as outcome of it."@en,
-				 "Questa proprietà lega un'attività della trasparenza alla risorsa generata come risultato dell'attività."@it;
+		"Questa proprietà lega un'attività della trasparenza alla risorsa generata come risultato dell'attività."@it;
 	owl:inverseOf :generatedBy ;
 	rdfs:domain :TransparencyActivity ;
 	rdfs:range :TransparencyResource ;
 	rdfs:isDefinedBy <https://w3id.org/italia/onto/Transparency> ; 
- .
+	owl:versionInfo "instabile"@it ,"unstable"@en ;
+	.
     
 ###  https://w3id.org/italia/onto/Transparency/generatedBy
 :generatedBy a owl:ObjectProperty ;
 	rdfs:label "generated by"@en, "generato da"@it;
 	rdfs:comment "This property links a transparency resource to the activity from which is generated by."@en,
-				 "Questa proprità lega una risorsa all'attività che la genera."@it;
+		"Questa proprità lega una risorsa all'attività che la genera."@it;
 	owl:inverseOf :generatesResource ;
 	rdfs:domain :TransparencyResource ;
 	rdfs:range :TransparencyActivity ;
 	rdfs:isDefinedBy <https://w3id.org/italia/onto/Transparency> ; 
- .
-
+	owl:versionInfo "instabile"@it ,"unstable"@en ;
+	.
 
 ###  https://w3id.org/italia/onto/Transparency/hasAllowedFormat
 :hasAllowedFormat a owl:ObjectProperty ;
 	rdfs:label "has allowed format"@en, "da pubblicare nel formato"@it;
 	rdfs:comment "This property links a transparency resource to the allowed format defined for publication."@en,
-				 "Questa proprità lega una risorsa della trasparenza al formato definito per la pubblicazione"@it;
+		"Questa proprità lega una risorsa della trasparenza al formato definito per la pubblicazione"@it;
 	rdfs:domain :TransparencyResource ;
 	rdfs:range :Format ;
 	rdfs:isDefinedBy <https://w3id.org/italia/onto/Transparency> ; 
- .
-
+	owl:versionInfo "instabile"@it ,"unstable"@en ;
+	.
 
 ###  https://w3id.org/italia/onto/Transparency/hasTransparencyStatus
 :hasTransparencyStatus a owl:ObjectProperty ;
-	rdfs:label "has transparency status"@en, "ha stato"@it;
+	rdfs:label "has transparency status"@en, "ha stato trasparenza"@it;
 	rdfs:comment "This property links a transparency obligation to its current status."@en, 
-				 "Questa proprietà lega un obbligo di trasparenza al suo stato attuale."@it;
+		"Questa proprietà lega un obbligo di trasparenza al suo stato attuale."@it;
 	rdfs:domain :TransparencyObligation ;
 	rdfs:range :TransparencyObligationStatus ;
 	rdfs:isDefinedBy <https://w3id.org/italia/onto/Transparency> ; 
- .
+	owl:versionInfo "instabile"@it ,"unstable"@en ;
+	.
 
 
 ###  https://w3id.org/italia/onto/Transparency/hasTransparencySubject
 :hasTransparencySubject a owl:ObjectProperty ;
 	rdfs:label "has transparency subject" @en, "has transparency theme"@en, "ha soggetto della trasparenza"@it, "ha tema della trasparenza"@it;
 	rdfs:comment "This property links a transparency obligation to the related subjects."@en,
-				 "Questa proprietà lega un obbligo di trasparenza ai temi che lo caratterizzano."@it;
+		"Questa proprietà lega un obbligo di trasparenza ai temi che lo caratterizzano."@it;
 	rdfs:domain :TransparencyObligation ;
 	rdfs:range :TransparencySubject ;
 	rdfs:isDefinedBy <https://w3id.org/italia/onto/Transparency> ; 
- .
-
+	owl:versionInfo "instabile"@it ,"unstable"@en ;
+	.
 
 ###  https://w3id.org/italia/onto/Transparency/isClassifiedBy
 :isClassifiedBy a owl:ObjectProperty ;
-	rdfs:labels "is calssified by"@en, "è classificato da"@it;
+	rdfs:labels "is classified by"@en, "è classificato da"@it;
 	rdfs:comment "This property links a transparency obligation to the corresponding data typology. The values are controlled by the taxonomy  https://w3id.org/italia/controlled-vocabulary/classifications-for-transparency/transparency-titulus "@en;
 	rdfs:comment "Questa proprietà lega un obbligo di trasparenza alla relativa tipologia. Le voci sono controllate della tassonomia https://w3id.org/italia/controlled-vocabulary/classifications-for-transparency/transparency-titulus"@it;
 	rdfs:domain :TransparencyObligation ;
 	rdfs:range :TransparencyDataTypology ;
 	rdfs:isDefinedBy <https://w3id.org/italia/onto/Transparency> ; 
- .
-
+	owl:versionInfo "instabile"@it ,"unstable"@en ;
+	.
 
 ###  https://w3id.org/italia/onto/Transparency/mustBeUptodatedWithin
 :mustBeUptodatedWithin a owl:ObjectProperty ;
 	rdfs:label "must be update within"@en, 
-	    "deve essere aggiornato con"@it;
+		"deve essere aggiornata entro"@it;
 	rdfs:comment "This property links a transparency resource to the prescribed update frequency."@en,
-				 "Questa proprietà collega una risorsa della trasparenza alla frequenza con cui deve addiornamento."@it;
+		"Questa proprietà collega una risorsa della trasparenza alla frequenza con cui deve addiornamento."@it;
 	rdfs:domain :TransparencyResource ;
 	rdfs:range :UpdateFrequency ;
 	rdfs:isDefinedBy <https://w3id.org/italia/onto/Transparency> ; 
- .
-
+	owl:versionInfo "instabile"@it ,"unstable"@en ;
+	.
 
 ###  https://w3id.org/italia/onto/Transparency/obligedToEnforce
 :obligedToEnforce a owl:ObjectProperty ;
 	rdfs:label "obliged to enforce obligation"@en, "obbligata a rispettare l'obbligo"@it;
 	rdfs:comment "This property links a public organization to the transparecy obligations which is obliged to enforce."@en,
-				 "Questa proprietà lega una amministrazione pubblica gli obblighi di trasparenza che è obbligata a rispettare."@it;
+		"Questa proprietà lega una amministrazione pubblica gli obblighi di trasparenza che è obbligata a rispettare."@it;
 	rdfs:domain <https://w3id.org/italia/onto/COV/PublicOrganization> ;
 	rdfs:range :TransparencyObligation ;
 	rdfs:isDefinedBy <https://w3id.org/italia/onto/Transparency> ; 
- .
-
+	owl:versionInfo "instabile"@it ,"unstable"@en ;
+	.
 
 ###  https://w3id.org/italia/onto/Transparency/refersToTransparencyEntity
 :refersToTransparencyEntity a owl:ObjectProperty ;
 	rdfs:label "refers to transparency entity"@en, "si riferisce a entità"@it;
 	rdfs:comment "This property links a transparency resource to the related entities."@en,
-				 "Questa proprità lega una risorsa della trasparenza alle entità ad essa collegata"@it;
+		"Questa proprità lega una risorsa della trasparenza alle entità ad essa collegata"@it;
 	rdfs:domain :TransparencyResource ;	
 	rdfs:range [ a owl:Class ;
 		owl:unionOf ( 
@@ -339,13 +336,14 @@ xsd:time a rdfs:Datatype .
 	] ;
 	# IDEA: definire una classe ad-hoc per (Activity or Object)
 	rdfs:isDefinedBy <https://w3id.org/italia/onto/Transparency> ; 
- .
+	owl:versionInfo "instabile"@it ,"unstable"@en ;
+	.
 
 ###  https://w3id.org/italia/onto/Transparency/refersToTransparencySubject	
 :refersToTransparencySubject a owl:ObjectProperty ;
 	rdfs:label "refers to transparency subject"@en, "si riferisce a soggetto"@it;
 	rdfs:comment "This property links an entity to the transparency subjects."@en,
-				 "Questa proprità lega una entità ai soggetti della trasparenza."@it;
+		"Questa proprità lega una entità ai soggetti della trasparenza."@it;
 	rdfs:domain [ a owl:Class ;
 		owl:unionOf ( 
 			<https://w3id.org/italia/onto/l0/Activity>
@@ -354,55 +352,49 @@ xsd:time a rdfs:Datatype .
 	] ;
 	rdfs:range :TransparencySubject ;	
 	rdfs:isDefinedBy <https://w3id.org/italia/onto/Transparency> ; 
- .
-
+	owl:versionInfo "instabile"@it ,"unstable"@en ;
+	.
 
 ###  https://w3id.org/italia/onto/Transparency/triggers
 :triggers a owl:ObjectProperty ;
 	rdfs:label "triggers"@en, "attiva"@it;
 	rdfs:comment "This property links a trasparency obbligation to the activty triggered by it."@en,
-				 "Questa proprietà lega un obbligo di trasparenza all'attività che attiva."@it;
+		"Questa proprietà lega un obbligo di trasparenza all'attività che attiva."@it;
 	owl:inverseOf :triggeredBy ;
 	rdfs:domain :TransparencyObligation ;
 	rdfs:range :TransparencyActivity ;
 	rdfs:isDefinedBy <https://w3id.org/italia/onto/Transparency> ; 
- .
+	owl:versionInfo "instabile"@it ,"unstable"@en ;
+	.
 
 :triggeredBy a owl:ObjectProperty ;
 	rdfs:label "triggered by"@en, "attivato da"@it;
 	rdfs:comment "This property links a trasparency obbligation to the activty triggered by it."@en,
-				 "Questa proprietà lega un obbligo di trasparenza all'attività che attiva."@it;
+		"Questa proprietà lega un obbligo di trasparenza all'attività che attiva."@it;
 	owl:inverseOf :triggers ;
 	rdfs:domain :TransparencyActivity ;
 	rdfs:range :TransparencyObligation ;
 	rdfs:isDefinedBy <https://w3id.org/italia/onto/Transparency> ; 
- .
-
-
+	owl:versionInfo "instabile"@it ,"unstable"@en ;
+	.
 
 ###  https://w3id.org/italia/onto/Transparency/isPartOfObligation
 :isPartOfObligation a owl:ObjectProperty ;
 	rdfs:label  "è parte di obbligo di trasparenza"@it,
-				"part of transparency obligation"@en ;
+		"part of transparency obligation"@en ;
 	rdfs:comment "Questa proprietà lega un obbligo di trasparenza ad un obbligo di trasparenza più generale."@it,
-				 "This property links a transparency obligation to a more general trasparency obligation."@en;	
+		"This property links a transparency obligation to a more general trasparency obligation."@en;	
 	owl:inverseOf :isComposedByObligation ;
 	rdfs:domain :TransparencyObligation ;
 	rdfs:range :TransparencyObligation ;
 	rdfs:isDefinedBy <https://w3id.org/italia/onto/Transparency> ;
+	owl:versionInfo "instabile"@it ,"unstable"@en ;
 	.
-	
-###  https://w3id.org/italia/onto/Transparency/isComposedByObligation
-:isComposedByObligation a owl:ObjectProperty ;
-	rdfs:label  "è composto da obbligo di trasparenza"@it,
-				"is composed by transparency obligation"@en ;
-	rdfs:comment "Questa proprietà lega un obbligo di trasparenza ad obblighi di trasparenza più specifici."@it,
-				 "This property links a transparency obligation to less general trasparency obligations."@en;	
-	owl:inverseOf :isComposedByObligation ;
-	rdfs:domain :TransparencyObligation ;
-	rdfs:range :TransparencyObligation ;
-	rdfs:isDefinedBy <https://w3id.org/italia/onto/Transparency> ;
-	.
+
+
+#################################################################
+#    DatatypeProperty
+#################################################################
 
 ###  https://w3id.org/italia/onto/Transparency/accessURL
 :accessURL a owl:DatatypeProperty ;
@@ -412,9 +404,10 @@ xsd:time a rdfs:Datatype .
 	rdfs:comment "This URL defines the access address of the informative content."@en ;
 	rdfs:domain :TransparencyResource ;
 	rdfs:range xsd:anyURI ;
-	owl:equivalentProperty smapit:URL ;
+	rdfs:subPropertyOf smapit:URL ;
 	rdfs:isDefinedBy <https://w3id.org/italia/onto/Transparency> ;
-.
+	owl:versionInfo "instabile"@it ,"unstable"@en ;
+	.
 
 ###  https://w3id.org/italia/onto/Transparency/downloadURL
 :downloadURL a owl:DatatypeProperty ;
@@ -424,9 +417,10 @@ xsd:time a rdfs:Datatype .
 	rdfs:comment "This URL defines the download adress of the informative content."@en ;
 	rdfs:domain :TransparencyResource ;
 	rdfs:range xsd:anyURI ;
-	owl:equivalentProperty smapit:URL ;
+	rdfs:subPropertyOf smapit:URL ;
 	rdfs:isDefinedBy <https://w3id.org/italia/onto/Transparency> ;
-.
+	owl:versionInfo "instabile"@it ,"unstable"@en ;
+	.
 	
 #################################################################
 #    Classes
@@ -435,125 +429,126 @@ xsd:time a rdfs:Datatype .
 ###  https://w3id.org/italia/onto/Transparency/TransparencyActivityTypology
 :TransparencyActivityTypology a owl:Class ;
 	rdfs:label 	"Transparency activity typology"@en, 
-				"Tipologia di attività della trasparenza"@it;
+		"Tipologia di attività della trasparenza"@it;
 	rdfs:comment "This class represents the transparency activity typology."@en, 
-				 "Questa classe indica la tipologia di attività della trasparenza."@it;
+		"Questa classe indica la tipologia di attività della trasparenza."@it;
 	rdfs:subClassOf <https://w3id.org/italia/onto/l0/Characteristic> ;
 	rdfs:isDefinedBy <https://w3id.org/italia/onto/Transparency> ; 
- .
-
-
+	owl:versionInfo "instabile"@it ,"unstable"@en ;
+	.
 
 ###  https://w3id.org/italia/onto/Transparency/Format
 :Format a owl:Class ;
-	rdfs:label "Format"@en, "Formato"@it;
+	rdfs:label "Format"@en, 
+		"Formato"@it;
 	rdfs:comment "This class represents the format of a resource."@en, 
-				 "Questa classe indica il formato di una risorsa"@it;
+		"Questa classe indica il formato di una risorsa"@it;
 	rdfs:subClassOf <https://w3id.org/italia/onto/l0/Characteristic> ;
 	rdfs:isDefinedBy <https://w3id.org/italia/onto/Transparency> ; 
- .
-
+	owl:versionInfo "instabile"@it ,"unstable"@en ;
+	.
 
 ###  https://w3id.org/italia/onto/Transparency/TransparencyActivity
 :TransparencyActivity a owl:Class ;
 	rdfs:label "Transparency activity"@en, "Attività di trasparenza."@it;
 	rdfs:comment "This class represents a trasparency activity as an effect of a transparency obbligation. For example pubblication, update,..."@en,
-				 "Questa classe rappresenta un'attività di trasparenza come conseguenza di un obbligo di trasparenza."@it;
+		"Questa classe rappresenta un'attività di trasparenza come conseguenza di un obbligo di trasparenza."@it;
 	rdfs:subClassOf <https://w3id.org/italia/onto/l0/Activity> ,  
-    	[ a owl:Restriction ;
-    		owl:onProperty :generatesResource ;
-    		owl:someValuesFrom :TransparencyResource
-    	] ,
-    	[ a owl:Restriction ;
-    		owl:onProperty tiapit:date ;
-    		owl:cardinality "1"^^xsd:nonNegativeInteger;
-			owl:onDataRange [ owl:unionOf ( xsd:date
-                                 		  xsd:dateTime
-                              			  )
-                 			] ;
-    	],
-		[ a owl:Restriction ;
-    		owl:onProperty :isPerformedBy ;
-    		owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger;
-			owl:onClass l0:Agent; 
-    	],
-		[ a owl:Restriction ;
-			owl:onProperty :hasTransparencyActivityTypology ;
-			owl:someValuesFrom :TransparencyActivityTypology;
-        ] ;
-	 owl:disjointUnionOf ( :TransparencyPublicationActivity :TransparencyUpdateActivity ) ;
+	[ a owl:Restriction ;
+		owl:onProperty :generatesResource ;
+		owl:someValuesFrom :TransparencyResource
+	] ,
+	[ a owl:Restriction ;
+		owl:onProperty tiapit:date ;
+		owl:cardinality "1"^^xsd:nonNegativeInteger;
+		owl:onDataRange [ owl:unionOf ( xsd:date xsd:dateTime ) ] ;
+	],
+	[ a owl:Restriction ;
+		owl:onProperty :isPerformedByAgent ;
+		owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger;
+		owl:onClass l0:Agent; 
+	],
+	[ a owl:Restriction ;
+		owl:onProperty :hasTransparencyActivityTypology ;
+		owl:someValuesFrom :TransparencyActivityTypology;
+	] ;
+	owl:disjointUnionOf ( :TransparencyPublicationActivity :TransparencyUpdateActivity ) ;
 	rdfs:isDefinedBy <https://w3id.org/italia/onto/Transparency> ; 
- .
+	owl:versionInfo "instabile"@it ,"unstable"@en ;
+	.
  
 ###  https://w3id.org/italia/onto/Transparency/TransparencyPublicationActivity
 :TransparencyPublicationActivity a owl:Class ;
 	rdfs:label "Transparency activity: Publication."@en, "Attività di trasparenza: Pubblicazione."@it;
 	rdfs:comment "This class represents a publication activity as an effect of a transparency obbligation."@en,
-				 "Questa classe rappresenta un'attività di pubblicazione come conseguenza di un obbligo di trasparenza."@it;
+		"Questa classe rappresenta un'attività di pubblicazione come conseguenza di un obbligo di trasparenza."@it;
 	rdfs:subClassOf :TransparencyActivity ;
-    owl:equivalentClass [ rdf:type owl:Restriction ;
-                          owl:onProperty :hasTransparencyActivityTypology ;
-                          owl:hasValue :TransparencyPublicationActivity;
-                        ] ;
+	owl:equivalentClass [ rdf:type owl:Restriction ;
+		owl:onProperty :hasTransparencyActivityTypology ;
+		owl:hasValue :TransparencyPublicationActivity;
+	] ;
 	owl:disjointWith :TransparencyUpdateActivity ;
 	rdfs:isDefinedBy <https://w3id.org/italia/onto/Transparency> ; 
-.
+	owl:versionInfo "instabile"@it ,"unstable"@en ;
+	.
 
 ###  https://w3id.org/italia/onto/Transparency/TransparencyUpdateActivity
 :TransparencyUpdateActivity a owl:Class ;
 	rdfs:label "Transparency activity: Update."@en, "Attività di trasparenza: Aggiornamento."@it;
 	rdfs:comment "This class represents an update activity as an effect of a transparency obbligation."@en,
-				 "Questa classe rappresenta un'attività di aggiornamento come conseguenza di un obbligo di trasparenza."@it;
+		"Questa classe rappresenta un'attività di aggiornamento come conseguenza di un obbligo di trasparenza."@it;
 	rdfs:subClassOf :TransparencyActivity ;
-    owl:equivalentClass [ rdf:type owl:Restriction ;
-                          owl:onProperty :hasTransparencyActivityTypology ;
-                          owl:hasValue :TransparencyUpdateActivity;
-                        ] ;
+	owl:equivalentClass [ rdf:type owl:Restriction ;
+		owl:onProperty :hasTransparencyActivityTypology ;
+		owl:hasValue :TransparencyUpdateActivity;
+	] ;
 	owl:disjointWith :TransparencyPublicationActivity ;
 	rdfs:isDefinedBy <https://w3id.org/italia/onto/Transparency> ; 
-.
+	owl:versionInfo "instabile"@it ,"unstable"@en ;
+	.
  
 ###  https://w3id.org/italia/onto/Transparency/TransparencyArchiveActivity
 :TransparencyArchiveActivity a owl:Class ;
 	rdfs:label "Transparency activity: Archive."@en, "Attività di trasparenza: Storicizzazione."@it;
 	rdfs:comment "This class represents an archive activity as an effect of a transparency obbligation."@en,
-				 "Questa classe rappresenta un'attività di storicizzazione come conseguenza di un obbligo di trasparenza."@it;
+		"Questa classe rappresenta un'attività di storicizzazione come conseguenza di un obbligo di trasparenza."@it;
 	rdfs:subClassOf :TransparencyActivity ;
-    owl:equivalentClass [ rdf:type owl:Restriction ;
-                          owl:onProperty :hasTransparencyActivityTypology ;
-                          owl:hasValue :TransparencyArchiveActivity;
-                        ] ;
+	owl:equivalentClass [ rdf:type owl:Restriction ;
+		owl:onProperty :hasTransparencyActivityTypology ;
+		owl:hasValue :TransparencyArchiveActivity;
+	] ;
 	owl:disjointWith :TransparencyPublicationActivity ;
 	rdfs:isDefinedBy <https://w3id.org/italia/onto/Transparency> ; 
+	owl:versionInfo "instabile"@it ,"unstable"@en ;
 	.
 
 ###  https://w3id.org/italia/onto/Transparency/TransparencyPublicationActivity
 :TransparencyPublicationActivity a owl:Class ;
 	rdfs:label "Transparency activity: Publication"@en, "Attività di trasparenza: Pubblicazione."@it;
 	rdfs:comment "This class represents a publication activity as an effect of a transparency obbligation."@en,
-				 "Questa classe rappresenta un'attività di pubblicazione come conseguenza di un obbligo di trasparenza."@it;
+		"Questa classe rappresenta un'attività di pubblicazione come conseguenza di un obbligo di trasparenza."@it;
 	rdfs:subClassOf :TransparencyActivity ;
-    rdfs:isDefinedBy <https://w3id.org/italia/onto/Transparency> ; 
-.
-
+	rdfs:isDefinedBy <https://w3id.org/italia/onto/Transparency> ; 
+	owl:versionInfo "instabile"@it ,"unstable"@en ;
+	.
 
 ###  https://w3id.org/italia/onto/Transparency/TransparencyDataTypology
 :TransparencyDataTypology a owl:Class ;
-	rdfs:label "Tipologia della trasparenza"@it, "Denominazione sotto-sezione Amministrazione Trasparente"@it,
-			   "Transparency data typology"@en, "Transparent administration sub-section denomination"@en;
-	rdfs:comment "This class represents typology of transaprecy data and moreover the subsections of the 'Transaprent Administrazion' section of the official website of the public administrations. The individuals are controlled by the vocabulary <https://w3id.org/italia/controlled-vocabulary/classifications-for-transparency/transparency-titulus>."@en,
-				 "Questa classe la tipologia di dati della trasparenza, nonchè la denominazione delle sotto-sezioni della sezione 'Amministrazione Trasparente' del sito istituzionale delle pubbliche amministrazioni. Le voci sono controllate dal vocabolario <https://w3id.org/italia/controlled-vocabulary/classifications-for-transparency/transparency-titulus>."@it;
+	rdfs:label "Tipologia dato della trasparenza"@it,
+		"Transparency data typology"@en ;
+	rdfs:comment "This class represents the typology of transparency data: the values are defined by a specific vocabulary, and are used to organize contents inside the current transparency section structure for the websites of the Italian Public Administrations, as defined by the legislation (d.lgs 33/2013 e s.m.i)."@en,
+		"Questa classe rappresenta la tipologia di dati della trasparenza: i valori sono controllati dal vocabolario relativo, e determinano l'attuale strutturazione delle sezioni e sotto-sezioni dell'\"Amministrazione Trasparente\" dei siti web della PA come previsto dalla normativa di settore (d.lgs 33/2013 e s.m.i)."@it;
 	rdfs:subClassOf <https://w3id.org/italia/onto/l0/Characteristic> ; 
 	l0:controlledVocabulary <https://w3id.org/italia/controlled-vocabulary/classifications-for-transparency/transparency-titulus>;
 	rdfs:isDefinedBy <https://w3id.org/italia/onto/Transparency> ; 
- .
-
+	owl:versionInfo "instabile"@it ,"unstable"@en ;
+	.
 
 ###  https://w3id.org/italia/onto/Transparency/TransparencyObligation
 :TransparencyObligation a owl:Class ;
 	rdfs:label "Obbligo di trasparenza" @it;
-	rdfs:label "Obligation of transparency" @en;	
-	rdfs:subClassOf <https://w3id.org/italia/onto/l0/Entity> ,
+	rdfs:label "Transparency Obligation" @en;	
+	rdfs:subClassOf <https://w3id.org/italia/onto/l0/Description> ,
 	[ a owl:Restriction ;
 		owl:onProperty <https://w3id.org/italia/onto/TI/atTime> ;
 		owl:allValuesFrom <https://w3id.org/italia/onto/TI/TimeInterval>
@@ -565,31 +560,23 @@ xsd:time a rdfs:Datatype .
 	[ a owl:Restriction ;
 		owl:onProperty <https://w3id.org/italia/onto/l0/name> ;
 		owl:someValuesFrom rdfs:Literal
-	] ,
-	[ a owl:Restriction ;
-		owl:onProperty :regulationReference ;
-		owl:someValuesFrom rdfs:Literal
-		# TODO: verificare cardinality almeno 1
-	] ,
-	[ a owl:Restriction ;
-		owl:onProperty :definesUpdateFrequency ;
-		owl:someValuesFrom :UpdateFrequency
-		# TODO: verificare cardinality = 1
 	] ;
-	rdfs:comment "Questa classe rappresenta gli argomenti oggetto di obbligo di pubblicazione per la normativa sulla trasparenza. Fa riferimento alla colonna 'denominazione obbligo' dell'allegato alla guida ANAC."@it;
-	rdfs:comment "This class represents the topic object of transparency obligation according to the transparency normative. It's related to the 'denominazione obbligo' column of the ANAC guideline attachment."@en;
+	rdfs:comment "Questa classe rappresenta gli argomenti oggetto di obbligo di pubblicazione per la normativa sulla trasparenza, definiti tramite un opportuno vocabolario controllato."@it;
+	rdfs:comment "This class represents the topic object of transparency obligation according to the transparency normative, as defined by a specific controlled vocabulary."@en;
 	rdfs:isDefinedBy <https://w3id.org/italia/onto/Transparency> ; 
- .
+	owl:versionInfo "instabile"@it ,"unstable"@en ;
+	.
 
 
 ###  https://w3id.org/italia/onto/Transparency/TransparencyObligationStatus
 :TransparencyObligationStatus a owl:Class ;
 	rdfs:label "Transparency obbligation status"@en, "Stato dell'obbligo di trasparenza."@it;
 	rdfs:comment "This class represents the transparency obbligation status. Ex: in force, deprecated,..."@en, 
-				 "Questa classe rappresenta lo stato dell'obbligo di trasparenza. Per esempio vigente, decaduto,..."@it;
+		"Questa classe rappresenta lo stato dell'obbligo di trasparenza. Per esempio vigente, decaduto,..."@it;
 	rdfs:subClassOf <https://w3id.org/italia/onto/l0/Characteristic> ;
 	rdfs:isDefinedBy <https://w3id.org/italia/onto/Transparency> ; 
- .
+	owl:versionInfo "instabile"@it ,"unstable"@en ;
+	.
 
 
 ###  https://w3id.org/italia/onto/Transparency/TransparencyResource
@@ -604,31 +591,28 @@ xsd:time a rdfs:Datatype .
 		owl:onProperty <https://w3id.org/italia/onto/TI/modified> ;
 		owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
 		owl:onDataRange [ a rdfs:Datatype ;
-			owl:unionOf ( 
-				xsd:date
-				xsd:dateTime
-				xsd:time
-			)
+			owl:unionOf ( xsd:date xsd:dateTime xsd:time )
 		]
 	] ,
 	[ a owl:Restriction ;
-		owl:onProperty :refersToTransparencyEntity ;
-		owl:someValuesFrom [ a owl:Class ;
-			owl:unionOf ( 
+	owl:onProperty :refersToTransparencyEntity ;
+	owl:someValuesFrom [ a owl:Class ;
+		owl:unionOf ( 
 			<https://w3id.org/italia/onto/l0/Activity>
 			<https://w3id.org/italia/onto/l0/Object>
-			)
-		]
+		)
+	]
 	],
 	[ a owl:Restriction ;
 		owl:onProperty :accessURL ;
-        owl:cardinality "1"^^xsd:nonNegativeInteger ;
-        owl:onDataRange xsd:anyURI ; 
-    ] ;
+		owl:cardinality "1"^^xsd:nonNegativeInteger ;
+		owl:onDataRange xsd:anyURI ; 
+	] ;
 	rdfs:comment "Questa classe rappresenta i documenti, le informazioni e i dati oggetto di pubblicazione nei siti istituzionali delle pubbliche amministrazioni." @it;
 	rdfs:comment "This class represents documents, informazions and data object of publication on the official website of the public administrations." @en;
 	rdfs:isDefinedBy <https://w3id.org/italia/onto/Transparency> ; 
- .
+	owl:versionInfo "instabile"@it ,"unstable"@en ;
+	.
 
 
 ###  https://w3id.org/italia/onto/Transparency/TransparencySubject
@@ -638,28 +622,57 @@ xsd:time a rdfs:Datatype .
 	[ a owl:Restriction ;
 		owl:onProperty <https://w3id.org/italia/onto/l0/description> ;
 		owl:someValuesFrom rdfs:Literal
+	] ,
+	[ a owl:Restriction ;
+		owl:onProperty l0:name ;
+		owl:cardinality "1"^^xsd:nonNegativeInteger ;
+		owl:onDataRange rdfs:Literal 
 	] ;
 	rdfs:comment "This class represents a subject releted to a transparency obbligation. It's related to the 'contenuto dell'obbligo' column of the ANAC guideline attachment."@en, 
-				 "Questa classe rappresenta un soggetto (tema) collefato a un obbligo di trasparenza. Fa riferimento alla colonna 'contenuto dell'obbligo' dell'allegato alla guida ANAC."@it;
+		"Questa classe rappresenta un soggetto (tema) collegato a un obbligo di trasparenza. Fa riferimento alla colonna 'contenuto dell'obbligo' dell'allegato alla guida ANAC."@it;
 	rdfs:isDefinedBy <https://w3id.org/italia/onto/Transparency> ; 
- .
+	owl:versionInfo "instabile"@it ,"unstable"@en ;
+	.
 
 
 ###  https://w3id.org/italia/onto/Transparency/UpdateFrequency
 :UpdateFrequency a owl:Class ;
 	rdfs:label "Update frequency"@en, 
-	    "Frequenza di aggiornamento"@it ;
+		"Frequenza di aggiornamento"@it ;
 	rdfs:comment "This class represents the update frequency as prescribed by the transparency obbligation."@en,
-				 "Questa classe la frequenza di aggiornamento di una risorsa così come indicato dall'obbligo ti trasaprenza."@it;
+		"Questa classe la frequenza di aggiornamento di una risorsa così come indicato dall'obbligo ti trasaprenza."@it;
 	rdfs:subClassOf <https://w3id.org/italia/onto/l0/Characteristic> ;
 	rdfs:isDefinedBy <https://w3id.org/italia/onto/Transparency> ; 
- .
+	owl:versionInfo "instabile"@it ,"unstable"@en ;
+	.
+
+###  https://w3id.org/italia/onto/Transparency/FormalFramework
+:FormalFramework rdf:type owl:Class ;
+                 rdfs:subClassOf <https://w3id.org/italia/onto/l0/System> ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty <https://w3id.org/italia/onto/l0/name> ;
+                                   owl:someValuesFrom rdfs:Literal
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty <https://w3id.org/italia/onto/l0/description> ;
+                                   owl:allValuesFrom rdfs:Literal
+                                 ];
+                 rdfs:comment "Questa classe rappresenta il riferimento normativo che sottende le regole che governano la trasparenza."@it ,
+                              "This class represents the legislation, policy or policies that lie behind the rules that govern the transparency."@en ;
+                 rdfs:isDefinedBy <https://w3id.org/italia/onto/CPSV/FormalFramework> ;
+                 rdfs:label "Formal Framework"@en ,
+                            "Framework Legale"@it ,
+                            "Legge"@it ,
+                            "Legislazione"@it ;
+                 owl:versionInfo "instabile"@it ,
+                                 "instable"@en ;
+                 prov:wasDerivedFrom <https://w3id.org/italia/onto/CPSV/FormalFramework> .
 
 
 # materializations
 	
-###  https://w3id.org/italia/onto/l0/Activity
-<https://w3id.org/italia/onto/l0/Activity> a owl:Class .
+###  https://w3id.org/italia/onto/l0/Activity<https://w3id.org/italia/onto/l0/Activity> a owl:Class .
+
 
 ###  https://w3id.org/italia/onto/l0/Concept
 <https://w3id.org/italia/onto/l0/Concept> a owl:Class .
@@ -673,41 +686,46 @@ xsd:time a rdfs:Datatype .
 :InForce a owl:NamedIndividual, :TransparencyObligationStatus;
 	rdfs:label "in force"@en, "vigente"@it;
 	l0:description "This individual represents the status in force of a transparency obbligation"@en,
-				   "Questo individuo rappresenta lo stato vigente di un obbligo di trasparenza"@it;
+		"Questo individuo rappresenta lo stato vigente di un obbligo di trasparenza"@it;
 	rdfs:isDefinedBy <https://w3id.org/italia/onto/Transparency> ; 
-.
+	owl:versionInfo "instabile"@it ,"unstable"@en ;
+	.
 
 
 ###  https://w3id.org/italia/onto/Transparency/Deprecated
 :Deprecated a owl:NamedIndividual, :TransparencyObligationStatus;
 	rdfs:label "deprecated"@en, "decaduto"@it;
 	l0:description "This individual represents the status deprecated of a transparency obbligation"@en,
-				   "Questo individuo rappresenta lo stato decaduto di un obbligo di trasparenza"@it;
+		"Questo individuo rappresenta lo stato decaduto di un obbligo di trasparenza"@it;
 	rdfs:isDefinedBy <https://w3id.org/italia/onto/Transparency> ; 
-.
+	owl:versionInfo "instabile"@it ,"unstable"@en ;
+	.
 
 ###  https://w3id.org/italia/onto/Transparency/TransparencyPublicationActivity
 :TransparencyPublicationActivity a owl:NamedIndividual, :TransparencyActivityTypology;
 	rdfs:label "pubblicazione"@it, "publication"@it;
 	l0:description "This individual represents the publication activity triggered by a transparency obligation."@en,
-				   "Questo individuo rappresenta l'attività di pubblicazione attivata da un obbligo di trasparenza."@it;
+		"Questo individuo rappresenta l'attività di pubblicazione attivata da un obbligo di trasparenza."@it;
 	rdfs:isDefinedBy <https://w3id.org/italia/onto/Transparency> ; 
-.
+	owl:versionInfo "instabile"@it ,"unstable"@en ;
+	.
 
 ###  https://w3id.org/italia/onto/Transparency/TransparencyUpdateActivity
 :TransparencyUpdateActivity a owl:NamedIndividual, :TransparencyActivityTypology;
 	rdfs:label "aggiornamento"@it, "update"@it;
 	l0:description "This individual represents the update activity triggered by a transparency obligation."@en,
-				   "Questo individuo rappresenta l'attività di aggiornamento attivata da un obbligo di trasparenza."@it;
+		"Questo individuo rappresenta l'attività di aggiornamento attivata da un obbligo di trasparenza."@it;
 	rdfs:isDefinedBy <https://w3id.org/italia/onto/Transparency> ; 
-.
+	owl:versionInfo "instabile"@it ,"unstable"@en ;
+	.
 
 ###  https://w3id.org/italia/onto/Transparency/TransparencyArchiveActivity
 :TransparencyArchiveActivity a owl:NamedIndividual, :TransparencyActivityTypology;
 	rdfs:label "storicizzazione"@it, "archive"@it;
 	l0:description "This individual represents the archive activity triggered by a transparency obligation."@en,
-				   "Questo individuo rappresenta l'attività di storicizzazione attivata da un obbligo di trasparenza."@it;
+		"Questo individuo rappresenta l'attività di storicizzazione attivata da un obbligo di trasparenza."@it;
 	rdfs:isDefinedBy <https://w3id.org/italia/onto/Transparency> ; 
-.
+	owl:versionInfo "instabile"@it ,"unstable"@en ;
+	.
 
 ###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi

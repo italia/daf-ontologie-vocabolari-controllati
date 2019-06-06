@@ -15,14 +15,15 @@ pubbliche amministrazione possono ricavare le indicazioni su come applicare le n
 
 ## Il modello
 
-A valle dell'analisi delle fonti è emersa l'esigenza di descrivere alcuni elementi chiave per l'organizzazione dei contenuti rilevanti, 
+A valle dell'analisi delle fonti è emersa l'esigenza di descrivere alcuni elementi chiave per l'organizzazione dei contenuti rilevanti per la sezione amministrazione trasparente, 
 e l'applicazione dei vari obblighi.
 
 Gli elementi centrali nel modello dati sono pertanto i concetti di: 
 - obbligo di trasparenza (`TransparencyObligation`)
+  - tipologie degli obblighi di trasparenza (`TransparencyDataTypology`)
 - tematiche (`TransparencySubject`) come punto di contatto tra obblighi e ontologie di dominio (OntoPiA).
-- attività  (`TransparencyActivity`) compiute dalle pubbliche amministrazione per adempiere agli obblighi della trasparenza
-- risorse  dati (`TransparencyResource`)
+- attività (`TransparencyActivity`) compiute dalle pubbliche amministrazione per adempiere agli obblighi della trasparenza
+- risorse (`TransparencyResource`)
 
 Lo schema del modello è rappresentato nella figura seguente
 
@@ -37,18 +38,16 @@ dove si è utilizzata la notazione [graffoo](http://www.essepuntato.it/graffoo).
 
 L'obbligo di trasparenza (`TransparencyObligation`) è definito come una collezione di temi (`TransparencySubject`) che identificano le informazioni da pubblicare, 
 secondo modalità specifiche (aggiornamento e formato), nell'apposita sezione di "Amministrazione Trasparente".
-I titioli delle sezioni e sottosezioni di "Amministrazioni Trasparente", definite dalla normativa, sono state codificate 
-in un voacabolario controllato ([transparency-titulus](../VocabolariControllati/classifications-for-transparency/transparency-titulus)).
-Le voci del vocabolario forniscono, inoltre, una classificatione delgi obblighi di trasparenza 
-rispetto alla tipologia di dati da pubblicare (`TransparencyDataTypology`).
+La classificazione degli obblighi di trasparenza rispetto alla tipologia di dati da pubblicare (`TransparencyDataTypology`) è stata codificata in un vocabolario controllato ([transparency-titulus](../VocabolariControllati/classifications-for-transparency/transparency-titulus)).
+Le voci del vocabolario corrispondono alle sezioni e sottosezioni di "Amministrazioni Trasparente" dei siti istituzionali delle pubbliche amministrazioni, come indicato dalla normativa di settore. <br/>
+L'analisi della trasparenza ha messo in evidenza l'esigenza di rappresentare gli obblighi come una tassonomia a due livelli per consentire la classificazione di obblighi più complessi in obblighi più specifici.
 
 Gli obblighi di trasparenza prevedono che le amministrazioni gestiscano i dati previsti dalle norme in modo da rendere fruibile l'informazione.
 Queste attività sono state modellate nell'ontologia introducendo il concetto di `TransparencyActivity` (e alcune sue specializzazioni). 
 L'attività di trasparenza (vedi: [PROV-O](https://www.w3.org/TR/prov-o/)) ha come risultato la generazione di una risorsa (`TransparencyResource`), che rappresenta il contenuto informativo che sarà accessibile
 dalla sezione "Amministrazione Trasparente". 
 
-I dati contenuti nelle risorse pubblicate dalle amministrazioni come conseguenza di un obbligo di trasparenza, faranno riferimento a domini verticali
-specifici, in genere identificabili tramite i temi degli obblighi. 
+Le risorse (dati, documenti, pagine web, immagini) pubblicate dalle amministrazioni per adempiere ad un obbligo di trasparenza, faranno riferimento a domini verticali specifici, identificabili tramite i temi associati agli obblighi. 
 Per questo motivo è stata materializzata la relazione delle `TransparencyResource` e  i `TransparencySubject` con i concetti e le entità modellate nelle ontologie di OntoPiA.
 
 A supporto e descrizione di questo modello è stato realizzato un [esempio](./example-01.ttl) basato su dati reperiti sul sito web di una pubblica amministrazione presa a campione.
@@ -64,7 +63,7 @@ in particolare:
 
 La realizzazione di questi vocabolari è lasciata ad un lavoro successivo.
 
-
+----
 
 ## Approfondimenti
 

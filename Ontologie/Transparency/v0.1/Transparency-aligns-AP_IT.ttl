@@ -1,49 +1,108 @@
+@prefix : <https://w3id.org/italia/onto/Transparency-aligns/> .
+
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix l0: <https://w3id.org/italia/onto/l0/> .
 @prefix trapit: <https://w3id.org/italia/onto/Transparency/> .
-@prefix euvoc: <http://publications.europa.eu/ontology/euvoc#> .
 @prefix prov: <http://www.w3.org/ns/prov#>.
 @prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcatapit: <http://dati.gov.it/onto/dcatapit#> .
+@prefix clonp: <http://www.ontologydesignpatterns.org/ont/clo/NormativePositions.owl#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+
+@base <https://w3id.org/italia/onto/Transparency-aligns> .
 
 
-<https://w3id.org/italia/onto/Transparency-aligns> rdf:type owl:Ontology ;
+<https://w3id.org/italia/onto/Transparency-aligns> a owl:Ontology ;
+	owl:versionIRI <https://w3id.org/italia/onto/Transparency-aligns/0.1> ;
+	dc:creator 
+		<http://spcdata.digitpa.gov.it/Amministrazione/agid> ,
+		<https://w3id.org/italia/data/organization/private-organization/05481840964> ,
+		<https://w3id.org/italia/data/organization/private-organization/08450891000> ;
+	dc:issued "2019-05-29"^^xsd:date ;
+	dc:modified "2019-05-29"^^xsd:date ;
+	dc:title "These are the alignments to external ontologies widely used and available at the state of the art for the Transparency ontology."@en ;
+	dc:title "Questi sono gli allineamenti dell'ontologia  della trasparenza verso ontologie esterne del Web semantico standard e ampiamente utilizzate."@it ;
+	owl:imports <https://w3id.org/italia/onto/Transparency> ;
+	.
+	
+# agents
 
-    owl:versionIRI <https://w3id.org/italia/onto/Transparency-aligns/0.1> ;
-    dc:creator "Agency for Digital Italy - AgID"@en ;
-    dc:creator "Almawave"@en ;
-    dc:creator "Almaviva - The Italian Innovation Company"@en ;
-    dc:issued "2019-05-29"^^xsd:date ;
-    dc:modified "2019-05-29"^^xsd:date ;
-    dc:title "These are the alignments to external ontologies widely used and available at the state of the art for the Transparency ontology."@en ;
-    dc:title "Questi sono gli allineamenti dell'ontologia  della trasparenza verso ontologie esterne del Web semantico standard e ampiamente utilizzate."@it ;
-	owl:imports <https://w3id.org/italia/onto/Transparency> .
+<http://spcdata.digitpa.gov.it/Amministrazione/agid> a dcatapit:Agent, foaf:Agent, owl:NamedIndividual ; 
+	dct:identifier "agid" ; 
+	foaf:name "Agenzia per l'Italia Digitale"@it , "Italian Digital Agency"@en ; 
+	. 
+
+<https://w3id.org/italia/data/organization/private-organization/05481840964> rdf:type owl:NamedIndividual, dcatapit:Agent, foaf:Agent ;
+	dct:identifier "05481840964" ;
+	foaf:name "Almawave S.r.l."@it ;
+	.
+
+<https://w3id.org/italia/data/organization/private-organization/08450891000> rdf:type owl:NamedIndividual, dcatapit:Agent, foaf:Agent ;
+	dct:identifier "08450891000" ;
+	foaf:name "Almaviva S.p.a."@it ;
+	.
 
 
 trapit:TransparencyObligation a owl:Class ;
+	rdfs:subClassOf skos:Concept,
+					clonp:Obligation; 
+	rdfs:isDefinedBy <https://w3id.org/italia/onto/Transparency> ;
+	.
+
+trapit:TrasparencySubject a owl:Class ;
 	rdfs:subClassOf skos:Concept ;
 	rdfs:isDefinedBy <https://w3id.org/italia/onto/Transparency> ;
 	.
 
-trapit:TrasnsparencySubject a owl:Class ;
-	rdfs:subClassOf skos:Concept ;
+trapit:Format a owl:Class ;
+	rdfs:subClassOf dct:MediaTypeOrExtent ;
 	rdfs:isDefinedBy <https://w3id.org/italia/onto/Transparency> ;
 	.
-
-
-trapit:isPartOfObligation a owl:ObjectProperty ;
- 	rdfs:subPropertyOf skos:related ;
- 	.
-
-## ISSUE: rifattorizzare isPartOf in l0 
-## l0:isPartOf rdfs:subPropertyOf dul:isMemberOf .
 
 trapit:UpdateFrequency a owl:Class ;
-    rdfs:subClassOf skos:Concept ;
-    owl:equivalentClass euvoc:Frequency ;
+	rdfs:subClassOf skos:Concept ;
+	rdfs:subClassOf dct:accrualPeriodicity ;
 	rdfs:isDefinedBy <https://w3id.org/italia/onto/Transparency> ;
-    .
+	.
 
-trapit:updatedVersionOf a owl:ObjectProperty ;
-    rdfs:subPropertyOf prov:wasRevisionOf ;
+trapit:isPartOfObligation a owl:ObjectProperty ;
+	rdfs:subPropertyOf skos:related ;
+	.
+
+trapit:isVersionOf a owl:ObjectProperty ;
+	rdfs:subPropertyOf dcat:isVersionOf ;
 	rdfs:isDefinedBy <https://w3id.org/italia/onto/Transparency> ;
-    .
+	.
+
+trapit:accessURL a owl:DatatypeProperty ;
+	rdfs:subPropertyOf dcat:accessURL ;
+	rdfs:isDefinedBy <https://w3id.org/italia/onto/Transparency> ;
+	.
+	
+trapit:downloadURL a owl:DatatypeProperty ;
+	rdfs:subPropertyOf dcat:downloadURL ;
+	rdfs:isDefinedBy <https://w3id.org/italia/onto/Transparency> ;
+	.	
+
+# definizioni
+
+skos:Concept a owl:Class .
+
+dct:accrualPeriodicity a owl:Class .
+
+dct:MediaTypeOrExtent a owl:Class .
+
+clonp:Obligation a owl:Class .
+
+skos:related a owl:ObjectProperty .
+
+prov:wasRevisionOf  a owl:ObjectProperty .
+
+dcat:isVersionOf a owl:ObjectProperty .
+
+dcat:downloadURL a owl:DatatypeProperty .
+
+dcat:accessURL a owl:DatatypeProperty  .
+
