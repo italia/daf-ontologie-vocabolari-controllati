@@ -22,7 +22,7 @@ Come si nota, gli script eseguono tipicamente una query SQL sulle due fonti dati
 ### Struttura del Vocabolario
 Il vocabolario è strutturato seguendo il modello CLV - Core Location Vocabulary di OntoPiA e il modello [skos](http://www.w3.org/2004/02/skos/core#), quest'ultimo utilizzato per tutti gli altri vocabolari controllati della rete.
 
-Un esempio di definizione di un Comune attualmente attivo è la seguente:
+Un esempio di definizione di un Comune attualmente attivo è il seguente:
 
 ```
 <https://w3id.org/italia/controlled-vocabulary/territorial-classifications/cities/025001-(1866-11-19)> a <https://w3id.org/italia/onto/CLV/City> , <https://w3id.org/italia/onto/CLV/Feature> , <https://w3id.org/italia/onto/CLV/AdminUnitComponent> , <http://www.w3.org/2004/02/skos/core#Concept> ;
