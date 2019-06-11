@@ -6,14 +6,12 @@ Il vocabolario è stato creato all'interno della Piattaforma Digitale Nazionale 
 **Stato**: stabile
 
 ### Fonti
-In particolare le fonti dati utilizzate sono le seguenti:
-
 1. [elenco dei comuni di ISTAT](https://www.istat.it/storage/codici-unita-amministrative/Elenco-comuni-italiani.csv) (dato aperto in formato CSV con licenza CC-BY 3.0 IT)
 2. [archivio storico dei comuni gestito nell'ambito ANPR (Anagrafe Nazionale Popolazione Residente)](https://www.anpr.interno.it/portale/documents/20182/50186/ANPR_archivio_comuni+10062019.csv/94a1a635-c24c-4205-849f-7ca9150aa803) e allineato al dataset ISTAT (dato aperto in formato CSV - licenza specificata nelle note legali del Ministero dell'Interno - CC-BY 3.0)
 
 ### Processo di generazione del vocabolario controllato
-Il vocabolario è stato generato mediante un processo che nella PDND è chiamato [triplificatore](https://github.com/italia/daf-semantic-triplifier).
-Il triplificatore si interfaccia mediante query SQL a dati conferiti alla PDND e memorizzati su [Impala](https://impala.apache.org/) nel dataset, disponibile per il download in CSV, denominato [Anpr archivio storico](https://dataportal.daf.teamdigitale.it/#/dataset/anpr_archivio_storico_exte). I dati vengono poi trasformati secondo il modello RDF (in particolare sono serializzati in RDF-Turtle) utilizzando l'ontologia dei luoghi/indirizzi creata in collaborazione con ISTAT.
+Il vocabolario è stato generato utilizzando un processo che nella PDND è chiamato [triplificatore](https://github.com/italia/daf-semantic-triplifier).
+Il triplificatore si interfaccia, mediante query SQL, a dati conferiti alla PDND e memorizzati su [Impala](https://impala.apache.org/) nel dataset, disponibile per il download in CSV, denominato [Anpr archivio storico](https://dataportal.daf.teamdigitale.it/#/dataset/anpr_archivio_storico_exte). I dati vengono poi trasformati secondo il modello RDF (in particolare sono serializzati in RDF-Turtle) utilizzando l'ontologia dei luoghi/indirizzi creata in collaborazione con ISTAT.
 
 La trasformazione dei dati in RDF avviene sulla base di script definiti mediante lo standard [R2RML](https://www.w3.org/TR/r2rml/).
 Gli script sono forniti nella relativa directory scriptR2RML del vocabolario.
