@@ -1,0 +1,323 @@
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+
+@prefix l0: <https://w3id.org/italia/onto/l0/> .
+@prefix clvapit: <https://w3id.org/italia/onto/CLV/> .
+@prefix tiapit: <https://w3id.org/italia/onto/TI/> .
+
+@base  <https://w3id.org/italia/> .
+
+# comuni
+
+<VIEW_comuni> rr:sqlQuery """
+
+SELECT ANPR.dataistituzione as ANPR_data_istituzione,
+    ANPR.datacessazione as ANPR_data_cessazione,
+    ANPR.altradenomtraslitterata as ANPR_altradenomtraslitterata_fr,
+    ANPR.altradenominazione as ANPR_altradenominazione_fr,
+    ANPR.cod_denom as ANPR_cod_denom,
+    ANPR.codcatastale as ANPR_codcatastale,
+    ANPR.codistat as ANPR_codistat,
+    ANPR.dataultimoagg as ANPR_dataultimoagg,
+    ANPR.denominazione_it as ANPR_denominazione_it,
+    ANPR.denomtraslitterata as ANPR_denomtraslitterata,
+    ANPR.fonte as ANPR_fonte,
+    ANPR.id as ANPR_id,
+    ANPR.idprefettura as ANPR_idprefettura,
+    ANPR.idprovinciaistat as ANPR_idprovinciaistat,
+    ANPR.idregione as ANPR_idregione,
+    ANPR.siglaprovincia as ANPR_siglaprovincia,
+    ANPR.stato as ANPR_stato,
+    ISTAT.popolazione_legale_2011,
+    ISTAT.codice_nuts1_2006 as ISTAT_codice_nuts1_2006,
+    ISTAT.codice_nuts1_2010 as ISTAT_codice_nuts1_2010,
+    ISTAT.codice_nuts2_2006 as ISTAT_codice_nuts2_2006,
+    ISTAT.codice_nuts2_2010 as ISTAT_codice_nuts2_2010,
+    ISTAT.codice_nuts3_2006 as ISTAT_codice_nuts3_2006,
+    ISTAT.codice_nuts3_2010 as ISTAT_codice_nuts3_2010,
+    ISTAT.codice_comune_numerico_con_103_province_1995_2005 as ISTAT_codice_comune_numerico_con_103_province_1995_2005,
+    ISTAT.codice_comune_numerico_con_107_province_2006_2009 as ISTAT_codice_comune_numerico_con_107_province_2006_2009,
+    ISTAT.codice_comune_numerico_con_110_province_2010_2016 as ISTAT_codice_comune_numerico_con_110_province_2010_2016,
+    ISTAT.codice_citta_metropolitana as ISTAT_codice_citta_metropolitana,
+    ISTAT.codice_ripartizione_geografica AS ISTAT_ripartizione_geografica_id,
+    TRIM(ISTAT.codice_comune_formato_numerico) AS ISTAT_codice_comune_formato_numerico,
+    TRIM(ISTAT.progressivo_comune) AS ISTAT_progressivo_comune,
+    TRIM(ISTAT.codice_comune_formato_alfanumerico) AS ISTAT_codice_comune_formato_alfanumerico
+FROM gove__amministrazione.daf_data_o_anpr_archivio_storico_exte AS ANPR
+    LEFT JOIN gove__amministrazione.daf_data_o_istat_comuni_italiani_view AS ISTAT
+    ON TRIM(ISTAT.codice_comune_formato_alfanumerico)=ANPR.codistat
+
+"""
+.
+
+
+<TriplesMap_DatasetConceptScheme> a rr:TriplesMapClass ;
+
+rr:logicalTable <VIEW_comuni> ;
+
+rr:subjectMap [
+	rr:constant <https://w3id.org/italia/controlled-vocabulary/territorial-classifications/cities> ;
+	rr:class skos:ConceptScheme ;
+] ;
+
+rr:predicateObjectMap [
+	rr:predicate skos:hasTopConcept ;
+	rr:objectMap [
+		rr:template "https://w3id.org/italia/controlled-vocabulary/territorial-classifications/cities/{'ANPR_codistat'}-({'ANPR_data_istituzione'})" ;
+		rr:termType rr:IRI ;
+	]
+] ;
+
+.
+
+<TriplesMap_Vocabulary> a rr:TriplesMapClass ;
+
+rr:logicalTable <VIEW_comuni> ;
+
+rr:subjectMap [
+	rr:constant <https://w3id.org/italia/controlled-vocabulary/territorial-classifications/cities> ;
+	rr:class skos:ConceptScheme ;
+] ;
+
+rr:predicateObjectMap [
+	rr:predicate skos:hasTopConcept ;
+	rr:objectMap [
+		rr:template "https://w3id.org/italia/controlled-vocabulary/territorial-classifications/cities/{'ANPR_codistat'}-({'ANPR_data_istituzione'})" ;
+		rr:termType rr:IRI ;
+	]
+] ;
+.
+
+<TriplesMap_TimeInterval> a rr:TriplesMapClass ;
+
+rr:logicalTable <VIEW_comuni> ;
+
+rr:subjectMap [
+	rr:template "https://w3id.org/italia/data/time-intervals/({'ANPR_data_istituzione'})-({'ANPR_data_cessazione'})" ;
+	rr:class tiapit:TimeInterval ;
+] ;
+rr:predicateObjectMap [
+	rr:predicate tiapit:startTime ;
+	rr:objectMap [ rr:column "ANPR_data_istituzione" ; rr:datatype xsd:date ]
+] ;
+rr:predicateObjectMap [
+	rr:predicate tiapit:endTime ;
+	rr:objectMap [ rr:column "ANPR_data_cessazione" ; rr:datatype xsd:date ]
+] ;
+
+.
+
+<TriplesMap_CodiceISTATALFANUMERICO> a rr:TriplesMapClass ;
+
+rr:logicalTable <VIEW_comuni> ;
+
+rr:subjectMap [
+	rr:template "https://w3id.org/italia/data/identifiers/cities-identifiers/alphanumeric-istat-code/{'ANPR_codistat'}" ;
+	rr:class clvapit:Identifier ;
+] ;
+rr:predicateObjectMap [
+	rr:predicate l0:identifier ;
+	rr:objectMap [ rr:column "ANPR_codistat" ; ]
+] ;
+rr:predicateObjectMap [
+	rr:predicate clvapit:identifierType ;
+	rr:objectMap [ rr:constant "Codice ISTAT alfanumerico" ; rr:language "it" ]
+] ;
+
+.
+
+<TriplesMap_CodiceISTATNUMERICO> a rr:TriplesMapClass ;
+
+rr:logicalTable <VIEW_comuni> ;
+
+rr:subjectMap [
+	rr:template "https://w3id.org/italia/data/identifiers/cities-identifiers/numeric-istat-code/{'ISTAT_codice_comune_formato_numerico'}" ;
+	rr:class clvapit:Identifier ;
+] ;
+rr:predicateObjectMap [
+	rr:predicate l0:identifier ;
+	rr:objectMap [ rr:column "ISTAT_codice_comune_formato_numerico" ; ]
+] ;
+rr:predicateObjectMap [
+	rr:predicate clvapit:identifierType ;
+	rr:objectMap [ rr:constant "Codice ISTAT numerico" ; rr:language "it" ]
+] ;
+
+.
+
+<TriplesMap_CodiceProgressivoComune> a rr:TriplesMapClass ;
+
+rr:logicalTable <VIEW_comuni> ;
+
+rr:subjectMap [
+	rr:template "https://w3id.org/italia/data/identifiers/cities-identifiers/progressive-code/{'ISTAT_progressivo_comune'}" ;
+	rr:class clvapit:Identifier ;
+] ;
+rr:predicateObjectMap [
+	rr:predicate l0:identifier ;
+	rr:objectMap [ rr:column "ISTAT_progressivo_comune" ; ]
+] ;
+rr:predicateObjectMap [
+	rr:predicate clvapit:identifierType ;
+	rr:objectMap [ rr:constant "Progressivo del comune" ; rr:language "it" ]
+] ;
+
+.
+
+<TriplesMap_CodiceCatastale> a rr:TriplesMapClass ;
+
+rr:logicalTable <VIEW_comuni> ;
+
+rr:subjectMap [
+	rr:template "https://w3id.org/italia/data/identifiers/cities-identifiers/cadastral-code/{'ANPR_codcatastale'}" ;
+	rr:class clvapit:Identifier ;
+] ;
+rr:predicateObjectMap [
+	rr:predicate l0:identifier ;
+	rr:objectMap [ rr:column "ANPR_codcatastale" ; ]
+] ;
+rr:predicateObjectMap [
+	rr:predicate clvapit:identifierType ;
+	rr:objectMap [ rr:constant "Codice Catastale" ; rr:language "it" ]
+] ;
+
+.
+
+<TriplesMap_Comuni> a rr:TriplesMapClass ;
+
+rr:logicalTable <VIEW_comuni> ;
+
+rr:subjectMap [
+	rr:template "https://w3id.org/italia/controlled-vocabulary/territorial-classifications/cities/{'ANPR_codistat'}-({'ANPR_data_istituzione'})" ;
+	rr:class clvapit:Feature, clvapit:City, clvapit:AdminUnitComponent , skos:Concept ;
+] ;
+
+rr:predicateObjectMap [
+	rr:predicate clvapit:situatedWithin, clvapit:hasDirectHigherRank, skos:broader ;
+	rr:objectMap [
+		rr:template "https://w3id.org/italia/controlled-vocabulary/territorial-classifications/provinces/{'ANPR_idprovinciaistat'}" ;
+		rr:termType rr:IRI ;
+	]
+] ;
+
+rr:predicateObjectMap [
+	rr:predicate clvapit::hasGeographicalDistribution ;
+	rr:objectMap [
+		rr:template "https://w3id.org/italia/controlled-vocabulary/territorial-classifications/geographical-distribution/{'ISTAT_ripartizione_geografica_id'}" ;
+		rr:termType rr:IRI ;
+	]
+] ;
+
+rr:predicateObjectMap [
+	rr:predicate clvapit::hasHigherRank, skos:broaderTransitive, clvapit:situatedWithin ;
+	rr:objectMap [
+		rr:template "https://w3id.org/italia/controlled-vocabulary/territorial-classifications/regions/{'ANPR_idregione'}" ;
+		rr:termType rr:IRI ;
+	]
+] ;
+
+rr:predicateObjectMap [
+	rr:predicate clvapit:hasRankOrder ;
+	rr:objectMap [ rr:constant 4 ;]
+] ;
+
+
+rr:predicateObjectMap [
+	rr:predicate clvapit:hasIdentifier ;
+	rr:objectMap [
+		rr:template "https://w3id.org/italia/data/identifiers/cities-identifiers/progressive-code/{'ISTAT_progressivo_comune'}" ;
+		rr:termType rr:IRI ;
+	]
+] ;
+
+rr:predicateObjectMap [
+	rr:predicate clvapit:hasIdentifier ;
+	rr:objectMap [
+		rr:template "https://w3id.org/italia/data/identifiers/cities-identifiers/alphanumeric-istat-code/{'ANPR_codistat'}" ;
+		rr:termType rr:IRI ;
+	]
+] ;
+rr:predicateObjectMap [
+	rr:predicate clvapit:hasIdentifier ;
+	rr:objectMap [
+		rr:template "https://w3id.org/italia/data/identifiers/cities-identifiers/numeric-istat-code/{'ISTAT_codice_comune_formato_numerico'}" ;
+		rr:termType rr:IRI ;
+	]
+] ;
+rr:predicateObjectMap [
+	rr:predicate clvapit:hasIdentifier ;
+	rr:objectMap [
+		rr:template "https://w3id.org/italia/data/identifiers/cities-identifiers/cadastral-code/{'ANPR_codcatastale'}" ;
+		rr:termType rr:IRI ;
+	]
+] ;
+
+rr:predicateObjectMap [
+	rr:predicate owl:sameAs ;
+	rr:objectMap [
+		rr:template "http://dati.isprambiente.it/id/place/{'ISTAT_codice_comune_formato_numerico'}" ;
+		rr:termType rr:IRI ;
+	]
+] ;
+
+#rr:predicateObjectMap [
+#	rr:predicate owl:sameAs ;
+#	rr:objectMap [
+#		rr:template "http://datiopen.istat.it/odi/risorsa/territorio/comuni/{'_NOME'}_{'_CODICE_ISTAT_NUMERICO'}" ;
+#		rr:termType rr:IRI ;
+#	]
+#] ;
+
+rr:predicateObjectMap [
+	rr:predicate l0:name ;
+	rr:objectMap [ rr:column "ANPR_denominazione_it" ; rr:language "it" ]
+] ;
+
+rr:predicateObjectMap [
+	rr:predicate skos:preflabel ;
+	rr:objectMap [ rr:column "ANPR_denominazione_it" ; rr:language "it" ]
+] ;
+
+rr:predicateObjectMap [
+	rr:predicate l0:name ;
+	rr:objectMap [ rr:column "ANPR_denomtraslitterata" ; rr:language "it" ]
+] ;
+
+rr:predicateObjectMap [
+	rr:predicate skos:notation ;
+	rr:objectMap [ rr:column "ANPR_codistat" ; ]
+] ;
+
+rr:predicateObjectMap [
+	rr:predicate skos:inScheme ;
+	rr:objectMap [
+		rr:template "https://w3id.org/italia/controlled-vocabulary/territorial-classifications/cities" ;
+		rr:termType rr:IRI ;
+	]
+] ;
+
+#rr:predicateObjectMap [
+	#rr:predicate l0:name ;
+	#rr:objectMap [ rr:column "ANPR_altradenominazione" ; rr:language "de" ]
+#] ;
+
+#rr:predicateObjectMap [
+#	rr:predicate l0:name ;
+#	rr:objectMap [ rr:column "ANPR_altradenomtraslitterata" ; rr:language "de" ]
+#] ;
+
+rr:predicateObjectMap [
+	rr:predicate clvapit:hasSOValidity ;
+	rr:objectMap [
+		rr:template "https://w3id.org/italia/data/time-intervals/({'ANPR_data_istituzione'})-({'ANPR_data_cessazione'})" ;
+		rr:termType rr:IRI ;
+	]
+] ;
+
+rr:predicateObjectMap [
+	rr:predicate tiapit:modified ;
+	rr:objectMap [ rr:column "ANPR_dataultimoagg" ; rr:datatype xsd:date ]
+] ;
+
+.
