@@ -378,19 +378,31 @@ xsd:time a rdfs:Datatype .
 	owl:versionInfo "instabile"@it ,"unstable"@en ;
 	.
 
-###  https://w3id.org/italia/onto/Transparency/isPartOfObligation
-:isPartOfObligation a owl:ObjectProperty ;
-	rdfs:label  "è parte di obbligo di trasparenza"@it,
-		"part of transparency obligation"@en ;
-	rdfs:comment "Questa proprietà lega un obbligo di trasparenza ad un obbligo di trasparenza più generale."@it,
-		"This property links a transparency obligation to a more general trasparency obligation."@en;	
-	owl:inverseOf :isComposedByObligation ;
+###  https://w3id.org/italia/onto/Transparency/subTransparencyObligationOf
+:subTransparencyObligationOf a owl:ObjectProperty ;
+	rdfs:label  "sotto-obbligo di trasparenza di"@it,
+		"sub-transparency obligation of"@en ;
+	rdfs:comment "Questa proprietà lega un obbligo di trasparenza ad un obbligo di cui fa parte."@it,
+		"This property links a transparency obligation to a transparency obligation of which is part of."@en;	
+	owl:inverseOf :superTransparencyObligationOf ;
 	rdfs:domain :TransparencyObligation ;
 	rdfs:range :TransparencyObligation ;
 	rdfs:isDefinedBy <https://w3id.org/italia/onto/Transparency> ;
 	owl:versionInfo "instabile"@it ,"unstable"@en ;
 	.
 
+###  https://w3id.org/italia/onto/Transparency/superTransparencyObligationOf
+:superTransparencyObligationOf a owl:ObjectProperty ;
+	rdfs:label  "super-obbligo di trasparenza di"@it,
+		"super-transparency obligation of"@en ;
+	rdfs:comment "Questa proprietà lega un obbligo di trasparenza ad un obbligo di cui è composto."@it,
+		"This property links a transparency obligation to a transparency obligation of which is composed by."@en;	
+	owl:inverseOf :subTransparencyObligationOf ;
+	rdfs:domain :TransparencyObligation ;
+	rdfs:range :TransparencyObligation ;
+	rdfs:isDefinedBy <https://w3id.org/italia/onto/Transparency> ;
+	owl:versionInfo "instabile"@it ,"unstable"@en ;
+	.
 
 #################################################################
 #    DatatypeProperty
