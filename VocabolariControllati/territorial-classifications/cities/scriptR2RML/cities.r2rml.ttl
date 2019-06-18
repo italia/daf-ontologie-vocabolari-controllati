@@ -1,6 +1,7 @@
 @prefix rr: <http://www.w3.org/ns/r2rml#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 
 @prefix l0: <https://w3id.org/italia/onto/l0/> .
 @prefix clvapit: <https://w3id.org/italia/onto/CLV/> .
@@ -202,7 +203,7 @@ rr:predicateObjectMap [
 ] ;
 
 rr:predicateObjectMap [
-	rr:predicate clvapit::hasGeographicalDistribution ;
+	rr:predicate clvapit:hasGeographicalDistribution ;
 	rr:objectMap [
 		rr:template "https://w3id.org/italia/controlled-vocabulary/territorial-classifications/geographical-distribution/{'ISTAT_ripartizione_geografica_id'}" ;
 		rr:termType rr:IRI ;
@@ -210,7 +211,7 @@ rr:predicateObjectMap [
 ] ;
 
 rr:predicateObjectMap [
-	rr:predicate clvapit::hasHigherRank, skos:broaderTransitive, clvapit:situatedWithin ;
+	rr:predicate clvapit:hasHigherRank, skos:broaderTransitive, clvapit:situatedWithin ;
 	rr:objectMap [
 		rr:template "https://w3id.org/italia/controlled-vocabulary/territorial-classifications/regions/{'ANPR_idregione'}" ;
 		rr:termType rr:IRI ;
@@ -271,6 +272,11 @@ rr:predicateObjectMap [
 
 rr:predicateObjectMap [
 	rr:predicate l0:name ;
+	rr:objectMap [ rr:column "ANPR_denominazione_it" ; rr:language "it" ]
+] ;
+
+rr:predicateObjectMap [
+	rr:predicate rdfs:label ;
 	rr:objectMap [ rr:column "ANPR_denominazione_it" ; rr:language "it" ]
 ] ;
 
