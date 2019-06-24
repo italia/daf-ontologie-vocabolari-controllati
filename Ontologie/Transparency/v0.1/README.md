@@ -50,7 +50,18 @@ dalla sezione "Amministrazione Trasparente".
 Le risorse (dati, documenti, pagine web, immagini) pubblicate dalle amministrazioni per adempiere ad un obbligo di trasparenza, faranno riferimento a domini verticali specifici, identificabili tramite i temi associati agli obblighi. 
 Per questo motivo è stata materializzata la relazione delle `TransparencyResource` e  i `TransparencySubject` con i concetti e le entità modellate nelle ontologie di OntoPiA.
 
+### esempio
+
 A supporto e descrizione di questo modello è stato realizzato un [esempio](./example-01.ttl) basato su dati reperiti sul sito web di una pubblica amministrazione presa a campione.
+
+<img 
+    title="ontologia della trasparenza Transparency-AP_IT" 
+    src="./example-01.png"  
+    width="70%" 
+    />
+
+L'esempio non è esaustivo e usa anche, in certi casi, URi di esempio e non reali
+
 
 
 ## Proposte di evoluzione

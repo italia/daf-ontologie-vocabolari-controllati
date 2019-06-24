@@ -30,8 +30,6 @@
 ## riferimento tabella ANAC: "Bandi di gara e contratti" / "Informazioni sulle singole procedure in formato tabellare"
 ## TransparencyObligation: "Informazioni sulle singole procedure in formato tabellare"
 
-## NOTA: 
-
 <https://w3id.org/italia/data/transparency-obligation/tr-ob-1001> a trapit:TransparencyObligation, skos:Concept ;
 	l0:name "Informazioni sulla Singola Procedura"@it ;
 	l0:description "Informazioni sulla Singola Procedura"@it ; 
@@ -46,29 +44,11 @@
 	trapit:hasTransparencyStatus trapit:InForce ;
 	trapit:definesUpdateFrequency <http://publications.europa.eu/resource/authority/frequency/UPDATE_CONT> ;
 	trapit:regulationReference 
-		<https://w3id.org/italia/data/formal-framework/norm-03>,
-		<https://w3id.org/italia/data/formal-framework/norm-02>,
-		<https://w3id.org/italia/data/formal-framework/norm-01>;
+		"Art. 37, c. 1, lett. a) d.lgs. n. 33/2013" ,
+		"Art. 1, c. 32, l. n. 190/2012" ,
+		"Art. 4 delib. Anac n. 39/2016" ;
 	.
 
-<https://w3id.org/italia/data/formal-framework/norm-03> a trapit:FormalFramework ;
-	rdfs:label "Art. 37, c. 1, lett. a) d.lgs. n. 33/2013" ;
-	l0:name "Art. 37, c. 1, lett. a) d.lgs. n. 33/2013" ;
-	l0:description "Articolo 37, comma 1, lettera a) disegno legislativo n. 33/2013 - norme in materia di trasparenza" ;
-	.
-
-<https://w3id.org/italia/data/formal-framework/norm-02> a trapit:FormalFramework ;
-	rdfs:label "Art. 1, c. 32, l. n. 190/2012" ;
-	l0:name "Art. 1, c. 32, l. n. 190/2012" ;
-	l0:description "Articolo 1, comma 32, l. n. 190/2012 - norme in materia di trasparenza" ;
-	.
-
-<https://w3id.org/italia/data/formal-framework/norm-01> a trapit:FormalFramework ;
-	rdfs:label "Art. 4 delib. Anac n. 39/2016" ;
-	l0:name "Art. 4 delib. Anac n. 39/2016" ;
-	l0:description "Articolo 4 della delibera Anac n. 39/2016 - norme in materia di trasparenza" ;
-	.	
- 
 # materializzazione della risorsa "Regione Campania" (simulata ai fini dell'esempio, sarà nel dataset IPA!)
 <https://w3id.org/italia/data/public-organization/r_campan> a covapit:PublicOrganization ;
 	rdfs:label "Regione Campania" ;
@@ -83,7 +63,7 @@
 	l0:name "Pubblicazione Bandi di gara e contratti 2018"@it ;
 	trapit:triggeredBy <https://w3id.org/italia/data/transparency-obligation/tr-ob-1001> ;
 	trapit:generatesResource <https://w3id.org/italia/data/transparency-resource/r_campan/contracts-2018> ;
-	trapit:isPerformedBy <https://w3id.org/italia/data/office/r_campan#500714> ;
+	trapit:isPerformedBy <https://w3id.org/italia/data/office/r_campan/500714> ;
 	tiapit:date "2019-05-17"^^xsd:date ;
 	trapit:hasTransparencyActivityTypology trapit:TransparencyPublicationActivity;
 	.
@@ -102,14 +82,12 @@
 	trapit:generatedBy <https://w3id.org/italia/data/transparency-activity/r_campan/publication-activity-01> ;
 	trapit:refersToTransparencyEntity 
 		<https://w3id.org/italia/data/lot/ZAB2435F70>,
-		<https://w3id.org/italia/data/office/r_campan#500714>, 
+		<https://w3id.org/italia/data/office/r_campan/500714>, 
 		<https://w3id.org/italia/data/call-for-competition/ZAB2435F70> ;
-	# TODO: valutare se inserire qui anche le entità necessarie alla creazione dei legami (ex: Procedura)
 	trapit:mustBeUptodatedWithin <http://publications.europa.eu/resource/authority/frequency/UPDATE_CONT> ;
-	# sostituire: trapit:lastModified "2013-05-14"^^xsd:date ; con:
 	tiapit:modifed "2013-05-14"^^xsd:date ;
-	tiapit:accessURL <http://www.regione.campania.it/regione/it/amministrazione-trasparente-fy2n/contratti/contracts-goky> ;
-	tiapit:downloadURL <http://www.regione.campania.it/assets/documents/at-contratti-anno2018.csv> ;
+	trapit:accessURL "http://www.regione.campania.it/regione/it/amministrazione-trasparente-fy2n/contratti/contracts-goky"^^xsd:anyURI ;
+	trapit:downloadURL "http://www.regione.campania.it/assets/documents/at-contratti-anno2018.csv"^^xsd:anyURI ;
 	.
 
 
@@ -117,7 +95,6 @@
 <https://w3id.org/italia/data/transparency-subject/cig> a trapit:TransparencySubject ;
 	l0:name "CIG"@it ;
 	l0:description "Codice Identificativo Gara"@it ;
-	# TODO: cercare in OntoPiA URI lotto di cui devo rappresentare il CIG (in ContrattiPubblici)
 	.
 
 # TransparencySubject: "Struttura proponente"
@@ -131,7 +108,7 @@
 	l0:name "Lotto ZAB2435F70" ;
 	pcapit:CIG "ZAB2435F70" ;
 	pcapit:isIncludedInProcedure <https://w3id.org/italia/data/procedure/ZAB2435F70> ;
-	pcapit:totalAmountPaid "870.0"^^xsd:decimal ;
+	pcapit:totalAmountPaid "870.0"^^xsd:float ;
 	trapit:refersToTransparencySubject <https://w3id.org/italia/data/transparency-subject/total-amount-paid> ;
 	trapit:refersToTransparencySubject <https://w3id.org/italia/data/transparency-subject/cig> ;
 	.
@@ -140,14 +117,12 @@
 	# SHOULD :hasCPV, :hasProcurementDocument, :includesLot
 	# SHOULD roapit:holdsRoleInTime
 	# MUST :hasProcuringEntity, l0:identifier
-	pcapit:hasProcuringEntity <https://w3id.org/italia/data/office/r_campan#500714> ;
+	pcapit:hasProcuringEntity <https://w3id.org/italia/data/office/r_campan/500714> ;
 	.
 
-<https://w3id.org/italia/data/office/r_campan#500714> a covapit:Office ;
+<https://w3id.org/italia/data/office/r_campan/500714> a covapit:Office ;
 	covapit:officeIdentifier "500714" ;
 	l0:name "Servizio territoriale provinciale Salerno"@it ;
-	# TODO: valorizzare le altre proprietà di Office
-	# CHECK: da verificare se abbia senso legare agent ai subject? da valutare se vadano previsti intervalli di validità!
 	trapit:refersToTransparencySubject <https://w3id.org/italia/data/transparency-subject/procuring-organization> ;
 	.
 
