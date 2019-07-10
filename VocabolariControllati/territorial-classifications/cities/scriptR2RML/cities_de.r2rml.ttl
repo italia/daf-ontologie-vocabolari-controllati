@@ -47,7 +47,7 @@ SELECT ANPR.dataistituzione as ANPR_data_istituzione,
     TRIM(ISTAT.codice_comune_formato_numerico) AS ISTAT_codice_comune_formato_numerico,
     TRIM(ISTAT.progressivo_comune) AS ISTAT_progressivo_comune,
     TRIM(ISTAT.codice_comune_formato_alfanumerico) AS ISTAT_codice_comune_formato_alfanumerico
-FROM gove__amministrazione.daf_data_o_anpr_archivio_storico_exte AS ANPR
+FROM gove__amministrazione.daf_data_o_anpr_archivio_comuni AS ANPR
     LEFT JOIN gove__amministrazione.daf_data_o_istat_comuni_italiani_view AS ISTAT
     ON TRIM(ISTAT.codice_comune_formato_alfanumerico)=ANPR.codistat
     WHERE ANPR.altradenominazione is not NULL and length(ANPR.altradenominazione)>0 and (ANPR.idregione='04' or ANPR.idregione='06')
