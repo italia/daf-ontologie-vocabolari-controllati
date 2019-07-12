@@ -22,6 +22,7 @@
 <https://w3id.org/italia/onto/POI> rdf:type owl:Ontology ;
                                     owl:versionIRI <https://w3id.org/italia/onto/POI/0.3> ;
                                     owl:imports <https://w3id.org/italia/onto/CLV> ,
+                                                <https://w3id.org/italia/onto/SM> ,
                                                 <https://w3id.org/italia/onto/TI> ,
                                                 <https://w3id.org/italia/onto/l0> ;
                                     dct:accrualPeriodicity <http://publications.europa.eu/resource/authority/frequency/IRREG> ;
@@ -77,6 +78,86 @@
 #    Annotation properties
 #################################################################
 
+###  http://purl.org/dc/terms/accrualPeriodicity
+dct:accrualPeriodicity rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/language
+dct:language rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/publisher
+dct:publisher rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/rightsHolder
+dct:rightsHolder rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/ns/dcat#contactPoint
+dcat:contactPoint rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/ns/dcat#keyword
+dcat:keyword rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/ns/dcat#theme
+dcat:theme rdf:type owl:AnnotationProperty .
+
+
+###  https://w3id.org/italia/onto/ADMS/acronym
+admsapit:acronym rdf:type owl:AnnotationProperty .
+
+
+###  https://w3id.org/italia/onto/ADMS/hasContributor
+admsapit:hasContributor rdf:type owl:AnnotationProperty .
+
+
+###  https://w3id.org/italia/onto/ADMS/hasFormalityLevel
+admsapit:hasFormalityLevel rdf:type owl:AnnotationProperty .
+
+
+###  https://w3id.org/italia/onto/ADMS/hasKeyClass
+admsapit:hasKeyClass rdf:type owl:AnnotationProperty .
+
+
+###  https://w3id.org/italia/onto/ADMS/hasOntologyLanguage
+admsapit:hasOntologyLanguage rdf:type owl:AnnotationProperty .
+
+
+###  https://w3id.org/italia/onto/ADMS/hasSemanticAssetDistribution
+admsapit:hasSemanticAssetDistribution rdf:type owl:AnnotationProperty .
+
+
+###  https://w3id.org/italia/onto/ADMS/hasTask
+admsapit:hasTask rdf:type owl:AnnotationProperty .
+
+
+###  https://w3id.org/italia/onto/ADMS/last
+admsapit:last rdf:type owl:AnnotationProperty .
+
+
+###  https://w3id.org/italia/onto/ADMS/officialURI
+admsapit:officialURI rdf:type owl:AnnotationProperty .
+
+
+###  https://w3id.org/italia/onto/ADMS/prefix
+admsapit:prefix rdf:type owl:AnnotationProperty .
+
+
+###  https://w3id.org/italia/onto/ADMS/semanticAssetInUse
+admsapit:semanticAssetInUse rdf:type owl:AnnotationProperty .
+
+
+###  https://w3id.org/italia/onto/ADMS/target
+admsapit:target rdf:type owl:AnnotationProperty .
+
+
+###  https://w3id.org/italia/onto/ADMS/type
+admsapit:type rdf:type owl:AnnotationProperty .
+
+
 ###  https://w3id.org/italia/onto/l0/controlledVocabulary
 l0:controlledVocabulary rdf:type owl:AnnotationProperty .
 
@@ -86,17 +167,11 @@ l0:controlledVocabulary rdf:type owl:AnnotationProperty .
 #################################################################
 
 ###  https://w3id.org/italia/onto/CLV/hasAddress
-clvapit:hasAddress rdf:type owl:ObjectProperty ;
-                   rdfs:domain owl:Thing ;
-                   rdfs:range clvapit:Address ;
-                   rdfs:isDefinedBy <https://w3id.org/italia/onto/CLV> .
+clvapit:hasAddress rdf:type owl:ObjectProperty .
 
 
 ###  https://w3id.org/italia/onto/CLV/hasGeometry
-clvapit:hasGeometry rdf:type owl:ObjectProperty ;
-                    rdfs:domain owl:Thing ;
-                    rdfs:range clvapit:Geometry ;
-                    rdfs:isDefinedBy <https://w3id.org/italia/onto/CLV> .
+clvapit:hasGeometry rdf:type owl:ObjectProperty .
 
 
 ###  https://w3id.org/italia/onto/POI/hasPOICategory
@@ -160,9 +235,9 @@ clvapit:hasGeometry rdf:type owl:ObjectProperty ;
 :isIncludedInPOI rdf:type owl:ObjectProperty ;
                  rdfs:domain :PointOfInterest ;
                  rdfs:range :MultiplePointOfInterest ;
-                 rdfs:comment <https://w3id.org/italia/onto/POI> ,
-                              "Inverse property of \"includes point of interest\"."@en ,
+                 rdfs:comment "Inverse property of \"includes point of interest\"."@en ,
                               "Proprietà inversa di \"include punto di interesse\"."@it ;
+                 rdfs:isDefinedBy <https://w3id.org/italia/onto/POI> ;
                  rdfs:label "is included in point of interest"@en ,
                             "è incluso nel punto di interesse"@it ;
                  owl:versionInfo "stabile"@it ,
@@ -210,17 +285,11 @@ clvapit:hasGeometry rdf:type owl:ObjectProperty ;
 
 
 ###  https://w3id.org/italia/onto/SM/hasImage
-smapit:hasImage rdf:type owl:ObjectProperty ;
-                rdfs:domain owl:Thing ;
-                rdfs:range smapit:Image ;
-                rdfs:isDefinedBy <https://w3id.org/italia/onto/SM> .
+smapit:hasImage rdf:type owl:ObjectProperty .
 
 
 ###  https://w3id.org/italia/onto/TI/atTime
-ti:atTime rdf:type owl:ObjectProperty ;
-          rdfs:domain owl:Thing ;
-          rdfs:range ti:TimeInterval ;
-          rdfs:isDefinedBy ti: .
+ti:atTime rdf:type owl:ObjectProperty .
 
 
 #################################################################
@@ -327,13 +396,11 @@ ti:atTime rdf:type owl:ObjectProperty ;
 #################################################################
 
 ###  https://w3id.org/italia/onto/CLV/Address
-clvapit:Address rdf:type owl:Class ;
-                rdfs:isDefinedBy <https://w3id.org/italia/onto/CLV> .
+clvapit:Address rdf:type owl:Class .
 
 
 ###  https://w3id.org/italia/onto/CLV/Geometry
-clvapit:Geometry rdf:type owl:Class ;
-                 rdfs:isDefinedBy <https://w3id.org/italia/onto/CLV> .
+clvapit:Geometry rdf:type owl:Class .
 
 
 ###  https://w3id.org/italia/onto/POI/MultiplePointOfInterest
@@ -478,28 +545,23 @@ clvapit:Geometry rdf:type owl:Class ;
 
 
 ###  https://w3id.org/italia/onto/SM/Image
-smapit:Image rdf:type owl:Class ;
-             rdfs:comment <https://w3id.org/italia/onto/SM> .
+smapit:Image rdf:type owl:Class .
 
 
 ###  https://w3id.org/italia/onto/TI/TimeInterval
-ti:TimeInterval rdf:type owl:Class ;
-                rdfs:isDefinedBy <https://w3id.org/italia/onto/TI> .
+ti:TimeInterval rdf:type owl:Class .
 
 
 ###  https://w3id.org/italia/onto/l0/Characteristic
-l0:Characteristic rdf:type owl:Class ;
-                  rdfs:isDefinedBy <https://w3id.org/italia/onto/l0> .
+l0:Characteristic rdf:type owl:Class .
 
 
 ###  https://w3id.org/italia/onto/l0/Entity
-l0:Entity rdf:type owl:Class ;
-          rdfs:isDefinedBy <https://w3id.org/italia/onto/l0> .
+l0:Entity rdf:type owl:Class .
 
 
 ###  https://w3id.org/italia/onto/l0/Topic
-l0:Topic rdf:type owl:Class ;
-         rdfs:isDefinedBy <https://w3id.org/italia/onto/l0> .
+l0:Topic rdf:type owl:Class .
 
 
 #################################################################
