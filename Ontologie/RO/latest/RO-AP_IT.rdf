@@ -182,6 +182,23 @@
     
 
 
+    <!-- https://w3id.org/italia/onto/RO/isRoleIn -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/italia/onto/RO/isRoleIn">
+        <owl:inverseOf rdf:resource="https://w3id.org/italia/onto/RO/withRole"/>
+        <rdfs:domain rdf:resource="https://w3id.org/italia/onto/RO/Role"/>
+        <rdfs:range rdf:resource="https://w3id.org/italia/onto/RO/TimeIndexedRole"/>
+        <rdfs:comment xml:lang="en">Inverse property of &quot;with role&quot;</rdfs:comment>
+        <rdfs:comment xml:lang="it">Proprietà inversa di &quot;con ruolo&quot;</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/italia/onto/RO/"/>
+        <rdfs:label xml:lang="en">is role in</rdfs:label>
+        <rdfs:label xml:lang="it">è ruolo in</rdfs:label>
+        <owl:versionInfo xml:lang="it">stabile</owl:versionInfo>
+        <owl:versionInfo xml:lang="en">stable</owl:versionInfo>
+    </owl:ObjectProperty>
+    
+
+
     <!-- https://w3id.org/italia/onto/RO/isRoleInTimeOf -->
 
     <owl:ObjectProperty rdf:about="https://w3id.org/italia/onto/RO/isRoleInTimeOf">
@@ -216,7 +233,6 @@
     <!-- https://w3id.org/italia/onto/RO/withRole -->
 
     <owl:ObjectProperty rdf:about="https://w3id.org/italia/onto/RO/withRole">
-        <owl:inverseOf rdf:resource="https://w3id.org/italia/onto/TI/isRoleIn"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
         <rdfs:domain rdf:resource="https://w3id.org/italia/onto/RO/TimeIndexedRole"/>
         <rdfs:range rdf:resource="https://w3id.org/italia/onto/RO/Role"/>
@@ -232,22 +248,6 @@
     <!-- https://w3id.org/italia/onto/TI/hasTemporalEntity -->
 
     <owl:ObjectProperty rdf:about="https://w3id.org/italia/onto/TI/hasTemporalEntity"/>
-    
-
-
-    <!-- https://w3id.org/italia/onto/TI/isRoleIn -->
-
-    <owl:ObjectProperty rdf:about="https://w3id.org/italia/onto/TI/isRoleIn">
-        <rdfs:domain rdf:resource="https://w3id.org/italia/onto/RO/Role"/>
-        <rdfs:range rdf:resource="https://w3id.org/italia/onto/RO/TimeIndexedRole"/>
-        <rdfs:comment xml:lang="en">Inverse property of &quot;with role&quot;</rdfs:comment>
-        <rdfs:comment xml:lang="it">Proprietà inversa di &quot;con ruolo&quot;</rdfs:comment>
-        <rdfs:isDefinedBy rdf:resource="https://w3id.org/italia/onto/RO/"/>
-        <rdfs:label xml:lang="en">is role in</rdfs:label>
-        <rdfs:label xml:lang="it">è ruolo in</rdfs:label>
-        <owl:versionInfo xml:lang="it">stabile</owl:versionInfo>
-        <owl:versionInfo xml:lang="en">stable</owl:versionInfo>
-    </owl:ObjectProperty>
     
 
 
@@ -287,14 +287,14 @@
         <rdfs:subClassOf rdf:resource="https://w3id.org/italia/onto/l0/Object"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/RO/isRoleOf"/>
-                <owl:allValuesFrom rdf:resource="https://w3id.org/italia/onto/l0/Entity"/>
+                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/RO/isRoleIn"/>
+                <owl:allValuesFrom rdf:resource="https://w3id.org/italia/onto/RO/TimeIndexedRole"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/TI/isRoleIn"/>
-                <owl:allValuesFrom rdf:resource="https://w3id.org/italia/onto/RO/TimeIndexedRole"/>
+                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/RO/isRoleOf"/>
+                <owl:allValuesFrom rdf:resource="https://w3id.org/italia/onto/l0/Entity"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
