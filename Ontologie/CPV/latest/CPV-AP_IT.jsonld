@@ -1,8 +1,9 @@
 {
   "@context": {
-    "ADMS": "https://w3id.org/italia/onto/ADMS/",
     "CLV": "https://w3id.org/italia/onto/CLV/",
+    "admsapit": "https://w3id.org/italia/onto/ADMS/",
     "dcat": "http://www.w3.org/ns/dcat#",
+    "dct": "http://purl.org/dc/terms/",
     "dcterms": "http://purl.org/dc/terms/",
     "foaf": "http://xmlns.com/foaf/0.1/",
     "l0": "https://w3id.org/italia/onto/l0/",
@@ -15,8 +16,158 @@
   },
   "@graph": [
     {
-      "@id": "https://w3id.org/italia/onto/CPV/numberRegFamilyComponents",
-      "@type": "owl:DatatypeProperty",
+      "@id": "_:ub379bL850C24",
+      "@type": "owl:Restriction",
+      "owl:maxQualifiedCardinality": {
+        "@type": "xsd:nonNegativeInteger",
+        "@value": "1"
+      },
+      "owl:onClass": {
+        "@id": "https://w3id.org/italia/onto/CPV/EducationLevel"
+      },
+      "owl:onProperty": {
+        "@id": "https://w3id.org/italia/onto/CPV/hasLevelOfEducation"
+      }
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/CPV/isNephewOf",
+      "@type": [
+        "https://w3id.org/italia/onto/CPV/ParentalRelationshipType",
+        "owl:NamedIndividual",
+        "owl:ObjectProperty"
+      ],
+      "owl:inverseOf": {
+        "@id": "https://w3id.org/italia/onto/CPV/isUncleOf"
+      },
+      "owl:versionInfo": [
+        {
+          "@language": "en",
+          "@value": "unstable"
+        },
+        {
+          "@language": "it",
+          "@value": "provvisoria"
+        }
+      ],
+      "rdfs:comment": [
+        {
+          "@language": "en",
+          "@value": "The nephew relation between a newphew and an uncle."
+        },
+        {
+          "@language": "it",
+          "@value": "La relazione di parentela tra un nipote ed uno zio."
+        }
+      ],
+      "rdfs:domain": {
+        "@id": "https://w3id.org/italia/onto/CPV/Person"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/italia/onto/CPV"
+      },
+      "rdfs:label": [
+        {
+          "@language": "it",
+          "@value": "è nipote lato zii di"
+        },
+        {
+          "@language": "en",
+          "@value": "is nephew of"
+        }
+      ],
+      "rdfs:range": {
+        "@id": "https://w3id.org/italia/onto/CPV/Person"
+      },
+      "rdfs:subPropertyOf": {
+        "@id": "https://w3id.org/italia/onto/CPV/hasParentalRelationshipWith"
+      }
+    },
+    {
+      "@id": "http://spcdata.digitpa.gov.it/browse/page/Amministrazione/agid",
+      "@type": [
+        "owl:NamedIndividual",
+        "http://dati.gov.it/onto/dcatapit#Agent",
+        "foaf:Agent"
+      ],
+      "dcterms:identifier": "agid",
+      "foaf:name": [
+        {
+          "@language": "en",
+          "@value": "Italian Digital Agency"
+        },
+        {
+          "@language": "it",
+          "@value": "Agenzia per l'Italia Digitale"
+        }
+      ]
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/CPV/hasParentalRelationshipWith",
+      "@type": "owl:ObjectProperty",
+      "owl:versionInfo": [
+        {
+          "@language": "en",
+          "@value": "stable"
+        },
+        {
+          "@language": "it",
+          "@value": "stabile"
+        }
+      ],
+      "rdfs:comment": [
+        {
+          "@language": "en",
+          "@value": "A parental relationship between two persons."
+        },
+        {
+          "@language": "it",
+          "@value": "Una relazione di parentela tra due persone."
+        }
+      ],
+      "rdfs:domain": {
+        "@id": "https://w3id.org/italia/onto/CPV/Person"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/italia/onto/CPV"
+      },
+      "rdfs:label": [
+        {
+          "@language": "it",
+          "@value": "ha relazione parentale con"
+        },
+        {
+          "@language": "en",
+          "@value": "has parental relationship with"
+        }
+      ],
+      "rdfs:range": {
+        "@id": "https://w3id.org/italia/onto/CPV/Person"
+      },
+      "rdfs:subPropertyOf": {
+        "@id": "https://w3id.org/italia/onto/CPV/hasRelationshipWith"
+      }
+    },
+    {
+      "@id": "_:ub379bL891C23",
+      "@type": "owl:Restriction",
+      "owl:maxQualifiedCardinality": {
+        "@type": "xsd:nonNegativeInteger",
+        "@value": "1"
+      },
+      "owl:onClass": {
+        "@id": "l0:Location"
+      },
+      "owl:onProperty": {
+        "@id": "https://w3id.org/italia/onto/CPV/hasDeathPlace"
+      }
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/CPV/isConsortOf",
+      "@type": [
+        "https://w3id.org/italia/onto/CPV/ParentalRelationshipType",
+        "owl:ObjectProperty",
+        "owl:NamedIndividual"
+      ],
       "owl:versionInfo": [
         {
           "@language": "it",
@@ -29,16 +180,90 @@
       ],
       "rdfs:comment": [
         {
-          "@language": "it",
-          "@value": "Il numero di persone che compongono la famiglia anagrafica"
+          "@language": "en",
+          "@value": "The marriage relation between persons"
         },
         {
-          "@language": "en",
-          "@value": "The number of people who forms the registered family"
+          "@language": "it",
+          "@value": "La relazione di matrimonio tra due persone."
         }
       ],
       "rdfs:domain": {
-        "@id": "https://w3id.org/italia/onto/CPV/RegisteredFamily"
+        "@id": "https://w3id.org/italia/onto/CPV/Person"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/italia/onto/CPV"
+      },
+      "rdfs:label": [
+        {
+          "@language": "it",
+          "@value": "è coniuge di"
+        },
+        {
+          "@language": "en",
+          "@value": "is consort of"
+        }
+      ],
+      "rdfs:range": {
+        "@id": "https://w3id.org/italia/onto/CPV/Person"
+      },
+      "rdfs:subPropertyOf": {
+        "@id": "https://w3id.org/italia/onto/CPV/hasParentalRelationshipWith"
+      }
+    },
+    {
+      "@id": "dcat:downloadURL",
+      "@type": "owl:AnnotationProperty"
+    },
+    {
+      "@id": "_:ub379bL1077C25",
+      "@type": "owl:Restriction",
+      "owl:allValuesFrom": {
+        "@id": "CLV:Address"
+      },
+      "owl:onProperty": {
+        "@id": "https://w3id.org/italia/onto/CPV/residentIn"
+      }
+    },
+    {
+      "@id": "_:ub379bL1201C27",
+      "@type": "owl:Restriction",
+      "owl:allValuesFrom": {
+        "@id": "https://w3id.org/italia/onto/CPV/Family"
+      },
+      "owl:onProperty": {
+        "@id": "https://w3id.org/italia/onto/CPV/belongsToFamily"
+      }
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/CPV/isFamilySheetHolderOf",
+      "@type": [
+        "https://w3id.org/italia/onto/CPV/ParentalRelationshipType",
+        "owl:NamedIndividual",
+        "owl:ObjectProperty"
+      ],
+      "owl:versionInfo": [
+        {
+          "@language": "it",
+          "@value": "provvisoria"
+        },
+        {
+          "@language": "en",
+          "@value": "unstable"
+        }
+      ],
+      "rdfs:comment": [
+        {
+          "@language": "en",
+          "@value": "Property that links the family sheet holder to a person of the family"
+        },
+        {
+          "@language": "it",
+          "@value": "Proprietà che lega l'intestatario del foglio di famiglia a una persona"
+        }
+      ],
+      "rdfs:domain": {
+        "@id": "https://w3id.org/italia/onto/CPV/FamilySheetHolder"
       },
       "rdfs:isDefinedBy": {
         "@id": "https://w3id.org/italia/onto/CPV"
@@ -46,16 +271,175 @@
       "rdfs:label": [
         {
           "@language": "en",
-          "@value": "number of components in registered family"
+          "@value": "family sheet holder of"
         },
         {
-          "@language": "it",
-          "@value": "numero componenti famiglia anagrafica"
+          "@language": "en",
+          "@value": "intestatario fogio di famiglia di"
         }
       ],
       "rdfs:range": {
-        "@id": "xsd:integer"
+        "@id": "https://w3id.org/italia/onto/CPV/Person"
+      },
+      "rdfs:subPropertyOf": {
+        "@id": "https://w3id.org/italia/onto/CPV/hasParentalRelationshipWith"
       }
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/CPV/isGrandChildOf",
+      "@type": [
+        "owl:NamedIndividual",
+        "https://w3id.org/italia/onto/CPV/ParentalRelationshipType",
+        "owl:ObjectProperty"
+      ],
+      "owl:inverseOf": {
+        "@id": "https://w3id.org/italia/onto/CPV/isGrandFatherOf"
+      },
+      "owl:versionInfo": [
+        {
+          "@language": "en",
+          "@value": "unstable"
+        },
+        {
+          "@language": "it",
+          "@value": "provvisoria"
+        }
+      ],
+      "rdfs:comment": [
+        {
+          "@language": "en",
+          "@value": "It represents the parental relationship grandchild-grandfather"
+        },
+        {
+          "@language": "it",
+          "@value": "Rappresenta la relazione di parentela nipote-nonno"
+        }
+      ],
+      "rdfs:domain": {
+        "@id": "https://w3id.org/italia/onto/CPV/Person"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/italia/onto/CPV"
+      },
+      "rdfs:label": [
+        {
+          "@language": "en",
+          "@value": "is granchild of"
+        },
+        {
+          "@language": "it",
+          "@value": "è nipote lato nonni di"
+        }
+      ],
+      "rdfs:range": {
+        "@id": "https://w3id.org/italia/onto/CPV/Person"
+      },
+      "rdfs:subPropertyOf": {
+        "@id": "https://w3id.org/italia/onto/CPV/hasParentalRelationshipWith"
+      }
+    },
+    {
+      "@id": "vcard:fn",
+      "@type": "owl:AnnotationProperty"
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/CPV/knows",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:SymmetricProperty"
+      ],
+      "owl:versionInfo": [
+        {
+          "@language": "en",
+          "@value": "stable"
+        },
+        {
+          "@language": "it",
+          "@value": "stabile"
+        }
+      ],
+      "rdfs:comment": [
+        {
+          "@language": "en",
+          "@value": "The relationship of knowledge between two people. E.g. 'John White' knows 'Bob Black'."
+        },
+        {
+          "@language": "it",
+          "@value": "La relazione di conoscenza che intercorre tra due persone. Ex. 'Mario Rossi' conosce 'Paolo Neri'."
+        }
+      ],
+      "rdfs:domain": {
+        "@id": "https://w3id.org/italia/onto/CPV/Person"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/italia/onto/CPV"
+      },
+      "rdfs:label": [
+        {
+          "@language": "en",
+          "@value": "knows"
+        },
+        {
+          "@language": "it",
+          "@value": "conosce"
+        }
+      ],
+      "rdfs:range": {
+        "@id": "https://w3id.org/italia/onto/CPV/Person"
+      },
+      "rdfs:subPropertyOf": {
+        "@id": "https://w3id.org/italia/onto/CPV/hasRelationshipWith"
+      }
+    },
+    {
+      "@id": "admsapit:SemanticAssetDistribution",
+      "@type": "owl:Class"
+    },
+    {
+      "@id": "http://spcdata.digitpa.gov.it/browse/page/Amministrazione/ISTAT",
+      "@type": [
+        "owl:NamedIndividual",
+        "http://dati.gov.it/onto/dcatapit#Agent",
+        "foaf:Agent"
+      ],
+      "dcterms:identifier": "ISTAT",
+      "foaf:name": [
+        {
+          "@language": "it",
+          "@value": "Istituto Nazionale di Statistica - ISTAT"
+        },
+        {
+          "@language": "en",
+          "@value": "Italian National Institute of Statistics - ISTAT"
+        }
+      ]
+    },
+    {
+      "@id": "foaf:name",
+      "@type": "owl:AnnotationProperty"
+    },
+    {
+      "@id": "foaf:Agent",
+      "@type": "owl:Class"
+    },
+    {
+      "@id": "_:ub379bL1116C25",
+      "@type": "owl:Restriction",
+      "owl:maxCardinality": {
+        "@type": "xsd:nonNegativeInteger",
+        "@value": "1"
+      },
+      "owl:onProperty": {
+        "@id": "https://w3id.org/italia/onto/CPV/taxCode"
+      }
+    },
+    {
+      "@id": "dcterms:identifier",
+      "@type": "owl:AnnotationProperty"
+    },
+    {
+      "@id": "dcterms:description",
+      "@type": "owl:AnnotationProperty"
     },
     {
       "@id": "https://w3id.org/italia/onto/CPV/residentIn",
@@ -98,21 +482,46 @@
       }
     },
     {
-      "@id": "l0:Description",
-      "@type": "owl:Class",
-      "rdfs:isDefinedBy": {
-        "@id": "l0:"
-      }
-    },
-    {
-      "@id": "_:N29c9c9a1e224407e9ad0bf117b3a6c6a",
-      "@type": "owl:Restriction",
-      "owl:cardinality": {
-        "@type": "xsd:nonNegativeInteger",
-        "@value": "1"
+      "@id": "https://w3id.org/italia/onto/CPV/numberRegFamilyComponents",
+      "@type": "owl:DatatypeProperty",
+      "owl:versionInfo": [
+        {
+          "@language": "en",
+          "@value": "stable"
+        },
+        {
+          "@language": "it",
+          "@value": "stabile"
+        }
+      ],
+      "rdfs:comment": [
+        {
+          "@language": "en",
+          "@value": "The number of people who forms the registered family"
+        },
+        {
+          "@language": "it",
+          "@value": "Il numero di persone che compongono la famiglia anagrafica"
+        }
+      ],
+      "rdfs:domain": {
+        "@id": "https://w3id.org/italia/onto/CPV/RegisteredFamily"
       },
-      "owl:onProperty": {
-        "@id": "https://w3id.org/italia/onto/CPV/registeredFamilyID"
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/italia/onto/CPV"
+      },
+      "rdfs:label": [
+        {
+          "@language": "en",
+          "@value": "number of components in registered family"
+        },
+        {
+          "@language": "it",
+          "@value": "numero componenti famiglia anagrafica"
+        }
+      ],
+      "rdfs:range": {
+        "@id": "xsd:integer"
       }
     },
     {
@@ -130,12 +539,12 @@
       ],
       "rdfs:comment": [
         {
-          "@language": "en",
-          "@value": "The age of the natural person"
-        },
-        {
           "@language": "it",
           "@value": "L'età della persona naturale. Es: 64"
+        },
+        {
+          "@language": "en",
+          "@value": "The age of the natural person"
         }
       ],
       "rdfs:domain": {
@@ -146,12 +555,12 @@
       },
       "rdfs:label": [
         {
-          "@language": "it",
-          "@value": "età"
-        },
-        {
           "@language": "en",
           "@value": "age"
+        },
+        {
+          "@language": "it",
+          "@value": "età"
         }
       ],
       "rdfs:range": {
@@ -159,8 +568,1328 @@
       }
     },
     {
-      "@id": "https://w3id.org/italia/onto/CPV/isChildOf",
+      "@id": "CLV:Address",
+      "@type": "owl:Class"
+    },
+    {
+      "@id": "vcard:Organization",
+      "@type": "owl:Class"
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/CPV/hasCurrentResidence",
       "@type": "owl:ObjectProperty",
+      "owl:inverseOf": {
+        "@id": "https://w3id.org/italia/onto/CPV/isCurrentResidenceOf"
+      },
+      "owl:versionInfo": [
+        {
+          "@language": "it",
+          "@value": "stabile"
+        },
+        {
+          "@language": "en",
+          "@value": "stable"
+        }
+      ],
+      "rdfs:comment": [
+        {
+          "@language": "en",
+          "@value": "The relation that links a person who is resident in a country to his/her location of residence. It is the current residence of the person."
+        },
+        {
+          "@language": "it",
+          "@value": "Relazione che lega una persona residente in un paese al proprio luogo di residenza Rappresenta la residenza corrente della persona"
+        }
+      ],
+      "rdfs:domain": {
+        "@id": "https://w3id.org/italia/onto/CPV/Resident"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/italia/onto/CPV"
+      },
+      "rdfs:label": [
+        {
+          "@language": "en",
+          "@value": "has current residence"
+        },
+        {
+          "@language": "it",
+          "@value": "ha residenza attuale"
+        }
+      ],
+      "rdfs:range": {
+        "@id": "CLV:Address"
+      }
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/CPV/ForeignCitizen",
+      "@type": "owl:Class",
+      "owl:versionInfo": [
+        {
+          "@language": "en",
+          "@value": "stable"
+        },
+        {
+          "@language": "it",
+          "@value": "stabile"
+        }
+      ],
+      "rdfs:comment": [
+        {
+          "@language": "it",
+          "@value": "Una persona naturale che ha cittadinanza straniera"
+        },
+        {
+          "@language": "en",
+          "@value": "A natural person who owns a foreign nationality"
+        }
+      ],
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/italia/onto/CPV"
+      },
+      "rdfs:label": [
+        {
+          "@language": "en",
+          "@value": "Foreign Citizen"
+        },
+        {
+          "@language": "it",
+          "@value": "Cittadino Straniero"
+        }
+      ],
+      "rdfs:subClassOf": {
+        "@id": "https://w3id.org/italia/onto/CPV/Alive"
+      }
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/CPV/isGrandFatherOf",
+      "@type": [
+        "owl:NamedIndividual",
+        "owl:ObjectProperty",
+        "https://w3id.org/italia/onto/CPV/ParentalRelationshipType"
+      ],
+      "owl:versionInfo": [
+        {
+          "@language": "en",
+          "@value": "stable"
+        },
+        {
+          "@language": "it",
+          "@value": "stabile"
+        }
+      ],
+      "rdfs:comment": [
+        {
+          "@language": "en",
+          "@value": "The grandfathership relation"
+        },
+        {
+          "@language": "it",
+          "@value": "La relazione parentale tra nonno-nipote"
+        }
+      ],
+      "rdfs:domain": {
+        "@id": "https://w3id.org/italia/onto/CPV/Person"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/italia/onto/CPV"
+      },
+      "rdfs:label": [
+        {
+          "@language": "en",
+          "@value": "is grandfather of"
+        },
+        {
+          "@language": "it",
+          "@value": "è nonno di"
+        }
+      ],
+      "rdfs:range": {
+        "@id": "https://w3id.org/italia/onto/CPV/Person"
+      },
+      "rdfs:subPropertyOf": {
+        "@id": "https://w3id.org/italia/onto/CPV/hasParentalRelationshipWith"
+      }
+    },
+    {
+      "@id": "_:ub379bL1181C34",
+      "@type": "owl:Restriction",
+      "owl:maxQualifiedCardinality": {
+        "@type": "xsd:nonNegativeInteger",
+        "@value": "1"
+      },
+      "owl:onClass": {
+        "@id": "https://w3id.org/italia/onto/CPV/Person"
+      },
+      "owl:onProperty": {
+        "@id": "https://w3id.org/italia/onto/CPV/isResidenceInTimeOf"
+      }
+    },
+    {
+      "@id": "_:ub379bL1073C25",
+      "@type": "owl:Restriction",
+      "owl:allValuesFrom": {
+        "@id": "https://w3id.org/italia/onto/CPV/ResidenceInTime"
+      },
+      "owl:onProperty": {
+        "@id": "https://w3id.org/italia/onto/CPV/hasResidenceInTime"
+      }
+    },
+    {
+      "@id": "CLV:hasAddress",
+      "@type": "owl:ObjectProperty"
+    },
+    {
+      "@id": "_:ub379bL1151C35",
+      "@type": "owl:Restriction",
+      "owl:cardinality": {
+        "@type": "xsd:nonNegativeInteger",
+        "@value": "1"
+      },
+      "owl:onProperty": {
+        "@id": "https://w3id.org/italia/onto/CPV/registeredFamilyID"
+      }
+    },
+    {
+      "@id": "_:ub379bL1111C25",
+      "@type": "owl:Restriction",
+      "owl:maxQualifiedCardinality": {
+        "@type": "xsd:nonNegativeInteger",
+        "@value": "1"
+      },
+      "owl:onDataRange": {
+        "@id": "xsd:string"
+      },
+      "owl:onProperty": {
+        "@id": "https://w3id.org/italia/onto/CPV/givenName"
+      }
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/CPV/Alive",
+      "@type": "owl:Class",
+      "owl:disjointWith": {
+        "@id": "https://w3id.org/italia/onto/CPV/Dead"
+      },
+      "owl:versionInfo": [
+        {
+          "@language": "en",
+          "@value": "stable"
+        },
+        {
+          "@language": "it",
+          "@value": "stabile"
+        }
+      ],
+      "rdfs:comment": [
+        {
+          "@language": "en",
+          "@value": "An alive person"
+        },
+        {
+          "@language": "it",
+          "@value": "Una persona in vita"
+        }
+      ],
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/italia/onto/CPV"
+      },
+      "rdfs:label": [
+        {
+          "@language": "it",
+          "@value": "Persona in Vita"
+        },
+        {
+          "@language": "en",
+          "@value": "Alive Person"
+        }
+      ],
+      "rdfs:subClassOf": [
+        {
+          "@id": "_:ub379bL850C24"
+        },
+        {
+          "@id": "_:ub379bL855C24"
+        },
+        {
+          "@id": "https://w3id.org/italia/onto/CPV/Person"
+        }
+      ]
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/CPV/ParentalRelationshipType",
+      "@type": "owl:Class",
+      "l0:controlledVocabulary": {
+        "@id": "https://w3id.org/italia/controlled-vocabulary/classifications-for-people/parental-relationship-types"
+      },
+      "owl:versionInfo": [
+        {
+          "@language": "en",
+          "@value": "stable"
+        },
+        {
+          "@language": "it",
+          "@value": "stabile"
+        }
+      ],
+      "rdfs:comment": [
+        {
+          "@language": "en",
+          "@value": "The class represents the different types of parental relationships"
+        },
+        {
+          "@language": "it",
+          "@value": "La classe rappresenta i diversi tipi di relazioni parentali. Per esempio l'intestatario della scheda di famiglia in anagrafe è un tipo di relazione parentale così come il coniuge (o convivente) dell'intestatario, il figlio  dell'intestatario e coniuge convivente, il fratello/sorella dell'intestatario."
+        }
+      ],
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/italia/onto/CPV"
+      },
+      "rdfs:label": [
+        {
+          "@language": "en",
+          "@value": "Parental Relationship Type"
+        },
+        {
+          "@language": "it",
+          "@value": "Tipo Relazione Parentale"
+        }
+      ],
+      "rdfs:subClassOf": {
+        "@id": "l0:Description"
+      }
+    },
+    {
+      "@id": "_:ub379bL1081C25",
+      "@type": "owl:Restriction",
+      "owl:onClass": {
+        "@id": "l0:Location"
+      },
+      "owl:onProperty": {
+        "@id": "https://w3id.org/italia/onto/CPV/hasBirthPlace"
+      },
+      "owl:qualifiedCardinality": {
+        "@type": "xsd:nonNegativeInteger",
+        "@value": "1"
+      }
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/CPV/educationLevelID",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "l0:controlledVocabulary": {
+        "@id": "https://w3id.org/italia/controlled-vocabulary/classifications-for-people/education-level"
+      },
+      "owl:versionInfo": [
+        {
+          "@language": "en",
+          "@value": "stable"
+        },
+        {
+          "@language": "it",
+          "@value": "stabile"
+        }
+      ],
+      "rdfs:comment": [
+        {
+          "@language": "it",
+          "@value": "codice univoco che identifica il grado di istruzione nel vocabolario controllato EducationLevel https://w3id.org/italia/controlled-vocabulary/classifications-for-people/education-level"
+        },
+        {
+          "@language": "en",
+          "@value": "Unique code used to identify the education level in the controlled vocabulary EducationLevel https://w3id.org/italia/controlled-vocabulary/classifications-for-people/education-level"
+        }
+      ],
+      "rdfs:domain": {
+        "@id": "https://w3id.org/italia/onto/CPV/EducationLevel"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/italia/onto/CPV"
+      },
+      "rdfs:label": [
+        {
+          "@language": "it",
+          "@value": "codice grado di istruzione"
+        },
+        {
+          "@language": "en",
+          "@value": "education level identifier"
+        }
+      ],
+      "rdfs:range": {
+        "@id": "rdfs:Literal"
+      },
+      "rdfs:subPropertyOf": {
+        "@id": "l0:identifier"
+      }
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/CPV/familyName",
+      "@type": "owl:DatatypeProperty",
+      "owl:versionInfo": [
+        {
+          "@language": "en",
+          "@value": "stable"
+        },
+        {
+          "@language": "it",
+          "@value": "stabile"
+        }
+      ],
+      "rdfs:comment": [
+        {
+          "@language": "it",
+          "@value": "Il cognome di una persona. Ex. 'Rossi' è il cognome della persona 'Mario Rossi'"
+        },
+        {
+          "@language": "en",
+          "@value": "The family name of a person. E.g. 'Rossi' is the family name of the person 'Mario Rossi'."
+        }
+      ],
+      "rdfs:domain": {
+        "@id": "https://w3id.org/italia/onto/CPV/Person"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/italia/onto/CPV"
+      },
+      "rdfs:label": [
+        {
+          "@language": "it",
+          "@value": "cognome"
+        },
+        {
+          "@language": "en",
+          "@value": "family name"
+        }
+      ],
+      "rdfs:range": {
+        "@id": "xsd:string"
+      },
+      "rdfs:subPropertyOf": {
+        "@id": "l0:name"
+      }
+    },
+    {
+      "@id": "https://w3id.org/italia/controlled-vocabulary/classifications-for-people/parental-relationship-types/11",
+      "@type": "owl:NamedIndividual",
+      "owl:sameAs": {
+        "@id": "https://w3id.org/italia/onto/CPV/isUncleOf"
+      }
+    },
+    {
+      "@id": "dcat:accessURL",
+      "@type": "owl:AnnotationProperty"
+    },
+    {
+      "@id": "vcard:Kind",
+      "@type": "owl:Class"
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/CPV/Family",
+      "@type": "owl:Class",
+      "owl:versionInfo": [
+        {
+          "@language": "it",
+          "@value": "stabile"
+        },
+        {
+          "@language": "en",
+          "@value": "stable"
+        }
+      ],
+      "rdfs:comment": [
+        {
+          "@language": "it",
+          "@value": "In senso ampio, comunità umana, diversamente caratterizzata nelle varie situazioni storiche e geografiche, ma in genere formata da persone legate fra loro da un rapporto di convivenza, di parentela, di affinità, che costituisce l’elemento fondamentale di ogni società, essendo essa finalizzata, nei suoi processi e nelle sue relazioni, alla perpetuazione della specie mediante la riproduzione."
+        },
+        {
+          "@language": "en",
+          "@value": "A human community generally formed by people tied together by a relationship of coexistence, of kinship, of affinity, which constitutes the fundamental element of every society, since it is aimed, in its processes and relations, at the perpetuation of the species through reproduction."
+        }
+      ],
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/italia/onto/CPV"
+      },
+      "rdfs:label": [
+        {
+          "@language": "iit",
+          "@value": "Famiglia"
+        },
+        {
+          "@language": "en",
+          "@value": "Family"
+        }
+      ],
+      "rdfs:subClassOf": {
+        "@id": "l0:Agent"
+      }
+    },
+    {
+      "@id": "https://w3id.org/italia/data/distribution/CPVAPIT-RDF-XML",
+      "@type": [
+        "owl:NamedIndividual",
+        "admsapit:SemanticAssetDistribution"
+      ],
+      "dcat:accessURL": {
+        "@id": "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/CPV/latest"
+      },
+      "dcat:downloadURL": {
+        "@id": "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/CPV/latest/CPV-AP_IT.rdf"
+      },
+      "dcterms:description": [
+        {
+          "@language": "it",
+          "@value": "Questa è la distribuzione RDF/XML dell'ontologia delle persone"
+        },
+        {
+          "@language": "en",
+          "@value": "This is the distribution in RDF/XML of the persons ontology"
+        }
+      ],
+      "dcterms:format": {
+        "@id": "http://publications.europa.eu/resource/authority/file-type/RDF_XML"
+      },
+      "dcterms:license": {
+        "@id": "https://w3id.org/italia/controlled-vocabulary/licences/A21_CCBY40"
+      },
+      "dcterms:title": [
+        {
+          "@language": "en",
+          "@value": "RDF/XML distribution of CPV-AP_IT Ontology"
+        },
+        {
+          "@language": "it",
+          "@value": "Distribuzione RDF/XML ontologia CPV-AP_IT"
+        }
+      ]
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/CPV/NotResident",
+      "@type": "owl:Class",
+      "owl:disjointWith": {
+        "@id": "https://w3id.org/italia/onto/CPV/Resident"
+      },
+      "owl:versionInfo": [
+        {
+          "@language": "en",
+          "@value": "stable"
+        },
+        {
+          "@language": "it",
+          "@value": "stabile"
+        }
+      ],
+      "rdfs:comment": [
+        {
+          "@language": "en",
+          "@value": "A natural person who is not resident in the country."
+        },
+        {
+          "@language": "it",
+          "@value": "Una persona naturale non residenze nel Paese."
+        }
+      ],
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/italia/onto/CPV"
+      },
+      "rdfs:label": [
+        {
+          "@language": "en",
+          "@value": "Not Resident Person"
+        },
+        {
+          "@language": "it",
+          "@value": "Persona non Residente"
+        }
+      ],
+      "rdfs:subClassOf": {
+        "@id": "https://w3id.org/italia/onto/CPV/Person"
+      }
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/CPV/hasSex",
+      "@type": "owl:ObjectProperty",
+      "owl:versionInfo": [
+        {
+          "@language": "it",
+          "@value": "stabile"
+        },
+        {
+          "@language": "en",
+          "@value": "stable"
+        }
+      ],
+      "rdfs:comment": [
+        {
+          "@language": "it",
+          "@value": "La relazione che lega una persona al suo sesso"
+        },
+        {
+          "@language": "en",
+          "@value": "The relation that links a person to his/her sex"
+        }
+      ],
+      "rdfs:domain": {
+        "@id": "https://w3id.org/italia/onto/CPV/Person"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/italia/onto/CPV"
+      },
+      "rdfs:label": [
+        {
+          "@language": "en",
+          "@value": "has sex"
+        },
+        {
+          "@language": "it",
+          "@value": "ha sesso"
+        }
+      ],
+      "rdfs:range": {
+        "@id": "https://w3id.org/italia/onto/CPV/Sex"
+      }
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/CPV/educationLevelDesc",
+      "@type": "owl:DatatypeProperty",
+      "l0:controlledVocabulary": {
+        "@id": "https://w3id.org/italia/controlled-vocabulary/classifications-for-people/education-level"
+      },
+      "owl:versionInfo": [
+        {
+          "@language": "en",
+          "@value": "stable"
+        },
+        {
+          "@language": "it",
+          "@value": "stabile"
+        }
+      ],
+      "rdfs:comment": [
+        {
+          "@language": "en",
+          "@value": "Property used to represent the education level as defined in the related controlled vocabulary EducationLevel https://w3id.org/italia/controlled-vocabulary/classifications-for-people/education-level"
+        },
+        {
+          "@language": "it",
+          "@value": "Proprietà utilizzata per rappresentare il grado di istruzione come definito nel relativo vocabolario controllato EducationLevel https://w3id.org/italia/controlled-vocabulary/classifications-for-people/education-level"
+        }
+      ],
+      "rdfs:domain": {
+        "@id": "https://w3id.org/italia/onto/CPV/EducationLevel"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/italia/onto/CPV"
+      },
+      "rdfs:label": [
+        {
+          "@language": "en",
+          "@value": "education level description"
+        },
+        {
+          "@language": "it",
+          "@value": "descrizione grado di istruzione"
+        }
+      ],
+      "rdfs:range": {
+        "@id": "rdfs:Literal"
+      },
+      "rdfs:subPropertyOf": {
+        "@id": "l0:description"
+      }
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/CPV/Male",
+      "@type": "owl:Class",
+      "owl:versionInfo": [
+        {
+          "@language": "en",
+          "@value": "stable"
+        },
+        {
+          "@language": "it",
+          "@value": "stabile"
+        }
+      ],
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/italia/onto/CPV"
+      },
+      "rdfs:label": [
+        {
+          "@language": "en",
+          "@value": "Male"
+        },
+        {
+          "@language": "it",
+          "@value": "Maschio"
+        }
+      ],
+      "rdfs:subClassOf": {
+        "@id": "https://w3id.org/italia/onto/CPV/Person"
+      }
+    },
+    {
+      "@id": "l0:controlledVocabulary",
+      "@type": "owl:AnnotationProperty"
+    },
+    {
+      "@id": "_:ub379bL855C24",
+      "@type": "owl:Restriction",
+      "owl:maxQualifiedCardinality": {
+        "@type": "xsd:nonNegativeInteger",
+        "@value": "1"
+      },
+      "owl:onDataRange": {
+        "@id": "xsd:integer"
+      },
+      "owl:onProperty": {
+        "@id": "https://w3id.org/italia/onto/CPV/age"
+      }
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/CPV/givenName",
+      "@type": "owl:DatatypeProperty",
+      "owl:versionInfo": [
+        {
+          "@language": "it",
+          "@value": "stabile"
+        },
+        {
+          "@language": "en",
+          "@value": "stable"
+        }
+      ],
+      "rdfs:comment": [
+        {
+          "@language": "en",
+          "@value": "The given name of a person. E.g. 'Mario' is the given name of the person 'Mario Rossi'."
+        },
+        {
+          "@language": "it",
+          "@value": "Il nome di una persona. Ex. 'Mario' è il nome della persona 'Mario Rossi'."
+        }
+      ],
+      "rdfs:domain": {
+        "@id": "https://w3id.org/italia/onto/CPV/Person"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/italia/onto/CPV"
+      },
+      "rdfs:label": [
+        {
+          "@language": "it",
+          "@value": "nome proprio"
+        },
+        {
+          "@language": "en",
+          "@value": "given name"
+        }
+      ],
+      "rdfs:range": {
+        "@id": "xsd:string"
+      },
+      "rdfs:subPropertyOf": {
+        "@id": "l0:name"
+      }
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/CPV/isResidenceOf",
+      "@type": "owl:ObjectProperty",
+      "owl:inverseOf": {
+        "@id": "https://w3id.org/italia/onto/CPV/residentIn"
+      }
+    },
+    {
+      "@id": "l0:name",
+      "@type": "owl:DatatypeProperty",
+      "rdfs:isDefinedBy": {
+        "@id": "l0:"
+      }
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/CPV/Dead",
+      "@type": "owl:Class",
+      "owl:versionInfo": [
+        {
+          "@language": "it",
+          "@value": "stabile"
+        },
+        {
+          "@language": "en",
+          "@value": "stable"
+        }
+      ],
+      "rdfs:comment": [
+        {
+          "@language": "en",
+          "@value": "A dead natural person"
+        },
+        {
+          "@language": "it",
+          "@value": "Una persona naturale morta"
+        }
+      ],
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/italia/onto/CPV"
+      },
+      "rdfs:label": [
+        {
+          "@language": "it",
+          "@value": "Persona Morta"
+        },
+        {
+          "@language": "en",
+          "@value": "Dead Person"
+        }
+      ],
+      "rdfs:subClassOf": [
+        {
+          "@id": "https://w3id.org/italia/onto/CPV/Person"
+        },
+        {
+          "@id": "_:ub379bL891C23"
+        },
+        {
+          "@id": "_:ub379bL896C23"
+        }
+      ]
+    },
+    {
+      "@id": "_:ub379bL1106C25",
+      "@type": "owl:Restriction",
+      "owl:maxQualifiedCardinality": {
+        "@type": "xsd:nonNegativeInteger",
+        "@value": "1"
+      },
+      "owl:onDataRange": {
+        "@id": "xsd:string"
+      },
+      "owl:onProperty": {
+        "@id": "https://w3id.org/italia/onto/CPV/familyName"
+      }
+    },
+    {
+      "@id": "_:ub379bL1061C25",
+      "@type": "owl:Restriction",
+      "owl:allValuesFrom": {
+        "@id": "https://w3id.org/italia/onto/CPV/Person"
+      },
+      "owl:onProperty": {
+        "@id": "https://w3id.org/italia/onto/CPV/hasParentalRelationshipWith"
+      }
+    },
+    {
+      "@id": "https://w3id.org/italia/data/contact-point/onto-agid",
+      "@type": [
+        "http://dati.gov.it/onto/dcatapit#Organization",
+        "owl:NamedIndividual",
+        "vcard:Organization",
+        "vcard:Kind"
+      ],
+      "vcard:fn": "banche dati e open data",
+      "vcard:hasEmail": {
+        "@id": "mailto:info@dati.gov.it"
+      }
+    },
+    {
+      "@id": "https://w3id.org/italia/data/distribution/CPVAPIT-JSON-LD",
+      "@type": [
+        "admsapit:SemanticAssetDistribution",
+        "owl:NamedIndividual"
+      ],
+      "dcat:accessURL": {
+        "@id": "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/CPV/latest"
+      },
+      "dcat:downloadURL": {
+        "@id": "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/CPV/latest/CPV-AP_IT.jsonld"
+      },
+      "dcterms:description": [
+        {
+          "@language": "it",
+          "@value": "Questa è la distribuzione JSON-LD dell'ontologia delle Persone"
+        },
+        {
+          "@language": "en",
+          "@value": "This is the distribution in JSON-LD of the persons ontology"
+        }
+      ],
+      "dcterms:format": {
+        "@id": "http://publications.europa.eu/resource/authority/file-type/JSON_LD"
+      },
+      "dcterms:license": {
+        "@id": "https://w3id.org/italia/controlled-vocabulary/licences/A21_CCBY40"
+      },
+      "dcterms:title": [
+        {
+          "@language": "en",
+          "@value": "JSON-LD distribution of CPV-AP_IT Ontology"
+        },
+        {
+          "@language": "it",
+          "@value": "Distribuzione JSON-LD ontologia CPV-AP_IT"
+        }
+      ]
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/CPV/sexDesc",
+      "@type": "owl:DatatypeProperty",
+      "l0:controlledVocabulary": {
+        "@id": "https://w3id.org/italia/controlled-vocabulary/classifications-for-people/sex"
+      },
+      "owl:versionInfo": [
+        {
+          "@language": "en",
+          "@value": "stable"
+        },
+        {
+          "@language": "it",
+          "@value": "stabile"
+        }
+      ],
+      "rdfs:comment": [
+        {
+          "@language": "it",
+          "@value": "Proprietà utilizzata per rappresentare il sesso di una persona come definito nel vocabolario controllato sul sesso: https://w3id.org/italia/controlled-vocabulary/classifications-for-people/sex"
+        },
+        {
+          "@language": "en",
+          "@value": "Property used to represent the sex as defined in the related Sex controlled vocabulary  https://w3id.org/italia/controlled-vocabulary/classifications-for-people/sex"
+        }
+      ],
+      "rdfs:domain": {
+        "@id": "https://w3id.org/italia/onto/CPV/Sex"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/italia/onto/CPV"
+      },
+      "rdfs:label": [
+        {
+          "@language": "en",
+          "@value": "sex description"
+        },
+        {
+          "@language": "it",
+          "@value": "descrizione sesso"
+        }
+      ],
+      "rdfs:range": {
+        "@id": "rdfs:Literal"
+      },
+      "rdfs:subPropertyOf": {
+        "@id": "l0:description"
+      }
+    },
+    {
+      "@id": "_:ub379bL1155C35",
+      "@type": "owl:Restriction",
+      "owl:maxQualifiedCardinality": {
+        "@type": "xsd:nonNegativeInteger",
+        "@value": "1"
+      },
+      "owl:onDataRange": {
+        "@id": "xsd:integer"
+      },
+      "owl:onProperty": {
+        "@id": "https://w3id.org/italia/onto/CPV/numberRegFamilyComponents"
+      }
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/CPV/ResidenceInTime",
+      "@type": "owl:Class",
+      "owl:versionInfo": [
+        {
+          "@language": "it",
+          "@value": "provvisoria"
+        },
+        {
+          "@language": "en",
+          "@value": "unstable"
+        }
+      ],
+      "rdfs:comment": [
+        {
+          "@language": "en",
+          "@value": "This class represents the n-ary relationship between a resident, the location of residence and the time. It is specifically subclass of the TimeIndexedEvent defined in the time ontology from which it inherits the relationship with the time interval"
+        },
+        {
+          "@language": "it",
+          "@value": "Questa classe rappresenta una relazione ennaria tra diversi concetti del dominio, in particolare con una persona residente in un paese, il luogo di residenza e il periodo temporale. E' utilizzata per gestire lo storico delle residenze delle persone. Essa è sottoclasse di TimeIndexedEvent definita nella time ontology della network OntoPiA e pertanto eredita la relazione con l'intervallo temporale."
+        }
+      ],
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/italia/onto/CPV"
+      },
+      "rdfs:label": [
+        {
+          "@language": "en",
+          "@value": "Residence in Time"
+        },
+        {
+          "@language": "it",
+          "@value": "Residenza nel tempo (storica)"
+        }
+      ],
+      "rdfs:subClassOf": [
+        {
+          "@id": "https://w3id.org/italia/onto/TI/TimeIndexedEvent"
+        },
+        {
+          "@id": "_:ub379bL1181C34"
+        },
+        {
+          "@id": "_:ub379bL1176C34"
+        }
+      ]
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/CPV/altName",
+      "@type": "owl:DatatypeProperty",
+      "owl:versionInfo": [
+        {
+          "@language": "en",
+          "@value": "unstable"
+        },
+        {
+          "@language": "it",
+          "@value": "provvisoria"
+        }
+      ],
+      "rdfs:comment": [
+        {
+          "@language": "en",
+          "@value": "The alternative name or middle name of a person. E.g., Anne is the middle name of \"Mary Anne Clark\"."
+        },
+        {
+          "@language": "it",
+          "@value": "il nome alternativo o secondo nome di una persona. Per esempio Anne è il secondo nome di \"Mary Anne Clarke\"."
+        }
+      ],
+      "rdfs:domain": {
+        "@id": "https://w3id.org/italia/onto/CPV/Person"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/italia/onto/CPV"
+      },
+      "rdfs:label": [
+        {
+          "@language": "en",
+          "@value": "alternative name"
+        },
+        {
+          "@language": "it",
+          "@value": "nome alternativo (secondo nome)"
+        }
+      ],
+      "rdfs:range": {
+        "@id": "xsd:string"
+      },
+      "rdfs:subPropertyOf": {
+        "@id": "l0:name"
+      }
+    },
+    {
+      "@id": "l0:identifier",
+      "@type": "owl:DatatypeProperty",
+      "rdfs:isDefinedBy": {
+        "@id": "l0:"
+      }
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/CPV/isCurrentResidenceOf",
+      "@type": "owl:ObjectProperty",
+      "rdfs:comment": [
+        {
+          "@language": "en",
+          "@value": "The inverse relation that links a person who is resident in a country to his/her location of residence. It is the current residence of the person."
+        },
+        {
+          "@language": "it",
+          "@value": "Relazione inversa che lega una persona residente in un paese al proprio luogo di residenza Rappresenta la residenza corrente della persona"
+        }
+      ],
+      "rdfs:domain": {
+        "@id": "CLV:Address"
+      },
+      "rdfs:label": [
+        {
+          "@language": "it",
+          "@value": "è residenza attuale di"
+        },
+        {
+          "@language": "en",
+          "@value": "is current residence of"
+        }
+      ],
+      "rdfs:range": {
+        "@id": "https://w3id.org/italia/onto/CPV/Resident"
+      }
+    },
+    {
+      "@id": "l0:description",
+      "@type": "owl:DatatypeProperty",
+      "rdfs:isDefinedBy": {
+        "@id": "l0:"
+      }
+    },
+    {
+      "@id": "dcterms:title",
+      "@type": "owl:AnnotationProperty"
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/CPV/taxCode",
+      "@type": "owl:DatatypeProperty",
+      "owl:versionInfo": [
+        {
+          "@language": "it",
+          "@value": "stabile"
+        },
+        {
+          "@language": "en",
+          "@value": "stable"
+        }
+      ],
+      "rdfs:comment": [
+        {
+          "@language": "it",
+          "@value": "Il codice fiscale di  una persona."
+        },
+        {
+          "@language": "en",
+          "@value": "The tax code of a person."
+        }
+      ],
+      "rdfs:domain": {
+        "@id": "https://w3id.org/italia/onto/CPV/Person"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/italia/onto/CPV"
+      },
+      "rdfs:label": [
+        {
+          "@language": "en",
+          "@value": "tax code"
+        },
+        {
+          "@language": "it",
+          "@value": "codice fiscale"
+        }
+      ],
+      "rdfs:range": {
+        "@id": "rdfs:Literal"
+      },
+      "rdfs:subPropertyOf": {
+        "@id": "l0:identifier"
+      }
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/CPV/inRegisteredFamily",
+      "@type": "owl:ObjectProperty",
+      "owl:versionInfo": [
+        {
+          "@language": "it",
+          "@value": "stabile"
+        },
+        {
+          "@language": "en",
+          "@value": "stable"
+        }
+      ],
+      "rdfs:comment": [
+        {
+          "@language": "it",
+          "@value": "Relazione che lega un tipo di relazione parentale con la relativa famiglia anagrafica"
+        },
+        {
+          "@language": "en",
+          "@value": "The relation that links the different types of Parental Relationship to the related Registered Family"
+        }
+      ],
+      "rdfs:domain": {
+        "@id": "https://w3id.org/italia/onto/CPV/ParentalRelationshipType"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/italia/onto/CPV"
+      },
+      "rdfs:label": [
+        {
+          "@language": "en",
+          "@value": "in registered family"
+        },
+        {
+          "@language": "it",
+          "@value": "in famiglia anagrafica"
+        }
+      ],
+      "rdfs:range": {
+        "@id": "https://w3id.org/italia/onto/CPV/RegisteredFamily"
+      }
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/CPV/hasRelationshipWith",
+      "@type": "owl:ObjectProperty",
+      "owl:versionInfo": [
+        {
+          "@language": "it",
+          "@value": "stabile"
+        },
+        {
+          "@language": "en",
+          "@value": "stable"
+        }
+      ],
+      "rdfs:comment": [
+        {
+          "@language": "en",
+          "@value": "Any relationship between people."
+        },
+        {
+          "@language": "it",
+          "@value": "Qualsiasi relazione tra persone."
+        }
+      ],
+      "rdfs:domain": {
+        "@id": "https://w3id.org/italia/onto/CPV/Person"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/italia/onto/CPV"
+      },
+      "rdfs:label": [
+        {
+          "@language": "en",
+          "@value": "has relationship with"
+        },
+        {
+          "@language": "it",
+          "@value": "ha relazione con"
+        }
+      ],
+      "rdfs:range": {
+        "@id": "https://w3id.org/italia/onto/CPV/Person"
+      }
+    },
+    {
+      "@id": "_:ub379bL920C33",
+      "@type": "owl:Restriction",
+      "owl:cardinality": {
+        "@type": "xsd:nonNegativeInteger",
+        "@value": "1"
+      },
+      "owl:onProperty": {
+        "@id": "https://w3id.org/italia/onto/CPV/educationLevelID"
+      }
+    },
+    {
+      "@id": "https://w3id.org/italia/data/project/OntoPiA",
+      "@type": [
+        "owl:NamedIndividual",
+        "admsapit:Project"
+      ],
+      "l0:name": {
+        "@language": "it",
+        "@value": "OntoPiA - la rete di ontologie della pubblica amministrazione italiana"
+      }
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/CPV/isDeathPlaceOf",
+      "@type": "owl:ObjectProperty",
+      "owl:versionInfo": [
+        {
+          "@language": "en",
+          "@value": "stable"
+        },
+        {
+          "@language": "it",
+          "@value": "stabile"
+        }
+      ],
+      "rdfs:comment": [
+        {
+          "@language": "it",
+          "@value": "La proprietà per associare un luogo di morte (i.e. una località) alla persona morta."
+        },
+        {
+          "@language": "en",
+          "@value": "The property to link the death place (i.e. a location) to a person"
+        }
+      ],
+      "rdfs:domain": {
+        "@id": "l0:Location"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/italia/onto/CPV"
+      },
+      "rdfs:label": [
+        {
+          "@language": "it",
+          "@value": "è luogo di morte di"
+        },
+        {
+          "@language": "en",
+          "@value": "death place of"
+        }
+      ],
+      "rdfs:range": {
+        "@id": "https://w3id.org/italia/onto/CPV/Dead"
+      }
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/CPV/isParentOf",
+      "@type": [
+        "https://w3id.org/italia/onto/CPV/ParentalRelationshipType",
+        "owl:ObjectProperty",
+        "owl:NamedIndividual"
+      ],
+      "owl:versionInfo": [
+        {
+          "@language": "en",
+          "@value": "stable"
+        },
+        {
+          "@language": "it",
+          "@value": "stabile"
+        }
+      ],
+      "rdfs:comment": [
+        {
+          "@language": "en",
+          "@value": "The parent-child relationship."
+        },
+        {
+          "@language": "it",
+          "@value": "La relazione padre-figlio."
+        }
+      ],
+      "rdfs:domain": {
+        "@id": "https://w3id.org/italia/onto/CPV/Person"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/italia/onto/CPV"
+      },
+      "rdfs:label": [
+        {
+          "@language": "en",
+          "@value": "is parent of"
+        },
+        {
+          "@language": "it",
+          "@value": "è genitore di"
+        }
+      ],
+      "rdfs:range": {
+        "@id": "https://w3id.org/italia/onto/CPV/Person"
+      },
+      "rdfs:subPropertyOf": {
+        "@id": "https://w3id.org/italia/onto/CPV/hasParentalRelationshipWith"
+      }
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/CPV/isChildOf",
+      "@type": [
+        "owl:ObjectProperty",
+        "https://w3id.org/italia/onto/CPV/ParentalRelationshipType",
+        "owl:NamedIndividual"
+      ],
       "owl:inverseOf": {
         "@id": "https://w3id.org/italia/onto/CPV/isParentOf"
       },
@@ -208,2081 +1937,10 @@
       }
     },
     {
-      "@id": "_:N43031d6a469344a381911b1861dd5814",
-      "@type": "owl:Restriction",
-      "owl:onClass": {
-        "@id": "l0:Location"
-      },
-      "owl:onProperty": {
-        "@id": "https://w3id.org/italia/onto/CPV/hasBirthPlace"
-      },
-      "owl:qualifiedCardinality": {
-        "@type": "xsd:nonNegativeInteger",
-        "@value": "1"
-      }
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/CPV/knows",
-      "@type": [
-        "owl:SymmetricProperty",
-        "owl:ObjectProperty"
-      ],
-      "owl:versionInfo": [
-        {
-          "@language": "en",
-          "@value": "stable"
-        },
-        {
-          "@language": "it",
-          "@value": "stabile"
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@language": "it",
-          "@value": "La relazione di conoscenza che intercorre tra due persone. Ex. 'Mario Rossi' conosce 'Paolo Neri'."
-        },
-        {
-          "@language": "en",
-          "@value": "The relationship of knowledge between two people. E.g. 'John White' knows 'Bob Black'."
-        }
-      ],
-      "rdfs:domain": {
-        "@id": "https://w3id.org/italia/onto/CPV/Person"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "https://w3id.org/italia/onto/CPV"
-      },
-      "rdfs:label": [
-        {
-          "@language": "en",
-          "@value": "knows"
-        },
-        {
-          "@language": "it",
-          "@value": "conosce"
-        }
-      ],
-      "rdfs:range": {
-        "@id": "https://w3id.org/italia/onto/CPV/Person"
-      },
-      "rdfs:subPropertyOf": {
-        "@id": "https://w3id.org/italia/onto/CPV/hasRelationshipWith"
-      }
-    },
-    {
-      "@id": "http://spcdata.digitpa.gov.it/browse/page/Amministrazione/ISTAT",
-      "@type": [
-        "http://dati.gov.it/onto/dcatapit#Agent",
-        "owl:NamedIndividual",
-        "foaf:Agent"
-      ],
-      "dcterms:identifier": "ISTAT",
-      "foaf:name": [
-        {
-          "@language": "en",
-          "@value": "Italian National Institute of Statistics - ISTAT"
-        },
-        {
-          "@language": "it",
-          "@value": "Istituto Nazionale di Statistica - ISTAT"
-        }
-      ]
-    },
-    {
-      "@id": "dcat:downloadURL",
-      "@type": "owl:AnnotationProperty"
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/CPV/Alive",
-      "@type": "owl:Class",
-      "owl:disjointWith": {
-        "@id": "https://w3id.org/italia/onto/CPV/Dead"
-      },
-      "owl:versionInfo": [
-        {
-          "@language": "en",
-          "@value": "stable"
-        },
-        {
-          "@language": "it",
-          "@value": "stabile"
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@language": "it",
-          "@value": "Una persona in vita"
-        },
-        {
-          "@language": "en",
-          "@value": "An alive person"
-        }
-      ],
-      "rdfs:isDefinedBy": {
-        "@id": "https://w3id.org/italia/onto/CPV"
-      },
-      "rdfs:label": [
-        {
-          "@language": "it",
-          "@value": "Persona in Vita"
-        },
-        {
-          "@language": "en",
-          "@value": "Alive Person"
-        }
-      ],
-      "rdfs:subClassOf": [
-        {
-          "@id": "_:Ne9def7690524459e964837ab3e797035"
-        },
-        {
-          "@id": "https://w3id.org/italia/onto/CPV/Person"
-        },
-        {
-          "@id": "_:N43277353b3da4c9bbd85831e1e2fffc9"
-        }
-      ]
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/CPV/isResidenceOf",
-      "@type": "owl:ObjectProperty",
-      "owl:inverseOf": {
-        "@id": "https://w3id.org/italia/onto/CPV/residentIn"
-      }
-    },
-    {
-      "@id": "_:N462aa51df5de4eec997cd1bf36cc1bb4",
-      "@type": "owl:Restriction",
-      "owl:onClass": {
-        "@id": "l0:Location"
-      },
-      "owl:onProperty": {
-        "@id": "https://w3id.org/italia/onto/CPV/hasCurrentResidence"
-      },
-      "owl:qualifiedCardinality": {
-        "@type": "xsd:nonNegativeInteger",
-        "@value": "1"
-      }
-    },
-    {
-      "@id": "_:N621abea38e634b219aeed0b26ed51520",
-      "@type": "owl:Restriction",
-      "owl:onClass": {
-        "@id": "https://w3id.org/italia/onto/CPV/Sex"
-      },
-      "owl:onProperty": {
-        "@id": "https://w3id.org/italia/onto/CPV/hasSex"
-      },
-      "owl:qualifiedCardinality": {
-        "@type": "xsd:nonNegativeInteger",
-        "@value": "1"
-      }
-    },
-    {
-      "@id": "_:N34012b4d2eb042539a05cbc0553b9d04",
-      "@type": "owl:Class",
-      "owl:unionOf": {
-        "@list": [
-          {
-            "@id": "https://w3id.org/italia/onto/CPV/ForeignCitizen"
-          },
-          {
-            "@id": "https://w3id.org/italia/onto/CPV/ItalianCitizen"
-          }
-        ]
-      }
-    },
-    {
-      "@id": "ADMS:Project",
-      "@type": "owl:Class"
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/CPV/hasBirthPlace",
-      "@type": "owl:ObjectProperty",
-      "owl:inverseOf": {
-        "@id": "https://w3id.org/italia/onto/CPV/isBirthPlaceOf"
-      },
-      "owl:versionInfo": [
-        {
-          "@language": "it",
-          "@value": "stabile"
-        },
-        {
-          "@language": "en",
-          "@value": "stable"
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@language": "it",
-          "@value": "La relazione che permette di asserire che una persona è nata in un certo luogo."
-        },
-        {
-          "@language": "en",
-          "@value": "The relation asserts that a person has a certain place of birth."
-        }
-      ],
-      "rdfs:domain": {
-        "@id": "https://w3id.org/italia/onto/CPV/Person"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "https://w3id.org/italia/onto/CPV"
-      },
-      "rdfs:label": [
-        {
-          "@language": "en",
-          "@value": "birth place"
-        },
-        {
-          "@language": "it",
-          "@value": "luogo di nascita"
-        }
-      ],
-      "rdfs:range": {
-        "@id": "l0:Location"
-      }
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/CPV/isGrandFatherOf",
-      "@type": "owl:ObjectProperty",
-      "owl:versionInfo": [
-        {
-          "@language": "it",
-          "@value": "stabile"
-        },
-        {
-          "@language": "en",
-          "@value": "stable"
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@language": "it",
-          "@value": "La relazione parentale tra nonno-nipote"
-        },
-        {
-          "@language": "en",
-          "@value": "The grandfathership relation"
-        }
-      ],
-      "rdfs:domain": {
-        "@id": "https://w3id.org/italia/onto/CPV/Person"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "https://w3id.org/italia/onto/CPV"
-      },
-      "rdfs:label": [
-        {
-          "@language": "it",
-          "@value": "è nonno di"
-        },
-        {
-          "@language": "en",
-          "@value": "is grandfather of"
-        }
-      ],
-      "rdfs:range": {
-        "@id": "https://w3id.org/italia/onto/CPV/Person"
-      },
-      "rdfs:subPropertyOf": {
-        "@id": "https://w3id.org/italia/onto/CPV/hasParentalRelationshipWith"
-      }
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/CPV/hasCurrentResidence",
-      "@type": "owl:ObjectProperty",
-      "owl:inverseOf": {
-        "@id": "https://w3id.org/italia/onto/CPV/isCurrentResidenceOf"
-      },
-      "owl:versionInfo": [
-        {
-          "@language": "en",
-          "@value": "stable"
-        },
-        {
-          "@language": "it",
-          "@value": "stabile"
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@language": "it",
-          "@value": "Relazione che lega una persona residente in un paese al proprio luogo di residenza Rappresenta la residenza corrente della persona"
-        },
-        {
-          "@language": "en",
-          "@value": "The relation that links a person who is resident in a country to his/her location of residence. It is the current residence of the person."
-        }
-      ],
-      "rdfs:domain": {
-        "@id": "https://w3id.org/italia/onto/CPV/Resident"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "https://w3id.org/italia/onto/CPV"
-      },
-      "rdfs:label": [
-        {
-          "@language": "en",
-          "@value": "has current residence"
-        },
-        {
-          "@language": "it",
-          "@value": "ha residenza attuale"
-        }
-      ],
-      "rdfs:range": {
-        "@id": "CLV:Address"
-      }
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/CPV/isConsortOf",
-      "@type": "owl:ObjectProperty",
-      "owl:versionInfo": [
-        {
-          "@language": "it",
-          "@value": "stabile"
-        },
-        {
-          "@language": "en",
-          "@value": "stable"
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@language": "en",
-          "@value": "The marriage relation between persons"
-        },
-        {
-          "@language": "it",
-          "@value": "La relazione di matrimonio tra due persone."
-        }
-      ],
-      "rdfs:domain": {
-        "@id": "https://w3id.org/italia/onto/CPV/Person"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "https://w3id.org/italia/onto/CPV"
-      },
-      "rdfs:label": [
-        {
-          "@language": "en",
-          "@value": "is consort of"
-        },
-        {
-          "@language": "it",
-          "@value": "è coniuge di"
-        }
-      ],
-      "rdfs:range": {
-        "@id": "https://w3id.org/italia/onto/CPV/Person"
-      },
-      "rdfs:subPropertyOf": {
-        "@id": "https://w3id.org/italia/onto/CPV/hasParentalRelationshipWith"
-      }
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/CPV/hasPersonTitle",
-      "@type": "owl:ObjectProperty",
-      "ADMS:status": [
-        {
-          "@language": "it",
-          "@value": "instabile"
-        },
-        {
-          "@language": "en",
-          "@value": "unstable"
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@language": "it",
-          "@value": "Connette una persona ad un suo titolo."
-        },
-        {
-          "@language": "en",
-          "@value": "It links a person to his/her title."
-        }
-      ],
-      "rdfs:domain": {
-        "@id": "https://w3id.org/italia/onto/CPV/Person"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "https://w3id.org/italia/onto/CPV"
-      },
-      "rdfs:label": [
-        {
-          "@language": "it",
-          "@value": "ha titolo"
-        },
-        {
-          "@language": "en",
-          "@value": "has title"
-        }
-      ],
-      "rdfs:range": {
-        "@id": "https://w3id.org/italia/onto/CPV/PersonTitle"
-      }
-    },
-    {
-      "@id": "_:Nfb86c831c0ba4da1a3e53bf45b6a468c",
-      "@type": "owl:Restriction",
-      "owl:onProperty": {
-        "@id": "https://w3id.org/italia/onto/CPV/sexDesc"
-      },
-      "owl:someValuesFrom": {
-        "@id": "xsd:string"
-      }
-    },
-    {
-      "@id": "foaf:name",
-      "@type": "owl:AnnotationProperty"
-    },
-    {
-      "@id": "dcterms:identifier",
-      "@type": "owl:AnnotationProperty"
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/CPV/hasParentalRelationshipWith",
-      "@type": "owl:ObjectProperty",
-      "owl:versionInfo": [
-        {
-          "@language": "it",
-          "@value": "stabile"
-        },
-        {
-          "@language": "en",
-          "@value": "stable"
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@language": "it",
-          "@value": "Una relazione di parentela tra due persone."
-        },
-        {
-          "@language": "en",
-          "@value": "A parental relationship between two persons."
-        }
-      ],
-      "rdfs:domain": {
-        "@id": "https://w3id.org/italia/onto/CPV/Person"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "https://w3id.org/italia/onto/CPV"
-      },
-      "rdfs:label": [
-        {
-          "@language": "en",
-          "@value": "has parental relationship with"
-        },
-        {
-          "@language": "it",
-          "@value": "ha relazione parentale con"
-        }
-      ],
-      "rdfs:range": {
-        "@id": "https://w3id.org/italia/onto/CPV/Person"
-      },
-      "rdfs:subPropertyOf": {
-        "@id": "https://w3id.org/italia/onto/CPV/hasRelationshipWith"
-      }
-    },
-    {
-      "@id": "dcterms:description",
-      "@type": "owl:AnnotationProperty"
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/CPV/isNephewOf",
-      "@type": "owl:ObjectProperty",
-      "owl:inverseOf": {
-        "@id": "https://w3id.org/italia/onto/CPV/isUncleOf"
-      },
-      "owl:versionInfo": [
-        {
-          "@language": "it",
-          "@value": "provvisoria"
-        },
-        {
-          "@language": "en",
-          "@value": "unstable"
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@language": "it",
-          "@value": "La relazione di parentela tra un nipote ed uno zio."
-        },
-        {
-          "@language": "en",
-          "@value": "The nephew relation between a newphew and an uncle."
-        }
-      ],
-      "rdfs:domain": {
-        "@id": "https://w3id.org/italia/onto/CPV/Person"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "https://w3id.org/italia/onto/CPV"
-      },
-      "rdfs:label": [
-        {
-          "@language": "it",
-          "@value": "è nipote lato zii di"
-        },
-        {
-          "@language": "en",
-          "@value": "is nephew of"
-        }
-      ],
-      "rdfs:range": {
-        "@id": "https://w3id.org/italia/onto/CPV/Person"
-      },
-      "rdfs:subPropertyOf": {
-        "@id": "https://w3id.org/italia/onto/CPV/hasParentalRelationshipWith"
-      }
-    },
-    {
-      "@id": "http://spcdata.digitpa.gov.it/browse/page/Amministrazione/agid",
-      "@type": [
-        "http://dati.gov.it/onto/dcatapit#Agent",
-        "foaf:Agent",
-        "owl:NamedIndividual"
-      ],
-      "dcterms:identifier": "agid",
-      "foaf:name": [
-        {
-          "@language": "en",
-          "@value": "Italian Digital Agency"
-        },
-        {
-          "@language": "it",
-          "@value": "Agenzia per l'Italia Digitale"
-        }
-      ]
-    },
-    {
-      "@id": "CLV:Address",
-      "@type": "owl:Class"
-    },
-    {
-      "@id": "vcard:Organization",
-      "@type": "owl:Class"
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/CPV",
-      "@type": [
-        "owl:Ontology",
-        "owl:NamedIndividual",
-        "ADMS:SemanticAsset"
-      ],
-      "ADMS:acronym": "CPV-AP_IT",
-      "ADMS:hasContributor": {
-        "@id": "https://w3id.org/italia/data/organization/support-unit/cnr-Z6HZEH/stlab"
-      },
-      "ADMS:hasFormalityLevel": {
-        "@id": "ADMS:Formal"
-      },
-      "ADMS:hasKeyClass": [
-        {
-          "@id": "https://w3id.org/italia/onto/CPV/Person"
-        },
-        {
-          "@id": "https://w3id.org/italia/onto/CPV/ResidenceInTime"
-        },
-        {
-          "@id": "https://w3id.org/italia/onto/CPV/RegisteredFamily"
-        }
-      ],
-      "ADMS:hasOntologyLanguage": {
-        "@id": "ADMS:OWL"
-      },
-      "ADMS:hasSemanticAssetDistribution": [
-        {
-          "@id": "https://w3id.org/italia/data/distribution/CPVAPIT-RDF-XML"
-        },
-        {
-          "@id": "https://w3id.org/italia/data/distribution/CPVAPIT-JSON-LD"
-        },
-        {
-          "@id": "https://w3id.org/italia/data/distribution/CPVAPIT-RDF-TURTLE"
-        }
-      ],
-      "ADMS:hasTask": [
-        {
-          "@id": "ADMS:QueryFormulationTask"
-        },
-        {
-          "@id": "ADMS:AnnotationTask"
-        }
-      ],
-      "ADMS:last": {
-        "@id": "https://w3id.org/italia/onto/CPV/0.6"
-      },
-      "ADMS:officialURI": {
-        "@type": "xsd:anyURI",
-        "@value": "https://w3id.org/italia/onto/CPV"
-      },
-      "ADMS:prefix": "cpvapit",
-      "ADMS:prev": {
-        "@id": "https://w3id.org/italia/onto/CPV/0.6"
-      },
-      "ADMS:semanticAssetInUse": [
-        {
-          "@id": "https://w3id.org/italia/data/project/DAF"
-        },
-        {
-          "@id": "https://w3id.org/italia/data/project/OntoPiA"
-        }
-      ],
-      "ADMS:status": [
-        "published",
-        "catalogued"
-      ],
-      "ADMS:target": [
-        "Imprese",
-        "Pubbliche Amministrazioni"
-      ],
-      "ADMS:type": {
-        "@id": "ADMS:CoreOntology"
-      },
-      "dcat:contactPoint": {
-        "@id": "https://w3id.org/italia/data/contact-point/onto-agid"
-      },
-      "dcat:keyword": [
-        {
-          "@language": "it",
-          "@value": "persona"
-        },
-        {
-          "@language": "it",
-          "@value": "famiglia"
-        },
-        {
-          "@language": "it",
-          "@value": "persone"
-        },
-        {
-          "@language": "it",
-          "@value": "residenza"
-        }
-      ],
-      "dcat:theme": {
-        "@id": "http://publications.europa.eu/resource/authority/data-theme/SOCI"
-      },
-      "dcterms:accrualPeriodicity": {
-        "@id": "http://publications.europa.eu/resource/authority/frequency/IRREG"
-      },
-      "dcterms:creator": [
-        {
-          "@id": "http://spcdata.digitpa.gov.it/browse/page/Amministrazione/agid"
-        },
-        {
-          "@id": "http://spcdata.digitpa.gov.it/browse/page/Amministrazione/ISTAT"
-        }
-      ],
-      "dcterms:description": [
-        {
-          "@language": "it",
-          "@value": "Questa è l'ontologia del profilo applicativo italiano sulle persone."
-        },
-        {
-          "@language": "en",
-          "@value": "This is the ontology of the Italian application profile for Persons"
-        }
-      ],
-      "dcterms:identifier": "https://w3id.org/italia/onto/CPV",
-      "dcterms:issued": {
-        "@type": "xsd:date",
-        "@value": "2017-07-19"
-      },
-      "dcterms:language": [
-        {
-          "@id": "http://publications.europa.eu/resource/authority/language/ENG"
-        },
-        {
-          "@id": "http://publications.europa.eu/resource/authority/language/ITA"
-        }
-      ],
-      "dcterms:modified": {
-        "@type": "xsd:date",
-        "@value": "2019-05-06"
-      },
-      "dcterms:publisher": {
-        "@id": "http://spcdata.digitpa.gov.it/browse/page/Amministrazione/agid"
-      },
-      "dcterms:rightsHolder": {
-        "@id": "http://spcdata.digitpa.gov.it/browse/page/Amministrazione/ISTAT"
-      },
-      "dcterms:title": [
-        {
-          "@language": "it",
-          "@value": "CPV-AP_IT: Core Person Vocabulary - profilo applicativo italiano - Ontologia delle persone"
-        },
-        {
-          "@language": "en",
-          "@value": "CPV-AP_IT - Core Person Vocabulary Italian Application Profile - Person Ontology"
-        }
-      ],
-      "owl:imports": [
-        {
-          "@id": "https://w3id.org/italia/onto/l0"
-        },
-        {
-          "@id": "https://w3id.org/italia/onto/CLV"
-        },
-        {
-          "@id": "https://w3id.org/italia/onto/TI"
-        }
-      ],
-      "owl:versionIRI": {
-        "@id": "https://w3id.org/italia/onto/CPV/0.7"
-      },
-      "owl:versionInfo": [
-        {
-          "@language": "it",
-          "@value": "Versione 0.7 - 06 Maggio 2019 - aggiunto titolo o appellativo di una persona"
-        },
-        {
-          "@language": "en",
-          "@value": "Version 0.7 - 06  May 2019 - add honorific"
-        }
-      ],
-      "prov:wasDerivedFrom": {
-        "@id": "https://w3id.org/italia/onto/CPV/0.6"
-      },
-      "rdfs:comment": [
-        {
-          "@language": "it",
-          "@value": "Questa è l'ontologia del profilo applicativo italiano sulle persone."
-        },
-        {
-          "@language": "en",
-          "@value": "This is the ontology of the Italian application profile for Persons"
-        }
-      ],
-      "rdfs:isDefinedBy": {
-        "@id": "https://w3id.org/italia/onto/CPV"
-      },
-      "rdfs:label": [
-        {
-          "@language": "it",
-          "@value": "Ontologia delle persone (individui)"
-        },
-        {
-          "@language": "en",
-          "@value": "Person ontology"
-        }
-      ]
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/CPV/isGrandChildOf",
-      "@type": "owl:ObjectProperty",
-      "owl:inverseOf": {
-        "@id": "https://w3id.org/italia/onto/CPV/isGrandFatherOf"
-      },
-      "owl:versionInfo": [
-        {
-          "@language": "it",
-          "@value": "provvisoria"
-        },
-        {
-          "@language": "en",
-          "@value": "unstable"
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@language": "it",
-          "@value": "Rappresenta la relazione di parentela nipote-nonno"
-        },
-        {
-          "@language": "en",
-          "@value": "It represents the parental relationship grandchild-grandfather"
-        }
-      ],
-      "rdfs:domain": {
-        "@id": "https://w3id.org/italia/onto/CPV/Person"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "https://w3id.org/italia/onto/CPV"
-      },
-      "rdfs:label": [
-        {
-          "@language": "en",
-          "@value": "is granchild of"
-        },
-        {
-          "@language": "it",
-          "@value": "è nipote lato nonni di"
-        }
-      ],
-      "rdfs:range": {
-        "@id": "https://w3id.org/italia/onto/CPV/Person"
-      },
-      "rdfs:subPropertyOf": {
-        "@id": "https://w3id.org/italia/onto/CPV/hasParentalRelationshipWith"
-      }
-    },
-    {
-      "@id": "dcat:accessURL",
-      "@type": "owl:AnnotationProperty"
-    },
-    {
-      "@id": "_:Nc1b963549bf24e83ad44dd53624e6e78",
-      "@type": "owl:Restriction",
-      "owl:cardinality": {
-        "@type": "xsd:nonNegativeInteger",
-        "@value": "1"
-      },
-      "owl:onProperty": {
-        "@id": "https://w3id.org/italia/onto/CPV/sexID"
-      }
-    },
-    {
-      "@id": "ADMS:SemanticAssetDistribution",
-      "@type": "owl:Class"
-    },
-    {
-      "@id": "CLV:hasAddress",
-      "@type": "owl:ObjectProperty"
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/CPV/ageWhenDead",
-      "@type": "owl:DatatypeProperty",
-      "owl:versionInfo": [
-        {
-          "@language": "it",
-          "@value": "stabile"
-        },
-        {
-          "@language": "en",
-          "@value": "stable"
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@language": "en",
-          "@value": "The age of the natural person observed at the time of death"
-        },
-        {
-          "@language": "it",
-          "@value": "L'età della persona naturale rielvata al momento del decesso."
-        }
-      ],
-      "rdfs:domain": {
-        "@id": "https://w3id.org/italia/onto/CPV/Dead"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "https://w3id.org/italia/onto/CPV"
-      },
-      "rdfs:label": [
-        {
-          "@language": "it",
-          "@value": "età al decesso"
-        },
-        {
-          "@language": "en",
-          "@value": "age when dead"
-        }
-      ],
-      "rdfs:range": {
-        "@id": "xsd:integer"
-      },
-      "rdfs:subPropertyOf": {
-        "@id": "https://w3id.org/italia/onto/CPV/age"
-      }
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/CPV/isCurrentResidenceOf",
-      "@type": "owl:ObjectProperty",
-      "rdfs:comment": [
-        {
-          "@language": "it",
-          "@value": "Relazione inversa che lega una persona residente in un paese al proprio luogo di residenza Rappresenta la residenza corrente della persona"
-        },
-        {
-          "@language": "en",
-          "@value": "The inverse relation that links a person who is resident in a country to his/her location of residence. It is the current residence of the person."
-        }
-      ],
-      "rdfs:domain": {
-        "@id": "CLV:Address"
-      },
-      "rdfs:label": [
-        {
-          "@language": "en",
-          "@value": "is current residence of"
-        },
-        {
-          "@language": "it",
-          "@value": "è residenza attuale di"
-        }
-      ],
-      "rdfs:range": {
-        "@id": "https://w3id.org/italia/onto/CPV/Resident"
-      }
-    },
-    {
-      "@id": "_:N5570f47a46d64ee4a1a5665a10940b63",
-      "@type": "owl:Restriction",
-      "owl:allValuesFrom": {
-        "@id": "CLV:Address"
-      },
-      "owl:onProperty": {
-        "@id": "CLV:hasAddress"
-      }
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/CPV/altName",
-      "@type": "owl:DatatypeProperty",
-      "owl:versionInfo": [
-        {
-          "@language": "it",
-          "@value": "provvisoria"
-        },
-        {
-          "@language": "en",
-          "@value": "unstable"
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@language": "en",
-          "@value": "The alternative name or middle name of a person. E.g., Anne is the middle name of \"Mary Anne Clark\"."
-        },
-        {
-          "@language": "it",
-          "@value": "il nome alternativo o secondo nome di una persona. Per esempio Anne è il secondo nome di \"Mary Anne Clarke\"."
-        }
-      ],
-      "rdfs:domain": {
-        "@id": "https://w3id.org/italia/onto/CPV/Person"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "https://w3id.org/italia/onto/CPV"
-      },
-      "rdfs:label": [
-        {
-          "@language": "it",
-          "@value": "nome alternativo (secondo nome)"
-        },
-        {
-          "@language": "en",
-          "@value": "alternative name"
-        }
-      ],
-      "rdfs:range": {
-        "@id": "xsd:string"
-      },
-      "rdfs:subPropertyOf": {
-        "@id": "l0:name"
-      }
-    },
-    {
-      "@id": "_:N99b02ca8cf4a4de29628f555932678a8",
-      "@type": "owl:Restriction",
-      "owl:maxQualifiedCardinality": {
-        "@type": "xsd:nonNegativeInteger",
-        "@value": "1"
-      },
-      "owl:onClass": {
-        "@id": "l0:Location"
-      },
-      "owl:onProperty": {
-        "@id": "https://w3id.org/italia/onto/CPV/hasDeathPlace"
-      }
-    },
-    {
-      "@id": "vcard:Kind",
-      "@type": "owl:Class"
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/CPV/ResidenceInTime",
-      "@type": "owl:Class",
-      "owl:versionInfo": [
-        {
-          "@language": "en",
-          "@value": "unstable"
-        },
-        {
-          "@language": "it",
-          "@value": "provvisoria"
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@language": "it",
-          "@value": "Questa classe rappresenta una relazione ennaria tra diversi concetti del dominio, in particolare con una persona residente in un paese, il luogo di residenza e il periodo temporale. E' utilizzata per gestire lo storico delle residenze delle persone. Essa è sottoclasse di TimeIndexedEvent definita nella time ontology della network OntoPiA e pertanto eredita la relazione con l'intervallo temporale."
-        },
-        {
-          "@language": "en",
-          "@value": "This class represents the n-ary relationship between a resident, the location of residence and the time. It is specifically subclass of the TimeIndexedEvent defined in the time ontology from which it inherits the relationship with the time interval"
-        }
-      ],
-      "rdfs:isDefinedBy": {
-        "@id": "https://w3id.org/italia/onto/CPV"
-      },
-      "rdfs:label": [
-        {
-          "@language": "it",
-          "@value": "Residenza nel tempo (storica)"
-        },
-        {
-          "@language": "en",
-          "@value": "Residence in Time"
-        }
-      ],
-      "rdfs:subClassOf": [
-        {
-          "@id": "_:N3344eb5526aa497ebab90e2b25f6ce08"
-        },
-        {
-          "@id": "https://w3id.org/italia/onto/TI/TimeIndexedEvent"
-        },
-        {
-          "@id": "_:N8eb530e1ea3545789a59335af80e05ff"
-        }
-      ]
-    },
-    {
-      "@id": "https://w3id.org/italia/data/contact-point/onto-agid",
-      "@type": [
-        "owl:NamedIndividual",
-        "http://dati.gov.it/onto/dcatapit#Organization",
-        "vcard:Organization",
-        "vcard:Kind"
-      ],
-      "vcard:fn": "banche dati e open data",
-      "vcard:hasEmail": {
-        "@id": "mailto:info@dati.gov.it"
-      }
-    },
-    {
-      "@id": "_:N060daab2e3b6426cb9f8696ac6d32aa6",
-      "@type": "owl:Restriction",
-      "owl:maxQualifiedCardinality": {
-        "@type": "xsd:nonNegativeInteger",
-        "@value": "1"
-      },
-      "owl:onDataRange": {
-        "@id": "xsd:string"
-      },
-      "owl:onProperty": {
-        "@id": "https://w3id.org/italia/onto/CPV/altName"
-      }
-    },
-    {
-      "@id": "l0:controlledVocabulary",
-      "@type": "owl:AnnotationProperty"
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/CPV/hasRelationshipWith",
-      "@type": "owl:ObjectProperty",
-      "owl:versionInfo": [
-        {
-          "@language": "it",
-          "@value": "stabile"
-        },
-        {
-          "@language": "en",
-          "@value": "stable"
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@language": "it",
-          "@value": "Qualsiasi relazione tra persone."
-        },
-        {
-          "@language": "en",
-          "@value": "Any relationship between people."
-        }
-      ],
-      "rdfs:domain": {
-        "@id": "https://w3id.org/italia/onto/CPV/Person"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "https://w3id.org/italia/onto/CPV"
-      },
-      "rdfs:label": [
-        {
-          "@language": "en",
-          "@value": "has relationship with"
-        },
-        {
-          "@language": "it",
-          "@value": "ha relazione con"
-        }
-      ],
-      "rdfs:range": {
-        "@id": "https://w3id.org/italia/onto/CPV/Person"
-      }
-    },
-    {
-      "@id": "_:Nb8e24667274c4d0bbb4fedaca6cd1406",
-      "@type": "owl:Restriction",
-      "owl:allValuesFrom": {
-        "@id": "https://w3id.org/italia/onto/CPV/PersonTitle"
-      },
-      "owl:onProperty": {
-        "@id": "https://w3id.org/italia/onto/CPV/hasPersonTitle"
-      }
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/CPV/taxCode",
-      "@type": "owl:DatatypeProperty",
-      "owl:versionInfo": [
-        {
-          "@language": "en",
-          "@value": "stable"
-        },
-        {
-          "@language": "it",
-          "@value": "stabile"
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@language": "en",
-          "@value": "The tax code of a person."
-        },
-        {
-          "@language": "it",
-          "@value": "Il codice fiscale di  una persona."
-        }
-      ],
-      "rdfs:domain": {
-        "@id": "https://w3id.org/italia/onto/CPV/Person"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "https://w3id.org/italia/onto/CPV"
-      },
-      "rdfs:label": [
-        {
-          "@language": "it",
-          "@value": "codice fiscale"
-        },
-        {
-          "@language": "en",
-          "@value": "tax code"
-        }
-      ],
-      "rdfs:range": {
-        "@id": "rdfs:Literal"
-      },
-      "rdfs:subPropertyOf": {
-        "@id": "l0:identifier"
-      }
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/CPV/hasResidenceInTime",
-      "@type": "owl:ObjectProperty",
-      "owl:inverseOf": {
-        "@id": "https://w3id.org/italia/onto/CPV/isResidenceInTimeOf"
-      },
-      "owl:versionInfo": [
-        {
-          "@language": "it",
-          "@value": "provvisoria"
-        },
-        {
-          "@language": "en",
-          "@value": "unstable"
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@language": "it",
-          "@value": "Proprietà che lega una persona allo storico della sua residenza (lega quindi la persona alla relazione ennaria residenza nel tempo)"
-        },
-        {
-          "@language": "en",
-          "@value": "Property that links a person to his/her residence in time"
-        }
-      ],
-      "rdfs:domain": {
-        "@id": "https://w3id.org/italia/onto/CPV/Person"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "https://w3id.org/italia/onto/CPV"
-      },
-      "rdfs:label": [
-        {
-          "@language": "en",
-          "@value": "has residence in time"
-        },
-        {
-          "@language": "it",
-          "@value": "ha stato residenza (ha residenza nel tempo)"
-        }
-      ],
-      "rdfs:range": {
-        "@id": "https://w3id.org/italia/onto/CPV/ResidenceInTime"
-      }
-    },
-    {
-      "@id": "l0:name",
-      "@type": "owl:DatatypeProperty",
-      "rdfs:isDefinedBy": {
-        "@id": "l0:"
-      }
-    },
-    {
-      "@id": "foaf:Agent",
-      "@type": "owl:Class"
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/CPV/Family",
-      "@type": "owl:Class",
-      "owl:versionInfo": [
-        {
-          "@language": "it",
-          "@value": "stabile"
-        },
-        {
-          "@language": "en",
-          "@value": "stable"
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@language": "en",
-          "@value": "A human community generally formed by people tied together by a relationship of coexistence, of kinship, of affinity, which constitutes the fundamental element of every society, since it is aimed, in its processes and relations, at the perpetuation of the species through reproduction."
-        },
-        {
-          "@language": "it",
-          "@value": "In senso ampio, comunità umana, diversamente caratterizzata nelle varie situazioni storiche e geografiche, ma in genere formata da persone legate fra loro da un rapporto di convivenza, di parentela, di affinità, che costituisce l’elemento fondamentale di ogni società, essendo essa finalizzata, nei suoi processi e nelle sue relazioni, alla perpetuazione della specie mediante la riproduzione."
-        }
-      ],
-      "rdfs:isDefinedBy": {
-        "@id": "https://w3id.org/italia/onto/CPV"
-      },
-      "rdfs:label": [
-        {
-          "@language": "en",
-          "@value": "Family"
-        },
-        {
-          "@language": "iit",
-          "@value": "Famiglia"
-        }
-      ],
-      "rdfs:subClassOf": {
-        "@id": "l0:Agent"
-      }
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/CPV/NotResident",
-      "@type": "owl:Class",
-      "owl:disjointWith": {
-        "@id": "https://w3id.org/italia/onto/CPV/Resident"
-      },
-      "owl:versionInfo": [
-        {
-          "@language": "en",
-          "@value": "stable"
-        },
-        {
-          "@language": "it",
-          "@value": "stabile"
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@language": "it",
-          "@value": "Una persona naturale non residenze nel Paese."
-        },
-        {
-          "@language": "en",
-          "@value": "A natural person who is not resident in the country."
-        }
-      ],
-      "rdfs:isDefinedBy": {
-        "@id": "https://w3id.org/italia/onto/CPV"
-      },
-      "rdfs:label": [
-        {
-          "@language": "en",
-          "@value": "Not Resident Person"
-        },
-        {
-          "@language": "it",
-          "@value": "Persona non Residente"
-        }
-      ],
-      "rdfs:subClassOf": {
-        "@id": "https://w3id.org/italia/onto/CPV/Person"
-      }
-    },
-    {
-      "@id": "_:N51cb05bd771148cea57dd856e68db76a",
-      "@type": "owl:Restriction",
-      "owl:onProperty": {
-        "@id": "https://w3id.org/italia/onto/CPV/educationLevelDesc"
-      },
-      "owl:someValuesFrom": {
-        "@id": "rdfs:Literal"
-      }
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/CPV/educationLevelDesc",
-      "@type": "owl:DatatypeProperty",
-      "l0:controlledVocabulary": {
-        "@id": "https://w3id.org/italia/controlled-vocabulary/classifications-for-people/education-level"
-      },
-      "owl:versionInfo": [
-        {
-          "@language": "it",
-          "@value": "stabile"
-        },
-        {
-          "@language": "en",
-          "@value": "stable"
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@language": "en",
-          "@value": "Property used to represent the education level as defined in the related controlled vocabulary EducationLevel https://w3id.org/italia/controlled-vocabulary/classifications-for-people/education-level"
-        },
-        {
-          "@language": "it",
-          "@value": "Proprietà utilizzata per rappresentare il grado di istruzione come definito nel relativo vocabolario controllato EducationLevel https://w3id.org/italia/controlled-vocabulary/classifications-for-people/education-level"
-        }
-      ],
-      "rdfs:domain": {
-        "@id": "https://w3id.org/italia/onto/CPV/EducationLevel"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "https://w3id.org/italia/onto/CPV"
-      },
-      "rdfs:label": [
-        {
-          "@language": "en",
-          "@value": "education level description"
-        },
-        {
-          "@language": "it",
-          "@value": "descrizione grado di istruzione"
-        }
-      ],
-      "rdfs:range": {
-        "@id": "rdfs:Literal"
-      },
-      "rdfs:subPropertyOf": {
-        "@id": "l0:description"
-      }
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/CPV/FamilySheetHolder",
-      "@type": "owl:Class",
-      "owl:versionInfo": [
-        {
-          "@language": "it",
-          "@value": "provvisoria"
-        },
-        {
-          "@language": "en",
-          "@value": "unstable"
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@language": "it",
-          "@value": "Questa classe rappresenta l'intestatario del foglio di famiglia. Per intestatario del foglio di famiglia si intende la persona cui è intestata la scheda di famiglia in anagrafe."
-        },
-        {
-          "@language": "en",
-          "@value": "This class represents the holder of the family sheet. The holder of the family sheet is defined as the person to whom the family in the civil register is headed."
-        }
-      ],
-      "rdfs:isDefinedBy": {
-        "@id": "https://w3id.org/italia/onto/CPV"
-      },
-      "rdfs:label": [
-        {
-          "@language": "en",
-          "@value": "Family Sheet Holder"
-        },
-        {
-          "@language": "it",
-          "@value": "Intestatario Foglio di Famiglia"
-        }
-      ],
-      "rdfs:subClassOf": [
-        {
-          "@id": "https://w3id.org/italia/onto/CPV/ParentalRelationship"
-        },
-        {
-          "@id": "https://w3id.org/italia/onto/CPV/Person"
-        }
-      ]
-    },
-    {
-      "@id": "http://dati.gov.it/onto/dcatapit#Agent",
-      "@type": "owl:Class"
-    },
-    {
-      "@id": "_:Nbeac31121ba54a2ea51463e273fad93d",
-      "@type": "owl:Restriction",
-      "owl:maxQualifiedCardinality": {
-        "@type": "xsd:nonNegativeInteger",
-        "@value": "1"
-      },
-      "owl:onDataRange": {
-        "@id": "xsd:string"
-      },
-      "owl:onProperty": {
-        "@id": "https://w3id.org/italia/onto/CPV/familyName"
-      }
-    },
-    {
-      "@id": "https://w3id.org/italia/data/distribution/CPVAPIT-RDF-XML",
-      "@type": [
-        "owl:NamedIndividual",
-        "ADMS:SemanticAssetDistribution"
-      ],
-      "dcat:accessURL": {
-        "@id": "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/CPV/latest"
-      },
-      "dcat:downloadURL": {
-        "@id": "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/CPV/latest/CPV-AP_IT.rdf"
-      },
-      "dcterms:description": [
-        {
-          "@language": "it",
-          "@value": "Questa è la distribuzione RDF/XML dell'ontologia delle persone"
-        },
-        {
-          "@language": "en",
-          "@value": "This is the distribution in RDF/XML of the persons ontology"
-        }
-      ],
-      "dcterms:format": {
-        "@id": "http://publications.europa.eu/resource/authority/file-type/RDF_XML"
-      },
-      "dcterms:license": {
-        "@id": "https://w3id.org/italia/controlled-vocabulary/licences/A21_CCBY40"
-      },
-      "dcterms:title": [
-        {
-          "@language": "it",
-          "@value": "Distribuzione RDF/XML ontologia CPV-AP_IT"
-        },
-        {
-          "@language": "en",
-          "@value": "RDF/XML distribution of CPV-AP_IT Ontology"
-        }
-      ]
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/CPV/familyName",
-      "@type": "owl:DatatypeProperty",
-      "owl:versionInfo": [
-        {
-          "@language": "en",
-          "@value": "stable"
-        },
-        {
-          "@language": "it",
-          "@value": "stabile"
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@language": "en",
-          "@value": "The family name of a person. E.g. 'Rossi' is the family name of the person 'Mario Rossi'."
-        },
-        {
-          "@language": "it",
-          "@value": "Il cognome di una persona. Ex. 'Rossi' è il cognome della persona 'Mario Rossi'"
-        }
-      ],
-      "rdfs:domain": {
-        "@id": "https://w3id.org/italia/onto/CPV/Person"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "https://w3id.org/italia/onto/CPV"
-      },
-      "rdfs:label": [
-        {
-          "@language": "en",
-          "@value": "family name"
-        },
-        {
-          "@language": "it",
-          "@value": "cognome"
-        }
-      ],
-      "rdfs:range": {
-        "@id": "xsd:string"
-      },
-      "rdfs:subPropertyOf": {
-        "@id": "l0:name"
-      }
-    },
-    {
-      "@id": "l0:identifier",
-      "@type": "owl:DatatypeProperty",
-      "rdfs:isDefinedBy": {
-        "@id": "l0:"
-      }
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/CPV/educationLevelID",
-      "@type": [
-        "owl:DatatypeProperty",
-        "owl:FunctionalProperty"
-      ],
-      "l0:controlledVocabulary": {
-        "@id": "https://w3id.org/italia/controlled-vocabulary/classifications-for-people/education-level"
-      },
-      "owl:versionInfo": [
-        {
-          "@language": "it",
-          "@value": "stabile"
-        },
-        {
-          "@language": "en",
-          "@value": "stable"
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@language": "en",
-          "@value": "Unique code used to identify the education level in the controlled vocabulary EducationLevel https://w3id.org/italia/controlled-vocabulary/classifications-for-people/education-level"
-        },
-        {
-          "@language": "it",
-          "@value": "codice univoco che identifica il grado di istruzione nel vocabolario controllato EducationLevel https://w3id.org/italia/controlled-vocabulary/classifications-for-people/education-level"
-        }
-      ],
-      "rdfs:domain": {
-        "@id": "https://w3id.org/italia/onto/CPV/EducationLevel"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "https://w3id.org/italia/onto/CPV"
-      },
-      "rdfs:label": [
-        {
-          "@language": "it",
-          "@value": "codice grado di istruzione"
-        },
-        {
-          "@language": "en",
-          "@value": "education level identifier"
-        }
-      ],
-      "rdfs:range": {
-        "@id": "rdfs:Literal"
-      },
-      "rdfs:subPropertyOf": {
-        "@id": "l0:identifier"
-      }
-    },
-    {
-      "@id": "l0:description",
-      "@type": "owl:DatatypeProperty",
-      "rdfs:isDefinedBy": {
-        "@id": "l0:"
-      }
-    },
-    {
-      "@id": "dcterms:title",
-      "@type": "owl:AnnotationProperty"
-    },
-    {
-      "@id": "_:Ne9def7690524459e964837ab3e797035",
-      "@type": "owl:Restriction",
-      "owl:maxQualifiedCardinality": {
-        "@type": "xsd:nonNegativeInteger",
-        "@value": "1"
-      },
-      "owl:onClass": {
-        "@id": "https://w3id.org/italia/onto/CPV/EducationLevel"
-      },
-      "owl:onProperty": {
-        "@id": "https://w3id.org/italia/onto/CPV/hasLevelOfEducation"
-      }
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/CPV/Dead",
-      "@type": "owl:Class",
-      "owl:versionInfo": [
-        {
-          "@language": "it",
-          "@value": "stabile"
-        },
-        {
-          "@language": "en",
-          "@value": "stable"
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@language": "en",
-          "@value": "A dead natural person"
-        },
-        {
-          "@language": "it",
-          "@value": "Una persona naturale morta"
-        }
-      ],
-      "rdfs:isDefinedBy": {
-        "@id": "https://w3id.org/italia/onto/CPV"
-      },
-      "rdfs:label": [
-        {
-          "@language": "it",
-          "@value": "Persona Morta"
-        },
-        {
-          "@language": "en",
-          "@value": "Dead Person"
-        }
-      ],
-      "rdfs:subClassOf": [
-        {
-          "@id": "_:N99b02ca8cf4a4de29628f555932678a8"
-        },
-        {
-          "@id": "https://w3id.org/italia/onto/CPV/Person"
-        },
-        {
-          "@id": "_:N09e5c24c17bb44439efb7f5ed55ae385"
-        }
-      ]
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/CPV/givenName",
-      "@type": "owl:DatatypeProperty",
-      "owl:versionInfo": [
-        {
-          "@language": "it",
-          "@value": "stabile"
-        },
-        {
-          "@language": "en",
-          "@value": "stable"
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@language": "it",
-          "@value": "Il nome di una persona. Ex. 'Mario' è il nome della persona 'Mario Rossi'."
-        },
-        {
-          "@language": "en",
-          "@value": "The given name of a person. E.g. 'Mario' is the given name of the person 'Mario Rossi'."
-        }
-      ],
-      "rdfs:domain": {
-        "@id": "https://w3id.org/italia/onto/CPV/Person"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "https://w3id.org/italia/onto/CPV"
-      },
-      "rdfs:label": [
-        {
-          "@language": "it",
-          "@value": "nome proprio"
-        },
-        {
-          "@language": "en",
-          "@value": "given name"
-        }
-      ],
-      "rdfs:range": {
-        "@id": "xsd:string"
-      },
-      "rdfs:subPropertyOf": {
-        "@id": "l0:name"
-      }
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/CPV/Male",
-      "@type": "owl:Class",
-      "owl:versionInfo": [
-        {
-          "@language": "en",
-          "@value": "stable"
-        },
-        {
-          "@language": "it",
-          "@value": "stabile"
-        }
-      ],
-      "rdfs:isDefinedBy": {
-        "@id": "https://w3id.org/italia/onto/CPV"
-      },
-      "rdfs:label": [
-        {
-          "@language": "en",
-          "@value": "Male"
-        },
-        {
-          "@language": "it",
-          "@value": "Maschio"
-        }
-      ],
-      "rdfs:subClassOf": {
-        "@id": "https://w3id.org/italia/onto/CPV/Person"
-      }
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/CPV/residenceInLocation",
-      "@type": "owl:ObjectProperty",
-      "owl:versionInfo": [
-        {
-          "@language": "en",
-          "@value": "unstable"
-        },
-        {
-          "@language": "it",
-          "@value": "provvisoria"
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@language": "en",
-          "@value": "Property that links the residence in time (the n-ray relationship) to the location of the residence."
-        },
-        {
-          "@language": "it",
-          "@value": "Proprietà che lega la residenza nel tempo (lo storico della residenza attraverso la definizione della relazione ennaria) al luogo della residenza."
-        }
-      ],
-      "rdfs:domain": {
-        "@id": "https://w3id.org/italia/onto/CPV/ResidenceInTime"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "https://w3id.org/italia/onto/CPV"
-      },
-      "rdfs:label": [
-        {
-          "@language": "en",
-          "@value": "residence in location"
-        },
-        {
-          "@language": "it",
-          "@value": "residenza in luogo"
-        }
-      ],
-      "rdfs:range": {
-        "@id": "l0:Location"
-      }
-    },
-    {
-      "@id": "_:N808556b1f3964bd683eb8d479a055bff",
-      "@type": "owl:Restriction",
-      "owl:allValuesFrom": {
-        "@id": "CLV:Address"
-      },
-      "owl:onProperty": {
-        "@id": "https://w3id.org/italia/onto/CPV/residentIn"
-      }
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/TI/TimeIndexedEvent",
-      "@type": "owl:Class",
-      "rdfs:isDefinedBy": {
-        "@id": "https://w3id.org/italia/onto/TI"
-      }
-    },
-    {
-      "@id": "_:N43277353b3da4c9bbd85831e1e2fffc9",
-      "@type": "owl:Restriction",
-      "owl:maxQualifiedCardinality": {
-        "@type": "xsd:nonNegativeInteger",
-        "@value": "1"
-      },
-      "owl:onDataRange": {
-        "@id": "xsd:integer"
-      },
-      "owl:onProperty": {
-        "@id": "https://w3id.org/italia/onto/CPV/age"
-      }
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/CPV/registeredFamilyID",
-      "@type": [
-        "owl:FunctionalProperty",
-        "owl:DatatypeProperty"
-      ],
-      "owl:versionInfo": [
-        {
-          "@language": "en",
-          "@value": "stable"
-        },
-        {
-          "@language": "it",
-          "@value": "stabile"
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@language": "en",
-          "@value": "Unique identifier of the registered family"
-        },
-        {
-          "@language": "it",
-          "@value": "Identificativo univoco della famiglia anagrafica"
-        },
-        {
-          "@language": "en",
-          "@value": "registered family identifier"
-        }
-      ],
-      "rdfs:domain": {
-        "@id": "https://w3id.org/italia/onto/CPV/RegisteredFamily"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "https://w3id.org/italia/onto/CPV"
-      },
-      "rdfs:label": {
-        "@language": "it",
-        "@value": "codice famiglia anagrafica"
-      },
-      "rdfs:range": {
-        "@id": "rdfs:Literal"
-      },
-      "rdfs:subPropertyOf": {
-        "@id": "l0:identifier"
-      }
-    },
-    {
-      "@id": "_:Ndab452396c7c48a3a8bcb78f52efa5fb",
-      "@type": "owl:Restriction",
-      "owl:maxCardinality": {
-        "@type": "xsd:nonNegativeInteger",
-        "@value": "1"
-      },
-      "owl:onProperty": {
-        "@id": "https://w3id.org/italia/onto/CPV/taxCode"
-      }
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/CPV/RegisteredFamily",
-      "@type": "owl:Class",
-      "owl:versionInfo": [
-        {
-          "@id": "https://w3id.org/italia/onto/CPV"
-        },
-        {
-          "@language": "en",
-          "@value": "stable"
-        },
-        {
-          "@language": "it",
-          "@value": "stabile"
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@language": "en",
-          "@value": "It is a group of people tied together by relationships of marriage, kinship, affinity, adoption, protection or affection. The members must live and be habitually resident in the same municipality (Article 4 of Italian Presidential Decree 30/05/1989, n. 223)"
-        },
-        {
-          "@language": "it",
-          "@value": "E' un insieme di persone legate da vincoli di matrimonio, parentela, affinità, adozione, tutela o da vincoli affettivi. I membri devono coabitare e avere dimora abituale nello stesso Comune (articolo 4 del Decreto del Presidente della Repubblica 30/05/1989, n. 223)"
-        }
-      ],
-      "rdfs:label": [
-        {
-          "@language": "it",
-          "@value": "Famiglia Anagrafica"
-        },
-        {
-          "@language": "en",
-          "@value": "Registered Family"
-        }
-      ],
-      "rdfs:subClassOf": [
-        {
-          "@id": "_:Nb2335313a6704423bd83466235de90db"
-        },
-        {
-          "@id": "_:N29c9c9a1e224407e9ad0bf117b3a6c6a"
-        },
-        {
-          "@id": "https://w3id.org/italia/onto/CPV/Family"
-        }
-      ]
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/CPV/ForeignCitizen",
-      "@type": "owl:Class",
-      "owl:versionInfo": [
-        {
-          "@language": "it",
-          "@value": "stabile"
-        },
-        {
-          "@language": "en",
-          "@value": "stable"
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@language": "it",
-          "@value": "Una persona naturale che ha cittadinanza straniera"
-        },
-        {
-          "@language": "en",
-          "@value": "A natural person who owns a foreign nationality"
-        }
-      ],
-      "rdfs:isDefinedBy": {
-        "@id": "https://w3id.org/italia/onto/CPV"
-      },
-      "rdfs:label": [
-        {
-          "@language": "it",
-          "@value": "Cittadino Straniero"
-        },
-        {
-          "@language": "en",
-          "@value": "Foreign Citizen"
-        }
-      ],
-      "rdfs:subClassOf": {
-        "@id": "https://w3id.org/italia/onto/CPV/Alive"
-      }
-    },
-    {
-      "@id": "https://w3id.org/italia/data/distribution/CPVAPIT-RDF-TURTLE",
-      "@type": [
-        "ADMS:SemanticAssetDistribution",
-        "owl:NamedIndividual"
-      ],
-      "dcat:accessURL": {
-        "@id": "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/CPV/latest"
-      },
-      "dcat:downloadURL": {
-        "@id": "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/CPV/latest/CPV-AP_IT.ttl"
-      },
-      "dcterms:description": [
-        {
-          "@language": "it",
-          "@value": "Questa è la distribuzione RDF/Turtle dell'ontologia delle persone"
-        },
-        {
-          "@language": "en",
-          "@value": "This is the distribution in RDF/turtle of the persons ontology"
-        }
-      ],
-      "dcterms:format": {
-        "@id": "http://publications.europa.eu/resource/authority/file-type/RDF_TURTLE"
-      },
-      "dcterms:license": {
-        "@id": "https://w3id.org/italia/controlled-vocabulary/licences/A21_CCBY40"
-      },
-      "dcterms:title": [
-        {
-          "@language": "it",
-          "@value": "Distribuzione RDF/Turtle ontologia CPV-AP_IT"
-        },
-        {
-          "@language": "en",
-          "@value": "RDF/Turtle distribution of CPV-AP_IT Ontology"
-        }
-      ]
-    },
-    {
-      "@id": "dcterms:format",
-      "@type": "owl:AnnotationProperty"
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/CPV/hasSex",
-      "@type": "owl:ObjectProperty",
-      "owl:versionInfo": [
-        {
-          "@language": "en",
-          "@value": "stable"
-        },
-        {
-          "@language": "it",
-          "@value": "stabile"
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@language": "it",
-          "@value": "La relazione che lega una persona al suo sesso"
-        },
-        {
-          "@language": "en",
-          "@value": "The relation that links a person to his/her sex"
-        }
-      ],
-      "rdfs:domain": {
-        "@id": "https://w3id.org/italia/onto/CPV/Person"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "https://w3id.org/italia/onto/CPV"
-      },
-      "rdfs:label": [
-        {
-          "@language": "it",
-          "@value": "ha sesso"
-        },
-        {
-          "@language": "en",
-          "@value": "has sex"
-        }
-      ],
-      "rdfs:range": {
-        "@id": "https://w3id.org/italia/onto/CPV/Sex"
-      }
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/CPV/inRegisteredFamily",
-      "@type": "owl:ObjectProperty",
-      "owl:versionInfo": [
-        {
-          "@language": "en",
-          "@value": "stable"
-        },
-        {
-          "@language": "it",
-          "@value": "stabile"
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@language": "it",
-          "@value": "Relazione che lega un tipo di relazione parentale con la relativa famiglia anagrafica"
-        },
-        {
-          "@language": "en",
-          "@value": "The relation that links the different types of Parental Relationship to the related Registered Family"
-        }
-      ],
-      "rdfs:domain": {
-        "@id": "https://w3id.org/italia/onto/CPV/ParentalRelationship"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "https://w3id.org/italia/onto/CPV"
-      },
-      "rdfs:label": [
-        {
-          "@language": "it",
-          "@value": "in famiglia anagrafica"
-        },
-        {
-          "@language": "en",
-          "@value": "in registered family"
-        }
-      ],
-      "rdfs:range": {
-        "@id": "https://w3id.org/italia/onto/CPV/RegisteredFamily"
-      }
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/CPV/EducationLevel",
+      "@id": "https://w3id.org/italia/onto/CPV/Sex",
       "@type": "owl:Class",
       "l0:controlledVocabulary": {
-        "@id": "https://w3id.org/italia/controlled-vocabulary/classifications-for-people/education-level"
+        "@id": "https://w3id.org/italia/controlled-vocabulary/classifications-for-people/sex"
       },
       "owl:versionInfo": [
         {
@@ -2297,11 +1955,11 @@
       "rdfs:comment": [
         {
           "@language": "it",
-          "@value": "Questa classe rappresenta il grado di istruzione della persona. Le istanze di questa classe sono definite nel relativo vocabolario controllato EducationLevel https://w3id.org/italia/controlled-vocabulary/classifications-for-people/education-level"
+          "@value": "Questa classe rappresenta il sesso della persona. Le istanze della classe sono definite nel relativo vocabolario controllato sul sesso https://w3id.org/italia/controlled-vocabulary/classifications-for-people/sex"
         },
         {
           "@language": "en",
-          "@value": "This class represents the level of education of a person. The individuals of this class are defined in the related controlled vocabulary EducationLevel https://w3id.org/italia/controlled-vocabulary/classifications-for-people/education-level"
+          "@value": "This class represents the sex of the person. The instances of the class are defined in the related sex controlled vocabulary https://w3id.org/italia/controlled-vocabulary/classifications-for-people/sex"
         }
       ],
       "rdfs:isDefinedBy": {
@@ -2309,112 +1967,47 @@
       },
       "rdfs:label": [
         {
-          "@language": "en",
-          "@value": "Education Level"
+          "@language": "it",
+          "@value": "Sesso"
         },
         {
-          "@language": "iit",
-          "@value": "Grado di Istruzione"
+          "@language": "en",
+          "@value": "Sex"
         }
       ],
       "rdfs:subClassOf": [
+        {
+          "@id": "_:ub379bL1225C22"
+        },
+        {
+          "@id": "_:ub379bL1229C22"
+        },
         {
           "@id": "l0:Characteristic"
-        },
-        {
-          "@id": "_:N51cb05bd771148cea57dd856e68db76a"
-        },
-        {
-          "@id": "_:N6317fb69d8b749229effc4c25e1cc54b"
         }
       ]
-    },
-    {
-      "@id": "_:N55c9f5d0f6e646948f50e066a315e754",
-      "@type": "owl:Restriction",
-      "owl:maxQualifiedCardinality": {
-        "@type": "xsd:nonNegativeInteger",
-        "@value": "1"
-      },
-      "owl:onDataRange": {
-        "@id": "xsd:string"
-      },
-      "owl:onProperty": {
-        "@id": "https://w3id.org/italia/onto/CPV/givenName"
-      }
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/CPV/Stateless",
-      "@type": "owl:Class",
-      "owl:disjointWith": {
-        "@id": "_:N34012b4d2eb042539a05cbc0553b9d04"
-      },
-      "owl:versionInfo": [
-        {
-          "@language": "en",
-          "@value": "stable"
-        },
-        {
-          "@language": "it",
-          "@value": "stabile"
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@language": "en",
-          "@value": "A natural person who emigrated abroad, who has no nationality, because he or she does not have the nationality of origin and does not possess another one."
-        },
-        {
-          "@language": "it",
-          "@value": "Una persona naturale emigrata all'estero, che non ha alcuna cittadinanza, perché priva di quella di origine e non in possesso di un'altra"
-        }
-      ],
-      "rdfs:isDefinedBy": {
-        "@id": "https://w3id.org/italia/onto/CPV"
-      },
-      "rdfs:label": [
-        {
-          "@language": "en",
-          "@value": "Stateless Person"
-        },
-        {
-          "@language": "it",
-          "@value": "Apolide"
-        }
-      ],
-      "rdfs:subClassOf": {
-        "@id": "https://w3id.org/italia/onto/CPV/Alive"
-      }
-    },
-    {
-      "@id": "vcard:fn",
-      "@type": "owl:AnnotationProperty"
-    },
-    {
-      "@id": "dcterms:license",
-      "@type": "owl:AnnotationProperty"
     },
     {
       "@id": "https://w3id.org/italia/onto/CPV/Person",
       "@type": "owl:Class",
       "owl:versionInfo": [
         {
-          "@language": "en",
-          "@value": "stable"
-        },
-        {
           "@language": "it",
           "@value": "stabile"
+        },
+        {
+          "@language": "en",
+          "@value": "stable"
         }
       ],
       "rdfs:comment": [
         {
-          "@language": "en",
-          "@value": "A natural person"
-        },
-        {
           "@language": "it",
           "@value": "Una persona naturale"
+        },
+        {
+          "@language": "en",
+          "@value": "A natural person"
         }
       ],
       "rdfs:isDefinedBy": {
@@ -2432,51 +2025,61 @@
       ],
       "rdfs:subClassOf": [
         {
-          "@id": "_:N422948d2d007431cb34b482123c3024f"
+          "@id": "_:ub379bL1065C25"
         },
         {
-          "@id": "_:N5782c7ee42074bfaaf83188ca9cca9fa"
+          "@id": "_:ub379bL1091C25"
         },
         {
           "@id": "l0:Agent"
         },
         {
-          "@id": "_:N621abea38e634b219aeed0b26ed51520"
+          "@id": "_:ub379bL1061C25"
         },
         {
-          "@id": "_:Ndab452396c7c48a3a8bcb78f52efa5fb"
+          "@id": "_:ub379bL1073C25"
         },
         {
-          "@id": "_:N39ef0d03624f4d43894690b8bcfd0fdf"
+          "@id": "_:ub379bL1106C25"
         },
         {
-          "@id": "_:Nb8e24667274c4d0bbb4fedaca6cd1406"
+          "@id": "_:ub379bL1057C25"
         },
         {
-          "@id": "_:N43031d6a469344a381911b1861dd5814"
+          "@id": "_:ub379bL1069C25"
         },
         {
-          "@id": "_:N5a498839b3524bf2b3641059839b4af3"
+          "@id": "_:ub379bL1111C25"
         },
         {
-          "@id": "_:N060daab2e3b6426cb9f8696ac6d32aa6"
+          "@id": "_:ub379bL1101C25"
         },
         {
-          "@id": "_:N5570f47a46d64ee4a1a5665a10940b63"
+          "@id": "_:ub379bL1096C25"
         },
         {
-          "@id": "_:N808556b1f3964bd683eb8d479a055bff"
+          "@id": "_:ub379bL1116C25"
         },
         {
-          "@id": "_:Nbeac31121ba54a2ea51463e273fad93d"
+          "@id": "_:ub379bL1077C25"
         },
         {
-          "@id": "_:Neef7ed8732fd413e97d18094b2f58239"
+          "@id": "_:ub379bL1086C25"
         },
         {
-          "@id": "_:N55c9f5d0f6e646948f50e066a315e754"
+          "@id": "_:ub379bL1081C25"
         }
       ]
+    },
+    {
+      "@id": "_:ub379bL916C33",
+      "@type": "owl:Restriction",
+      "owl:onProperty": {
+        "@id": "https://w3id.org/italia/onto/CPV/educationLevelDesc"
+      },
+      "owl:someValuesFrom": {
+        "@id": "rdfs:Literal"
+      }
     },
     {
       "@id": "https://w3id.org/italia/onto/CPV/sexID",
@@ -2499,12 +2102,12 @@
       ],
       "rdfs:comment": [
         {
-          "@language": "it",
-          "@value": "Codice della voce del vocabolario controllato sul sesso  https://w3id.org/italia/controlled-vocabulary/classifications-for-people/sex. Esso assume i valori \"M\" e \"F\"."
-        },
-        {
           "@language": "en",
           "@value": "Sex code used in the sex controlled vocabulary https://w3id.org/italia/controlled-vocabulary/classifications-for-people/sex. It assumes the values \"F\" and \"M\"."
+        },
+        {
+          "@language": "it",
+          "@value": "Codice della voce del vocabolario controllato sul sesso  https://w3id.org/italia/controlled-vocabulary/classifications-for-people/sex. Esso assume i valori \"M\" e \"F\"."
         }
       ],
       "rdfs:domain": {
@@ -2529,6 +2132,53 @@
       "rdfs:subPropertyOf": {
         "@id": "l0:identifier"
       }
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/CPV/Stateless",
+      "@type": "owl:Class",
+      "owl:disjointWith": {
+        "@id": "_:ub379bL1249C29"
+      },
+      "owl:versionInfo": [
+        {
+          "@language": "it",
+          "@value": "stabile"
+        },
+        {
+          "@language": "en",
+          "@value": "stable"
+        }
+      ],
+      "rdfs:comment": [
+        {
+          "@language": "en",
+          "@value": "A natural person who emigrated abroad, who has no nationality, because he or she does not have the nationality of origin and does not possess another one."
+        },
+        {
+          "@language": "it",
+          "@value": "Una persona naturale emigrata all'estero, che non ha alcuna cittadinanza, perché priva di quella di origine e non in possesso di un'altra"
+        }
+      ],
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/italia/onto/CPV"
+      },
+      "rdfs:label": [
+        {
+          "@language": "it",
+          "@value": "Apolide"
+        },
+        {
+          "@language": "en",
+          "@value": "Stateless Person"
+        }
+      ],
+      "rdfs:subClassOf": {
+        "@id": "https://w3id.org/italia/onto/CPV/Alive"
+      }
+    },
+    {
+      "@id": "http://dati.gov.it/onto/dcatapit#Organization",
+      "@type": "owl:Class"
     },
     {
       "@id": "https://w3id.org/italia/onto/CPV/isBirthPlaceOf",
@@ -2561,12 +2211,12 @@
       },
       "rdfs:label": [
         {
-          "@language": "en",
-          "@value": "is birth place of"
-        },
-        {
           "@language": "it",
           "@value": "è luogo di nascita di"
+        },
+        {
+          "@language": "en",
+          "@value": "is birth place of"
         }
       ],
       "rdfs:range": {
@@ -2574,123 +2224,29 @@
       }
     },
     {
-      "@id": "https://w3id.org/italia/onto/CPV/Sex",
-      "@type": "owl:Class",
-      "l0:controlledVocabulary": {
-        "@id": "https://w3id.org/italia/controlled-vocabulary/classifications-for-people/sex"
-      },
-      "owl:versionInfo": [
-        {
-          "@language": "en",
-          "@value": "stable"
-        },
-        {
-          "@language": "it",
-          "@value": "stabile"
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@language": "en",
-          "@value": "This class represents the sex of the person. The instances of the class are defined in the related sex controlled vocabulary https://w3id.org/italia/controlled-vocabulary/classifications-for-people/sex"
-        },
-        {
-          "@language": "it",
-          "@value": "Questa classe rappresenta il sesso della persona. Le istanze della classe sono definite nel relativo vocabolario controllato sul sesso https://w3id.org/italia/controlled-vocabulary/classifications-for-people/sex"
-        }
-      ],
-      "rdfs:isDefinedBy": {
-        "@id": "https://w3id.org/italia/onto/CPV"
-      },
-      "rdfs:label": [
-        {
-          "@language": "en",
-          "@value": "Sex"
-        },
-        {
-          "@language": "it",
-          "@value": "Sesso"
-        }
-      ],
-      "rdfs:subClassOf": [
-        {
-          "@id": "l0:Characteristic"
-        },
-        {
-          "@id": "_:Nc1b963549bf24e83ad44dd53624e6e78"
-        },
-        {
-          "@id": "_:Nfb86c831c0ba4da1a3e53bf45b6a468c"
-        }
-      ]
+      "@id": "dcterms:format",
+      "@type": "owl:AnnotationProperty"
     },
     {
-      "@id": "_:N6317fb69d8b749229effc4c25e1cc54b",
+      "@id": "_:ub379bL1229C22",
       "@type": "owl:Restriction",
       "owl:cardinality": {
         "@type": "xsd:nonNegativeInteger",
         "@value": "1"
       },
       "owl:onProperty": {
-        "@id": "https://w3id.org/italia/onto/CPV/educationLevelID"
+        "@id": "https://w3id.org/italia/onto/CPV/sexID"
       }
     },
     {
-      "@id": "https://w3id.org/italia/data/project/OntoPiA",
-      "@type": [
-        "owl:NamedIndividual",
-        "ADMS:Project"
-      ],
-      "l0:name": {
-        "@language": "it",
-        "@value": "OntoPiA - la rete di ontologie della pubblica amministrazione italiana"
+      "@id": "https://w3id.org/italia/controlled-vocabulary/classifications-for-people/parental-relationship-types/10",
+      "@type": "owl:NamedIndividual",
+      "owl:sameAs": {
+        "@id": "https://w3id.org/italia/onto/CPV/isNephewOf"
       }
     },
     {
-      "@id": "https://w3id.org/italia/onto/CPV/isDeathPlaceOf",
-      "@type": "owl:ObjectProperty",
-      "owl:versionInfo": [
-        {
-          "@language": "en",
-          "@value": "stable"
-        },
-        {
-          "@language": "it",
-          "@value": "stabile"
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@language": "en",
-          "@value": "The property to link the death place (i.e. a location) to a person"
-        },
-        {
-          "@language": "it",
-          "@value": "La proprietà per associare un luogo di morte (i.e. una località) alla persona morta."
-        }
-      ],
-      "rdfs:domain": {
-        "@id": "l0:Location"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "https://w3id.org/italia/onto/CPV"
-      },
-      "rdfs:label": [
-        {
-          "@language": "it",
-          "@value": "è luogo di morte di"
-        },
-        {
-          "@language": "en",
-          "@value": "death place of"
-        }
-      ],
-      "rdfs:range": {
-        "@id": "https://w3id.org/italia/onto/CPV/Dead"
-      }
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/CPV/ItalianCitizen",
+      "@id": "https://w3id.org/italia/onto/CPV/RegisteredFamily",
       "@type": "owl:Class",
       "owl:versionInfo": [
         {
@@ -2698,6 +2254,9 @@
           "@value": "stabile"
         },
         {
+          "@id": "https://w3id.org/italia/onto/CPV"
+        },
+        {
           "@language": "en",
           "@value": "stable"
         }
@@ -2705,11 +2264,63 @@
       "rdfs:comment": [
         {
           "@language": "en",
-          "@value": "A natural person who owns an Italian nationality"
+          "@value": "It is a group of people tied together by relationships of marriage, kinship, affinity, adoption, protection or affection. The members must live and be habitually resident in the same municipality (Article 4 of Italian Presidential Decree 30/05/1989, n. 223)"
         },
         {
           "@language": "it",
-          "@value": "Una persona naturale che possiede la cittadinanza italiana"
+          "@value": "E' un insieme di persone legate da vincoli di matrimonio, parentela, affinità, adozione, tutela o da vincoli affettivi. I membri devono coabitare e avere dimora abituale nello stesso Comune (articolo 4 del Decreto del Presidente della Repubblica 30/05/1989, n. 223)"
+        }
+      ],
+      "rdfs:label": [
+        {
+          "@language": "it",
+          "@value": "Famiglia Anagrafica"
+        },
+        {
+          "@language": "en",
+          "@value": "Registered Family"
+        }
+      ],
+      "rdfs:subClassOf": [
+        {
+          "@id": "https://w3id.org/italia/onto/CPV/Family"
+        },
+        {
+          "@id": "_:ub379bL1155C35"
+        },
+        {
+          "@id": "_:ub379bL1151C35"
+        }
+      ]
+    },
+    {
+      "@id": "admsapit:SemanticAsset",
+      "@type": "owl:Class"
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/CPV/PersonTitle",
+      "@type": "owl:Class",
+      "l0:controlledVocabulary": {
+        "@id": "https://w3id.org/italia/controlled-vocabulary/classifications-for-people/person-title"
+      },
+      "owl:versionInfo": [
+        {
+          "@language": "it",
+          "@value": "instabile"
+        },
+        {
+          "@language": "en",
+          "@value": "unstable"
+        }
+      ],
+      "rdfs:comment": [
+        {
+          "@language": "en",
+          "@value": "A title is a word used before or after a person's name (e.g. Mr., Mrs. etc.)"
+        },
+        {
+          "@language": "it",
+          "@value": "Un titolo è una parola usata prima o dopo il nome di una persona (e.g. Sig. Dott., Avv.)."
         }
       ],
       "rdfs:isDefinedBy": {
@@ -2717,80 +2328,115 @@
       },
       "rdfs:label": [
         {
-          "@language": "it",
-          "@value": "Cittadino Italiano"
+          "@language": "en",
+          "@value": "Person Title"
         },
         {
-          "@language": "en",
-          "@value": "Italian Citizen"
+          "@language": "it",
+          "@value": "Titolo Persona"
         }
       ],
       "rdfs:subClassOf": {
-        "@id": "https://w3id.org/italia/onto/CPV/Alive"
+        "@id": "l0:Characteristic"
       }
     },
     {
-      "@id": "l0:Agent",
-      "@type": "owl:Class",
-      "rdfs:isDefinedBy": {
-        "@id": "l0:"
-      }
+      "@id": "dcterms:license",
+      "@type": "owl:AnnotationProperty"
     },
     {
-      "@id": "https://w3id.org/italia/onto/CPV/sexDesc",
-      "@type": "owl:DatatypeProperty",
-      "l0:controlledVocabulary": {
-        "@id": "https://w3id.org/italia/controlled-vocabulary/classifications-for-people/sex"
-      },
-      "owl:versionInfo": [
+      "@id": "https://w3id.org/italia/onto/CPV/hasPersonTitle",
+      "@type": "owl:ObjectProperty",
+      "admsapit:status": [
         {
           "@language": "it",
-          "@value": "stabile"
+          "@value": "instabile"
         },
         {
           "@language": "en",
-          "@value": "stable"
+          "@value": "unstable"
         }
       ],
       "rdfs:comment": [
         {
-          "@language": "en",
-          "@value": "Property used to represent the sex as defined in the related Sex controlled vocabulary  https://w3id.org/italia/controlled-vocabulary/classifications-for-people/sex"
+          "@language": "it",
+          "@value": "Connette una persona ad un suo titolo."
         },
         {
-          "@language": "it",
-          "@value": "Proprietà utilizzata per rappresentare il sesso di una persona come definito nel vocabolario controllato sul sesso: https://w3id.org/italia/controlled-vocabulary/classifications-for-people/sex"
+          "@language": "en",
+          "@value": "It links a person to his/her title."
         }
       ],
       "rdfs:domain": {
-        "@id": "https://w3id.org/italia/onto/CPV/Sex"
+        "@id": "https://w3id.org/italia/onto/CPV/Person"
       },
       "rdfs:isDefinedBy": {
         "@id": "https://w3id.org/italia/onto/CPV"
       },
       "rdfs:label": [
         {
+          "@language": "en",
+          "@value": "has title"
+        },
+        {
           "@language": "it",
-          "@value": "descrizione sesso"
+          "@value": "ha titolo"
+        }
+      ],
+      "rdfs:range": {
+        "@id": "https://w3id.org/italia/onto/CPV/PersonTitle"
+      }
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/CPV/registeredFamilyID",
+      "@type": [
+        "owl:FunctionalProperty",
+        "owl:DatatypeProperty"
+      ],
+      "owl:versionInfo": [
+        {
+          "@language": "en",
+          "@value": "stable"
+        },
+        {
+          "@language": "it",
+          "@value": "stabile"
+        }
+      ],
+      "rdfs:comment": [
+        {
+          "@language": "en",
+          "@value": "registered family identifier"
+        },
+        {
+          "@language": "it",
+          "@value": "Identificativo univoco della famiglia anagrafica"
         },
         {
           "@language": "en",
-          "@value": "sex description"
+          "@value": "Unique identifier of the registered family"
         }
       ],
+      "rdfs:domain": {
+        "@id": "https://w3id.org/italia/onto/CPV/RegisteredFamily"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/italia/onto/CPV"
+      },
+      "rdfs:label": {
+        "@language": "it",
+        "@value": "codice famiglia anagrafica"
+      },
       "rdfs:range": {
         "@id": "rdfs:Literal"
       },
       "rdfs:subPropertyOf": {
-        "@id": "l0:description"
+        "@id": "l0:identifier"
       }
     },
     {
-      "@id": "https://w3id.org/italia/onto/CPV/hasDeathPlace",
+      "@id": "https://w3id.org/italia/onto/CPV/residenceInLocation",
       "@type": "owl:ObjectProperty",
-      "owl:inverseOf": {
-        "@id": "https://w3id.org/italia/onto/CPV/isDeathPlaceOf"
-      },
       "owl:versionInfo": [
         {
           "@language": "en",
@@ -2798,17 +2444,60 @@
         },
         {
           "@language": "it",
+          "@value": "provvisoria"
+        }
+      ],
+      "rdfs:comment": [
+        {
+          "@language": "it",
+          "@value": "Proprietà che lega la residenza nel tempo (lo storico della residenza attraverso la definizione della relazione ennaria) al luogo della residenza."
+        },
+        {
+          "@language": "en",
+          "@value": "Property that links the residence in time (the n-ray relationship) to the location of the residence."
+        }
+      ],
+      "rdfs:domain": {
+        "@id": "https://w3id.org/italia/onto/CPV/ResidenceInTime"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/italia/onto/CPV"
+      },
+      "rdfs:label": [
+        {
+          "@language": "it",
+          "@value": "residenza in luogo"
+        },
+        {
+          "@language": "en",
+          "@value": "residence in location"
+        }
+      ],
+      "rdfs:range": {
+        "@id": "l0:Location"
+      }
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/CPV/ageWhenDead",
+      "@type": "owl:DatatypeProperty",
+      "owl:versionInfo": [
+        {
+          "@language": "en",
+          "@value": "stable"
+        },
+        {
+          "@language": "it",
           "@value": "stabile"
         }
       ],
       "rdfs:comment": [
         {
           "@language": "it",
-          "@value": "La relazione che lega una persona morta al luogo di morte."
+          "@value": "L'età della persona naturale rielvata al momento del decesso."
         },
         {
           "@language": "en",
-          "@value": "The relation that links a person who is dead to its place of death."
+          "@value": "The age of the natural person observed at the time of death"
         }
       ],
       "rdfs:domain": {
@@ -2820,20 +2509,240 @@
       "rdfs:label": [
         {
           "@language": "en",
-          "@value": "death place"
+          "@value": "age when dead"
         },
         {
           "@language": "it",
-          "@value": "luogo di morte"
+          "@value": "età al decesso"
         }
       ],
       "rdfs:range": {
-        "@id": "l0:Location"
+        "@id": "xsd:integer"
+      },
+      "rdfs:subPropertyOf": {
+        "@id": "https://w3id.org/italia/onto/CPV/age"
       }
     },
     {
-      "@id": "https://w3id.org/italia/onto/CPV/isParentOf",
-      "@type": "owl:ObjectProperty",
+      "@id": "admsapit:Project",
+      "@type": "owl:Class"
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/CPV",
+      "@type": [
+        "owl:NamedIndividual",
+        "admsapit:SemanticAsset",
+        "owl:Ontology"
+      ],
+      "admsapit:acronym": "CPV-AP_IT",
+      "admsapit:hasContributor": {
+        "@id": "https://w3id.org/italia/data/organization/support-unit/cnr-Z6HZEH/stlab"
+      },
+      "admsapit:hasFormalityLevel": {
+        "@id": "admsapit:Formal"
+      },
+      "admsapit:hasKeyClass": [
+        {
+          "@id": "https://w3id.org/italia/onto/CPV/Person"
+        },
+        {
+          "@id": "https://w3id.org/italia/onto/CPV/ResidenceInTime"
+        },
+        {
+          "@id": "https://w3id.org/italia/onto/CPV/RegisteredFamily"
+        }
+      ],
+      "admsapit:hasOntologyLanguage": {
+        "@id": "admsapit:OWL"
+      },
+      "admsapit:hasSemanticAssetDistribution": [
+        {
+          "@id": "https://w3id.org/italia/data/distribution/CPVAPIT-JSON-LD"
+        },
+        {
+          "@id": "https://w3id.org/italia/data/distribution/CPVAPIT-RDF-XML"
+        },
+        {
+          "@id": "https://w3id.org/italia/data/distribution/CPVAPIT-RDF-TURTLE"
+        }
+      ],
+      "admsapit:hasTask": [
+        {
+          "@id": "admsapit:AnnotationTask"
+        },
+        {
+          "@id": "admsapit:QueryFormulationTask"
+        }
+      ],
+      "admsapit:last": {
+        "@id": "https://w3id.org/italia/onto/CPV/0.6"
+      },
+      "admsapit:officialURI": {
+        "@type": "xsd:anyURI",
+        "@value": "https://w3id.org/italia/onto/CPV"
+      },
+      "admsapit:prefix": "cpvapit",
+      "admsapit:prev": {
+        "@id": "https://w3id.org/italia/onto/CPV/0.6"
+      },
+      "admsapit:semanticAssetInUse": [
+        {
+          "@id": "https://w3id.org/italia/data/project/DAF"
+        },
+        {
+          "@id": "https://w3id.org/italia/data/project/OntoPiA"
+        }
+      ],
+      "admsapit:status": [
+        "catalogued",
+        "published"
+      ],
+      "admsapit:target": [
+        "Pubbliche Amministrazioni",
+        "Imprese"
+      ],
+      "admsapit:type": {
+        "@id": "admsapit:CoreOntology"
+      },
+      "dcat:contactPoint": {
+        "@id": "https://w3id.org/italia/data/contact-point/onto-agid"
+      },
+      "dcat:keyword": [
+        {
+          "@language": "it",
+          "@value": "persona"
+        },
+        {
+          "@language": "it",
+          "@value": "persone"
+        },
+        {
+          "@language": "it",
+          "@value": "famiglia"
+        },
+        {
+          "@language": "it",
+          "@value": "residenza"
+        }
+      ],
+      "dcat:theme": {
+        "@id": "http://publications.europa.eu/resource/authority/data-theme/SOCI"
+      },
+      "dcterms:accrualPeriodicity": {
+        "@id": "http://publications.europa.eu/resource/authority/frequency/IRREG"
+      },
+      "dcterms:creator": [
+        {
+          "@id": "http://spcdata.digitpa.gov.it/browse/page/Amministrazione/agid"
+        },
+        {
+          "@id": "http://spcdata.digitpa.gov.it/browse/page/Amministrazione/ISTAT"
+        }
+      ],
+      "dcterms:description": [
+        {
+          "@language": "en",
+          "@value": "This is the ontology of the Italian application profile for Persons"
+        },
+        {
+          "@language": "it",
+          "@value": "Questa è l'ontologia del profilo applicativo italiano sulle persone."
+        }
+      ],
+      "dcterms:identifier": "https://w3id.org/italia/onto/CPV",
+      "dcterms:issued": {
+        "@type": "xsd:date",
+        "@value": "2017-07-19"
+      },
+      "dcterms:language": [
+        {
+          "@id": "http://publications.europa.eu/resource/authority/language/ITA"
+        },
+        {
+          "@id": "http://publications.europa.eu/resource/authority/language/ENG"
+        }
+      ],
+      "dcterms:modified": {
+        "@type": "xsd:date",
+        "@value": "2019-07-17"
+      },
+      "dcterms:publisher": {
+        "@id": "http://spcdata.digitpa.gov.it/browse/page/Amministrazione/agid"
+      },
+      "dcterms:rightsHolder": {
+        "@id": "http://spcdata.digitpa.gov.it/browse/page/Amministrazione/ISTAT"
+      },
+      "dcterms:title": [
+        {
+          "@language": "en",
+          "@value": "CPV-AP_IT - Core Person Vocabulary Italian Application Profile - Person Ontology"
+        },
+        {
+          "@language": "it",
+          "@value": "CPV-AP_IT: Core Person Vocabulary - profilo applicativo italiano - Ontologia delle persone"
+        }
+      ],
+      "owl:imports": [
+        {
+          "@id": "https://w3id.org/italia/onto/l0"
+        },
+        {
+          "@id": "https://w3id.org/italia/onto/CLV"
+        },
+        {
+          "@id": "https://w3id.org/italia/onto/TI"
+        }
+      ],
+      "owl:versionIRI": {
+        "@id": "https://w3id.org/italia/onto/CPV/0.7"
+      },
+      "owl:versionInfo": [
+        {
+          "@language": "it",
+          "@value": "Versione 0.7 - aggiornata il 17 Luglio 2019 - tolto il riferimento di sotto classe di Relazione Parentale per l'Intestatario di foglio di famiglia. Aggiunto il riferimento al vocabolario controllato relativo per il concetto di ParentalRelationshipType ( Tipo Relazione Parentale). Rinominata classe ParentalRelationship in ParentalRelationshipType"
+        },
+        {
+          "@language": "en",
+          "@value": "Version 0.7 - updated on 17th of July - deleted subclassOf ParentalRelationship for FamilySheetHolder and added the reference to the controlled vocabulary for ParentalRelationshipType. Renamed ParentalRelationship in ParentalRelationshipType"
+        }
+      ],
+      "prov:wasDerivedFrom": {
+        "@id": "https://w3id.org/italia/onto/CPV/0.6"
+      },
+      "rdfs:comment": [
+        {
+          "@language": "en",
+          "@value": "This is the ontology of the Italian application profile for Persons"
+        },
+        {
+          "@language": "it",
+          "@value": "Questa è l'ontologia del profilo applicativo italiano sulle persone."
+        }
+      ],
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/italia/onto/CPV"
+      },
+      "rdfs:label": [
+        {
+          "@language": "en",
+          "@value": "Person ontology"
+        },
+        {
+          "@language": "it",
+          "@value": "Ontologia delle persone (individui)"
+        }
+      ]
+    },
+    {
+      "@id": "http://dati.gov.it/onto/dcatapit#Agent",
+      "@type": "owl:Class"
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/CPV/EducationLevel",
+      "@type": "owl:Class",
+      "l0:controlledVocabulary": {
+        "@id": "https://w3id.org/italia/controlled-vocabulary/classifications-for-people/education-level"
+      },
       "owl:versionInfo": [
         {
           "@language": "it",
@@ -2846,12 +2755,103 @@
       ],
       "rdfs:comment": [
         {
+          "@language": "en",
+          "@value": "This class represents the level of education of a person. The individuals of this class are defined in the related controlled vocabulary EducationLevel https://w3id.org/italia/controlled-vocabulary/classifications-for-people/education-level"
+        },
+        {
           "@language": "it",
-          "@value": "La relazione padre-figlio."
+          "@value": "Questa classe rappresenta il grado di istruzione della persona. Le istanze di questa classe sono definite nel relativo vocabolario controllato EducationLevel https://w3id.org/italia/controlled-vocabulary/classifications-for-people/education-level"
+        }
+      ],
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/italia/onto/CPV"
+      },
+      "rdfs:label": [
+        {
+          "@language": "iit",
+          "@value": "Grado di Istruzione"
         },
         {
           "@language": "en",
-          "@value": "The parent-child relationship."
+          "@value": "Education Level"
+        }
+      ],
+      "rdfs:subClassOf": [
+        {
+          "@id": "_:ub379bL920C33"
+        },
+        {
+          "@id": "_:ub379bL916C33"
+        },
+        {
+          "@id": "l0:Characteristic"
+        }
+      ]
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/CPV/FamilySheetHolder",
+      "@type": "owl:Class",
+      "owl:versionInfo": [
+        {
+          "@language": "it",
+          "@value": "provvisoria"
+        },
+        {
+          "@language": "en",
+          "@value": "unstable"
+        }
+      ],
+      "rdfs:comment": [
+        {
+          "@language": "en",
+          "@value": "This class represents the holder of the family sheet. The holder of the family sheet is defined as the person to whom the family in the civil register is headed."
+        },
+        {
+          "@language": "it",
+          "@value": "Questa classe rappresenta l'intestatario del foglio di famiglia. Per intestatario del foglio di famiglia si intende la persona cui è intestata la scheda di famiglia in anagrafe."
+        }
+      ],
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/italia/onto/CPV"
+      },
+      "rdfs:label": [
+        {
+          "@language": "en",
+          "@value": "Family Sheet Holder"
+        },
+        {
+          "@language": "it",
+          "@value": "Intestatario Foglio di Famiglia"
+        }
+      ],
+      "rdfs:subClassOf": {
+        "@id": "https://w3id.org/italia/onto/CPV/Person"
+      }
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/CPV/hasResidenceInTime",
+      "@type": "owl:ObjectProperty",
+      "owl:inverseOf": {
+        "@id": "https://w3id.org/italia/onto/CPV/isResidenceInTimeOf"
+      },
+      "owl:versionInfo": [
+        {
+          "@language": "it",
+          "@value": "provvisoria"
+        },
+        {
+          "@language": "en",
+          "@value": "unstable"
+        }
+      ],
+      "rdfs:comment": [
+        {
+          "@language": "en",
+          "@value": "Property that links a person to his/her residence in time"
+        },
+        {
+          "@language": "it",
+          "@value": "Proprietà che lega una persona allo storico della sua residenza (lega quindi la persona alla relazione ennaria residenza nel tempo)"
         }
       ],
       "rdfs:domain": {
@@ -2863,22 +2863,100 @@
       "rdfs:label": [
         {
           "@language": "it",
-          "@value": "è genitore di"
+          "@value": "ha stato residenza (ha residenza nel tempo)"
         },
         {
           "@language": "en",
-          "@value": "is parent of"
+          "@value": "has residence in time"
         }
       ],
       "rdfs:range": {
-        "@id": "https://w3id.org/italia/onto/CPV/Person"
-      },
-      "rdfs:subPropertyOf": {
-        "@id": "https://w3id.org/italia/onto/CPV/hasParentalRelationshipWith"
+        "@id": "https://w3id.org/italia/onto/CPV/ResidenceInTime"
       }
     },
     {
-      "@id": "_:Nb2335313a6704423bd83466235de90db",
+      "@id": "https://w3id.org/italia/controlled-vocabulary/classifications-for-people/parental-relationship-types/6",
+      "@type": "owl:NamedIndividual",
+      "owl:sameAs": {
+        "@id": "https://w3id.org/italia/onto/CPV/isParentOf"
+      }
+    },
+    {
+      "@id": "https://w3id.org/italia/controlled-vocabulary/classifications-for-people/parental-relationship-types/7",
+      "@type": "owl:NamedIndividual",
+      "owl:sameAs": {
+        "@id": "https://w3id.org/italia/onto/CPV/isGrandFatherOf"
+      }
+    },
+    {
+      "@id": "https://w3id.org/italia/controlled-vocabulary/classifications-for-people/parental-relationship-types/4",
+      "@type": "owl:NamedIndividual",
+      "owl:sameAs": {
+        "@id": "https://w3id.org/italia/onto/CPV/isGrandChildOf"
+      }
+    },
+    {
+      "@id": "https://w3id.org/italia/controlled-vocabulary/classifications-for-people/parental-relationship-types/2",
+      "@type": "owl:NamedIndividual",
+      "owl:sameAs": {
+        "@id": "https://w3id.org/italia/onto/CPV/isConsortOf"
+      }
+    },
+    {
+      "@id": "https://w3id.org/italia/controlled-vocabulary/classifications-for-people/parental-relationship-types/3",
+      "@type": "owl:NamedIndividual",
+      "owl:sameAs": {
+        "@id": "https://w3id.org/italia/onto/CPV/isChildOf"
+      }
+    },
+    {
+      "@id": "https://w3id.org/italia/data/distribution/CPVAPIT-RDF-TURTLE",
+      "@type": [
+        "owl:NamedIndividual",
+        "admsapit:SemanticAssetDistribution"
+      ],
+      "dcat:accessURL": {
+        "@id": "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/CPV/latest"
+      },
+      "dcat:downloadURL": {
+        "@id": "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/CPV/latest/CPV-AP_IT.ttl"
+      },
+      "dcterms:description": [
+        {
+          "@language": "en",
+          "@value": "This is the distribution in RDF/turtle of the persons ontology"
+        },
+        {
+          "@language": "it",
+          "@value": "Questa è la distribuzione RDF/Turtle dell'ontologia delle persone"
+        }
+      ],
+      "dcterms:format": {
+        "@id": "http://publications.europa.eu/resource/authority/file-type/RDF_TURTLE"
+      },
+      "dcterms:license": {
+        "@id": "https://w3id.org/italia/controlled-vocabulary/licences/A21_CCBY40"
+      },
+      "dcterms:title": [
+        {
+          "@language": "en",
+          "@value": "RDF/Turtle distribution of CPV-AP_IT Ontology"
+        },
+        {
+          "@language": "it",
+          "@value": "Distribuzione RDF/Turtle ontologia CPV-AP_IT"
+        }
+      ]
+    },
+    {
+      "@id": "https://w3id.org/italia/controlled-vocabulary/classifications-for-people/parental-relationship-types/1",
+      "@type": "owl:NamedIndividual",
+      "owl:sameAs": {
+        "@id": "https://w3id.org/italia/onto/CPV/isFamilySheetHolderOf"
+      }
+    },
+    {
+      "@id": "_:ub379bL896C23",
       "@type": "owl:Restriction",
       "owl:maxQualifiedCardinality": {
         "@type": "xsd:nonNegativeInteger",
@@ -2888,127 +2966,99 @@
         "@id": "xsd:integer"
       },
       "owl:onProperty": {
-        "@id": "https://w3id.org/italia/onto/CPV/numberRegFamilyComponents"
+        "@id": "https://w3id.org/italia/onto/CPV/ageWhenDead"
       }
     },
     {
-      "@id": "http://dati.gov.it/onto/dcatapit#Organization",
-      "@type": "owl:Class"
+      "@id": "_:ub379bL1086C25",
+      "@type": "owl:Restriction",
+      "owl:onClass": {
+        "@id": "https://w3id.org/italia/onto/CPV/Sex"
+      },
+      "owl:onProperty": {
+        "@id": "https://w3id.org/italia/onto/CPV/hasSex"
+      },
+      "owl:qualifiedCardinality": {
+        "@type": "xsd:nonNegativeInteger",
+        "@value": "1"
+      }
     },
     {
-      "@id": "https://w3id.org/italia/data/distribution/CPVAPIT-JSON-LD",
+      "@id": "_:ub379bL1101C25",
+      "@type": "owl:Restriction",
+      "owl:maxQualifiedCardinality": {
+        "@type": "xsd:nonNegativeInteger",
+        "@value": "1"
+      },
+      "owl:onDataRange": {
+        "@id": "xsd:string"
+      },
+      "owl:onProperty": {
+        "@id": "https://w3id.org/italia/onto/CPV/altName"
+      }
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/CPV/dateOfDeath",
       "@type": [
-        "owl:NamedIndividual",
-        "ADMS:SemanticAssetDistribution"
+        "owl:FunctionalProperty",
+        "owl:DatatypeProperty"
       ],
-      "dcat:accessURL": {
-        "@id": "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/CPV/latest"
-      },
-      "dcat:downloadURL": {
-        "@id": "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/CPV/latest/CPV-AP_IT.jsonld"
-      },
-      "dcterms:description": [
-        {
-          "@language": "en",
-          "@value": "This is the distribution in JSON-LD of the persons ontology"
-        },
-        {
-          "@language": "it",
-          "@value": "Questa è la distribuzione JSON-LD dell'ontologia delle Persone"
-        }
-      ],
-      "dcterms:format": {
-        "@id": "http://publications.europa.eu/resource/authority/file-type/JSON_LD"
-      },
-      "dcterms:license": {
-        "@id": "https://w3id.org/italia/controlled-vocabulary/licences/A21_CCBY40"
-      },
-      "dcterms:title": [
-        {
-          "@language": "it",
-          "@value": "Distribuzione JSON-LD ontologia CPV-AP_IT"
-        },
-        {
-          "@language": "en",
-          "@value": "JSON-LD distribution of CPV-AP_IT Ontology"
-        }
-      ]
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/CPV/Female",
-      "@type": "owl:Class",
-      "owl:disjointWith": {
-        "@id": "https://w3id.org/italia/onto/CPV/Male"
-      },
       "owl:versionInfo": [
-        {
-          "@language": "it",
-          "@value": "stabile"
-        },
         {
           "@language": "en",
           "@value": "stable"
-        }
-      ],
-      "rdfs:isDefinedBy": {
-        "@id": "https://w3id.org/italia/onto/CPV"
-      },
-      "rdfs:label": [
-        {
-          "@language": "en",
-          "@value": "Female"
         },
-        {
-          "@language": "it",
-          "@value": "Femmina"
-        }
-      ],
-      "rdfs:subClassOf": {
-        "@id": "https://w3id.org/italia/onto/CPV/Person"
-      }
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/CPV/BornDead",
-      "@type": "owl:Class",
-      "owl:versionInfo": [
         {
           "@language": "it",
           "@value": "stabile"
-        },
-        {
-          "@language": "en",
-          "@value": "stable"
         }
       ],
       "rdfs:comment": [
         {
           "@language": "it",
-          "@value": "Una persona naturale che è nata morta"
+          "@value": "La data di morte della persona naturale. Es: 2002-10-04"
         },
         {
           "@language": "en",
-          "@value": "A natural person who was born dead"
+          "@value": "The date of birth of the natural person"
         }
       ],
+      "rdfs:domain": {
+        "@id": "https://w3id.org/italia/onto/CPV/Dead"
+      },
       "rdfs:isDefinedBy": {
         "@id": "https://w3id.org/italia/onto/CPV"
       },
       "rdfs:label": [
         {
-          "@language": "it",
-          "@value": "Persona Nata Morta"
+          "@language": "en",
+          "@value": "date of death"
         },
         {
-          "@language": "en",
-          "@value": "Born Dead Person"
+          "@language": "it",
+          "@value": "data di morte"
         }
       ],
-      "rdfs:subClassOf": {
-        "@id": "https://w3id.org/italia/onto/CPV/Dead"
+      "rdfs:range": {
+        "@id": "xsd:dateTime"
       }
     },
     {
-      "@id": "https://w3id.org/italia/onto/CPV/hasCitizenship",
+      "@id": "_:ub379bL1205C27",
+      "@type": "owl:Restriction",
+      "owl:onClass": {
+        "@id": "l0:Location"
+      },
+      "owl:onProperty": {
+        "@id": "https://w3id.org/italia/onto/CPV/hasCurrentResidence"
+      },
+      "owl:qualifiedCardinality": {
+        "@type": "xsd:nonNegativeInteger",
+        "@value": "1"
+      }
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/CPV/hasLevelOfEducation",
       "@type": "owl:ObjectProperty",
       "owl:versionInfo": [
         {
@@ -3023,11 +3073,57 @@
       "rdfs:comment": [
         {
           "@language": "en",
-          "@value": "The relation that links a person to its citizenship (e.g. Italian)"
+          "@value": "The relation that links an alive person to his/her education level"
         },
         {
           "@language": "it",
-          "@value": "La relazione che lega una persona alla sua cittadinanza (ex. cittadinanza italiana)."
+          "@value": "La relazione che lega una persona in vita al suo grado di istruzione"
+        }
+      ],
+      "rdfs:domain": {
+        "@id": "https://w3id.org/italia/onto/CPV/Alive"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/italia/onto/CPV"
+      },
+      "rdfs:label": [
+        {
+          "@language": "it",
+          "@value": "ha grado di istruzione"
+        },
+        {
+          "@language": "en",
+          "@value": "has level of education"
+        }
+      ],
+      "rdfs:range": {
+        "@id": "https://w3id.org/italia/onto/CPV/EducationLevel"
+      }
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/CPV/dateOfBirth",
+      "@type": [
+        "owl:FunctionalProperty",
+        "owl:DatatypeProperty"
+      ],
+      "owl:versionInfo": [
+        {
+          "@language": "it",
+          "@value": "stabile"
+        },
+        {
+          "@language": "en",
+          "@value": "stable"
+        }
+      ],
+      "rdfs:comment": [
+        {
+          "@language": "en",
+          "@value": "The date of birth of the natural person"
+        },
+        {
+          "@language": "it",
+          "@value": "La data di nascita della persona naturale"
         }
       ],
       "rdfs:domain": {
@@ -3038,60 +3134,66 @@
       },
       "rdfs:label": [
         {
-          "@language": "en",
-          "@value": "citizenship"
+          "@language": "it",
+          "@value": "data di nascita"
         },
         {
-          "@language": "it",
-          "@value": "ha cittadinanza"
+          "@language": "en",
+          "@value": "date of birth"
         }
       ],
       "rdfs:range": {
-        "@id": "l0:Location"
+        "@id": "xsd:dateTime"
       }
     },
     {
-      "@id": "https://w3id.org/italia/data/organization/support-unit/cnr-Z6HZEH/stlab",
-      "@type": [
-        "owl:NamedIndividual",
-        "l0:Agent"
-      ],
-      "dcterms:identifier": "cnr - Z6HZEH - STLab",
-      "l0:name": [
+      "@id": "https://w3id.org/italia/onto/CPV/belongsToFamily",
+      "@type": "owl:ObjectProperty",
+      "owl:versionInfo": [
+        {
+          "@language": "it",
+          "@value": "provvisoria"
+        },
         {
           "@language": "en",
-          "@value": "Institute of Cognitive Sciences and Technologies of the Italian Research Council (CNR) - Semantic Technology Laboratory (STLab)"
+          "@value": "unstable"
+        }
+      ],
+      "rdfs:comment": [
+        {
+          "@language": "en",
+          "@value": "The relationship that links a person who is resident in a country to a family"
         },
         {
           "@language": "it",
-          "@value": "Istituto di Scienze e Tecnologie della Cognizione del CNR - Semantic Technology Lab (STLab)"
+          "@value": "La relazione che lega una persona residente in un paese a una famiglia"
         }
-      ]
-    },
-    {
-      "@id": "ADMS:SemanticAsset",
-      "@type": "owl:Class"
-    },
-    {
-      "@id": "https://w3id.org/italia/data/project/DAF",
-      "@type": [
-        "owl:NamedIndividual",
-        "ADMS:Project"
       ],
-      "l0:name": {
-        "@language": "it",
-        "@value": "Data & Analytics Framework"
+      "rdfs:domain": {
+        "@id": "https://w3id.org/italia/onto/CPV/Resident"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/italia/onto/CPV"
+      },
+      "rdfs:label": [
+        {
+          "@language": "en",
+          "@value": "belongs to family"
+        },
+        {
+          "@language": "it",
+          "@value": "appartiene a famiglia"
+        }
+      ],
+      "rdfs:range": {
+        "@id": "https://w3id.org/italia/onto/CPV/Family"
       }
-    },
-    {
-      "@id": "vcard:hasEmail",
-      "@type": "owl:AnnotationProperty"
     },
     {
       "@id": "https://w3id.org/italia/onto/CPV/personID",
       "@type": [
-        "owl:FunctionalProperty",
-        "owl:DatatypeProperty"
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
       ],
       "owl:versionInfo": [
         {
@@ -3137,77 +3239,71 @@
       }
     },
     {
-      "@id": "https://w3id.org/italia/onto/CPV/isUncleOf",
+      "@id": "vcard:hasEmail",
+      "@type": "owl:AnnotationProperty"
+    },
+    {
+      "@id": "_:ub379bL1176C34",
+      "@type": "owl:Restriction",
+      "owl:onClass": {
+        "@id": "CLV:Address"
+      },
+      "owl:onProperty": {
+        "@id": "https://w3id.org/italia/onto/CPV/residenceInLocation"
+      },
+      "owl:qualifiedCardinality": {
+        "@type": "xsd:nonNegativeInteger",
+        "@value": "1"
+      }
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/CPV/hasDeathPlace",
       "@type": "owl:ObjectProperty",
+      "owl:inverseOf": {
+        "@id": "https://w3id.org/italia/onto/CPV/isDeathPlaceOf"
+      },
       "owl:versionInfo": [
-        {
-          "@language": "it",
-          "@value": "provvisoria"
-        },
         {
           "@language": "en",
           "@value": "unstable"
+        },
+        {
+          "@language": "it",
+          "@value": "stabile"
         }
       ],
       "rdfs:comment": [
         {
           "@language": "it",
-          "@value": "La relazione di parentela tra zio e nipote."
+          "@value": "La relazione che lega una persona morta al luogo di morte."
         },
         {
           "@language": "en",
-          "@value": "The uncleship relation."
+          "@value": "The relation that links a person who is dead to its place of death."
         }
       ],
       "rdfs:domain": {
-        "@id": "https://w3id.org/italia/onto/CPV/Person"
+        "@id": "https://w3id.org/italia/onto/CPV/Dead"
       },
       "rdfs:isDefinedBy": {
         "@id": "https://w3id.org/italia/onto/CPV"
       },
       "rdfs:label": [
         {
-          "@language": "en",
-          "@value": "is uncle of"
+          "@language": "it",
+          "@value": "luogo di morte"
         },
         {
-          "@language": "it",
-          "@value": "è zio di"
+          "@language": "en",
+          "@value": "death place"
         }
       ],
       "rdfs:range": {
-        "@id": "https://w3id.org/italia/onto/CPV/Person"
-      },
-      "rdfs:subPropertyOf": {
-        "@id": "https://w3id.org/italia/onto/CPV/hasParentalRelationshipWith"
+        "@id": "l0:Location"
       }
     },
     {
-      "@id": "_:N3344eb5526aa497ebab90e2b25f6ce08",
-      "@type": "owl:Restriction",
-      "owl:maxQualifiedCardinality": {
-        "@type": "xsd:nonNegativeInteger",
-        "@value": "1"
-      },
-      "owl:onClass": {
-        "@id": "https://w3id.org/italia/onto/CPV/Person"
-      },
-      "owl:onProperty": {
-        "@id": "https://w3id.org/italia/onto/CPV/isResidenceInTimeOf"
-      }
-    },
-    {
-      "@id": "_:N5a498839b3524bf2b3641059839b4af3",
-      "@type": "owl:Restriction",
-      "owl:allValuesFrom": {
-        "@id": "https://w3id.org/italia/onto/CPV/Person"
-      },
-      "owl:onProperty": {
-        "@id": "https://w3id.org/italia/onto/CPV/hasParentalRelationshipWith"
-      }
-    },
-    {
-      "@id": "_:N5782c7ee42074bfaaf83188ca9cca9fa",
+      "@id": "_:ub379bL1091C25",
       "@type": "owl:Restriction",
       "owl:onDataRange": {
         "@id": "xsd:dateTime"
@@ -3221,29 +3317,185 @@
       }
     },
     {
-      "@id": "https://w3id.org/italia/onto/CPV/PersonTitle",
-      "@type": "owl:Class",
-      "l0:controlledVocabulary": {
-        "@id": "https://w3id.org/italia/controlled-vocabulary/classifications-for-people/person-title"
-      },
+      "@id": "https://w3id.org/italia/onto/CPV/hasCitizenship",
+      "@type": "owl:ObjectProperty",
       "owl:versionInfo": [
         {
-          "@language": "en",
-          "@value": "unstable"
+          "@language": "it",
+          "@value": "stabile"
         },
         {
-          "@language": "it",
-          "@value": "instabile"
+          "@language": "en",
+          "@value": "stable"
         }
       ],
       "rdfs:comment": [
         {
           "@language": "en",
-          "@value": "A title is a word used before or after a person's name (e.g. Mr., Mrs. etc.)"
+          "@value": "The relation that links a person to its citizenship (e.g. Italian)"
         },
         {
           "@language": "it",
-          "@value": "Un titolo è una parola usata prima o dopo il nome di una persona (e.g. Sig. Dott., Avv.)."
+          "@value": "La relazione che lega una persona alla sua cittadinanza (ex. cittadinanza italiana)."
+        }
+      ],
+      "rdfs:domain": {
+        "@id": "https://w3id.org/italia/onto/CPV/Person"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/italia/onto/CPV"
+      },
+      "rdfs:label": [
+        {
+          "@language": "it",
+          "@value": "ha cittadinanza"
+        },
+        {
+          "@language": "en",
+          "@value": "citizenship"
+        }
+      ],
+      "rdfs:range": {
+        "@id": "l0:Location"
+      }
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/CPV/BornDead",
+      "@type": "owl:Class",
+      "owl:versionInfo": [
+        {
+          "@language": "en",
+          "@value": "stable"
+        },
+        {
+          "@language": "it",
+          "@value": "stabile"
+        }
+      ],
+      "rdfs:comment": [
+        {
+          "@language": "it",
+          "@value": "Una persona naturale che è nata morta"
+        },
+        {
+          "@language": "en",
+          "@value": "A natural person who was born dead"
+        }
+      ],
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/italia/onto/CPV"
+      },
+      "rdfs:label": [
+        {
+          "@language": "en",
+          "@value": "Born Dead Person"
+        },
+        {
+          "@language": "it",
+          "@value": "Persona Nata Morta"
+        }
+      ],
+      "rdfs:subClassOf": {
+        "@id": "https://w3id.org/italia/onto/CPV/Dead"
+      }
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/CPV/Female",
+      "@type": "owl:Class",
+      "owl:disjointWith": {
+        "@id": "https://w3id.org/italia/onto/CPV/Male"
+      },
+      "owl:versionInfo": [
+        {
+          "@language": "en",
+          "@value": "stable"
+        },
+        {
+          "@language": "it",
+          "@value": "stabile"
+        }
+      ],
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/italia/onto/CPV"
+      },
+      "rdfs:label": [
+        {
+          "@language": "en",
+          "@value": "Female"
+        },
+        {
+          "@language": "it",
+          "@value": "Femmina"
+        }
+      ],
+      "rdfs:subClassOf": {
+        "@id": "https://w3id.org/italia/onto/CPV/Person"
+      }
+    },
+    {
+      "@id": "https://w3id.org/italia/data/organization/support-unit/cnr-Z6HZEH/stlab",
+      "@type": [
+        "foaf:Agent",
+        "owl:NamedIndividual",
+        "http://dati.gov.it/onto/dcatapit#Agent"
+      ],
+      "dcterms:identifier": "cnr - Z6HZEH - STLab",
+      "foaf:name": [
+        {
+          "@language": "it",
+          "@value": "Istituto di Scienze e Tecnologie della Cognizione del CNR - Semantic Technology Lab (STLab)"
+        },
+        {
+          "@language": "en",
+          "@value": "Institute of Cognitive Sciences and Technologies of the Italian Research Council (CNR) - Semantic Technology Laboratory (STLab)"
+        }
+      ]
+    },
+    {
+      "@id": "_:ub379bL1065C25",
+      "@type": "owl:Restriction",
+      "owl:allValuesFrom": {
+        "@id": "https://w3id.org/italia/onto/CPV/PersonTitle"
+      },
+      "owl:onProperty": {
+        "@id": "https://w3id.org/italia/onto/CPV/hasPersonTitle"
+      }
+    },
+    {
+      "@id": "_:ub379bL1096C25",
+      "@type": "owl:Restriction",
+      "owl:onDataRange": {
+        "@id": "xsd:string"
+      },
+      "owl:onProperty": {
+        "@id": "https://w3id.org/italia/onto/CPV/personID"
+      },
+      "owl:qualifiedCardinality": {
+        "@type": "xsd:nonNegativeInteger",
+        "@value": "1"
+      }
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/CPV/Resident",
+      "@type": "owl:Class",
+      "owl:versionInfo": [
+        {
+          "@language": "it",
+          "@value": "stabile"
+        },
+        {
+          "@language": "en",
+          "@value": "stable"
+        }
+      ],
+      "rdfs:comment": [
+        {
+          "@language": "it",
+          "@value": "Una persona naturale residente nel Paese."
+        },
+        {
+          "@language": "en",
+          "@value": "A natural person who is resident in the country"
         }
       ],
       "rdfs:isDefinedBy": {
@@ -3252,15 +3504,53 @@
       "rdfs:label": [
         {
           "@language": "it",
-          "@value": "Titolo Persona"
+          "@value": "Residente"
         },
         {
           "@language": "en",
-          "@value": "Person Title"
+          "@value": "Resident"
         }
       ],
-      "rdfs:subClassOf": {
-        "@id": "l0:Characteristic"
+      "rdfs:subClassOf": [
+        {
+          "@id": "https://w3id.org/italia/onto/CPV/Alive"
+        },
+        {
+          "@id": "_:ub379bL1205C27"
+        },
+        {
+          "@id": "_:ub379bL1201C27"
+        }
+      ]
+    },
+    {
+      "@id": "_:ub379bL1057C25",
+      "@type": "owl:Restriction",
+      "owl:allValuesFrom": {
+        "@id": "CLV:Address"
+      },
+      "owl:onProperty": {
+        "@id": "CLV:hasAddress"
+      }
+    },
+    {
+      "@id": "_:ub379bL1225C22",
+      "@type": "owl:Restriction",
+      "owl:onProperty": {
+        "@id": "https://w3id.org/italia/onto/CPV/sexDesc"
+      },
+      "owl:someValuesFrom": {
+        "@id": "xsd:string"
+      }
+    },
+    {
+      "@id": "_:ub379bL1069C25",
+      "@type": "owl:Restriction",
+      "owl:allValuesFrom": {
+        "@id": "https://w3id.org/italia/onto/CPV/Person"
+      },
+      "owl:onProperty": {
+        "@id": "https://w3id.org/italia/onto/CPV/hasRelationshipWith"
       }
     },
     {
@@ -3307,58 +3597,11 @@
       }
     },
     {
-      "@id": "_:N39ef0d03624f4d43894690b8bcfd0fdf",
-      "@type": "owl:Restriction",
-      "owl:allValuesFrom": {
-        "@id": "https://w3id.org/italia/onto/CPV/ResidenceInTime"
-      },
-      "owl:onProperty": {
-        "@id": "https://w3id.org/italia/onto/CPV/hasResidenceInTime"
-      }
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/CPV/ParentalRelationship",
-      "@type": "owl:Class",
-      "owl:versionInfo": [
-        {
-          "@language": "it",
-          "@value": "provvisoria"
-        },
-        {
-          "@language": "en",
-          "@value": "unstable"
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@language": "it",
-          "@value": "La classe rappresenta i diversi tipi di relazioni parentali. Per esempio l'intestatario del foglio di famiglia è un tipo di relazione parentale così come il coniuge (o convivente) dell'intestatario, il figlio  dell'intestatario e coniuge convivente, il fratello/sorella dell'intestatario."
-        },
-        {
-          "@language": "en",
-          "@value": "The class represents the different types of parental relationships"
-        }
-      ],
-      "rdfs:isDefinedBy": {
-        "@id": "https://w3id.org/italia/onto/CPV"
-      },
-      "rdfs:label": [
-        {
-          "@language": "en",
-          "@value": "Parental Relationship"
-        },
-        {
-          "@language": "it",
-          "@value": "Relazione Parentale"
-        }
-      ],
-      "rdfs:subClassOf": {
-        "@id": "l0:Description"
-      }
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/CPV/hasLevelOfEducation",
+      "@id": "https://w3id.org/italia/onto/CPV/hasBirthPlace",
       "@type": "owl:ObjectProperty",
+      "owl:inverseOf": {
+        "@id": "https://w3id.org/italia/onto/CPV/isBirthPlaceOf"
+      },
       "owl:versionInfo": [
         {
           "@language": "it",
@@ -3371,154 +3614,32 @@
       ],
       "rdfs:comment": [
         {
-          "@language": "it",
-          "@value": "La relazione che lega una persona in vita al suo grado di istruzione"
+          "@language": "en",
+          "@value": "The relation asserts that a person has a certain place of birth."
         },
         {
-          "@language": "en",
-          "@value": "The relation that links an alive person to his/her education level"
+          "@language": "it",
+          "@value": "La relazione che permette di asserire che una persona è nata in un certo luogo."
         }
       ],
       "rdfs:domain": {
-        "@id": "https://w3id.org/italia/onto/CPV/Alive"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "https://w3id.org/italia/onto/CPV"
-      },
-      "rdfs:label": [
-        {
-          "@language": "it",
-          "@value": "ha grado di istruzione"
-        },
-        {
-          "@language": "en",
-          "@value": "has level of education"
-        }
-      ],
-      "rdfs:range": {
-        "@id": "https://w3id.org/italia/onto/CPV/EducationLevel"
-      }
-    },
-    {
-      "@id": "_:N8eb530e1ea3545789a59335af80e05ff",
-      "@type": "owl:Restriction",
-      "owl:onClass": {
-        "@id": "CLV:Address"
-      },
-      "owl:onProperty": {
-        "@id": "https://w3id.org/italia/onto/CPV/residenceInLocation"
-      },
-      "owl:qualifiedCardinality": {
-        "@type": "xsd:nonNegativeInteger",
-        "@value": "1"
-      }
-    },
-    {
-      "@id": "_:Neef7ed8732fd413e97d18094b2f58239",
-      "@type": "owl:Restriction",
-      "owl:allValuesFrom": {
         "@id": "https://w3id.org/italia/onto/CPV/Person"
       },
-      "owl:onProperty": {
-        "@id": "https://w3id.org/italia/onto/CPV/hasRelationshipWith"
-      }
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/CPV/dateOfDeath",
-      "@type": [
-        "owl:DatatypeProperty",
-        "owl:FunctionalProperty"
-      ],
-      "owl:versionInfo": [
-        {
-          "@language": "en",
-          "@value": "stable"
-        },
-        {
-          "@language": "it",
-          "@value": "stabile"
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@language": "it",
-          "@value": "La data di morte della persona naturale. Es: 2002-10-04"
-        },
-        {
-          "@language": "en",
-          "@value": "The date of birth of the natural person"
-        }
-      ],
-      "rdfs:domain": {
-        "@id": "https://w3id.org/italia/onto/CPV/Dead"
-      },
       "rdfs:isDefinedBy": {
         "@id": "https://w3id.org/italia/onto/CPV"
       },
       "rdfs:label": [
         {
           "@language": "en",
-          "@value": "date of death"
+          "@value": "birth place"
         },
         {
           "@language": "it",
-          "@value": "data di morte"
+          "@value": "luogo di nascita"
         }
       ],
       "rdfs:range": {
-        "@id": "xsd:dateTime"
-      }
-    },
-    {
-      "@id": "l0:Characteristic",
-      "@type": "owl:Class",
-      "rdfs:isDefinedBy": {
-        "@id": "l0:"
-      }
-    },
-    {
-      "@id": "_:Ncf645bc91288420484cf15b172d80289",
-      "@type": "owl:Restriction",
-      "owl:allValuesFrom": {
-        "@id": "https://w3id.org/italia/onto/CPV/Family"
-      },
-      "owl:onProperty": {
-        "@id": "https://w3id.org/italia/onto/CPV/belongsToFamily"
-      }
-    },
-    {
-      "@id": "l0:Location",
-      "@type": "owl:Class",
-      "rdfs:isDefinedBy": {
-        "@id": "l0:"
-      }
-    },
-    {
-      "@id": "_:N422948d2d007431cb34b482123c3024f",
-      "@type": "owl:Restriction",
-      "owl:onDataRange": {
-        "@id": "xsd:string"
-      },
-      "owl:onProperty": {
-        "@id": "https://w3id.org/italia/onto/CPV/personID"
-      },
-      "owl:qualifiedCardinality": {
-        "@type": "xsd:nonNegativeInteger",
-        "@value": "1"
-      }
-    },
-    {
-      "@id": "_:N09e5c24c17bb44439efb7f5ed55ae385",
-      "@type": "owl:Restriction",
-      "owl:maxQualifiedCardinality": {
-        "@type": "xsd:nonNegativeInteger",
-        "@value": "1"
-      },
-      "owl:onDataRange": {
-        "@id": "xsd:integer"
-      },
-      "owl:onProperty": {
-        "@id": "https://w3id.org/italia/onto/CPV/ageWhenDead"
+        "@id": "l0:Location"
       }
     },
     {
@@ -3526,50 +3647,7 @@
       "@type": "rdfs:Datatype"
     },
     {
-      "@id": "https://w3id.org/italia/onto/CPV/belongsToFamily",
-      "@type": "owl:ObjectProperty",
-      "owl:versionInfo": [
-        {
-          "@language": "en",
-          "@value": "unstable"
-        },
-        {
-          "@language": "it",
-          "@value": "provvisoria"
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@language": "it",
-          "@value": "La relazione che lega una persona residente in un paese a una famiglia"
-        },
-        {
-          "@language": "en",
-          "@value": "The relationship that links a person who is resident in a country to a family"
-        }
-      ],
-      "rdfs:domain": {
-        "@id": "https://w3id.org/italia/onto/CPV/Resident"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "https://w3id.org/italia/onto/CPV"
-      },
-      "rdfs:label": [
-        {
-          "@language": "en",
-          "@value": "belongs to family"
-        },
-        {
-          "@language": "it",
-          "@value": "appartiene a famiglia"
-        }
-      ],
-      "rdfs:range": {
-        "@id": "https://w3id.org/italia/onto/CPV/Family"
-      }
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/CPV/Resident",
+      "@id": "https://w3id.org/italia/onto/CPV/ItalianCitizen",
       "@type": "owl:Class",
       "owl:versionInfo": [
         {
@@ -3584,11 +3662,11 @@
       "rdfs:comment": [
         {
           "@language": "it",
-          "@value": "Una persona naturale residente nel Paese."
+          "@value": "Una persona naturale che possiede la cittadinanza italiana"
         },
         {
           "@language": "en",
-          "@value": "A natural person who is resident in the country"
+          "@value": "A natural person who owns an Italian nationality"
         }
       ],
       "rdfs:isDefinedBy": {
@@ -3596,50 +3674,57 @@
       },
       "rdfs:label": [
         {
-          "@language": "en",
-          "@value": "Resident"
+          "@language": "it",
+          "@value": "Cittadino Italiano"
         },
         {
-          "@language": "it",
-          "@value": "Residente"
+          "@language": "en",
+          "@value": "Italian Citizen"
         }
       ],
-      "rdfs:subClassOf": [
-        {
-          "@id": "https://w3id.org/italia/onto/CPV/Alive"
-        },
-        {
-          "@id": "_:N462aa51df5de4eec997cd1bf36cc1bb4"
-        },
-        {
-          "@id": "_:Ncf645bc91288420484cf15b172d80289"
-        }
-      ]
+      "rdfs:subClassOf": {
+        "@id": "https://w3id.org/italia/onto/CPV/Alive"
+      }
     },
     {
-      "@id": "https://w3id.org/italia/onto/CPV/dateOfBirth",
+      "@id": "_:ub379bL1249C29",
+      "@type": "owl:Class",
+      "owl:unionOf": {
+        "@list": [
+          {
+            "@id": "https://w3id.org/italia/onto/CPV/ForeignCitizen"
+          },
+          {
+            "@id": "https://w3id.org/italia/onto/CPV/ItalianCitizen"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/CPV/isUncleOf",
       "@type": [
-        "owl:DatatypeProperty",
-        "owl:FunctionalProperty"
+        "owl:NamedIndividual",
+        "owl:ObjectProperty",
+        "https://w3id.org/italia/onto/CPV/ParentalRelationshipType"
       ],
       "owl:versionInfo": [
         {
-          "@language": "en",
-          "@value": "stable"
+          "@language": "it",
+          "@value": "provvisoria"
         },
         {
-          "@language": "it",
-          "@value": "stabile"
+          "@language": "en",
+          "@value": "unstable"
         }
       ],
       "rdfs:comment": [
         {
-          "@language": "en",
-          "@value": "The date of birth of the natural person"
+          "@language": "it",
+          "@value": "La relazione di parentela tra zio e nipote."
         },
         {
-          "@language": "it",
-          "@value": "La data di nascita della persona naturale"
+          "@language": "en",
+          "@value": "The uncleship relation."
         }
       ],
       "rdfs:domain": {
@@ -3650,16 +3735,30 @@
       },
       "rdfs:label": [
         {
-          "@language": "it",
-          "@value": "data di nascita"
+          "@language": "en",
+          "@value": "is uncle of"
         },
         {
-          "@language": "en",
-          "@value": "date of birth"
+          "@language": "it",
+          "@value": "è zio di"
         }
       ],
       "rdfs:range": {
-        "@id": "xsd:dateTime"
+        "@id": "https://w3id.org/italia/onto/CPV/Person"
+      },
+      "rdfs:subPropertyOf": {
+        "@id": "https://w3id.org/italia/onto/CPV/hasParentalRelationshipWith"
+      }
+    },
+    {
+      "@id": "https://w3id.org/italia/data/project/DAF",
+      "@type": [
+        "owl:NamedIndividual",
+        "admsapit:Project"
+      ],
+      "l0:name": {
+        "@language": "it",
+        "@value": "Data & Analytics Framework"
       }
     }
   ]
