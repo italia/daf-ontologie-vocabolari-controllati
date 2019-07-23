@@ -86,4 +86,10 @@ Il vocabolario è strutturato seguendo il modello [skos](http://www.w3.org/2004/
 
 - **Pubblicazione esterna**
   - Atto di terzi
-  -  Atto di terzi
+    -  Atto di terzi
+
+### Contatti
+Per maggiori informazioni riguardo questo vocabolario contattare
+
+Giorgia Lodi (Agid) giorgia.lodi@agid.gov.it
+Giovanni Pirrotta (Open Data Sicilia) giovanni.pirrotta@gmail.com
