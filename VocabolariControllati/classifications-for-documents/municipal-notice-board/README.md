@@ -1,4 +1,4 @@
-# Vocabolario Controllato del dei Documenti presenti negli albi pretori dei Comuni
+# Vocabolario Controllato dei Documenti presenti negli albi pretori dei Comuni
 
 **Stato**: instabile, incompleto
 
