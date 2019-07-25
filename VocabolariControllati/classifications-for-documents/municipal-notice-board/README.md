@@ -58,6 +58,7 @@ Il vocabolario è strutturato seguendo il modello [skos](http://www.w3.org/2004/
     - Deliberazione dell'Esecutivo circoscrizionale
     - Deliberazione di altri Organi
   - Determinazione
+    - Determinazione del Sindaco
     - Determinazione del Dirigente
   - Ordinanza
     - Ordinanza del Dirigente
