@@ -1,2353 +1,1811 @@
-{
-  "@context": {
-    "adms": "http://www.w3.org/ns/adms#",
-    "admsapit": "https://w3id.org/italia/onto/ADMS/",
-    "dc": "http://purl.org/dc/elements/1.1/",
-    "dcat": "http://www.w3.org/ns/dcat#",
-    "dcatapit": "http://dati.gov.it/onto/dcatapit#",
-    "dct": "http://purl.org/dc/terms/",
-    "dcterms": "http://purl.org/dc/terms/",
-    "foaf": "http://xmlns.com/foaf/0.1/",
-    "l0": "https://w3id.org/italia/onto/l0/",
-    "owl": "http://www.w3.org/2002/07/owl#",
-    "prov": "http://www.w3.org/ns/prov#",
-    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
-    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
-    "skos": "http://www.w3.org/2004/02/skos/core#",
-    "smapit": "https://w3id.org/italia/onto/SM/",
-    "tiapit": "https://w3id.org/italia/onto/TI/",
-    "xkos": "http://rdf-vocabulary.ddialliance.org/xkos#",
-    "xsd": "http://www.w3.org/2001/XMLSchema#"
-  },
-  "@graph": [
-    {
-      "@id": "_:ub2bL520C39",
-      "@type": "owl:Restriction",
-      "owl:onProperty": {
-        "@id": "https://w3id.org/italia/onto/Transparency/generatesResource"
-      },
-      "owl:someValuesFrom": {
-        "@id": "https://w3id.org/italia/onto/Transparency/TransparencyResource"
-      }
-    },
-    {
-      "@id": "_:ub2bL536C57",
-      "@type": "rdfs:Datatype",
-      "owl:unionOf": {
-        "@list": [
-          {
-            "@id": "xsd:date"
-          },
-          {
-            "@id": "xsd:dateTime"
-          }
-        ]
-      }
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/Transparency/TransparencyPublicationActivity",
-      "@type": [
-        "https://w3id.org/italia/onto/Transparency/TransparencyActivityTypology",
-        "owl:NamedIndividual",
-        "owl:Class"
-      ],
-      "l0:description": [
-        {
-          "@language": "en",
-          "@value": "This individual represents the publication activity triggered by a transparency obligation."
-        },
-        {
-          "@language": "it",
-          "@value": "Questo individuo rappresenta l'attività di pubblicazione attivata da un obbligo di trasparenza."
-        }
-      ],
-      "owl:disjointWith": {
-        "@id": "https://w3id.org/italia/onto/Transparency/TransparencyUpdateActivity"
-      },
-      "owl:equivalentClass": {
-        "@id": "_:ub2bL642C54"
-      },
-      "owl:versionInfo": [
-        {
-          "@language": "it",
-          "@value": "stabile"
-        },
-        {
-          "@language": "en",
-          "@value": "stable"
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@language": "it",
-          "@value": "Questa classe rappresenta un'attività di pubblicazione come conseguenza di un obbligo di trasparenza."
-        },
-        {
-          "@language": "en",
-          "@value": "This class represents a publication activity as an effect of a transparency obbligation."
-        }
-      ],
-      "rdfs:isDefinedBy": {
-        "@id": "https://w3id.org/italia/onto/Transparency"
-      },
-      "rdfs:label": [
-        {
-          "@language": "it",
-          "@value": "publication"
-        },
-        {
-          "@language": "it",
-          "@value": "Attività di trasparenza: Pubblicazione."
-        },
-        {
-          "@language": "en",
-          "@value": "Transparency activity: Publication"
-        },
-        {
-          "@language": "it",
-          "@value": "pubblicazione"
-        },
-        {
-          "@language": "en",
-          "@value": "Transparency activity: Publication."
-        }
-      ],
-      "rdfs:subClassOf": {
-        "@id": "https://w3id.org/italia/onto/Transparency/TransparencyActivity"
-      }
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/Transparency/hasTransparencyActivityTypology",
-      "@type": "owl:ObjectProperty",
-      "owl:versionInfo": [
-        {
-          "@language": "en",
-          "@value": "stable"
-        },
-        {
-          "@language": "it",
-          "@value": "stabile"
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@language": "it",
-          "@value": "Questa proprietà lega una attività della trasparenza alla sua tipologia."
-        },
-        {
-          "@language": "en",
-          "@value": "This property links a transparency activity to its typology."
-        }
-      ],
-      "rdfs:domain": {
-        "@id": "https://w3id.org/italia/onto/Transparency/TransparencyActivity"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "https://w3id.org/italia/onto/Transparency"
-      },
-      "rdfs:label": [
-        {
-          "@language": "en",
-          "@value": "has transparency activity typology"
-        },
-        {
-          "@language": "it",
-          "@value": "ha tipologia di attività della trasparenza"
-        }
-      ],
-      "rdfs:range": {
-        "@id": "https://w3id.org/italia/onto/Transparency/TransparencyActivityTypology"
-      }
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/Transparency/downloadURL",
-      "@type": "owl:DatatypeProperty",
-      "owl:versionInfo": [
-        {
-          "@language": "it",
-          "@value": "stabile"
-        },
-        {
-          "@language": "en",
-          "@value": "stable"
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@language": "en",
-          "@value": "This URL defines the download adress of the informative content."
-        },
-        {
-          "@language": "it",
-          "@value": "Questa URL definisce l'indirizzo di download del contenuto informativo."
-        }
-      ],
-      "rdfs:domain": {
-        "@id": "https://w3id.org/italia/onto/Transparency/TransparencyResource"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "https://w3id.org/italia/onto/Transparency"
-      },
-      "rdfs:label": [
-        {
-          "@language": "it",
-          "@value": "URL di download del contenuto"
-        },
-        {
-          "@language": "en",
-          "@value": "download URL"
-        }
-      ],
-      "rdfs:range": {
-        "@id": "xsd:anyURI"
-      },
-      "rdfs:subPropertyOf": {
-        "@id": "smapit:URL"
-      }
-    },
-    {
-      "@id": "_:ub2bL717C49",
-      "@type": "owl:Restriction",
-      "owl:hasValue": {
-        "@id": "https://w3id.org/italia/onto/Transparency/TransparencyUpdateActivity"
-      },
-      "owl:onProperty": {
-        "@id": "https://w3id.org/italia/onto/Transparency/hasTransparencyActivityTypology"
-      }
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/Transparency/Deprecated",
-      "@type": [
-        "https://w3id.org/italia/onto/Transparency/TransparencyObligationStatus",
-        "owl:NamedIndividual"
-      ],
-      "l0:description": [
-        {
-          "@language": "it",
-          "@value": "Questo individuo rappresenta lo stato decaduto di un obbligo di trasparenza"
-        },
-        {
-          "@language": "en",
-          "@value": "This individual represents the status deprecated of a transparency obbligation"
-        }
-      ],
-      "owl:versionInfo": [
-        {
-          "@language": "en",
-          "@value": "stable"
-        },
-        {
-          "@language": "it",
-          "@value": "stabile"
-        }
-      ],
-      "rdfs:isDefinedBy": {
-        "@id": "https://w3id.org/italia/onto/Transparency"
-      },
-      "rdfs:label": [
-        {
-          "@language": "en",
-          "@value": "deprecated"
-        },
-        {
-          "@language": "it",
-          "@value": "decaduto"
-        }
-      ]
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/Transparency/regulationReference",
-      "@type": "owl:DatatypeProperty",
-      "owl:versionInfo": [
-        {
-          "@language": "it",
-          "@value": "stabile"
-        },
-        {
-          "@language": "en",
-          "@value": "stable"
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@language": "it",
-          "@value": "Questa proprietà lega un obbligo di trasparenza al riferimento normativo da cui deriva."
-        },
-        {
-          "@language": "en",
-          "@value": "This property links a transparency obligation to the law that defines it."
-        }
-      ],
-      "rdfs:domain": {
-        "@id": "https://w3id.org/italia/onto/Transparency/TransparencyObligation"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "https://w3id.org/italia/onto/Transparency"
-      },
-      "rdfs:label": [
-        {
-          "@language": "it",
-          "@value": "riferimento normativo"
-        },
-        {
-          "@language": "en",
-          "@value": "normative reference"
-        }
-      ],
-      "rdfs:range": {
-        "@id": "rdfs:Literal"
-      }
-    },
-    {
-      "@id": "_:ub2bL653C39",
-      "@type": "owl:Restriction",
-      "owl:onProperty": {
-        "@id": "https://w3id.org/italia/onto/Transparency/refersToTransparencyEntity"
-      },
-      "owl:someValuesFrom": {
-        "@id": "_:ub2bL655C60"
-      }
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/Transparency/TransparencyObligationStatus",
-      "@type": "owl:Class",
-      "owl:versionInfo": [
-        {
-          "@language": "it",
-          "@value": "stabile"
-        },
-        {
-          "@language": "en",
-          "@value": "stable"
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@language": "it",
-          "@value": "Questa classe rappresenta lo stato dell'obbligo di trasparenza. Per esempio vigente, decaduto,..."
-        },
-        {
-          "@language": "en",
-          "@value": "This class represents the transparency obbligation status. Ex: in force, deprecated,..."
-        }
-      ],
-      "rdfs:isDefinedBy": {
-        "@id": "https://w3id.org/italia/onto/Transparency"
-      },
-      "rdfs:label": [
-        {
-          "@language": "it",
-          "@value": "Stato dell'obbligo di trasparenza."
-        },
-        {
-          "@language": "en",
-          "@value": "Transparency obbligation status"
-        }
-      ],
-      "rdfs:subClassOf": {
-        "@id": "l0:Characteristic"
-      }
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/Transparency/refersToTransparencySubject",
-      "@type": "owl:ObjectProperty",
-      "owl:versionInfo": [
-        {
-          "@language": "en",
-          "@value": "stable"
-        },
-        {
-          "@language": "it",
-          "@value": "stabile"
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@language": "it",
-          "@value": "Questa proprità lega una entità ai soggetti della trasparenza."
-        },
-        {
-          "@language": "en",
-          "@value": "This property links an entity to the transparency subjects."
-        }
-      ],
-      "rdfs:domain": {
-        "@id": "_:ub2bL360C42"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "https://w3id.org/italia/onto/Transparency"
-      },
-      "rdfs:label": [
-        {
-          "@language": "it",
-          "@value": "si riferisce a soggetto"
-        },
-        {
-          "@language": "en",
-          "@value": "refers to transparency subject"
-        }
-      ],
-      "rdfs:range": {
-        "@id": "https://w3id.org/italia/onto/Transparency/TransparencySubject"
-      }
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/Transparency/hasTransparencyStatus",
-      "@type": "owl:ObjectProperty",
-      "owl:versionInfo": [
-        {
-          "@language": "en",
-          "@value": "stable"
-        },
-        {
-          "@language": "it",
-          "@value": "stabile"
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@language": "en",
-          "@value": "This property links a transparency obligation to its current status."
-        },
-        {
-          "@language": "it",
-          "@value": "Questa proprietà lega un obbligo di trasparenza al suo stato attuale."
-        }
-      ],
-      "rdfs:domain": {
-        "@id": "https://w3id.org/italia/onto/Transparency/TransparencyObligation"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "https://w3id.org/italia/onto/Transparency"
-      },
-      "rdfs:label": [
-        {
-          "@language": "it",
-          "@value": "ha stato trasparenza"
-        },
-        {
-          "@language": "en",
-          "@value": "has transparency status"
-        }
-      ],
-      "rdfs:range": {
-        "@id": "https://w3id.org/italia/onto/Transparency/TransparencyObligationStatus"
-      }
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/Transparency/TransparencyDataTypology",
-      "@type": "owl:Class",
-      "l0:controlledVocabulary": {
-        "@id": "https://w3id.org/italia/controlled-vocabulary/classifications-for-transparency/transparency-titulus"
-      },
-      "owl:versionInfo": [
-        {
-          "@language": "it",
-          "@value": "stabile"
-        },
-        {
-          "@language": "en",
-          "@value": "stable"
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@language": "en",
-          "@value": "This class represents the typology of transparency data: the values are defined by a specific vocabulary, and are used to organize contents inside the current transparency section structure for the websites of the Italian Public Administrations, as defined by the legislation (d.lgs 33/2013 e s.m.i)."
-        },
-        {
-          "@language": "it",
-          "@value": "Questa classe rappresenta la tipologia di dati della trasparenza: i valori sono controllati dal vocabolario relativo, e determinano l'attuale strutturazione delle sezioni e sotto-sezioni dell'\"Amministrazione Trasparente\" dei siti web della PA come previsto dalla normativa di settore (d.lgs 33/2013 e s.m.i)."
-        }
-      ],
-      "rdfs:isDefinedBy": {
-        "@id": "https://w3id.org/italia/onto/Transparency"
-      },
-      "rdfs:label": [
-        {
-          "@language": "it",
-          "@value": "Tipologia dato della trasparenza"
-        },
-        {
-          "@language": "en",
-          "@value": "Transparency data typology"
-        }
-      ],
-      "rdfs:subClassOf": {
-        "@id": "l0:Characteristic"
-      }
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/Transparency/hasTransparencySubject",
-      "@type": "owl:ObjectProperty",
-      "owl:versionInfo": [
-        {
-          "@language": "it",
-          "@value": "stabile"
-        },
-        {
-          "@language": "en",
-          "@value": "stable"
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@language": "it",
-          "@value": "Questa proprietà lega un obbligo di trasparenza ai temi che lo caratterizzano."
-        },
-        {
-          "@language": "en",
-          "@value": "This property links a transparency obligation to the related subjects."
-        }
-      ],
-      "rdfs:domain": {
-        "@id": "https://w3id.org/italia/onto/Transparency/TransparencyObligation"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "https://w3id.org/italia/onto/Transparency"
-      },
-      "rdfs:label": [
-        {
-          "@language": "en",
-          "@value": "has transparency subject"
-        },
-        {
-          "@language": "it",
-          "@value": "ha tema della trasparenza"
-        },
-        {
-          "@language": "en",
-          "@value": "has transparency theme"
-        },
-        {
-          "@language": "it",
-          "@value": "ha soggetto della trasparenza"
-        }
-      ],
-      "rdfs:range": {
-        "@id": "https://w3id.org/italia/onto/Transparency/TransparencySubject"
-      }
-    },
-    {
-      "@id": "_:ub2bL655C60",
-      "@type": "owl:Class",
-      "owl:unionOf": {
-        "@list": [
-          {
-            "@id": "l0:Activity"
-          },
-          {
-            "@id": "l0:Object"
-          }
-        ]
-      }
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/Transparency/generatedBy",
-      "@type": "owl:ObjectProperty",
-      "owl:inverseOf": {
-        "@id": "https://w3id.org/italia/onto/Transparency/generatesResource"
-      },
-      "owl:versionInfo": [
-        {
-          "@language": "it",
-          "@value": "stabile"
-        },
-        {
-          "@language": "en",
-          "@value": "stable"
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@language": "it",
-          "@value": "Questa proprità lega una risorsa all'attività che la genera."
-        },
-        {
-          "@language": "en",
-          "@value": "This property links a transparency resource to the activity from which is generated by."
-        }
-      ],
-      "rdfs:domain": {
-        "@id": "https://w3id.org/italia/onto/Transparency/TransparencyResource"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "https://w3id.org/italia/onto/Transparency"
-      },
-      "rdfs:label": [
-        {
-          "@language": "en",
-          "@value": "generated by"
-        },
-        {
-          "@language": "it",
-          "@value": "generato da"
-        }
-      ],
-      "rdfs:range": {
-        "@id": "https://w3id.org/italia/onto/Transparency/TransparencyActivity"
-      }
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/Transparency/TransparencySubject",
-      "@type": "owl:Class",
-      "owl:versionInfo": [
-        {
-          "@language": "en",
-          "@value": "stable"
-        },
-        {
-          "@language": "it",
-          "@value": "stabile"
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@language": "it",
-          "@value": "Questa classe rappresenta un soggetto (tema) collegato a un obbligo di trasparenza. Fa riferimento alla colonna 'contenuto dell'obbligo' dell'allegato alla guida ANAC."
-        },
-        {
-          "@language": "en",
-          "@value": "This class represents a subject releted to a transparency obbligation. It's related to the 'contenuto dell'obbligo' column of the ANAC guideline attachment."
-        }
-      ],
-      "rdfs:isDefinedBy": {
-        "@id": "https://w3id.org/italia/onto/Transparency"
-      },
-      "rdfs:label": [
-        {
-          "@language": "en",
-          "@value": "Transparency subject"
-        },
-        {
-          "@language": "it",
-          "@value": "Soggetto della trasparenza"
-        }
-      ],
-      "rdfs:subClassOf": [
-        {
-          "@id": "_:ub2bL699C38"
-        },
-        {
-          "@id": "l0:Concept"
-        },
-        {
-          "@id": "_:ub2bL695C38"
-        }
-      ]
-    },
-    {
-      "@id": "https://w3id.org/italia/data/distribution/TRAPIT-RDF-TURTLE",
-      "@type": [
-        "owl:NamedIndividual",
-        "admsapit:SemanticAssetDistribution"
-      ],
-      "dcat:accessURL": {
-        "@id": "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/Transparency/latest"
-      },
-      "dcat:downloadURL": {
-        "@id": "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/Transparency/Transparency-AP_IT.ttl"
-      },
-      "dcterms:description": [
-        {
-          "@language": "it",
-          "@value": "Questa è la distribuzione RDF/Turtle dell'Ontologia degli Obblighi della Trasparenza"
-        },
-        {
-          "@language": "en",
-          "@value": "This is the distribution in RDF/Turtle of the Transparency Obligations Ontology"
-        }
-      ],
-      "dcterms:format": {
-        "@id": "http://publications.europa.eu/resource/authority/file-type/RDF_TURTLE"
-      },
-      "dcterms:license": {
-        "@id": "https://w3id.org/italia/controlled-vocabulary/licences/A21_CCBY40"
-      },
-      "dcterms:title": [
-        {
-          "@language": "it",
-          "@value": "Distribuzione RDF/Turtle ontologia Transparency-AP_IT"
-        },
-        {
-          "@language": "en",
-          "@value": "RDF/Turtle distribution of Transparency-AP_IT Ontology"
-        }
-      ]
-    },
-    {
-      "@id": "http://spcdata.digitpa.gov.it/Amministrazione/agid",
-      "@type": [
-        "dcatapit:Agent",
-        "foaf:Agent",
-        "owl:NamedIndividual"
-      ],
-      "dcterms:identifier": "agid",
-      "foaf:name": [
-        {
-          "@language": "en",
-          "@value": "Italian Digital Agency"
-        },
-        {
-          "@language": "it",
-          "@value": "Agenzia per l'Italia Digitale"
-        }
-      ]
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/Transparency/TransparencyActivityTypology",
-      "@type": "owl:Class",
-      "owl:versionInfo": [
-        {
-          "@language": "en",
-          "@value": "stable"
-        },
-        {
-          "@language": "it",
-          "@value": "stabile"
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@language": "it",
-          "@value": "Questa classe indica la tipologia di attività della trasparenza."
-        },
-        {
-          "@language": "en",
-          "@value": "This class represents the transparency activity typology."
-        }
-      ],
-      "rdfs:isDefinedBy": {
-        "@id": "https://w3id.org/italia/onto/Transparency"
-      },
-      "rdfs:label": [
-        {
-          "@language": "en",
-          "@value": "Transparency activity typology"
-        },
-        {
-          "@language": "it",
-          "@value": "Tipologia di attività della trasparenza"
-        }
-      ],
-      "rdfs:subClassOf": {
-        "@id": "l0:Characteristic"
-      }
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/Transparency/InForce",
-      "@type": [
-        "owl:NamedIndividual",
-        "https://w3id.org/italia/onto/Transparency/TransparencyObligationStatus"
-      ],
-      "l0:description": [
-        {
-          "@language": "en",
-          "@value": "This individual represents the status in force of a transparency obbligation"
-        },
-        {
-          "@language": "it",
-          "@value": "Questo individuo rappresenta lo stato vigente di un obbligo di trasparenza"
-        }
-      ],
-      "owl:versionInfo": [
-        {
-          "@language": "it",
-          "@value": "stabile"
-        },
-        {
-          "@language": "en",
-          "@value": "stable"
-        }
-      ],
-      "rdfs:isDefinedBy": {
-        "@id": "https://w3id.org/italia/onto/Transparency"
-      },
-      "rdfs:label": [
-        {
-          "@language": "it",
-          "@value": "vigente"
-        },
-        {
-          "@language": "en",
-          "@value": "in force"
-        }
-      ]
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/Transparency/UpdateFrequency",
-      "@type": "owl:Class",
-      "owl:versionInfo": [
-        {
-          "@language": "en",
-          "@value": "stable"
-        },
-        {
-          "@language": "it",
-          "@value": "stabile"
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@language": "it",
-          "@value": "Questa classe la frequenza di aggiornamento di una risorsa così come indicato dall'obbligo ti trasaprenza."
-        },
-        {
-          "@language": "en",
-          "@value": "This class represents the update frequency as prescribed by the transparency obbligation."
-        }
-      ],
-      "rdfs:isDefinedBy": {
-        "@id": "https://w3id.org/italia/onto/Transparency"
-      },
-      "rdfs:label": [
-        {
-          "@language": "it",
-          "@value": "Frequenza di aggiornamento"
-        },
-        {
-          "@language": "en",
-          "@value": "Update frequency"
-        }
-      ],
-      "rdfs:subClassOf": {
-        "@id": "l0:Characteristic"
-      }
-    },
-    {
-      "@id": "_:ub2bL601C41",
-      "@type": "owl:Restriction",
-      "owl:allValuesFrom": {
-        "@id": "tiapit:TimeInterval"
-      },
-      "owl:onProperty": {
-        "@id": "tiapit:atTime"
-      }
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/Transparency/hasAllowedFormat",
-      "@type": "owl:ObjectProperty",
-      "owl:versionInfo": [
-        {
-          "@language": "it",
-          "@value": "stabile"
-        },
-        {
-          "@language": "en",
-          "@value": "stable"
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@language": "it",
-          "@value": "Questa proprità lega una risorsa della trasparenza al formato definito per la pubblicazione"
-        },
-        {
-          "@language": "en",
-          "@value": "This property links a transparency resource to the allowed format defined for publication."
-        }
-      ],
-      "rdfs:domain": {
-        "@id": "https://w3id.org/italia/onto/Transparency/TransparencyResource"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "https://w3id.org/italia/onto/Transparency"
-      },
-      "rdfs:label": [
-        {
-          "@language": "it",
-          "@value": "da pubblicare nel formato"
-        },
-        {
-          "@language": "en",
-          "@value": "has allowed format"
-        }
-      ],
-      "rdfs:range": {
-        "@id": "https://w3id.org/italia/onto/Transparency/Format"
-      }
-    },
-    {
-      "@id": "https://w3id.org/italia/data/distribution/TRAPIT-JSON-LD",
-      "@type": [
-        "owl:NamedIndividual",
-        "admsapit:SemanticAssetDistribution"
-      ],
-      "dcat:accessURL": {
-        "@id": "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/Transparency/latest"
-      },
-      "dcat:downloadURL": {
-        "@id": "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/Transparency/Transparency-AP_IT.jsonld"
-      },
-      "dcterms:description": [
-        {
-          "@language": "it",
-          "@value": "Questa è la distribuzione JSON-LD dell'Ontologia degli Obblighi della Trasparenza"
-        },
-        {
-          "@language": "en",
-          "@value": "This is the distribution in JSON-LD of the Transparency Obligations Ontology"
-        }
-      ],
-      "dcterms:format": {
-        "@id": "http://publications.europa.eu/resource/authority/file-type/JSON_LD"
-      },
-      "dcterms:license": {
-        "@id": "https://w3id.org/italia/controlled-vocabulary/licences/A21_CCBY40"
-      },
-      "dcterms:title": [
-        {
-          "@language": "it",
-          "@value": "Distribuzione JSON-LD ontologia Transparency-AP_IT"
-        },
-        {
-          "@language": "en",
-          "@value": "JSON-LD distribution of Transparency-AP_IT Ontology"
-        }
-      ]
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/Transparency/subTransparencyObligationOf",
-      "@type": "owl:ObjectProperty",
-      "owl:inverseOf": {
-        "@id": "https://w3id.org/italia/onto/Transparency/superTransparencyObligationOf"
-      },
-      "owl:versionInfo": [
-        {
-          "@language": "it",
-          "@value": "stabile"
-        },
-        {
-          "@language": "en",
-          "@value": "stable"
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@language": "it",
-          "@value": "Questa proprietà lega un obbligo di trasparenza ad un obbligo di cui fa parte."
-        },
-        {
-          "@language": "en",
-          "@value": "This property links a transparency obligation to a transparency obligation of which is part of."
-        }
-      ],
-      "rdfs:domain": {
-        "@id": "https://w3id.org/italia/onto/Transparency/TransparencyObligation"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "https://w3id.org/italia/onto/Transparency"
-      },
-      "rdfs:label": [
-        {
-          "@language": "en",
-          "@value": "sub-transparency obligation of"
-        },
-        {
-          "@language": "it",
-          "@value": "sotto-obbligo di trasparenza di"
-        }
-      ],
-      "rdfs:range": {
-        "@id": "https://w3id.org/italia/onto/Transparency/TransparencyObligation"
-      }
-    },
-    {
-      "@id": "_:ub2bL605C41",
-      "@type": "owl:Restriction",
-      "owl:onProperty": {
-        "@id": "l0:description"
-      },
-      "owl:someValuesFrom": {
-        "@id": "rdfs:Literal"
-      }
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/Transparency/obligedToEnforce",
-      "@type": "owl:ObjectProperty",
-      "owl:versionInfo": [
-        {
-          "@language": "it",
-          "@value": "stabile"
-        },
-        {
-          "@language": "en",
-          "@value": "stable"
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@language": "en",
-          "@value": "This property links a public organization to the transparecy obligations which is obliged to enforce."
-        },
-        {
-          "@language": "it",
-          "@value": "Questa proprietà lega una amministrazione pubblica gli obblighi di trasparenza che è obbligata a rispettare."
-        }
-      ],
-      "rdfs:domain": {
-        "@id": "https://w3id.org/italia/onto/COV/PublicOrganization"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "https://w3id.org/italia/onto/Transparency"
-      },
-      "rdfs:label": [
-        {
-          "@language": "it",
-          "@value": "obbligata a rispettare l'obbligo"
-        },
-        {
-          "@language": "en",
-          "@value": "obliged to enforce obligation"
-        }
-      ],
-      "rdfs:range": {
-        "@id": "https://w3id.org/italia/onto/Transparency/TransparencyObligation"
-      }
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/Transparency/isClassifiedBy",
-      "@type": "owl:ObjectProperty",
-      "owl:versionInfo": [
-        {
-          "@language": "it",
-          "@value": "stabile"
-        },
-        {
-          "@language": "en",
-          "@value": "stable"
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@language": "en",
-          "@value": "This property links a transparency obligation to the corresponding data typology. The values are controlled by the taxonomy  https://w3id.org/italia/controlled-vocabulary/classifications-for-transparency/transparency-titulus "
-        },
-        {
-          "@language": "it",
-          "@value": "Questa proprietà lega un obbligo di trasparenza alla relativa tipologia. Le voci sono controllate della tassonomia https://w3id.org/italia/controlled-vocabulary/classifications-for-transparency/transparency-titulus"
-        }
-      ],
-      "rdfs:domain": {
-        "@id": "https://w3id.org/italia/onto/Transparency/TransparencyObligation"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "https://w3id.org/italia/onto/Transparency"
-      },
-      "rdfs:labels": [
-        {
-          "@language": "it",
-          "@value": "è classificato da"
-        },
-        {
-          "@language": "en",
-          "@value": "is classified by"
-        }
-      ],
-      "rdfs:range": {
-        "@id": "https://w3id.org/italia/onto/Transparency/TransparencyDataTypology"
-      }
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/Transparency/TransparencyResource",
-      "@type": "owl:Class",
-      "owl:versionInfo": [
-        {
-          "@language": "en",
-          "@value": "stable"
-        },
-        {
-          "@language": "it",
-          "@value": "stabile"
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@language": "it",
-          "@value": "Questa classe rappresenta i documenti, le informazioni e i dati oggetto di pubblicazione nei siti istituzionali delle pubbliche amministrazioni."
-        },
-        {
-          "@language": "en",
-          "@value": "This class represents documents, informazions and data object of publication on the official website of the public administrations."
-        }
-      ],
-      "rdfs:isDefinedBy": {
-        "@id": "https://w3id.org/italia/onto/Transparency"
-      },
-      "rdfs:label": [
-        {
-          "@language": "it",
-          "@value": "Risorsa di trasparenza"
-        },
-        {
-          "@language": "en",
-          "@value": "Transparency resource"
-        }
-      ],
-      "rdfs:subClassOf": [
-        {
-          "@id": "l0:Object"
-        },
-        {
-          "@id": "_:ub2bL665C39"
-        },
-        {
-          "@id": "_:ub2bL661C39"
-        },
-        {
-          "@id": "_:ub2bL670C39"
-        },
-        {
-          "@id": "_:ub2bL653C39"
-        }
-      ]
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/Transparency/definesUpdateFrequency",
-      "@type": "owl:ObjectProperty",
-      "owl:versionInfo": [
-        {
-          "@language": "it",
-          "@value": "stabile"
-        },
-        {
-          "@language": "en",
-          "@value": "stable"
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@language": "en",
-          "@value": "This property links a transparency obligation to the update frequency which it defines."
-        },
-        {
-          "@language": "it",
-          "@value": "Questa proprietà collega un obbligo di trasparenza alla frequenza di aggiornamento da esso definita."
-        }
-      ],
-      "rdfs:domain": {
-        "@id": "https://w3id.org/italia/onto/Transparency/TransparencyObligation"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "https://w3id.org/italia/onto/Transparency"
-      },
-      "rdfs:label": [
-        {
-          "@language": "en",
-          "@value": "defines update frequency"
-        },
-        {
-          "@language": "it",
-          "@value": "definisce frequenza di aggiornamento"
-        }
-      ],
-      "rdfs:range": {
-        "@id": "https://w3id.org/italia/onto/Transparency/UpdateFrequency"
-      }
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/Transparency/TransparencyUpdateActivity",
-      "@type": [
-        "owl:Class",
-        "https://w3id.org/italia/onto/Transparency/TransparencyActivityTypology",
-        "owl:NamedIndividual"
-      ],
-      "l0:description": [
-        {
-          "@language": "en",
-          "@value": "This individual represents the update activity triggered by a transparency obligation."
-        },
-        {
-          "@language": "it",
-          "@value": "Questo individuo rappresenta l'attività di aggiornamento attivata da un obbligo di trasparenza."
-        }
-      ],
-      "owl:equivalentClass": {
-        "@id": "_:ub2bL717C49"
-      },
-      "owl:versionInfo": [
-        {
-          "@language": "en",
-          "@value": "stable"
-        },
-        {
-          "@language": "it",
-          "@value": "stabile"
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@language": "en",
-          "@value": "This class represents an update activity as an effect of a transparency obbligation."
-        },
-        {
-          "@language": "it",
-          "@value": "Questa classe rappresenta un'attività di aggiornamento come conseguenza di un obbligo di trasparenza."
-        }
-      ],
-      "rdfs:isDefinedBy": {
-        "@id": "https://w3id.org/italia/onto/Transparency"
-      },
-      "rdfs:label": [
-        {
-          "@language": "it",
-          "@value": "update"
-        },
-        {
-          "@language": "it",
-          "@value": "Attività di trasparenza: Aggiornamento."
-        },
-        {
-          "@language": "en",
-          "@value": "Transparency activity: Update."
-        },
-        {
-          "@language": "it",
-          "@value": "aggiornamento"
-        }
-      ],
-      "rdfs:subClassOf": {
-        "@id": "https://w3id.org/italia/onto/Transparency/TransparencyActivity"
-      }
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/Transparency/triggeredBy",
-      "@type": "owl:ObjectProperty",
-      "owl:inverseOf": {
-        "@id": "https://w3id.org/italia/onto/Transparency/triggers"
-      },
-      "owl:versionInfo": [
-        {
-          "@language": "en",
-          "@value": "stable"
-        },
-        {
-          "@language": "it",
-          "@value": "stabile"
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@language": "it",
-          "@value": "Questa proprietà lega un obbligo di trasparenza all'attività che attiva."
-        },
-        {
-          "@language": "en",
-          "@value": "This property links a trasparency obbligation to the activty triggered by it."
-        }
-      ],
-      "rdfs:domain": {
-        "@id": "https://w3id.org/italia/onto/Transparency/TransparencyActivity"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "https://w3id.org/italia/onto/Transparency"
-      },
-      "rdfs:label": [
-        {
-          "@language": "en",
-          "@value": "triggered by"
-        },
-        {
-          "@language": "it",
-          "@value": "attivato da"
-        }
-      ],
-      "rdfs:range": {
-        "@id": "https://w3id.org/italia/onto/Transparency/TransparencyObligation"
-      }
-    },
-    {
-      "@id": "_:ub2bL528C39",
-      "@type": "owl:Restriction",
-      "owl:onClass": {
-        "@id": "l0:Agent"
-      },
-      "owl:onProperty": {
-        "@id": "https://w3id.org/italia/onto/Transparency/isPerformedByAgent"
-      },
-      "owl:qualifiedCardinality": {
-        "@type": "xsd:nonNegativeInteger",
-        "@value": "1"
-      }
-    },
-    {
-      "@id": "_:ub2bL661C39",
-      "@type": "owl:Restriction",
-      "owl:onProperty": {
-        "@id": "l0:name"
-      },
-      "owl:someValuesFrom": {
-        "@id": "rdfs:Literal"
-      }
-    },
-    {
-      "@id": "l0:Concept",
-      "@type": "owl:Class"
-    },
-    {
-      "@id": "_:ub2bL524C39",
-      "@type": "owl:Restriction",
-      "owl:onProperty": {
-        "@id": "https://w3id.org/italia/onto/Transparency/hasTransparencyActivityTypology"
-      },
-      "owl:someValuesFrom": {
-        "@id": "https://w3id.org/italia/onto/Transparency/TransparencyActivityTypology"
-      }
-    },
-    {
-      "@id": "https://w3id.org/italia/data/distribution/TRAPIT-RDF-XML",
-      "@type": [
-        "owl:NamedIndividual",
-        "admsapit:SemanticAssetDistribution"
-      ],
-      "dcat:accessURL": {
-        "@id": "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/Transparency/latest"
-      },
-      "dcat:downloadURL": {
-        "@id": "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/Transparency/Transparency-AP_IT.rdf"
-      },
-      "dcterms:description": [
-        {
-          "@language": "en",
-          "@value": "This is the distribution in RDF/XML of the Transparency Obligations Ontology"
-        },
-        {
-          "@language": "it",
-          "@value": "Questa è la distribuzione RDF/XML dell'Ontologia degli Obblighi della Trasparenza"
-        }
-      ],
-      "dcterms:format": {
-        "@id": "http://publications.europa.eu/resource/authority/file-type/RDF_XML"
-      },
-      "dcterms:license": {
-        "@id": "https://w3id.org/italia/controlled-vocabulary/licences/A21_CCBY40"
-      },
-      "dcterms:title": [
-        {
-          "@language": "it",
-          "@value": "Distribuzione RDF/XML ontologia Transparency-AP_IT"
-        },
-        {
-          "@language": "en",
-          "@value": "RDF/XML distribution of Transparency-AP_IT Ontology"
-        }
-      ]
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/Transparency/accessURL",
-      "@type": "owl:DatatypeProperty",
-      "owl:versionInfo": [
-        {
-          "@language": "it",
-          "@value": "stabile"
-        },
-        {
-          "@language": "en",
-          "@value": "stable"
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@language": "it",
-          "@value": "Questa URL definisce l'indirizzo di accesso e reperimento del contenuto informativo."
-        },
-        {
-          "@language": "en",
-          "@value": "This URL defines the access address of the informative content."
-        }
-      ],
-      "rdfs:domain": {
-        "@id": "https://w3id.org/italia/onto/Transparency/TransparencyResource"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "https://w3id.org/italia/onto/Transparency"
-      },
-      "rdfs:label": [
-        {
-          "@language": "it",
-          "@value": "URL di accesso alla risorsa"
-        },
-        {
-          "@language": "en",
-          "@value": "access URL"
-        }
-      ],
-      "rdfs:range": {
-        "@id": "xsd:anyURI"
-      },
-      "rdfs:subPropertyOf": {
-        "@id": "smapit:URL"
-      }
-    },
-    {
-      "@id": "_:ub2bL609C41",
-      "@type": "owl:Restriction",
-      "owl:onProperty": {
-        "@id": "l0:name"
-      },
-      "owl:someValuesFrom": {
-        "@id": "rdfs:Literal"
-      }
-    },
-    {
-      "@id": "https://w3id.org/italia/data/organization/private-organization/05481840964",
-      "@type": [
-        "owl:NamedIndividual",
-        "dcatapit:Agent",
-        "foaf:Agent"
-      ],
-      "dcterms:identifier": "05481840964",
-      "foaf:name": {
-        "@language": "it",
-        "@value": "Almawave Srl"
-      }
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/Transparency/Format",
-      "@type": "owl:Class",
-      "owl:versionInfo": [
-        {
-          "@language": "it",
-          "@value": "stabile"
-        },
-        {
-          "@language": "en",
-          "@value": "stable"
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@language": "en",
-          "@value": "This class represents the format of a resource."
-        },
-        {
-          "@language": "it",
-          "@value": "Questa classe indica il formato di una risorsa"
-        }
-      ],
-      "rdfs:isDefinedBy": {
-        "@id": "https://w3id.org/italia/onto/Transparency"
-      },
-      "rdfs:label": [
-        {
-          "@language": "en",
-          "@value": "Format"
-        },
-        {
-          "@language": "it",
-          "@value": "Formato"
-        }
-      ],
-      "rdfs:subClassOf": {
-        "@id": "l0:Characteristic"
-      }
-    },
-    {
-      "@id": "_:ub2bL695C38",
-      "@type": "owl:Restriction",
-      "owl:onProperty": {
-        "@id": "l0:description"
-      },
-      "owl:someValuesFrom": {
-        "@id": "rdfs:Literal"
-      }
-    },
-    {
-      "@id": "_:ub2bL665C39",
-      "@type": "owl:Restriction",
-      "owl:onDataRange": {
-        "@id": "xsd:anyURI"
-      },
-      "owl:onProperty": {
-        "@id": "https://w3id.org/italia/onto/Transparency/accessURL"
-      },
-      "owl:qualifiedCardinality": {
-        "@type": "xsd:nonNegativeInteger",
-        "@value": "1"
-      }
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/Transparency/generatesResource",
-      "@type": "owl:ObjectProperty",
-      "owl:versionInfo": [
-        {
-          "@language": "it",
-          "@value": "stabile"
-        },
-        {
-          "@language": "en",
-          "@value": "stable"
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@language": "en",
-          "@value": "This property links a transparency activity to the resource generated as outcome of it."
-        },
-        {
-          "@language": "it",
-          "@value": "Questa proprietà lega un'attività della trasparenza alla risorsa generata come risultato dell'attività."
-        }
-      ],
-      "rdfs:domain": {
-        "@id": "https://w3id.org/italia/onto/Transparency/TransparencyActivity"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "https://w3id.org/italia/onto/Transparency"
-      },
-      "rdfs:label": [
-        {
-          "@language": "en",
-          "@value": "generates resource"
-        },
-        {
-          "@language": "it",
-          "@value": "produce risorsa"
-        }
-      ],
-      "rdfs:range": {
-        "@id": "https://w3id.org/italia/onto/Transparency/TransparencyResource"
-      }
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/Transparency/mustBeUptodatedWithin",
-      "@type": "owl:ObjectProperty",
-      "owl:versionInfo": [
-        {
-          "@language": "en",
-          "@value": "stable"
-        },
-        {
-          "@language": "it",
-          "@value": "stabile"
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@language": "it",
-          "@value": "Questa proprietà collega una risorsa della trasparenza alla frequenza con cui deve addiornamento."
-        },
-        {
-          "@language": "en",
-          "@value": "This property links a transparency resource to the prescribed update frequency."
-        }
-      ],
-      "rdfs:domain": {
-        "@id": "https://w3id.org/italia/onto/Transparency/TransparencyResource"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "https://w3id.org/italia/onto/Transparency"
-      },
-      "rdfs:label": [
-        {
-          "@language": "en",
-          "@value": "must be update within"
-        },
-        {
-          "@language": "it",
-          "@value": "deve essere aggiornata entro"
-        }
-      ],
-      "rdfs:range": {
-        "@id": "https://w3id.org/italia/onto/Transparency/UpdateFrequency"
-      }
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/Transparency/refersToTransparencyEntity",
-      "@type": "owl:ObjectProperty",
-      "owl:versionInfo": [
-        {
-          "@language": "en",
-          "@value": "stable"
-        },
-        {
-          "@language": "it",
-          "@value": "stabile"
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@language": "en",
-          "@value": "This property links a transparency resource to the related entities."
-        },
-        {
-          "@language": "it",
-          "@value": "Questa proprità lega una risorsa della trasparenza alle entità ad essa collegata"
-        }
-      ],
-      "rdfs:domain": {
-        "@id": "https://w3id.org/italia/onto/Transparency/TransparencyResource"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "https://w3id.org/italia/onto/Transparency"
-      },
-      "rdfs:label": [
-        {
-          "@language": "en",
-          "@value": "refers to transparency entity"
-        },
-        {
-          "@language": "it",
-          "@value": "si riferisce a entità"
-        }
-      ],
-      "rdfs:range": {
-        "@id": "_:ub2bL341C40"
-      }
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/Transparency/TransparencyArchiveActivity",
-      "@type": [
-        "owl:Class",
-        "https://w3id.org/italia/onto/Transparency/TransparencyActivityTypology",
-        "owl:NamedIndividual"
-      ],
-      "l0:description": [
-        {
-          "@language": "it",
-          "@value": "Questo individuo rappresenta l'attività di storicizzazione attivata da un obbligo di trasparenza."
-        },
-        {
-          "@language": "en",
-          "@value": "This individual represents the archive activity triggered by a transparency obligation."
-        }
-      ],
-      "owl:disjointWith": {
-        "@id": "https://w3id.org/italia/onto/Transparency/TransparencyPublicationActivity"
-      },
-      "owl:equivalentClass": {
-        "@id": "_:ub2bL574C50"
-      },
-      "owl:versionInfo": [
-        {
-          "@language": "en",
-          "@value": "stable"
-        },
-        {
-          "@language": "it",
-          "@value": "stabile"
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@language": "en",
-          "@value": "This class represents an archive activity as an effect of a transparency obbligation."
-        },
-        {
-          "@language": "it",
-          "@value": "Questa classe rappresenta un'attività di storicizzazione come conseguenza di un obbligo di trasparenza."
-        }
-      ],
-      "rdfs:isDefinedBy": {
-        "@id": "https://w3id.org/italia/onto/Transparency"
-      },
-      "rdfs:label": [
-        {
-          "@language": "it",
-          "@value": "Attività di trasparenza: Storicizzazione."
-        },
-        {
-          "@language": "it",
-          "@value": "archive"
-        },
-        {
-          "@language": "en",
-          "@value": "Transparency activity: Archive."
-        },
-        {
-          "@language": "it",
-          "@value": "storicizzazione"
-        }
-      ],
-      "rdfs:subClassOf": {
-        "@id": "https://w3id.org/italia/onto/Transparency/TransparencyActivity"
-      }
-    },
-    {
-      "@id": "rdfs:labels",
-      "@type": "owl:AnnotationProperty"
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/Transparency/superTransparencyObligationOf",
-      "@type": "owl:ObjectProperty",
-      "owl:versionInfo": [
-        {
-          "@language": "en",
-          "@value": "stable"
-        },
-        {
-          "@language": "it",
-          "@value": "stabile"
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@language": "en",
-          "@value": "This property links a transparency obligation to a transparency obligation of which is composed by."
-        },
-        {
-          "@language": "it",
-          "@value": "Questa proprietà lega un obbligo di trasparenza ad un obbligo di cui è composto."
-        }
-      ],
-      "rdfs:domain": {
-        "@id": "https://w3id.org/italia/onto/Transparency/TransparencyObligation"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "https://w3id.org/italia/onto/Transparency"
-      },
-      "rdfs:label": [
-        {
-          "@language": "it",
-          "@value": "super-obbligo di trasparenza di"
-        },
-        {
-          "@language": "en",
-          "@value": "super-transparency obligation of"
-        }
-      ],
-      "rdfs:range": {
-        "@id": "https://w3id.org/italia/onto/Transparency/TransparencyObligation"
-      }
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/Transparency/isVersionOf",
-      "@type": "owl:ObjectProperty",
-      "owl:versionInfo": [
-        {
-          "@language": "it",
-          "@value": "stabile"
-        },
-        {
-          "@language": "en",
-          "@value": "stable"
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@language": "en",
-          "@value": "This property links a transparency resource to its other version."
-        },
-        {
-          "@language": "it",
-          "@value": "Questa proprietà lega una risorsa ad una sua versione."
-        }
-      ],
-      "rdfs:domain": {
-        "@id": "https://w3id.org/italia/onto/Transparency/TransparencyResource"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "https://w3id.org/italia/onto/Transparency"
-      },
-      "rdfs:label": [
-        {
-          "@language": "en",
-          "@value": "version of"
-        },
-        {
-          "@language": "it",
-          "@value": "versione di"
-        }
-      ],
-      "rdfs:range": {
-        "@id": "https://w3id.org/italia/onto/Transparency/TransparencyResource"
-      }
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/Transparency/appliesToPA",
-      "@type": "owl:ObjectProperty",
-      "owl:inverseOf": {
-        "@id": "https://w3id.org/italia/onto/Transparency/obligedToEnforce"
-      },
-      "owl:versionInfo": [
-        {
-          "@language": "en",
-          "@value": "stable"
-        },
-        {
-          "@language": "it",
-          "@value": "stabile"
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@language": "it",
-          "@value": "Questa proprietà lega un obbligo di trasparenza alla pubblica amministrazione a cui si applica."
-        },
-        {
-          "@language": "en",
-          "@value": "This property links a transparency obligation to a public administration to whom is applied."
-        }
-      ],
-      "rdfs:domain": {
-        "@id": "https://w3id.org/italia/onto/Transparency/TransparencyObligation"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "https://w3id.org/italia/onto/Transparency"
-      },
-      "rdfs:label": [
-        {
-          "@language": "en",
-          "@value": "applies to PA"
-        },
-        {
-          "@language": "it",
-          "@value": "si applica alla PA"
-        }
-      ],
-      "rdfs:range": {
-        "@id": "https://w3id.org/italia/onto/COV/PublicOrganization"
-      }
-    },
-    {
-      "@id": "_:ub2bL642C54",
-      "@type": "owl:Restriction",
-      "owl:hasValue": {
-        "@id": "https://w3id.org/italia/onto/Transparency/TransparencyPublicationActivity"
-      },
-      "owl:onProperty": {
-        "@id": "https://w3id.org/italia/onto/Transparency/hasTransparencyActivityTypology"
-      }
-    },
-    {
-      "@id": "xsd:time",
-      "@type": "rdfs:Datatype"
-    },
-    {
-      "@id": "_:ub2bL673C57",
-      "@type": "rdfs:Datatype",
-      "owl:unionOf": {
-        "@list": [
-          {
-            "@id": "xsd:date"
-          },
-          {
-            "@id": "xsd:dateTime"
-          },
-          {
-            "@id": "xsd:time"
-          }
-        ]
-      }
-    },
-    {
-      "@id": "_:ub2bL699C38",
-      "@type": "owl:Restriction",
-      "owl:cardinality": {
-        "@type": "xsd:nonNegativeInteger",
-        "@value": "1"
-      },
-      "owl:onProperty": {
-        "@id": "l0:name"
-      }
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/Transparency/triggers",
-      "@type": "owl:ObjectProperty",
-      "owl:versionInfo": [
-        {
-          "@language": "it",
-          "@value": "stabile"
-        },
-        {
-          "@language": "en",
-          "@value": "stable"
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@language": "it",
-          "@value": "Questa proprietà lega un obbligo di trasparenza all'attività che attiva."
-        },
-        {
-          "@language": "en",
-          "@value": "This property links a trasparency obbligation to the activty triggered by it."
-        }
-      ],
-      "rdfs:domain": {
-        "@id": "https://w3id.org/italia/onto/Transparency/TransparencyObligation"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "https://w3id.org/italia/onto/Transparency"
-      },
-      "rdfs:label": [
-        {
-          "@language": "en",
-          "@value": "triggers"
-        },
-        {
-          "@language": "it",
-          "@value": "attiva"
-        }
-      ],
-      "rdfs:range": {
-        "@id": "https://w3id.org/italia/onto/Transparency/TransparencyActivity"
-      }
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/Transparency/isPerformedByAgent",
-      "@type": "owl:ObjectProperty",
-      "owl:inverseOf": {
-        "@id": "https://w3id.org/italia/onto/Transparency/performsTransparencyActivity"
-      },
-      "owl:versionInfo": [
-        {
-          "@language": "it",
-          "@value": "stabile"
-        },
-        {
-          "@language": "en",
-          "@value": "stable"
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@language": "it",
-          "@value": "Questa proprietà lega una attività al soggetto che la esegue."
-        },
-        {
-          "@language": "en",
-          "@value": "This property links a transparency activity to the agent that performs it."
-        }
-      ],
-      "rdfs:domain": {
-        "@id": "https://w3id.org/italia/onto/Transparency/TransparencyActivity"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "https://w3id.org/italia/onto/Transparency"
-      },
-      "rdfs:label": [
-        {
-          "@language": "en",
-          "@value": "is performed by"
-        },
-        {
-          "@language": "it",
-          "@value": "è eseguita da"
-        }
-      ],
-      "rdfs:range": {
-        "@id": "l0:Agent"
-      }
-    },
-    {
-      "@id": "_:ub2bL670C39",
-      "@type": "owl:Restriction",
-      "owl:maxQualifiedCardinality": {
-        "@type": "xsd:nonNegativeInteger",
-        "@value": "1"
-      },
-      "owl:onDataRange": {
-        "@id": "_:ub2bL673C57"
-      },
-      "owl:onProperty": {
-        "@id": "tiapit:modified"
-      }
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/Transparency/TransparencyActivity",
-      "@type": "owl:Class",
-      "owl:disjointUnionOf": {
-        "@list": [
-          {
-            "@id": "https://w3id.org/italia/onto/Transparency/TransparencyPublicationActivity"
-          },
-          {
-            "@id": "https://w3id.org/italia/onto/Transparency/TransparencyUpdateActivity"
-          }
-        ]
-      },
-      "owl:versionInfo": [
-        {
-          "@language": "en",
-          "@value": "stable"
-        },
-        {
-          "@language": "it",
-          "@value": "stabile"
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@language": "it",
-          "@value": "Questa classe rappresenta un'attività di trasparenza come conseguenza di un obbligo di trasparenza."
-        },
-        {
-          "@language": "en",
-          "@value": "This class represents a trasparency activity as an effect of a transparency obbligation. For example pubblication, update,..."
-        }
-      ],
-      "rdfs:isDefinedBy": {
-        "@id": "https://w3id.org/italia/onto/Transparency"
-      },
-      "rdfs:label": [
-        {
-          "@language": "en",
-          "@value": "Transparency activity"
-        },
-        {
-          "@language": "it",
-          "@value": "Attività di trasparenza."
-        }
-      ],
-      "rdfs:subClassOf": [
-        {
-          "@id": "_:ub2bL528C39"
-        },
-        {
-          "@id": "l0:Activity"
-        },
-        {
-          "@id": "_:ub2bL524C39"
-        },
-        {
-          "@id": "_:ub2bL533C39"
-        },
-        {
-          "@id": "_:ub2bL520C39"
-        }
-      ]
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/Transparency",
-      "@type": "owl:Ontology",
-      "admsapit:acronym": "Transparency-AP_IT",
-      "admsapit:hasFormalityLevel": {
-        "@id": "admsapit:Formal"
-      },
-      "admsapit:hasOntologyLanguage": {
-        "@id": "admsapit:OWL"
-      },
-      "admsapit:hasSemanticAssetDistribution": [
-        {
-          "@id": "https://w3id.org/italia/data/distribution/TRAPIT-JSON-LD"
-        },
-        {
-          "@id": "https://w3id.org/italia/data/distribution/TRAPIT-RDF-TURTLE"
-        },
-        {
-          "@id": "https://w3id.org/italia/data/distribution/TRAPIT-RDF-XML"
-        }
-      ],
-      "admsapit:hasTask": [
-        {
-          "@id": "admsapit:QueryFormulationTask"
-        },
-        {
-          "@id": "admsapit:SearchTask"
-        },
-        {
-          "@id": "admsapit:AnnotationTask"
-        }
-      ],
-      "admsapit:last": {
-        "@id": "https://w3id.org/italia/onto/Transparency/0.1"
-      },
-      "admsapit:officialURI": {
-        "@type": "xsd:anyURI",
-        "@value": "https://w3id.org/italia/onto/Transparency"
-      },
-      "admsapit:prefix": "trapit",
-      "admsapit:semanticAssetInUse": [
-        {
-          "@id": "https://w3id.org/italia/data/project/OntoPiA"
-        },
-        {
-          "@id": "https://w3id.org/italia/data/project/DAF"
-        }
-      ],
-      "admsapit:status": "draft",
-      "admsapit:target": [
-        {
-          "@language": "it",
-          "@value": "Pubbliche amministrazioni"
-        },
-        {
-          "@language": "it",
-          "@value": "Cittadini"
-        }
-      ],
-      "admsapit:type": {
-        "@id": "admsapit:DomainOntology"
-      },
-      "dcat:contactPoint": {
-        "@id": "http://dati.gov.it/data/resource/ContactPoint/voc_AgID"
-      },
-      "dcat:keyword": [
-        {
-          "@language": "it",
-          "@value": "trasparenza"
-        },
-        {
-          "@language": "it",
-          "@value": "trasparenza pubblica amministrazione"
-        },
-        {
-          "@language": "en",
-          "@value": "transparency"
-        },
-        {
-          "@language": "en",
-          "@value": "transparency for public administration"
-        },
-        {
-          "@language": "it",
-          "@value": "trasparenza pa"
-        },
-        {
-          "@language": "it",
-          "@value": "trasparenza PA"
-        }
-      ],
-      "dcat:theme": [
-        {
-          "@id": "http://publications.europa.eu/resource/authority/data-theme/GOVE"
-        },
-        {
-          "@id": "http://publications.europa.eu/resource/authority/data-theme/TECH"
-        }
-      ],
-      "dcterms:accrualPeriodicity": {
-        "@id": "http://publications.europa.eu/resource/authority/frequency/IRREG"
-      },
-      "dcterms:creator": [
-        {
-          "@id": "https://w3id.org/italia/data/organization/private-organization/05481840964"
-        },
-        {
-          "@id": "http://spcdata.digitpa.gov.it/Amministrazione/agid"
-        }
-      ],
-      "dcterms:description": [
-        {
-          "@language": "en",
-          "@value": "This is the Italian application profile of the Transparency Obligations Ontology. This ontology of OntoPiA implements the dispositions about the publication obligation of informative contents on the section 'Transparent Administration' of the official website of the public administrations. This ontology version is a draft waiting for the ANAC validation."
-        },
-        {
-          "@id": "https://w3id.org/italia/onto/Transparency/./latest/img/Transparency-AP_IT.png"
-        },
-        {
-          "@language": "it",
-          "@value": "Questo è il profilo applicativo italiano dell'Ontologia degli Obblighi della Trasparenza. L'ontologia di OntoPiA implementa le disposizioni in merito all'obbligo di pubblicazione di contenuti informativi nella sezione 'Amministrazione Trasparente' dei siti istituzioonali delle publiche amministrazioni. Questa versione dell'ontologia è in attesa di essere visionata da ANAC."
-        }
-      ],
-      "dcterms:issued": {
-        "@type": "xsd:date",
-        "@value": "2019-05-30"
-      },
-      "dcterms:language": [
-        {
-          "@id": "http://publications.europa.eu/resource/authority/language/ITA"
-        },
-        {
-          "@id": "http://publications.europa.eu/resource/authority/language/ENG"
-        }
-      ],
-      "dcterms:modified": {
-        "@type": "xsd:date",
-        "@value": "2019-06-25"
-      },
-      "dcterms:publisher": {
-        "@id": "http://spcdata.digitpa.gov.it/Amministrazione/agid"
-      },
-      "dcterms:rightsHolder": {
-        "@id": "http://spcdata.digitpa.gov.it/Amministrazione/agid"
-      },
-      "dcterms:title": {
-        "@language": "it",
-        "@value": "Ontologia dell'Amministrazione Trasparente - profilo applicativo italiano"
-      },
-      "owl:imports": [
-        {
-          "@id": "https://w3id.org/italia/onto/l0"
-        },
-        {
-          "@id": "https://w3id.org/italia/onto/COV"
-        },
-        {
-          "@id": "https://w3id.org/italia/onto/TI"
-        }
-      ],
-      "owl:versionIRI": {
-        "@id": "https://w3id.org/italia/onto/Transparency/0.1"
-      },
-      "owl:versionInfo": {
-        "@language": "it",
-        "@value": "La presente versione dell'ontologia è un draft in attesa di revisone da parte di ANAC."
-      },
-      "rdfs:comment": [
-        {
-          "@language": "it",
-          "@value": "Questo è il profilo applicativo italiano dell'Ontologia degli Obblighi della Trasparenza. L'ontologia di OntoPiA implementa le disposizioni in merito all'obbligo di pubblicazione di contenuti informativi nella sezione 'Amministrazione Trasparente' dei siti istituzionali delle publiche amministrazioni. Questa versione dell'ontologia è in attesa di essere visionata da ANAC."
-        },
-        {
-          "@language": "en",
-          "@value": "This is the Italian application profile of the Transparency Obligations Ontology. This ontology of OntoPiA implements the dispositions about the publication obligation of informative contents on the section 'Transparent Administration' of the official website of the public administrations. This ontology version is a draft waiting for the ANAC validation."
-        }
-      ],
-      "rdfs:isDefinedBy": {
-        "@id": "https://w3id.org/italia/onto/Transparency"
-      },
-      "rdfs:label": [
-        {
-          "@language": "it",
-          "@value": "Ontologia degli Obblighi della Trasparenza - profilo applicativo italiano"
-        },
-        {
-          "@language": "en",
-          "@value": "Transparency Obligations Ontology - Italian application profile"
-        }
-      ]
-    },
-    {
-      "@id": "xsd:date",
-      "@type": "rdfs:Datatype"
-    },
-    {
-      "@id": "_:ub2bL574C50",
-      "@type": "owl:Restriction",
-      "owl:hasValue": {
-        "@id": "https://w3id.org/italia/onto/Transparency/TransparencyArchiveActivity"
-      },
-      "owl:onProperty": {
-        "@id": "https://w3id.org/italia/onto/Transparency/hasTransparencyActivityTypology"
-      }
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/Transparency/performsTransparencyActivity",
-      "@type": "owl:ObjectProperty",
-      "owl:versionInfo": [
-        {
-          "@language": "en",
-          "@value": "stable"
-        },
-        {
-          "@language": "it",
-          "@value": "stabile"
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@language": "it",
-          "@value": "Questa proprietà lega una attività al soggetto che la esegue."
-        },
-        {
-          "@language": "en",
-          "@value": "This property links a transparency activity to the agent that performs it."
-        }
-      ],
-      "rdfs:domain": {
-        "@id": "l0:Agent"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "https://w3id.org/italia/onto/Transparency"
-      },
-      "rdfs:label": [
-        {
-          "@language": "en",
-          "@value": "performs transparency activity"
-        },
-        {
-          "@language": "it",
-          "@value": "esegue attività della trasparenza"
-        }
-      ],
-      "rdfs:range": {
-        "@id": "https://w3id.org/italia/onto/Transparency/TransparencyActivity"
-      }
-    },
-    {
-      "@id": "_:ub2bL360C42",
-      "@type": "owl:Class",
-      "owl:unionOf": {
-        "@list": [
-          {
-            "@id": "l0:Activity"
-          },
-          {
-            "@id": "l0:Object"
-          }
-        ]
-      }
-    },
-    {
-      "@id": "_:ub2bL341C40",
-      "@type": "owl:Class",
-      "owl:unionOf": {
-        "@list": [
-          {
-            "@id": "l0:Activity"
-          },
-          {
-            "@id": "l0:Object"
-          }
-        ]
-      }
-    },
-    {
-      "@id": "_:ub2bL533C39",
-      "@type": "owl:Restriction",
-      "owl:onDataRange": {
-        "@id": "_:ub2bL536C57"
-      },
-      "owl:onProperty": {
-        "@id": "tiapit:date"
-      },
-      "owl:qualifiedCardinality": {
-        "@type": "xsd:nonNegativeInteger",
-        "@value": "1"
-      }
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/Transparency/TransparencyObligation",
-      "@type": "owl:Class",
-      "owl:versionInfo": [
-        {
-          "@language": "en",
-          "@value": "stable"
-        },
-        {
-          "@language": "it",
-          "@value": "stabile"
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@language": "it",
-          "@value": "Questa classe rappresenta gli obblighi di trasparenza definiti dalla normativa di riferimento a cui devono sottostare le Pubbliche Amministrazioni."
-        },
-        {
-          "@language": "en",
-          "@value": "This class represents the transparency obligation for Public Administrations, according to the transparency norms."
-        }
-      ],
-      "rdfs:isDefinedBy": {
-        "@id": "https://w3id.org/italia/onto/Transparency"
-      },
-      "rdfs:label": [
-        {
-          "@language": "en",
-          "@value": "Transparency Obligation"
-        },
-        {
-          "@language": "it",
-          "@value": "Obbligo di trasparenza"
-        }
-      ],
-      "rdfs:subClassOf": [
-        {
-          "@id": "_:ub2bL605C41"
-        },
-        {
-          "@id": "_:ub2bL609C41"
-        },
-        {
-          "@id": "_:ub2bL601C41"
-        },
-        {
-          "@id": "l0:Description"
-        }
-      ]
-    }
-  ]
-}
+[ {
+  "@id" : "_:genid1",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2002/07/owl#unionOf" : [ {
+    "@list" : [ {
+      "@id" : "https://w3id.org/italia/onto/Transparency//Activity"
+    }, {
+      "@id" : "https://w3id.org/italia/onto/Transparency//Object"
+    } ]
+  } ]
+}, {
+  "@id" : "_:genid10",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Restriction" ],
+  "http://www.w3.org/2002/07/owl#onDataRange" : [ {
+    "@id" : "_:genid11"
+  } ],
+  "http://www.w3.org/2002/07/owl#onProperty" : [ {
+    "@id" : "https://w3id.org/italia/onto/TI/date"
+  } ],
+  "http://www.w3.org/2002/07/owl#qualifiedCardinality" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#nonNegativeInteger",
+    "@value" : "1"
+  } ]
+}, {
+  "@id" : "_:genid11",
+  "@type" : [ "http://www.w3.org/2000/01/rdf-schema#Datatype" ],
+  "http://www.w3.org/2002/07/owl#unionOf" : [ {
+    "@list" : [ {
+      "@id" : "http://www.w3.org/2001/XMLSchema#date"
+    }, {
+      "@id" : "http://www.w3.org/2001/XMLSchema#dateTime"
+    } ]
+  } ]
+}, {
+  "@id" : "_:genid16",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Restriction" ],
+  "http://www.w3.org/2002/07/owl#hasValue" : [ {
+    "@id" : "https://w3id.org/italia/onto/Transparency//TransparencyArchiveActivity"
+  } ],
+  "http://www.w3.org/2002/07/owl#onProperty" : [ {
+    "@id" : "https://w3id.org/italia/onto/Transparency//hasTransparencyActivityTypology"
+  } ]
+}, {
+  "@id" : "_:genid17",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Restriction" ],
+  "http://www.w3.org/2002/07/owl#allValuesFrom" : [ {
+    "@id" : "https://w3id.org/italia/onto/TI/TimeInterval"
+  } ],
+  "http://www.w3.org/2002/07/owl#onProperty" : [ {
+    "@id" : "https://w3id.org/italia/onto/TI/atTime"
+  } ]
+}, {
+  "@id" : "_:genid18",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Restriction" ],
+  "http://www.w3.org/2002/07/owl#onProperty" : [ {
+    "@id" : "https://w3id.org/italia/onto/Transparency//description"
+  } ],
+  "http://www.w3.org/2002/07/owl#someValuesFrom" : [ {
+    "@id" : "http://www.w3.org/2000/01/rdf-schema#Literal"
+  } ]
+}, {
+  "@id" : "_:genid19",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Restriction" ],
+  "http://www.w3.org/2002/07/owl#onProperty" : [ {
+    "@id" : "https://w3id.org/italia/onto/Transparency//name"
+  } ],
+  "http://www.w3.org/2002/07/owl#someValuesFrom" : [ {
+    "@id" : "http://www.w3.org/2000/01/rdf-schema#Literal"
+  } ]
+}, {
+  "@id" : "_:genid20",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Restriction" ],
+  "http://www.w3.org/2002/07/owl#hasValue" : [ {
+    "@id" : "https://w3id.org/italia/onto/Transparency//TransparencyPublicationActivity"
+  } ],
+  "http://www.w3.org/2002/07/owl#onProperty" : [ {
+    "@id" : "https://w3id.org/italia/onto/Transparency//hasTransparencyActivityTypology"
+  } ]
+}, {
+  "@id" : "_:genid21",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Restriction" ],
+  "http://www.w3.org/2002/07/owl#onProperty" : [ {
+    "@id" : "https://w3id.org/italia/onto/Transparency//refersToTransparencyEntity"
+  } ],
+  "http://www.w3.org/2002/07/owl#someValuesFrom" : [ {
+    "@id" : "_:genid22"
+  } ]
+}, {
+  "@id" : "_:genid22",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2002/07/owl#unionOf" : [ {
+    "@list" : [ {
+      "@id" : "https://w3id.org/italia/onto/Transparency//Activity"
+    }, {
+      "@id" : "https://w3id.org/italia/onto/Transparency//Object"
+    } ]
+  } ]
+}, {
+  "@id" : "_:genid25",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Restriction" ],
+  "http://www.w3.org/2002/07/owl#onProperty" : [ {
+    "@id" : "https://w3id.org/italia/onto/Transparency//name"
+  } ],
+  "http://www.w3.org/2002/07/owl#someValuesFrom" : [ {
+    "@id" : "http://www.w3.org/2000/01/rdf-schema#Literal"
+  } ]
+}, {
+  "@id" : "_:genid26",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Restriction" ],
+  "http://www.w3.org/2002/07/owl#onDataRange" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#anyURI"
+  } ],
+  "http://www.w3.org/2002/07/owl#onProperty" : [ {
+    "@id" : "https://w3id.org/italia/onto/Transparency//accessURL"
+  } ],
+  "http://www.w3.org/2002/07/owl#qualifiedCardinality" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#nonNegativeInteger",
+    "@value" : "1"
+  } ]
+}, {
+  "@id" : "_:genid27",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Restriction" ],
+  "http://www.w3.org/2002/07/owl#maxQualifiedCardinality" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#nonNegativeInteger",
+    "@value" : "1"
+  } ],
+  "http://www.w3.org/2002/07/owl#onDataRange" : [ {
+    "@id" : "_:genid28"
+  } ],
+  "http://www.w3.org/2002/07/owl#onProperty" : [ {
+    "@id" : "https://w3id.org/italia/onto/TI/modified"
+  } ]
+}, {
+  "@id" : "_:genid28",
+  "@type" : [ "http://www.w3.org/2000/01/rdf-schema#Datatype" ],
+  "http://www.w3.org/2002/07/owl#unionOf" : [ {
+    "@list" : [ {
+      "@id" : "http://www.w3.org/2001/XMLSchema#date"
+    }, {
+      "@id" : "http://www.w3.org/2001/XMLSchema#dateTime"
+    }, {
+      "@id" : "http://www.w3.org/2001/XMLSchema#time"
+    } ]
+  } ]
+}, {
+  "@id" : "_:genid32",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Restriction" ],
+  "http://www.w3.org/2002/07/owl#onProperty" : [ {
+    "@id" : "https://w3id.org/italia/onto/Transparency//description"
+  } ],
+  "http://www.w3.org/2002/07/owl#someValuesFrom" : [ {
+    "@id" : "http://www.w3.org/2000/01/rdf-schema#Literal"
+  } ]
+}, {
+  "@id" : "_:genid33",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Restriction" ],
+  "http://www.w3.org/2002/07/owl#cardinality" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#nonNegativeInteger",
+    "@value" : "1"
+  } ],
+  "http://www.w3.org/2002/07/owl#onProperty" : [ {
+    "@id" : "https://w3id.org/italia/onto/Transparency//name"
+  } ]
+}, {
+  "@id" : "_:genid34",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Restriction" ],
+  "http://www.w3.org/2002/07/owl#hasValue" : [ {
+    "@id" : "https://w3id.org/italia/onto/Transparency//TransparencyUpdateActivity"
+  } ],
+  "http://www.w3.org/2002/07/owl#onProperty" : [ {
+    "@id" : "https://w3id.org/italia/onto/Transparency//hasTransparencyActivityTypology"
+  } ]
+}, {
+  "@id" : "_:genid4",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2002/07/owl#unionOf" : [ {
+    "@list" : [ {
+      "@id" : "https://w3id.org/italia/onto/Transparency//Activity"
+    }, {
+      "@id" : "https://w3id.org/italia/onto/Transparency//Object"
+    } ]
+  } ]
+}, {
+  "@id" : "_:genid7",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Restriction" ],
+  "http://www.w3.org/2002/07/owl#onProperty" : [ {
+    "@id" : "https://w3id.org/italia/onto/Transparency//generatesResource"
+  } ],
+  "http://www.w3.org/2002/07/owl#someValuesFrom" : [ {
+    "@id" : "https://w3id.org/italia/onto/Transparency//TransparencyResource"
+  } ]
+}, {
+  "@id" : "_:genid8",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Restriction" ],
+  "http://www.w3.org/2002/07/owl#onProperty" : [ {
+    "@id" : "https://w3id.org/italia/onto/Transparency//hasTransparencyActivityTypology"
+  } ],
+  "http://www.w3.org/2002/07/owl#someValuesFrom" : [ {
+    "@id" : "https://w3id.org/italia/onto/Transparency//TransparencyActivityTypology"
+  } ]
+}, {
+  "@id" : "_:genid9",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Restriction" ],
+  "http://www.w3.org/2002/07/owl#onClass" : [ {
+    "@id" : "https://w3id.org/italia/onto/Transparency//Agent"
+  } ],
+  "http://www.w3.org/2002/07/owl#onProperty" : [ {
+    "@id" : "https://w3id.org/italia/onto/Transparency//isPerformedByAgent"
+  } ],
+  "http://www.w3.org/2002/07/owl#qualifiedCardinality" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#nonNegativeInteger",
+    "@value" : "1"
+  } ]
+}, {
+  "@id" : "http://spcdata.digitpa.gov.it/Amministrazione/agid",
+  "@type" : [ "http://www.w3.org/2002/07/owl#NamedIndividual", "http://dati.gov.it/onto/dcatapit#Agent", "http://xmlns.com/foaf/0.1/Agent" ],
+  "http://purl.org/dc/terms/identifier" : [ {
+    "@value" : "agid"
+  } ],
+  "http://xmlns.com/foaf/0.1/name" : [ {
+    "@language" : "it",
+    "@value" : "Agenzia per l'Italia Digitale"
+  }, {
+    "@language" : "en",
+    "@value" : "Italian Digital Agency"
+  } ]
+}, {
+  "@id" : "http://www.w3.org/2000/01/rdf-schema#labels",
+  "@type" : [ "http://www.w3.org/2002/07/owl#AnnotationProperty" ]
+}, {
+  "@id" : "http://www.w3.org/2001/XMLSchema#date",
+  "@type" : [ "http://www.w3.org/2000/01/rdf-schema#Datatype" ]
+}, {
+  "@id" : "http://www.w3.org/2001/XMLSchema#time",
+  "@type" : [ "http://www.w3.org/2000/01/rdf-schema#Datatype" ]
+}, {
+  "@id" : "https://w3id.org/italia/data/distribution/TRAPIT-JSON-LD",
+  "@type" : [ "http://www.w3.org/2002/07/owl#NamedIndividual", "https://w3id.org/italia/onto/ADMS/SemanticAssetDistribution" ],
+  "http://purl.org/dc/terms/description" : [ {
+    "@language" : "it",
+    "@value" : "Questa è la distribuzione JSON-LD dell'Ontologia degli Obblighi della Trasparenza"
+  }, {
+    "@language" : "en",
+    "@value" : "This is the distribution in JSON-LD of the Transparency Obligations Ontology"
+  } ],
+  "http://purl.org/dc/terms/format" : [ {
+    "@id" : "http://publications.europa.eu/resource/authority/file-type/JSON_LD"
+  } ],
+  "http://purl.org/dc/terms/license" : [ {
+    "@id" : "https://w3id.org/italia/controlled-vocabulary/licences/A21_CCBY40"
+  } ],
+  "http://purl.org/dc/terms/title" : [ {
+    "@language" : "it",
+    "@value" : "Distribuzione JSON-LD ontologia Transparency-AP_IT"
+  }, {
+    "@language" : "en",
+    "@value" : "JSON-LD distribution of Transparency-AP_IT Ontology"
+  } ],
+  "http://www.w3.org/ns/dcat#accessURL" : [ {
+    "@id" : "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/Transparency/latest"
+  } ],
+  "http://www.w3.org/ns/dcat#downloadURL" : [ {
+    "@id" : "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/Transparency/Transparency-AP_IT.jsonld"
+  } ]
+}, {
+  "@id" : "https://w3id.org/italia/data/distribution/TRAPIT-RDF-TURTLE",
+  "@type" : [ "http://www.w3.org/2002/07/owl#NamedIndividual", "https://w3id.org/italia/onto/ADMS/SemanticAssetDistribution" ],
+  "http://purl.org/dc/terms/description" : [ {
+    "@language" : "it",
+    "@value" : "Questa è la distribuzione RDF/Turtle dell'Ontologia degli Obblighi della Trasparenza"
+  }, {
+    "@language" : "en",
+    "@value" : "This is the distribution in RDF/Turtle of the Transparency Obligations Ontology"
+  } ],
+  "http://purl.org/dc/terms/format" : [ {
+    "@id" : "http://publications.europa.eu/resource/authority/file-type/RDF_TURTLE"
+  } ],
+  "http://purl.org/dc/terms/license" : [ {
+    "@id" : "https://w3id.org/italia/controlled-vocabulary/licences/A21_CCBY40"
+  } ],
+  "http://purl.org/dc/terms/title" : [ {
+    "@language" : "it",
+    "@value" : "Distribuzione RDF/Turtle ontologia Transparency-AP_IT"
+  }, {
+    "@language" : "en",
+    "@value" : "RDF/Turtle distribution of Transparency-AP_IT Ontology"
+  } ],
+  "http://www.w3.org/ns/dcat#accessURL" : [ {
+    "@id" : "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/Transparency/latest"
+  } ],
+  "http://www.w3.org/ns/dcat#downloadURL" : [ {
+    "@id" : "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/Transparency/Transparency-AP_IT.ttl"
+  } ]
+}, {
+  "@id" : "https://w3id.org/italia/data/distribution/TRAPIT-RDF-XML",
+  "@type" : [ "http://www.w3.org/2002/07/owl#NamedIndividual", "https://w3id.org/italia/onto/ADMS/SemanticAssetDistribution" ],
+  "http://purl.org/dc/terms/description" : [ {
+    "@language" : "it",
+    "@value" : "Questa è la distribuzione RDF/XML dell'Ontologia degli Obblighi della Trasparenza"
+  }, {
+    "@language" : "en",
+    "@value" : "This is the distribution in RDF/XML of the Transparency Obligations Ontology"
+  } ],
+  "http://purl.org/dc/terms/format" : [ {
+    "@id" : "http://publications.europa.eu/resource/authority/file-type/RDF_XML"
+  } ],
+  "http://purl.org/dc/terms/license" : [ {
+    "@id" : "https://w3id.org/italia/controlled-vocabulary/licences/A21_CCBY40"
+  } ],
+  "http://purl.org/dc/terms/title" : [ {
+    "@language" : "it",
+    "@value" : "Distribuzione RDF/XML ontologia Transparency-AP_IT"
+  }, {
+    "@language" : "en",
+    "@value" : "RDF/XML distribution of Transparency-AP_IT Ontology"
+  } ],
+  "http://www.w3.org/ns/dcat#accessURL" : [ {
+    "@id" : "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/Transparency/latest"
+  } ],
+  "http://www.w3.org/ns/dcat#downloadURL" : [ {
+    "@id" : "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/Transparency/Transparency-AP_IT.rdf"
+  } ]
+}, {
+  "@id" : "https://w3id.org/italia/data/organization/private-organization/05481840964",
+  "@type" : [ "http://www.w3.org/2002/07/owl#NamedIndividual", "http://dati.gov.it/onto/dcatapit#Agent", "http://xmlns.com/foaf/0.1/Agent" ],
+  "http://purl.org/dc/terms/identifier" : [ {
+    "@value" : "05481840964"
+  } ],
+  "http://xmlns.com/foaf/0.1/name" : [ {
+    "@language" : "it",
+    "@value" : "Almawave Srl"
+  } ]
+}, {
+  "@id" : "https://w3id.org/italia/onto/Transparency/",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Ontology" ],
+  "http://purl.org/dc/terms/accrualPeriodicity" : [ {
+    "@id" : "http://publications.europa.eu/resource/authority/frequency/IRREG"
+  } ],
+  "http://purl.org/dc/terms/creator" : [ {
+    "@id" : "http://spcdata.digitpa.gov.it/Amministrazione/agid"
+  }, {
+    "@id" : "https://w3id.org/italia/data/organization/private-organization/05481840964"
+  } ],
+  "http://purl.org/dc/terms/description" : [ {
+    "@id" : "https://w3id.org/italia/onto/Transparency/./latest/img/Transparency-AP_IT.png"
+  }, {
+    "@language" : "it",
+    "@value" : "Questo è il profilo applicativo italiano dell'Ontologia degli Obblighi della Trasparenza. L'ontologia di OntoPiA implementa le disposizioni in merito all'obbligo di pubblicazione di contenuti informativi nella sezione 'Amministrazione Trasparente' dei siti istituzioonali delle publiche amministrazioni. Questa versione dell'ontologia è in attesa di essere visionata da ANAC."
+  }, {
+    "@language" : "en",
+    "@value" : "This is the Italian application profile of the Transparency Obligations Ontology. This ontology of OntoPiA implements the dispositions about the publication obligation of informative contents on the section 'Transparent Administration' of the official website of the public administrations. This ontology version is a draft waiting for the ANAC validation."
+  } ],
+  "http://purl.org/dc/terms/issued" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#date",
+    "@value" : "2019-05-30"
+  } ],
+  "http://purl.org/dc/terms/language" : [ {
+    "@id" : "http://publications.europa.eu/resource/authority/language/ENG"
+  }, {
+    "@id" : "http://publications.europa.eu/resource/authority/language/ITA"
+  } ],
+  "http://purl.org/dc/terms/modified" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#date",
+    "@value" : "2019-06-25"
+  } ],
+  "http://purl.org/dc/terms/publisher" : [ {
+    "@id" : "http://spcdata.digitpa.gov.it/Amministrazione/agid"
+  } ],
+  "http://purl.org/dc/terms/rightsHolder" : [ {
+    "@id" : "http://spcdata.digitpa.gov.it/Amministrazione/agid"
+  } ],
+  "http://purl.org/dc/terms/title" : [ {
+    "@language" : "it",
+    "@value" : "Ontologia dell'Amministrazione Trasparente - profilo applicativo italiano"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "it",
+    "@value" : "Questo è il profilo applicativo italiano dell'Ontologia degli Obblighi della Trasparenza. L'ontologia di OntoPiA implementa le disposizioni in merito all'obbligo di pubblicazione di contenuti informativi nella sezione 'Amministrazione Trasparente' dei siti istituzionali delle publiche amministrazioni. Questa versione dell'ontologia è in attesa di essere visionata da ANAC."
+  }, {
+    "@language" : "en",
+    "@value" : "This is the Italian application profile of the Transparency Obligations Ontology. This ontology of OntoPiA implements the dispositions about the publication obligation of informative contents on the section 'Transparent Administration' of the official website of the public administrations. This ontology version is a draft waiting for the ANAC validation."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "https://w3id.org/italia/onto/Transparency"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "it",
+    "@value" : "Ontologia degli Obblighi della Trasparenza - profilo applicativo italiano"
+  }, {
+    "@language" : "en",
+    "@value" : "Transparency Obligations Ontology - Italian application profile"
+  } ],
+  "http://www.w3.org/2002/07/owl#imports" : [ {
+    "@id" : "https://w3id.org/italia/onto/COV"
+  }, {
+    "@id" : "https://w3id.org/italia/onto/TI"
+  }, {
+    "@id" : "https://w3id.org/italia/onto/l0"
+  } ],
+  "http://www.w3.org/2002/07/owl#versionIRI" : [ {
+    "@id" : "https://w3id.org/italia/onto/Transparency/0.1"
+  } ],
+  "http://www.w3.org/2002/07/owl#versionInfo" : [ {
+    "@language" : "it",
+    "@value" : "La presente versione dell'ontologia è un draft in attesa di revisone da parte di ANAC."
+  } ],
+  "http://www.w3.org/ns/dcat#contactPoint" : [ {
+    "@id" : "http://dati.gov.it/data/resource/ContactPoint/voc_AgID"
+  } ],
+  "http://www.w3.org/ns/dcat#keyword" : [ {
+    "@language" : "en",
+    "@value" : "transparency"
+  }, {
+    "@language" : "en",
+    "@value" : "transparency for public administration"
+  }, {
+    "@language" : "it",
+    "@value" : "trasparenza"
+  }, {
+    "@language" : "it",
+    "@value" : "trasparenza PA"
+  }, {
+    "@language" : "it",
+    "@value" : "trasparenza pa"
+  }, {
+    "@language" : "it",
+    "@value" : "trasparenza pubblica amministrazione"
+  } ],
+  "http://www.w3.org/ns/dcat#theme" : [ {
+    "@id" : "http://publications.europa.eu/resource/authority/data-theme/GOVE"
+  }, {
+    "@id" : "http://publications.europa.eu/resource/authority/data-theme/TECH"
+  } ],
+  "https://w3id.org/italia/onto/ADMS/acronym" : [ {
+    "@value" : "Transparency-AP_IT"
+  } ],
+  "https://w3id.org/italia/onto/ADMS/hasFormalityLevel" : [ {
+    "@id" : "https://w3id.org/italia/onto/ADMS/Formal"
+  } ],
+  "https://w3id.org/italia/onto/ADMS/hasOntologyLanguage" : [ {
+    "@id" : "https://w3id.org/italia/onto/ADMS/OWL"
+  } ],
+  "https://w3id.org/italia/onto/ADMS/hasSemanticAssetDistribution" : [ {
+    "@id" : "https://w3id.org/italia/data/distribution/TRAPIT-JSON-LD"
+  }, {
+    "@id" : "https://w3id.org/italia/data/distribution/TRAPIT-RDF-TURTLE"
+  }, {
+    "@id" : "https://w3id.org/italia/data/distribution/TRAPIT-RDF-XML"
+  } ],
+  "https://w3id.org/italia/onto/ADMS/hasTask" : [ {
+    "@id" : "https://w3id.org/italia/onto/ADMS/AnnotationTask"
+  }, {
+    "@id" : "https://w3id.org/italia/onto/ADMS/QueryFormulationTask"
+  }, {
+    "@id" : "https://w3id.org/italia/onto/ADMS/SearchTask"
+  } ],
+  "https://w3id.org/italia/onto/ADMS/last" : [ {
+    "@id" : "https://w3id.org/italia/onto/Transparency/0.1"
+  } ],
+  "https://w3id.org/italia/onto/ADMS/officialURI" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#anyURI",
+    "@value" : "https://w3id.org/italia/onto/Transparency"
+  } ],
+  "https://w3id.org/italia/onto/ADMS/prefix" : [ {
+    "@value" : "trapit"
+  } ],
+  "https://w3id.org/italia/onto/ADMS/semanticAssetInUse" : [ {
+    "@id" : "https://w3id.org/italia/data/project/DAF"
+  }, {
+    "@id" : "https://w3id.org/italia/data/project/OntoPiA"
+  } ],
+  "https://w3id.org/italia/onto/ADMS/status" : [ {
+    "@value" : "draft"
+  } ],
+  "https://w3id.org/italia/onto/ADMS/target" : [ {
+    "@language" : "it",
+    "@value" : "Cittadini"
+  }, {
+    "@language" : "it",
+    "@value" : "Pubbliche amministrazioni"
+  } ],
+  "https://w3id.org/italia/onto/ADMS/type" : [ {
+    "@id" : "https://w3id.org/italia/onto/ADMS/DomainOntology"
+  } ]
+}, {
+  "@id" : "https://w3id.org/italia/onto/Transparency//Activity",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ]
+}, {
+  "@id" : "https://w3id.org/italia/onto/Transparency//Agent",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ]
+}, {
+  "@id" : "https://w3id.org/italia/onto/Transparency//Characteristic",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ]
+}, {
+  "@id" : "https://w3id.org/italia/onto/Transparency//Concept",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ]
+}, {
+  "@id" : "https://w3id.org/italia/onto/Transparency//Deprecated",
+  "@type" : [ "http://www.w3.org/2002/07/owl#NamedIndividual", "https://w3id.org/italia/onto/Transparency//TransparencyObligationStatus" ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "https://w3id.org/italia/onto/Transparency"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "it",
+    "@value" : "decaduto"
+  }, {
+    "@language" : "en",
+    "@value" : "deprecated"
+  } ],
+  "http://www.w3.org/2002/07/owl#versionInfo" : [ {
+    "@language" : "it",
+    "@value" : "stabile"
+  }, {
+    "@language" : "en",
+    "@value" : "stable"
+  } ],
+  "https://w3id.org/italia/onto/Transparency//description" : [ {
+    "@language" : "it",
+    "@value" : "Questo individuo rappresenta lo stato decaduto di un obbligo di trasparenza"
+  }, {
+    "@language" : "en",
+    "@value" : "This individual represents the status deprecated of a transparency obbligation"
+  } ]
+}, {
+  "@id" : "https://w3id.org/italia/onto/Transparency//Description",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ]
+}, {
+  "@id" : "https://w3id.org/italia/onto/Transparency//Format",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "it",
+    "@value" : "Questa classe indica il formato di una risorsa"
+  }, {
+    "@language" : "en",
+    "@value" : "This class represents the format of a resource."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "https://w3id.org/italia/onto/Transparency"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "Format"
+  }, {
+    "@language" : "it",
+    "@value" : "Formato"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "https://w3id.org/italia/onto/Transparency//Characteristic"
+  } ],
+  "http://www.w3.org/2002/07/owl#versionInfo" : [ {
+    "@language" : "it",
+    "@value" : "stabile"
+  }, {
+    "@language" : "en",
+    "@value" : "stable"
+  } ]
+}, {
+  "@id" : "https://w3id.org/italia/onto/Transparency//InForce",
+  "@type" : [ "http://www.w3.org/2002/07/owl#NamedIndividual", "https://w3id.org/italia/onto/Transparency//TransparencyObligationStatus" ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "https://w3id.org/italia/onto/Transparency"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "in force"
+  }, {
+    "@language" : "it",
+    "@value" : "vigente"
+  } ],
+  "http://www.w3.org/2002/07/owl#versionInfo" : [ {
+    "@language" : "it",
+    "@value" : "stabile"
+  }, {
+    "@language" : "en",
+    "@value" : "stable"
+  } ],
+  "https://w3id.org/italia/onto/Transparency//description" : [ {
+    "@language" : "it",
+    "@value" : "Questo individuo rappresenta lo stato vigente di un obbligo di trasparenza"
+  }, {
+    "@language" : "en",
+    "@value" : "This individual represents the status in force of a transparency obbligation"
+  } ]
+}, {
+  "@id" : "https://w3id.org/italia/onto/Transparency//Object",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ]
+}, {
+  "@id" : "https://w3id.org/italia/onto/Transparency//TransparencyActivity",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "it",
+    "@value" : "Questa classe rappresenta un'attività di trasparenza come conseguenza di un obbligo di trasparenza."
+  }, {
+    "@language" : "en",
+    "@value" : "This class represents a trasparency activity as an effect of a transparency obbligation. For example pubblication, update,..."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "https://w3id.org/italia/onto/Transparency"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "it",
+    "@value" : "Attività di trasparenza."
+  }, {
+    "@language" : "en",
+    "@value" : "Transparency activity"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "https://w3id.org/italia/onto/Transparency//Activity"
+  }, {
+    "@id" : "_:genid7"
+  }, {
+    "@id" : "_:genid8"
+  }, {
+    "@id" : "_:genid9"
+  }, {
+    "@id" : "_:genid10"
+  } ],
+  "http://www.w3.org/2002/07/owl#disjointUnionOf" : [ {
+    "@list" : [ {
+      "@id" : "https://w3id.org/italia/onto/Transparency//TransparencyPublicationActivity"
+    }, {
+      "@id" : "https://w3id.org/italia/onto/Transparency//TransparencyUpdateActivity"
+    } ]
+  } ],
+  "http://www.w3.org/2002/07/owl#versionInfo" : [ {
+    "@language" : "it",
+    "@value" : "stabile"
+  }, {
+    "@language" : "en",
+    "@value" : "stable"
+  } ]
+}, {
+  "@id" : "https://w3id.org/italia/onto/Transparency//TransparencyActivityTypology",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "it",
+    "@value" : "Questa classe indica la tipologia di attività della trasparenza."
+  }, {
+    "@language" : "en",
+    "@value" : "This class represents the transparency activity typology."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "https://w3id.org/italia/onto/Transparency"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "it",
+    "@value" : "Tipologia di attività della trasparenza"
+  }, {
+    "@language" : "en",
+    "@value" : "Transparency activity typology"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "https://w3id.org/italia/onto/Transparency//Characteristic"
+  } ],
+  "http://www.w3.org/2002/07/owl#versionInfo" : [ {
+    "@language" : "it",
+    "@value" : "stabile"
+  }, {
+    "@language" : "en",
+    "@value" : "stable"
+  } ]
+}, {
+  "@id" : "https://w3id.org/italia/onto/Transparency//TransparencyArchiveActivity",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class", "http://www.w3.org/2002/07/owl#NamedIndividual", "https://w3id.org/italia/onto/Transparency//TransparencyActivityTypology" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "This class represents an archive activity as an effect of a transparency obbligation."
+  }, {
+    "@language" : "it",
+    "@value" : "Questa classe rappresenta un'attività di storicizzazione come conseguenza di un obbligo di trasparenza."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "https://w3id.org/italia/onto/Transparency"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "Transparency activity: Archive."
+  }, {
+    "@language" : "it",
+    "@value" : "Attività di trasparenza: Storicizzazione."
+  }, {
+    "@language" : "it",
+    "@value" : "archive"
+  }, {
+    "@language" : "it",
+    "@value" : "storicizzazione"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "https://w3id.org/italia/onto/Transparency//TransparencyActivity"
+  } ],
+  "http://www.w3.org/2002/07/owl#disjointWith" : [ {
+    "@id" : "https://w3id.org/italia/onto/Transparency//TransparencyPublicationActivity"
+  } ],
+  "http://www.w3.org/2002/07/owl#equivalentClass" : [ {
+    "@id" : "_:genid16"
+  } ],
+  "http://www.w3.org/2002/07/owl#versionInfo" : [ {
+    "@language" : "en",
+    "@value" : "stable"
+  }, {
+    "@language" : "it",
+    "@value" : "stabile"
+  } ],
+  "https://w3id.org/italia/onto/Transparency//description" : [ {
+    "@language" : "it",
+    "@value" : "Questo individuo rappresenta l'attività di storicizzazione attivata da un obbligo di trasparenza."
+  }, {
+    "@language" : "en",
+    "@value" : "This individual represents the archive activity triggered by a transparency obligation."
+  } ]
+}, {
+  "@id" : "https://w3id.org/italia/onto/Transparency//TransparencyDataTypology",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "it",
+    "@value" : "Questa classe rappresenta la tipologia di dati della trasparenza: i valori sono controllati dal vocabolario relativo, e determinano l'attuale strutturazione delle sezioni e sotto-sezioni dell'\"Amministrazione Trasparente\" dei siti web della PA come previsto dalla normativa di settore (d.lgs 33/2013 e s.m.i)."
+  }, {
+    "@language" : "en",
+    "@value" : "This class represents the typology of transparency data: the values are defined by a specific vocabulary, and are used to organize contents inside the current transparency section structure for the websites of the Italian Public Administrations, as defined by the legislation (d.lgs 33/2013 e s.m.i)."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "https://w3id.org/italia/onto/Transparency"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "it",
+    "@value" : "Tipologia dato della trasparenza"
+  }, {
+    "@language" : "en",
+    "@value" : "Transparency data typology"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "https://w3id.org/italia/onto/Transparency//Characteristic"
+  } ],
+  "http://www.w3.org/2002/07/owl#versionInfo" : [ {
+    "@language" : "it",
+    "@value" : "stabile"
+  }, {
+    "@language" : "en",
+    "@value" : "stable"
+  } ],
+  "https://w3id.org/italia/onto/Transparency//controlledVocabulary" : [ {
+    "@id" : "https://w3id.org/italia/controlled-vocabulary/classifications-for-transparency/transparency-titulus"
+  } ]
+}, {
+  "@id" : "https://w3id.org/italia/onto/Transparency//TransparencyObligation",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "it",
+    "@value" : "Questa classe rappresenta gli obblighi di trasparenza definiti dalla normativa di riferimento a cui devono sottostare le Pubbliche Amministrazioni."
+  }, {
+    "@language" : "en",
+    "@value" : "This class represents the transparency obligation for Public Administrations, according to the transparency norms."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "https://w3id.org/italia/onto/Transparency"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "it",
+    "@value" : "Obbligo di trasparenza"
+  }, {
+    "@language" : "en",
+    "@value" : "Transparency Obligation"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "https://w3id.org/italia/onto/Transparency//Description"
+  }, {
+    "@id" : "_:genid17"
+  }, {
+    "@id" : "_:genid18"
+  }, {
+    "@id" : "_:genid19"
+  } ],
+  "http://www.w3.org/2002/07/owl#versionInfo" : [ {
+    "@language" : "it",
+    "@value" : "stabile"
+  }, {
+    "@language" : "en",
+    "@value" : "stable"
+  } ],
+  "https://w3id.org/italia/onto/Transparency//controlledVocabulary" : [ {
+    "@id" : "https://w3id.org/italia/controlled-vocabulary/classifications-for-transparency/transparency-obligation"
+  } ]
+}, {
+  "@id" : "https://w3id.org/italia/onto/Transparency//TransparencyObligationStatus",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "it",
+    "@value" : "Questa classe rappresenta lo stato dell'obbligo di trasparenza. Per esempio vigente, decaduto,..."
+  }, {
+    "@language" : "en",
+    "@value" : "This class represents the transparency obbligation status. Ex: in force, deprecated,..."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "https://w3id.org/italia/onto/Transparency"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "it",
+    "@value" : "Stato dell'obbligo di trasparenza."
+  }, {
+    "@language" : "en",
+    "@value" : "Transparency obbligation status"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "https://w3id.org/italia/onto/Transparency//Characteristic"
+  } ],
+  "http://www.w3.org/2002/07/owl#versionInfo" : [ {
+    "@language" : "it",
+    "@value" : "stabile"
+  }, {
+    "@language" : "en",
+    "@value" : "stable"
+  } ]
+}, {
+  "@id" : "https://w3id.org/italia/onto/Transparency//TransparencyPublicationActivity",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class", "http://www.w3.org/2002/07/owl#NamedIndividual", "https://w3id.org/italia/onto/Transparency//TransparencyActivityTypology" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "it",
+    "@value" : "Questa classe rappresenta un'attività di pubblicazione come conseguenza di un obbligo di trasparenza."
+  }, {
+    "@language" : "en",
+    "@value" : "This class represents a publication activity as an effect of a transparency obbligation."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "https://w3id.org/italia/onto/Transparency"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "it",
+    "@value" : "pubblicazione"
+  }, {
+    "@language" : "it",
+    "@value" : "publication"
+  }, {
+    "@language" : "it",
+    "@value" : "Attività di trasparenza: Pubblicazione."
+  }, {
+    "@language" : "en",
+    "@value" : "Transparency activity: Publication"
+  }, {
+    "@language" : "en",
+    "@value" : "Transparency activity: Publication."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "https://w3id.org/italia/onto/Transparency//TransparencyActivity"
+  } ],
+  "http://www.w3.org/2002/07/owl#disjointWith" : [ {
+    "@id" : "https://w3id.org/italia/onto/Transparency//TransparencyUpdateActivity"
+  } ],
+  "http://www.w3.org/2002/07/owl#equivalentClass" : [ {
+    "@id" : "_:genid20"
+  } ],
+  "http://www.w3.org/2002/07/owl#versionInfo" : [ {
+    "@language" : "it",
+    "@value" : "stabile"
+  }, {
+    "@language" : "en",
+    "@value" : "stable"
+  } ],
+  "https://w3id.org/italia/onto/Transparency//description" : [ {
+    "@language" : "it",
+    "@value" : "Questo individuo rappresenta l'attività di pubblicazione attivata da un obbligo di trasparenza."
+  }, {
+    "@language" : "en",
+    "@value" : "This individual represents the publication activity triggered by a transparency obligation."
+  } ]
+}, {
+  "@id" : "https://w3id.org/italia/onto/Transparency//TransparencyResource",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "it",
+    "@value" : "Questa classe rappresenta i documenti, le informazioni e i dati oggetto di pubblicazione nei siti istituzionali delle pubbliche amministrazioni."
+  }, {
+    "@language" : "en",
+    "@value" : "This class represents documents, informazions and data object of publication on the official website of the public administrations."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "https://w3id.org/italia/onto/Transparency"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "it",
+    "@value" : "Risorsa di trasparenza"
+  }, {
+    "@language" : "en",
+    "@value" : "Transparency resource"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "https://w3id.org/italia/onto/Transparency//Object"
+  }, {
+    "@id" : "_:genid21"
+  }, {
+    "@id" : "_:genid25"
+  }, {
+    "@id" : "_:genid26"
+  }, {
+    "@id" : "_:genid27"
+  } ],
+  "http://www.w3.org/2002/07/owl#versionInfo" : [ {
+    "@language" : "it",
+    "@value" : "stabile"
+  }, {
+    "@language" : "en",
+    "@value" : "stable"
+  } ]
+}, {
+  "@id" : "https://w3id.org/italia/onto/Transparency//TransparencySubject",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "it",
+    "@value" : "Questa classe rappresenta un soggetto (tema) collegato a un obbligo di trasparenza. Fa riferimento alla colonna 'contenuto dell'obbligo' dell'allegato alla guida ANAC."
+  }, {
+    "@language" : "en",
+    "@value" : "This class represents a subject releted to a transparency obbligation. It's related to the 'contenuto dell'obbligo' column of the ANAC guideline attachment."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "https://w3id.org/italia/onto/Transparency"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "it",
+    "@value" : "Soggetto della trasparenza"
+  }, {
+    "@language" : "en",
+    "@value" : "Transparency subject"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "https://w3id.org/italia/onto/Transparency//Concept"
+  }, {
+    "@id" : "_:genid32"
+  }, {
+    "@id" : "_:genid33"
+  } ],
+  "http://www.w3.org/2002/07/owl#versionInfo" : [ {
+    "@language" : "it",
+    "@value" : "stabile"
+  }, {
+    "@language" : "en",
+    "@value" : "stable"
+  } ],
+  "https://w3id.org/italia/onto/Transparency//controlledVocabulary" : [ {
+    "@id" : "https://w3id.org/italia/controlled-vocabulary/classifications-for-transparency/transparency-titulus"
+  } ]
+}, {
+  "@id" : "https://w3id.org/italia/onto/Transparency//TransparencyUpdateActivity",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class", "http://www.w3.org/2002/07/owl#NamedIndividual", "https://w3id.org/italia/onto/Transparency//TransparencyActivityTypology" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "This class represents an update activity as an effect of a transparency obbligation."
+  }, {
+    "@language" : "it",
+    "@value" : "Questa classe rappresenta un'attività di aggiornamento come conseguenza di un obbligo di trasparenza."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "https://w3id.org/italia/onto/Transparency"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "it",
+    "@value" : "update"
+  }, {
+    "@language" : "it",
+    "@value" : "aggiornamento"
+  }, {
+    "@language" : "it",
+    "@value" : "Attività di trasparenza: Aggiornamento."
+  }, {
+    "@language" : "en",
+    "@value" : "Transparency activity: Update."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "https://w3id.org/italia/onto/Transparency//TransparencyActivity"
+  } ],
+  "http://www.w3.org/2002/07/owl#equivalentClass" : [ {
+    "@id" : "_:genid34"
+  } ],
+  "http://www.w3.org/2002/07/owl#versionInfo" : [ {
+    "@language" : "en",
+    "@value" : "stable"
+  }, {
+    "@language" : "it",
+    "@value" : "stabile"
+  } ],
+  "https://w3id.org/italia/onto/Transparency//description" : [ {
+    "@language" : "it",
+    "@value" : "Questo individuo rappresenta l'attività di aggiornamento attivata da un obbligo di trasparenza."
+  }, {
+    "@language" : "en",
+    "@value" : "This individual represents the update activity triggered by a transparency obligation."
+  } ]
+}, {
+  "@id" : "https://w3id.org/italia/onto/Transparency//UpdateFrequency",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "it",
+    "@value" : "Questa classe la frequenza di aggiornamento di una risorsa così come indicato dall'obbligo ti trasaprenza."
+  }, {
+    "@language" : "en",
+    "@value" : "This class represents the update frequency as prescribed by the transparency obbligation."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "https://w3id.org/italia/onto/Transparency"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "it",
+    "@value" : "Frequenza di aggiornamento"
+  }, {
+    "@language" : "en",
+    "@value" : "Update frequency"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "https://w3id.org/italia/onto/Transparency//Characteristic"
+  } ],
+  "http://www.w3.org/2002/07/owl#versionInfo" : [ {
+    "@language" : "it",
+    "@value" : "stabile"
+  }, {
+    "@language" : "en",
+    "@value" : "stable"
+  } ]
+}, {
+  "@id" : "https://w3id.org/italia/onto/Transparency//accessURL",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "it",
+    "@value" : "Questa URL definisce l'indirizzo di accesso e reperimento del contenuto informativo."
+  }, {
+    "@language" : "en",
+    "@value" : "This URL defines the access address of the informative content."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/italia/onto/Transparency//TransparencyResource"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "https://w3id.org/italia/onto/Transparency"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "it",
+    "@value" : "URL di accesso alla risorsa"
+  }, {
+    "@language" : "en",
+    "@value" : "access URL"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#anyURI"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subPropertyOf" : [ {
+    "@id" : "https://w3id.org/italia/onto/SM/URL"
+  } ],
+  "http://www.w3.org/2002/07/owl#versionInfo" : [ {
+    "@language" : "it",
+    "@value" : "stabile"
+  }, {
+    "@language" : "en",
+    "@value" : "stable"
+  } ]
+}, {
+  "@id" : "https://w3id.org/italia/onto/Transparency//appliesToPA",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "it",
+    "@value" : "Questa proprietà lega un obbligo di trasparenza alla pubblica amministrazione a cui si applica."
+  }, {
+    "@language" : "en",
+    "@value" : "This property links a transparency obligation to a public administration to whom is applied."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/italia/onto/Transparency//TransparencyObligation"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "https://w3id.org/italia/onto/Transparency"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "applies to PA"
+  }, {
+    "@language" : "it",
+    "@value" : "si applica alla PA"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "https://w3id.org/italia/onto/COV/PublicOrganization"
+  } ],
+  "http://www.w3.org/2002/07/owl#inverseOf" : [ {
+    "@id" : "https://w3id.org/italia/onto/Transparency//obligedToEnforce"
+  } ],
+  "http://www.w3.org/2002/07/owl#versionInfo" : [ {
+    "@language" : "it",
+    "@value" : "stabile"
+  }, {
+    "@language" : "en",
+    "@value" : "stable"
+  } ]
+}, {
+  "@id" : "https://w3id.org/italia/onto/Transparency//controlledVocabulary",
+  "@type" : [ "http://www.w3.org/2002/07/owl#AnnotationProperty" ]
+}, {
+  "@id" : "https://w3id.org/italia/onto/Transparency//definesUpdateFrequency",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "it",
+    "@value" : "Questa proprietà collega un obbligo di trasparenza alla frequenza di aggiornamento da esso definita."
+  }, {
+    "@language" : "en",
+    "@value" : "This property links a transparency obligation to the update frequency which it defines."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/italia/onto/Transparency//TransparencyObligation"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "https://w3id.org/italia/onto/Transparency"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "defines update frequency"
+  }, {
+    "@language" : "it",
+    "@value" : "definisce frequenza di aggiornamento"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "https://w3id.org/italia/onto/Transparency//UpdateFrequency"
+  } ],
+  "http://www.w3.org/2002/07/owl#versionInfo" : [ {
+    "@language" : "it",
+    "@value" : "stabile"
+  }, {
+    "@language" : "en",
+    "@value" : "stable"
+  } ]
+}, {
+  "@id" : "https://w3id.org/italia/onto/Transparency//description",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ]
+}, {
+  "@id" : "https://w3id.org/italia/onto/Transparency//downloadURL",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "it",
+    "@value" : "Questa URL definisce l'indirizzo di download del contenuto informativo."
+  }, {
+    "@language" : "en",
+    "@value" : "This URL defines the download adress of the informative content."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/italia/onto/Transparency//TransparencyResource"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "https://w3id.org/italia/onto/Transparency"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "it",
+    "@value" : "URL di download del contenuto"
+  }, {
+    "@language" : "en",
+    "@value" : "download URL"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#anyURI"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subPropertyOf" : [ {
+    "@id" : "https://w3id.org/italia/onto/SM/URL"
+  } ],
+  "http://www.w3.org/2002/07/owl#versionInfo" : [ {
+    "@language" : "it",
+    "@value" : "stabile"
+  }, {
+    "@language" : "en",
+    "@value" : "stable"
+  } ]
+}, {
+  "@id" : "https://w3id.org/italia/onto/Transparency//generatedBy",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "it",
+    "@value" : "Questa proprità lega una risorsa all'attività che la genera."
+  }, {
+    "@language" : "en",
+    "@value" : "This property links a transparency resource to the activity from which is generated by."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/italia/onto/Transparency//TransparencyResource"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "https://w3id.org/italia/onto/Transparency"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "generated by"
+  }, {
+    "@language" : "it",
+    "@value" : "generato da"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "https://w3id.org/italia/onto/Transparency//TransparencyActivity"
+  } ],
+  "http://www.w3.org/2002/07/owl#inverseOf" : [ {
+    "@id" : "https://w3id.org/italia/onto/Transparency//generatesResource"
+  } ],
+  "http://www.w3.org/2002/07/owl#versionInfo" : [ {
+    "@language" : "it",
+    "@value" : "stabile"
+  }, {
+    "@language" : "en",
+    "@value" : "stable"
+  } ]
+}, {
+  "@id" : "https://w3id.org/italia/onto/Transparency//generatesResource",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "it",
+    "@value" : "Questa proprietà lega un'attività della trasparenza alla risorsa generata come risultato dell'attività."
+  }, {
+    "@language" : "en",
+    "@value" : "This property links a transparency activity to the resource generated as outcome of it."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/italia/onto/Transparency//TransparencyActivity"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "https://w3id.org/italia/onto/Transparency"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "generates resource"
+  }, {
+    "@language" : "it",
+    "@value" : "produce risorsa"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "https://w3id.org/italia/onto/Transparency//TransparencyResource"
+  } ],
+  "http://www.w3.org/2002/07/owl#versionInfo" : [ {
+    "@language" : "it",
+    "@value" : "stabile"
+  }, {
+    "@language" : "en",
+    "@value" : "stable"
+  } ]
+}, {
+  "@id" : "https://w3id.org/italia/onto/Transparency//hasAllowedFormat",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "it",
+    "@value" : "Questa proprità lega una risorsa della trasparenza al formato definito per la pubblicazione"
+  }, {
+    "@language" : "en",
+    "@value" : "This property links a transparency resource to the allowed format defined for publication."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/italia/onto/Transparency//TransparencyResource"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "https://w3id.org/italia/onto/Transparency"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "it",
+    "@value" : "da pubblicare nel formato"
+  }, {
+    "@language" : "en",
+    "@value" : "has allowed format"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "https://w3id.org/italia/onto/Transparency//Format"
+  } ],
+  "http://www.w3.org/2002/07/owl#versionInfo" : [ {
+    "@language" : "it",
+    "@value" : "stabile"
+  }, {
+    "@language" : "en",
+    "@value" : "stable"
+  } ]
+}, {
+  "@id" : "https://w3id.org/italia/onto/Transparency//hasTransparencyActivityTypology",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "it",
+    "@value" : "Questa proprietà lega una attività della trasparenza alla sua tipologia."
+  }, {
+    "@language" : "en",
+    "@value" : "This property links a transparency activity to its typology."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/italia/onto/Transparency//TransparencyActivity"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "https://w3id.org/italia/onto/Transparency"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "it",
+    "@value" : "ha tipologia di attività della trasparenza"
+  }, {
+    "@language" : "en",
+    "@value" : "has transparency activity typology"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "https://w3id.org/italia/onto/Transparency//TransparencyActivityTypology"
+  } ],
+  "http://www.w3.org/2002/07/owl#versionInfo" : [ {
+    "@language" : "it",
+    "@value" : "stabile"
+  }, {
+    "@language" : "en",
+    "@value" : "stable"
+  } ]
+}, {
+  "@id" : "https://w3id.org/italia/onto/Transparency//hasTransparencyStatus",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "it",
+    "@value" : "Questa proprietà lega un obbligo di trasparenza al suo stato attuale."
+  }, {
+    "@language" : "en",
+    "@value" : "This property links a transparency obligation to its current status."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/italia/onto/Transparency//TransparencyObligation"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "https://w3id.org/italia/onto/Transparency"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "it",
+    "@value" : "ha stato trasparenza"
+  }, {
+    "@language" : "en",
+    "@value" : "has transparency status"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "https://w3id.org/italia/onto/Transparency//TransparencyObligationStatus"
+  } ],
+  "http://www.w3.org/2002/07/owl#versionInfo" : [ {
+    "@language" : "it",
+    "@value" : "stabile"
+  }, {
+    "@language" : "en",
+    "@value" : "stable"
+  } ]
+}, {
+  "@id" : "https://w3id.org/italia/onto/Transparency//hasTransparencySubject",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "it",
+    "@value" : "Questa proprietà lega un obbligo di trasparenza ai temi che lo caratterizzano."
+  }, {
+    "@language" : "en",
+    "@value" : "This property links a transparency obligation to the related subjects."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/italia/onto/Transparency//TransparencyObligation"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "https://w3id.org/italia/onto/Transparency"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "it",
+    "@value" : "ha soggetto della trasparenza"
+  }, {
+    "@language" : "it",
+    "@value" : "ha tema della trasparenza"
+  }, {
+    "@language" : "en",
+    "@value" : "has transparency subject"
+  }, {
+    "@language" : "en",
+    "@value" : "has transparency theme"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "https://w3id.org/italia/onto/Transparency//TransparencySubject"
+  } ],
+  "http://www.w3.org/2002/07/owl#versionInfo" : [ {
+    "@language" : "it",
+    "@value" : "stabile"
+  }, {
+    "@language" : "en",
+    "@value" : "stable"
+  } ]
+}, {
+  "@id" : "https://w3id.org/italia/onto/Transparency//isClassifiedBy",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "it",
+    "@value" : "Questa proprietà lega un obbligo di trasparenza alla relativa tipologia. Le voci sono controllate della tassonomia https://w3id.org/italia/controlled-vocabulary/classifications-for-transparency/transparency-titulus"
+  }, {
+    "@language" : "en",
+    "@value" : "This property links a transparency obligation to the corresponding data typology. The values are controlled by the taxonomy  https://w3id.org/italia/controlled-vocabulary/classifications-for-transparency/transparency-titulus "
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/italia/onto/Transparency//TransparencyObligation"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "https://w3id.org/italia/onto/Transparency"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#labels" : [ {
+    "@language" : "en",
+    "@value" : "is classified by"
+  }, {
+    "@language" : "it",
+    "@value" : "è classificato da"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "https://w3id.org/italia/onto/Transparency//TransparencyDataTypology"
+  } ],
+  "http://www.w3.org/2002/07/owl#versionInfo" : [ {
+    "@language" : "it",
+    "@value" : "stabile"
+  }, {
+    "@language" : "en",
+    "@value" : "stable"
+  } ]
+}, {
+  "@id" : "https://w3id.org/italia/onto/Transparency//isPerformedByAgent",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "it",
+    "@value" : "Questa proprietà lega una attività al soggetto che la esegue."
+  }, {
+    "@language" : "en",
+    "@value" : "This property links a transparency activity to the agent that performs it."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/italia/onto/Transparency//TransparencyActivity"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "https://w3id.org/italia/onto/Transparency"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "is performed by"
+  }, {
+    "@language" : "it",
+    "@value" : "è eseguita da"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "https://w3id.org/italia/onto/Transparency//Agent"
+  } ],
+  "http://www.w3.org/2002/07/owl#inverseOf" : [ {
+    "@id" : "https://w3id.org/italia/onto/Transparency//performsTransparencyActivity"
+  } ],
+  "http://www.w3.org/2002/07/owl#versionInfo" : [ {
+    "@language" : "it",
+    "@value" : "stabile"
+  }, {
+    "@language" : "en",
+    "@value" : "stable"
+  } ]
+}, {
+  "@id" : "https://w3id.org/italia/onto/Transparency//isVersionOf",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "it",
+    "@value" : "Questa proprietà lega una risorsa ad una sua versione."
+  }, {
+    "@language" : "en",
+    "@value" : "This property links a transparency resource to its other version."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/italia/onto/Transparency//TransparencyResource"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "https://w3id.org/italia/onto/Transparency"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "version of"
+  }, {
+    "@language" : "it",
+    "@value" : "versione di"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "https://w3id.org/italia/onto/Transparency//TransparencyResource"
+  } ],
+  "http://www.w3.org/2002/07/owl#versionInfo" : [ {
+    "@language" : "it",
+    "@value" : "stabile"
+  }, {
+    "@language" : "en",
+    "@value" : "stable"
+  } ]
+}, {
+  "@id" : "https://w3id.org/italia/onto/Transparency//mustBeUptodatedWithin",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "it",
+    "@value" : "Questa proprietà collega una risorsa della trasparenza alla frequenza con cui deve addiornamento."
+  }, {
+    "@language" : "en",
+    "@value" : "This property links a transparency resource to the prescribed update frequency."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/italia/onto/Transparency//TransparencyResource"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "https://w3id.org/italia/onto/Transparency"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "it",
+    "@value" : "deve essere aggiornata entro"
+  }, {
+    "@language" : "en",
+    "@value" : "must be update within"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "https://w3id.org/italia/onto/Transparency//UpdateFrequency"
+  } ],
+  "http://www.w3.org/2002/07/owl#versionInfo" : [ {
+    "@language" : "it",
+    "@value" : "stabile"
+  }, {
+    "@language" : "en",
+    "@value" : "stable"
+  } ]
+}, {
+  "@id" : "https://w3id.org/italia/onto/Transparency//name",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ]
+}, {
+  "@id" : "https://w3id.org/italia/onto/Transparency//obligedToEnforce",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "it",
+    "@value" : "Questa proprietà lega una amministrazione pubblica gli obblighi di trasparenza che è obbligata a rispettare."
+  }, {
+    "@language" : "en",
+    "@value" : "This property links a public organization to the transparecy obligations which is obliged to enforce."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/italia/onto/COV/PublicOrganization"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "https://w3id.org/italia/onto/Transparency"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "it",
+    "@value" : "obbligata a rispettare l'obbligo"
+  }, {
+    "@language" : "en",
+    "@value" : "obliged to enforce obligation"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "https://w3id.org/italia/onto/Transparency//TransparencyObligation"
+  } ],
+  "http://www.w3.org/2002/07/owl#versionInfo" : [ {
+    "@language" : "it",
+    "@value" : "stabile"
+  }, {
+    "@language" : "en",
+    "@value" : "stable"
+  } ]
+}, {
+  "@id" : "https://w3id.org/italia/onto/Transparency//performsTransparencyActivity",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "it",
+    "@value" : "Questa proprietà lega una attività al soggetto che la esegue."
+  }, {
+    "@language" : "en",
+    "@value" : "This property links a transparency activity to the agent that performs it."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/italia/onto/Transparency//Agent"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "https://w3id.org/italia/onto/Transparency"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "it",
+    "@value" : "esegue attività della trasparenza"
+  }, {
+    "@language" : "en",
+    "@value" : "performs transparency activity"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "https://w3id.org/italia/onto/Transparency//TransparencyActivity"
+  } ],
+  "http://www.w3.org/2002/07/owl#versionInfo" : [ {
+    "@language" : "it",
+    "@value" : "stabile"
+  }, {
+    "@language" : "en",
+    "@value" : "stable"
+  } ]
+}, {
+  "@id" : "https://w3id.org/italia/onto/Transparency//refersToTransparencyEntity",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "it",
+    "@value" : "Questa proprità lega una risorsa della trasparenza alle entità ad essa collegata"
+  }, {
+    "@language" : "en",
+    "@value" : "This property links a transparency resource to the related entities."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/italia/onto/Transparency//TransparencyResource"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "https://w3id.org/italia/onto/Transparency"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "refers to transparency entity"
+  }, {
+    "@language" : "it",
+    "@value" : "si riferisce a entità"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "_:genid1"
+  } ],
+  "http://www.w3.org/2002/07/owl#versionInfo" : [ {
+    "@language" : "it",
+    "@value" : "stabile"
+  }, {
+    "@language" : "en",
+    "@value" : "stable"
+  } ]
+}, {
+  "@id" : "https://w3id.org/italia/onto/Transparency//refersToTransparencySubject",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "it",
+    "@value" : "Questa proprità lega una entità ai soggetti della trasparenza."
+  }, {
+    "@language" : "en",
+    "@value" : "This property links an entity to the transparency subjects."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "_:genid4"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "https://w3id.org/italia/onto/Transparency"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "refers to transparency subject"
+  }, {
+    "@language" : "it",
+    "@value" : "si riferisce a soggetto"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "https://w3id.org/italia/onto/Transparency//TransparencySubject"
+  } ],
+  "http://www.w3.org/2002/07/owl#versionInfo" : [ {
+    "@language" : "it",
+    "@value" : "stabile"
+  }, {
+    "@language" : "en",
+    "@value" : "stable"
+  } ]
+}, {
+  "@id" : "https://w3id.org/italia/onto/Transparency//regulationReference",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "it",
+    "@value" : "Questa proprietà lega un obbligo di trasparenza al riferimento normativo da cui deriva."
+  }, {
+    "@language" : "en",
+    "@value" : "This property links a transparency obligation to the law that defines it."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/italia/onto/Transparency//TransparencyObligation"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "https://w3id.org/italia/onto/Transparency"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "normative reference"
+  }, {
+    "@language" : "it",
+    "@value" : "riferimento normativo"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.w3.org/2000/01/rdf-schema#Literal"
+  } ],
+  "http://www.w3.org/2002/07/owl#versionInfo" : [ {
+    "@language" : "it",
+    "@value" : "stabile"
+  }, {
+    "@language" : "en",
+    "@value" : "stable"
+  } ]
+}, {
+  "@id" : "https://w3id.org/italia/onto/Transparency//subTransparencyObligationOf",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "it",
+    "@value" : "Questa proprietà lega un obbligo di trasparenza ad un obbligo di cui fa parte."
+  }, {
+    "@language" : "en",
+    "@value" : "This property links a transparency obligation to a transparency obligation of which is part of."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/italia/onto/Transparency//TransparencyObligation"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "https://w3id.org/italia/onto/Transparency"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "it",
+    "@value" : "sotto-obbligo di trasparenza di"
+  }, {
+    "@language" : "en",
+    "@value" : "sub-transparency obligation of"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "https://w3id.org/italia/onto/Transparency//TransparencyObligation"
+  } ],
+  "http://www.w3.org/2002/07/owl#inverseOf" : [ {
+    "@id" : "https://w3id.org/italia/onto/Transparency//superTransparencyObligationOf"
+  } ],
+  "http://www.w3.org/2002/07/owl#versionInfo" : [ {
+    "@language" : "it",
+    "@value" : "stabile"
+  }, {
+    "@language" : "en",
+    "@value" : "stable"
+  } ]
+}, {
+  "@id" : "https://w3id.org/italia/onto/Transparency//superTransparencyObligationOf",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "it",
+    "@value" : "Questa proprietà lega un obbligo di trasparenza ad un obbligo di cui è composto."
+  }, {
+    "@language" : "en",
+    "@value" : "This property links a transparency obligation to a transparency obligation of which is composed by."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/italia/onto/Transparency//TransparencyObligation"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "https://w3id.org/italia/onto/Transparency"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "it",
+    "@value" : "super-obbligo di trasparenza di"
+  }, {
+    "@language" : "en",
+    "@value" : "super-transparency obligation of"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "https://w3id.org/italia/onto/Transparency//TransparencyObligation"
+  } ],
+  "http://www.w3.org/2002/07/owl#versionInfo" : [ {
+    "@language" : "it",
+    "@value" : "stabile"
+  }, {
+    "@language" : "en",
+    "@value" : "stable"
+  } ]
+}, {
+  "@id" : "https://w3id.org/italia/onto/Transparency//triggeredBy",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "it",
+    "@value" : "Questa proprietà lega un obbligo di trasparenza all'attività che attiva."
+  }, {
+    "@language" : "en",
+    "@value" : "This property links a trasparency obbligation to the activty triggered by it."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/italia/onto/Transparency//TransparencyActivity"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "https://w3id.org/italia/onto/Transparency"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "it",
+    "@value" : "attivato da"
+  }, {
+    "@language" : "en",
+    "@value" : "triggered by"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "https://w3id.org/italia/onto/Transparency//TransparencyObligation"
+  } ],
+  "http://www.w3.org/2002/07/owl#inverseOf" : [ {
+    "@id" : "https://w3id.org/italia/onto/Transparency//triggers"
+  } ],
+  "http://www.w3.org/2002/07/owl#versionInfo" : [ {
+    "@language" : "it",
+    "@value" : "stabile"
+  }, {
+    "@language" : "en",
+    "@value" : "stable"
+  } ]
+}, {
+  "@id" : "https://w3id.org/italia/onto/Transparency//triggers",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "it",
+    "@value" : "Questa proprietà lega un obbligo di trasparenza all'attività che attiva."
+  }, {
+    "@language" : "en",
+    "@value" : "This property links a trasparency obbligation to the activty triggered by it."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/italia/onto/Transparency//TransparencyObligation"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "https://w3id.org/italia/onto/Transparency"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "it",
+    "@value" : "attiva"
+  }, {
+    "@language" : "en",
+    "@value" : "triggers"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "https://w3id.org/italia/onto/Transparency//TransparencyActivity"
+  } ],
+  "http://www.w3.org/2002/07/owl#versionInfo" : [ {
+    "@language" : "it",
+    "@value" : "stabile"
+  }, {
+    "@language" : "en",
+    "@value" : "stable"
+  } ]
+} ]
