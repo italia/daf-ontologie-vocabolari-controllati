@@ -1,6 +1,7 @@
 @prefix : <https://w3id.org/italia/onto/TI/> .
 @prefix dc: <http://purl.org/dc/elements/1.1/> .
 @prefix l0: <https://w3id.org/italia/onto/l0/> .
+@prefix mu: <https://w3id.org/italia/onto/MU/> .
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -14,65 +15,65 @@
 @prefix schema: <http://schema.org/> .
 @prefix admsapit: <https://w3id.org/italia/onto/ADMS/> .
 @prefix dcatapit: <http://dati.gov.it/onto/dcatapit#> .
-@base <https://w3id.org/italia/onto/TI> .
+@base <https://w3id.org/italia/onto/l0> .
 
-<https://w3id.org/italia/onto/TI> rdf:type owl:Ontology ;
-                                   owl:versionIRI <https://w3id.org/italia/onto/TI/0.6>  ;
-                                   owl:imports <https://w3id.org/italia/onto/l0> ,
-                                               <https://w3id.org/italia/onto/MU> ;
-                                   admsapit:prefix "tiapit" ;
+<https://w3id.org/italia/onto/l0> rdf:type owl:Ontology ;
+                                   owl:versionIRI <https://w3id.org/italia/onto/TI/0.6> ;
+                                   owl:imports <https://w3id.org/italia/onto/MU> ,
+                                               <https://w3id.org/italia/onto/l0> ;
+                                   dct:accrualPeriodicity <http://publications.europa.eu/resource/authority/frequency/IRREG> ;
+                                   dct:creator <http://spcdata.digitpa.gov.it/Amministrazione/agid> ,
+                                               <https://w3id.org/italia/data/organization/support-unit/cnr-Z6HZEH/stlab> ;
+                                   dct:description "Questo il profilo applicativo italiano dell'ontologia sul tempo. Esso definisce concetti quali Intervallo di Tempo, istante temporale, evento indicizzato nel tempo"@it ,
+                                                   "This is the Italian application profile of the time ontology. It includes such concepts as time interval, time, time indexed event, etc."@en ;
                                    dct:issued "2017-09-25"^^xsd:date ;
-                                   dct:creator <http://spcdata.digitpa.gov.it/Amministrazione/agid> ;
-                                   admsapit:target "Cittadini"@it ;
-                                   admsapit:hasTask admsapit:AnnotationTask ,
-                                                    admsapit:QueryFormulationTask ;
-                                   admsapit:hasKeyClass :TimeIndexedEvent ;
-                                   dcat:keyword "anno"@it ;
-                                   admsapit:hasTask admsapit:SearchTask ;
-                                   owl:versionInfo "Version 0.6 - Modified on 23 April 2019 - Refactoring l0:Event in l0:EventOrSituation"@en ;
-                                   dcat:keyword "mese"@it ;
-                                   admsapit:target "Pubbliche Amministrazioni"@it ;
+                                   dct:language <http://publications.europa.eu/resource/authority/language/ENG> ,
+                                                <http://publications.europa.eu/resource/authority/language/ITA> ;
                                    dct:modified "2019-04-23"^^xsd:date ;
-                                   admsapit:hasOntologyLanguage admsapit:OWL ;
-                                   dct:creator <https://w3id.org/italia/data/organization/support-unit/cnr-Z6HZEH/stlab> ;
-                                   rdfs:comment "This is the ontology of the Italian application profile for time"@en ;
-                                   rdfs:label "Ontologia del Tempo"@it ;
-                                   dct:description "This is the Italian application profile of the time ontology. It includes such concepts as time interval, time, time indexed event, etc."@en ;
-                                   rdfs:comment "Questa è l'ontologia del profilo applicativo del tempo."@it ;
-                                   admsapit:status "catalogued" ;
-                                   admsapit:hasKeyClass :TimeInterval ;
-                                   admsapit:type admsapit:ServiceOntology ;
-                                   dcat:keyword "istante temporale" ;
-                                   rdfs:isDefinedBy <https://w3id.org/italia/onto/TI> ;
-                                   dct:language <http://publications.europa.eu/resource/authority/language/ENG> ;
-                                   admsapit:hasFormalityLevel admsapit:Formal ;
-                                   dct:description "Questo il profilo applicativo italiano dell'ontologia sul tempo. Esso definisce concetti quali Intervallo di Tempo, istante temporale, evento indicizzato nel tempo"@it ;
-                                   dct:rightsHolder <http://spcdata.digitpa.gov.it/Amministrazione/agid> ;
-                                   dct:title "Ontologia del Tempo - Profilo applicativo italiano"@it ;
-                                   admsapit:hasSemanticAssetDistribution <https://w3id.org/italia/data/distribution/TI-RDF-XML> ;
-                                   dcat:keyword "intervallo temporale"@it ;
                                    dct:publisher <http://spcdata.digitpa.gov.it/Amministrazione/agid> ;
+                                   dct:rightsHolder <http://spcdata.digitpa.gov.it/Amministrazione/agid> ;
+                                   dct:title "Ontologia del Tempo - Profilo applicativo italiano"@it ,
+                                             "Time ontology - Italian application profile"@en ;
+                                   rdfs:comment "Questa è l'ontologia del profilo applicativo del tempo."@it ,
+                                                "This is the ontology of the Italian application profile for time"@en ,
+                                                "This is the ontology of the time Italian profile"@en ;
+                                   rdfs:isDefinedBy <https://w3id.org/italia/onto/TI> ;
+                                   rdfs:label "Italian Time ontology"@en ,
+                                              "Ontologia del Tempo"@it ;
+                                   owl:versionInfo "Version 0.6 - Modified on 23 April 2019 - Refactoring l0:Event in l0:EventOrSituation"@en ,
+                                                   "Versione 0.6 - Modificata il 23 Aprile 2019 - Rifattorizzato l0:Event in l0:EventOrSituation"@it ;
                                    dcat:contactPoint <https://w3id.org/italia/data/contact-point/onto-agid> ;
-                                   dcat:keyword "tempo"@it ;
+                                   dcat:keyword "anno"@it ,
+                                                "giorno"@it ,
+                                                "intervallo temporale"@it ,
+                                                "istante temporale" ,
+                                                "mese"@it ,
+                                                "tempo"@it ;
+                                   dcat:theme <http://publications.europa.eu/resource/authority/data-theme/TECH> ;
+                                   admsapit:acronym "TI-AP_IT" ;
+                                   admsapit:hasContributor <https://w3id.org/italia/data/organization/public-organization/td> ;
+                                   admsapit:hasFormalityLevel admsapit:Formal ;
+                                   admsapit:hasKeyClass :TemporalEntity ,
+                                                        :TimeIndexedEvent ,
+                                                        :TimeInterval ;
+                                   admsapit:hasOntologyLanguage admsapit:OWL ;
+                                   admsapit:hasSemanticAssetDistribution <https://w3id.org/italia/data/distribution/TI-JSON-LD> ,
+                                                                         <https://w3id.org/italia/data/distribution/TI-RDF-TURTLE> ,
+                                                                         <https://w3id.org/italia/data/distribution/TI-RDF-XML> ;
+                                   admsapit:hasTask admsapit:AnnotationTask ,
+                                                    admsapit:QueryFormulationTask ,
+                                                    admsapit:SearchTask ;
+                                   admsapit:last : ;
+                                   admsapit:officialURI "https://w3id.org/italia/onto/TI"^^xsd:anyURI ;
+                                   admsapit:prefix "tiapit" ;
                                    admsapit:semanticAssetInUse <https://w3id.org/italia/data/project/DAF> ,
                                                                <https://w3id.org/italia/data/project/OntoPiA> ;
-                                   dct:accrualPeriodicity <http://publications.europa.eu/resource/authority/frequency/IRREG> ;
-                                   rdfs:label "Italian Time ontology"@en ;
-                                   admsapit:last : ;
-                                   owl:versionInfo "Versione 0.6 - Modificata il 23 Aprile 2019 - Rifattorizzato l0:Event in l0:EventOrSituation"@it ;
-                                   admsapit:acronym "TI-AP_IT" ;
-                                   admsapit:hasSemanticAssetDistribution <https://w3id.org/italia/data/distribution/TI-RDF-TURTLE> ;
-                                   admsapit:hasContributor <https://w3id.org/italia/data/organization/public-organization/td> ;
-                                   dcat:keyword "giorno"@it ;
-                                   rdfs:comment "This is the ontology of the time Italian profile"@en ;
-                                   admsapit:officialURI "https://w3id.org/italia/onto/TI"^^xsd:anyURI ;
-                                   dct:title "Time ontology - Italian application profile"@en ;
-                                   dct:language <http://publications.europa.eu/resource/authority/language/ITA> ;
-                                   admsapit:hasKeyClass :TemporalEntity ;
-                                   admsapit:target "Imprese"@it ;
-                                   admsapit:hasSemanticAssetDistribution <https://w3id.org/italia/data/distribution/TI-JSON-LD> ;
-                                   admsapit:status "published" ;
-                                   dcat:theme <http://publications.europa.eu/resource/authority/data-theme/TECH> .
+                                   admsapit:status "catalogued" ,
+                                                   "published" ;
+                                   admsapit:target "Cittadini"@it ,
+                                                   "Imprese"@it ,
+                                                   "Pubbliche Amministrazioni"@it ;
+                                   admsapit:type admsapit:ServiceOntology .
 
 #################################################################
 #    Annotation properties
@@ -282,9 +283,9 @@ xsd:time rdf:type rdfs:Datatype .
      rdfs:range xsd:gDay ;
      rdfs:comment "Property defined for linking an instance of the class DayOfWeed to its literal representation expressed as xsd:gDay."@en ,
                   "Proprietà definita per associare un valore letterale di tipo xsd:gDay ad un'istanza della classe DayOfWeek."@it ;
-     rdfs:label   "day"@en ,
-                  "giorno"@it ;
-     rdfs:isDefinedBy <https://w3id.org/italia/onto/TI> .
+     rdfs:isDefinedBy <https://w3id.org/italia/onto/TI> ;
+     rdfs:label "day"@en ,
+                "giorno"@it .
 
 
 ###  https://w3id.org/italia/onto/TI/duration
@@ -360,9 +361,9 @@ xsd:time rdf:type rdfs:Datatype .
        rdfs:range xsd:gMonth ;
        rdfs:comment "Property defined for linking an individual of the class MonthOfTheYear to its literal representation expressed as xsd:gMonth."@en ,
                     "Proprietà definita per collegare un oggetto di tipo MonthOfTheYear al suo valore letterale espresso come xsd:gMonth."@it ;
-       rdfs:label   "mese"@it ,
-                    "month"@en ;
-       rdfs:isDefinedBy <https://w3id.org/italia/onto/TI> .
+       rdfs:isDefinedBy <https://w3id.org/italia/onto/TI> ;
+       rdfs:label "mese"@it ,
+                  "month"@en .
 
 
 ###  https://w3id.org/italia/onto/TI/startTime
@@ -399,9 +400,9 @@ xsd:time rdf:type rdfs:Datatype .
       rdfs:subPropertyOf :time ;
       rdfs:domain :Year ;
       rdfs:range xsd:gYear ;
-      rdfs:isDefinedBy <https://w3id.org/italia/onto/TI> ;
       rdfs:comment "Datatype property for linking a year to its literal representation as xsd:gYear."@en ,
-                 "Properietà definita per collegare un individuo di tipo Year alla sua rappresentazione letterale con datatype xsd:gYear."@it ;
+                   "Properietà definita per collegare un individuo di tipo Year alla sua rappresentazione letterale con datatype xsd:gYear."@it ;
+      rdfs:isDefinedBy <https://w3id.org/italia/onto/TI> ;
       rdfs:label "anno"@it ,
                  "year"@en .
 
@@ -411,7 +412,7 @@ xsd:time rdf:type rdfs:Datatype .
 #################################################################
 
 ###  https://w3id.org/italia/onto/MU/Value
-<https://w3id.org/italia/onto/MU/Value> rdf:type owl:Class .
+mu:Value rdf:type owl:Class .
 
 
 ###  https://w3id.org/italia/onto/TI/DayOfWeek
@@ -430,7 +431,7 @@ xsd:time rdf:type rdfs:Datatype .
 :Duration rdf:type owl:Class ;
           rdfs:subClassOf :TemporalEntity ,
                           [ rdf:type owl:Class ;
-                            owl:unionOf ( <https://w3id.org/italia/onto/MU/Value>
+                            owl:unionOf ( mu:Value
                                           :TimeInterval
                                         )
                           ] ;
@@ -519,7 +520,7 @@ l0:Characteristic rdf:type owl:Class .
 l0:Entity rdf:type owl:Class .
 
 
-###  https://w3id.org/italia/onto/l0/Event
+###  https://w3id.org/italia/onto/l0/EventOrSituation
 l0:EventOrSituation rdf:type owl:Class .
 
 
@@ -529,11 +530,20 @@ l0:EventOrSituation rdf:type owl:Class .
 
 ###  http://spcdata.digitpa.gov.it/Amministrazione/agid
 <http://spcdata.digitpa.gov.it/Amministrazione/agid> rdf:type owl:NamedIndividual ,
-                                                                          dcatapit:Agent ,
-                                                                          foaf:Agent ;
-                                                                 dct:identifier "agid" ;
-                                                                 foaf:name "Agenzia per l'Italia Digitale"@it ,
-                                                                           "Italian Digital Agency"@en .
+                                                              dcatapit:Agent ,
+                                                              foaf:Agent ;
+                                                     dct:identifier "agid" ;
+                                                     foaf:name "Agenzia per l'Italia Digitale"@it ,
+                                                               "Italian Digital Agency"@en .
+
+
+###  https://w3id.org/italia/data/contact-point/onto-agid
+<https://w3id.org/italia/data/contact-point/onto-agid> rdf:type owl:NamedIndividual ,
+                                                                dcatapit:Organization ,
+                                                                vcard:Kind ,
+                                                                vcard:Organization ;
+                                                       vcard:fn "banche dati e open data" ;
+                                                       vcard:hasEmail <mailto:info@dati.gov.it> .
 
 
 ###  https://w3id.org/italia/data/distribution/TI-JSON-LD
@@ -573,15 +583,6 @@ l0:EventOrSituation rdf:type owl:Class .
                                                                  "RDF/XML distribution of TI-AP_IT Ontology"@en ;
                                                        dcat:accessURL <https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/TI/latest> ;
                                                        dcat:downloadURL <https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/TI/latest/TI-AP_IT.rdf> .
-
-
-###  https://w3id.org/italia/data/contact-point/onto-agid
-<https://w3id.org/italia/data/contact-point/onto-agid> rdf:type owl:NamedIndividual ,
-                                                                dcatapit:Organization ,
-                                                                vcard:Kind ,
-                                                                vcard:Organization ;
-                                                       vcard:fn "banche dati e open data" ;
-                                                       vcard:hasEmail <mailto:info@dati.gov.it> .
 
 
 ###  https://w3id.org/italia/data/organization/public-organization/td
@@ -751,4 +752,4 @@ l0:EventOrSituation rdf:type owl:Class .
                       "Wednesday"@en .
 
 
-###  Generated by the OWL API (version 4.2.8.20170104-2310) https://github.com/owlcs/owlapi
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
