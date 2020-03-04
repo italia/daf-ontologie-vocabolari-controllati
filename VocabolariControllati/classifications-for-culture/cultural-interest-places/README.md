@@ -32,9 +32,11 @@ In particolare le voci ufficiali sono le seguenti:
 9. Luogo per lo sport e il tempo libero
 
 --- Versione 0.2
+
 10. Architettura commerciale
 
 --- Versione 0.3
+
 11. Centro per l'assistenza e la tutela sociale
 12. Infrastruttura e impianto
 13. Struttura ricettiva
@@ -53,9 +55,11 @@ Le etichette alternative, definite anche al plurale per esigenze di presentazion
 9. Luoghi per lo sport e il tempo libero
 
 --- Versione 0.2
+
 10. Luoghi per il commercio
 
 --- Versione 0.3
+
 11. Centri per l'assistenza e la tutela sociale
 12. Infrastrutture e impianti
 13. Strutture ricettive
@@ -76,9 +80,11 @@ Di seguito riportiamo esempi di voci di secondo livello per ciascun elemento di 
 9. Luoghi per lo sport e il tempo libero --> Campi sportivi, Piscine, Stadio, Terme, Casinò, ecc. - aggiunte 6 ulteriori voci nella versione 0.3
 
 --- Versione 0.2
+
 10. Luoghi per il commercio --> Mercati, Farmacie
 
 --- Versione 0.3
+
 11. Centri per l'assistenza e la tutela sociale --> Ospizi, Centri d'accoglienza, Ospedali
 12. Infrastrutture e impianti --> Centri di raccolta, Acquedotti, Aeroporti, Porti
 13. Strutture ricettive --> Alberghi, Foresterie, Rifugi, Rifugi per animali
