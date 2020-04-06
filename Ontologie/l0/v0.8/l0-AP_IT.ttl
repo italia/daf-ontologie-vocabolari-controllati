@@ -25,7 +25,7 @@
                                    dct:issued "2017-09-29"^^xsd:date ;
                                    dct:language <http://publications.europa.eu/resource/authority/language/ENG> ,
                                                 <http://publications.europa.eu/resource/authority/language/ITA> ;
-                                   dct:modified "2019-04-24"^^xsd:date ;
+                                   dct:modified "2020-04-06"^^xsd:date ;
                                    dct:publisher <http://spcdata.digitpa.gov.it/Amministrazione/agid> ;
                                    dct:rightsHolder <http://spcdata.digitpa.gov.it/Amministrazione/agid> ;
                                    dct:title "Ontologia fondazionale di OntoPiA - Livello 0"@it ,
@@ -35,8 +35,8 @@
                                    rdfs:isDefinedBy <https://w3id.org/italia/onto/l0> ;
                                    rdfs:label "Ontologia fondazionale di OntoPiA - Livello 0"@it ,
                                               "Top level ontology L0 - Level-0"@en ;
-                                   owl:versionInfo "Version 0.8 - 24 April 2019 - review Topic class, l0:EventOrSituation disjountness axiom."@en ,
-                                                   "Version 0.8- 24 Aprile 2019 - Revisione della classe Topic e dell'assioma di disgiunizone di Evento e Situazione."@it ;
+                                   owl:versionInfo "Version 0.8 - 06 April 2020 - fixed typos for rdfs:comments of two object properties"@en ,
+                                                   "Version 0.8- 06 Aprile 2020 - correzione nell'uso di rdfs:label in due object property"@it ;
                                    dcat:contactPoint <https://w3id.org/italia/data/contact-point/onto-agid> ;
                                    dcat:keyword "Caratteristica"@it ,
                                                 "Evento"@it ,
@@ -360,10 +360,10 @@ admsapit:type rdf:type owl:AnnotationProperty .
                  rdfs:subPropertyOf :isMemberOf ;
                  rdfs:domain :Entity ;
                  rdfs:range :Sequence ;
+                 rdfs:comment "Inverse object property of has first member."@en ,
+                              "Proprietà inversa di has first member."@it ;
                  rdfs:isDefinedBy <https://w3id.org/italia/onto/l0> ;
-                 rdfs:label "Inverse object property of has first member."@en ,
-                            "Proprietà inversa di has first member."@it ,
-                            "is first member of"@en ,
+                 rdfs:label "is first member of"@en ,
                             "primo membro di"@it ;
                  owl:versionInfo "stabile"@it ,
                                  "stable"@en .
@@ -400,10 +400,10 @@ admsapit:type rdf:type owl:AnnotationProperty .
 :isTopicOf rdf:type owl:ObjectProperty ;
            rdfs:domain :Topic ;
            rdfs:range :Entity ;
+           rdfs:comment "La object property che permette di associare un tema ad un'entità. E' l'inversa di hasTopic."@it ,
+                        "The object property that associates a topic with an entity. This is the inverse property of hasTopic."@en ;
            rdfs:isDefinedBy <https://w3id.org/italia/onto/l0> ;
-           rdfs:label "La object property che permette di associare un tema ad un'entità. E' l'inversa di hasTopic."@it ,
-                      "The object property that associates a topic with an entity. This is the inverse property of hasTopic."@en ,
-                      "is topic of"@en ,
+           rdfs:label "is topic of"@en ,
                       "è tema di"@it ;
            owl:versionInfo "stabile"@it ,
                            "stable"@en .
@@ -639,7 +639,14 @@ GLi oggetti si possono contrapporre agli eventi, che invece scorrono nel tempo, 
                             owl:onProperty :hasLastMember ;
                             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                             owl:onClass :Entity
-                          ] .
+                          ] ;
+          rdfs:comment "La classe che rappresenta il pattern di sequenza"@it ,
+                       "The class that represents the sequence pattern"@en ;
+          rdfs:isDefinedBy <https://w3id.org/italia/onto/l0> ;
+          rdfs:label "Sequence"@en ,
+                     "Sequenza"@it ;
+          owl:versionInfo "stabile"@en ,
+                          "stabile"@it .
 
 
 ###  https://w3id.org/italia/onto/l0/System
