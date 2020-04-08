@@ -54,6 +54,7 @@ La versione XLSX è derivata dalla versione CSV, ed entrambe propongono un sotto
 + `03` Consulenti e collaboratori
 	- `03.01` Titolari di incarichi di collaborazione o consulenza
 	- `03.02` Amministratori ed esperti
+	- `03.02` Amministratori ed esperti ex art. 32 d.l. 90/2014
 + `04` Personale
 	- `04.01` Titolari di incarichi dirigenziali amministrativi di vertice
 	- `04.02` Titolari di incarichi dirigenziali (dirigenti non generali)
@@ -112,7 +113,7 @@ La versione XLSX è derivata dalla versione CSV, ed entrambe propongono un sotto
     - `15.06` Dati sui pagamenti
 	- `15.07` Dati sui pagamenti del servizio sanitario nazionale
 	- `15.08` Indicatore di tempestività dei pagamenti
-	- `15.09` IBAN e pagamenti informatici
+	- `15.09` Pagamenti informatici
 + `16` Opere pubbliche
 	- `16.01` Nuclei di valutazione e verifica degli investimenti pubblici
 	- `16.02` Atti di programmazione delle opere pubbliche
