@@ -46,19 +46,19 @@
                                    admsapit:target "Pubbliche Amministrazioni"@it ;
                                    admsapit:hasSemanticAssetDistribution <https://w3id.org/italia/data/distribution/RO-RDF-XML> ;
                                    admsapit:acronym "RO-AP_IT" ;
-                                   dct:modified "2018-03-03"^^xsd:date ;
+                                   dct:modified "2019-04-23"^^xsd:date ;
                                    rdfs:comment "This is the ontology used to represent roles"@en ;
                                    admsapit:hasOntologyLanguage admsapit:OWL ;
                                    dct:creator <https://w3id.org/italia/data/organization/support-unit/cnr-Z6HZEH/stlab> ;
                                    dct:description "Questo il profilo applicativo italiano dell'ontologia dei ruoli. Esso per rappresentare ruoli di persone, organizazzioni in determinati contesti. L'ontologia consente di rappresentare anche ruoli che evolvono nel tempo"@it ;
                                    rdfs:label "Ontologia dei Ruoli"@it ;
-                                   owl:versionInfo "Version 0.3 - March 12 2019 - better definition of the property forEntity, hasRiT and holdsRoleInTime. This latter is linked to an Agent while forEntity and hasRiT are linked to generic Entities and they are inverse of each other."@en ;
+                                   owl:versionInfo "Version 0.3 - Modified on April 23 2019 - Refactoring l0:Event in l0:EventOrSituation."@en ;
                                    admsapit:hasKeyClass :RoleInTime ;
                                    admsapit:hasContributor <https://w3id.org/italia/data/organization/public-organization/td> ;
                                    rdfs:comment "Questa è l'ontologia del profilo applicativo dei ruoli (di persone, organizzazioni)"@it ;
                                    admsapit:status "catalogued" ;
                                    dct:language <http://publications.europa.eu/resource/authority/language/ITA> ;
-                                   owl:versionInfo "Versione 0.3 - 12 Marzo 2019 - definizione più puntuale per le proprietà \"per entità\" \"ha ruolo nel tempo\", \"riveste ruolo nel tempo\". In particolare, \"riveste ruolo nel tempo\" è associata ad Agenti mentre le prime due proprietà, che sono tra loro inverse, sono utilizzate per associare un ruolo che varia nel tempo a delle generiche entità. \"riveste ruolo nel tempo\" è sotto proprietà della generica \"ha ruolo nel tempo\"."@it ;
+                                   owl:versionInfo "Versione 0.3 - Modificata il 23 Aprile 2019 -  Rifattorizzazione di l0:Event in l0:EventOrSituation."@it ;
                                    admsapit:officialURI "https://w3id.org/italia/onto/RO"^^xsd:anyURI ;
                                    admsapit:type admsapit:ServiceOntology ;
                                    admsapit:last : ;
@@ -172,7 +172,7 @@ dct:modified rdf:type owl:AnnotationProperty .
 
 ###  https://w3id.org/italia/onto/RO/withRole
 :withRole rdf:type owl:ObjectProperty ;
-          owl:inverseOf tiapit:isRoleIn ;
+          owl:inverseOf :isRoleIn ;
           rdf:type owl:FunctionalProperty ;
           rdfs:domain :TimeIndexedRole ;
           rdfs:range :Role ;
@@ -187,8 +187,8 @@ dct:modified rdf:type owl:AnnotationProperty .
 tiapit:hasTemporalEntity rdf:type owl:ObjectProperty .
 
 
-###  https://w3id.org/italia/onto/TI/isRoleIn
-tiapit:isRoleIn rdf:type owl:ObjectProperty ;
+###  https://w3id.org/italia/onto/RO/isRoleIn
+:isRoleIn rdf:type owl:ObjectProperty ;
                 rdfs:domain :Role ;
                 rdfs:range :TimeIndexedRole ;
                 rdfs:comment "Inverse property of \"with role\""@en ,
@@ -221,7 +221,7 @@ l0:name rdf:type owl:DatatypeProperty ;
                         owl:allValuesFrom l0:Entity
                       ] ,
                       [ rdf:type owl:Restriction ;
-                        owl:onProperty tiapit:isRoleIn ;
+                        owl:onProperty :isRoleIn ;
                         owl:allValuesFrom :TimeIndexedRole
                       ] ,
                       [ rdf:type owl:Restriction ;
@@ -237,7 +237,7 @@ l0:name rdf:type owl:DatatypeProperty ;
 
 ###  https://w3id.org/italia/onto/RO/TimeIndexedRole
 :TimeIndexedRole rdf:type owl:Class ;
-                 rdfs:subClassOf l0:Event ,
+                 rdfs:subClassOf l0:EventOrSituation ,
                                  [ rdf:type owl:Restriction ;
                                    owl:onProperty :forEntity ;
                                    owl:someValuesFrom l0:Entity
@@ -280,7 +280,7 @@ l0:Entity rdf:type owl:Class .
 
 
 ###  https://w3id.org/italia/onto/l0/Event
-l0:Event rdf:type owl:Class .
+l0:EventOrSituation rdf:type owl:Class .
 
 
 ###  https://w3id.org/italia/onto/l0/Object

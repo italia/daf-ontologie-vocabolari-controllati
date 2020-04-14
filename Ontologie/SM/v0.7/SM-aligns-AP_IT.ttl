@@ -1,0 +1,121 @@
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ti: <http://www.ontologydesignpatterns.org/cp/owl/timeinterval.owl> .
+@prefix sioc:  	<http://rdfs.org/sioc/ns#> .
+@prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
+@prefix smapit: <https://w3id.org/italia/onto/SM/> .
+@base <https://w3id.org/italia/onto/SM-aligns/> .
+
+
+<https://w3id.org/italia/onto/SM-aligns> rdf:type owl:Ontology ;
+
+    owl:versionIRI <https://w3id.org/italia/onto/SM-aligns/0.1> ;
+    dc:creator "Institute of Cognitive Sciences and Technologies of the Italian Research Council (CNR) - Semantic Technology Laboratory (STLab)"@en ;
+    dc:creator "Agency for Digital Italy - AgID"@en ;
+    dc:creator "Italian Digital Transformation Team"@en ;
+    dc:issued "2018-06-25"^^xsd:date ;
+    dc:modified "2018-06-25"^^xsd:date ;
+    dct:title "Social Media and Internet Ontology Alignments"@en , "Allineamenti per l'ontologia Social media e Internet"@it ;
+    dct:description "These are the alignments to external ontologies widely used and available at the state of the art for the Social Media and Internet Ontology"@en , "Questi sono gli allineamenti dell'ontologia Social Media and Internet Social Media  - Italian Application Profile  (SM-AP_IT) verso ontologie esterne del Web semantico standard e ampiamente utilizzate."@it ;
+
+    owl:imports <https://w3id.org/italia/onto/SM> .
+
+
+# Classes - Alignments
+smapit:Review a owl:Class ;
+  rdfs:isDefinedBy smapit: ;
+  owl:subClassOf schema:Review .
+
+smapit:Rating a owl:Class ;
+  rdfs:isDefinedBy smapit: ;
+  owl:subClassOf schema:Rating .
+
+smapit:Email a owl:Class ;
+  rdfs:isDefinedBy smapit: ;
+  owl:equivalentClass vcard:Email .
+
+smapit:TelephoneType a owl:Class ;
+    rdfs:isDefinedBy smapit: ;
+    owl:equivalentClass vcard:Phone .
+
+smapit:OnlineContactPoint a owl:Class ;
+    rdfs:isDefinedBy smapit: ;
+    owl:subClassOf vcard:Contact , schema:ContactPoint .
+
+smapit:Image a owl:Class ;
+    rdfs:isDefinedBy smapit: ;
+    owl:subClassOf foaf:Image , schema:ImageObject .
+
+smapit:UserAccount a owl:Class ;
+      rdfs:isDefinedBy smapit: ;
+      owl:subClassOf foaf:OnlineAccount .
+
+smapit:Post a owl:Class  ;
+      rdfs:isDefinedBy smapit: ;
+      owl:subClassOf schema:SocialMediaPosting , sioc:Post .
+
+smapit:WebSite a owl:Class ;
+      rdfs:isDefinedBy smapit: ;
+      owl:subClassOf sioc:Site .
+
+# Object Properties - Alignments
+
+smapit:hasRating a owl:ObjectProperty ;
+      rdfs:isDefinedBy smapit: ;
+      owl:subPropertyOf schema:reviewRating .
+
+smapit:hasReply a owl:ObjectProperty ;
+      rdfs:isDefinedBy smapit: ;
+      owl:subPropertyOf sioc:has_reply .
+
+smapit:hasCreator a owl:ObjectProperty ;
+      rdfs:isDefinedBy smapit: ;
+      owl:subPropertyOf sioc:has_creator .
+
+smapit:hasEmail a owl:ObjectProperty ;
+      rdfs:isDefinedBy smapit: ;
+      owl:subPropertyOf vcard:hasEmail .
+
+smapit:hasTelephone a owl:ObjectProperty ;
+      rdfs:isDefinedBy smapit: ;
+      owl:subPropertyOf vcard:hasTelephone .
+
+#Data Type Properties - Alignments
+
+smapit:bestUserRating a owl:DatatypeProperty ;
+      rdfs:isDefinedBy smapit: ;
+      owl:subPropertyOf schema:bestRating .
+
+smapit:worstUserRating a owl:DatatypeProperty ;
+      rdfs:isDefinedBy smapit: ;
+      owl:subPropertyOf schema:worstRating .
+
+
+schema:Review a owl:Class .
+schema:Rating a owl:Class .
+schema:ContactPoint a owl:Class .
+schema:ImageObject a owl:Class .
+schema:SocialMediaPosting a owl:Class .
+sioc:Post a owl:Class .
+sioc:Site a owl:Class .
+foaf:OnlineAccount a owl:Class .
+foaf:Image a owl:Class .
+vcard:Email a owl:Class .
+vcard:Phone a owl:Class .
+vcard:Contact a owl:Class .
+schema:reviewRating a owl:ObjectProperty .
+sioc:has_reply a owl:ObjectProperty .
+sioc:has_creator a owl:ObjectProperty .
+vcard:hasEmail a owl:ObjectProperty .
+vcard:hasTelephone a owl:ObjectProperty .
+schema:bestRating a owl:DatatypeProperty .
+schema:worstRating a owl:DatatypeProperty .

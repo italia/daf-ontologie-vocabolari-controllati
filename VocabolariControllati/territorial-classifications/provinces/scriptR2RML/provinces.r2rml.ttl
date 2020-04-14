@@ -1,0 +1,172 @@
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+@prefix l0: <https://w3id.org/italia/onto/l0/> .
+@prefix clvapit: <https://w3id.org/italia/onto/CLV/> .
+@prefix nuts: <http://nuts.geovocab.org/id/> .
+
+@base  <https://w3id.org/italia/> .
+
+# province
+
+<VIEW_province> rr:sqlQuery """
+
+SELECT
+	ISTAT.codice_provincia AS _CODICE_PROVINCIA
+	,ISTAT.codice_regione AS _CODICE_REGIONE
+	,ISTAT.denominazione_provincia AS _NOME_PROVINCIA
+	,ISTAT.sigla_automobilistica AS _SIGLA_AUTOMOBILISTICA
+	,ISTAT.codice_nuts2_2006 AS _NUTS2
+	,ISTAT.codice_nuts3_2006 AS _NUTS3
+	,ISTAT.`__regione_id` AS _REGIONE_ID
+	,LCASE(ISTAT.ripartizione_geografica) AS _RIPARTIZIONE_GEOGRAFICA_ID
+FROM gove__amministrazione.daf_data_o_istat_comuni_italiani_view AS ISTAT
+WHERE (ISTAT.denominazione_provincia != '-' AND ISTAT.denominazione_citta_metropolitana = '-')
+
+
+"""
+.
+
+
+<TriplesMap_DatasetConceptScheme> a rr:TriplesMapClass ;
+
+rr:logicalTable <VIEW_province> ;
+
+rr:subjectMap [
+	rr:constant <https://w3id.org/italia/controlled-vocabulary/territorial-classifications/provinces> ;
+	rr:class skos:ConceptScheme ;
+] ;
+
+rr:predicateObjectMap [
+	rr:predicate skos:hasTopConcept ;
+	rr:objectMap [
+		rr:template "https://w3id.org/italia/controlled-vocabulary/territorial-classifications/provinces/{'_CODICE_PROVINCIA'}" ;
+		rr:termType rr:IRI ;
+	]
+] ;
+
+.
+
+
+<TriplesMap_SiglaAutomobilistica> a rr:TriplesMapClass ;
+
+rr:logicalTable <VIEW_province> ;
+
+rr:subjectMap [
+	rr:template "https://w3id.org/italia/data/identifiers/provinces-identifiers/vehicle-code/{'_SIGLA_AUTOMOBILISTICA'}" ;
+	rr:class clvapit:Identifier ;
+] ;
+rr:predicateObjectMap [
+	rr:predicate l0:identifier ;
+	rr:objectMap [ rr:column "_SIGLA_AUTOMOBILISTICA" ; ]
+] ;
+rr:predicateObjectMap [
+	rr:predicate clvapit:identifierType ;
+	rr:objectMap [ rr:constant "Sigla Automobilistica" ; rr:language "it" ]
+] ;
+
+.
+
+<TriplesMap_CodiceProvincia> a rr:TriplesMapClass ;
+
+rr:logicalTable <VIEW_province> ;
+
+rr:subjectMap [
+	rr:template "https://w3id.org/italia/data/identifiers/provinces-identifiers/province-code/{'_CODICE_PROVINCIA'}" ;
+	rr:class clvapit:Identifier ;
+] ;
+rr:predicateObjectMap [
+	rr:predicate l0:identifier ;
+	rr:objectMap [ rr:column "_CODICE_PROVINCIA" ; ]
+] ;
+rr:predicateObjectMap [
+	rr:predicate clvapit:identifierType ;
+	rr:objectMap [ rr:constant "Codice Provincia Alfanumerico" ; rr:language "it" ]
+] ;
+
+.
+
+
+<TriplesMap_Province> a rr:TriplesMapClass ;
+
+rr:logicalTable <VIEW_province> ;
+
+rr:subjectMap [
+	rr:template "https://w3id.org/italia/controlled-vocabulary/territorial-classifications/provinces/{'_CODICE_PROVINCIA'}" ;
+	rr:class skos:Concept, clvapit:Province, clvapit:AdminUnitComponent, clvapit:Feature ;
+] ;
+
+rr:predicateObjectMap [
+	rr:predicate skos:inScheme ;
+	rr:objectMap [
+		rr:template "https://w3id.org/italia/controlled-vocabulary/territorial-classifications/provinces" ;
+		rr:termType rr:IRI ;
+	]
+] ;
+
+rr:predicateObjectMap [
+	rr:predicate l0:name ;
+	rr:objectMap [ rr:column "_NOME_PROVINCIA" ; rr:language "it" ]
+] ;
+
+rr:predicateObjectMap [
+	rr:predicate rdfs:label ;
+	rr:objectMap [ rr:column "_NOME_PROVINCIA" ; rr:language "it" ]
+] ;
+
+rr:predicateObjectMap [
+	rr:predicate skos:prefLabel ;
+	rr:objectMap [ rr:column "_NOME_PROVINCIA" ; rr:language "it" ]
+] ;
+
+rr:predicateObjectMap [
+	rr:predicate clvapit:acronym ;
+	rr:objectMap [ rr:column "_SIGLA_AUTOMOBILISTICA" ; ]
+] ;
+
+rr:predicateObjectMap [
+	rr:predicate clvapit:hasRankOrder ;
+	rr:objectMap [ rr:constant 3 ; ]
+] ;
+
+rr:predicateObjectMap [
+	rr:predicate skos:notation ;
+	rr:objectMap [ rr:column "_CODICE_PROVINCIA" ; ]
+] ;
+
+rr:predicateObjectMap [
+	rr:predicate clvapit:situatedWithin, clvapit:hasDirectHigherRank, skos:broader ;
+	rr:objectMap [
+		rr:template "https://w3id.org/italia/controlled-vocabulary/territorial-classifications/regions/{'_CODICE_REGIONE'}" ;
+		rr:termType rr:IRI ;
+	]
+] ;
+
+rr:predicateObjectMap [
+	rr:predicate clvapit:hasIdentifier ;
+	rr:objectMap [
+		rr:template "https://w3id.org/italia/data/identifiers/provinces-identifiers/vehicle-code/{'_SIGLA_AUTOMOBILISTICA'}" ;
+		rr:termType rr:IRI ;
+	]
+] ;
+
+rr:predicateObjectMap [
+	rr:predicate clvapit:hasIdentifier ;
+	rr:objectMap [
+		rr:template "https://w3id.org/italia/data/identifiers/provinces-identifiers/province-code/{'_CODICE_PROVINCIA'}" ;
+		rr:termType rr:IRI ;
+	]
+] ;
+
+
+rr:predicateObjectMap [
+	rr:predicate owl:sameAs ;
+	rr:objectMap [
+		rr:template "http://nuts.geovocab.org/id/{'_NUTS3'}" ;
+		rr:termType rr:IRI ;
+	]
+] ;
+
+.

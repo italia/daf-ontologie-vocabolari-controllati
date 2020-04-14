@@ -6,6 +6,7 @@
 @prefix skos:    <http://www.w3.org/2004/02/skos/core#> .
 @prefix xkos:    <http://rdf-vocabulary.ddialliance.org/xkos#> .
 @prefix clvapit: <https://w3id.org/italia/onto/CLV/> .
+@prefix cpevapit: <https://w3id.org/italia/onto/CPEV/> .
 @prefix dcatapit: <http://dati.gov.it/onto/dcatapit#> .
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
@@ -26,6 +27,9 @@ dcatapit:Organization
       a        rdfs:Class .
 
 vcard:Organization
+      a        rdfs:Class .
+
+cpevapit:PublicEventTypology
       a        rdfs:Class .
 
 vcard:Kind
@@ -158,55 +162,91 @@ vcard:hasEmail
     a     rdfs:Property .
 
 <https://w3id.org/italia/controlled-vocabulary/public-event-types>
-      a       skos:ConceptScheme , adms:SemanticAsset , dcatapit:Dataset ;
+      a       skos:ConceptScheme , adms:Asset , dcatapit:Dataset ;
       rdfs:comment "Classification of the public events"@en , "Classificazione degli eventi pubblici"@it ;
       rdfs:label "Public Event"@en , "Evento Pubblico"@it ;
       dct:title "Types of Public Events"@en , "Classificazione dei tipi di eventi pubblici"@it ;
       dct:description "Classification of the types of Public Events. The classification is aligned with schema.org."@en , "Classificazione dei tipi di eventi pubblici. La classificazione è allineata a schema.org"@it ;
-      xkos:numberOfLevels "2";
+      xkos:numberOfLevels "3";
       dct:type <http://purl.org/adms/assettype/Taxonomy> ;
       adms:representationTechnique <http://purl.org/adms/representationtechnique/SKOS> ;
       dct:identifier "agid:D.11" ;
-      dct:rightsHolder <http://spcdata.digitpa.gov.it/browse/page/Amministrazione/agid> ;
-      dct:creator <http://spcdata.digitpa.gov.it/browse/page/Amministrazione/agid>  , <http://dati.gov.it/data/resource/Amministrazione/td_PCM> ;
-      dct:publisher <http://spcdata.digitpa.gov.it/browse/page/Amministrazione/agid>  ;
+      dct:rightsHolder <https://w3id.org/italia/data/public-organization/agid> ;
+      dct:creator <https://w3id.org/italia/data/public-organization/agid>  , <https://w3id.org/italia/data/public-organization/td-PCM> , <https://w3id.org/italia/data/public-organization/c_g273> ,
+      <https://w3id.org/italia/data/public-organization/c_l483> ,
+      <https://w3id.org/italia/data/publi-organization/p_TN> , <https://w3id.org/italia/data/private-organization/02190640223> ;
+      dct:publisher <https://w3id.org/italia/data/public-organization/agid>  ;
       dcat:theme <http://publications.europa.eu/resource/authority/data-theme/EDUC> ;
       dct:subject <http://eurovoc.europa.eu/251915> , <http://eurovoc.europa.eu/251794> , <http://eurovoc.europa.eu/251889> ;
       rdfs:isDefinedBy <https://w3id.org/italia/controlled-vocabulary/public-event-types> ;
-      dct:conformsTo  <http://dati.gov.it/data/resource/Standard/SKOS> ;
+      dct:conformsTo  <https://w3id.org/italia/data/standard/SKOS> ;
       dct:language <http://publications.europa.eu/resource/authority/language/ITA> , <http://publications.europa.eu/resource/authority/language/ENG> ;
       dct:accrualPeriodicity <http://publications.europa.eu/resource/authority/frequency/IRREG> ;
       dcat:keyword "evento pubblico"@it , "evento"@it , "turismo"@en , "tempo libero"@it , "public event"@en , "event"@en , "tourism"@en , "spare time"@en ;
-      dcat:distribution <http://dati.gov.it/data/resource/Distribution/PublicEvent_RDF_Turtle> , <http://dati.gov.it/data/resource/Distribution/PublicEvent_RDF_XML> , <http://dati.gov.it/data/resource/Distribution/PublicEvent_JSON_LD> , <http://dati.gov.it/data/resource/Distribution/PublicEvent_CSV> ,
-      <http://dati.gov.it/data/resource/Distribution/PublicEvent_XLSX> , <http://dati.gov.it/data/resource/Distribution/PublicEventMapping_XLSX> ,
-      <http://dati.gov.it/data/resource/Distribution/PublicEventMapping_CSV>;
-      dcat:contactPoint <http://dati.gov.it/data/resource/ContactPoint/voc_AgID> ;
+      dcat:distribution <https://w3id.org/italia/data/distribution/public-event-RDF-Turtle> , <https://w3id.org/italia/data/distribution/public-event-RDF-XML> , <https://w3id.org/italia/data/distribution/public-event-JSON-LD> , <https://w3id.org/italia/data/distribution/public-event-CSV> ,
+      <https://w3id.org/italia/data/distribution/public-event-XLSX> ;
+      dcat:contactPoint <https://w3id.org/italia/data/contact-point/voc-AgID> ;
+      skos:hasTopConcept <https://w3id.org/italia/controlled-vocabulary/public-event-types/1> ,  <https://w3id.org/italia/controlled-vocabulary/public-event-types/2> , <https://w3id.org/italia/controlled-vocabulary/public-event-types/3> , <https://w3id.org/italia/controlled-vocabulary/public-event-types/4> , <https://w3id.org/italia/controlled-vocabulary/public-event-types/5> ;
       dct:issued "2017-10-17"^^xsd:date ;
-      dct:modified "2018-02-12"^^xsd:date ;
-      owl:versionInfo "0.1" .
+      dct:modified "2020-04-08"^^xsd:date ;
+      owl:versionInfo "0.2 - il vocabolario è stato completamente rivisto dalla sua versione 0.1, considerata ora deprecata. Ogni voce del presente vocabolario include una nota di riferimento al precedente, ove applicabile. Nella versione di Aprile 2020 sono stati corretti dei typo"@it .
 
-  <http://spcdata.digitpa.gov.it/browse/page/Amministrazione/agid>
+  <https://w3id.org/italia/data/public-organization/agid>
       a dcatapit:Agent, foaf:Agent ;
       dct:identifier "agid" ;
+      rdfs:label "Agenzia per l'Italia Digitale"@it ;
       foaf:name "Agenzia per l'Italia Digitale"@it , "Italian Digital Agency"@en .
 
-<http://dati.gov.it/data/resource/Amministrazione/td_PCM>
+<https://w3id.org/italia/data/public-organization/td-PCM>
       a dcatapit:Agent, foaf:Agent ;
       dct:identifier "PCM" ;
+      rdfs:label "Team per la Trasformazione Digitale"@it ;
       foaf:name "Team per la Trasformazione Digitale"@it, "Digital Transformation Team"@en .
 
-<http://dati.gov.it/data/resource/Standard/SKOS>
+
+<https://w3id.org/italia/data/private-organization/02190640223>
+     a  dcatapit:Agent, foaf:Agent ;
+     dct:identifier "02190640223" ;
+     rdfs:label "Open Content"@it ;
+     foaf:name "Open Content"@it .
+
+
+<https://w3id.org/italia/data/public-organization/c_g273>
+    a  dcatapit:Agent, foaf:Agent ;
+    dct:identifier "c_g273" ;
+    rdfs:label "Comune di Palermo"@it ;
+    foaf:name "Comune di Palermo"@it .
+
+
+
+<https://w3id.org/italia/data/public-organization/c_l483>
+    a  dcatapit:Agent, foaf:Agent ;
+    dct:identifier "c_l483" ;
+    rdfs:label "Comune di Udine"@it ;
+    foaf:name "Comune di Udine"@it .
+
+
+
+<https://w3id.org/italia/data/public-organization/p_TN>
+    a  dcatapit:Agent, foaf:Agent ;
+    dct:identifier "p_TN" ;
+    rdfs:label "Provincia Autonoma di Trento"@it ;
+    foaf:name "Provincia Autonoma di Trento"@it .
+
+
+<https://w3id.org/italia/data/standard/SKOS>
       a dcatapit:Standard , dct:Standard ;
       dct:identifier "SKOS" ;
-      dct:title "Simple Knowledge Organization System - SKOS" ;
-      dct:description "The Simple Knowledge Organization System (SKOS) is a common data model for sharing and linking knowledge organization systems via the Web" .
+      dct:title "Simple Knowledge Organization System - SKOS"@en ;
+      dct:description "The Simple Knowledge Organization System (SKOS) is a common data model for sharing and linking knowledge organization systems via the Web"@en .
 
-<http://dati.gov.it/data/resource/ContactPoint/voc_AgID>
+<https://w3id.org/italia/data/contact-point/voc-AgID>
       a	dcatapit:Organization , vcard:Organization, vcard:Kind ;
-      vcard:fn		"banche dati e open data" ;
+      vcard:fn		"banche dati e open data"@it ;
+      rdfs:label "banche dati e open data"@it ;
       vcard:hasEmail <mailto:info@dati.gov.it> .
 
-<http://dati.gov.it/data/resource/Distribution/PublicEvent_RDF_Turtle>
+<https://w3id.org/italia/data/distribution/public-event-RDF-Turtle>
       a	dcatapit:Distribution  ;
       dct:title	"Distribuzione RDF/Turtle per classificazione tipi di eventi pubblici "@it , "RDF/Turtle distribution for the types of public events"@en ;
       dct:description	"Questa è la distribuzione RDF/Turtle del dataset Linked Open Data del vocabolario controllato sulla classificazione dei tipi di eventi pubblici"@it , "This is the distribution in RDF/turtle of the Linked Open Dataset of the controlled vocabulary related to types of public events"@en ;
@@ -215,7 +255,7 @@ vcard:hasEmail
       dcat:downloadURL		<https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/VocabolariControllati/public-event-types/public-event-types.ttl> ;
       dcat:accessURL 			<https://github.com/italia/daf-ontologie-vocabolari-controllati/tree/master/VocabolariControllati/public-event-types> .
 
-<http://dati.gov.it/data/resource/Distribution/PublicEvent_RDF_XML>
+<https://w3id.org/italia/data/distribution/public-event-RDF-XML>
       a	dcatapit:Distribution  ;
       dct:title	"Distribuzione RDF/XML per classificazione tipi di eventi pubblici "@it , "RDF/XML distribution for the types of public events"@en ;
       dct:description	"Questa è la distribuzione RDF/XML del dataset Linked Open Data del vocabolario controllato sulla classificazione dei tipi di eventi pubblici"@it , "This is the distribution in RDF/XML of the Linked Open Dataset of the controlled vocabulary related to types of public events"@en ;
@@ -224,7 +264,7 @@ vcard:hasEmail
       dcat:downloadURL		<https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/VocabolariControllati/public-event-types/public-event-types.rdf> ;
       dcat:accessURL 			<https://github.com/italia/daf-ontologie-vocabolari-controllati/tree/master/VocabolariControllati/public-event-types> .
 
-<http://dati.gov.it/data/resource/Distribution/PublicEvent_JSON_LD>
+<https://w3id.org/italia/data/distribution/public-event-JSON-LD>
       a	dcatapit:Distribution  ;
       dct:title	"Distribuzione JSON_LD per classificazione tipi di eventi pubblici "@it , "JSON_LD distribution for the types of public events"@en ;
       dct:description	"Questa è la distribuzione JSON_LD del dataset Linked Open Data del vocabolario controllato sulla classificazione dei tipi di eventi pubblici"@it , "This is the distribution in JSON_LD of the Linked Open Dataset of the controlled vocabulary related to types of public events"@en ;
@@ -233,7 +273,7 @@ vcard:hasEmail
       dcat:downloadURL		<https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/VocabolariControllati/public-event-types/public-event-types.jsonld> ;
       dcat:accessURL 			<https://github.com/italia/daf-ontologie-vocabolari-controllati/tree/master/VocabolariControllati/public-event-types> .
 
-<http://dati.gov.it/data/resource/Distribution/PublicEvent_CSV>
+<https://w3id.org/italia/data/distribution/public-event-CSV>
       a	dcatapit:Distribution  ;
       dct:title	"Distribuzione CSV per classificazione tipi di eventi pubblici "@it , "CSV distribution for the types of public events"@en ;
       dct:description	"Questa è la distribuzione CSV del dataset Linked Open Data del vocabolario controllato sulla classificazione dei tipi di eventi pubblici"@it , "This is the distribution in CSV of the Linked Open Dataset of the controlled vocabulary related to types of public events"@en ;
@@ -242,7 +282,7 @@ vcard:hasEmail
       dcat:downloadURL		<https://github.com/italia/daf-ontologie-vocabolari-controllati/blob/master/VocabolariControllati/public-event-types/public-event-types.csv> ;
       dcat:accessURL 			<https://github.com/italia/daf-ontologie-vocabolari-controllati/tree/master/VocabolariControllati/public-event-types> .
 
-<http://dati.gov.it/data/resource/Distribution/PublicEvent_XLSX>
+<https://w3id.org/italia/data/distribution/public-event-XLSX>
       a	dcatapit:Distribution  ;
       dct:title	"Distribuzione XLSX per classificazione tipi di eventi pubblici "@it , "XLSX distribution for the types of public events"@en ;
       dct:description	"Questa è la distribuzione XLSX del dataset Linked Open Data del vocabolario controllato sulla classificazione dei tipi di eventi pubblici"@it , "This is the distribution in XLSX of the Linked Open Dataset of the controlled vocabulary related to types of public events"@en ;
@@ -251,691 +291,1011 @@ vcard:hasEmail
       dcat:downloadURL		<https://github.com/italia/daf-ontologie-vocabolari-controllati/raw/master/VocabolariControllati/public-event-types/public-event-types.xlsx> ;
       dcat:accessURL 			<https://github.com/italia/daf-ontologie-vocabolari-controllati/tree/master/VocabolariControllati/public-event-types> .
 
-<http://dati.gov.it/data/resource/Distribution/PublicEventMapping_XLSX>
-      a	dcatapit:Distribution  ;
-      dct:title	"Distribuzione XLSX della mappatura tra tipi di eventi pubblici e schema.org "@it , "XLSX distribution of the mapping between  types of public events - schema.org"@en ;
-      dct:description	"Questa è la distribuzione XLSX del dataset Linked Open Data del vocabolario controllato sulla mappatura tra i tipi di eventi pubblici e schema.org"@it , "This is the distribution in XLSX of the Linked Open Dataset of the controlled vocabulary related to the mapping between the types of public events and schema.org"@en ;
-      dct:format 	<http://publications.europa.eu/resource/authority/file-type/XLSX> ;
-      dct:license <https://w3id.org/italia/controlled-vocabulary/licences/A21_CCBY40> ;
-      dcat:downloadURL		<https://github.com/italia/daf-ontologie-vocabolari-controllati/raw/master/VocabolariControllati/public-event-types/public-event-types-alignment-schemaorg.xlsx> ;
-      dcat:accessURL 			<https://github.com/italia/daf-ontologie-vocabolari-controllati/tree/master/VocabolariControllati/public-event-types> .
-
-  <http://dati.gov.it/data/resource/Distribution/PublicEventMapping_CSV>
-      a	dcatapit:Distribution  ;
-      dct:title	"Distribuzione CSV della mappatura tra tipi di eventi pubblici e schema.org "@it , "CSV distribution of the mapping between  types of public events - schema.org"@en ;
-      dct:description	"Questa è la distribuzione CSV del dataset Linked Open Data del vocabolario controllato sulla mappatura tra i tipi di eventi pubblici e schema.org"@it , "This is the distribution in CSV of the Linked Open Dataset of the controlled vocabulary related to the mapping between the types of public events and schema.org"@en ;
-      dct:format 	<http://publications.europa.eu/resource/authority/file-type/CSV> ;
-      dct:license <https://w3id.org/italia/controlled-vocabulary/licences/A21_CCBY40> ;
-      dcat:downloadURL		<https://github.com/italia/daf-ontologie-vocabolari-controllati/raw/master/VocabolariControllati/public-event-types/public-event-types-alignment-schemaorg.csv>  ;
-      dcat:accessURL 			<https://github.com/italia/daf-ontologie-vocabolari-controllati/tree/master/VocabolariControllati/public-event-types> .
-
 
 ##### Definition of the controlled vocabulary fist level of the hierarchy #####
-<https://w3id.org/italia/controlled-vocabulary/public-event-types/1_CulturalEvent>
-	  a  	skos:Concept ;
+<https://w3id.org/italia/controlled-vocabulary/public-event-types/1>
+	  a  	skos:Concept , cpevapit:PublicEventTypology ;
 	  skos:inScheme <https://w3id.org/italia/controlled-vocabulary/public-event-types> ;
 	  skos:notation "1" ;
 	  dct:identifier "1" ;
     clvapit:hasRankOrder "1" ;
-	  skos:narrower <https://w3id.org/italia/controlled-vocabulary/public-event-types/11_Exposure> ;
-	  skos:narrower <https://w3id.org/italia/controlled-vocabulary/public-event-types/12_BookPresentation> ;
-	  skos:narrower <https://w3id.org/italia/controlled-vocabulary/public-event-types/13_Conference> ;
-	  skos:narrower <https://w3id.org/italia/controlled-vocabulary/public-event-types/14_PublicLeReading> ;
-	  skos:narrower <https://w3id.org/italia/controlled-vocabulary/public-event-types/15_TheathralShow> ;
-	  skos:narrower <https://w3id.org/italia/controlled-vocabulary/public-event-types/16_DanceShow> ;
-	  skos:narrower <https://w3id.org/italia/controlled-vocabulary/public-event-types/17_CinemaProjection> ;
-	  skos:narrower <https://w3id.org/italia/controlled-vocabulary/public-event-types/18_CulturalCelebration> ;
-	  skos:narrower <https://w3id.org/italia/controlled-vocabulary/public-event-types/19_Festival> ;
-	  skos:narrower <https://w3id.org/italia/controlled-vocabulary/public-event-types/110_GuidedTour> ;
-    skos:narrower <https://w3id.org/italia/controlled-vocabulary/public-event-types/111_FreeTour> ;
-    skos:narrower <https://w3id.org/italia/controlled-vocabulary/public-event-types/112_Course> ;
-    skos:narrower <https://w3id.org/italia/controlled-vocabulary/public-event-types/113_Review> ;
-    skos:narrower <https://w3id.org/italia/controlled-vocabulary/public-event-types/114_Award> ;
-    skos:narrower <https://w3id.org/italia/controlled-vocabulary/public-event-types/116_Contest> ;
-	  skos:prefLabel "Evento Culturale"@it ;
-	  skos:prefLabel "Cultural Event"@en .
+    skos:scopeNote "Nella versione deprecata 0.1 del vocabolario questo concetto corrisponde a https://w3id.org/italia/controlled-vocabulary/public-event-types/1_CulturalEvent"@it ;
+	  skos:narrower <https://w3id.org/italia/controlled-vocabulary/public-event-types/11> ,
+	  <https://w3id.org/italia/controlled-vocabulary/public-event-types/12> ,
+	  <https://w3id.org/italia/controlled-vocabulary/public-event-types/13> ,
+	  <https://w3id.org/italia/controlled-vocabulary/public-event-types/14> ;
+    skos:narrowerTransitive <https://w3id.org/italia/controlled-vocabulary/public-event-types/111> ,
+    <https://w3id.org/italia/controlled-vocabulary/public-event-types/112> ,
+    <https://w3id.org/italia/controlled-vocabulary/public-event-types/113> ,
+    <https://w3id.org/italia/controlled-vocabulary/public-event-types/114> ,
+    <https://w3id.org/italia/controlled-vocabulary/public-event-types/115> ,
+    <https://w3id.org/italia/controlled-vocabulary/public-event-types/116> ,
+    <https://w3id.org/italia/controlled-vocabulary/public-event-types/117> ,
+    <https://w3id.org/italia/controlled-vocabulary/public-event-types/118> ,
+    <https://w3id.org/italia/controlled-vocabulary/public-event-types/119> ,
+    <https://w3id.org/italia/controlled-vocabulary/public-event-types/121> ,
+    <https://w3id.org/italia/controlled-vocabulary/public-event-types/122> ,
+    <https://w3id.org/italia/controlled-vocabulary/public-event-types/123> ,
+    <https://w3id.org/italia/controlled-vocabulary/public-event-types/124> ,
+    <https://w3id.org/italia/controlled-vocabulary/public-event-types/125> ,
+    <https://w3id.org/italia/controlled-vocabulary/public-event-types/126> ,
+    <https://w3id.org/italia/controlled-vocabulary/public-event-types/131> ,
+    <https://w3id.org/italia/controlled-vocabulary/public-event-types/132> ,
+    <https://w3id.org/italia/controlled-vocabulary/public-event-types/133> ,
+    <https://w3id.org/italia/controlled-vocabulary/public-event-types/141> ;
+	  skos:prefLabel "Evento culturale"@it , "Cultural event"@en ;
+    skos:altLabel "Eventi culturali"@it , "Cultural events"@en ;
+    skos:definition "Evento pubblico prevalentemente focalizzato attorno alla fruizione di prodotti/contenuti legati all'educazione/istruzione, alle arti (visive, letterarie, performative, musicali ...) e alle discipline dei settori scientifico disciplinari"@it , "Public event mainly focused around the use of products / content related to education, arts (visual, literary, performative, musical ...) and the disciplines of scientific disciplines"@en .
 
-<https://w3id.org/italia/controlled-vocabulary/public-event-types/2_SportEvent>
-	  a  	skos:Concept ;
+<https://w3id.org/italia/controlled-vocabulary/public-event-types/2>
+	  a  	skos:Concept , cpevapit:PublicEventTypology ;
 	  skos:inScheme <https://w3id.org/italia/controlled-vocabulary/public-event-types> ;
 	  skos:notation "2" ;
 	  dct:identifier "2" ;
     clvapit:hasRankOrder "1" ;
-	  skos:narrower <https://w3id.org/italia/controlled-vocabulary/public-event-types/21_Match> ;
-	  skos:narrower <https://w3id.org/italia/controlled-vocabulary/public-event-types/22_Race> ;
-    skos:narrower <https://w3id.org/italia/controlled-vocabulary/public-event-types/23_Competition> ;
-    skos:narrower <https://w3id.org/italia/controlled-vocabulary/public-event-types/24_SportGala> ;
-    skos:narrower <https://w3id.org/italia/controlled-vocabulary/public-event-types/25_SportGathering> ;
-    skos:narrower <https://w3id.org/italia/controlled-vocabulary/public-event-types/26_SportsAward> ;
-    skos:closeMatch <http://schema.org/SportsEvent> ;
-	  skos:prefLabel "Evento Sportivo"@it ;
-	  skos:prefLabel "Sport Event"@en .
+    skos:scopeNote "Nella versione deprecata 0.1 del vocabolario questo concetto corrisponde a https://w3id.org/italia/controlled-vocabulary/public-event-types/3_SocialEvent"@it ;
+	  skos:narrower <https://w3id.org/italia/controlled-vocabulary/public-event-types/21> ,
+	  <https://w3id.org/italia/controlled-vocabulary/public-event-types/22> ,
+    <https://w3id.org/italia/controlled-vocabulary/public-event-types/23> ,
+    <https://w3id.org/italia/controlled-vocabulary/public-event-types/24> ,
+    <https://w3id.org/italia/controlled-vocabulary/public-event-types/25> ;
+    skos:narrowerTransitive <https://w3id.org/italia/controlled-vocabulary/public-event-types/211> ,
+    <https://w3id.org/italia/controlled-vocabulary/public-event-types/212> ,
+    <https://w3id.org/italia/controlled-vocabulary/public-event-types/221> ,
+    <https://w3id.org/italia/controlled-vocabulary/public-event-types/222> ,
+    <https://w3id.org/italia/controlled-vocabulary/public-event-types/231> ,
+    <https://w3id.org/italia/controlled-vocabulary/public-event-types/232> ,
+    <https://w3id.org/italia/controlled-vocabulary/public-event-types/241> ,
+    <https://w3id.org/italia/controlled-vocabulary/public-event-types/242> ,
+    <https://w3id.org/italia/controlled-vocabulary/public-event-types/243> ,
+    <https://w3id.org/italia/controlled-vocabulary/public-event-types/244> ,
+    <https://w3id.org/italia/controlled-vocabulary/public-event-types/245> ,
+    <https://w3id.org/italia/controlled-vocabulary/public-event-types/246> ,
+    <https://w3id.org/italia/controlled-vocabulary/public-event-types/251> ,
+    <https://w3id.org/italia/controlled-vocabulary/public-event-types/252> ,
+    <https://w3id.org/italia/controlled-vocabulary/public-event-types/253> ,
+    <https://w3id.org/italia/controlled-vocabulary/public-event-types/254> ,
+    <https://w3id.org/italia/controlled-vocabulary/public-event-types/255> ,
+    <https://w3id.org/italia/controlled-vocabulary/public-event-types/256> ,
+    <https://w3id.org/italia/controlled-vocabulary/public-event-types/257> ;
+    skos:closeMatch <http://schema.org/SocialEvent> ;
+    skos:relatedMatch <http://schema.org/ChildrenEvent> ;
+	  skos:prefLabel "Evento sociale"@it , "Social event"@en ;
+    skos:altLabel "Eventi sociali"@it , "Social events"@en ;
+    skos:definition "Evento pubblico prevalentemente focalizzato sulla funzione aggregativa sociale, ricreativa"@it , "Public event mainly focused on social, recreational aggregative function"@en .
 
 
-<https://w3id.org/italia/controlled-vocabulary/public-event-types/3_SocialEvent>
-	  a  	skos:Concept ;
+<https://w3id.org/italia/controlled-vocabulary/public-event-types/3>
+	  a  	skos:Concept , cpevapit:PublicEventTypology ;
 	  skos:inScheme <https://w3id.org/italia/controlled-vocabulary/public-event-types> ;
 	  skos:notation "3" ;
 	  dct:identifier "3" ;
     clvapit:hasRankOrder "1" ;
-	  skos:narrower <https://w3id.org/italia/controlled-vocabulary/public-event-types/31_LocalFestival> ;
-	  skos:narrower <https://w3id.org/italia/controlled-vocabulary/public-event-types/32_DebateMeeting> ;
-	  skos:narrower <https://w3id.org/italia/controlled-vocabulary/public-event-types/33_Demonstration> ;
-    skos:narrower <https://w3id.org/italia/controlled-vocabulary/public-event-types/34_Inauguration> ;
-    skos:narrower <https://w3id.org/italia/controlled-vocabulary/public-event-types/35_Commemoration> ;
-    skos:narrower <https://w3id.org/italia/controlled-vocabulary/public-event-types/36_HistoricalTournament> ;
-    skos:narrower <https://w3id.org/italia/controlled-vocabulary/public-event-types/37_SocialCelebration> ;
-    skos:narrower <https://w3id.org/italia/controlled-vocabulary/public-event-types/38_Parade> ;
-    skos:cloaseMatch <http://schema.org/SocialEvent> ;
-    skos:relatedMatch <http://schema.org/ChildrenEvent> ;
-	  skos:prefLabel "Evento Sociale"@it ;
-	  skos:prefLabel "Social Event"@en .
+    skos:scopeNote "Nella versione deprecata 0.1 del vocabolario questo concetto corrisponde a https://w3id.org/italia/controlled-vocabulary/public-event-types/4_PoliticalEvent"@it ;
+	  skos:narrower <https://w3id.org/italia/controlled-vocabulary/public-event-types/31> ;
+    skos:narrowerTransitive <https://w3id.org/italia/controlled-vocabulary/public-event-types/311> ,
+    <https://w3id.org/italia/controlled-vocabulary/public-event-types/312> ,
+    <https://w3id.org/italia/controlled-vocabulary/public-event-types/313> ;
+	  skos:prefLabel "Evento politico"@it , "Political event"@en ;
+    skos:prefLabel "Eventi politici"@it , "Political events"@en ;
+    skos:definition "Evento pubblico generalmente riconducibile all'iniziativa di partito/movimento politico focalizzato prevalentemente sulla funzione aggregativa di un gruppo o comunità"@it , "Public event generally referable to the party / political movement initiative focused mainly on the aggregative function of a group or community"@en .
 
 
-<https://w3id.org/italia/controlled-vocabulary/public-event-types/4_PoliticalEvent>
-	  a  	skos:Concept ;
+<https://w3id.org/italia/controlled-vocabulary/public-event-types/4>
+	  a  	skos:Concept , cpevapit:PublicEventTypology ;
 	  skos:inScheme <https://w3id.org/italia/controlled-vocabulary/public-event-types> ;
-	  skos:narrower <https://w3id.org/italia/controlled-vocabulary/public-event-types/41_Summit> ;
-	  skos:narrower <https://w3id.org/italia/controlled-vocabulary/public-event-types/42_Forum> ;
+	  skos:narrower <https://w3id.org/italia/controlled-vocabulary/public-event-types/41> ,
+	  <https://w3id.org/italia/controlled-vocabulary/public-event-types/42> ,
+    <https://w3id.org/italia/controlled-vocabulary/public-event-types/43> ;
+    skos:narrowerTransitive <https://w3id.org/italia/controlled-vocabulary/public-event-types/411> ,
+    <https://w3id.org/italia/controlled-vocabulary/public-event-types/412> ,
+    <https://w3id.org/italia/controlled-vocabulary/public-event-types/421> ,
+    <https://w3id.org/italia/controlled-vocabulary/public-event-types/422> ,
+    <https://w3id.org/italia/controlled-vocabulary/public-event-types/423> ,
+    <https://w3id.org/italia/controlled-vocabulary/public-event-types/431> ;
+    skos:scopeNote "Nella versione deprecata 0.1 del vocabolario questo concetto corrisponde a https://w3id.org/italia/controlled-vocabulary/public-event-types/4_PoliticalEvent"@it ;
 	  skos:notation "4" ;
 	  dct:identifier "4" ;
     clvapit:hasRankOrder "1" ;
-	  skos:prefLabel "Evento Politico"@it ;
-	  skos:prefLabel "Political Event"@en .
+    skos:closeMatch <http://schema.org/BusinessEvent> ;
+	  skos:prefLabel "Evento d'affari o commerciale"@it , "Business event"@en ;
+    skos:altLabel "Eventi d'affari o commerciali"@it , "Business events"@en ;
+    skos:definition "Evento Commerciale - promozionale, di mercato, a scopo di business"@it , "Commercial Event - promotional, market, for business purposes"@en .
 
-<https://w3id.org/italia/controlled-vocabulary/public-event-types/5_ReligiousEvent>
-	  a  	skos:Concept ;
+<https://w3id.org/italia/controlled-vocabulary/public-event-types/5>
+	  a  	skos:Concept , cpevapit:PublicEventTypology ;
 	  skos:inScheme <https://w3id.org/italia/controlled-vocabulary/public-event-types> ;
 	  skos:notation "5" ;
 	  dct:identifier "5" ;
     clvapit:hasRankOrder "1" ;
-	  skos:narrower <https://w3id.org/italia/controlled-vocabulary/public-event-types/51_SaintFeast> ;
-	  skos:narrower <https://w3id.org/italia/controlled-vocabulary/public-event-types/52_EcumenicalCelebration> ;
-	  skos:narrower <https://w3id.org/italia/controlled-vocabulary/public-event-types/53_JubileeAudience> ;
-	  skos:narrower <https://w3id.org/italia/controlled-vocabulary/public-event-types/54_Jubilee> ;
-	  skos:narrower <https://w3id.org/italia/controlled-vocabulary/public-event-types/55_ReligiousDialogue> ;
-	  skos:narrower <https://w3id.org/italia/controlled-vocabulary/public-event-types/56_Procession> ;
-    skos:narrower <https://w3id.org/italia/controlled-vocabulary/public-event-types/57_ReligiousReading> ;
-	  skos:narrower <https://w3id.org/italia/controlled-vocabulary/public-event-types/58_ReligiousGathering> ;
-    skos:narrower <https://w3id.org/italia/controlled-vocabulary/public-event-types/59_Sanctification> ;
-	  skos:prefLabel "Evento Religioso"@it ;
-	  skos:prefLabel "Religious Event"@en .
+    skos:scopeNote "Nella versione deprecata 0.1 del vocabolario questo concetto corrisponde a https://w3id.org/italia/controlled-vocabulary/public-event-types/2_SportEvent"@it ;
+	  skos:narrower <https://w3id.org/italia/controlled-vocabulary/public-event-types/51> ;
+	  skos:narrowerTransitive <https://w3id.org/italia/controlled-vocabulary/public-event-types/511> ,
+	  <https://w3id.org/italia/controlled-vocabulary/public-event-types/512> ,
+    <https://w3id.org/italia/controlled-vocabulary/public-event-types/513> ,
+    <https://w3id.org/italia/controlled-vocabulary/public-event-types/514> ,
+    <https://w3id.org/italia/controlled-vocabulary/public-event-types/515> ,
+    <https://w3id.org/italia/controlled-vocabulary/public-event-types/516> ;
+    skos:closeMatch <http://schema.org/SportsEvent> ;
+	  skos:prefLabel "Evento sportivo"@it , "Sport event"@en ;
+    skos:altLabel "Eventi sportivi"@it , "Sports events"@en ;
+    skos:definition "Evento pubblico prevalentemente focalizzato sulla fruizione e/o partecipazione ad attività sportive (competitive e non competitive)"@it , "Public event mainly focused on fruition and / or participation in sport activities (competitive and non-competitive)"@en .
 
 
-<https://w3id.org/italia/controlled-vocabulary/public-event-types/6_BusinessEvent>
-    a  	skos:Concept ;
-    skos:inScheme <https://w3id.org/italia/controlled-vocabulary/public-event-types> ;
-    skos:notation "6" ;
-    dct:identifier "6" ;
-    clvapit:hasRankOrder "1" ;
-    skos:narrower <https://w3id.org/italia/controlled-vocabulary/public-event-types/61_BusinessMeeting> ;
-    skos:narrower <https://w3id.org/italia/controlled-vocabulary/public-event-types/62_Convention> ;
-    skos:narrower <https://w3id.org/italia/controlled-vocabulary/public-event-types/63_Expo> ;
-    skos:narrower <https://w3id.org/italia/controlled-vocabulary/public-event-types/64_Exhibition> ;
-    skos:narrower <https://w3id.org/italia/controlled-vocabulary/public-event-types/65_PanelDiscussion> ;
-    skos:narrower <https://w3id.org/italia/controlled-vocabulary/public-event-types/66_Market> ;
-    skos:closeMatch <http://schema.org/BusinessEvent> ;
-    skos:prefLabel "Evento di affari-commerciale"@it ;
-    skos:prefLabel "Business Event"@en .
-
-<https://w3id.org/italia/controlled-vocabulary/public-event-types/7_MusicEvent>
-    a  	skos:Concept ;
-    skos:inScheme <https://w3id.org/italia/controlled-vocabulary/public-event-types> ;
-    skos:notation "7" ;
-    dct:identifier "7" ;
-    clvapit:hasRankOrder "1" ;
-    skos:narrower <https://w3id.org/italia/controlled-vocabulary/public-event-types/71_MusicFestival> ;
-    skos:narrower <https://w3id.org/italia/controlled-vocabulary/public-event-types/72_Concert> ;
-    skos:narrower <https://w3id.org/italia/controlled-vocabulary/public-event-types/73_MusicTour> ;
-    skos:narrower <https://w3id.org/italia/controlled-vocabulary/public-event-types/74_MusicGala> ;
-    skos:narrower <https://w3id.org/italia/controlled-vocabulary/public-event-types/75_MusicAudition> ;
-    skos:closeMatch <http://schema.org/MusicEvent> ;
-    skos:prefLabel "Evento Musicale"@it ;
-    skos:prefLabel "Musical Event"@en .
-
-### Cultural Event: second level of the hierarchy ####
-<https://w3id.org/italia/controlled-vocabulary/public-event-types/11_Exposure>
-	  a  	skos:Concept ;
+### Second level of the hierarchy ####
+<https://w3id.org/italia/controlled-vocabulary/public-event-types/11>
+	  a  	skos:Concept , cpevapit:PublicEventTypology ;
 	  skos:inScheme <https://w3id.org/italia/controlled-vocabulary/public-event-types> ;
-	  skos:broader <https://w3id.org/italia/controlled-vocabulary/public-event-types/1_CulturalEvent> ;
-    skos:relatedMatch <http://schema.org/VisualArtsEvent> ;
+	  skos:broader <https://w3id.org/italia/controlled-vocabulary/public-event-types/1> ;
+    skos:narrower <https://w3id.org/italia/controlled-vocabulary/public-event-types/111> ,
+    <https://w3id.org/italia/controlled-vocabulary/public-event-types/112> ,
+    <https://w3id.org/italia/controlled-vocabulary/public-event-types/113> ,
+    <https://w3id.org/italia/controlled-vocabulary/public-event-types/114> ,
+    <https://w3id.org/italia/controlled-vocabulary/public-event-types/115> ,
+    <https://w3id.org/italia/controlled-vocabulary/public-event-types/116> ,
+    <https://w3id.org/italia/controlled-vocabulary/public-event-types/117> ,
+    <https://w3id.org/italia/controlled-vocabulary/public-event-types/118> ,
+    <https://w3id.org/italia/controlled-vocabulary/public-event-types/119> ;
 	  skos:notation "1.1" ;
 	  dct:identifier "1.1" ;
     clvapit:hasRankOrder "2" ;
-	  skos:prefLabel "Mostra"@it ;
-	  skos:prefLabel "Exposure"@en ;
-	  skos:definition "Può indicare qualunque mostra d'arte"@it ;
-	  skos:definition "It can be used to indicate any art exposure"@en .
+	  skos:prefLabel "Manifestazione artistica"@it , "Arts exhibition"@en ;
+    skos:altLabel "Manifestazioni artistiche"@it ;
+	  skos:definition "Questo concetto include eventi pubblici che radunano/aggregano/richiamano pubblico interessato a fruire di prodotti culturali, siano essi intesi come prodotti culturali di 'arte alta' sia di 'arte popolare'. Per es. spettacoli teatrali anche amatoriali, ballo e danza classica ma non solo, letture pubbliche di libri, mostre d'arte ecc., spettacoli cinematografici, ecc. "@it , "This concept includes public events such as concerts, theater shows, ballet event, readings, art exposition."@en .
 
-
-<https://w3id.org/italia/controlled-vocabulary/public-event-types/12_BookPresentation>
-	  a  	skos:Concept ;
+<https://w3id.org/italia/controlled-vocabulary/public-event-types/12>
+	  a  	skos:Concept , cpevapit:PublicEventTypology ;
 	  skos:inScheme <https://w3id.org/italia/controlled-vocabulary/public-event-types> ;
-	  skos:broader <https://w3id.org/italia/controlled-vocabulary/public-event-types/1_CulturalEvent> ;
-    skos:relatedMatch <http://schema.org/LiteraryEvent> ;
+	  skos:broader <https://w3id.org/italia/controlled-vocabulary/public-event-types/1> ;
+    skos:narrower <https://w3id.org/italia/controlled-vocabulary/public-event-types/121> ,
+    <https://w3id.org/italia/controlled-vocabulary/public-event-types/122> ,
+    <https://w3id.org/italia/controlled-vocabulary/public-event-types/123> ,
+    <https://w3id.org/italia/controlled-vocabulary/public-event-types/124> ,
+    <https://w3id.org/italia/controlled-vocabulary/public-event-types/125> ,
+    <https://w3id.org/italia/controlled-vocabulary/public-event-types/126> ;
 	  skos:notation "1.2" ;
 	  dct:identifier "1.2" ;
     clvapit:hasRankOrder "2" ;
-	  skos:prefLabel "Prensentazione libro"@it ;
-	  skos:prefLabel "Book Presentation"@en .
+    skos:closeMatch <https//schema.org/EducationEvent> ;
+	  skos:prefLabel "Evento di formazione"@it , "Training and workshop event"@en ;
+    skos:altLabel "Eventi di formazione"@it , "Training and workshops"@en ;
+	  skos:definition "Questo concetto include eventi pubblici che radunano/aggregano/richiamano un pubblico interessato ad attività formative come corsi, scuole estive, webinar, workshop, seminari ecc."@it , "This concept includes public events srelated to training (e.g., summer schools, webinars, workshops and seminars, etc.)"@en .
 
-<https://w3id.org/italia/controlled-vocabulary/public-event-types/13_Conference>
-	  a  	skos:Concept ;
+
+<https://w3id.org/italia/controlled-vocabulary/public-event-types/13>
+	  a  	skos:Concept , cpevapit:PublicEventTypology ;
 	  skos:inScheme <https://w3id.org/italia/controlled-vocabulary/public-event-types> ;
-	  skos:broader <https://w3id.org/italia/controlled-vocabulary/public-event-types/1_CulturalEvent> ;
-    skos:relatedMatch <http://schema.org/EducationEvent> , <http://schema.org/PublicationEvent> ;
+	  skos:broader <https://w3id.org/italia/controlled-vocabulary/public-event-types/1> ;
+    skos:narrower <https://w3id.org/italia/controlled-vocabulary/public-event-types/131> ,
+    <https://w3id.org/italia/controlled-vocabulary/public-event-types/132> ,
+    <https://w3id.org/italia/controlled-vocabulary/public-event-types/133> ;
 	  skos:notation "1.3" ;
 	  dct:identifier "1.3" ;
     clvapit:hasRankOrder "2" ;
-	  skos:prefLabel "Seminario / Conferenza /Workshop / Webinar / Simposio"@it ;
-	  skos:prefLabel "Seminar / Conference / Workshop / Webinar /Symposium"@en .
+	  skos:prefLabel "Conferenza e summit"@it , "Conference and summit"@en ;
+    skos:altLabel "Conferenze e summit"@it , "Conferenze"@it , "Conferences and summits"@en ;
+	  skos:definition "Questo concetto include eventi pubblici che radunano/aggregano/richiamano un pubblico interessato a partecipare a  conferenze e raduni quali che hanno finalità di presentazione e discussione di tematiche contemporanee su campi vari della cultura quali la scienza, l'economia, la tecnica, questioni sociali, non prevalentemente a scopi commerciali."@it , "This concept includes public events such as conferences, summits, congresses and colloquiums."@en .
 
-<https://w3id.org/italia/controlled-vocabulary/public-event-types/14_PublicLeReading>
-	  a  	skos:Concept ;
+
+<https://w3id.org/italia/controlled-vocabulary/public-event-types/14>
+	  a  	skos:Concept , cpevapit:PublicEventTypology ;
 	  skos:inScheme <https://w3id.org/italia/controlled-vocabulary/public-event-types> ;
-	  skos:broader <https://w3id.org/italia/controlled-vocabulary/public-event-types/1_CulturalEvent> ;
+	  skos:broader <https://w3id.org/italia/controlled-vocabulary/public-event-types/1> ;
+    skos:narrower <https://w3id.org/italia/controlled-vocabulary/public-event-types/141> ;
 	  skos:notation "1.4" ;
 	  dct:identifier "1.4" ;
     clvapit:hasRankOrder "2" ;
-	  skos:prefLabel "Lettura Pubblica"@it ;
-	  skos:prefLabel "Public Reading"@en .
+	  skos:prefLabel "Giornata informativa"@it , "Info day"@en ;
+    skos:altLabel "Giornate informative"@it , "Info days"@en ;
+	  skos:definition "Questo concetto include eventi pubblici come giornate aperte, giornate informative, incontri informativi e eventi di networking."@it , "This concept includes public events such as open days, information days, information meetings and networking events."@en .
 
-<https://w3id.org/italia/controlled-vocabulary/public-event-types/15_TheathralShow>
-    a  	skos:Concept ;
-    skos:inScheme <https://w3id.org/italia/controlled-vocabulary/public-event-types> ;
-    skos:broader <https://w3id.org/italia/controlled-vocabulary/public-event-types/1_CulturalEvent> ;
-    skos:closeMatch <http://schema.org/TheaterEvent> ;
-    skos:notation "1.5" ;
-    dct:identifier "1.5" ;
-    clvapit:hasRankOrder "2" ;
-    skos:prefLabel "Spettacolo Teatrale"@it ;
-    skos:prefLabel "Theathral Show"@en .
-
-<https://w3id.org/italia/controlled-vocabulary/public-event-types/16_DanceShow>
-    a  	skos:Concept ;
-    skos:inScheme <https://w3id.org/italia/controlled-vocabulary/public-event-types> ;
-    skos:broader <https://w3id.org/italia/controlled-vocabulary/public-event-types/1_CulturalEvent> ;
-    skos:closeMatch <http://schema.org/DanceEvent> ;
-    skos:notation "1.6" ;
-    dct:identifier "1.6" ;
-    clvapit:hasRankOrder "2" ;
-    skos:prefLabel "Spettacolo di Danza"@it ;
-    skos:prefLabel "Dance Show"@en .
-
-<https://w3id.org/italia/controlled-vocabulary/public-event-types/17_CinemaProjection>
-    a  	skos:Concept ;
-    skos:inScheme <https://w3id.org/italia/controlled-vocabulary/public-event-types> ;
-    skos:broader <https://w3id.org/italia/controlled-vocabulary/public-event-types/1_CulturalEvent> ;
-    skos:closeMatch <http://schema.org/ComedyEvent> , <http://schema.org/ScreeningEvent>;
-    skos:notation "1.7" ;
-    dct:identifier "1.7" ;
-    clvapit:hasRankOrder "2" ;
-    skos:prefLabel "Proiezione Cinematografica"@it ;
-    skos:prefLabel "Cinema Projection"@en .
-
-<https://w3id.org/italia/controlled-vocabulary/public-event-types/18_CulturalCelebration>
-    a  	skos:Concept ;
-    skos:inScheme <https://w3id.org/italia/controlled-vocabulary/public-event-types> ;
-    skos:broader <https://w3id.org/italia/controlled-vocabulary/public-event-types/1_CulturalEvent> ;
-    skos:notation "1.8" ;
-    dct:identifier "1.8" ;
-    clvapit:hasRankOrder "2" ;
-    skos:prefLabel "Celebrazione Culturale"@it ;
-    skos:prefLabel "Cultural Celebration"@en ;
-    skos:definition "Per esempio, celebrazione della nascita di Dante, celebrazione del centenario dell'unità di Italia"@it ;
-    skos:definition "For instance, the celebration of Dante's birth , the celebration of centenary of Italian national unity"@en .
-
-<https://w3id.org/italia/controlled-vocabulary/public-event-types/19_Festival>
-    a  	skos:Concept ;
-    skos:inScheme <https://w3id.org/italia/controlled-vocabulary/public-event-types> ;
-    skos:broader <https://w3id.org/italia/controlled-vocabulary/public-event-types/1_CulturalEvent> ;
-    skos:closeMatch <http://schema.org/Festival> ;
-    skos:notation "1.9" ;
-    dct:identifier "1.9" ;
-    clvapit:hasRankOrder "2" ;
-    skos:prefLabel "Festival"@it ;
-    skos:prefLabel "Festival"@en .
-
-<https://w3id.org/italia/controlled-vocabulary/public-event-types/110_GuidedTour>
-    a  	skos:Concept ;
-    skos:inScheme <https://w3id.org/italia/controlled-vocabulary/public-event-types> ;
-    skos:broader <https://w3id.org/italia/controlled-vocabulary/public-event-types/1_CulturalEvent> ;
-    skos:notation "1.10" ;
-    dct:identifier "1.10" ;
-    clvapit:hasRankOrder "2" ;
-    skos:prefLabel "Visita Guidata"@it ;
-    skos:prefLabel "Guided Tour"@en .
-
-<https://w3id.org/italia/controlled-vocabulary/public-event-types/111_FreeTour>
-    a  	skos:Concept ;
-    skos:inScheme <https://w3id.org/italia/controlled-vocabulary/public-event-types> ;
-    skos:broader <https://w3id.org/italia/controlled-vocabulary/public-event-types/1_CulturalEvent> ;
-    skos:notation "1.11" ;
-    dct:identifier "1.11" ;
-    clvapit:hasRankOrder "2" ;
-    skos:prefLabel "Visita Libera"@it ;
-    skos:prefLabel "Free Tour"@en .
-
-<https://w3id.org/italia/controlled-vocabulary/public-event-types/112_Course>
-    a  	skos:Concept ;
-    skos:inScheme <https://w3id.org/italia/controlled-vocabulary/public-event-types> ;
-    skos:broader <https://w3id.org/italia/controlled-vocabulary/public-event-types/1_CulturalEvent> ;
-    skos:relatedMatch <http://schema.org/CourseInstance> ;
-    skos:notation "1.12" ;
-    dct:identifier "1.12" ;
-    clvapit:hasRankOrder "2" ;
-    skos:prefLabel "Corso"@it ;
-    skos:prefLabel "Course"@en .
-
-<https://w3id.org/italia/controlled-vocabulary/public-event-types/113_Review>
-    a  	skos:Concept ;
-    skos:inScheme <https://w3id.org/italia/controlled-vocabulary/public-event-types> ;
-    skos:broader <https://w3id.org/italia/controlled-vocabulary/public-event-types/1_CulturalEvent> ;
-    skos:notation "1.13" ;
-    dct:identifier "1.13" ;
-    clvapit:hasRankOrder "2" ;
-    skos:prefLabel "Rassegna"@it ;
-    skos:prefLabel "Review"@en .
-
-<https://w3id.org/italia/controlled-vocabulary/public-event-types/114_Award>
-    a  	skos:Concept ;
-    skos:inScheme <https://w3id.org/italia/controlled-vocabulary/public-event-types> ;
-    skos:broader <https://w3id.org/italia/controlled-vocabulary/public-event-types/1_CulturalEvent> ;
-    skos:notation "1.14" ;
-    dct:identifier "1.14" ;
-    clvapit:hasRankOrder "2" ;
-    skos:prefLabel "Assegnazione Premio"@it ;
-    skos:prefLabel "Award"@en ;
-    skos:definition "Per esempio, David Di Donatello, Premio Letterario, Premio Giornalistico"@it ;
-    skos:definition "For instance, 'David di Donatello',  Literary prize, Journalism prize"@en .
-
-<https://w3id.org/italia/controlled-vocabulary/public-event-types/115_Contest>
-    a  	skos:Concept ;
-    skos:inScheme <https://w3id.org/italia/controlled-vocabulary/public-event-types> ;
-    skos:broader <https://w3id.org/italia/controlled-vocabulary/public-event-types/1_CulturalEvent> ;
-    skos:notation "1.15" ;
-    dct:identifier "1.15" ;
-    clvapit:hasRankOrder "2" ;
-    skos:prefLabel "Concorso"@it ;
-    skos:prefLabel "Contest"@en .
-
-##### Sport Event: second level of the hierarchy #####
-<https://w3id.org/italia/controlled-vocabulary/public-event-types/21_Match>
-	  a  	skos:Concept ;
+<https://w3id.org/italia/controlled-vocabulary/public-event-types/21>
+	  a  	skos:Concept , cpevapit:PublicEventTypology ;
 	  skos:inScheme <https://w3id.org/italia/controlled-vocabulary/public-event-types> ;
-	  skos:broader <https://w3id.org/italia/controlled-vocabulary/public-event-types/2_SportEvent> ;
+	  skos:broader <https://w3id.org/italia/controlled-vocabulary/public-event-types/2> ;
+    skos:narrower <https://w3id.org/italia/controlled-vocabulary/public-event-types/211> ,
+    <https://w3id.org/italia/controlled-vocabulary/public-event-types/212> ;
 	  skos:notation "2.1" ;
 	  dct:identifier "2.1" ;
     clvapit:hasRankOrder "2" ;
-	  skos:prefLabel "Partita"@it ;
-	  skos:prefLabel "Match"@en .
+	  skos:prefLabel "Concorso e cerimonia"@it , "Competition and award ceremony"@en ;
+    skos:altLabel "Concorsi e cerimonie"@it , "Competitions and award ceremonies"@en ;
+	  skos:definition "Questo concetto include eventi pubblici come cerimonie di premiazione, competizioni e concorsi."@it , "This concept includes public events such as award ceremonies, competitions and contests."@en .
 
-<https://w3id.org/italia/controlled-vocabulary/public-event-types/22_Race>
-	  a  	skos:Concept ;
+<https://w3id.org/italia/controlled-vocabulary/public-event-types/22>
+	  a  	skos:Concept , cpevapit:PublicEventTypology ;
 	  skos:inScheme <https://w3id.org/italia/controlled-vocabulary/public-event-types> ;
-	  skos:broader <https://w3id.org/italia/controlled-vocabulary/public-event-types/2_SportEvent> ;
+	  skos:broader <https://w3id.org/italia/controlled-vocabulary/public-event-types/2> ;
+    skos:narrower <https://w3id.org/italia/controlled-vocabulary/public-event-types/221> ,
+    <https://w3id.org/italia/controlled-vocabulary/public-event-types/222> ;
 	  skos:notation "2.2" ;
 	  dct:identifier "2.2" ;
     clvapit:hasRankOrder "2" ;
-	  skos:prefLabel "Corsa"@it ;
-	  skos:prefLabel "Race"@en .
+	  skos:prefLabel "Dibattito pubblico"@it , "Public Debate"@en ;
+    skos:altLabel "Dibattiti pubblici"@it , "Public debates"@en ;
+	  skos:definition "Questo concetto include eventi pubblici come dibattiti pubblici, dialoghi, forum e incontri pubblici, prevalentemente finalizzati attorno a temi relativi a questioni civiche, sociali. "@it , "This concept includes public events such as public debates, dialogues, forums and public meetings."@en .
 
-<https://w3id.org/italia/controlled-vocabulary/public-event-types/23_Competition>
-	  a  	skos:Concept ;
+<https://w3id.org/italia/controlled-vocabulary/public-event-types/23>
+	  a  	skos:Concept , cpevapit:PublicEventTypology ;
 	  skos:inScheme <https://w3id.org/italia/controlled-vocabulary/public-event-types> ;
-	  skos:broader <https://w3id.org/italia/controlled-vocabulary/public-event-types/2_SportEvent> ;
+	  skos:broader <https://w3id.org/italia/controlled-vocabulary/public-event-types/2> ;
+    skos:narrower <https://w3id.org/italia/controlled-vocabulary/public-event-types/231> ,
+    <https://w3id.org/italia/controlled-vocabulary/public-event-types/232> ;
 	  skos:notation "2.3" ;
 	  dct:identifier "2.3" ;
     clvapit:hasRankOrder "2" ;
-	  skos:prefLabel "Gara / Competizione / Torneo"@it ;
-	  skos:prefLabel "Competition"@en .
+	  skos:prefLabel "Incontro con esperti"@it , "Partner meeting"@en ;
+    skos:altLabel "Incontri con gli esperti"@it , "Partner meetings"@en ;
+	  skos:definition "Questo concetto include eventi pubblici come incontri con esperti, riunioni generali e incontri con i portatori di interesse."@it , "This concept includes public events such as expert meetings, general meetings and stakeholder meetings."@en .
 
-
-<https://w3id.org/italia/controlled-vocabulary/public-event-types/24_SportGala>
-	  a  	skos:Concept ;
+<https://w3id.org/italia/controlled-vocabulary/public-event-types/24>
+	  a  	skos:Concept , cpevapit:PublicEventTypology ;
 	  skos:inScheme <https://w3id.org/italia/controlled-vocabulary/public-event-types> ;
-	  skos:broader <https://w3id.org/italia/controlled-vocabulary/public-event-types/2_SportEvent> ;
+	  skos:broader <https://w3id.org/italia/controlled-vocabulary/public-event-types/2> ;
+    skos:narrower <https://w3id.org/italia/controlled-vocabulary/public-event-types/241> ,
+    <https://w3id.org/italia/controlled-vocabulary/public-event-types/242> ,
+    <https://w3id.org/italia/controlled-vocabulary/public-event-types/243> ,
+    <https://w3id.org/italia/controlled-vocabulary/public-event-types/244> ,
+    <https://w3id.org/italia/controlled-vocabulary/public-event-types/245> ,
+    <https://w3id.org/italia/controlled-vocabulary/public-event-types/246> ;
 	  skos:notation "2.4" ;
 	  dct:identifier "2.4" ;
     clvapit:hasRankOrder "2" ;
-	  skos:prefLabel "Galà Sportivo"@it ;
-	  skos:prefLabel "Sport Gala"@en .
+	  skos:prefLabel "Raduno di comunità"@it , "Community gathering"@en ;
+    skos:altLabel "Raduni di comunità"@it ;
+	  skos:definition "Questo concetto include eventi pubblici che richiamano un pubblico interessato a partecipare a 'momenti aggregativi comunitari' di vario genere, come feste di quartiere, festa patronale, raduni amatoriali, hobbistici, ma non religiose ecc."@it , "This concept includes public events such as folkloric and religious feasts, festivals, amateur competition, traditional gastronomic events, public celebration."@en .
 
-
-<https://w3id.org/italia/controlled-vocabulary/public-event-types/25_SportGathering>
-	  a  	skos:Concept ;
+<https://w3id.org/italia/controlled-vocabulary/public-event-types/25>
+	  a  	skos:Concept , cpevapit:PublicEventTypology ;
 	  skos:inScheme <https://w3id.org/italia/controlled-vocabulary/public-event-types> ;
-	  skos:broader <https://w3id.org/italia/controlled-vocabulary/public-event-types/2_SportEvent> ;
+	  skos:broader <https://w3id.org/italia/controlled-vocabulary/public-event-types/2> ;
+    skos:narrower <https://w3id.org/italia/controlled-vocabulary/public-event-types/251> ,
+    <https://w3id.org/italia/controlled-vocabulary/public-event-types/252> ,
+    <https://w3id.org/italia/controlled-vocabulary/public-event-types/253> ,
+    <https://w3id.org/italia/controlled-vocabulary/public-event-types/254> ,
+    <https://w3id.org/italia/controlled-vocabulary/public-event-types/255> ,
+    <https://w3id.org/italia/controlled-vocabulary/public-event-types/256> ,
+    <https://w3id.org/italia/controlled-vocabulary/public-event-types/257> ;
+    skos:scopeNote "Nella versione deprecata 0.1 del vocabolario questo concetto corrisponde a https://w3id.org/italia/controlled-vocabulary/public-event-types/5_ReligiousEvent"@it ;
 	  skos:notation "2.5" ;
 	  dct:identifier "2.5" ;
     clvapit:hasRankOrder "2" ;
-	  skos:prefLabel "Raduno Sportivo"@it ;
-	  skos:prefLabel "Sport Gathering"@en .
+	  skos:prefLabel "Evento religioso"@it , "Religious event"@en ;
+    skos:altLabel "Eventi religiosi"@it , "Religious events"@en ;
+	  skos:definition "Questo concetto include eventi pubblici che richiamano un pubblico interessato a partecipare a 'momenti aggregativi comunitari' di vario genere, come feste di quartiere, festa patronale, raduni amatoriali, hobbistici, ma non religiose ecc."@it , "This concept includes public events such as folkloric and religious feasts, festivals, amateur competition, traditional gastronomic events, public celebration."@en .
 
-<https://w3id.org/italia/controlled-vocabulary/public-event-types/26_SportsAward>
-	  a  	skos:Concept ;
-	  skos:inScheme <https://w3id.org/italia/controlled-vocabulary/public-event-types> ;
-	  skos:broader <https://w3id.org/italia/controlled-vocabulary/public-event-types/2_SportEvent> ;
-	  skos:notation "2.6" ;
-	  dct:identifier "2.6" ;
-    clvapit:hasRankOrder "2" ;
-	  skos:prefLabel "Assegnazione Premio Sportivo"@it ;
-	  skos:prefLabel "Sports Awerd"@en .
 
-##### Social Event: second level of the hierarchy #####
-<https://w3id.org/italia/controlled-vocabulary/public-event-types/31_LocalFestival>
-	  a  	skos:Concept ;
+<https://w3id.org/italia/controlled-vocabulary/public-event-types/31>
+	  a  	skos:Concept , cpevapit:PublicEventTypology ;
 	  skos:inScheme <https://w3id.org/italia/controlled-vocabulary/public-event-types> ;
-	  skos:broader <https://w3id.org/italia/controlled-vocabulary/public-event-types/3_SocialEvent> ;
-	  skos:notation "3.1" ;
+	  skos:broader <https://w3id.org/italia/controlled-vocabulary/public-event-types/3> ;
+    skos:narrower <https://w3id.org/italia/controlled-vocabulary/public-event-types/311> ,
+    <https://w3id.org/italia/controlled-vocabulary/public-event-types/312> ,
+    <https://w3id.org/italia/controlled-vocabulary/public-event-types/313> ;
 	  dct:identifier "3.1" ;
+    skos:notation "3.1" ;
     clvapit:hasRankOrder "2" ;
-	  skos:prefLabel "Sagra"@it ;
-	  skos:prefLabel "Local Festival"@en .
+	  skos:prefLabel "Incontro politico"@it , "Political meeting"@en ;
+    skos:altLabel "Incontri politici"@it , "Political meetings"@en ;
+	  skos:definition "Questo concetto include eventi politici che coinvolgono il pubblico."@it , "This concept includes political events involving the public."@en .
 
 
-<https://w3id.org/italia/controlled-vocabulary/public-event-types/32_DebateMeeting>
-	  a  	skos:Concept ;
+<https://w3id.org/italia/controlled-vocabulary/public-event-types/41>
+	  a  	skos:Concept , cpevapit:PublicEventTypology ;
 	  skos:inScheme <https://w3id.org/italia/controlled-vocabulary/public-event-types> ;
-	  skos:broader <https://w3id.org/italia/controlled-vocabulary/public-event-types/3_SocialEvent> ;
-	  skos:notation "3.2" ;
-	  dct:identifier "3.2" ;
-    clvapit:hasRankOrder "2" ;
-	  skos:prefLabel "Dibattito / Incontro"@it ;
-	  skos:prefLabel "Debate / Meeting"@en .
-
-<https://w3id.org/italia/controlled-vocabulary/public-event-types/33_Demonstration>
-	  a  	skos:Concept ;
-	  skos:inScheme <https://w3id.org/italia/controlled-vocabulary/public-event-types> ;
-	  skos:broader <https://w3id.org/italia/controlled-vocabulary/public-event-types/3_SocialEvent> ;
-	  skos:notation "3.3" ;
-	  dct:identifier "3.3" ;
-    clvapit:hasRankOrder "2" ;
-	  skos:prefLabel "Manifestazione"@it ;
-	  skos:prefLabel "Demonstration"@en .
-
-
-<https://w3id.org/italia/controlled-vocabulary/public-event-types/34_Inauguration>
-	  a  	skos:Concept ;
-	  skos:inScheme <https://w3id.org/italia/controlled-vocabulary/public-event-types> ;
-	  skos:broader <https://w3id.org/italia/controlled-vocabulary/public-event-types/3_SocialEvent> ;
-	  skos:notation "3.4" ;
-	  dct:identifier "3.4" ;
-    clvapit:hasRankOrder "2" ;
-	  skos:prefLabel "Inaugurazione"@it ;
-	  skos:prefLabel "Inauguration"@en .
-
-<https://w3id.org/italia/controlled-vocabulary/public-event-types/35_Commemoration>
-	  a  	skos:Concept ;
-	  skos:inScheme <https://w3id.org/italia/controlled-vocabulary/public-event-types> ;
-	  skos:broader <https://w3id.org/italia/controlled-vocabulary/public-event-types/3_SocialEvent> ;
-	  skos:notation "3.5" ;
-	  dct:identifier "3.5" ;
-    clvapit:hasRankOrder "2" ;
-	  skos:prefLabel "Commemorazione"@it ;
-	  skos:prefLabel "Commemoration"@en .
-
-<https://w3id.org/italia/controlled-vocabulary/public-event-types/36_HistoricalTournament>
-	  a  	skos:Concept ;
-	  skos:inScheme <https://w3id.org/italia/controlled-vocabulary/public-event-types> ;
-	  skos:broader <https://w3id.org/italia/controlled-vocabulary/public-event-types/3_SocialEvent> ;
-	  skos:notation "3.6" ;
-	  dct:identifier "3.6" ;
-    clvapit:hasRankOrder "2" ;
-	  skos:prefLabel "Torneo Storico / Palio"@it ;
-	  skos:prefLabel "Historical Tournament"@en .
-
-<https://w3id.org/italia/controlled-vocabulary/public-event-types/37_SocialCelebration>
-	  a  	skos:Concept ;
-	  skos:inScheme <https://w3id.org/italia/controlled-vocabulary/public-event-types> ;
-	  skos:broader <https://w3id.org/italia/controlled-vocabulary/public-event-types/3_SocialEvent> ;
-	  skos:notation "3.7" ;
-	  dct:identifier "3.7" ;
-    clvapit:hasRankOrder "2" ;
-	  skos:prefLabel "Celebrazione Sociale"@it ;
-	  skos:prefLabel "Social Celebration"@en ;
-    skos:definition "Per esempio la festa della repubblica"@it ;
-    skos:definition "For instance, the celebration of the Italian republic"@en .
-
-
-<https://w3id.org/italia/controlled-vocabulary/public-event-types/38_Parade>
-	  a  	skos:Concept ;
-	  skos:inScheme <https://w3id.org/italia/controlled-vocabulary/public-event-types> ;
-	  skos:broader <https://w3id.org/italia/controlled-vocabulary/public-event-types/3_SocialEvent> ;
-	  skos:notation "3.8" ;
-	  dct:identifier "3.8" ;
-    clvapit:hasRankOrder "2" ;
-	  skos:prefLabel "Sfilata"@it ;
-	  skos:prefLabel "Parade"@en ;
-    skos:definition "Per esempio la sfilata dei carri di carnevale"@it ;
-    skos:definition "For instance, the parade of the Italian carnival wagons"@en .
-
-##### Political Event: second level of the hierarchy #####
-<https://w3id.org/italia/controlled-vocabulary/public-event-types/41_Summit>
-	  a  	skos:Concept ;
-	  skos:inScheme <https://w3id.org/italia/controlled-vocabulary/public-event-types> ;
-	  skos:broader <https://w3id.org/italia/controlled-vocabulary/public-event-types/4_PoliticalEvent> ;
-	  skos:notation "4.1" ;
+	  skos:broader <https://w3id.org/italia/controlled-vocabulary/public-event-types/4> ;
+    skos:narrower <https://w3id.org/italia/controlled-vocabulary/public-event-types/411> ,
+    <https://w3id.org/italia/controlled-vocabulary/public-event-types/412> ;
 	  dct:identifier "4.1" ;
+    skos:notation "4.1" ;
     clvapit:hasRankOrder "2" ;
-	  skos:prefLabel "Summit / G7 / G20"@it ;
-	  skos:prefLabel "Summit / G7 / G20"@en .
+	  skos:prefLabel "Fiera / Salone"@it , "Exhibition"@en ;
+    skos:altLabel "Fiere / Saloni"@it , "Exhibitions"@en ;
+	  skos:definition "Questo concetto include eventi pubblici quali expo, fiere, saloni orientati al business."@it , "This concept includes public events such as expos, exhibitions and fairs."@en .
 
-<https://w3id.org/italia/controlled-vocabulary/public-event-types/42_Forum>
-	  a  	skos:Concept ;
+<https://w3id.org/italia/controlled-vocabulary/public-event-types/42>
+	  a  	skos:Concept , cpevapit:PublicEventTypology ;
 	  skos:inScheme <https://w3id.org/italia/controlled-vocabulary/public-event-types> ;
-	  skos:broader <https://w3id.org/italia/controlled-vocabulary/public-event-types/4_PoliticalEvent> ;
-	  skos:notation "4.2" ;
+	  skos:broader <https://w3id.org/italia/controlled-vocabulary/public-event-types/4> ;
+    skos:narrower <https://w3id.org/italia/controlled-vocabulary/public-event-types/421> ,
+    <https://w3id.org/italia/controlled-vocabulary/public-event-types/422> ,
+    <https://w3id.org/italia/controlled-vocabulary/public-event-types/423> ;
 	  dct:identifier "4.2" ;
+    skos:notation "4.2" ;
     clvapit:hasRankOrder "2" ;
-	  skos:prefLabel "Forum"@it ;
-	  skos:prefLabel "Forum"@en .
+	  skos:prefLabel "Riunione d'affari"@it , "Business meeting"@en ;
+    skos:altLabel "Riunioni d'affari"@it , "Business meetings"@en ;
+	  skos:definition "Questo concetto include tutti quegli eventi pubblici riconducibili a riunioni d'affari come per esempio convention, tavole rotonde, ecc."@it , "This concept includes all those public events that are business meetings such as convention, round tables, etc."@en .
 
-##### Religious Event: second level of the hierarchy #####
-<https://w3id.org/italia/controlled-vocabulary/public-event-types/51_SaintFeast>
-	  a  	skos:Concept ;
+<https://w3id.org/italia/controlled-vocabulary/public-event-types/43>
+	  a  	skos:Concept , cpevapit:PublicEventTypology ;
 	  skos:inScheme <https://w3id.org/italia/controlled-vocabulary/public-event-types> ;
-	  skos:broader <https://w3id.org/italia/controlled-vocabulary/public-event-types/5_ReligiousEvent> ;
-	  skos:notation "5.1" ;
+	  skos:broader <https://w3id.org/italia/controlled-vocabulary/public-event-types/4> ;
+    skos:narrower <https://w3id.org/italia/controlled-vocabulary/public-event-types/431> ;
+	  dct:identifier "4.3" ;
+    skos:notation "4.3" ;
+    clvapit:hasRankOrder "2" ;
+	  skos:prefLabel "Evento stagionale commerciale"@it , "Seasonal business event"@en ;
+    skos:altLabel "Eventi stagionali commerciali"@it , "Seasonal business events"@en ;
+	  skos:definition "Questo concetto include quegli eventi commerciali di impatto pubblico che avvengono solo stagionalmente come i saldi"@it , "This concept includes all those commercial events that have a public impact and that happen seasonaly (e.g., sales)"@en .
+
+<https://w3id.org/italia/controlled-vocabulary/public-event-types/51>
+	  a  	skos:Concept , cpevapit:PublicEventTypology ;
+	  skos:inScheme <https://w3id.org/italia/controlled-vocabulary/public-event-types> ;
+	  skos:broader <https://w3id.org/italia/controlled-vocabulary/public-event-types/5> ;
+    skos:narrower <https://w3id.org/italia/controlled-vocabulary/public-event-types/511> ,
+    <https://w3id.org/italia/controlled-vocabulary/public-event-types/512> ,
+    <https://w3id.org/italia/controlled-vocabulary/public-event-types/513> ,
+    <https://w3id.org/italia/controlled-vocabulary/public-event-types/514> ,
+    <https://w3id.org/italia/controlled-vocabulary/public-event-types/515> ,
+    <https://w3id.org/italia/controlled-vocabulary/public-event-types/516> ;
 	  dct:identifier "5.1" ;
+    skos:notation "5.1" ;
     clvapit:hasRankOrder "2" ;
-	  skos:prefLabel "Festa di un Santo / Festa Patronale"@it ;
-	  skos:prefLabel "Saint Feast"@en .
-
-<https://w3id.org/italia/controlled-vocabulary/public-event-types/52_EcumenicalCelebration>
-	  a  	skos:Concept ;
-	  skos:inScheme <https://w3id.org/italia/controlled-vocabulary/public-event-types> ;
-	  skos:broader <https://w3id.org/italia/controlled-vocabulary/public-event-types/5_ReligiousEvent> ;
-	  skos:notation "5.2" ;
-	  dct:identifier "5.2" ;
-    clvapit:hasRankOrder "2" ;
-	  skos:prefLabel "Celebrazione Ecumenica"@it ;
-	  skos:prefLabel "Ecumenical Celebration"@en .
-
-<https://w3id.org/italia/controlled-vocabulary/public-event-types/53_JubileeAudience>
-	  a  	skos:Concept ;
-	  skos:inScheme <https://w3id.org/italia/controlled-vocabulary/public-event-types> ;
-	  skos:broader <https://w3id.org/italia/controlled-vocabulary/public-event-types/5_ReligiousEvent> ;
-	  skos:notation "5.3" ;
-	  dct:identifier "5.3" ;
-    clvapit:hasRankOrder "2" ;
-	  skos:prefLabel "Udienza Giubilare"@it ;
-	  skos:prefLabel "Jubilee Audience"@en .
-
-<https://w3id.org/italia/controlled-vocabulary/public-event-types/54_Jubilee>
-	  a  	skos:Concept ;
-	  skos:inScheme <https://w3id.org/italia/controlled-vocabulary/public-event-types> ;
-	  skos:broader <https://w3id.org/italia/controlled-vocabulary/public-event-types/5_ReligiousEvent> ;
-	  skos:notation "5.4" ;
-	  dct:identifier "5.4" ;
-    clvapit:hasRankOrder "2" ;
-	  skos:prefLabel "Giubileo"@it ;
-	  skos:prefLabel "Jubilee"@en .
-
-<https://w3id.org/italia/controlled-vocabulary/public-event-types/55_ReligiousDialogue>
-	  a  	skos:Concept ;
-	  skos:inScheme <https://w3id.org/italia/controlled-vocabulary/public-event-types> ;
-	  skos:broader <https://w3id.org/italia/controlled-vocabulary/public-event-types/5_ReligiousEvent> ;
-	  skos:notation "5.5" ;
-	  dct:identifier "5.5" ;
-    clvapit:hasRankOrder "2" ;
-	  skos:prefLabel "Dialogo Religioso"@it ;
-	  skos:prefLabel "Religious Dialogue"@en .
-
-<https://w3id.org/italia/controlled-vocabulary/public-event-types/56_Procession>
-	  a  	skos:Concept ;
-	  skos:inScheme <https://w3id.org/italia/controlled-vocabulary/public-event-types> ;
-	  skos:broader <https://w3id.org/italia/controlled-vocabulary/public-event-types/5_ReligiousEvent> ;
-	  skos:notation "5.6" ;
-	  dct:identifier "5.6" ;
-    clvapit:hasRankOrder "2" ;
-	  skos:prefLabel "Processione"@it ;
-	  skos:prefLabel "Procession"@en .
-
-<https://w3id.org/italia/controlled-vocabulary/public-event-types/57_ReligiousReading>
-	  a  	skos:Concept ;
-	  skos:inScheme <https://w3id.org/italia/controlled-vocabulary/public-event-types> ;
-	  skos:broader <https://w3id.org/italia/controlled-vocabulary/public-event-types/5_ReligiousEvent> ;
-	  skos:notation "5.7" ;
-	  dct:identifier "5.7" ;
-    clvapit:hasRankOrder "2" ;
-	  skos:prefLabel "Lettura Religiosa"@it ;
-	  skos:prefLabel "Religious Reading"@en .
-
-<https://w3id.org/italia/controlled-vocabulary/public-event-types/58_ReligiousGathering>
-	  a  	skos:Concept ;
-	  skos:inScheme <https://w3id.org/italia/controlled-vocabulary/public-event-types> ;
-	  skos:broader <https://w3id.org/italia/controlled-vocabulary/public-event-types/5_ReligiousEvent> ;
-	  skos:notation "5.8" ;
-	  dct:identifier "5.8" ;
-    clvapit:hasRankOrder "2" ;
-	  skos:prefLabel "Raduno Religioso"@it ;
-	  skos:prefLabel "Religious Gathering"@en ;
-	  skos:definition "Per esempio il raduno della gioventù cattolica"@it ;
-	  skos:definition "For instance the gathering of youth"@en .
+	  skos:prefLabel "Manifestazione sportiva"@it , "Sport show"@en ;
+    skos:altLabel "Manifestazioni sportive"@it , "Sport shows"@en ;
+    skos:definition "Questo concetto include tutti gli eventi pubblici sportivi sia con che senza competizione"@it , "This concept includes all public sport events (both with and without any competition)"@en .
 
 
-<https://w3id.org/italia/controlled-vocabulary/public-event-types/59_Sanctification>
-	  a  	skos:Concept ;
-	  skos:inScheme <https://w3id.org/italia/controlled-vocabulary/public-event-types> ;
-	  skos:broader <https://w3id.org/italia/controlled-vocabulary/public-event-types/5_ReligiousEvent> ;
-	  skos:notation "5.9" ;
-	  dct:identifier "5.9" ;
-    clvapit:hasRankOrder "2" ;
-	  skos:prefLabel "Santificazione"@it ;
-	  skos:prefLabel "Sanctification"@en .
-
-##### Business Event: second level of the hierarchy #####
-<https://w3id.org/italia/controlled-vocabulary/public-event-types/61_BusinessMeeting>
-	  a  	skos:Concept ;
-	  skos:inScheme <https://w3id.org/italia/controlled-vocabulary/public-event-types> ;
-	  skos:broader <https://w3id.org/italia/controlled-vocabulary/public-event-types/6_BusinessEvent> ;
-    skos:relatedMatch <http://schema.org/DeliveryEvent> ;
-	  skos:notation "6.1" ;
-	  dct:identifier "6.1" ;
-    clvapit:hasRankOrder "2" ;
-	  skos:prefLabel "Meeting d'affari"@it ;
-	  skos:prefLabel "Business Meeting"@en .
-
-<https://w3id.org/italia/controlled-vocabulary/public-event-types/62_Convention>
-	  a  	skos:Concept ;
-	  skos:inScheme <https://w3id.org/italia/controlled-vocabulary/public-event-types> ;
-	  skos:broader <https://w3id.org/italia/controlled-vocabulary/public-event-types/6_BusinessEvent> ;
-	  skos:notation "6.2" ;
-	  dct:identifier "6.2" ;
-    clvapit:hasRankOrder "2" ;
-	  skos:prefLabel "Convention"@it ;
-	  skos:prefLabel "Convention"@en .
-
-<https://w3id.org/italia/controlled-vocabulary/public-event-types/63_Expo>
-	  a  	skos:Concept ;
-	  skos:inScheme <https://w3id.org/italia/controlled-vocabulary/public-event-types> ;
-	  skos:broader <https://w3id.org/italia/controlled-vocabulary/public-event-types/6_BusinessEvent> ;
-	  skos:notation "6.3" ;
-	  dct:identifier "6.3" ;
-    clvapit:hasRankOrder "2" ;
-	  skos:prefLabel "Esposizione / Esposizione Globale"@it ;
-	  skos:prefLabel "Global Expo"@en .
-
-<https://w3id.org/italia/controlled-vocabulary/public-event-types/64_Exhibition>
-	  a  	skos:Concept ;
-	  skos:inScheme <https://w3id.org/italia/controlled-vocabulary/public-event-types> ;
-	  skos:broader <https://w3id.org/italia/controlled-vocabulary/public-event-types/6_BusinessEvent> ;
-    skos:closeMarch <http://schema.org/ExhibitionEvent> ;
-	  skos:notation "6.4" ;
-	  dct:identifier "6.4" ;
-    clvapit:hasRankOrder "2" ;
-	  skos:prefLabel "Fiera / Salone"@it ;
-	  skos:prefLabel "Exhibition"@en .
-
-<https://w3id.org/italia/controlled-vocabulary/public-event-types/65_PanelDiscussion>
-	  a  	skos:Concept ;
-	  skos:inScheme <https://w3id.org/italia/controlled-vocabulary/public-event-types> ;
-	  skos:broader <https://w3id.org/italia/controlled-vocabulary/public-event-types/6_BusinessEvent> ;
-	  skos:notation "6.5" ;
-	  dct:identifier "6.5" ;
-    clvapit:hasRankOrder "2" ;
-	  skos:prefLabel "Tavola Rotonda"@it ;
-	  skos:prefLabel "Panel Discussion"@en .
-
-<https://w3id.org/italia/controlled-vocabulary/public-event-types/66_Market>
-    a  	skos:Concept ;
+##Third level of the hierarchy
+<https://w3id.org/italia/controlled-vocabulary/public-event-types/111>
+    a  	skos:Concept , cpevapit:PublicEventTypology ;
     skos:inScheme <https://w3id.org/italia/controlled-vocabulary/public-event-types> ;
-    skos:broader <https://w3id.org/italia/controlled-vocabulary/public-event-types/6_BusinessEvent> ;
-    skos:relatedMatch <http://schema.org/SaleEvent> , <http://schema.org/FoodEvent> ;
-    skos:notation "6.6" ;
-    dct:identifier "6.6" ;
-    clvapit:hasRankOrder "2" ;
-    skos:prefLabel "Mercato / Mercatino"@it ;
-    skos:prefLabel "Market"@en .
+    skos:broaderTransitive <https://w3id.org/italia/controlled-vocabulary/public-event-types/1> ;
+    skos:broader <https://w3id.org/italia/controlled-vocabulary/public-event-types/11> ;
+    skos:closeMatch <http://schema.org/Festival> ;
+    skos:scopeNote "Nella versione deprecata 0.1 del vocabolario questo concetto corrisponde a https://w3id.org/italia/controlled-vocabulary/public-event-types/19_Festival"@it ;
+    skos:notation "1.1.1" ;
+    dct:identifier "1.1.1" ;
+    clvapit:hasRankOrder "3" ;
+    skos:prefLabel "Festival"@it , "Festival"@en .
 
-##### Musical Event: second level of the hierarchy #####
-<https://w3id.org/italia/controlled-vocabulary/public-event-types/71_MusicFestival>
-    a  	skos:Concept ;
+<https://w3id.org/italia/controlled-vocabulary/public-event-types/112>
+	  a  	skos:Concept , cpevapit:PublicEventTypology ;
+	  skos:inScheme <https://w3id.org/italia/controlled-vocabulary/public-event-types> ;
+	  skos:broader <https://w3id.org/italia/controlled-vocabulary/public-event-types/11> ;
+    skos:broaderTransitive <https://w3id.org/italia/controlled-vocabulary/public-event-types/1> ;
+    skos:relatedMatch <http://schema.org/VisualArtsEvent> ;
+    skos:scopeNote "Nella versione deprecata 0.1 del vocabolario questo concetto corrisponde a https://w3id.org/italia/controlled-vocabulary/public-event-types/11_Exposure"@it ;
+	  skos:notation "1.1.2" ;
+	  dct:identifier "1.1.2" ;
+    clvapit:hasRankOrder "3" ;
+	  skos:prefLabel "Mostra"@it , "Exhibition"@en ;
+    skos:altLabel "Mostre"@it , "Exibitions"@en ;
+	  skos:definition "Può indicare qualunque mostra d'arte"@it , "It can be used to indicate any art exposure"@en .
+
+<https://w3id.org/italia/controlled-vocabulary/public-event-types/113>
+    a  	skos:Concept , cpevapit:PublicEventTypology ;
     skos:inScheme <https://w3id.org/italia/controlled-vocabulary/public-event-types> ;
-    skos:broader <https://w3id.org/italia/controlled-vocabulary/public-event-types/7_MusicEvent> ;
-    skos:notation "7.1" ;
-    dct:identifier "7.1" ;
-    clvapit:hasRankOrder "2" ;
-    skos:prefLabel "Festival Musicale"@it ;
-    skos:prefLabel "Music Festival"@en .
+    skos:broader <https://w3id.org/italia/controlled-vocabulary/public-event-types/11> ;
+    skos:broaderTransitive <https://w3id.org/italia/controlled-vocabulary/public-event-types/1> ;
+    skos:closeMatch <http://schema.org/TheaterEvent> ;
+    skos:scopeNote "Nella versione deprecata 0.1 del vocabolario questo concetto corrisponde a https://w3id.org/italia/controlled-vocabulary/public-event-types/15_TheathralShow"@it ;
+    skos:notation "1.1.3" ;
+    dct:identifier "1.1.3" ;
+    clvapit:hasRankOrder "3" ;
+    skos:prefLabel "Spettacolo teatrale"@it , "Theathral show"@en ;
+    skos:altLabel "Spettacoli teatrali"@it , "Teatro"@it , "Teathral shows"@en , "Theater"@en ;
+    skos:definition "Tutti i tipi di eventi relativi al teatro rientrano in questo concetto (e.g., teatro di prosa, spettacoli di teatro in generale)"@it , "All types of events regarding the theater are included in this concept (e.g., drama theater and any other show available at theaters)"@en .
 
-<https://w3id.org/italia/controlled-vocabulary/public-event-types/72_Concert>
-    a  	skos:Concept ;
+<https://w3id.org/italia/controlled-vocabulary/public-event-types/114>
+    a  	skos:Concept , cpevapit:PublicEventTypology ;
     skos:inScheme <https://w3id.org/italia/controlled-vocabulary/public-event-types> ;
-    skos:broader <https://w3id.org/italia/controlled-vocabulary/public-event-types/7_MusicEvent> ;
-    skos:notation "7.2" ;
-    dct:identifier "7.2" ;
-    clvapit:hasRankOrder "2" ;
-    skos:prefLabel "Concerto"@it ;
-    skos:prefLabel "Concert"@en .
+    skos:broader <https://w3id.org/italia/controlled-vocabulary/public-event-types/11t> ;
+    skos:broaderTransitive <https://w3id.org/italia/controlled-vocabulary/public-event-types/1> ;
+    skos:closeMatch <http://schema.org/DanceEvent> ;
+    skos:scopeNote "Nella versione deprecata 0.1 del vocabolario questo concetto corrisponde a https://w3id.org/italia/controlled-vocabulary/public-event-types/16_DanceShow"@it ;
+    skos:notation "1.1.4" ;
+    dct:identifier "1.1.4" ;
+    clvapit:hasRankOrder "3" ;
+    skos:prefLabel "Spettacolo di danza"@it , "Dance show"@en ;
+    skos:altLabel "Spettacoli di danza"@it , "danza"@it , "Dance shows"@en , "dance"@en ;
+    skos:definition "Tutti i tipi di spettacoli che coinvolgono la danza e il balletto rientrano in questo concetto"@it , "All types of events that involve dance and ballet are included in this concept"@en .
 
-<https://w3id.org/italia/controlled-vocabulary/public-event-types/73_MusicTour>
-    a  	skos:Concept ;
+
+<https://w3id.org/italia/controlled-vocabulary/public-event-types/115>
+    a  	skos:Concept , cpevapit:PublicEventTypology ;
     skos:inScheme <https://w3id.org/italia/controlled-vocabulary/public-event-types> ;
-    skos:broader <https://w3id.org/italia/controlled-vocabulary/public-event-types/7_MusicEvent> ;
-    skos:notation "7.3" ;
-    dct:identifier "7.3" ;
-    clvapit:hasRankOrder "2" ;
-    skos:prefLabel "Tour Musicale"@it ;
-    skos:prefLabel "Music Tour"@en .
+    skos:broader <https://w3id.org/italia/controlled-vocabulary/public-event-types/11t> ;
+    skos:broaderTransitive <https://w3id.org/italia/controlled-vocabulary/public-event-types/1> ;
+    skos:closeMatch <http://schema.org/DanceEvent> ;
+    skos:scopeNote "Nella versione deprecata 0.1 del vocabolario questo concetto corrisponde a https://w3id.org/italia/controlled-vocabulary/public-event-types/7_MusicEvent e a tutti i sotto eventi di questa voce."@it ;
+    skos:notation "1.1.5" ;
+    dct:identifier "1.1.5" ;
+    clvapit:hasRankOrder "3" ;
+    skos:closeMatch <http://schema.org/MusicEvent> ;
+    skos:prefLabel "Manifestazione musicale"@it , "Music event"@en ;
+    skos:altLabel "Manifestazioni musicali"@it , "musica"@it , "Music events"@en , "music"@en ;
+    skos:definition "Tutti i tipi di eventi che riguardano la musica rientrano in questo concetto (e.g., concerti, tour, galà, audizioni, ecc.)"@it , "All types of events regarding music are included in this concept (e.g., music tour, music gala, auditions, etc.)"@en .
 
-<https://w3id.org/italia/controlled-vocabulary/public-event-types/74_MusicGala>
-   a  	skos:Concept ;
-   skos:inScheme <https://w3id.org/italia/controlled-vocabulary/public-event-types> ;
-   skos:broader <https://w3id.org/italia/controlled-vocabulary/public-event-types/7_MusicEvent> ;
-   skos:notation "7.4" ;
-   dct:identifier "7.4" ;
-   clvapit:hasRankOrder "2" ;
-   skos:prefLabel "Galà Musicale"@it ;
-   skos:prefLabel "Music Gala"@en .
 
-<https://w3id.org/italia/controlled-vocabulary/public-event-types/75_MusicAudition>
-   a  	skos:Concept ;
-   skos:inScheme <https://w3id.org/italia/controlled-vocabulary/public-event-types> ;
-   skos:broader <https://w3id.org/italia/controlled-vocabulary/public-event-types/7_MusicEvent> ;
-   skos:notation "7.5" ;
-   dct:identifier "7.5" ;
-   clvapit:hasRankOrder "2" ;
-   skos:prefLabel "Audizione Musicale"@it ;
-   skos:prefLabel "Music Audition"@en .
+<https://w3id.org/italia/controlled-vocabulary/public-event-types/116>
+    a  	skos:Concept , cpevapit:PublicEventTypology ;
+    skos:inScheme <https://w3id.org/italia/controlled-vocabulary/public-event-types> ;
+    skos:broader <https://w3id.org/italia/controlled-vocabulary/public-event-types/11> ;
+    skos:broaderTransitive <https://w3id.org/italia/controlled-vocabulary/public-event-types/1> ;
+    skos:notation "1.1.6" ;
+    skos:scopeNote "Nella versione deprecata 0.1 del vocabolario questo concetto corrisponde a https://w3id.org/italia/controlled-vocabulary/public-event-types/110_GuidedTour"@it ;
+    dct:identifier "1.1.6" ;
+    clvapit:hasRankOrder "3" ;
+    skos:prefLabel "Visita guidata"@it , "Guided tour"@en ;
+    skos:altLabel "Visite guidate"@it , "Guided tours"@en .
+
+<https://w3id.org/italia/controlled-vocabulary/public-event-types/117>
+	  a  	skos:Concept , cpevapit:PublicEventTypology ;
+	  skos:inScheme <https://w3id.org/italia/controlled-vocabulary/public-event-types> ;
+	  skos:broader <https://w3id.org/italia/controlled-vocabulary/public-event-types/11> ;
+    skos:broaderTransitive <https://w3id.org/italia/controlled-vocabulary/public-event-types/1> ;
+	  skos:notation "1.1.7" ;
+    skos:scopeNote "Nella versione deprecata 0.1 del vocabolario questo concetto corrisponde a https://w3id.org/italia/controlled-vocabulary/public-event-types/14_PublicLeReading"@it ;
+	  dct:identifier "1.1.7" ;
+    clvapit:hasRankOrder "3" ;
+	  skos:prefLabel "Lettura (pubblica)"@it , "(Public) reading"@en ;
+    skos:altLabel "Letture (pubbliche)"@it , "(Public) readings"@en .
+
+
+<https://w3id.org/italia/controlled-vocabulary/public-event-types/118>
+    a  	skos:Concept , cpevapit:PublicEventTypology ;
+    skos:inScheme <https://w3id.org/italia/controlled-vocabulary/public-event-types> ;
+    skos:broader <https://w3id.org/italia/controlled-vocabulary/public-event-types/11> ;
+    skos:broaderTransitive <https://w3id.org/italia/controlled-vocabulary/public-event-types/1> ;
+    skos:scopeNote "Nella versione deprecata 0.1 del vocabolario questo concetto corrisponde a https://w3id.org/italia/controlled-vocabulary/public-event-types/17_CinemaProjection"@it ;
+    skos:closeMatch <http://schema.org/ComedyEvent> , <http://schema.org/ScreeningEvent>;
+    skos:notation "1.1.8" ;
+    dct:identifier "1.1.8" ;
+    clvapit:hasRankOrder "3" ;
+    skos:prefLabel "Proiezione cinematografica"@it , "Cinema projection"@en ;
+    skos:altLabel "Proiezioni cinematografiche"@it , "Cinema projections"@en ;
+    skos:definition "Tutti i tipi di eventi e spettacoli riguardanti il cinema (e.g., anche cinema all'aperto) rientrano in questo concetto."@it , "All types of events and shows regarding cinema (also open cinema) are included in this concept"@en .
+
+
+<https://w3id.org/italia/controlled-vocabulary/public-event-types/119>
+    a  	skos:Concept , cpevapit:PublicEventTypology ;
+    skos:inScheme <https://w3id.org/italia/controlled-vocabulary/public-event-types> ;
+    skos:broader <https://w3id.org/italia/controlled-vocabulary/public-event-types/11> ;
+    skos:broaderTransitive <https://w3id.org/italia/controlled-vocabulary/public-event-types/1> ;
+    skos:scopeNote "Nella versione deprecata 0.1 del vocabolario questo concetto corrisponde a https://w3id.org/italia/controlled-vocabulary/public-event-types/111_FreeTour"@it ;
+    skos:notation "1.1.9" ;
+    dct:identifier "1.1.9" ;
+    clvapit:hasRankOrder "3" ;
+    skos:prefLabel "Visita libera"@it , "Free tour"@en ;
+    skos:altLabel "Visite libere"@it , "Free tours"@en .
+
+<https://w3id.org/italia/controlled-vocabulary/public-event-types/121>
+    a  	skos:Concept , cpevapit:PublicEventTypology ;
+    skos:inScheme <https://w3id.org/italia/controlled-vocabulary/public-event-types> ;
+    skos:broader <https://w3id.org/italia/controlled-vocabulary/public-event-types/12> ;
+    skos:broaderTransitive <https://w3id.org/italia/controlled-vocabulary/public-event-types/1> ;
+    skos:notation "1.2.1" ;
+    dct:identifier "1.2.1" ;
+    clvapit:hasRankOrder "3" ;
+    skos:prefLabel "Scuola estiva / invernale"@it , "Summer / Winter school"@en ;
+    skos:altLabel "Scuole estive / invernali"@it , "Summer / Winter schools"@en .
+
+<https://w3id.org/italia/controlled-vocabulary/public-event-types/122>
+    a  	skos:Concept , cpevapit:PublicEventTypology ;
+    skos:inScheme <https://w3id.org/italia/controlled-vocabulary/public-event-types> ;
+    skos:broader <https://w3id.org/italia/controlled-vocabulary/public-event-types/12> ;
+    skos:broaderTransitive <https://w3id.org/italia/controlled-vocabulary/public-event-types/1> ;
+    skos:scopeNote "Nella versione deprecata 0.1 del vocabolario questo concetto corrisponde a https://w3id.org/italia/controlled-vocabulary/public-event-types/13_Conference"@it ;
+    skos:notation "1.2.2" ;
+    dct:identifier "1.2.2" ;
+    clvapit:hasRankOrder "3" ;
+    skos:prefLabel "Webinar"@it , "Webinar"@en .
+
+<https://w3id.org/italia/controlled-vocabulary/public-event-types/123>
+    a  	skos:Concept , cpevapit:PublicEventTypology ;
+    skos:inScheme <https://w3id.org/italia/controlled-vocabulary/public-event-types> ;
+    skos:broader <https://w3id.org/italia/controlled-vocabulary/public-event-types/12> ;
+    skos:broaderTransitive <https://w3id.org/italia/controlled-vocabulary/public-event-types/1> ;
+    skos:scopeNote "Nella versione deprecata 0.1 del vocabolario questo concetto corrisponde a https://w3id.org/italia/controlled-vocabulary/public-event-types/13_Conference"@it ;
+    skos:notation "1.2.3" ;
+    dct:identifier "1.2.3" ;
+    clvapit:hasRankOrder "3" ;
+    skos:prefLabel "Seminario"@it , "Seminar"@en ;
+    skos:altLabel "Seminari"@it .
+
+<https://w3id.org/italia/controlled-vocabulary/public-event-types/124>
+    a  	skos:Concept , cpevapit:PublicEventTypology ;
+    skos:inScheme <https://w3id.org/italia/controlled-vocabulary/public-event-types> ;
+    skos:broader <https://w3id.org/italia/controlled-vocabulary/public-event-types/12> ;
+    skos:broaderTransitive <https://w3id.org/italia/controlled-vocabulary/public-event-types/1> ;
+    skos:scopeNote "Nella versione deprecata 0.1 del vocabolario questo concetto corrisponde a https://w3id.org/italia/controlled-vocabulary/public-event-types/13_Conference"@it ;
+    skos:notation "1.2.4" ;
+    dct:identifier "1.2.4" ;
+    clvapit:hasRankOrder "3" ;
+    skos:prefLabel "Laboratorio"@it , "Workshop"@en ;
+    skos:altLabel "Laboratori"@it .
+
+<https://w3id.org/italia/controlled-vocabulary/public-event-types/125>
+	  a  	skos:Concept , cpevapit:PublicEventTypology ;
+	  skos:inScheme <https://w3id.org/italia/controlled-vocabulary/public-event-types> ;
+	  skos:broader <https://w3id.org/italia/controlled-vocabulary/public-event-types/12> ;
+    skos:broaderTransitive <https://w3id.org/italia/controlled-vocabulary/public-event-types/1> ;
+    skos:scopeNote "Nella versione deprecata 0.1 del vocabolario questo concetto corrisponde a https://w3id.org/italia/controlled-vocabulary/public-event-types/12_BookPresentation"@it ;
+    skos:relatedMatch <http://schema.org/LiteraryEvent> ;
+	  skos:notation "1.2.5" ;
+	  dct:identifier "1.2.5" ;
+    clvapit:hasRankOrder "3" ;
+	  skos:prefLabel "Presentazione libro"@it , "Book presentation"@en ;
+    skos:altLabel "Presentazioni libri"@it , "Books presentations"@en .
+
+<https://w3id.org/italia/controlled-vocabulary/public-event-types/126>
+    a  	skos:Concept , cpevapit:PublicEventTypology ;
+    skos:inScheme <https://w3id.org/italia/controlled-vocabulary/public-event-types> ;
+    skos:broader <https://w3id.org/italia/controlled-vocabulary/public-event-types/12> ;
+    skos:broaderTransitive <https://w3id.org/italia/controlled-vocabulary/public-event-types/1> ;
+    skos:scopeNote "Nella versione deprecata 0.1 del vocabolario questo concetto corrisponde a https://w3id.org/italia/controlled-vocabulary/public-event-types/112_Course"@it ;
+    skos:relatedMatch <http://schema.org/CourseInstance> ;
+    skos:notation "1.2.6" ;
+    dct:identifier "1.2.6" ;
+    clvapit:hasRankOrder "3" ;
+    skos:prefLabel "Corso"@it , "Course"@en ;
+    skos:altLabel "Corsi"@it , "Courses"@en ;
+    skos:definition "In questo concetto rientrano anche  corsi su materie specifiche come per esempio corsi musicali, corsi di teatro, corsi di danza,  o corsi sportivi"@it , "This concept also includes  courses on specific subject such as  teather courses, dance courses, sport courses, music courses, etc.)"@en .
+
+
+<https://w3id.org/italia/controlled-vocabulary/public-event-types/131>
+	  a  	skos:Concept , cpevapit:PublicEventTypology ;
+	  skos:inScheme <https://w3id.org/italia/controlled-vocabulary/public-event-types> ;
+	  skos:broader <https://w3id.org/italia/controlled-vocabulary/public-event-types/13> ;
+    skos:broaderTransitive <https://w3id.org/italia/controlled-vocabulary/public-event-types/1> ;
+    skos:relatedMatch <http://schema.org/EducationEvent> , <http://schema.org/PublicationEvent> ;
+    skos:scopeNote "Nella versione deprecata 0.1 del vocabolario questo concetto corrisponde a https://w3id.org/italia/controlled-vocabulary/public-event-types/13_Conference"@it ;
+	  skos:notation "1.3.1" ;
+	  dct:identifier "1.3.1" ;
+    clvapit:hasRankOrder "3" ;
+	  skos:prefLabel "Convegno / Conferenza"@it , "Conference"@en ;
+    skos:altLabel "Convegni"@it , "Conferenze"@it .
+
+<https://w3id.org/italia/controlled-vocabulary/public-event-types/132>
+	  a  	skos:Concept , cpevapit:PublicEventTypology ;
+	  skos:inScheme <https://w3id.org/italia/controlled-vocabulary/public-event-types> ;
+	  skos:broader <https://w3id.org/italia/controlled-vocabulary/public-event-types/13> ;
+    skos:broaderTransitive <https://w3id.org/italia/controlled-vocabulary/public-event-types/1> ;
+    skos:scopeNote "Nella versione deprecata 0.1 del vocabolario questo concetto corrisponde a https://w3id.org/italia/controlled-vocabulary/public-event-types/41_Summit"@it ;
+	  skos:notation "1.3.2" ;
+	  dct:identifier "1.3.2" ;
+    clvapit:hasRankOrder "3" ;
+	  skos:prefLabel "Vertice"@it , "Summit"@en ;
+    skos:altLabel "Vertici"@it , "Summits"@en ;
+    skos:definition "Rientrano in questo concetto anche eventi come il G7 il G20"@it , "This concept includes also events such as G7 and G20 summits"@en .
+
+<https://w3id.org/italia/controlled-vocabulary/public-event-types/133>
+	  a  	skos:Concept , cpevapit:PublicEventTypology ;
+	  skos:inScheme <https://w3id.org/italia/controlled-vocabulary/public-event-types> ;
+	  skos:broader <https://w3id.org/italia/controlled-vocabulary/public-event-types/13> ;
+    skos:broaderTransitive <https://w3id.org/italia/controlled-vocabulary/public-event-types/1> ;
+    skos:scopeNote "Nella versione deprecata 0.1 del vocabolario questo concetto corrisponde a https://w3id.org/italia/controlled-vocabulary/public-event-types/41_Summit"@it ;
+	  skos:notation "1.3.3" ;
+	  dct:identifier "1.3.3" ;
+    clvapit:hasRankOrder "3" ;
+	  skos:prefLabel "Congresso"@it , "Congress"@en ;
+    skos:altLabel "Congressi"@it .
+
+<https://w3id.org/italia/controlled-vocabulary/public-event-types/141>
+	  a  	skos:Concept , cpevapit:PublicEventTypology ;
+	  skos:inScheme <https://w3id.org/italia/controlled-vocabulary/public-event-types> ;
+	  skos:broader <https://w3id.org/italia/controlled-vocabulary/public-event-types/14> ;
+    skos:broaderTransitive <https://w3id.org/italia/controlled-vocabulary/public-event-types/1> ;
+	  skos:notation "1.4.1" ;
+	  dct:identifier "1.4.1" ;
+    clvapit:hasRankOrder "3" ;
+	  skos:prefLabel "Giornata aperta"@it , "Open day"@en ;
+    skos:altLabel "Incontro informativo"@it , "Giornate aperte"@it , "Open days"@en .
+
+<https://w3id.org/italia/controlled-vocabulary/public-event-types/211>
+    a  	skos:Concept , cpevapit:PublicEventTypology ;
+    skos:inScheme <https://w3id.org/italia/controlled-vocabulary/public-event-types> ;
+    skos:broader <https://w3id.org/italia/controlled-vocabulary/public-event-types/21> ;
+    skos:broaderTransitive <https://w3id.org/italia/controlled-vocabulary/public-event-types/2> ;
+    skos:scopeNote "Nella versione deprecata 0.1 del vocabolario questo concetto corrisponde a https://w3id.org/italia/controlled-vocabulary/public-event-types/114_Award e https://w3id.org/italia/controlled-vocabulary/public-event-types/34_Inauguration"@it ;
+    skos:notation "2.1.1" ;
+    dct:identifier "2.1.1" ;
+    clvapit:hasRankOrder "3" ;
+    skos:prefLabel "Cerimonia"@it , "Ceremony"@en ;
+    skos:altLabel "Cerimonie"@it , "Ceremonies"@en ;
+    skos:definition "Questo concetto include quindi anche le inaugurazioni e le assegnazioni di premi (e.g., David di Donatello, Premio Giornalistico, Premo Letterario, ecc.)"@it , "This concept includes then the inauguration events and the award (e.g., 'David di Donatello',  Literary prize, Journalism prize)"@en .
+
+
+<https://w3id.org/italia/controlled-vocabulary/public-event-types/212>
+    a  	skos:Concept , cpevapit:PublicEventTypology ;
+    skos:inScheme <https://w3id.org/italia/controlled-vocabulary/public-event-types> ;
+    skos:broader <https://w3id.org/italia/controlled-vocabulary/public-event-types/21> ;
+    skos:broaderTransitive <https://w3id.org/italia/controlled-vocabulary/public-event-types/2> ;
+    skos:scopeNote "Nella versione deprecata 0.1 del vocabolario questo concetto corrisponde a https://w3id.org/italia/controlled-vocabulary/public-event-types/115_Contest"@it ;
+    skos:notation "2.1.2" ;
+    dct:identifier "2.1.2" ;
+    clvapit:hasRankOrder "3" ;
+    skos:prefLabel "Concorso / Competizione"@it , "Competetion"@en ;
+    skos:altLabel "Concorsi / Competizioni"@it , "Contest"@en .
+
+<https://w3id.org/italia/controlled-vocabulary/public-event-types/221>
+	  a  	skos:Concept , cpevapit:PublicEventTypology ;
+	  skos:inScheme <https://w3id.org/italia/controlled-vocabulary/public-event-types> ;
+	  skos:broader <https://w3id.org/italia/controlled-vocabulary/public-event-types/22> ;
+    skos:broaderTransitive <https://w3id.org/italia/controlled-vocabulary/public-event-types/2> ;
+    skos:scopeNote "Nella versione deprecata 0.1 del vocabolario questo concetto corrisponde a https://w3id.org/italia/controlled-vocabulary/public-event-types/32_DebateMeeting"@it ;
+	  skos:notation "2.2.1" ;
+	  dct:identifier "2.2.1" ;
+    clvapit:hasRankOrder "3" ;
+	  skos:prefLabel "Dibattito / Dialogo pubblico"@it , "Public Debate / Dialogue"@en ;
+    skos:altLabel "Dibattiti / Dialoghi pubblici"@it , "Dialogue"@en .
+
+
+<https://w3id.org/italia/controlled-vocabulary/public-event-types/222>
+	  a  	skos:Concept , cpevapit:PublicEventTypology ;
+	  skos:inScheme <https://w3id.org/italia/controlled-vocabulary/public-event-types> ;
+	  skos:broader <https://w3id.org/italia/controlled-vocabulary/public-event-types/22> ;
+    skos:broaderTransitive <https://w3id.org/italia/controlled-vocabulary/public-event-types/2> ;
+    skos:scopeNote "Nella versione deprecata 0.1 del vocabolario questo concetto corrisponde a https://w3id.org/italia/controlled-vocabulary/public-event-types/42_Forum"@it ;
+	  skos:notation "2.2.2" ;
+	  dct:identifier "2.2.2" ;
+    clvapit:hasRankOrder "3" ;
+	  skos:prefLabel "Forum"@it , "Forum"@en .
+
+<https://w3id.org/italia/controlled-vocabulary/public-event-types/231>
+	  a  	skos:Concept , cpevapit:PublicEventTypology ;
+	  skos:inScheme <https://w3id.org/italia/controlled-vocabulary/public-event-types> ;
+	  skos:broader <https://w3id.org/italia/controlled-vocabulary/public-event-types/23> ;
+    skos:broaderTransitive <https://w3id.org/italia/controlled-vocabulary/public-event-types/2> ;
+	  skos:notation "2.3.1" ;
+	  dct:identifier "2.3.1" ;
+    clvapit:hasRankOrder "3" ;
+	  skos:prefLabel "Riunione esperti / portatori interesse"@it , "Experts / stakeholdesr meeting"@en ;
+    skos:altLabel "Riunioni esperti / portatori interesse"@it , "Experts / stakeholders meetings"@en .
+
+<https://w3id.org/italia/controlled-vocabulary/public-event-types/232>
+	  a  	skos:Concept , cpevapit:PublicEventTypology ;
+	  skos:inScheme <https://w3id.org/italia/controlled-vocabulary/public-event-types> ;
+	  skos:broader <https://w3id.org/italia/controlled-vocabulary/public-event-types/23> ;
+    skos:broaderTransitive <https://w3id.org/italia/controlled-vocabulary/public-event-types/2> ;
+	  skos:notation "2.3.2" ;
+	  dct:identifier "2.3.2" ;
+    clvapit:hasRankOrder "3" ;
+	  skos:prefLabel "Hackathon / Datathon"@it , "Hackathon /Datathon"@en .
+
+
+<https://w3id.org/italia/controlled-vocabulary/public-event-types/241>
+    a  	skos:Concept , cpevapit:PublicEventTypology ;
+    skos:inScheme <https://w3id.org/italia/controlled-vocabulary/public-event-types> ;
+    skos:broader <https://w3id.org/italia/controlled-vocabulary/public-event-types/24> ;
+    skos:broaderTransitive <https://w3id.org/italia/controlled-vocabulary/public-event-types/2> ;
+    skos:scopeNote "Nella versione deprecata 0.1 del vocabolario questo concetto corrisponde a https://w3id.org/italia/controlled-vocabulary/public-event-types/38_Parade"@it ;
+    skos:notation "2.4.1" ;
+    dct:identifier "2.4.1" ;
+    clvapit:hasRankOrder "3" ;
+    skos:prefLabel "Sfilata"@it , "Parade"@en ;
+    skos:altLabel "Sfilate"@it ;
+    skos:definition "Per esempio la sfilata dei carri di carnevale, le sfilate di moda"@it , "For instance, the parade of the Italian carnival wagons, the fashion shows"@en .
+
+
+<https://w3id.org/italia/controlled-vocabulary/public-event-types/242>
+	  a  	skos:Concept , cpevapit:PublicEventTypology ;
+    skos:inScheme <https://w3id.org/italia/controlled-vocabulary/public-event-types> ;
+    skos:broader <https://w3id.org/italia/controlled-vocabulary/public-event-types/24> ;
+    skos:broaderTransitive <https://w3id.org/italia/controlled-vocabulary/public-event-types/2> ;
+    skos:scopeNote "Nella versione deprecata 0.1 del vocabolario questo concetto corrisponde a https://w3id.org/italia/controlled-vocabulary/public-event-types/31_LocalFestival"@it ;
+	  skos:notation "2.4.2" ;
+	  dct:identifier "2.4.2" ;
+    clvapit:hasRankOrder "3" ;
+	  skos:prefLabel "Sagra"@it , "Popular feast"@en ;
+    skos:altLabel "Sagre"@it , "Local festival"@en .
+
+
+<https://w3id.org/italia/controlled-vocabulary/public-event-types/243>
+	  a  	skos:Concept , cpevapit:PublicEventTypology ;
+    skos:inScheme <https://w3id.org/italia/controlled-vocabulary/public-event-types> ;
+    skos:broader <https://w3id.org/italia/controlled-vocabulary/public-event-types/24> ;
+    skos:broaderTransitive <https://w3id.org/italia/controlled-vocabulary/public-event-types/2> ;
+    skos:scopeNote "Nella versione deprecata 0.1 del vocabolario questo concetto corrisponde a https://w3id.org/italia/controlled-vocabulary/public-event-types/36_HistoricalTournament"@it ;
+	  skos:notation "2.4.3" ;
+	  dct:identifier "2.4.3" ;
+    clvapit:hasRankOrder "3" ;
+	  skos:prefLabel "Torneo Storico / Palio"@it , "Historical Tournament"@en ;
+    skos:altLabel "Tornei storici"@it .
+
+<https://w3id.org/italia/controlled-vocabulary/public-event-types/244>
+	  a  	skos:Concept , cpevapit:PublicEventTypology ;
+    skos:inScheme <https://w3id.org/italia/controlled-vocabulary/public-event-types> ;
+    skos:broader <https://w3id.org/italia/controlled-vocabulary/public-event-types/24> ;
+    skos:broaderTransitive <https://w3id.org/italia/controlled-vocabulary/public-event-types/2> ;
+    skos:scopeNote "Nella versione deprecata 0.1 del vocabolario questo concetto corrisponde a https://w3id.org/italia/controlled-vocabulary/public-event-types/51_SaintFeast"@it ;
+	  skos:notation "2.4.4" ;
+	  dct:identifier "2.4.4" ;
+    clvapit:hasRankOrder "3" ;
+	  skos:prefLabel "Festa patronale / Festa dei santi"@it , "Patronal Feat / Saint Feast"@en ;
+    skos:altLabel "Feste patronali / Feste dei santi"@it .
+
+<https://w3id.org/italia/controlled-vocabulary/public-event-types/245>
+    a  	skos:Concept , cpevapit:PublicEventTypology ;
+    skos:inScheme <https://w3id.org/italia/controlled-vocabulary/public-event-types> ;
+    skos:broader <https://w3id.org/italia/controlled-vocabulary/public-event-types/24> ;
+    skos:broaderTransitive <https://w3id.org/italia/controlled-vocabulary/public-event-types/2> ;
+    skos:scopeNote "Nella versione deprecata 0.1 del vocabolario questo concetto corrisponde a https://w3id.org/italia/controlled-vocabulary/public-event-types/66_Market"@it ;
+	  skos:notation "2.4.5" ;
+	  dct:identifier "2.4.5" ;
+    clvapit:hasRankOrder "3" ;
+    skos:prefLabel "Mercato / Mercatino"@it , "Market / Street market"@en ;
+    skos:altLabel "Mercati / Mercatini"@it , "Markets / Street markets"@en .
+
+<https://w3id.org/italia/controlled-vocabulary/public-event-types/246>
+    a  	skos:Concept , cpevapit:PublicEventTypology ;
+    skos:inScheme <https://w3id.org/italia/controlled-vocabulary/public-event-types> ;
+    skos:broader <https://w3id.org/italia/controlled-vocabulary/public-event-types/24> ;
+    skos:broaderTransitive <https://w3id.org/italia/controlled-vocabulary/public-event-types/2> ;
+    skos:scopeNote "Nella versione deprecata 0.1 del vocabolario questo concetto corrisponde a https://w3id.org/italia/controlled-vocabulary/public-event-types/35_Commemoration"@it ;
+	  skos:notation "2.4.6" ;
+	  dct:identifier "2.4.6" ;
+    clvapit:hasRankOrder "3" ;
+    skos:prefLabel "Commemorazione"@it , "Commemoration"@en ;
+    skos:altLabel "Commemorazioni"@it .
+
+<https://w3id.org/italia/controlled-vocabulary/public-event-types/251>
+    a  	skos:Concept , cpevapit:PublicEventTypology ;
+    skos:inScheme <https://w3id.org/italia/controlled-vocabulary/public-event-types> ;
+    skos:broader <https://w3id.org/italia/controlled-vocabulary/public-event-types/25> ;
+    skos:broaderTransitive <https://w3id.org/italia/controlled-vocabulary/public-event-types/2> ;
+    skos:scopeNote "Nella versione deprecata 0.1 del vocabolario questo concetto corrisponde a https://w3id.org/italia/controlled-vocabulary/public-event-types/54_Jubilee"@it ;
+	  skos:notation "2.5.1" ;
+	  dct:identifier "2.5.1" ;
+    clvapit:hasRankOrder "3" ;
+    skos:prefLabel "Giubileo"@it , "Jubilee"@en ;
+    skos:altLabel "Giubilei"@it .
+
+<https://w3id.org/italia/controlled-vocabulary/public-event-types/252>
+    a  	skos:Concept , cpevapit:PublicEventTypology ;
+    skos:inScheme <https://w3id.org/italia/controlled-vocabulary/public-event-types> ;
+    skos:broader <https://w3id.org/italia/controlled-vocabulary/public-event-types/25> ;
+    skos:broaderTransitive <https://w3id.org/italia/controlled-vocabulary/public-event-types/2> ;
+    skos:scopeNote "Nella versione deprecata 0.1 del vocabolario questo concetto corrisponde a https://w3id.org/italia/controlled-vocabulary/public-event-types/53_JubileeAudience"@it ;
+    skos:notation "2.5.2" ;
+    dct:identifier "2.5.2" ;
+    clvapit:hasRankOrder "3" ;
+	  skos:prefLabel "Udienza giubilare"@it , "Jubilee hearing"@en ;
+    skos:altLabel "Udienze giubilari"@it .
+
+<https://w3id.org/italia/controlled-vocabulary/public-event-types/253>
+    a  	skos:Concept , cpevapit:PublicEventTypology ;
+    skos:inScheme <https://w3id.org/italia/controlled-vocabulary/public-event-types> ;
+    skos:broader <https://w3id.org/italia/controlled-vocabulary/public-event-types/25> ;
+    skos:broaderTransitive <https://w3id.org/italia/controlled-vocabulary/public-event-types/2> ;
+    skos:scopeNote "Nella versione deprecata 0.1 del vocabolario questo concetto corrisponde a https://w3id.org/italia/controlled-vocabulary/public-event-types/56_Procession"@it ;
+    skos:notation "2.5.3" ;
+    dct:identifier "2.5.3" ;
+    clvapit:hasRankOrder "3" ;
+    skos:prefLabel "Processione"@it , "Procession"@en ;
+    skos:altLabel "Processioni"@it .
+
+
+<https://w3id.org/italia/controlled-vocabulary/public-event-types/254>
+    a  	skos:Concept , cpevapit:PublicEventTypology ;
+    skos:inScheme <https://w3id.org/italia/controlled-vocabulary/public-event-types> ;
+    skos:broader <https://w3id.org/italia/controlled-vocabulary/public-event-types/25> ;
+    skos:broaderTransitive <https://w3id.org/italia/controlled-vocabulary/public-event-types/2> ;
+    skos:scopeNote "Nella versione deprecata 0.1 del vocabolario questo concetto corrisponde a https://w3id.org/italia/controlled-vocabulary/public-event-types/52_EcumenicalCelebration"@it ;
+    skos:notation "2.5.4" ;
+    dct:identifier "2.5.4" ;
+    clvapit:hasRankOrder "3" ;
+	  skos:prefLabel "Celebrazione Ecumenica"@it , "Ecumenical Celebration"@en ;
+    skos:altLabel "Celebrazioni ecumeniche"@it .
+
+
+<https://w3id.org/italia/controlled-vocabulary/public-event-types/255>
+    a  	skos:Concept , cpevapit:PublicEventTypology ;
+    skos:inScheme <https://w3id.org/italia/controlled-vocabulary/public-event-types> ;
+    skos:broader <https://w3id.org/italia/controlled-vocabulary/public-event-types/25> ;
+    skos:broaderTransitive <https://w3id.org/italia/controlled-vocabulary/public-event-types/2> ;
+    skos:scopeNote "Nella versione deprecata 0.1 del vocabolario questo concetto corrisponde a https://w3id.org/italia/controlled-vocabulary/public-event-types/57_ReligiousReading"@it ;
+    skos:notation "2.5.5" ;
+    dct:identifier "2.5.5" ;
+    clvapit:hasRankOrder "3" ;
+    skos:prefLabel "Lettura Religiosa"@it , "Religious Reading"@en ;
+    skos:altLabel "Letture religiose"@it , "Readings"@en .
+
+
+<https://w3id.org/italia/controlled-vocabulary/public-event-types/256>
+	  a  	skos:Concept , cpevapit:PublicEventTypology ;
+    skos:inScheme <https://w3id.org/italia/controlled-vocabulary/public-event-types> ;
+    skos:broader <https://w3id.org/italia/controlled-vocabulary/public-event-types/25> ;
+    skos:broaderTransitive <https://w3id.org/italia/controlled-vocabulary/public-event-types/2> ;
+    skos:scopeNote "Nella versione deprecata 0.1 del vocabolario questo concetto corrisponde a https://w3id.org/italia/controlled-vocabulary/public-event-types/55_ReligiousDialogue"@it ;
+    skos:notation "2.5.6" ;
+    dct:identifier "2.5.6" ;
+    clvapit:hasRankOrder "3" ;
+	  skos:prefLabel "Raduno religioso"@it , "Religious Gathering"@en ;
+    skos:altLabel "Raduni religiosi"@it ;
+    skos:definition "Per esempio il raduno della gioventù cattolica"@it , "For instance the gathering of youth"@en .
+
+
+<https://w3id.org/italia/controlled-vocabulary/public-event-types/257>
+    a  	skos:Concept , cpevapit:PublicEventTypology ;
+    skos:inScheme <https://w3id.org/italia/controlled-vocabulary/public-event-types> ;
+    skos:broader <https://w3id.org/italia/controlled-vocabulary/public-event-types/25> ;
+    skos:broaderTransitive <https://w3id.org/italia/controlled-vocabulary/public-event-types/2> ;
+    skos:scopeNote "Nella versione deprecata 0.1 del vocabolario questo concetto corrisponde a https://w3id.org/italia/controlled-vocabulary/public-event-types/59_Sanctification"@it ;
+    skos:notation "2.5.7" ;
+    dct:identifier "2.5.7" ;
+    clvapit:hasRankOrder "3" ;
+    skos:prefLabel "Santificazione"@it , "Sanctification"@en ;
+    skos:altLabel "Santificazioni"@it .
+
+<https://w3id.org/italia/controlled-vocabulary/public-event-types/311>
+    a  	skos:Concept , cpevapit:PublicEventTypology ;
+    skos:inScheme <https://w3id.org/italia/controlled-vocabulary/public-event-types> ;
+    skos:broader <https://w3id.org/italia/controlled-vocabulary/public-event-types/31> ;
+    skos:broaderTransitive <https://w3id.org/italia/controlled-vocabulary/public-event-types/3> ;
+    skos:notation "3.1.1" ;
+    dct:identifier "3.1.1" ;
+    clvapit:hasRankOrder "3" ;
+    skos:prefLabel "Congresso / riunione di partito"@it , "Party congress / meeting"@en ;
+    skos:altLabel "Congressi / riunioni di partito"@it .
+
+<https://w3id.org/italia/controlled-vocabulary/public-event-types/312>
+    a  	skos:Concept , cpevapit:PublicEventTypology ;
+    skos:inScheme <https://w3id.org/italia/controlled-vocabulary/public-event-types> ;
+    skos:broader <https://w3id.org/italia/controlled-vocabulary/public-event-types/31> ;
+    skos:broaderTransitive <https://w3id.org/italia/controlled-vocabulary/public-event-types/3> ;
+    skos:notation "3.1.2" ;
+    dct:identifier "3.1.2" ;
+    clvapit:hasRankOrder "3" ;
+    skos:prefLabel "Corteo / sciopero"@it , "Political procession / strike"@en ;
+    skos:altLabel "Cortei / scioperi"@it .
+
+<https://w3id.org/italia/controlled-vocabulary/public-event-types/313>
+    a  	skos:Concept , cpevapit:PublicEventTypology ;
+    skos:inScheme <https://w3id.org/italia/controlled-vocabulary/public-event-types> ;
+    skos:broader <https://w3id.org/italia/controlled-vocabulary/public-event-types/31> ;
+    skos:broaderTransitive <https://w3id.org/italia/controlled-vocabulary/public-event-types/3> ;
+    skos:notation "3.1.3" ;
+    dct:identifier "3.1.3" ;
+    clvapit:hasRankOrder "3" ;
+    skos:prefLabel "Comizio elettorale"@it , "Electoral speech"@en ;
+    skos:altLabel "Comizi elettorali"@it .
+
+<https://w3id.org/italia/controlled-vocabulary/public-event-types/411>
+    a  	skos:Concept , cpevapit:PublicEventTypology ;
+    skos:inScheme <https://w3id.org/italia/controlled-vocabulary/public-event-types> ;
+    skos:broader <https://w3id.org/italia/controlled-vocabulary/public-event-types/41> ;
+    skos:broaderTransitive <https://w3id.org/italia/controlled-vocabulary/public-event-types/4> ;
+    skos:scopeNote "Nella versione deprecata 0.1 del vocabolario questo concetto corrisponde a https://w3id.org/italia/controlled-vocabulary/public-event-types/64_Exhibition"@it ;
+    skos:notation "4.1.1" ;
+    dct:identifier "4.1.1" ;
+    clvapit:hasRankOrder "3" ;
+	  skos:prefLabel "Fiera / Salone"@it , "Exhibition"@en ;
+    skos:altLabel "Fiere / Saloni"@it .
+
+<https://w3id.org/italia/controlled-vocabulary/public-event-types/412>
+    a  	skos:Concept , cpevapit:PublicEventTypology ;
+    skos:inScheme <https://w3id.org/italia/controlled-vocabulary/public-event-types> ;
+    skos:broader <https://w3id.org/italia/controlled-vocabulary/public-event-types/41> ;
+    skos:broaderTransitive <https://w3id.org/italia/controlled-vocabulary/public-event-types/4> ;
+    skos:scopeNote "Nella versione deprecata 0.1 del vocabolario questo concetto corrisponde a https://w3id.org/italia/controlled-vocabulary/public-event-types/63_Expo"@it ;
+    skos:notation "4.1.2" ;
+    dct:identifier "4.1.2" ;
+    clvapit:hasRankOrder "3" ;
+	  skos:prefLabel "Esposizione / Esposizione globale"@it , "Expo global"@en ;
+    skos:altLabel "Esposizioni / Esposizioni globali"@it .
+
+<https://w3id.org/italia/controlled-vocabulary/public-event-types/421>
+    a  	skos:Concept , cpevapit:PublicEventTypology ;
+    skos:inScheme <https://w3id.org/italia/controlled-vocabulary/public-event-types> ;
+    skos:broader <https://w3id.org/italia/controlled-vocabulary/public-event-types/42> ;
+    skos:broaderTransitive <https://w3id.org/italia/controlled-vocabulary/public-event-types/4> ;
+    skos:scopeNote "Nella versione deprecata 0.1 del vocabolario questo concetto corrisponde a https://w3id.org/italia/controlled-vocabulary/public-event-types/61_BusinessMeeting"@it ;
+    skos:notation "4.2.1" ;
+    dct:identifier "4.2.1" ;
+    clvapit:hasRankOrder "3" ;
+	  skos:prefLabel "Riunione d'affari"@it , "Business meeting"@en ;
+    skos:altLabel "Riunioni d'affari"@it .
+
+<https://w3id.org/italia/controlled-vocabulary/public-event-types/422>
+    a  	skos:Concept , cpevapit:PublicEventTypology ;
+    skos:inScheme <https://w3id.org/italia/controlled-vocabulary/public-event-types> ;
+    skos:broader <https://w3id.org/italia/controlled-vocabulary/public-event-types/42> ;
+    skos:broaderTransitive <https://w3id.org/italia/controlled-vocabulary/public-event-types/4> ;
+    skos:scopeNote "Nella versione deprecata 0.1 del vocabolario questo concetto corrisponde a https://w3id.org/italia/controlled-vocabulary/public-event-types/62_Convention"@it ;
+    skos:notation "4.2.2" ;
+    dct:identifier "4.2.2" ;
+    clvapit:hasRankOrder "3" ;
+	  skos:prefLabel "Convention"@it , "Convention"@en .
+
+
+<https://w3id.org/italia/controlled-vocabulary/public-event-types/423>
+    a  	skos:Concept , cpevapit:PublicEventTypology ;
+    skos:inScheme <https://w3id.org/italia/controlled-vocabulary/public-event-types> ;
+    skos:broader <https://w3id.org/italia/controlled-vocabulary/public-event-types/42> ;
+    skos:broaderTransitive <https://w3id.org/italia/controlled-vocabulary/public-event-types/4> ;
+    skos:scopeNote "Nella versione deprecata 0.1 del vocabolario questo concetto corrisponde a https://w3id.org/italia/controlled-vocabulary/public-event-types/65_PanelDiscussion"@it ;
+    skos:notation "4.2.3" ;
+    dct:identifier "4.2.3" ;
+    clvapit:hasRankOrder "3" ;
+	  skos:prefLabel "Tavola Rotonda"@it , "Round table"@en ;
+    skos:altLabel "Tavole rotonde"@it , "Round tables"@en , "Panel discussion"@en .
+
+<https://w3id.org/italia/controlled-vocabulary/public-event-types/431>
+    a  	skos:Concept , cpevapit:PublicEventTypology ;
+    skos:inScheme <https://w3id.org/italia/controlled-vocabulary/public-event-types> ;
+    skos:broader <https://w3id.org/italia/controlled-vocabulary/public-event-types/43> ;
+    skos:broaderTransitive <https://w3id.org/italia/controlled-vocabulary/public-event-types/4> ;
+    skos:notation "4.3.1" ;
+    dct:identifier "4.3.1" ;
+    clvapit:hasRankOrder "3" ;
+	  skos:prefLabel "Vendita di fine stagione"@it , "Sale"@en ;
+    skos:altLabel "Saldi stagionali"@it , "Saldi"@it , "Sales"@en .
+
+
+
+<https://w3id.org/italia/controlled-vocabulary/public-event-types/511>
+    a skos:Concept , cpevapit:PublicEventTypology ;
+    skos:inScheme <https://w3id.org/italia/controlled-vocabulary/public-event-types> ;
+    skos:broader <https://w3id.org/italia/controlled-vocabulary/public-event-types/51> ;
+    skos:broaderTransitive <https://w3id.org/italia/controlled-vocabulary/public-event-types/5> ;
+    skos:scopeNote "Nella versione deprecata 0.1 del vocabolario questo concetto corrisponde a https://w3id.org/italia/controlled-vocabulary/public-event-types/21_Match"@it ;
+    skos:notation "5.1.1" ;
+    dct:identifier "5.1.1" ;
+    clvapit:hasRankOrder "3" ;
+	  skos:prefLabel "Partita"@it , "Match"@en ;
+    skos:altLabel "Partite"@it .
+
+<https://w3id.org/italia/controlled-vocabulary/public-event-types/512>
+    a skos:Concept , cpevapit:PublicEventTypology ;
+    skos:inScheme <https://w3id.org/italia/controlled-vocabulary/public-event-types> ;
+    skos:broader <https://w3id.org/italia/controlled-vocabulary/public-event-types/51> ;
+    skos:broaderTransitive <https://w3id.org/italia/controlled-vocabulary/public-event-types/5> ;
+    skos:scopeNote "Nella versione deprecata 0.1 del vocabolario questo concetto corrisponde a https://w3id.org/italia/controlled-vocabulary/public-event-types/23_Competition"@it ;
+    skos:notation "5.1.2" ;
+    dct:identifier "5.1.2" ;
+    clvapit:hasRankOrder "3" ;
+	  skos:prefLabel "Gara / Torneo / Competizione"@it , "Sport competition"@en ;
+    skos:altLabel "Gare / Tornei / Competizioni"@it .
+
+<https://w3id.org/italia/controlled-vocabulary/public-event-types/513>
+    a skos:Concept , cpevapit:PublicEventTypology ;
+    skos:inScheme <https://w3id.org/italia/controlled-vocabulary/public-event-types> ;
+    skos:broader <https://w3id.org/italia/controlled-vocabulary/public-event-types/51> ;
+    skos:broaderTransitive <https://w3id.org/italia/controlled-vocabulary/public-event-types/5> ;
+    skos:notation "5.1.3" ;
+    dct:identifier "5.1.3" ;
+    clvapit:hasRankOrder "3" ;
+	  skos:prefLabel "Escursione"@it , "Excursion"@en ;
+    skos:altLabel "Escursioni"@it .
+
+
+<https://w3id.org/italia/controlled-vocabulary/public-event-types/514>
+    a skos:Concept , cpevapit:PublicEventTypology ;
+    skos:inScheme <https://w3id.org/italia/controlled-vocabulary/public-event-types> ;
+    skos:broader <https://w3id.org/italia/controlled-vocabulary/public-event-types/51> ;
+    skos:broaderTransitive <https://w3id.org/italia/controlled-vocabulary/public-event-types/5> ;
+    skos:scopeNote "Nella versione deprecata 0.1 del vocabolario questo concetto corrisponde a https://w3id.org/italia/controlled-vocabulary/public-event-types/24_SportGala"@it ;
+    skos:notation "5.1.4" ;
+    dct:identifier "5.1.4" ;
+    clvapit:hasRankOrder "3" ;
+	  skos:prefLabel "Galà sportivo"@it , "Sport gala"@en ;
+    skos:altLabel "Galà sportivi"@it .
+
+
+<https://w3id.org/italia/controlled-vocabulary/public-event-types/515>
+    a skos:Concept , cpevapit:PublicEventTypology ;
+    skos:inScheme <https://w3id.org/italia/controlled-vocabulary/public-event-types> ;
+    skos:broader <https://w3id.org/italia/controlled-vocabulary/public-event-types/51> ;
+    skos:broaderTransitive <https://w3id.org/italia/controlled-vocabulary/public-event-types/5> ;
+    skos:scopeNote "Nella versione deprecata 0.1 del vocabolario questo concetto corrisponde a https://w3id.org/italia/controlled-vocabulary/public-event-types/22_Race"@it ;
+    skos:notation "5.1.5" ;
+    dct:identifier "5.1.5" ;
+    clvapit:hasRankOrder "3" ;
+	  skos:prefLabel "Corsa"@it , "Race"@en ;
+    skos:prefLabel "Corse"@it .
+
+
+<https://w3id.org/italia/controlled-vocabulary/public-event-types/516>
+    a skos:Concept , cpevapit:PublicEventTypology ;
+    skos:inScheme <https://w3id.org/italia/controlled-vocabulary/public-event-types> ;
+    skos:broader <https://w3id.org/italia/controlled-vocabulary/public-event-types/51> ;
+    skos:broaderTransitive <https://w3id.org/italia/controlled-vocabulary/public-event-types/5> ;
+    skos:scopeNote "Nella versione deprecata 0.1 del vocabolario questo concetto corrisponde a https://w3id.org/italia/controlled-vocabulary/public-event-types/25_SportGathering"@it ;
+    skos:notation "5.1.6" ;
+    dct:identifier "5.1.6" ;
+    clvapit:hasRankOrder "3" ;
+	  skos:prefLabel "Raduno sportivo"@it ,"Sport gathering"@en ;
+    skos:altLabel "Raduni sportivi"@it .

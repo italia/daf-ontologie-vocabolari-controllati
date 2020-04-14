@@ -1,0 +1,108 @@
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+
+@prefix l0: <https://w3id.org/italia/onto/l0/> .
+@prefix clvapit: <https://w3id.org/italia/onto/CLV/> .
+@prefix tiapit: <https://w3id.org/italia/onto/TI/> .
+
+@base  <https://w3id.org/italia/> .
+
+# ripartizione geografica
+
+<VIEW_ripartizioni-geografiche> rr:sqlQuery """
+
+SELECT DISTINCT
+	ISTAT.ripartizione_geografica AS _RIPARTIZIONE_GEOGRAFICA_NAME
+	,LCASE(ISTAT.codice_ripartizione_geografica) AS _RIPARTIZIONE_GEOGRAFICA_ID
+FROM gove__amministrazione.daf_data_o_istat_comuni_italiani_view AS ISTAT
+
+"""
+.
+
+
+<VIEW_ripartizioni-geografiche> a rr:TriplesMapClass ;
+
+rr:logicalTable <VIEW_ripartizioni-geografiche> ;
+
+rr:subjectMap [
+	rr:constant <https://w3id.org/italia/controlled-vocabulary/territorial-classifications/geographical-distribution> ;
+	rr:class skos:ConceptScheme ;
+] ;
+
+rr:predicateObjectMap [
+	rr:predicate skos:hasTopConcept ;
+	rr:objectMap [
+		rr:template "https://w3id.org/italia/controlled-vocabulary/territorial-classifications/geographical-distribution/{'_RIPARTIZIONE_GEOGRAFICA_ID'}" ;
+		rr:termType rr:IRI ;
+	]
+] ;
+
+.
+
+
+<TriplesMap_ripartizioni-geografiche> a rr:TriplesMapClass ;
+
+rr:logicalTable <VIEW_ripartizioni-geografiche> ;
+
+rr:subjectMap [
+	rr:template "https://w3id.org/italia/controlled-vocabulary/territorial-classifications/geographical-distribution/{'_RIPARTIZIONE_GEOGRAFICA_ID'}" ;
+	rr:class clvapit:AdminUnitComponent, clvapit:GeographicalDistribution, clvapit:Feature, skos:Concept ;
+] ;
+
+rr:predicateObjectMap [
+	rr:predicate skos:inScheme ;
+	rr:objectMap [
+		rr:template "https://w3id.org/italia/controlled-vocabulary/territorial-classifications/geographical-distribution" ;
+	  rr:termType rr:IRI ;
+	]
+] ;
+
+rr:predicateObjectMap [
+	rr:predicate l0:name ;
+	rr:objectMap [ rr:column "_RIPARTIZIONE_GEOGRAFICA_NAME" ; rr:language "it" ]
+] ;
+
+rr:predicateObjectMap [
+	rr:predicate skos:prefLabel ;
+	rr:objectMap [ rr:column "_RIPARTIZIONE_GEOGRAFICA_NAME" ; rr:language "it" ]
+] ;
+
+rr:predicateObjectMap [
+	rr:predicate clvapit:hasRankOrder ;
+	rr:objectMap [ rr:constant 1 ; ]
+] ;
+
+rr:predicateObjectMap [
+	rr:predicate skos:notation ;
+	rr:objectMap [ rr:column "_RIPARTIZIONE_GEOGRAFICA_ID" ; ]
+] ;
+
+rr:predicateObjectMap [
+	rr:predicate clvapit:hasIdentifier ;
+	rr:objectMap [
+		rr:template "https://w3id.org/italia/data/identifiers/geographical-distribution-identifiers/{'_RIPARTIZIONE_GEOGRAFICA_ID'}" ;
+		rr:termType rr:IRI ;
+	]
+] ;
+
+.
+
+<TriplesMap_IdentifierRipartizioneGeografica> a rr:TriplesMapClass ;
+
+rr:logicalTable <VIEW_ripartizioni-geografiche> ;
+
+rr:subjectMap [
+	rr:template "https://w3id.org/italia/data/identifiers/geographical-distribution-identifiers/{'_RIPARTIZIONE_GEOGRAFICA_ID'}" ;
+	rr:class clvapit:Identifier ;
+] ;
+rr:predicateObjectMap [
+	rr:predicate l0:identifier ;
+	rr:objectMap [ rr:column "_RIPARTIZIONE_GEOGRAFICA_ID" ; ]
+] ;
+rr:predicateObjectMap [
+	rr:predicate clvapit:identifierType ;
+	rr:objectMap [ rr:constant "Identificativo della ripartizione geografica" ; rr:language "it" ]
+] ;
+
+.

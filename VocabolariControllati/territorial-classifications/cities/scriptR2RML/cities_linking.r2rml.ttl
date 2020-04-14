@@ -1,0 +1,84 @@
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+@prefix l0: <https://w3id.org/italia/onto/l0/> .
+@prefix clvapit: <https://w3id.org/italia/onto/CLV/> .
+@prefix tiapit: <https://w3id.org/italia/onto/TI/> .
+
+@base  <https://w3id.org/italia/> .
+
+# comuni
+#per motivi pratici per discriminare la lingua si è aggiunta una condizione nella clausola where osservando le regioni per cui esistono comuni la cui denominazione è francese
+#bisognerebbe risolvere con delle viste a monte. Tuttavia essendo l'associazione dei comuni alle regioni stabili sebbene poco elegante la soluzione ci consente di ottenere il risultato voluto senza troppe manipolazioni del dato in input
+
+<VIEW_comuni> rr:sqlQuery """
+
+SELECT
+    ANPR.denominazione_it_linking as ANPR_denom_linking,
+    ANPR.stato as ANPR_stato,
+    ANPR.codistat as ANPR_codistat,
+    ANPR.dataistituzione as ANPR_data_istituzione
+FROM gove__amministrazione.daf_data_o_anpr_archivio_comuni AS ANPR
+    WHERE ANPR.stato='A'
+"""
+.
+
+
+
+<TriplesMap_Comuni> a rr:TriplesMapClass ;
+
+rr:logicalTable <VIEW_comuni> ;
+
+rr:subjectMap [
+	rr:template "https://w3id.org/italia/controlled-vocabulary/territorial-classifications/cities/{'ANPR_codistat'}-({'ANPR_data_istituzione'})" ;
+	rr:class clvapit:Feature, clvapit:City, clvapit:AdminUnitComponent , skos:Concept ;
+] ;
+
+
+
+rr:predicateObjectMap [
+	rr:predicate owl:sameAs ;
+	rr:objectMap [
+		rr:template "http://dbpedia.org/resource/{ANPR_denom_linking}" ;
+		rr:termType rr:IRI ;
+	]
+] ;
+
+
+#At the time of the generation of this dataset (2019-06-11) the it version of DBpedia does not work
+#rr:predicateObjectMap [
+	#rr:predicate owl:sameAs ;
+	#rr:objectMap [
+		#rr:template "http://it.dbpedia.org/resource/{ANPR_denom_linking}" ;
+		#rr:termType rr:IRI ;
+	#]
+#] ;
+
+rr:predicateObjectMap [
+	rr:predicate owl:sameAs ;
+	rr:objectMap [
+		rr:template "http://fr.dbpedia.org/resource/{ANPR_denom_linking}" ;
+		rr:termType rr:IRI ;
+	]
+] ;
+
+#At the time of the generation of this dataset (2019-06-11) the de version of DBpedia does not work
+#rr:predicateObjectMap [
+	#rr:predicate owl:sameAs ;
+	#rr:objectMap [
+		#rr:template "http://de.dbpedia.org/resource/{ANPR_denom_linking}" ;
+		#rr:termType rr:IRI ;
+	#]
+#] ;
+
+rr:predicateObjectMap [
+	rr:predicate owl:sameAs ;
+	rr:objectMap [
+		rr:template "http://pt.dbpedia.org/resource/{ANPR_denom_linking}" ;
+		rr:termType rr:IRI ;
+	]
+] ;
+
+.
