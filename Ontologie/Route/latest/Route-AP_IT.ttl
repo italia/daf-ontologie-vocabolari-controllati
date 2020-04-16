@@ -31,7 +31,7 @@
                                       dct:issued "2018-10-18"^^xsd:date ;
                                       dct:language <http://publications.europa.eu/resource/authority/language/ENG> ,
                                                    <http://publications.europa.eu/resource/authority/language/ITA> ;
-                                      dct:modified "2019-04-24"^^xsd:date ;
+                                      dct:modified "2020-04-16" ;
                                       dct:publisher <https://w3id.org/italia/data/support-unit/cnr-Z6HZEH/stlab> ;
                                       dct:rightsHolder <http://spcdata.digitpa.gov.it/Amministrazione/m_bac> ;
                                       dct:title "Ontologia dei Percorsi - Profilo applicativo italiano"@it ,
@@ -41,8 +41,8 @@
                                       rdfs:isDefinedBy <https://w3id.org/italia/onto/Route> ;
                                       rdfs:label "Ontologia dei Percorsi"@it ,
                                                  "Routes Ontology"@en ;
-                                      owl:versionInfo "Version 0.2- Modified on 24 April 2019 - Some errors have been corrected, in particular http://org.semanticweb.owlapi/error#Error2 and http://org.semanticweb.owlapi/error#Error3"@en ,
-                                                      "Versione 0.2- Modificata il 24 Aprile 2019 - Correzione di alcuni errori http://org.semanticweb.owlapi/error#Error2 e http://org.semanticweb.owlapi/error#Error3"@it ;
+                                      owl:versionInfo "Version 0.2- Modified on 16 April 2020 - renamed property ordering in stageOrdering and defined as subproperty of l0:positionInSequence - Modified on 24 April 2019 - Some errors have been corrected."@en ,
+                                                      "Versione 0.2- Modificata il 16 Aprile 2020 - rinominata proprietà ordering in stageOrdering e definita come sotto proprietà di positionInSequence di l0 - Modificata il 24 Aprile 2019 - Correzione di alcuni errori"@it ;
                                       dcat:contactPoint <https://w3id.org/italia/data/contact-point/onto-dgt> ;
                                       dcat:keyword "Percorso"@it ,
                                                    "Pianificazione viaggio"@it ,
@@ -398,34 +398,6 @@ clv:lat rdf:type owl:DatatypeProperty .
 clv:long rdf:type owl:DatatypeProperty .
 
 
-###  https://w3id.org/italia/onto/Route#routeLongName
-:routeLongName rdf:type owl:DatatypeProperty ;
-               rdfs:subPropertyOf l0:name ;
-               rdfs:domain :Route ;
-               rdfs:range rdfs:Literal ;
-               rdfs:comment "La proprietà rappresenta il nome completo o esteso del percoso. Il nome completo è più descrittivo del nome breve del percorso e spesso include anche la destinazione del percorso o le fermate. Se il nome per esteso non esiste, si può include la stringa vuota. Tuttavia è necessario specificare il nome breve del percorso"@it ,
-                            "The property represents the full name of the route. This name is generally more descriptive than the route short name and will often include the route's destination or stop. If the route long name does not exist, it is possible to include an empty string. However, it is necessary to specify the route short name"@en ;
-               rdfs:isDefinedBy <https://w3id.org/italia/onto/Route> ;
-               rdfs:label "nome esteso percorso"@it ,
-                          "route long name"@en ;
-               owl:versionInfo "stabile"@it ,
-                               "stable"@en .
-
-
-###  https://w3id.org/italia/onto/Route#routeShortName
-:routeShortName rdf:type owl:DatatypeProperty ;
-                rdfs:subPropertyOf l0:name ;
-                rdfs:domain :Route ;
-                rdfs:range rdfs:Literal ;
-                rdfs:comment "La proprietà è utilizzata per specificare il nome breve del percorso. Esso è un breve identificatore come per esempio \"32\", \"100X\", o \"Verde\" che chi segue il percorso usa per identificarlo ma che non dà alcuna indicazione di quali luoghi il percorso attraversa."@it ,
-                             "The property is used to specify a short name for the route. It is often a short identifier such as \"32\", \"100X\", \"Green\" that can be used by riders to identify the route; however it does not provide any indication of the places or stages that the route serves."@en ;
-                rdfs:isDefinedBy <https://w3id.org/italia/onto/Route> ;
-                rdfs:label "nome breve percorso"@it ,
-                           "route short name"@en ;
-                owl:versionInfo "stabile"@it ,
-                                "stable"@en .
-
-
 ###  https://w3id.org/italia/onto/Route/numberOfStages
 :numberOfStages rdf:type owl:DatatypeProperty ;
                 rdfs:domain :Route ;
@@ -437,19 +409,6 @@ clv:long rdf:type owl:DatatypeProperty .
                            "numero di tappe"@it ;
                 owl:versionInfo "provvisoria"@it ,
                                 "unstable"@en .
-
-
-###  https://w3id.org/italia/onto/Route/ordering
-:ordering rdf:type owl:DatatypeProperty ;
-          rdfs:domain :Stage ;
-          rdfs:range xsd:int ;
-          rdfs:comment "L'ordinamento dell'elemento all'interno della sequenza espresso come intero. Nel contesto dell'ontologia indica la posizione della tappa nel percorso inteso come sequenza ordinata di tappe."@it ,
-                       "The integer that expresses the ordering of an item in a certain sequence."@en ;
-          rdfs:isDefinedBy <https://w3id.org/italia/onto/Route> ;
-          rdfs:label "ordering"@en ,
-                     "ordinamento"@it ;
-          owl:versionInfo "stabile"@it ,
-                          "stable"@en .
 
 
 ###  https://w3id.org/italia/onto/Route/routeEstDuration
@@ -466,6 +425,34 @@ clv:long rdf:type owl:DatatypeProperty .
                                   "unstable"@en .
 
 
+###  https://w3id.org/italia/onto/Route/routeLongName
+:routeLongName rdf:type owl:DatatypeProperty ;
+               rdfs:subPropertyOf l0:name ;
+               rdfs:domain :Route ;
+               rdfs:range rdfs:Literal ;
+               rdfs:comment "La proprietà rappresenta il nome completo o esteso del percoso. Il nome completo è più descrittivo del nome breve del percorso e spesso include anche la destinazione del percorso o le fermate. Se il nome per esteso non esiste, si può include la stringa vuota. Tuttavia è necessario specificare il nome breve del percorso"@it ,
+                            "The property represents the full name of the route. This name is generally more descriptive than the route short name and will often include the route's destination or stop. If the route long name does not exist, it is possible to include an empty string. However, it is necessary to specify the route short name"@en ;
+               rdfs:isDefinedBy <https://w3id.org/italia/onto/Route> ;
+               rdfs:label "nome esteso percorso"@it ,
+                          "route long name"@en ;
+               owl:versionInfo "stabile"@it ,
+                               "stable"@en .
+
+
+###  https://w3id.org/italia/onto/Route/routeShortName
+:routeShortName rdf:type owl:DatatypeProperty ;
+                rdfs:subPropertyOf l0:name ;
+                rdfs:domain :Route ;
+                rdfs:range rdfs:Literal ;
+                rdfs:comment "La proprietà è utilizzata per specificare il nome breve del percorso. Esso è un breve identificatore come per esempio \"32\", \"100X\", o \"Verde\" che chi segue il percorso usa per identificarlo ma che non dà alcuna indicazione di quali luoghi il percorso attraversa."@it ,
+                             "The property is used to specify a short name for the route. It is often a short identifier such as \"32\", \"100X\", \"Green\" that can be used by riders to identify the route; however it does not provide any indication of the places or stages that the route serves."@en ;
+                rdfs:isDefinedBy <https://w3id.org/italia/onto/Route> ;
+                rdfs:label "nome breve percorso"@it ,
+                           "route short name"@en ;
+                owl:versionInfo "stabile"@it ,
+                                "stable"@en .
+
+
 ###  https://w3id.org/italia/onto/Route/routelLength
 :routelLength rdf:type owl:DatatypeProperty ;
               rdfs:domain :Route ;
@@ -477,6 +464,20 @@ clv:long rdf:type owl:DatatypeProperty .
                          "route length"@en ;
               owl:versionInfo "stabile"@it ,
                               "stable"@en .
+
+
+###  https://w3id.org/italia/onto/Route/stageOrdering
+:stageOrdering rdf:type owl:DatatypeProperty ;
+               rdfs:subPropertyOf l0:positionInSequence ;
+               rdfs:domain :Stage ;
+               rdfs:range xsd:int ;
+               rdfs:comment "L'ordinamento dell'elemento all'interno della sequenza espresso come intero. Nel contesto dell'ontologia indica la posizione della tappa nel percorso inteso come sequenza ordinata di tappe."@it ,
+                            "The integer that expresses the ordering of an item in a certain sequence. In the context of this ontology is the ordering in the sequence of stages."@en ;
+               rdfs:isDefinedBy <https://w3id.org/italia/onto/Route> ;
+               rdfs:label "ordinamento tappa"@it ,
+                          "stage ordering"@en ;
+               owl:versionInfo "stabile"@it ,
+                               "stable"@en .
 
 
 ###  https://w3id.org/italia/onto/TI/duration
@@ -608,7 +609,7 @@ Il vocabolario controllato si base su quanto proposto nella specifica GTFS (con 
                          owl:allValuesFrom :Stage
                        ] ,
                        [ rdf:type owl:Restriction ;
-                         owl:onProperty :ordering ;
+                         owl:onProperty :stageOrdering ;
                          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                          owl:onDataRange xsd:int
                        ] ;
@@ -746,15 +747,6 @@ l0:Sequence rdf:type owl:Class ;
                                                            dcat:downloadURL <https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/Route/latest/Route-AP_IT.rdf> .
 
 
-###  https://w3id.org/italia/data/support-unit/cnr-Z6HZEH/stlab
-<https://w3id.org/italia/data/support-unit/cnr-Z6HZEH/stlab> rdf:type owl:NamedIndividual ,
-                                                                          dcatapit:Agent ,
-                                                                          foaf:Agent ;
-                                                                          foaf:name "Institute of Cognitive Sciences and Technologies of the Italian Research Council (CNR) - Semantic Technology Laboratory (STLab)"@en ,
-                                                                                  "Istituto di Scienze e Tecnologie della Cognizione del CNR - Semantic Technology Lab (STLab)"@it ;
-                                                                          dct:identifier "cnr - Z6HZEH - STLab" .
-
-
 ###  https://w3id.org/italia/data/project/AtlanteCammini
 <https://w3id.org/italia/data/project/AtlanteCammini> rdf:type owl:NamedIndividual ,
                                                                admsapit:Project ;
@@ -773,6 +765,15 @@ l0:Sequence rdf:type owl:Class ;
                                                l0:name "OntoPiA - la rete di ontologie della pubblica amministrazione italiana"@it .
 
 
+###  https://w3id.org/italia/data/support-unit/cnr-Z6HZEH/stlab
+<https://w3id.org/italia/data/support-unit/cnr-Z6HZEH/stlab> rdf:type owl:NamedIndividual ,
+                                                                      dcatapit:Agent ,
+                                                                      foaf:Agent ;
+                                                             dct:identifier "cnr - Z6HZEH - STLab" ;
+                                                             foaf:name "Institute of Cognitive Sciences and Technologies of the Italian Research Council (CNR) - Semantic Technology Laboratory (STLab)"@en ,
+                                                                       "Istituto di Scienze e Tecnologie della Cognizione del CNR - Semantic Technology Lab (STLab)"@it .
+
+
 ###  https://w3id.org/italia/onto/Route
 <https://w3id.org/italia/onto/Route> rdf:type owl:NamedIndividual ,
                                               admsapit:SemanticAsset .
@@ -782,13 +783,13 @@ l0:Sequence rdf:type owl:Class ;
 clv:Point rdf:type owl:NamedIndividual .
 
 
-[ owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger
+[ owl:cardinality "1"^^xsd:nonNegativeInteger
 ] .
 
 [ owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger
  ] .
 
-[ owl:cardinality "1"^^xsd:nonNegativeInteger
+[ owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger
  ] .
 
 ###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi

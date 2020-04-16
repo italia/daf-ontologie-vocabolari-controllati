@@ -31,7 +31,7 @@
         <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2018-10-18</dct:issued>
         <dct:language rdf:resource="http://publications.europa.eu/resource/authority/language/ENG"/>
         <dct:language rdf:resource="http://publications.europa.eu/resource/authority/language/ITA"/>
-        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-04-24</dct:modified>
+        <dct:modified>2020-04-16</dct:modified>
         <dct:publisher rdf:resource="https://w3id.org/italia/data/support-unit/cnr-Z6HZEH/stlab"/>
         <dct:rightsHolder rdf:resource="http://spcdata.digitpa.gov.it/Amministrazione/m_bac"/>
         <dct:title xml:lang="it">Ontologia dei Percorsi - Profilo applicativo italiano</dct:title>
@@ -41,8 +41,8 @@
         <rdfs:isDefinedBy rdf:resource="https://w3id.org/italia/onto/Route"/>
         <rdfs:label xml:lang="it">Ontologia dei Percorsi</rdfs:label>
         <rdfs:label xml:lang="en">Routes Ontology</rdfs:label>
-        <owl:versionInfo xml:lang="en">Version 0.2- Modified on 24 April 2019 - Some errors have been corrected, in particular http://org.semanticweb.owlapi/error#Error2 and http://org.semanticweb.owlapi/error#Error3</owl:versionInfo>
-        <owl:versionInfo xml:lang="it">Versione 0.2- Modificata il 24 Aprile 2019 - Correzione di alcuni errori http://org.semanticweb.owlapi/error#Error2 e http://org.semanticweb.owlapi/error#Error3</owl:versionInfo>
+        <owl:versionInfo xml:lang="en">Version 0.2- Modified on 16 April 2020 - renamed property ordering in stageOrdering and defined as subproperty of l0:positionInSequence - Modified on 24 April 2019 - Some errors have been corrected.</owl:versionInfo>
+        <owl:versionInfo xml:lang="it">Versione 0.2- Modificata il 16 Aprile 2020 - rinominata proprietà ordering in stageOrdering e definita come sotto proprietà di positionInSequence di l0 - Modificata il 24 Aprile 2019 - Correzione di alcuni errori</owl:versionInfo>
         <dcat:contactPoint rdf:resource="https://w3id.org/italia/data/contact-point/onto-dgt"/>
         <dcat:keyword xml:lang="it">Percorso</dcat:keyword>
         <dcat:keyword xml:lang="it">Pianificazione viaggio</dcat:keyword>
@@ -532,22 +532,6 @@
 
 
 
-    <!-- https://w3id.org/italia/onto/Route/ordering -->
-
-    <owl:DatatypeProperty rdf:about="https://w3id.org/italia/onto/Route/ordering">
-        <rdfs:domain rdf:resource="https://w3id.org/italia/onto/Route/Stage"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
-        <rdfs:comment xml:lang="it">L&apos;ordinamento dell&apos;elemento all&apos;interno della sequenza espresso come intero. Nel contesto dell&apos;ontologia indica la posizione della tappa nel percorso inteso come sequenza ordinata di tappe.</rdfs:comment>
-        <rdfs:comment xml:lang="en">The integer that expresses the ordering of an item in a certain sequence.</rdfs:comment>
-        <rdfs:isDefinedBy rdf:resource="https://w3id.org/italia/onto/Route"/>
-        <rdfs:label xml:lang="en">ordering</rdfs:label>
-        <rdfs:label xml:lang="it">ordinamento</rdfs:label>
-        <owl:versionInfo xml:lang="it">stabile</owl:versionInfo>
-        <owl:versionInfo xml:lang="en">stable</owl:versionInfo>
-    </owl:DatatypeProperty>
-
-
-
     <!-- https://w3id.org/italia/onto/Route/routeEstDuration -->
 
     <owl:DatatypeProperty rdf:about="https://w3id.org/italia/onto/Route/routeEstDuration">
@@ -609,6 +593,23 @@
         <rdfs:isDefinedBy rdf:resource="https://w3id.org/italia/onto/Route"/>
         <rdfs:label xml:lang="it">lunghezza del percorso</rdfs:label>
         <rdfs:label xml:lang="en">route length</rdfs:label>
+        <owl:versionInfo xml:lang="it">stabile</owl:versionInfo>
+        <owl:versionInfo xml:lang="en">stable</owl:versionInfo>
+    </owl:DatatypeProperty>
+
+
+
+    <!-- https://w3id.org/italia/onto/Route/stageOrdering -->
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/italia/onto/Route/stageOrdering">
+        <rdfs:subPropertyOf rdf:resource="https://w3id.org/italia/onto/l0/positionInSequence"/>
+        <rdfs:domain rdf:resource="https://w3id.org/italia/onto/Route/Stage"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+        <rdfs:comment xml:lang="it">L'ordinamento dell'elemento all'interno della sequenza espresso come intero. Nel contesto dell&apos;ontologia indica la posizione della tappa nel percorso inteso come sequenza ordinata di tappe.</rdfs:comment>
+        <rdfs:comment xml:lang="en">The integer that expresses the ordering of an item in a certain sequence. In the context of this ontology is the ordering in the sequence of stages.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/italia/onto/Route"/>
+        <rdfs:label xml:lang="it">ordinamento tappa</rdfs:label>
+        <rdfs:label xml:lang="en">stage ordering</rdfs:label>
         <owl:versionInfo xml:lang="it">stabile</owl:versionInfo>
         <owl:versionInfo xml:lang="en">stable</owl:versionInfo>
     </owl:DatatypeProperty>
@@ -805,7 +806,7 @@ Il vocabolario controllato si base su quanto proposto nella specifica GTFS (con 
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/Route/ordering"/>
+                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/Route/stageOrdering"/>
                 <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
                 <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
             </owl:Restriction>
