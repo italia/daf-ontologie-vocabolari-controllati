@@ -25,7 +25,7 @@
         <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2017-11-13</dct:issued>
         <dct:language rdf:resource="http://publications.europa.eu/resource/authority/language/ENG"/>
         <dct:language rdf:resource="http://publications.europa.eu/resource/authority/language/ITA"/>
-        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-04-24</dct:modified>
+        <dct:modified>2020-04-19</dct:modified>
         <dct:publisher rdf:resource="http://spcdata.digitpa.gov.it/browse/page/Amministrazione/agid"/>
         <dct:rightsHolder rdf:resource="http://spcdata.digitpa.gov.it/browse/page/Amministrazione/agid"/>
         <dct:title xml:lang="en">Measurement Unit Ontology - Italian Application Profile</dct:title>
@@ -35,8 +35,8 @@
         <rdfs:isDefinedBy rdf:resource="https://w3id.org/italia/onto/MU"/>
         <rdfs:label xml:lang="en">Measurement Unit Ontology</rdfs:label>
         <rdfs:label xml:lang="it">Ontologia Unità di Misura</rdfs:label>
-        <owl:versionInfo xml:lang="en">Version 0.3 - April 24 2019 - introduction of minPercentage and maxPercentage properties</owl:versionInfo>
-        <owl:versionInfo xml:lang="it">Versione 0.3 del 24 Aprile 2019- introduzione delle proprietà minPercentage e maxPercentage</owl:versionInfo>
+        <owl:versionInfo xml:lang="en">Version 0.3 - Modified on April 19 2020 - relaxing OWL constraints on value and hasMesurmentUnit properties for Value class - Modified on April 24 2019 - introduction of minPercentage and maxPercentage properties</owl:versionInfo>
+        <owl:versionInfo xml:lang="it">Versione 0.3 - modificata il 19 Aprile 2020 - rilassati i vincoli OWL sulla classe Vlaue per le prorietà ha unità di misura e valore. Modificata il 24 Aprile 2019- introduzione delle proprietà minPercentage e maxPercentage</owl:versionInfo>
         <dcat:contactPoint rdf:resource="https://w3id.org/italia/data/contact-point/onto-agid"/>
         <dcat:keyword xml:lang="it">Unità di misura</dcat:keyword>
         <dcat:theme rdf:resource="http://publications.europa.eu/resource/authority/data-theme/TECH"/>
@@ -356,14 +356,13 @@
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="https://w3id.org/italia/onto/MU/hasMeasurementUnit"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onClass rdf:resource="https://w3id.org/italia/onto/MU/MeasurementUnit"/>
+                <owl:allValuesFrom rdf:resource="https://w3id.org/italia/onto/MU/MeasurementUnit"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="https://w3id.org/italia/onto/MU/value"/>
-                <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>

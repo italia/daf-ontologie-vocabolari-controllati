@@ -25,7 +25,7 @@
                                    dct:issued "2017-11-13"^^xsd:date ;
                                    dct:language <http://publications.europa.eu/resource/authority/language/ENG> ,
                                                 <http://publications.europa.eu/resource/authority/language/ITA> ;
-                                   dct:modified "2019-04-24"^^xsd:date ;
+                                   dct:modified "2020-04-19" ;
                                    dct:publisher <http://spcdata.digitpa.gov.it/browse/page/Amministrazione/agid> ;
                                    dct:rightsHolder <http://spcdata.digitpa.gov.it/browse/page/Amministrazione/agid> ;
                                    dct:title "Measurement Unit Ontology - Italian Application Profile"@en ,
@@ -35,8 +35,8 @@
                                    rdfs:isDefinedBy <https://w3id.org/italia/onto/MU> ;
                                    rdfs:label "Measurement Unit Ontology"@en ,
                                               "Ontologia Unità di Misura"@it ;
-                                   owl:versionInfo "Version 0.3 - April 24 2019 - introduction of minPercentage and maxPercentage properties"@en ,
-                                                   "Versione 0.3 del 24 Aprile 2019- introduzione delle proprietà minPercentage e maxPercentage"@it ;
+                                   owl:versionInfo "Version 0.3 - Modified on April 19 2020 - relaxing OWL constraints on value and hasMesurmentUnit properties for Value class - Modified on April 24 2019 - introduction of minPercentage and maxPercentage properties"@en ,
+                                                   "Versione 0.3 - modificata il 19 Aprile 2020 - rilassati i vincoli OWL sulla classe Vlaue per le prorietà ha unità di misura e valore. Modificata il 24 Aprile 2019- introduzione delle proprietà minPercentage e maxPercentage"@it ;
                                    dcat:contactPoint <https://w3id.org/italia/data/contact-point/onto-agid> ;
                                    dcat:keyword "Unità di misura"@it ;
                                    dcat:theme <http://publications.europa.eu/resource/authority/data-theme/TECH> ;
@@ -257,12 +257,11 @@ admsapit:SemanticAssetDistribution rdf:type owl:Class .
        rdfs:subClassOf l0:Characteristic ,
                        [ rdf:type owl:Restriction ;
                          owl:onProperty :hasMeasurementUnit ;
-                         owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                         owl:onClass :MeasurementUnit
+                         owl:allValuesFrom :MeasurementUnit
                        ] ,
                        [ rdf:type owl:Restriction ;
                          owl:onProperty :value ;
-                         owl:cardinality "1"^^xsd:nonNegativeInteger
+                         owl:someValuesFrom rdfs:Literal
                        ] .
 
 
