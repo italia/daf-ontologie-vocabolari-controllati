@@ -42,8 +42,8 @@ La versione XLSX è derivata dalla versione CSV, ed entrambe propongono un sotto
 ### preview
 
 + `01` Disposizioni generali
-	- `01.01` Atti generali
-	- `01.02` Piano triennale per la prevenzione della corruzione e della trasparenza
+	- `01.01` Piano triennale per la prevenzione della corruzione e della trasparenza
+	- `01.02` Atti generali
 	- `01.03` Oneri informativi per cittadini e imprese
 + `02` Organizzazione
 	- `02.01` Titolari di incarichi politici, di amministrazione, di direzione o di governo
@@ -53,38 +53,37 @@ La versione XLSX è derivata dalla versione CSV, ed entrambe propongono un sotto
 	- `02.05` Telefono o posta elettronica
 + `03` Consulenti e collaboratori
 	- `03.01` Titolari di incarichi di collaborazione o consulenza
+	- `03.02` Amministratori ed esperti
+	- `03.02` Amministratori ed esperti ex art. 32 d.l. 90/2014
 + `04` Personale
-	- `04.01` Titolari di incarichi amministrativi di vertice
-	- `04.02` Titolari di incarichi dirigenziali
-	- `04.03` Posizioni organizzative
-	- `04.04` Dotazione organica
-	- `04.05` Personale non a tempo indeterminato
-	- `04.06` Tassi di assenza
-	- `04.07` Incarichi conferiti e autorizzati ai dipendenti dirigenti e non dirigenti
-	- `04.08` Contrattazione collettiva
-	- `04.09` Contrattazione integrativa
-	- `04.10` OIV (Organismo Indipendente di Valutazione)
-	- `04.11` Dirigenti cessati
-	- `04.12` Sanzioni per la mancata comunicazione dei dati
+	- `04.01` Titolari di incarichi dirigenziali amministrativi di vertice
+	- `04.02` Titolari di incarichi dirigenziali (dirigenti non generali)
+	- `04.03` Dirigenti cessati
+	- `04.04` Sanzioni per mancata comunicazione dei dati
+	- `04.05` Posizioni organizzative
+	- `04.06` Dotazione organica
+	- `04.07` Personale non a tempo indeterminato
+	- `04.08` Tassi di assenza
+	- `04.09` Incarichi conferiti e autorizzati ai dipendenti (dirigenti e non dirigenti)
+	- `04.10` Contrattazione collettiva
+	- `04.11` Contrattazione integrativa
+	- `04.12` OIV (Organismo Indipendente di Valutazione)
 + `05` Bandi di concorso
 	- `05.01` Bandi di concorso
 + `06` Performance
-	- `06.01` Piano delle Performance
-	- `06.02` Relazioni sulle Performance
-	- `06.03` Ammontare complessivo dei premi
-	- `06.04` Dati relativi ai premi
-	- `06.05` Benessere organizzativo
-	- `06.06` Sistema di misurazione e valutazione delle performance
+    - `06.01` Sistema di misurazione e valutazione delle performance
+	- `06.02` Piano delle Performance
+	- `06.03` Relazioni sulle Performance
+	- `06.04` Ammontare complessivo dei premi
+	- `06.05` Dati relativi ai premi
 + `07` Enti controllati
 	- `07.01` Enti pubblici vigilati
 	- `07.02` Società partecipate
 	- `07.03` Enti di diritto privato controllati
 	- `07.04` Rappresentazione grafica
 + `08` Attività e procedimenti
-	- `08.01` Dati aggregati attività amministrativa
-	- `08.02` Tipologie di procedimento
-	- `08.03` Monitoraggio tempi procedimentali
-	- `08.04` Dichiarazioni sostitutive e acquisizione d'ufficio dei dati
+	- `08.01` Tipologie di procedimento
+	- `08.02` Dichiarazioni sostitutive e acquisizione d'ufficio dei dati
 + `09` Provvedimenti
 	- `09.01` Provvedimenti organi indirizzo politico
 	- `09.02` Provvedimenti dirigenti amministrativi
@@ -110,10 +109,11 @@ La versione XLSX è derivata dalla versione CSV, ed entrambe propongono un sotto
 	- `15.03` Costi contabilizzati
 	- `15.04` Servizi in rete
 	- `15.05` Liste di attesa
-	- `15.06` Indicatore di tempestività dei pagamenti
-	- `15.07` IBAN e pagamenti informatici
-	- `15.08` Dati sui pagamenti
-	- `15.09` Dati sui pagamenti del servizio sanitario nazionale
++ `22` Pagamenti dell'amministrazione
+    - `15.06` Dati sui pagamenti
+	- `15.07` Dati sui pagamenti del servizio sanitario nazionale
+	- `15.08` Indicatore di tempestività dei pagamenti
+	- `15.09` Pagamenti informatici
 + `16` Opere pubbliche
 	- `16.01` Nuclei di valutazione e verifica degli investimenti pubblici
 	- `16.02` Atti di programmazione delle opere pubbliche
