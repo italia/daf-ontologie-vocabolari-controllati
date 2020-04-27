@@ -20,23 +20,23 @@
                                    dct:accrualPeriodicity <http://publications.europa.eu/resource/authority/frequency/IRREG> ;
                                    dct:creator <http://spcdata.digitpa.gov.it/browse/page/Amministrazione/agid> ;
                                    dct:description "Questa è l'ontologia per la modellazione di valori e unità di misura"@it ,
-                                                   "This is the ontology for modeling measurement unit"@en ;
+                                                   "This is the ontology for modeling values and measurement units"@en ;
                                    dct:identifier "https://w3id.org/italia/onto/MU" ;
                                    dct:issued "2017-11-13"^^xsd:date ;
                                    dct:language <http://publications.europa.eu/resource/authority/language/ENG> ,
                                                 <http://publications.europa.eu/resource/authority/language/ITA> ;
-                                   dct:modified "2020-04-19" ;
+                                   dct:modified "2020-04-27" ;
                                    dct:publisher <http://spcdata.digitpa.gov.it/browse/page/Amministrazione/agid> ;
                                    dct:rightsHolder <http://spcdata.digitpa.gov.it/browse/page/Amministrazione/agid> ;
-                                   dct:title "Measurement Unit Ontology - Italian Application Profile"@en ,
-                                             "Ontologia Unità di Misura - Profilo applicativo italiano"@it ;
+                                   dct:title "Ontologia Valori e Unità di Misura - Profilo applicativo italiano"@it ,
+                                             "Value and Measurement Unit Ontology - Italian Application Profile"@en ;
                                    rdfs:comment "Questa è l'ontologia per la modellazione di valori e unità di misura"@it ,
-                                                "This is the ontology for modeling measurement unit"@en ;
+                                                "This is the ontology for modeling values and measurement units"@en ;
                                    rdfs:isDefinedBy <https://w3id.org/italia/onto/MU> ;
-                                   rdfs:label "Measurement Unit Ontology"@en ,
-                                              "Ontologia Unità di Misura"@it ;
-                                   owl:versionInfo "Version 0.3 - Modified on April 19 2020 - relaxing OWL constraints on value and hasMesurmentUnit properties for Value class - Modified on April 24 2019 - introduction of minPercentage and maxPercentage properties"@en ,
-                                                   "Versione 0.3 - modificata il 19 Aprile 2020 - rilassati i vincoli OWL sulla classe Vlaue per le prorietà ha unità di misura e valore. Modificata il 24 Aprile 2019- introduzione delle proprietà minPercentage e maxPercentage"@it ;
+                                   rdfs:label "Ontologia Valori e Unità di Misura"@it ,
+                                              "Value and Measurement Unit Ontology"@en ;
+                                   owl:versionInfo "Version 0.3 - Modified on April 27 2020 - introduced annotation properties for Value class and owl:versionInfo annotation properties for all the elements of the ontology. This change answer to the issue #87. Modified on April 19 2020 - relaxing OWL constraints on value and hasMesurmentUnit properties for Value class - Modified on April 24 2019 - introduction of minPercentage and maxPercentage properties"@en ,
+                                                   "Versione 0.3 - modificata il 27 Aprile 2020 - inserite le proprietà di annotazione per la classe Valore e  le proprietà di annotazione owl:versionInfo per tutti gli elementi dell'ontologia; modificata il 19 Aprile 2020 - rilassati i vincoli OWL sulla classe Vlaue per le prorietà ha unità di misura e valore. Modificata il 24 Aprile 2019- introduzione delle proprietà minPercentage e maxPercentage"@it ;
                                    dcat:contactPoint <https://w3id.org/italia/data/contact-point/onto-agid> ;
                                    dcat:keyword "Unità di misura"@it ;
                                    dcat:theme <http://publications.europa.eu/resource/authority/data-theme/TECH> ;
@@ -144,7 +144,9 @@ admsapit:status rdf:type owl:AnnotationProperty .
                                  "Proprietà che lega un valore osservato o un parametro di misurazione con la sua unità di misura."@it ;
                     rdfs:isDefinedBy <https://w3id.org/italia/onto/MU> ;
                     rdfs:label "ha unità di misura"@it ,
-                               "has measurement unit" .
+                               "has measurement unit" ;
+                    owl:versionInfo "stabile"@it ,
+                                    "stable"@en .
 
 
 ###  https://w3id.org/italia/onto/MU/isMeasurementUnitOf
@@ -155,7 +157,9 @@ admsapit:status rdf:type owl:AnnotationProperty .
                                   "Object property inversa di 'ha unità di misura'."@it ;
                      rdfs:isDefinedBy <https://w3id.org/italia/onto/MU> ;
                      rdfs:label "is measurement unit of"@en ,
-                                "è unità di misura di"@it .
+                                "è unità di misura di"@it ;
+                     owl:versionInfo "stabile"@it ,
+                                     "stable"@en .
 
 
 #################################################################
@@ -169,10 +173,10 @@ admsapit:status rdf:type owl:AnnotationProperty .
                rdfs:range rdfs:Literal ;
                rdfs:comment "Property that allows one to express a maximum percentage value"@en ,
                             "Proprietà che consente di esprimere un valore percentuale massimo"@it ;
+               rdfs:isDefinedBy <https://w3id.org/italia/onto/MU> ;
                rdfs:label "maximum percentage"@en ,
                           "percetuale massima"@it ;
-               owl:versionInfo <https://w3id.org/italia/onto/MU> ,
-                               "stabile"@it ,
+               owl:versionInfo "stabile"@it ,
                                "stable"@en .
 
 
@@ -249,7 +253,9 @@ admsapit:SemanticAssetDistribution rdf:type owl:Class .
                               "This class is used to model a measurement unit (e.g., meter, kilometer, gram, etc.)"@en ;
                  rdfs:isDefinedBy <https://w3id.org/italia/onto/MU> ;
                  rdfs:label "Measurement Unit"@en ,
-                            "Unità di Misura"@it .
+                            "Unità di Misura"@it ;
+                 owl:versionInfo "stabile"@it ,
+                                 "stable"@en .
 
 
 ###  https://w3id.org/italia/onto/MU/Value
@@ -262,7 +268,14 @@ admsapit:SemanticAssetDistribution rdf:type owl:Class .
                        [ rdf:type owl:Restriction ;
                          owl:onProperty :value ;
                          owl:someValuesFrom rdfs:Literal
-                       ] .
+                       ] ;
+       rdfs:comment "La classe dei valori. Un valore è descritto con un singolo valore come per esempio un intero, una stringa un float (almeno un valore deve essere specificato per la classe Valore) e, dove disponibile, un'unità di misura."@it ,
+                    "The class of the values. The value is described with a single value such an integer, a float, a string (at least one has to be specified) and, when available, a unit of measurement."@en ;
+       rdfs:isDefinedBy <https://w3id.org/italia/onto/MU> ;
+       rdfs:label "Valore"@it ,
+                  "Value"@en ;
+       owl:versionInfo "stabile"@it ,
+                       "stable"@en .
 
 
 ###  https://w3id.org/italia/onto/l0/Agent
