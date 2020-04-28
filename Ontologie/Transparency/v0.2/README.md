@@ -40,7 +40,8 @@ L'obbligo di trasparenza (`TransparencyObligation`) è definito come una collezi
 secondo modalità specifiche (aggiornamento e formato), nell'apposita sezione di "Amministrazione Trasparente".
 La classificazione degli obblighi di trasparenza rispetto alla tipologia di dati da pubblicare (`TransparencyDataTypology`) è stata codificata in un vocabolario controllato ([transparency-titulus](../VocabolariControllati/classifications-for-transparency/transparency-titulus)).
 Le voci del vocabolario corrispondono alle sezioni e sottosezioni di "Amministrazioni Trasparente" dei siti istituzionali delle pubbliche amministrazioni, come indicato dalla normativa di settore. <br/>
-L'analisi della trasparenza ha messo in evidenza l'esigenza di rappresentare gli obblighi come una tassonomia a due livelli per consentire la classificazione di obblighi più complessi in obblighi più specifici.
+L'analisi della trasparenza ha messo in evidenza l'esigenza di rappresentare gli obblighi come una tassonomia a più livelli per consentire la classificazione di obblighi più complessi in obblighi più specifici.
+Le voci degli obblighi di trasparenza e dei temi sono stati codificati in due vocabolari controllati dedicati, rispettivamente [transparency-obligation](../VocabolariControllati/classifications-for-transparency/transparency-obligation) e [transparency-subject](../VocabolariControllati/classifications-for-transparency/transparency-subject).
 
 Gli obblighi di trasparenza prevedono che le amministrazioni gestiscano i dati previsti dalle norme in modo da rendere fruibile l'informazione.
 Queste attività sono state modellate nell'ontologia introducendo il concetto di `TransparencyActivity` (e alcune sue specializzazioni). 
@@ -60,19 +61,13 @@ A supporto e descrizione di questo modello è stato realizzato un [esempio](./ex
     width="70%" 
     />
 
-L'esempio non è esaustivo e usa anche, in certi casi, URi di esempio e non reali
+L'esempio non è esaustivo e usa anche, in certi casi, URI di esempio e non reali
 
 
 
 ## Proposte di evoluzione
 
-Ai fini della definizione del modello è emerso come sia opportuno realizzare due vocabolari controllati a supporto dell'ontologia,
-in particolare:
-
-* Vocabolario controllato obblighi della trasparenza (`TransparencyObligation`)
-* Vocabolario controllato delle tematiche di trasparenza (`TransparencySubject`)
-
-La realizzazione di questi vocabolari è lasciata ad un lavoro successivo.
+Ai fini della definizione del modello è emerso come sia opportuno codificare quali obblighi di trapsarenza è tenuta a pubblicare una certa organizzazione e tipologia di amministrazione. A tal proposito, allo stato attuale è in corso la realizzazione di un dataset che materializzi le corrispondenze per alcune pubbliche amministrazioni e tipologie di amministrazioni. Inoltre è emerso come potrebbe essere utile evolvere la modellazione della proprietà di applicazione di un obbligo di trasparenza e un'organizzazione o tipologia di amministrazione in modo da poter caratterizzare la realazione con informazioni aggiuntive.
 
 ----
 
