@@ -24,7 +24,7 @@
 @base <https://w3id.org/italia/onto/Transparency/> .
 
 
-<https://w3id.org/italia/onto/Transparency> rdf:type owl:Ontology ;
+<https://w3id.org/italia/onto/Transparency> rdf:type owl:Ontology, owl:NamedIndividual, admsapit:SemanticAsset ;
 	owl:versionIRI <https://w3id.org/italia/onto/Transparency/0.2> ;
 	owl:imports 
 		<https://w3id.org/italia/onto/COV> ,
@@ -64,8 +64,8 @@
 	owl:versionInfo "La presente versione dell'ontologia è un draft in attesa di revisone da parte di ANAC."@it ;
 	dct:issued "2019-05-30"^^xsd:date ;
 	dct:modified "2020-04-23"^^xsd:date ; 
-	 owl:versionInfo "version 0.2 - added property appliesToOrganization which replaces appliesToPA, added property exceprionObligationNote, updated TransparencyObligation and TransparencySubjct removing restrictions and stating skos:Concept derivation, stating disjoint among TransparencyArchiveActivity and TransparencyUpdateActivity."@en,
-	 				 "version 0.2 - aggiunta proprietà appliesToOrganization che sostituisce appliesToPA, aggiunta proprietà exceprionObligationNote, aggiornati TransparencyObligation e TransparencySubjct rimuovendo le restrizioni e dichiarando che deriva da skos:Concept, aggiunto disjoint tra TransparencyArchiveActivity e TransparencyUpdateActivity"@it;
+	 owl:versionInfo "version 0.2 - added property appliesToOrganization which replaces appliesToPA, added property exceprionObligationNote, updated TransparencyObligation and TransparencySubjct modifing restrictions and stating skos:Concept derivation, stating disjoint among TransparencyArchiveActivity and TransparencyUpdateActivity."@en,
+	 				 "version 0.2 - aggiunta proprietà appliesToOrganization che sostituisce appliesToPA, aggiunta proprietà exceprionObligationNote, aggiornati TransparencyObligation e TransparencySubjct modificando le restrizioni e dichiarando che deriva da skos:Concept, aggiunto disjoint tra TransparencyArchiveActivity e TransparencyUpdateActivity"@it;
 	admsapit:target "Pubbliche amministrazioni"@it, "Cittadini"@it ;
 	admsapit:type admsapit:DomainOntology ;
 	dct:creator <http://spcdata.digitpa.gov.it/Amministrazione/agid>;
@@ -585,13 +585,36 @@ xsd:time a rdfs:Datatype .
 	[ a owl:Restriction ;
 		owl:onProperty <https://w3id.org/italia/onto/TI/atTime> ;
 		owl:allValuesFrom <https://w3id.org/italia/onto/TI/TimeInterval>
-	] ;
+	],
+	[ a owl:Restriction ;
+		owl:onProperty :appliesToOrganization ;
+		owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+		owl:onClass [ rdf:type owl:Class;
+                	  owl:unionOf (  <https://w3id.org/italia/onto/COV/Organization> 
+                                	 <https://w3id.org/italia/onto/COV/PublicOrganizationCategory>
+                                          )]
+	],
+	[ a owl:Restriction ;
+		owl:onProperty :hasTransparencyStatus ;
+		owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger;
+		owl:onClass :TransparencyObligationStatus;
+	],
+	[ a owl:Restriction ;
+		owl:onProperty :isClassifiedBy ;
+		owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger;
+		owl:onClass :TransparencyDataTypology;
+	],
+	[ a owl:Restriction ;
+		owl:onProperty :regulationReference ;
+		owl:someValuesFrom rdfs:Literal;
+	];
 	rdfs:comment "Questa classe rappresenta gli obblighi di trasparenza definiti dalla normativa di riferimento a cui devono sottostare le Pubbliche Amministrazioni."@it;
 	rdfs:comment "This class represents the transparency obligation for Public Administrations, according to the transparency norms."@en;
 	rdfs:isDefinedBy <https://w3id.org/italia/onto/Transparency> ; 
 	prov:wasDerivedFrom skos:Concept;
-	owl:versionInfo "stabile - modificato nella versione 0.2, rimuovendo le restriction su l0:description e l0:name e aggiungendo che la classe deriva da skos:Concept."@it ,
-					"stable - modified in version 0.2, removing therestrictions on l0:description and l0:name and adding that the class derives from skos:Concept"@en ;
+	l0:controlledVocabulary <https://w3id.org/italia/controlled-vocabulary/classifications-for-transparency/transparency-obligation>;
+	owl:versionInfo "stabile - modificato nella versione 0.2, rimuovendo le restriction su l0:description e l0:name e aggiungendo che la classe deriva da skos:Concept, aggiungendo restriction su :appliesToOrganization, :hasTransparencyStatus."@it ,
+					"stable - modified in version 0.2, removing therestrictions on l0:description and l0:name and adding that the class derives from skos:Concept, adding restriction on :appliesToOrganization, :hasTransparencyStatus."@en ;
 	.
 
 
@@ -650,8 +673,9 @@ xsd:time a rdfs:Datatype .
 	rdfs:comment "This class represents a subject releted to a transparency obbligation. It's related to the 'contenuto dell'obbligo' column of the ANAC guideline attachment."@en, 
 		"Questa classe rappresenta un soggetto (tema) collegato a un obbligo di trasparenza. Fa riferimento alla colonna 'contenuto dell'obbligo' dell'allegato alla guida ANAC."@it;
 	rdfs:isDefinedBy <https://w3id.org/italia/onto/Transparency> ; 
-	owl:versionInfo "stabile - modificato nella versione 0.2, rimuovendo le restriction su l0:description e l0:name e aggiungendo che la classe deriva da skos:Concept."@it ,
-					"stable - modified in version 0.2, removing therestrictions on l0:description and l0:name and adding that the class derives from skos:Concept"@en ;
+	l0:controlledVocabulary <https://w3id.org/italia/controlled-vocabulary/classifications-for-transparency/transparency-subject>;
+	owl:versionInfo "stabile - modificato nella versione 0.2, rimuovendo le restriction su l0:description e l0:name e aggiungendo che la classe deriva da skos:Concept, aggiuingendo collegamento con il vocabolario transparency-subject."@it ,
+					"stable - modified in version 0.2, removing therestrictions on l0:description and l0:name and adding that the class derives from skos:Concept, adding link to transparency-subject vocabulary."@en ;
 	.
 
 

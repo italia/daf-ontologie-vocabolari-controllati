@@ -21,7 +21,7 @@
      xmlns:tiapit="https://w3id.org/italia/onto/TI/"
      xmlns:admsapit="https://w3id.org/italia/onto/ADMS/"
      xmlns:dcatapit="http://dati.gov.it/onto/dcatapit#">
-    <owl:Ontology rdf:about="https://w3id.org/italia/onto/Transparency">
+    <owl:Ontology rdf:about="https://w3id.org/italia/onto/l0">
         <owl:versionIRI rdf:resource="https://w3id.org/italia/onto/Transparency/0.2"/>
         <owl:imports rdf:resource="https://w3id.org/italia/onto/COV"/>
         <owl:imports rdf:resource="https://w3id.org/italia/onto/TI"/>
@@ -45,8 +45,8 @@
         <rdfs:label xml:lang="it">Ontologia degli Obblighi della Trasparenza - profilo applicativo italiano</rdfs:label>
         <rdfs:label xml:lang="en">Transparency Obligations Ontology - Italian application profile</rdfs:label>
         <owl:versionInfo xml:lang="it">La presente versione dell&apos;ontologia è un draft in attesa di revisone da parte di ANAC.</owl:versionInfo>
-        <owl:versionInfo xml:lang="en">version 0.2 - added property appliesToOrganization which replaces appliesToPA, added property exceprionObligationNote, updated TransparencyObligation and TransparencySubjct removing restrictions and stating skos:Concept derivation, stating disjoint among TransparencyArchiveActivity and TransparencyUpdateActivity.</owl:versionInfo>
-        <owl:versionInfo xml:lang="it">version 0.2 - aggiunta proprietà appliesToOrganization che sostituisce appliesToPA, aggiunta proprietà exceprionObligationNote, aggiornati TransparencyObligation e TransparencySubjct rimuovendo le restrizioni e dichiarando che deriva da skos:Concept, aggiunto disjoint tra TransparencyArchiveActivity e TransparencyUpdateActivity</owl:versionInfo>
+        <owl:versionInfo xml:lang="en">version 0.2 - added property appliesToOrganization which replaces appliesToPA, added property exceprionObligationNote, updated TransparencyObligation and TransparencySubjct modifing restrictions and stating skos:Concept derivation, stating disjoint among TransparencyArchiveActivity and TransparencyUpdateActivity.</owl:versionInfo>
+        <owl:versionInfo xml:lang="it">version 0.2 - aggiunta proprietà appliesToOrganization che sostituisce appliesToPA, aggiunta proprietà exceprionObligationNote, aggiornati TransparencyObligation e TransparencySubjct modificando le restrizioni e dichiarando che deriva da skos:Concept, aggiunto disjoint tra TransparencyArchiveActivity e TransparencyUpdateActivity</owl:versionInfo>
         <dcat:contactPoint rdf:resource="http://dati.gov.it/data/resource/ContactPoint/voc_AgID"/>
         <dcat:keyword xml:lang="en">transparency</dcat:keyword>
         <dcat:keyword xml:lang="en">transparency for public administration</dcat:keyword>
@@ -692,14 +692,49 @@
                 <owl:allValuesFrom rdf:resource="https://w3id.org/italia/onto/TI/TimeInterval"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/Transparency/appliesToOrganization"/>
+                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+                <owl:onClass>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="https://w3id.org/italia/onto/COV/Organization"/>
+                            <rdf:Description rdf:about="https://w3id.org/italia/onto/COV/PublicOrganizationCategory"/>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:onClass>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/Transparency/isClassifiedBy"/>
+                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+                <owl:onClass rdf:resource="https://w3id.org/italia/onto/Transparency/TransparencyDataTypology"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/Transparency/hasTransparencyStatus"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="https://w3id.org/italia/onto/Transparency/TransparencyObligationStatus"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/Transparency/regulationReference"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <rdfs:comment xml:lang="it">Questa classe rappresenta gli obblighi di trasparenza definiti dalla normativa di riferimento a cui devono sottostare le Pubbliche Amministrazioni.</rdfs:comment>
         <rdfs:comment xml:lang="en">This class represents the transparency obligation for Public Administrations, according to the transparency norms.</rdfs:comment>
         <rdfs:isDefinedBy rdf:resource="https://w3id.org/italia/onto/Transparency"/>
         <rdfs:label xml:lang="it">Obbligo di trasparenza</rdfs:label>
         <rdfs:label xml:lang="en">Transparency Obligation</rdfs:label>
-        <owl:versionInfo xml:lang="it">stabile - modificato nella versione 0.2, rimuovendo le restriction su l0:description e l0:name e aggiungendo che la classe deriva da skos:Concept.</owl:versionInfo>
-        <owl:versionInfo xml:lang="en">stable - modified in version 0.2, removing therestrictions on l0:description and l0:name and adding that the class derives from skos:Concept</owl:versionInfo>
+        <owl:versionInfo xml:lang="it">stabile - modificato nella versione 0.2, rimuovendo le restriction su l0:description e l0:name e aggiungendo che la classe deriva da skos:Concept, aggiungendo restriction su :appliesToOrganization, :hasTransparencyStatus.</owl:versionInfo>
+        <owl:versionInfo xml:lang="en">stable - modified in version 0.2, removing therestrictions on l0:description and l0:name and adding that the class derives from skos:Concept, adding restriction on :appliesToOrganization, :hasTransparencyStatus.</owl:versionInfo>
         <prov:wasDerivedFrom rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+        <l0:controlledVocabulary rdf:resource="https://w3id.org/italia/controlled-vocabulary/classifications-for-transparency/transparency-obligation"/>
     </owl:Class>
     
 
@@ -799,9 +834,10 @@
         <rdfs:isDefinedBy rdf:resource="https://w3id.org/italia/onto/Transparency"/>
         <rdfs:label xml:lang="it">Soggetto della trasparenza</rdfs:label>
         <rdfs:label xml:lang="en">Transparency subject</rdfs:label>
-        <owl:versionInfo xml:lang="it">stabile - modificato nella versione 0.2, rimuovendo le restriction su l0:description e l0:name e aggiungendo che la classe deriva da skos:Concept.</owl:versionInfo>
-        <owl:versionInfo xml:lang="en">stable - modified in version 0.2, removing therestrictions on l0:description and l0:name and adding that the class derives from skos:Concept</owl:versionInfo>
+        <owl:versionInfo xml:lang="it">stabile - modificato nella versione 0.2, rimuovendo le restriction su l0:description e l0:name e aggiungendo che la classe deriva da skos:Concept, aggiuingendo collegamento con il vocabolario transparency-subject.</owl:versionInfo>
+        <owl:versionInfo xml:lang="en">stable - modified in version 0.2, removing therestrictions on l0:description and l0:name and adding that the class derives from skos:Concept, adding link to transparency-subject vocabulary.</owl:versionInfo>
         <prov:wasDerivedFrom rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+        <l0:controlledVocabulary rdf:resource="https://w3id.org/italia/controlled-vocabulary/classifications-for-transparency/transparency-subject"/>
     </owl:Class>
     
 
@@ -832,6 +868,12 @@
         <owl:versionInfo xml:lang="it">stabile</owl:versionInfo>
         <owl:versionInfo xml:lang="en">stable</owl:versionInfo>
     </owl:Class>
+    
+
+
+    <!-- https://w3id.org/italia/onto/l0/Activity -->
+
+    <owl:Class rdf:about="https://w3id.org/italia/onto/l0/Activity"/>
     
 
 
@@ -923,6 +965,14 @@
     
 
 
+    <!-- https://w3id.org/italia/onto/Transparency -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/italia/onto/Transparency">
+        <rdf:type rdf:resource="https://w3id.org/italia/onto/ADMS/SemanticAsset"/>
+    </owl:NamedIndividual>
+    
+
+
     <!-- https://w3id.org/italia/onto/Transparency/Deprecated -->
 
     <owl:NamedIndividual rdf:about="https://w3id.org/italia/onto/Transparency/Deprecated">
@@ -993,8 +1043,8 @@
 
     <rdf:Description rdf:about="https://w3id.org/italia/onto/Transparency/TransparencyArchiveActivity">
         <rdfs:comment xml:lang="en">This class represents an archive activity as an effect of a transparency obbligation.</rdfs:comment>
-        <rdfs:label xml:lang="it">storicizzazione</rdfs:label>
         <rdfs:isDefinedBy rdf:resource="https://w3id.org/italia/onto/Transparency"/>
+        <rdfs:label xml:lang="it">storicizzazione</rdfs:label>
         <owl:versionInfo xml:lang="it">stabile</owl:versionInfo>
         <owl:versionInfo xml:lang="en">stable</owl:versionInfo>
         <rdfs:comment xml:lang="it">Questa classe rappresenta un&apos;attività di storicizzazione come conseguenza di un obbligo di trasparenza.</rdfs:comment>
@@ -1006,8 +1056,8 @@
         <rdfs:comment xml:lang="it">Questa classe rappresenta un&apos;attività di pubblicazione come conseguenza di un obbligo di trasparenza.</rdfs:comment>
         <owl:versionInfo xml:lang="it">stabile</owl:versionInfo>
         <rdfs:isDefinedBy rdf:resource="https://w3id.org/italia/onto/Transparency"/>
-        <rdfs:label xml:lang="it">Attività di trasparenza: Pubblicazione.</rdfs:label>
         <rdfs:label xml:lang="it">publication</rdfs:label>
+        <rdfs:label xml:lang="it">Attività di trasparenza: Pubblicazione.</rdfs:label>
         <owl:versionInfo xml:lang="en">stable</owl:versionInfo>
         <rdfs:label xml:lang="en">Transparency activity: Publication.</rdfs:label>
         <rdfs:label xml:lang="en">Transparency activity: Publication</rdfs:label>
@@ -1016,8 +1066,8 @@
     </rdf:Description>
     <rdf:Description rdf:about="https://w3id.org/italia/onto/Transparency/TransparencyUpdateActivity">
         <rdfs:isDefinedBy rdf:resource="https://w3id.org/italia/onto/Transparency"/>
-        <rdfs:label xml:lang="it">aggiornamento</rdfs:label>
         <owl:versionInfo xml:lang="en">stable</owl:versionInfo>
+        <rdfs:label xml:lang="it">aggiornamento</rdfs:label>
         <rdfs:label xml:lang="it">Attività di trasparenza: Aggiornamento.</rdfs:label>
         <rdfs:label xml:lang="en">Transparency activity: Update.</rdfs:label>
         <rdfs:label xml:lang="it">update</rdfs:label>
