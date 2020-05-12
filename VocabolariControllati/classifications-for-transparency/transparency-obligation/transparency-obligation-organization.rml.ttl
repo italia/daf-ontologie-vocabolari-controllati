@@ -1,0 +1,145 @@
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix rml: <http://semweb.mmlab.be/ns/rml#> .
+@prefix ql: <http://semweb.mmlab.be/ns/ql#> .
+@prefix qb: <http://purl.org/linked-data/cube#> .
+@prefix csvw: <http://www.w3.org/ns/csvw#> .
+@prefix d2rq: <http://www.wiwiss.fu-berlin.de/suhl/bizer/D2RQ/0.1#> .
+@prefix crml: <http://semweb.mmlab.be/ns/rml/condition#> .
+@prefix carml: <http://carml.taxonic.com/carml/> .
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix schema: <http://schema.org/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix fnml:   <http://semweb.mmlab.be/ns/fnml#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix fno: <http://semweb.datasciencelab.be/ns/function#> .
+@prefix ex:    <http://example.org/> .
+@prefix dbpedia: <http://dbpedia.org/ontology/>.
+@prefix clvapit: <https://w3id.org/italia/onto/CLV/> .
+@prefix covapit: <https://w3id.org/italia/onto/COV/> .
+@prefix tiapit: <https://w3id.org/italia/onto/TI/> .
+@prefix trapit: <https://w3id.org/italia/onto/Transparency/> .
+@prefix trsubj: <https://w3id.org/italia/controlled-vocabulary/classifications-for-trasparency/transparency-subject/> .
+
+
+<amministrazioni_table> a rr:R2RMLView ;
+rr:sqlQuery  """
+
+
+Select  id_obbligo AS id_obbligo,
+        label_ita_obbligo AS label_ita_obbligo,
+        organizzazione_nome AS organizzazione_nome,
+        organizzazione_ipa AS organizzazione_ipa,
+        classificazione_s13_codice AS classificazione_s13_codice
+FROM trasparenza.transparency_obligation_administration
+		
+	""" ;
+.
+
+<categorie_amministrazioni_table> a rr:R2RMLView ;
+rr:sqlQuery  """
+
+
+Select  id_obbligo AS id_obbligo,
+        label_ita_obbligo AS label_ita_obbligo,
+        categoria_amministrazione AS categoria_amministrazione,
+        classificazione_s13_codice AS classificazione_s13_codice
+FROM trasparenza.transparency_obligation_administration_category
+		
+	""" ;
+.
+
+<TriplesObligationOrganization> a rr:TriplesMap ;
+    rr:logicalTable <amministrazioni_table> ;
+    rr:subjectMap [
+        rr:template "https://w3id.org/italia/controlled-vocabulary/classifications-for-transparency/transparency-obligation/{id_obbligo}";
+        rr:class trapit:TransparencyObligation;
+    ];
+
+   rr:predicateObjectMap [
+        rr:predicate rdfs:label;
+        rr:objectMap [
+          rr:column "label_ita_obbligo";
+          rr:termType rr:Literal;
+          rr:langiage "it";
+        ];
+    ];
+
+
+    rr:predicateObjectMap [
+        rr:predicate trapit:appliesToOrganization;
+        rr:objectMap [
+          rr:template  "https://w3id.org/italia/data/public-organization/{organizzazione_ipa}";
+          rr:termType rr:IRI;
+        ];
+    ];
+
+.
+
+<TriplesOrganization> a rr:TriplesMap ;
+    rr:logicalTable <amministrazioni_table> ;
+    rr:subjectMap [
+        rr:template "https://w3id.org/italia/data/public-organization/{organizzazione_ipa}";
+        rr:class covapit:PublicOrganization;
+    ];
+
+    rr:predicateObjectMap [
+        rr:predicate rdfs:label, covapit:legalName;
+        rr:objectMap [
+          rr:column "organizzazione_nome";
+          rr:termType rr:Literal;
+          rr:langiage "it";
+        ];
+    ];
+
+    rr:predicateObjectMap [
+        rr:predicate covapit:IPAcode;
+        rr:objectMap [
+          rr:column "organizzazione_ipa";
+          rr:termType rr:Literal;
+        ];
+    ];
+
+       rr:predicateObjectMap [
+        rr:predicate covapit:hasCategory;
+        rr:objectMap [
+          rr:template "https://w3id.org/italia/controlled-vocabulary/classifications-for-organizations/S13/{classificazione_s13_codice}";
+          rr:termType rr:IRI;
+        ];
+    ];
+
+.
+
+<TriplesObligationOrganizationCategory> a rr:TriplesMap ;
+    rr:logicalTable <categorie_amministrazioni_table> ;
+    rr:subjectMap [
+        rr:template "https://w3id.org/italia/controlled-vocabulary/classifications-for-transparency/transparency-obligation/{id_obbligo}";
+        rr:class trapit:TransparencyObligation;
+    ];
+
+   rr:predicateObjectMap [
+        rr:predicate rdfs:label;
+        rr:objectMap [
+          rr:column "label_ita_obbligo";
+          rr:termType rr:Literal;
+          rr:langiage "it";
+        ];
+    ];
+
+
+    rr:predicateObjectMap [
+        rr:predicate trapit:appliesToOrganization;
+        rr:objectMap [
+          rr:template  "https://w3id.org/italia/controlled-vocabulary/classifications-for-organizations/S13/{classificazione_s13_codice}";
+          rr:termType rr:IRI;
+        ];
+    ];
+
+.
+
+
+
