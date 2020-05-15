@@ -3,7 +3,7 @@ Vocabolario controllato degli obblighi di trasparenza
 
 ## Descrizione
 
-Il presente vocabolario controllato codifica gli obblighi di trasparenza della PA a supporto dell'ontologia della Trasparenza [Transparency-AP_IT](https://w3id.org/italia/onto/Transparency/). L'informazione relativa al vocabolario è stata ottenuta analizzando i [riferimenti](#rifnorm) sotto riportati. In particolare gli obblighi di trasparenza enunciati dalle normative sono stati definiti come istanze delle classi [skos:Concept](http://www.w3.org/2004/02/skos/core#Concept) e [Transparency Obligation](https://w3id.org/italia/onto/Transparency/TransparencyObligation), eventualmente collegati tra loro tramite la relazione di [sotto-obbligo](https://w3id.org/italia/onto/Transparency/hasSubTransparencyObligation). Agli obblighi sono stati collegati le relative voci delle sezioni di "Amministrazione Trasparente" istanziate nel vocabolario [transparency-titulus](https://w3id.org/italia/controlled-vocabulary/classifications-for-trasparency/transparency-titulus/) e i contenuti informativi da pubblicare istanziati nel vocabolario [transaprency-subject](https://w3id.org/italia/controlled-vocabulary/classifications-for-trasparency/transparency-subject/). Inoltre sono state specificate informazioni come riferimenti normativi, frequenza di aggiornamento di pubblicazione, data di validità.
+Il presente vocabolario controllato codifica gli obblighi di trasparenza della PA a supporto dell'ontologia della Trasparenza [Transparency-AP_IT](https://w3id.org/italia/onto/Transparency/). L'informazione relativa al vocabolario è stata ottenuta analizzando i [riferimenti](#rifnorm) sotto riportati. In particolare gli obblighi di trasparenza enunciati dalle normative sono stati definiti come istanze delle classi [skos:Concept](http://www.w3.org/2004/02/skos/core#Concept) e [Transparency Obligation](https://w3id.org/italia/onto/Transparency/TransparencyObligation), eventualmente collegati tra loro tramite la relazione di [sotto-obbligo](https://w3id.org/italia/onto/Transparency/hasSubTransparencyObligation). Agli obblighi sono stati collegati le relative voci delle sezioni di "Amministrazione Trasparente" istanziate nel vocabolario [transparency-titulus](https://w3id.org/italia/controlled-vocabulary/classifications-for-trasparency/transparency-titulus/) e i contenuti informativi da pubblicare istanziati nel vocabolario [transparency-subject](https://w3id.org/italia/controlled-vocabulary/classifications-for-trasparency/transparency-subject/). Inoltre sono state specificate informazioni come riferimenti normativi, frequenza di aggiornamento di pubblicazione, data di validità.
 
 ## Corrispondenze di applicazione tra obblighi di trasparenza e organizzazioni
 
@@ -34,7 +34,7 @@ A supporto di questa parte è pubblicato un file di mapping R2RML (transparency-
 
 ## Sviluppi futuri
 
-* Consolidare le corrispondenze riguardanti le amministrazioni considerate
+* Consolidare le corrispondenze riguardanti le amministrazioni considerate, anche attraverso un rapporto più stretto con ANAC
 * Estensione ad altre amministrazioni e tipologie di amministrazioni
 
 ## Riferimenti <a name="rifnorm"></a>
