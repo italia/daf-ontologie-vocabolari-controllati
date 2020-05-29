@@ -7,7 +7,7 @@ L'ontologia nasce nel contesto del lavoro della task force data-driven per l'eme
 
 Il modello è rappresentato nello schema grafico ontologico che segue.
 
-![modello ontologia indicatori](indicator.png)
+![modello ontologia indicatori](Indicator.png)
 
 Nel modello si possono distinguere tre moduli principali:
 
