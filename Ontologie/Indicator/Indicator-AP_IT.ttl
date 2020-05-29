@@ -1,0 +1,891 @@
+@prefix : <https://w3id.org/italia/onto/Indicator/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix l0: <https://w3id.org/italia/onto/l0/> .
+@prefix mu: <https://w3id.org/italia/onto/MU/> .
+@prefix ti: <https://w3id.org/italia/onto/TI/> .
+@prefix CLV: <https://w3id.org/italia/onto/CLV/> .
+@prefix IoT: <https://w3id.org/italia/onto/IoT/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
+@prefix admsapit: <https://w3id.org/italia/onto/ADMS/> .
+@prefix dcatapit: <http://dati.gov.it/onto/dcatapit#> .
+@base <https://w3id.org/italia/onto/Indicator> .
+
+<https://w3id.org/italia/onto/Indicator> rdf:type owl:Ontology ;
+                                          owl:versionIRI <https://w3id.org/italia/onto/Indicator/0.1> ;
+                                          owl:imports <https://w3id.org/italia/onto/IoT> ,
+                                                      <https://w3id.org/italia/onto/MU> ,
+                                                      <https://w3id.org/italia/onto/TI> ,
+                                                      <https://w3id.org/italia/onto/l0> ;
+                                          dc:description <https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/Indicator/latest/Indicator-AP_IT.png> ;
+                                          dct:accrualPeriodicity <http://publications.europa.eu/resource/authority/frequency/IRREG> ;
+                                          dct:creator <https://w3id.org/italia/data/department/dtd> ,
+                                                      <https://w3id.org/italia/data/public-organization/agid> ;
+                                          dct:description "Questa è l'ontologia per modellare indicatori e metriche per il loro calcolo. Gli indicatori possono essere KPI - Key Performance Indicator, indicatori per il monitoraggio della pandemia COVID-19, indicatori per la ricerca scientifica, indicatori smart city, ecc."@it ,
+                                                          "This is the ontology used to model indicators and metrics for the indicator calculation. The indicators can be KPI - Key Performance Indicator, indicators for the monitoring of COVID-19, indiactors for scientific research, smart city indicators."@en ;
+                                          dct:issued "2020-05-21"^^xsd:date ;
+                                          dct:language <http://publications.europa.eu/resource/authority/language/ENG> ,
+                                                       <http://publications.europa.eu/resource/authority/language/ITA> ;
+                                          dct:modified "2019-05-21"^^xsd:date ;
+                                          dct:publisher <https://w3id.org/italia/data/public-organization/agid> ;
+                                          dct:rightsHolder <https://w3id.org/italia/data/public-organization/agid> ;
+                                          dct:title "Indicator Ontology"@en ,
+                                                    "Ontologia degli Indicatori"@it ;
+                                          rdfs:comment "Questa è l'ontologia per modellare indicatori e metriche per il loro calcolo. Gli indicatori possono essere KPI - Key Performance Indicator, indicatori per il monitoraggio della pandemia COVID-19, indicatori per la ricerca scientifica, indicatori smart city, ecc."@it ,
+                                                       "This is the ontology used to model indicators and metrics for the indicator calculation. The indicators can be KPI - Key Performance Indicator, indicators for the monitoring of COVID-19, indiactors for scientific research, smart city indicators."@en ;
+                                          rdfs:isDefinedBy <https://w3id.org/italia/onto/Indicator> ;
+                                          rdfs:label "Indicator Ontology"@en ,
+                                                     "Ontologia degli Indicatori"@it ;
+                                          owl:versionInfo "Version 0.1 - 2020 - Creation of the first version of the ontology"@en ,
+                                                          "Versione 0.1 - 2020 - Creazione della prima versione dell'ontologia."@it ;
+                                          dcat:contactPoint <https://w3id.org/italia/data/contact-point/onto-agid> ;
+                                          dcat:keyword "calcolo indicatore"@it ,
+                                                       "indicatore"@it ,
+                                                       "metrica"@it ,
+                                                       "parametro"@it ;
+                                          dcat:theme <http://publications.europa.eu/resource/authority/data-theme/TECH> ;
+                                          admsapit:acronym "Indicator-AP_IT" ;
+                                          admsapit:hasContributor <https://w3id.org/italia/data/public-organization/cisigs> ;
+                                          admsapit:hasFormalityLevel admsapit:Formal ;
+                                          admsapit:hasKeyClass :Indicator ,
+                                                               :IndicatorCalculation ,
+                                                               :Metric ,
+                                                               :Parameter ;
+                                          admsapit:hasOntologyLanguage admsapit:OWL ;
+                                          admsapit:hasSemanticAssetDistribution <https://w3id.org/italia/data/distribution/IND-JSON-LD> ,
+                                                                                <https://w3id.org/italia/data/distribution/IND-RDF-TURTLE> ,
+                                                                                <https://w3id.org/italia/data/distribution/IND-RDF-XML> ;
+                                          admsapit:hasTask admsapit:AnnotationTask ,
+                                                           admsapit:QueryFormulationTask ,
+                                                           admsapit:SearchTask ;
+                                          admsapit:officialURI "https://w3id.org/italia/onto/Indicator"^^xsd:anyURI ;
+                                          admsapit:prefix "indicator" ;
+                                          admsapit:semanticAssetInUse <https://w3id.org/italia/data/project/OntoPiA> ;
+                                          admsapit:status "initial draft" ;
+                                          admsapit:target "Imprese" ,
+                                                          "Pubbliche Amministrazioni" ;
+                                          admsapit:type admsapit:SupportOntology .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://purl.org/dc/elements/1.1/description
+dc:description rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  https://w3id.org/italia/onto/Indicator/basedOnMetric
+:basedOnMetric rdf:type owl:ObjectProperty ;
+               owl:inverseOf :isMetricOf ;
+               rdfs:domain :IndicatorCalculation ;
+               rdfs:range :Metric ;
+               rdfs:comment "Propriety that represents the relation between an indicator and one or more metric."@en ,
+                            "Proprietà che rappresenta la relazione tra un indicatore e una o più metriche usate per definirlo"@it ;
+               rdfs:isDefinedBy <https://w3id.org/italia/onto/Indicator> ;
+               rdfs:label "basato su metrica"@it ,
+                          "based on metric"@en ;
+               owl:versionInfo "stabile"@it ,
+                               "stable"@en .
+
+
+###  https://w3id.org/italia/onto/Indicator/computedAtTime
+:computedAtTime rdf:type owl:ObjectProperty ;
+                rdfs:domain :IndicatorCalculation ;
+                rdfs:range ti:TimeInterval ;
+                rdfs:comment "Proprietà usata per modellare il fatto che un calcolo di un indicatore è effettuato a un certo tempo (che può essere un intervallo di tempo o un istante come una data)"@it ,
+                             "The property is used to model the fact that a calculation of an indicator has been computed at a certain time (that can be a time interval or an istant of time)."@en ;
+                rdfs:isDefinedBy <https://w3id.org/italia/onto/Indicator> ;
+                rdfs:label "calcolato al tempo"@it ,
+                           "computed at time"@en ;
+                owl:versionInfo "provvisoria"@it ,
+                                "unstable"@en .
+
+
+###  https://w3id.org/italia/onto/Indicator/computedInIndicatorCalculation
+:computedInIndicatorCalculation rdf:type owl:ObjectProperty ;
+                                owl:inverseOf :forIndicator ;
+                                rdfs:domain :Indicator ;
+                                rdfs:range :IndicatorCalculation ;
+                                rdfs:comment "Property that links the indicator to its calculation. Inverse property of \"for indicator\"."@en ,
+                                             "Proprietà che collega l'indicatore al suo calcolo. Proprietà inversa di \"per indicatore\"."@it ;
+                                rdfs:isDefinedBy <https://w3id.org/italia/onto/Indicator> ;
+                                rdfs:label "calcolato in calcolo indicatore"@it ,
+                                           "computed in indicator calculation"@en ;
+                                owl:versionInfo "provvisoria"@it ,
+                                                "unstable"@en .
+
+
+###  https://w3id.org/italia/onto/Indicator/forIndicator
+:forIndicator rdf:type owl:ObjectProperty ;
+              rdfs:domain :IndicatorCalculation ;
+              rdfs:range :Indicator ;
+              rdfs:comment "Property used to link the indicator calculation to the indicator it refers to. Inverse property of \"computed in indicator calculation\". Inverse property of \"computed in indicator calculation\""@en ,
+                           "Proprietà utilizzata per collegare il calcolo di un indicatore all'indicatore a cui si riferisce. Proprietà inversa di \"calcolato in calcolo indicatore\""@it ;
+              rdfs:isDefinedBy <https://w3id.org/italia/onto/Indicator> ;
+              rdfs:label "for indicator"@en ,
+                         "per indicatore"@it ;
+              owl:versionInfo "provvisoria"@it ,
+                              "unstable"@en .
+
+
+###  https://w3id.org/italia/onto/Indicator/hasAccrualPeriodicity
+:hasAccrualPeriodicity rdf:type owl:ObjectProperty ;
+                       rdfs:domain :IndicatorCalculation ;
+                       rdfs:range :AccrualPeriodicity ;
+                       rdfs:comment "Property that links the calculation of an indicator to its frequency of update"@en ,
+                                    "Proprietà che collega il calcolo di un indicatore alla sua frequenza di aggiornamento. Ad esempio nel contesto degli indicatori COVID-19 del decreto 30 aprile 2020, i primi indicatori 1.1-1.4 sembrano mostrare una frequenza di aggiornamento mensile."@it ;
+                       rdfs:isDefinedBy <https://w3id.org/italia/onto/Indicator> ;
+                       rdfs:label "ha frequenza di aggiornamento"@it ,
+                                  "has accrual periodicity"@en ;
+                       owl:versionInfo "stabile"@it ,
+                                       "stable"@en .
+
+
+###  https://w3id.org/italia/onto/Indicator/hasCalculationMethod
+:hasCalculationMethod rdf:type owl:ObjectProperty ;
+                      owl:inverseOf :isCalculationMethodOf ;
+                      rdfs:domain :IndicatorCalculation ;
+                      rdfs:range :CalculationMethod ;
+                      rdfs:comment "Property that links the indicator calculation to the calculation method (for instance a mathematical method)"@en ,
+                                   "Proprietà che associa al calcolo dell'indicatore un metodo di calcolo (che potrebbe essere un modello matematico, per esempio)."@it ;
+                      rdfs:isDefinedBy <https://w3id.org/italia/onto/Indicator> ;
+                      rdfs:label "ha metodo di calcolo"@it ,
+                                 "has calculation method"@en ;
+                      owl:versionInfo "stabile"@it ,
+                                      "stable"@en .
+
+
+###  https://w3id.org/italia/onto/Indicator/hasCorrectionValue
+:hasCorrectionValue rdf:type owl:ObjectProperty ;
+                    rdfs:domain :Correction ;
+                    rdfs:range mu:Value ;
+                    rdfs:comment "Property that allows one to define a value for the concept of correction (of an indicator calculation or of an observation of a parameter for example)"@en ,
+                                 "Proprietà che consente di definire un valore per il concetto di correzione (di un calcolo dell'indicatore o dell'osservazione di qualche parametro per esempio)"@it ;
+                    rdfs:isDefinedBy <https://w3id.org/italia/onto/Indicator> ;
+                    rdfs:label "ha valore correzione"@it ,
+                               "has correction value"@en ;
+                    owl:versionInfo "provvisoria"@it ,
+                                    "unstable"@en .
+
+
+###  https://w3id.org/italia/onto/Indicator/hasDatumSource
+:hasDatumSource rdf:type owl:ObjectProperty ;
+                owl:inverseOf :isDatumSourceOf ;
+                rdfs:domain :IndicatorCalculation ;
+                rdfs:range :DatumSource ;
+                rdfs:comment "La proprietà che associa un calcolo di un indicatore alla fonte dati usata per calcolarlo"@it ,
+                             "The property that associates an indicator calculation to its datum source."@en ;
+                rdfs:isDefinedBy <https://w3id.org/italia/onto/Indicator> ;
+                rdfs:label "ha sorgente dato"@it ,
+                           "has datum source"@en ;
+                owl:versionInfo "stabile"@it ,
+                                "stable"@en .
+
+
+###  https://w3id.org/italia/onto/Indicator/hasIndicatorCalculation
+:hasIndicatorCalculation rdf:type owl:ObjectProperty ;
+                         owl:inverseOf :isIndicatorCalculationOf ;
+                         rdfs:domain l0:Entity ;
+                         rdfs:range :IndicatorCalculation ;
+                         rdfs:comment "Proprietà che associa un'entità (sia essa un'organizzazione amministrativa, sia essa una location, sia essa un oggetto) a un indicatore" ,
+                                      "The property that associates an entity to an indicator."@en ;
+                         rdfs:isDefinedBy <https://w3id.org/italia/onto/Indicator> ;
+                         rdfs:label "ha calcolo indicatore"@it ,
+                                    "has indicator calculation"@en ;
+                         owl:versionInfo "stabile"@it ,
+                                         "stable"@en .
+
+
+###  https://w3id.org/italia/onto/Indicator/hasIndicatorType
+:hasIndicatorType rdf:type owl:ObjectProperty ;
+                  owl:inverseOf :isIndicatorTypeOf ;
+                  rdfs:domain :Indicator ;
+                  rdfs:range :IndicatorType ;
+                  rdfs:comment "Property that links the indicator to its indicator type (for instance to the type \"process\" or to the type \"outcome\"),"@en ,
+                               "Proprietà che collega un indicatore al suo tipo (per esempio al tipo \"processo\", o al tipo \"risultato\")."@it ;
+                  rdfs:isDefinedBy <https://w3id.org/italia/onto/Indicator> ;
+                  rdfs:label "ha tipo indicatore"@it ,
+                             "has indicator type"@en ;
+                  owl:versionInfo "stabile"@it ,
+                                  "stable"@en .
+
+
+###  https://w3id.org/italia/onto/Indicator/hasIndicatorValue
+:hasIndicatorValue rdf:type owl:ObjectProperty ;
+                   rdfs:domain :IndicatorCalculation ;
+                   rdfs:range mu:Value ;
+                   rdfs:comment "Property that associates an indicator calculation to a value."@en ,
+                                "Proprietà che associa un calcolo di un indicatore al valore"@it ;
+                   rdfs:isDefinedBy <https://w3id.org/italia/onto/Indicator> ;
+                   rdfs:label "ha valore indicatore"@it ,
+                              "has indicator value"@en ;
+                   owl:versionInfo "stabile"@it ,
+                                   "stable"@en .
+
+
+###  https://w3id.org/italia/onto/Indicator/hasParameter
+:hasParameter rdf:type owl:ObjectProperty ;
+              rdfs:domain :Metric ;
+              rdfs:range :Parameter ;
+              rdfs:comment "Property that associates the metric to its parameters."@en ,
+                           "Proprietà che associa una metrica ai suoi parametri."@it ;
+              rdfs:isDefinedBy <https://w3id.org/italia/onto/Indicator> ;
+              rdfs:label "ha parametro"@it ,
+                         "has parameter"@en ;
+              owl:versionInfo "stabile"@it ,
+                              "stable"@en .
+
+
+###  https://w3id.org/italia/onto/Indicator/isAppliedTo
+:isAppliedTo rdf:type owl:ObjectProperty ;
+             rdfs:domain :Correction ;
+             rdfs:range l0:Activity ;
+             rdfs:comment "Property that associates the correction to the activity to which the correction may be applied. The acivity can be for instance: calculation of an indicator, observation, etc."@en ,
+                          "Proprietà che associa una correzione all'attività per la quale la correzione si potrebbe rendere necessaria. L'attività può essere per esempio il calcolo dell'indicatore, la rilevazione di un'osservazione, ecc."@it ;
+             rdfs:isDefinedBy <https://w3id.org/italia/onto/Indicator> ;
+             rdfs:label "is appiled to"@en ,
+                        "è applicata a"@it ;
+             owl:versionInfo "provvisoria"@it ,
+                             "unstable"@en .
+
+
+###  https://w3id.org/italia/onto/Indicator/isCalculationMethodOf
+:isCalculationMethodOf rdf:type owl:ObjectProperty ;
+                       rdfs:domain :CalculationMethod ;
+                       rdfs:range :IndicatorCalculation ;
+                       rdfs:comment "Inverse property of \"has calculation method\" that links the calculation method to indicator calcutation that uses it."@en ,
+                                    "Proprietà inversa di \"ha metodo di calcolo\" utilizzata per collegare n metodo di calcolo al calcolo dell'indicatore che lo usa."@it ;
+                       rdfs:isDefinedBy <https://w3id.org/italia/onto/Indicator> ;
+                       rdfs:label "is calculation method of"@en ,
+                                  "è metodo di calcolo di"@it ;
+                       owl:versionInfo "stabile"@it ,
+                                       "stable"@en .
+
+
+###  https://w3id.org/italia/onto/Indicator/isDatumSourceOf
+:isDatumSourceOf rdf:type owl:ObjectProperty ;
+                 rdfs:domain :DatumSource ;
+                 rdfs:range :IndicatorCalculation ;
+                 rdfs:comment "La proprietà inversa di 'ha sorgente dato'. La proprietà lega una sorgente del dato con il calcolo dell'indicatore"@it ,
+                              "The inverse property of 'has datum source'. It relates a datum source to an indicator calculation."@en ;
+                 rdfs:isDefinedBy <https://w3id.org/italia/onto/Indicator> ;
+                 rdfs:label "is datum source of"@en ,
+                            "è sorgente dato di"@it ;
+                 owl:versionInfo "stabile"@it ,
+                                 "stable"@en .
+
+
+###  https://w3id.org/italia/onto/Indicator/isIndicatorCalculationOf
+:isIndicatorCalculationOf rdf:type owl:ObjectProperty ;
+                          rdfs:domain :IndicatorCalculation ;
+                          rdfs:range l0:Entity ;
+                          rdfs:comment "Inverse property of 'has indicator' that allows one to represent the relation between an indicator and an entity."@en ,
+                                       "Proprietà inversa di 'ha indicatore' che consente di modellare la relazione tra un'entità e l'indicatore associato"@it ;
+                          rdfs:isDefinedBy <https://w3id.org/italia/onto/Indicator> ;
+                          rdfs:label "is indicator of"@en ,
+                                     "è indicatore di"@it ;
+                          owl:versionInfo "stabile"@it ,
+                                          "stable"@en .
+
+
+###  https://w3id.org/italia/onto/Indicator/isIndicatorTypeOf
+:isIndicatorTypeOf rdf:type owl:ObjectProperty ;
+                   rdfs:domain :IndicatorType ;
+                   rdfs:range :Indicator ;
+                   rdfs:comment "Inverse property of \"has indicator type\" that associates a type of indicator to the indicator."@en ,
+                                "Proprietà inversa di \"ha tipo indicatore\" che associa un tipo di indicatore all'indicatore."@it ;
+                   rdfs:isDefinedBy <https://w3id.org/italia/onto/Indicator> ;
+                   rdfs:label "is indicator type of"@en ,
+                              "è tipo di indicatore di"@it ;
+                   owl:versionInfo "stabile"@it ,
+                                   "stable"@en .
+
+
+###  https://w3id.org/italia/onto/Indicator/isMetByIndicator
+:isMetByIndicator rdf:type owl:ObjectProperty ;
+                  owl:inverseOf :meetsPurpose ;
+                  rdfs:domain :Purpose ;
+                  rdfs:range :Indicator ;
+                  rdfs:comment "Inverse property of \"meets purpose\" that associates the purpose to the indicator that contributes to its realization."@en ,
+                               "Proprietà inversa di \"realizza goal\" che collega un goal all'indicatore che contribuisce a realizzarlo"@it ;
+                  rdfs:isDefinedBy <https://w3id.org/italia/onto/Indicator> ;
+                  rdfs:label "is met by indicator"@en ,
+                             "è realizzato da indicatore"@it ;
+                  owl:versionInfo "stabile"@it ,
+                                  "stable"@en .
+
+
+###  https://w3id.org/italia/onto/Indicator/isMetricOf
+:isMetricOf rdf:type owl:ObjectProperty ;
+            rdfs:domain :Metric ;
+            rdfs:range :IndicatorCalculation ;
+            rdfs:comment "Inverse relation of 'has metric'. Accordingly, the property links a metric to an indicator calculation."@en ,
+                         "Proprietà inversa di 'ha metrica'. La proprietà lega una metrica a un calcolo di un indicatore."@it ;
+            rdfs:isDefinedBy <https://w3id.org/italia/onto/Indicator> ;
+            rdfs:label "is metric of"@en ,
+                       "è metrica di"@it ;
+            owl:versionInfo "stabile"@it ,
+                            "stable"@en .
+
+
+###  https://w3id.org/italia/onto/Indicator/isProvidedBy
+:isProvidedBy rdf:type owl:ObjectProperty ;
+              rdfs:domain :DatumSource ;
+              rdfs:range IoT:Observation ;
+              rdfs:comment "Property that links a data source to the observation of individual parameters whose values thus contribute to the formation of the data source."@en ,
+                           "Proprietà che collega una sorgente dati all'osservazione di singoli parametri i cui valori contribuiscono quindi alla formazione della sorgente dati."@it ;
+              rdfs:isDefinedBy <https://w3id.org/italia/onto/Indicator> ;
+              rdfs:label "is provided by"@en ,
+                         "è fornita da"@en ;
+              owl:versionInfo "stabile"@it ,
+                              "stable"@en .
+
+
+###  https://w3id.org/italia/onto/Indicator/meetsPurpose
+:meetsPurpose rdf:type owl:ObjectProperty ;
+              rdfs:domain :Indicator ;
+              rdfs:range :Purpose ;
+              rdfs:comment "Property that associates an indicator to the purpose it meets."@en ,
+                           "Proprietà che associa un indicatore allo scopo/goal che realizza. Ad esempio l'indicatore nel contesto del COVID-19 sulla percentuale di casi sintomatici notificati con una data inizio sintomi sul totale di casi sintomatici notificati mira a realizzare l'obiettivo di controllare la capacità di monitoraggio."@it ;
+              rdfs:isDefinedBy <https://w3id.org/italia/onto/Indicator> ;
+              rdfs:label "meets purpose"@en ,
+                         "realizza goal"@it ;
+              owl:versionInfo "stabile"@it ,
+                              "stable"@en .
+
+
+###  https://w3id.org/italia/onto/Indicator/parametrizes
+:parametrizes rdf:type owl:ObjectProperty ;
+              rdfs:domain :Parameter ;
+              rdfs:range mu:Value ;
+              rdfs:comment "Questa proprietà viene utilizzata quando i possibili valori che possono essere associati a un parametro sono all'interno di un certo range o regione in uno spazio dimensionale. Per esempio, consideriamo di avere un parametro che rappresenta la qualità di un dato specifico che può essere \"buona\" o \"scarsa\", \"buona\" e \"scarsa\" possono essere modellati come individui della classe Valore definito nell'ontologia MU della rete OntoPiA e collegati all'individuo della classe parametro che rappresenta la qualità. Il collegamento è catturato da questa proprietà parametrizza. Le classi parametro e  valore istanziano pattern di modellazione noto in ambito scientifico chiamato RegionParameter."@it ,
+                           "This property is used when the possible values that can be associated with a parameter are within a certain range or region in a dimensional space. For example, let us consider to have a parameter that represents the quality of a specific data that can be \"good\" or \"poor\", \"good\" and \"poor\" can be modelled as individuals of the class Value defined in the MU ontology of the network OntoPiA and linked to the individual of the class parameter that represents the quality. The linking is capture by this property parametrizes. The classes parameter, value istantiate the ontology design pattern RegionParameter."@en ;
+              rdfs:isDefinedBy <https://w3id.org/italia/onto/Indicator> ;
+              rdfs:label "parametrizes"@en ,
+                         "parametrizza"@it ;
+              owl:versionInfo "stabile"@it ,
+                              "stable"@en .
+
+
+###  https://w3id.org/italia/onto/Indicator/subIndicator
+:subIndicator rdf:type owl:ObjectProperty ;
+              owl:inverseOf :superIndicator ;
+              rdf:type owl:TransitiveProperty ;
+              rdfs:domain :Indicator ;
+              rdfs:range :Indicator ;
+              rdfs:comment "Proprietà transitiva che consente di modellare gerarchie di indicatori. Indicatori infatti possono essere complessi e composti da altri indicatori o specializzare altri indicatori."@it ,
+                           "Transitive property that allows one to model a hierarchy of indicators. In fact indicators can be complex and composed by other indicators or can specialize other indicators."@en ;
+              rdfs:isDefinedBy <https://w3id.org/italia/onto/Indicator> ;
+              rdfs:label "sotto indicatore"@it ,
+                         "subindicator"@en ;
+              owl:versionInfo "stabile"@it ,
+                              "stable"@en .
+
+
+###  https://w3id.org/italia/onto/Indicator/subParameter
+:subParameter rdf:type owl:ObjectProperty ;
+              owl:inverseOf :superParameter ;
+              rdf:type owl:TransitiveProperty ;
+              rdfs:domain :Parameter ;
+              rdfs:range :Parameter ;
+              rdfs:comment "Proprietà transitiva che consente di modellare gerarchie di parametri delle metriche ossia scenari in cui un parametro può specializzarsi in ulteriori parametri."@it ,
+                           "Transitive property that allows one to specify hierarchy of parameters where one parameter can be specialized in additional parameters."@en ;
+              rdfs:isDefinedBy <https://w3id.org/italia/onto/Indicator> ;
+              rdfs:label "sotto parametro"@it ,
+                         "subparameter"@en ;
+              owl:versionInfo "stabile"@it ,
+                              "stable"@en .
+
+
+###  https://w3id.org/italia/onto/Indicator/superIndicator
+:superIndicator rdf:type owl:ObjectProperty ,
+                         owl:TransitiveProperty ;
+                rdfs:domain :Indicator ;
+                rdfs:range :Indicator ;
+                rdfs:comment "Inverse property of sub indicator that allows one to model the hierarchy of indicators."@en ,
+                             "Proprietà inversa di sub indicatore che consente di modellare gerarchie di indicatori."@it ;
+                rdfs:isDefinedBy <https://w3id.org/italia/onto/Indicator> ;
+                rdfs:label "super indicator"@en ,
+                           "super indicatore"@it ;
+                owl:versionInfo "stabile"@it ,
+                                "stable"@en .
+
+
+###  https://w3id.org/italia/onto/Indicator/superParameter
+:superParameter rdf:type owl:ObjectProperty ,
+                         owl:TransitiveProperty ;
+                rdfs:domain :Parameter ;
+                rdfs:range :Parameter ;
+                rdfs:comment "Inverse property of subparameter that allows one to manage hierarchies of parameters of the metrics of an indicator"@en ,
+                             "Proprietà inversa di sotto parametro utilizzata per modellare gerarchie di parametri delle metriche di un indicatore."@it ;
+                rdfs:isDefinedBy <https://w3id.org/italia/onto/Indicator> ;
+                rdfs:label "super parameter"@en ,
+                           "super parametro"@it ;
+                owl:versionInfo "provvisoria"@it ,
+                                "unstable"@en .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  https://w3id.org/italia/onto/Indicator/communcatedAt
+:communcatedAt rdf:type owl:DatatypeProperty ;
+               rdfs:subPropertyOf ti:issued ;
+               rdfs:domain :IndicatorCalculation ;
+               rdfs:range [ rdf:type rdfs:Datatype ;
+                            owl:unionOf ( xsd:date
+                                          xsd:dateTime
+                                          xsd:time
+                                        )
+                          ] ;
+               rdfs:comment "Property that allows one to link the calculation of an indicator to the date on which the calculus is issued. For instance it is the time instant on which a local public administration communicates the calculus to a central body that collects the values of the indicators for monitoring purposes at national scale."@en ,
+                            "Proprietà che permette di collegare il calcolo di un indicatore alla data di prima pubblicazione e/invio del calcolo. Ad esempio è l'istante di tempo in cui una pubblica amministrazione locale comunica il calcolo ad un ente centrale che raccoglie i valori degli indicatori a fini di monitoraggio su scala nazionale."@it ;
+               rdfs:isDefinedBy <https://w3id.org/italia/onto/Indicator> ;
+               rdfs:label "communicated at"@en ,
+                          "comunicato in"@it ;
+               owl:versionInfo "stabile"@it ,
+                               "stable"@en .
+
+
+###  https://w3id.org/italia/onto/Indicator/definedInLegislation
+:definedInLegislation rdf:type owl:DatatypeProperty ;
+                      rdfs:domain :Indicator ;
+                      rdfs:range rdfs:Literal ;
+                      rdfs:comment "La proprietà modella il riferimento normativo dove l'indicatore è potenzialemnte definito. Dal momento che in OntoPiA non esiste al moemnto della definizione della presente ontologia un modello per la rappresentazione di norme, si è deciso di utilizzare una data type property per specificare sottoforma di stringa il riferimento normativo dell'indicatore se esistente."@it ,
+                                   "The property models the legislation reference where the indicator is defined (e.g., decree of Ministry of Health 30 April 2020). Since in OntoPiA there is no ontology that models legislation acts, we decided to use a simple data type property with a string where the legislation reference can be indicated."@en ;
+                      rdfs:isDefinedBy <https://w3id.org/italia/onto/Indicator> ;
+                      rdfs:label "defined in legislation"@en ,
+                                 "definito in norma"@it ;
+                      owl:versionInfo "provvisoria"@it ,
+                                      "unstable"@en .
+
+
+###  https://w3id.org/italia/onto/Indicator/doneAt
+:doneAt rdf:type owl:DatatypeProperty ;
+        rdfs:subPropertyOf ti:modified ;
+        rdfs:domain :Correction ;
+        rdfs:range [ rdf:type rdfs:Datatype ;
+                     owl:unionOf ( xsd:date
+                                   xsd:dateTime
+                                   xsd:time
+                                 )
+                   ] ;
+        rdfs:comment "L'istante di tempo (data, data e ora, ora) in cui viene fatta una certa correzione per specifiche attività (di calcolo dell'indicatore, di osservazione di un parametro)."@it ,
+                     "The instant of time (date, date time or time) when a certain correction is made for specific activities (calculation of the indicator, observation of a parameter)."@en ;
+        rdfs:isDefinedBy <https://w3id.org/italia/onto/Indicator> ;
+        rdfs:label "done at"@en ,
+                   "fatta in"@it ;
+        owl:versionInfo "provvisoria"@it ,
+                        "unstable"@en .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  https://w3id.org/italia/onto/Indicator/AccrualPeriodicity
+:AccrualPeriodicity rdf:type owl:Class ;
+                    rdfs:subClassOf l0:Characteristic ;
+                    rdfs:comment "La classe che rappresenta la frequenza di aggiornamento. Nel contesto della presente ontologia essa è la frequenza a cui viene aggiornato l'indicatore secondo le regole che governano il suo calcolo.  Ad esempio, nel caso degli indicatori COVID-19 elencati nel decreto del Ministero della Salute 30 aprile 2020, la frequenza è indicata nella descrizione dell'indicatore (e.g., quando si indica nell'indicatore 1.1 il termine \"per mese\" si intende frequenza di aggiornamento mensile). Le istanze di questa classe sono gli individui del vocabolario controllato europeo sulle frequenze - http://publications.europa.eu/resource/authority/frequency"@it ,
+                                 "The class represents the frequency of update. In the context of this ontology it is the frequency at which an indicator is up-to-date according to the rules governing its computation. The instances of this class are the individuals of the European Controlled Vocabulary Accrual Periodicity - http://publications.europa.eu/resource/authority/frequency"@en ;
+                    rdfs:isDefinedBy <https://w3id.org/italia/onto/Indicator> ;
+                    rdfs:label "Accrual Periodicity"@en ,
+                               "Frequenza di Aggiornamento"@it ;
+                    owl:versionInfo "provvisoria"@it ,
+                                    "unstable"@en ;
+                    prov:wasDerivedFrom <http://publications.europa.eu/resource/authority/frequency> .
+
+
+###  https://w3id.org/italia/onto/Indicator/CalculationMethod
+:CalculationMethod rdf:type owl:Class ;
+                   rdfs:subClassOf l0:Activity ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty :isCalculationMethodOf ;
+                                     owl:someValuesFrom :IndicatorCalculation
+                                   ] ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty l0:name ;
+                                     owl:someValuesFrom rdfs:Literal
+                                   ] ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty l0:description ;
+                                     owl:allValuesFrom rdfs:Literal
+                                   ] ;
+                   rdfs:comment "La classe che modella il metodo di calcolo usato per il computo del valore dell'indicatore. Esso può essere una formula matematica o qualsiasi altro processo utilizzato per calcolare l'indicatore."@it ,
+                                "The class that models the calculation method used to compute an indicator. It can be a mathematical formula or any other process used to calculate the indicator."@en ;
+                   rdfs:isDefinedBy <https://w3id.org/italia/onto/Indicator> ;
+                   rdfs:label "Calculation Method"@en ,
+                              "Metodo di Calcolo"@it ;
+                   owl:versionInfo "provvisoria"@it ,
+                                   "unstable"@en .
+
+
+###  https://w3id.org/italia/onto/Indicator/Correction
+:Correction rdf:type owl:Class ;
+            rdfs:subClassOf l0:Characteristic ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :isAppliedTo ;
+                              owl:someValuesFrom l0:Activity
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :hasCorrectionValue ;
+                              owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                              owl:onClass mu:Value
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :doneAt ;
+                              owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                              owl:onDataRange [ rdf:type rdfs:Datatype ;
+                                                owl:unionOf ( xsd:date
+                                                              xsd:dateTime
+                                                              xsd:time
+                                                            )
+                                              ]
+                            ] ;
+            rdfs:comment "La classe cattura una correzione. Nel contesto della presente ontologia una correzione si può applicare a una serie di attività: al calcolo dell'indicatore e all'attività di osservazione di specifici parametri che concorrono a formare la sorgente dati su cui calcolare l'indicatore. Il concetto di correzione consente di mantener traccia del valore variato e quando la variazione è avvenuta rispetto al valore originario."@it ,
+                         "The class models a modification. In the context of this ontology, a correction can be applied to a number of activities; namely, to the calculation of the indicator and to the activity of observation of specific parameters that contribute to the data source on which the indicator is computed. The concept of correction makes it possible to keep track of the changed value and when the change has occurred with respect to the original value."@en ;
+            rdfs:isDefinedBy <https://w3id.org/italia/onto/Indicator> ;
+            rdfs:label "Correction"@en ,
+                       "Correzione"@it ;
+            owl:versionInfo "provvisoria"@it ,
+                            "unstable"@en .
+
+
+###  https://w3id.org/italia/onto/Indicator/DatumSource
+:DatumSource rdf:type owl:Class ;
+             rdfs:subClassOf l0:Entity ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :isDatumSourceOf ;
+                               owl:someValuesFrom :IndicatorCalculation
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :isProvidedBy ;
+                               owl:someValuesFrom IoT:Observation
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty l0:name ;
+                               owl:someValuesFrom rdfs:Literal
+                             ] ;
+             rdfs:comment "A datum source used in the calculation of the indicator. For example, in the context of COVID-19 indicators identified by the Italian Ministry of Health it can be the integrated surveillance for COVID-19 system owned by  Istituto Superiore di Sanità. in scholarly data context it can be Scopus for citations count; in the context of social networks it can be Twitter for the number of social media mentions."@en ,
+                          "Una fonte di dati usata nel calcolo dell'indicatore. Ad esempio, nell'ambito degli indicatori COVID-19 individuati dal Ministero della Salute può essere il sistema di sorveglianza integrata per COVID-19 gestito dall'Istituto Superiore di Sanità. Nel contesto dei dati scientifici può essere Scopus per il conteggio delle citazioni; nel contesto dei social network può essere Twitter per il numero di citazioni sui social media."@it ;
+             rdfs:isDefinedBy <https://w3id.org/italia/onto/Indicator> ;
+             rdfs:label "Datum source"@en ,
+                        "Sorgente dati"@it ;
+             owl:versionInfo "stabile"@it ,
+                             "stable"@en .
+
+
+###  https://w3id.org/italia/onto/Indicator/Indicator
+:Indicator rdf:type owl:Class ;
+           rdfs:subClassOf l0:Characteristic ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :meetsPurpose ;
+                             owl:someValuesFrom :Purpose
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :computedInIndicatorCalculation ;
+                             owl:allValuesFrom :IndicatorCalculation
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :subIndicator ;
+                             owl:allValuesFrom :Indicator
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :superIndicator ;
+                             owl:allValuesFrom :Indicator
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :hasIndicatorType ;
+                             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                             owl:onClass :IndicatorType
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty l0:name ;
+                             owl:someValuesFrom rdfs:Literal
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :definedInLegislation ;
+                             owl:allValuesFrom rdfs:Literal
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty l0:description ;
+                             owl:allValuesFrom rdfs:Literal
+                           ] ;
+           rdfs:comment "La classe che modella un indicatore. Esempi di indicatori sono: il conteggio delle citazioni per un paper scientifico, il numero di menzioni nel contesto dei social media, nell'ambito degli indicatori COVID19 definiti nel decreto 30 aprile 2020 del Ministero della Salute un esempio di indicaotre può essere la percentuale di casi sintomatici con data di inizio dei sintomi sul totale dei casi sintomatici, ecc."@it ,
+                        "The class that models an indicator. Examples of indicators are: the citation count for a scientific paper, social media mentions, in the context of COVID19 indicators defined in the decree 30th April 2020 of Ministry of Health an example of indicator can be the percentage of syntomatic cases with a starting syntoms date on the total number of syntomatic cases, etc."@en ;
+           rdfs:isDefinedBy <https://w3id.org/italia/onto/Indicator> ;
+           rdfs:label "Indicator"@en ,
+                      "Indicatore"@it ;
+           owl:versionInfo "stabile"@it ,
+                           "stable"@en ;
+           prov:wasDerivedFrom <http://www.w3.org/2004/02/skos/core#Concept> .
+
+
+###  https://w3id.org/italia/onto/Indicator/IndicatorCalculation
+:IndicatorCalculation rdf:type owl:Class ;
+                      rdfs:subClassOf l0:Activity ,
+                                      [ rdf:type owl:Restriction ;
+                                        owl:onProperty :basedOnMetric ;
+                                        owl:someValuesFrom :Metric
+                                      ] ,
+                                      [ rdf:type owl:Restriction ;
+                                        owl:onProperty :hasDatumSource ;
+                                        owl:someValuesFrom :DatumSource
+                                      ] ,
+                                      [ rdf:type owl:Restriction ;
+                                        owl:onProperty :isIndicatorCalculationOf ;
+                                        owl:someValuesFrom l0:Entity
+                                      ] ,
+                                      [ rdf:type owl:Restriction ;
+                                        owl:onProperty :computedAtTime ;
+                                        owl:allValuesFrom ti:TimeInterval
+                                      ] ,
+                                      [ rdf:type owl:Restriction ;
+                                        owl:onProperty :hasCalculationMethod ;
+                                        owl:allValuesFrom :CalculationMethod
+                                      ] ,
+                                      [ rdf:type owl:Restriction ;
+                                        owl:onProperty :forIndicator ;
+                                        owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                        owl:onClass :Indicator
+                                      ] ,
+                                      [ rdf:type owl:Restriction ;
+                                        owl:onProperty :hasIndicatorValue ;
+                                        owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                        owl:onClass mu:Value
+                                      ] ,
+                                      [ rdf:type owl:Restriction ;
+                                        owl:onProperty :hasAccrualPeriodicity ;
+                                        owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                        owl:onClass :AccrualPeriodicity
+                                      ] ,
+                                      [ rdf:type owl:Restriction ;
+                                        owl:onProperty :communcatedAt ;
+                                        owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                        owl:onDataRange [ rdf:type rdfs:Datatype ;
+                                                          owl:unionOf ( xsd:date
+                                                                        xsd:dateTime
+                                                                        xsd:time
+                                                                      )
+                                                        ]
+                                      ] ,
+                                      [ rdf:type owl:Restriction ;
+                                        owl:onProperty ti:modified ;
+                                        owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                        owl:onDataRange [ rdf:type rdfs:Datatype ;
+                                                          owl:unionOf ( xsd:date
+                                                                        xsd:dateTime
+                                                                        xsd:time
+                                                                      )
+                                                        ]
+                                      ] ;
+                      rdfs:comment "La classe del calcolo di uno specifico indicatore eseguito seguendo un certo metodo di calcolo e usando una fonte dati. La classe consente di separare il calcolo dell'indicatore con i valori e le metriche che contribuiscono al calcolo, con l'indicatori in sé e la loro anagrafica."@it ,
+                                   "The class of calculation of a specific indicator performed following a certain calculation method and using one or more data source. The class allows one to separate the calculation of the indicator with the values and metrics that contribute to the calculation, with the indicator itself and its master data."@en ;
+                      rdfs:isDefinedBy <https://w3id.org/italia/onto/Indicator> ;
+                      rdfs:label "Calcolo Indicatore"@it ,
+                                 "Indicator Calculation"@en ;
+                      owl:versionInfo "provvisoria"@it ,
+                                      "unstable"@en .
+
+
+###  https://w3id.org/italia/onto/Indicator/IndicatorType
+:IndicatorType rdf:type owl:Class ;
+               rdfs:subClassOf l0:Characteristic ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :isIndicatorTypeOf ;
+                                 owl:someValuesFrom :Indicator
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty l0:name ;
+                                 owl:someValuesFrom rdfs:Literal
+                               ] ;
+               rdfs:comment "La classe che modella il tipo di indicatore. Per esempio, nel contesto degli indicatori COVID-19 come elencati nel decreto del Minsitero della Salute del 30 aprile 2020 si possono distinguere due tipi: indicatore di processo, indicatore di risultato che sarebbero le istanze di questa classe. In altre ontologie presenti allo stato dell'arte per gli indicatori dei servizi del sistema sanitario si parla anche di indicatori di tipo struttura per esempio."@it ,
+                            "The class that models the type of indicator. For example, in the context of COVID-19 indicators listed by the Italian Ministry of Health, two types can be distinguished: process indicator, outcome indicator which would be the instances of this class. In other ontologies on indicators of health care systesms available at the state of the art, there also exist indicators of type structure."@en ;
+               rdfs:isDefinedBy <https://w3id.org/italia/onto/Indicator> ;
+               rdfs:label "Indicator Type"@en ,
+                          "Tipo Indicatore"@it ;
+               owl:versionInfo "provvisoria"@it ,
+                               "unstable"@en .
+
+
+###  https://w3id.org/italia/onto/Indicator/Metric
+:Metric rdf:type owl:Class ;
+        rdfs:subClassOf l0:Characteristic ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :isMetricOf ;
+                          owl:someValuesFrom :IndicatorCalculation
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :hasParameter ;
+                          owl:allValuesFrom :Parameter
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty l0:name ;
+                          owl:someValuesFrom rdfs:Literal
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty l0:description ;
+                          owl:allValuesFrom rdfs:Literal
+                        ] ;
+        rdfs:comment "La classe consente di modellare la metrica su cui si basa l'indicatore. Per esempio, nel contesto degli indicatori COVID-19 del decreto del Ministero della Salute del 30 aprile 2020, per l'indicatore che rappresenta la percentuale di casi sintomatici notificati con data di inizio sintomi indicata sul totale di casi sintomatici notificati, la metrica è il numero di casi sintomatici notificata con data inizio sintomi. Nel contesto dei dati scientifici è il numero di citazioni di un articolo scientifico; nel caso degli indicatori per social media il numero di tweet su Twitter relativi a un certo argomento."@it ,
+                     "The class that allows one to model the metric on which the indicator is based. For example, in the context of the COVID-19 indicators listed by the Italian Ministry of Health, for the indicator that represents the percentage of notified symptomatic cases with a notified symptom start date out of the total notified symptomatic cases, the metric is the number of notified symptomatic cases with a notified symptom start date. In the context of scientific data it may be the number of citations for indicators that measure the citation of scientific papers, in the case of social media indicators the number of tweets on Twitter related to a certain topic."@en ;
+        rdfs:isDefinedBy <https://w3id.org/italia/onto/Indicator> ;
+        rdfs:label "Metric"@en ,
+                   "Metrica"@it ;
+        owl:versionInfo "stabile"@it ,
+                        "stable"@en .
+
+
+###  https://w3id.org/italia/onto/Indicator/Parameter
+:Parameter rdf:type owl:Class ;
+           rdfs:subClassOf l0:Characteristic ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :parametrizes ;
+                             owl:allValuesFrom mu:Value
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :subParameter ;
+                             owl:allValuesFrom :Parameter
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :superParameter ;
+                             owl:allValuesFrom :Parameter
+                           ] ;
+           rdfs:comment "La classe che rappresenta una specifica caratteristica o parametro che è misurata utilizzando una specifica metrica. Si noti che le classi indicatore, valore e parametro specializzano nella presente ontologia il design pattern ontologico Parameter Region - http://ontologydesignpatterns.org/cp/owl/parameterregion.owl."@it ,
+                        "The class representing a specific characteristic or parameter that is measured using a specific metric. Note that the indicator, value and parameter classes specialize in this ontology the ontology design pattern Parameter Region - http://ontologydesignpatterns.org/cp/owl/parameterregion.owl."@en ;
+           rdfs:isDefinedBy <https://w3id.org/italia/onto/Indicator> ;
+           rdfs:label "Parameter"@en ,
+                      "Parametro"@it ;
+           owl:versionInfo "stabile"@it ,
+                           "stable"@en .
+
+
+###  https://w3id.org/italia/onto/Indicator/Purpose
+:Purpose rdf:type owl:Class ;
+         rdfs:subClassOf l0:Description ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :isMetByIndicator ;
+                           owl:someValuesFrom :Indicator
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty l0:name ;
+                           owl:someValuesFrom rdfs:Literal
+                         ] ;
+         rdfs:comment "La classe che modello lo scopo/obiettivo/goal di un indicatore. Per esempio, nel caso degli indicatori COVID-19 come inclusi nel decreto del Ministero della Salute 30 aprile 2020, l'obiettivo di alcuni indicatori è quello di garantire la stabilità di trasmissione del virus e la tenuta dei servizi sanitari."@it ,
+                      "This is the class that models the objective/purpose or goal that the indicator targets. For instance, in the context of COIVD-19 indicators a purpose can be the monitoring of the virsu transmission stability and resilience of health care services."@en ;
+         rdfs:isDefinedBy <https://w3id.org/italia/onto/Indicator> ;
+         rdfs:label "Goal"@en ,
+                    "Obiettivo"@it ,
+                    "Purpose"@en ,
+                    "Scopo"@it ;
+         owl:versionInfo "provvisoria"@it ,
+                         "unstable"@en .
+
+
+###  https://w3id.org/italia/onto/l0/Description
+l0:Description rdf:type owl:Class .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  https://w3id.org/italia/data/contact-point/onto-agid
+<https://w3id.org/italia/data/contact-point/onto-agid> rdf:type owl:NamedIndividual ,
+                                                                dcatapit:Organization ,
+                                                                vcard:Kind ,
+                                                                vcard:Organization ;
+                                                       vcard:fn "banche dati e open data" ;
+                                                       vcard:hasEmail <mailto:info@dati.gov.it> .
+
+
+###  https://w3id.org/italia/data/department/dtd
+<https://w3id.org/italia/data/department/dtd> rdf:type owl:NamedIndividual ,
+                                                       dcatapit:Agent ,
+                                                       foaf:Agent ;
+                                              dct:identifier "PCM" ;
+                                              foaf:name "Dipartimento per la Trasformazione Digitale"@it ,
+                                                        "Italian Department of Digital Transformation"@en .
+
+
+###  https://w3id.org/italia/data/distribution/IND-JSON-LD
+<https://w3id.org/italia/data/distribution/IND-JSON-LD> rdf:type owl:NamedIndividual ,
+                                                                 admsapit:SemanticAssetDistribution ;
+                                                        dct:description "Questa è la distribuzione JSON-LD dell'ontologia sugli indicatori"@it ,
+                                                                        "This is the distribution in JSON-LD of the indicator ontology"@en ;
+                                                        dct:format <http://publications.europa.eu/resource/authority/file-type/JSON_LD> ;
+                                                        dct:license <https://w3id.org/italia/controlled-vocabulary/licences/A21_CCBY40> ;
+                                                        dct:title "Distribuzione JSON-LD ontologia Indicator-AP_IT"@it ,
+                                                                  "JSON-LD distribution of Indicator-AP_IT Ontology"@en ;
+                                                        dcat:accessURL <https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/Indicator/latest> ;
+                                                        dcat:downloadURL <https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/Indicator/latest/Indicator-AP_IT.jsonld> .
+
+
+###  https://w3id.org/italia/data/distribution/IND-RDF-TURTLE
+<https://w3id.org/italia/data/distribution/IND-RDF-TURTLE> rdf:type owl:NamedIndividual ,
+                                                                    admsapit:SemanticAssetDistribution ;
+                                                           dct:description "Questa è la distribuzione RDF/Turtle dell'ontologia sugli indicatori"@it ,
+                                                                           "This is the distribution in RDF/turtle of the indicator ontology"@en ;
+                                                           dct:format <http://publications.europa.eu/resource/authority/file-type/RDF_TURTLE> ;
+                                                           dct:license <https://w3id.org/italia/controlled-vocabulary/licences/A21_CCBY40> ;
+                                                           dct:title "Distribuzione RDF/Turtle ontologia Indicator-AP_IT"@it ,
+                                                                     "RDF/Turtle distribution of Indicator-AP_IT Ontology"@en ;
+                                                           dcat:accessURL <https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/Indicator/latest> ;
+                                                           dcat:downloadURL <https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/Indicator/latest/Indicator-AP_IT.ttl> .
+
+
+###  https://w3id.org/italia/data/distribution/IND-RDF-XML
+<https://w3id.org/italia/data/distribution/IND-RDF-XML> rdf:type owl:NamedIndividual ,
+                                                                 admsapit:SemanticAssetDistribution ;
+                                                        dct:description "Questa è la distribuzione RDF/XML dell'ontologia sugli indicatori"@it ,
+                                                                        "This is the distribution in RDF/XML of the indicator ontology"@en ;
+                                                        dct:format <http://publications.europa.eu/resource/authority/file-type/RDF_XML> ;
+                                                        dct:license <https://w3id.org/italia/controlled-vocabulary/licences/A21_CCBY40> ;
+                                                        dct:title "Distribuzione RDF/XML ontologia Indicator-AP_IT"@it ,
+                                                                  "RDF/XML distribution of Indicator-AP_IT Ontology"@en ;
+                                                        dcat:accessURL <https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/Indicator/latest> ;
+                                                        dcat:downloadURL <https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/Indicator/latest/Indicator-AP_IT.rdf> .
+
+
+###  https://w3id.org/italia/data/project/OntoPiA
+<https://w3id.org/italia/data/project/OntoPiA> rdf:type owl:NamedIndividual ,
+                                                        admsapit:Project ;
+                                               l0:name "OntoPiA - la rete di ontologie della pubblica amministrazione italiana"@it .
+
+
+###  https://w3id.org/italia/data/public-organization/agid
+<https://w3id.org/italia/data/public-organization/agid> rdf:type owl:NamedIndividual ,
+                                                                 dcatapit:Agent ,
+                                                                 foaf:Agent ;
+                                                        dct:identifier "agid" ;
+                                                        foaf:name "Agenzia per l'Italia Digitale"@it ,
+                                                                  "Italian Digital Agency"@en .
+
+
+###  https://w3id.org/italia/data/public-organization/cisigs
+<https://w3id.org/italia/data/public-organization/cisigs> rdf:type owl:NamedIndividual ,
+                                                                   dcatapit:Agent ,
+                                                                   foaf:Agent ;
+                                                          dct:identifier "cisigs" ;
+                                                          foaf:name "Cisis Centro Interregionale per I Sistemi Informatici Geografici e Statistici"@it .
+
+
+###  https://w3id.org/italia/onto/Indicator
+<https://w3id.org/italia/onto/Indicator> rdf:type owl:NamedIndividual ,
+                                                  admsapit:SemanticAsset .
+
+
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
