@@ -1,0 +1,86 @@
+@prefix : <httos://w3id.org/italia/onto/Indicator/> .
+@prefix muapit: <https://w3id.org/italia/onto/MU/> .
+@prefix tiapit: <https://w3id.org/italia/onto/TI/> .
+@prefix l0: <https://w3id.org/italia/onto/l0/> .
+@prefix covapit: <https://w3id.org/italia/onto/COV/> .
+@prefix iotapit: <https://w3id.org/italia/onto/IoT/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://w3id.org/italia/controlled-vocabulary/classifications-for-indicators/covid19-indicators/1-1>
+  a :Indicator , skos:Concept ;
+  :computedInIndicatorCalculation <https://w3id.org/italia/data/indicator-calculation/1-1> .
+
+<https://w3id.org/italia/data/indicator-calculation/1-1>
+  a :IndicatorCalculation ;
+  :basedOnMetric <https://w3id.org/italia/data/metric/1-1-1> ;
+  :hasAccrualPeriodicity <http://publications.europa.eu/resource/authority/frequency/MONTHLY> ;
+  :isIndicatorCalculationOf <https://w3id.org/italia/controlled-vocabulary/territorial-classifications/regions/10> , <https://w3id.org/italia/data/public-organization/r_umbria> ;
+  :hasIndicatorValue <https://w3id.org/italia/data/value/60> ;
+  :communicatedAt "2020-05-31"^^xsd:date ;
+  :computedAt <https://w3id.org/italia/data/time-interval/(2020-05-04)-(2020-05-31)> ;
+  :forIndicator <https://w3id.org/italia/controlled-vocabulary/classifications-for-indicators/covid19-indicators/1-1> ;
+  tiapit:modified "2020-05-31"^^xsd:date ;
+  :hasDatumSource <https://w3id.org/italia/data/datum-source/A> .
+
+<https://w3id.org/italia/data/time-interval/(2020-05-04)-(2020-05-31)>
+  a tiapit:TimeInterval ;
+  tiapit:startDate "2020-05-04"^^xsd:date ;
+  tiapit:endDate "2020-05-31"^^xsd:date .
+
+<https://w3id.org/italia/data/datum-source/A>
+  a :DatumSource ;
+  l0:name "Sorveglianza integrata nazionale"@it ;
+  :isDatumSourceOf <https://w3id.org/italia/data/indicator-calculation/1-1> ;
+  :isProvidedBy <https://w3id.org/italia/data/observation/A1> .
+
+
+<https://w3id.org/italia/data/metric/1-1-1>
+ a  :Metric ;
+ l0:name "numero casi sintomatici con data inizio sintomi individuata"@it ;
+ :isMetricOf <https://w3id.org/italia/data/indicator-calculation/1-1> ;
+ :hasParameter <https://w3id.org/italia/data/indicator-parameter/1-1-1-1> .
+
+
+<https://w3id.org/italia/data/indicator-parameter/1-1-1-1>
+  a :Parameter ;
+  l0:name "casi sintomatici con data inizio sintomi"@it .
+
+<https://w3id.org/italia/data/value/60>
+  a muapit:Value ;
+  muapit:value "60" ;
+  muapit:hasMeasurementUnit <https://w3id.org/italia/data/measurement-unit/percentage> .
+
+<https://w3id.org/italia/data/measurement-unit/percentage>
+  a muapit:MeasurementUnit ;
+  l0:name "Percentage"@en , "Percentuale"@it .
+
+<https://w3id.org/italia/data/public-organization/r_umbria>
+  a covapit:PublicOrganization ;
+  covapit:legalName "Regione Umbria"@it ;
+  covapit:IPACode "r_umbria" ;
+  covapit:hasCategory <https://w3id.org/italia/controlled-vocabulary/classifications-for-organizations/S13/201> ;
+  covapit:hasPublicOrgActivityType <https://w3id.org/italia/controlled-vocabulary/classifications-for-organizations/cofog-2009/013> .
+
+<https://w3id.org/italia/data/observation/A1>
+  a iotapit:Observation ;
+  iotapit:hasFeatureOfInterest <https://w3id.org/italia/data/feature-of-interest/patient> ;
+  iotapit:generationTime <https://w3id.org/italia/data/time-interval/2020-05-26> ;
+  iotapit:hasObservationParameter <https://w3id.org/italia/data/observation-parameter/positive-cases-with-date> ;
+  iotapit:hasObservationValue <https://w3id.org/italia/data/observation-value/10> .
+
+<https://w3id.org/italia/data/feature-of-interest/patient>
+  a iotapit:FeatureOfInterest ;
+  l0:name "Paziente"@it .
+
+<https://w3id.org/italia/data/observation-parameter/positive-cases-with-date>
+  a iotapit:ObservationParameter ;
+  l0:name "Casi positivi notificati con data inizio sintomi"@it .
+
+<https://w3id.org/italia/data/observation-value/10>
+  a iotapit:ObservationValue , muapit:Value ;
+  muapit:value "10" .
+
+<https://w3id.org/italia/data/time-interval/2020-05-26>
+  a tiapit:TimeInterval ;
+  tiapit:date "2020-05-26"^^xsd:date .
