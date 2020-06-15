@@ -1,0 +1,979 @@
+@prefix : <https://w3id.org/italia/onto/IoT/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix l0: <https://w3id.org/italia/onto/l0/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix ssn: <http://www.w3.org/ns/ssn/> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix sosa: <http://www.w3.org/ns/sosa/> .
+@prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
+@prefix muapit: <https://w3id.org/italia/onto/MU/> .
+@prefix schema: <http://schema.org/> .
+@prefix tiapit: <https://w3id.org/italia/onto/TI/> .
+@prefix clvapit: <https://w3id.org/italia/onto/CLV/> .
+@prefix admsapit: <https://w3id.org/italia/onto/ADMS/> .
+@prefix dcatapit: <http://dati.gov.it/onto/dcatapit#> .
+@base <https://w3id.org/italia/onto/IoT> .
+
+<https://w3id.org/italia/onto/IoT> rdf:type owl:Ontology ;
+                                    owl:versionIRI <https://w3id.org/italia/onto/IoT/1.1> ;
+                                    owl:imports <https://w3id.org/italia/onto/CLV> ,
+                                                <https://w3id.org/italia/onto/MU> ,
+                                                <https://w3id.org/italia/onto/TI> ,
+                                                <https://w3id.org/italia/onto/l0> ;
+                                    dct:accrualPeriodicity <http://publications.europa.eu/resource/authority/frequency/IRREG> ;
+                                    dct:creator <http://spcdata.digitpa.gov.it/Amministrazione/agid> ,
+                                                <https://w3id.org/italia/data/organization/support-unit/cnr-Z6HZEH/stlab> ;
+                                    dct:description "Questa è l'ontologia di eventi IoT. Essa può essere utilizzata per esempio per rappresentare serie temporali e misure di sensoristica di vario tipo. Attualmente l'ontologia include classi specializzate per la modellazione di flussi di traffico."@it ,
+                                                    "This is the ontology used to represent IoT events. It can be used to model temporal series and measures of sensors of different type. Currently the ontology is specialized for modelling traffic flows."@en ;
+                                    dct:issued "2017-05-15"^^xsd:date ;
+                                    dct:language <http://publications.europa.eu/resource/authority/language/ENG> ,
+                                                 <http://publications.europa.eu/resource/authority/language/ITA> ;
+                                    dct:modified "2020-06-09"^^xsd:date ;
+                                    dct:publisher <http://spcdata.digitpa.gov.it/Amministrazione/agid> ;
+                                    dct:rightsHolder <http://spcdata.digitpa.gov.it/Amministrazione/agid> ;
+                                    dct:title "IoT event Ontology - Italian Application Profile"@en ,
+                                              "Ontologia Eventi IoT - Profilo applicativo italiano"@it ;
+                                    rdfs:comment "Questa è l'ontologia di eventi IoT. Essa può essere utilizzata per esempio per rappresentare serie temporali e misure di sensoristica di vario tipo. Attualmente l'ontologia include classi specializzate per la modellazione di flussi di traffico."@it ,
+                                                 "This is the ontology used to represent IoT events. It can be used to model temporal series and measures of sensors of different types. Currently the ontology has been specialized for modelling traffic flows."@en ;
+                                    rdfs:isDefinedBy <https://w3id.org/italia/onto/IoT> ;
+                                    rdfs:label "IoT event Ontology"@en ,
+                                               "Ontologia Eventi IoT"@it ;
+                                    owl:versionInfo "Version 1.1 - June 9 2020 - modification of the alignments to l0 for Method, FeatureOfInterest, ObservationParameter classes"@en ,
+                                                    "Versione 1.1 - Giugno 9 2020 - modificati gli allineamenti a l0 per le classi Metodo, Caratteristica di Interesse e Parametro dell'Osservazione."@it ;
+                                    dcat:contactPoint <https://w3id.org/italia/data/contact-point/onto-agid> ;
+                                    dcat:keyword "Internet of Things"@it ,
+                                                 "Misurazione"@it ,
+                                                 "Osservazione"@it ,
+                                                 "Sensore"@it ,
+                                                 "flusso di traffico"@it ;
+                                    dcat:theme <http://publications.europa.eu/resource/authority/data-theme/TECH> ,
+                                               <http://publications.europa.eu/resource/authority/data-theme/TRAN> ;
+                                    prov:wasDerivedFrom <https://w3id.org/italia/onto/IoT/1.0> ;
+                                    admsapit:acronym "IoT-AP_IT" ;
+                                    admsapit:hasContributor <https://w3id.org/italia/data/organization/public-organization/td> ;
+                                    admsapit:hasFormalityLevel admsapit:Formal ;
+                                    admsapit:hasKeyClass :Actuator ,
+                                                         :Observation ,
+                                                         :Sensor ;
+                                    admsapit:hasOntologyLanguage admsapit:OWL ;
+                                    admsapit:hasSemanticAssetDistribution <https://w3id.org/italia/data/distribution/IOT-JSON-LD> ,
+                                                                          <https://w3id.org/italia/data/distribution/IOT-RDF-TURTLE> ,
+                                                                          <https://w3id.org/italia/data/distribution/IOT-RDF-XML> ;
+                                    admsapit:hasTask admsapit:AnnotationTask ,
+                                                     admsapit:QueryFormulationTask ,
+                                                     admsapit:SearchTask ;
+                                    admsapit:last <https://w3id.org/italia/onto/IoT/1.0> ;
+                                    admsapit:officialURI "https://w3id.org/italia/onto/IoT"^^xsd:anyURI ;
+                                    admsapit:prefix "iotapit" ;
+                                    admsapit:semanticAssetInUse <https://w3id.org/italia/data/project/DAF> ,
+                                                                <https://w3id.org/italia/data/project/OntoPiA> ;
+                                    admsapit:status "catalogued" ,
+                                                    "published" ;
+                                    admsapit:target "Cittadini"@it ,
+                                                    "Imprese"@it ,
+                                                    "Pubbliche Amministrazioni"@it ;
+                                    admsapit:type admsapit:ServiceOntology .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://purl.org/dc/elements/1.1/creator
+dc:creator rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/license
+dct:license rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/modified
+dct:modified rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/ns/prov#wasDerivedFrom
+prov:wasDerivedFrom rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  https://w3id.org/italia/onto/CLV/hasGeometry
+clvapit:hasGeometry rdf:type owl:ObjectProperty ;
+                    rdfs:isDefinedBy clvapit: .
+
+
+###  https://w3id.org/italia/onto/IoT/comesFrom
+:comesFrom rdf:type owl:ObjectProperty ;
+           rdfs:domain :Observation ;
+           rdfs:range :Platform ;
+           rdfs:comment "Property that links the observation with the platofrm where it comes from."@en ,
+                        "Proprietà che lega l'osservazione con la piattaforma da cui deriva."@it ;
+           rdfs:isDefinedBy <https://w3id.org/italia/onto/IoT> ;
+           rdfs:label "comes from"@en ,
+                      "proviene da"@it ;
+           owl:versionInfo "provvisoria - da validare"@it ,
+                           "unstable"@en .
+
+
+###  https://w3id.org/italia/onto/IoT/consistsOf
+:consistsOf rdf:type owl:ObjectProperty ;
+            owl:inverseOf :isPartOf ;
+            rdfs:domain :ObservationCollection ;
+            rdfs:range :Observation ;
+            rdfs:comment "Property that links a collection of observations with its observations."@en ,
+                         "Proprietà che collega una collezione di osservazioni con le sue osservazioni."@it ;
+            rdfs:isDefinedBy <https://w3id.org/italia/onto/IoT> ;
+            rdfs:label "consiste di"@it ,
+                       "consists of"@en ;
+            owl:versionInfo "stabile"@it ,
+                            "stable"@en .
+
+
+###  https://w3id.org/italia/onto/IoT/generationTime
+:generationTime rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf tiapit:atTime ;
+                rdfs:domain :Observation ;
+                rdfs:range tiapit:TimeInterval ;
+                rdfs:comment "Questa proprietà è sottoproprietà di atTime e consente di modellare il tempo di generazione della osservazione."@it ,
+                             "This property is a subproperty of atTime and defines the generation time of the observation."@en ;
+                rdfs:isDefinedBy <https://w3id.org/italia/onto/IoT> ;
+                rdfs:label "generation time"@en ,
+                           "tempo di generazione"@it ;
+                owl:versionInfo "stabile"@it ,
+                                "stable"@en .
+
+
+###  https://w3id.org/italia/onto/IoT/hasFeatureOfInterest
+:hasFeatureOfInterest rdf:type owl:ObjectProperty ;
+                      owl:inverseOf :isFeatureOfInterestFor ;
+                      rdfs:domain :Observation ;
+                      rdfs:range :FeatureOfInterest ;
+                      rdfs:comment "Property that links the Observation to a feature of interest."@en ,
+                                   "Proprietà che lega un'osservazione a una caratteristica di interesse."@it ;
+                      rdfs:isDefinedBy <https://w3id.org/italia/onto/IoT> ;
+                      rdfs:label "ha caratteristica di interesse"@it ,
+                                 "has feature of interest"@en ;
+                      owl:versionInfo "stabile"@it ,
+                                      "stable"@en .
+
+
+###  https://w3id.org/italia/onto/IoT/hasMeasurementQualityValue
+:hasMeasurementQualityValue rdf:type owl:ObjectProperty ;
+                            owl:inverseOf :isMeasurementQualityValueOf ;
+                            rdfs:domain :MeasurementQuality ;
+                            rdfs:range :MeasurementQualityValue ;
+                            rdfs:comment "Property that links the Measrurement Quality with its value."@en ,
+                                         "Proprietà che collega la Misurazione di qualità con il relativo valore."@it ;
+                            rdfs:isDefinedBy <https://w3id.org/italia/onto/IoT> ;
+                            rdfs:label "ha valore di qualità di misurazione"@it ,
+                                       "has measurement quality value"@en ;
+                            owl:versionInfo "stabile"@it ,
+                                            "stable"@en .
+
+
+###  https://w3id.org/italia/onto/IoT/hasObservationParameter
+:hasObservationParameter rdf:type owl:ObjectProperty ;
+                         owl:inverseOf :isObservationParameterFor ;
+                         rdfs:domain :Observation ;
+                         rdfs:range :ObservationParameter ;
+                         rdfs:comment "Property that links an observation to its parameter being observed."@en ,
+                                      "Proprietà che collega un'osservazione al suo parametro osservato."@it ;
+                         rdfs:isDefinedBy <https://w3id.org/italia/onto/IoT> ;
+                         rdfs:label "ha parametro dell'osservazione"@it ,
+                                    "has observation parameter"@en ;
+                         owl:versionInfo "stabile"@it ,
+                                         "stable"@en .
+
+
+###  https://w3id.org/italia/onto/IoT/hasObservationValue
+:hasObservationValue rdf:type owl:ObjectProperty ;
+                     owl:inverseOf :isObservationValueOf ;
+                     rdfs:domain :Observation ;
+                     rdfs:range :ObservationValue ;
+                     rdfs:comment "Property that links an Observation to its value."@en ,
+                                  "Proprietà che lega un'osservazione al suo valore."@it ;
+                     rdfs:isDefinedBy <https://w3id.org/italia/onto/IoT> ;
+                     rdfs:label "ha valore dell'osservazione"@it ,
+                                "has observation value"@en ;
+                     owl:versionInfo "stabile"@it ,
+                                     "stable"@en .
+
+
+###  https://w3id.org/italia/onto/IoT/hasQuality
+:hasQuality rdf:type owl:ObjectProperty ;
+            rdfs:domain :Observation ;
+            rdfs:range :MeasurementQuality ;
+            rdfs:comment "Property that links an Observation to a number of measurement capabilities."@en ,
+                         "Proprietà che lega un'osservazione a una serie di parametri di qualità."@it ;
+            rdfs:isDefinedBy <https://w3id.org/italia/onto/IoT> ;
+            rdfs:label "ha qualità"@it ,
+                       "has quality"@en ;
+            owl:versionInfo "stabile"@it ,
+                            "stable"@en .
+
+
+###  https://w3id.org/italia/onto/IoT/hasValueForObservationParameter
+:hasValueForObservationParameter rdf:type owl:ObjectProperty ;
+                                 owl:inverseOf :isValueForObservationParameter ;
+                                 rdfs:domain :ObservationParameter ;
+                                 rdfs:range :ObservationValue ;
+                                 rdfs:comment "Questa proprietà connette l'attributo (parametro) dell'osservazione a rispettivo valore dell'osservazione."@it ,
+                                              "This property links the Observation Parameter to the Observation Value."@en ;
+                                 rdfs:isDefinedBy <https://w3id.org/italia/onto/IoT> ;
+                                 rdfs:label "ha valore per parametro di osservazione"@it ,
+                                            "has value for observation parameter"@en ;
+                                 owl:versionInfo "stabile"@it ,
+                                                 "stable"@en .
+
+
+###  https://w3id.org/italia/onto/IoT/hostsMonitoringFacility
+:hostsMonitoringFacility rdf:type owl:ObjectProperty ;
+                         owl:inverseOf :isHostedByPlatform ;
+                         rdfs:domain :Platform ;
+                         rdfs:range :MonitoringFacility ;
+                         rdfs:comment "Property that links a platform with the monitoring facilities it hosts"@en ,
+                                      "Proprietà che collega la piattaforma agli strumenti di monitoraggio che ospita"@it ;
+                         rdfs:isDefinedBy <https://w3id.org/italia/onto/IoT> ;
+                         rdfs:label "hosts monitoring facility"@en ,
+                                    "ospita strumenti di monitoraggio"@it ;
+                         owl:versionInfo "provvisoria - da validare"@it ,
+                                         "unstable"@en .
+
+
+###  https://w3id.org/italia/onto/IoT/implementsMethod
+:implementsMethod rdf:type owl:ObjectProperty ;
+                  rdfs:domain :MonitoringFacility ;
+                  rdfs:range :Method ;
+                  rdfs:isDefinedBy <https://w3id.org/italia/onto/IoT> .
+
+
+###  https://w3id.org/italia/onto/IoT/isFeatureOfInterestFor
+:isFeatureOfInterestFor rdf:type owl:ObjectProperty ;
+                        rdfs:domain :FeatureOfInterest ;
+                        rdfs:range :Observation ;
+                        rdfs:comment "Inverse property of has feature of interest that links a feature of interest to an observation."@en ,
+                                     "Proprietà inversa di ha caratteristica di interesse che lega una caratteristica di interesse a un'osservaizione."@it ;
+                        rdfs:isDefinedBy <https://w3id.org/italia/onto/IoT> ;
+                        rdfs:label "is feature of interest for"@en ,
+                                   "è caratteristica di interesse per"@it ;
+                        owl:versionInfo "stabile"@it ,
+                                        "stable"@en .
+
+
+###  https://w3id.org/italia/onto/IoT/isHostedByPlatform
+:isHostedByPlatform rdf:type owl:ObjectProperty ;
+                    rdfs:domain :MonitoringFacility ;
+                    rdfs:range :Platform ;
+                    rdfs:comment "inverse property of \"hosts monitoring facility\" that connects moniotirng facilities with the platform that hosts them."@en ,
+                                 "proprietà inversa di \"ospita strumenti di monitoraggio\" che collega gli strumenti di monitoraggio con la piattaforma che li ospitano"@it ;
+                    rdfs:isDefinedBy <https://w3id.org/italia/onto/IoT> ;
+                    rdfs:label "is hosted by platform"@en ,
+                               "è ospitato da piattaforma"@it ;
+                    owl:versionInfo "provvisoria - da validare"@it ,
+                                    "unstable"@en .
+
+
+###  https://w3id.org/italia/onto/IoT/isMeasurementQualityValueOf
+:isMeasurementQualityValueOf rdf:type owl:ObjectProperty ;
+                             rdfs:domain :MeasurementQualityValue ;
+                             rdfs:range :MeasurementQuality ;
+                             rdfs:comment "Inverse property of has measurement quality value that links the measurement quality value to the measurment quality."@en ,
+                                          "Proprietà inversa che lega un valore della qualità di misurazione con la qualità di misurazione."@it ;
+                             rdfs:isDefinedBy <https://w3id.org/italia/onto/IoT> ;
+                             rdfs:label "is measurement quality value of"@en ,
+                                        "è valore di qualità di misurazione di"@it ;
+                             owl:versionInfo "stabile"@it ,
+                                             "stable"@en .
+
+
+###  https://w3id.org/italia/onto/IoT/isObservationParameterFor
+:isObservationParameterFor rdf:type owl:ObjectProperty ;
+                           rdfs:domain :ObservationParameter ;
+                           rdfs:range :Observation ;
+                           rdfs:comment "Inverse property of hasObservationParameter that links a parameter to its related observation."@en ,
+                                        "Proprietà inversa di ha attributo osservato che lega un attributo osservato alla sua relativa osservazione."@it ;
+                           rdfs:isDefinedBy <https://w3id.org/italia/onto/IoT> ;
+                           rdfs:label "is observation parameter for"@en ,
+                                      "è parametro dell'osservazione per"@it ;
+                           owl:versionInfo "stabile"@it ,
+                                           "stable"@en .
+
+
+###  https://w3id.org/italia/onto/IoT/isObservationValueOf
+:isObservationValueOf rdf:type owl:ObjectProperty ;
+                      rdfs:domain :ObservationValue ;
+                      rdfs:range :Observation ;
+                      rdfs:comment "Inverse property of hasObservedValue that links an ObservedValue to its related Observation."@en ,
+                                   "Proprietà inversa di ha valore osservato che unisce un valore osservato alla relativa osservazione."@it ;
+                      rdfs:isDefinedBy <https://w3id.org/italia/onto/IoT> ;
+                      rdfs:label "is osbservation value of"@en ,
+                                 "è valore osservato di"@it ;
+                      owl:versionInfo "stabile"@it ,
+                                      "stable"@en .
+
+
+###  https://w3id.org/italia/onto/IoT/isPartOf
+:isPartOf rdf:type owl:ObjectProperty ;
+          rdfs:domain :Observation ;
+          rdfs:range :ObservationCollection ;
+          rdfs:comment "Inverse property of consistsOf that links an observation to its related collection."@en ,
+                       "Proprietà inversa di consiste di che lega un'osservazione alla sua relativa collezione."@it ;
+          rdfs:isDefinedBy <https://w3id.org/italia/onto/IoT> ;
+          rdfs:label "is part of"@en ,
+                     "è parte di"@it ;
+          owl:versionInfo "stabile"@it ,
+                          "stable"@en .
+
+
+###  https://w3id.org/italia/onto/IoT/isValueForObservationParameter
+:isValueForObservationParameter rdf:type owl:ObjectProperty ;
+                                rdfs:domain :ObservationValue ;
+                                rdfs:range :ObservationParameter ;
+                                rdfs:comment "Inverse property of has value for observation parameter that links an observation value to the  observation parameter"@en ,
+                                             "Proprietà inversa di ha valore per il parametro di osservazione che lega un valore dell'osservazione al parametro dell'osservazione."@it ;
+                                rdfs:isDefinedBy <https://w3id.org/italia/onto/IoT> ;
+                                rdfs:label "is value for observation parameter"@en ,
+                                           "è valore per parametro osservazione"@it ;
+                                owl:versionInfo "stabile"@it ,
+                                                "stable"@en .
+
+
+###  https://w3id.org/italia/onto/IoT/makesObservation
+:makesObservation rdf:type owl:ObjectProperty ;
+                  owl:inverseOf :observationMadeBySensor ;
+                  rdfs:domain :Sensor ;
+                  rdfs:range :Observation ;
+                  rdfs:comment "Property that links a Sensor to the Observation."@en ,
+                               "Proprietà che collega un sensore all'osservazione fatta dal sensore."@it ;
+                  rdfs:isDefinedBy <https://w3id.org/italia/onto/IoT> ;
+                  rdfs:label "emette osservazione"@it ,
+                             "fa osservazione"@it ,
+                             "makes observation"@en ,
+                             "produce osservazione"@it ;
+                  owl:versionInfo "stabile"@it ,
+                                  "stable"@en .
+
+
+###  https://w3id.org/italia/onto/IoT/makesObservationCollection
+:makesObservationCollection rdf:type owl:ObjectProperty ;
+                            owl:inverseOf :observationCollectionMadeBySensor ;
+                            rdfs:domain :Sensor ;
+                            rdfs:range :ObservationCollection ;
+                            rdfs:comment "Questa proprietà collega un sensore a una collezione di osservazioni che esso fa."@it ,
+                                         "The property links a sensor to the collection of observations that it makes."@en ;
+                            rdfs:isDefinedBy <https://w3id.org/italia/onto/IoT> ;
+                            rdfs:label "fa collezioni di osservazioni"@it ,
+                                       "makes observation collection"@en ,
+                                       "produce collezioni di osservazioni"@it ;
+                            owl:versionInfo "stabile"@it ,
+                                            "stable"@en .
+
+
+###  https://w3id.org/italia/onto/IoT/observationCollectionMadeBySensor
+:observationCollectionMadeBySensor rdf:type owl:ObjectProperty ;
+                                   rdfs:domain :ObservationCollection ;
+                                   rdfs:range :Sensor ;
+                                   rdfs:comment "Inverse property of makes observation collection that links a collection of observation made by a sensor."@en ,
+                                                "Proprietà inversa di fa collezioni di osservazioni che unisce una collezione di osservazioni a un sensore che le produce."@it ;
+                                   rdfs:isDefinedBy <https://w3id.org/italia/onto/IoT> ;
+                                   rdfs:label "collezione di osservazioni fatte da sensore"@it ,
+                                              "observation collection made by sensor"@en ;
+                                   owl:versionInfo "stabile"@it ,
+                                                   "stable"@en .
+
+
+###  https://w3id.org/italia/onto/IoT/observationMadeBySensor
+:observationMadeBySensor rdf:type owl:ObjectProperty ;
+                         rdfs:domain :Observation ;
+                         rdfs:range :Sensor ;
+                         rdfs:comment "Questa è la proprietù inversa che lega un'osservazione al sensore."@it ,
+                                      "This is the inverse property of makesObservation and links an Observation to the Sensor."@en ;
+                         rdfs:isDefinedBy <https://w3id.org/italia/onto/IoT> ;
+                         rdfs:label "observation made by sensor"@en ,
+                                    "osservazione fatta dal sensore"@it ;
+                         owl:versionInfo "stabile"@it ,
+                                         "stable"@en .
+
+
+###  https://w3id.org/italia/onto/IoT/phenomenonTime
+:phenomenonTime rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf tiapit:atTime ;
+                rdfs:domain :Observation ;
+                rdfs:range tiapit:TimeInterval ;
+                rdfs:comment "Questa proprietà è sotto proprietà di atTime ed è utilizzata per modellare il tempo di validità dell'osservazione."@it ,
+                             "This property is subproperty of atTime and it is used to model the valididty time of an observation."@en ;
+                rdfs:isDefinedBy <https://w3id.org/italia/onto/IoT> ;
+                rdfs:label "phenomenon time"@en ,
+                           "tempo di validità"@it ,
+                           "tempo di validità del fenomeno"@it ;
+                owl:versionInfo "stabile"@it ,
+                                "stable"@en .
+
+
+###  https://w3id.org/italia/onto/IoT/usedMethod
+:usedMethod rdf:type owl:ObjectProperty ;
+            rdfs:domain :Observation ;
+            rdfs:range :Method ;
+            rdfs:comment "Property that links the observation with the method used to derive it."@en ,
+                         "Proprietà che collega l'osservazione con il metodo utilizzato per rilevarla."@it ;
+            rdfs:isDefinedBy <https://w3id.org/italia/onto/IoT> ;
+            rdfs:label "metodo usato"@it ,
+                       "used method"@en ;
+            owl:versionInfo "provvisorio - da validare"@it ,
+                            "unstable"@en .
+
+
+###  https://w3id.org/italia/onto/TI/atTime
+tiapit:atTime rdf:type owl:ObjectProperty .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  https://w3id.org/italia/onto/TI/issued
+tiapit:issued rdf:type owl:DatatypeProperty ;
+              rdfs:isDefinedBy tiapit: .
+
+
+###  https://w3id.org/italia/onto/TI/modified
+tiapit:modified rdf:type owl:DatatypeProperty ;
+                rdfs:isDefinedBy tiapit: .
+
+
+###  https://w3id.org/italia/onto/l0/description
+l0:description rdf:type owl:DatatypeProperty ;
+               rdfs:isDefinedBy l0: .
+
+
+###  https://w3id.org/italia/onto/l0/identifier
+l0:identifier rdf:type owl:DatatypeProperty ;
+              rdfs:isDefinedBy l0: .
+
+
+###  https://w3id.org/italia/onto/l0/name
+l0:name rdf:type owl:DatatypeProperty ;
+        rdfs:isDefinedBy l0: .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  https://w3id.org/italia/onto/CLV/Geometry
+clvapit:Geometry rdf:type owl:Class ;
+                 rdfs:isDefinedBy clvapit: .
+
+
+###  https://w3id.org/italia/onto/IoT/Accuracy
+:Accuracy rdf:type owl:Class ;
+          rdfs:subClassOf :MeasurementQuality ;
+          rdfs:comment "It represents the Accuracy; that is, the maximimum difference between the indicated value and the actual measurand being monitored, whilst taking into account all possible sources of error that are relevant to the application."@en ,
+                       "Questa classe rappresenta l'Accuratezza, cioè la differenza massima tra il valore indicato e il valore effettivo monitorato, tenuto conto di tutte le possibili fonti di errore rilevanti per l'applicazione."@it ;
+          rdfs:isDefinedBy <https://w3id.org/italia/onto/IoT> ;
+          rdfs:label "Accuracy"@en ,
+                     "Accuratezza"@it ;
+          owl:versionInfo "instabile"@it ,
+                          "unstable"@en .
+
+
+###  https://w3id.org/italia/onto/IoT/Actuator
+:Actuator rdf:type owl:Class ;
+          rdfs:subClassOf :MonitoringFacility ;
+          rdfs:comment "An actuator."@en ,
+                       "La classe che rappresenta un attuatore."@it ;
+          rdfs:label "Actuator"@en ,
+                     "Attuatore"@it .
+
+
+###  https://w3id.org/italia/onto/IoT/FeatureOfInterest
+:FeatureOfInterest rdf:type owl:Class ;
+                   rdfs:subClassOf l0:Entity ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty :isFeatureOfInterestFor ;
+                                     owl:allValuesFrom :Observation
+                                   ] ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty l0:name ;
+                                     owl:someValuesFrom rdfs:Literal
+                                   ] ;
+                   rdfs:comment "It represents the Feature whose Observed Attribute is being observed by a Sensor in order to get an Observed Value. For instance, if we say that the temperature of the kitchen is 28 celsius degrees, the Feature of Interest is the kitchen."@en ,
+                                "Rappresenta la caratteristica di interesse il cui attributo osservato è osservato da un sensor per ottenere un valore osservato. Per esempio, se diciamo che la temperatura della cucina è di 28 gradi celsius, la caratteristica di interesse è la cucina."@it ;
+                   rdfs:isDefinedBy <https://w3id.org/italia/onto/IoT> ;
+                   rdfs:label "Caratteristica di interesse"@it ,
+                              "Feature of Interest"@en ;
+                   owl:versionInfo "stabile"@it ,
+                                   "stable"@en .
+
+
+###  https://w3id.org/italia/onto/IoT/Frequency
+:Frequency rdf:type owl:Class ;
+           rdfs:subClassOf :MeasurementQuality ;
+           rdfs:comment "It represents the Frequency; that is, the smallest possible time between one observation and the next, under the defined conditions."@en ,
+                        "Questa classe rappresenta la frequenza ovvero il più piccolo tempo possibile tra un'osservazione e un'altra, in determinate condizioni."@it ;
+           rdfs:isDefinedBy <https://w3id.org/italia/onto/IoT> ;
+           rdfs:label "Frequency"@en ,
+                      "Frequenza"@en ;
+           owl:versionInfo "instabile"@it ,
+                           "unstable"@en .
+
+
+###  https://w3id.org/italia/onto/IoT/Latency
+:Latency rdf:type owl:Class ;
+         rdfs:subClassOf :MeasurementQuality ;
+         rdfs:comment "It represents the Latency; i.e., the time delay between the cause and the effect of some change in the system being observed"@en ,
+                      "Questa classe rappresenta la Latenza, ovvero il ritardo di tempo tra la causa e l'effetto di qualche cambiamento nel sistema osservarto."@it ;
+         rdfs:isDefinedBy <https://w3id.org/italia/onto/IoT> ;
+         rdfs:label "Latency"@en ,
+                    "Latenza"@it ;
+         owl:versionInfo "instabile"@it ,
+                         "unstable"@en .
+
+
+###  https://w3id.org/italia/onto/IoT/MeasurementQuality
+:MeasurementQuality rdf:type owl:Class ;
+                    rdfs:subClassOf l0:Characteristic ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty :hasMeasurementQualityValue ;
+                                      owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                      owl:onClass :MeasurementQualityValue
+                                    ] ;
+                    rdfs:comment "Questa classe rappresenta dei parametri di qualità o capacità di misurazione dell'osservazione. Esempi di parametri sono: Latenza, Accuratezza, Ripetibilità, ecc."@it ,
+                                 "This class represents quality parameters or measurement capabilities/qualities of an observation. Examples include Latency, Accuracy, Repetability, etc."@en ;
+                    rdfs:isDefinedBy <https://w3id.org/italia/onto/IoT> ;
+                    rdfs:label "Measurement Quality"@en ,
+                               "Qualità di Misurazione"@it ;
+                    owl:versionInfo "instabile"@it ,
+                                    "unstable"@en .
+
+
+###  https://w3id.org/italia/onto/IoT/MeasurementQualityValue
+:MeasurementQualityValue rdf:type owl:Class ;
+                         rdfs:subClassOf muapit:Value ,
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty :isMeasurementQualityValueOf ;
+                                           owl:someValuesFrom :MeasurementQuality
+                                         ] ;
+                         rdfs:isDefinedBy <https://w3id.org/italia/onto/IoT> ;
+                         rdfs:label "Measurement Quality Value"@en ,
+                                    "Valore Qualità di Misurazione"@it .
+
+
+###  https://w3id.org/italia/onto/IoT/Method
+:Method rdf:type owl:Class ;
+        rdfs:subClassOf l0:Description ;
+        rdfs:comment "A workflow, protocol, plan, algorithm, or computational method specifying how to make an observation. It is implemented by monitoring facilities"@en ,
+                     "Un metodo di misurazione, una procedura, un protocollo che specifica come effetturare un'osservazione e che è implementato da uno strumento di monitoraggio."@it ;
+        rdfs:isDefinedBy <https://w3id.org/italia/onto/IoT> ;
+        rdfs:label "Method"@en ,
+                   "Metodo"@it ,
+                   "Procedura"@it ,
+                   "Protocollo"@it ;
+        owl:versionInfo "provvisoria - da validare"@it ,
+                        "unstable"@en .
+
+
+###  https://w3id.org/italia/onto/IoT/MonitoringFacility
+:MonitoringFacility rdf:type owl:Class ;
+                    rdfs:subClassOf l0:Object ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty :implementsMethod ;
+                                      owl:allValuesFrom :Method
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty :isHostedByPlatform ;
+                                      owl:allValuesFrom :Platform
+                                    ] ;
+                    rdfs:comment "Il termine è utilizzato nelle relative specifiche INSPIRE per definire degli strumenti di monitoraggio. Nel contesto di questa ontologia sono i sensori e gli attuatori."@it ,
+                                 "The term refers to the related INSPIRE specifications for environmental monitoring facilties. In the context of this ontology, it consists of sensors and actuators"@en ;
+                    rdfs:isDefinedBy <https://w3id.org/italia/onto/IoT> ;
+                    rdfs:label "Monitoring Facility"@en ,
+                               "Strumento di monitoraggio"@it ;
+                    owl:versionInfo "provvisorio - in attesa di validazione"@it ,
+                                    "unstable"@en .
+
+
+###  https://w3id.org/italia/onto/IoT/Observation
+:Observation rdf:type owl:Class ;
+             rdfs:subClassOf l0:Activity ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :hasObservationParameter ;
+                               owl:someValuesFrom :ObservationParameter
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :hasObservationValue ;
+                               owl:someValuesFrom :ObservationValue
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :hasQuality ;
+                               owl:allValuesFrom :MeasurementQuality
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :usedMethod ;
+                               owl:allValuesFrom :Method
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :hasFeatureOfInterest ;
+                               owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                               owl:onClass :FeatureOfInterest
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :isPartOf ;
+                               owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                               owl:onClass :ObservationCollection
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :observationMadeBySensor ;
+                               owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                               owl:onClass :Sensor
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty clvapit:hasGeometry ;
+                               owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                               owl:onClass clvapit:Geometry
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :generationTime ;
+                               owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                               owl:onClass tiapit:TimeInterval
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :phenomenonTime ;
+                               owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                               owl:onClass tiapit:TimeInterval
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty tiapit:atTime ;
+                               owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                               owl:onClass tiapit:TimeInterval
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty l0:description ;
+                               owl:allValuesFrom rdfs:Literal
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty l0:identifier ;
+                               owl:cardinality "1"^^xsd:nonNegativeInteger
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty tiapit:issued ;
+                               owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                               owl:onDataRange xsd:dateTime
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty tiapit:modified ;
+                               owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                               owl:onDataRange xsd:dateTime
+                             ] ;
+             rdfs:comment "Act of carrying out an Observation (which is an Event) to estimate or calculate a value of an attribute of a feature of interest."@en ,
+                          "L'atto di condurre un'osservazione (che è un evento) per stimare o calcolare un valore di un attributo di una caratteristica di interesse."@it ;
+             rdfs:isDefinedBy <https://w3id.org/italia/onto/IoT> ;
+             rdfs:label "Observation"@en ,
+                        "Osservazione"@it ;
+             owl:versionInfo "stabile"@it ,
+                             "stable"@en .
+
+
+###  https://w3id.org/italia/onto/IoT/ObservationCollection
+:ObservationCollection rdf:type owl:Class ;
+                       rdfs:subClassOf l0:Collection ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty :consistsOf ;
+                                         owl:someValuesFrom :Observation
+                                       ] ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty :observationCollectionMadeBySensor ;
+                                         owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                         owl:onClass :Sensor
+                                       ] ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty l0:identifier ;
+                                         owl:cardinality "1"^^xsd:nonNegativeInteger
+                                       ] ;
+                       rdfs:comment "Questa classe rappresenta una collezione di osservazioni fatte da un sensore. Potrebbe anche essere vista come uno stream di dati."@it ,
+                                    "This class represents a collection of observations made by a sensor. It can also be thought of as a data stream."@en ;
+                       rdfs:isDefinedBy <https://w3id.org/italia/onto/IoT> ;
+                       rdfs:label "Collezione di Osservazioni"@it ,
+                                  "Observation Collection"@en ;
+                       owl:versionInfo "instabile"@it ,
+                                       "unstable"@en .
+
+
+###  https://w3id.org/italia/onto/IoT/ObservationParameter
+:ObservationParameter rdf:type owl:Class ;
+                      rdfs:subClassOf [ rdf:type owl:Class ;
+                                        owl:unionOf ( l0:Characteristic
+                                                      l0:Concept
+                                                    )
+                                      ] ,
+                                      [ rdf:type owl:Restriction ;
+                                        owl:onProperty :hasValueForObservationParameter ;
+                                        owl:someValuesFrom :ObservationValue
+                                      ] ,
+                                      [ rdf:type owl:Restriction ;
+                                        owl:onProperty :isObservationParameterFor ;
+                                        owl:allValuesFrom :Observation
+                                      ] ,
+                                      [ rdf:type owl:Restriction ;
+                                        owl:onProperty l0:name ;
+                                        owl:someValuesFrom rdfs:Literal
+                                      ] ;
+                      rdfs:comment "An observation parameter (property, characteristic) of a feature of interest. For instance, if we say that the temperature of the kitchen is 28 clesius degrees, the observed attribute is temperature."@en ,
+                                   "Rappresenta un parametro (proprietà) dell'osservazione di una caratteristica di interesse. Per esempio, se diciamo che la temperatura della cucina è di 28 gradi celsius, la temperatura rappresenta l'attributo osservato."@it ;
+                      rdfs:isDefinedBy <https://w3id.org/italia/onto/IoT> ;
+                      rdfs:label "Observation Parameter"@en ,
+                                 "Parametro dell'Osservazione"@it ;
+                      owl:versionInfo "stabile"@it ,
+                                      "stable"@en .
+
+
+###  https://w3id.org/italia/onto/IoT/ObservationValue
+:ObservationValue rdf:type owl:Class ;
+                  rdfs:subClassOf muapit:Value ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty :isObservationValueOf ;
+                                    owl:someValuesFrom :Observation
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty :isValueForObservationParameter ;
+                                    owl:someValuesFrom :ObservationParameter
+                                  ] ;
+                  rdfs:comment "It represents the value of the observation. For instance if we say that the temperature of the kitchen is 28 celsius degrees, the observed value is 28 celsius degrees."@en ,
+                               "Rappresenta il valore dell'osservazione. Per esempio se diciamo che la temperatura della cucina è di 28 gradi celsius, il valore osservato è 28 gradi celsius."@it ;
+                  rdfs:isDefinedBy <https://w3id.org/italia/onto/IoT> ;
+                  rdfs:label "Observation Value"@en ,
+                             "Valore dell'Osservazione"@it ;
+                  owl:versionInfo "stabile"@it ,
+                                  "stable"@en .
+
+
+###  https://w3id.org/italia/onto/IoT/Offset
+:Offset rdf:type owl:Class ;
+        rdfs:subClassOf :MeasurementQuality ;
+        rdfs:comment "It represents the offset error; that is, the difference between the actual output value and the specified output value under some particular set of conditions."@en ,
+                     "Questa classe rappresenta l'errore di compensazione, ovvero  la differenza tra il valore reale di uscita e il valore di uscita specificato in alcune particolari condizioni."@it ;
+        rdfs:isDefinedBy <https://w3id.org/italia/onto/IoT> ;
+        rdfs:label "Compensazione"@it ,
+                   "Offset"@en ;
+        owl:versionInfo "instabile"@it ,
+                        "unstable"@en .
+
+
+###  https://w3id.org/italia/onto/IoT/Platform
+:Platform rdf:type owl:Class ;
+          rdfs:subClassOf l0:Object ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :hostsMonitoringFacility ;
+                            owl:allValuesFrom :MonitoringFacility
+                          ] ;
+          rdfs:comment "E' un oggetto che ospita strumenti di monitoraggio.  Può essere una boa, un cellulare, un sistema satellitare, una stazione meteo."@it ,
+                       "It is an object that hosts monitoring facilities. It can be a buoy, a mobile phone, a meteo station, a satellite"@en ;
+          rdfs:isDefinedBy <https://w3id.org/italia/onto/IoT> ;
+          rdfs:label "Piattaforma"@it ,
+                     "Platform"@en ;
+          owl:versionInfo "provvisorio - da validare"@it ,
+                          "unstable"@en .
+
+
+###  https://w3id.org/italia/onto/IoT/Precision
+:Precision rdf:type owl:Class ;
+           rdfs:subClassOf :MeasurementQuality ;
+           rdfs:comment "It represents the Precision; i.e., the  degree of reproducibility of a measurement. In other words, if exactly the same values were measured a number of times, an ideal sensor would output exactly the same value every time."@en ,
+                        "Questa classe rappresenta la Precisione, ovvero il grado di riproducibilità di una misura. In altre parole, se esattamente gli stessi valori sono stati misurati un certo numero di volte, un sensor ideale produrrebbe come output esattamente lo stesso valore ogni volta."@it ;
+           rdfs:isDefinedBy <https://w3id.org/italia/onto/IoT> ;
+           rdfs:label "Precision"@en ,
+                      "Precisione"@it ;
+           owl:versionInfo "instabile"@it ,
+                           "unstable"@en .
+
+
+###  https://w3id.org/italia/onto/IoT/Repetability
+:Repetability rdf:type owl:Class ;
+              rdfs:subClassOf :MeasurementQuality ;
+              rdfs:comment "It represents the Repetability; that is, the variation in measurements taken by the sensor on the same item, under the same conditions, and in a short period of time."@en ,
+                           "Questa classe rappresenta la ripetibilità ovvero la variazione nelle misurazioni fatte da un sensor sullo stesso oggetto, alle stesse condizioni e in un lasso breve di tempo."@it ;
+              rdfs:isDefinedBy <https://w3id.org/italia/onto/IoT> ;
+              rdfs:label "Repetability"@en ,
+                         "Ripetibilità"@it ;
+              owl:versionInfo "instabile"@it ,
+                              "unstable"@en .
+
+
+###  https://w3id.org/italia/onto/IoT/RoadSegment
+:RoadSegment rdf:type owl:Class ;
+             rdfs:subClassOf :FeatureOfInterest ;
+             rdfs:comment "Classe che rappresenta un arco stradale. Se l'ontologia è utilizzata per rappresentare eventi IoT nell'ambito dei dati real time sul traffico, la classe è rilevante e connota l'arco stradale dell'osservazione."@it ,
+                          "This class represents the Road Segment  If the ontology is used to represent IoT events in the context of real time data traffic, the class is revelant and it represents the road segment of the observation."@en ;
+             rdfs:isDefinedBy <https://w3id.org/italia/onto/IoT> ;
+             rdfs:label "Arco Stradale"@it ,
+                        "Road Segment"@en ;
+             owl:versionInfo "stabile"@it ,
+                             "stable"@en .
+
+
+###  https://w3id.org/italia/onto/IoT/Sensor
+:Sensor rdf:type owl:Class ;
+        rdfs:subClassOf :MonitoringFacility ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :makesObservation ;
+                          owl:allValuesFrom :Observation
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty l0:description ;
+                          owl:allValuesFrom rdfs:Literal
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty l0:identifier ;
+                          owl:cardinality "1"^^xsd:nonNegativeInteger
+                        ] ;
+        rdfs:comment "Questa classe rappresenta un sensore. Un sensore è uno strumento il cui scopo è quello di rilevare e rispondere a eventi o cambiamenti che avvengono nel proprio ambienti. L'informazione rilevata può essere  utilizzata e distribuita per successive elaborazioni."@it ,
+                     "This class represents a sensor. A sensor is a device whose purpose is to detect and respond to events or changes in its environment. The detected information can be used and disseminated for successive elaborations."@en ;
+        rdfs:isDefinedBy <https://w3id.org/italia/onto/IoT> ;
+        rdfs:label "Sensor"@en ,
+                   "Sensore"@it ;
+        owl:versionInfo "stabile"@it ,
+                        "stable"@en .
+
+
+###  https://w3id.org/italia/onto/IoT/TrafficFlow
+:TrafficFlow rdf:type owl:Class ;
+             rdfs:subClassOf :Observation ;
+             rdfs:comment "Questa classe rappresenta una specifica osservazione sui flussi di traffico"@it ,
+                          "This class represents a specific observation on the traffic flows"@en ;
+             rdfs:isDefinedBy <https://w3id.org/italia/onto/IoT> ;
+             rdfs:label "Flusso Traffico"@it ,
+                        "Traffic Flow"@en ;
+             owl:versionInfo "instabile"@it ,
+                             "unstable"@en .
+
+
+###  https://w3id.org/italia/onto/MU/Value
+muapit:Value rdf:type owl:Class .
+
+
+###  https://w3id.org/italia/onto/TI/TimeInterval
+tiapit:TimeInterval rdf:type owl:Class .
+
+
+###  https://w3id.org/italia/onto/l0/Activity
+l0:Activity rdf:type owl:Class .
+
+
+###  https://w3id.org/italia/onto/l0/Characteristic
+l0:Characteristic rdf:type owl:Class .
+
+
+###  https://w3id.org/italia/onto/l0/Collection
+l0:Collection rdf:type owl:Class .
+
+
+###  https://w3id.org/italia/onto/l0/Object
+l0:Object rdf:type owl:Class .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://spcdata.digitpa.gov.it/Amministrazione/agid
+<http://spcdata.digitpa.gov.it/Amministrazione/agid> rdf:type owl:NamedIndividual ,
+                                                              dcatapit:Agent ,
+                                                              foaf:Agent ;
+                                                     dct:identifier "agid" ;
+                                                     foaf:name "Agenzia per l'Italia Digitale"@it ,
+                                                               "Italian Digital Agency"@en .
+
+
+###  https://w3id.org/italia/data/contact-point/onto-agid
+<https://w3id.org/italia/data/contact-point/onto-agid> rdf:type owl:NamedIndividual ,
+                                                                dcatapit:Organization ,
+                                                                vcard:Kind ,
+                                                                vcard:Organization ;
+                                                       vcard:fn "banche dati e open data" ;
+                                                       vcard:hasEmail <mailto:info@dati.gov.it> .
+
+
+###  https://w3id.org/italia/data/distribution/IOT-JSON-LD
+<https://w3id.org/italia/data/distribution/IOT-JSON-LD> rdf:type owl:NamedIndividual ,
+                                                                 admsapit:SemanticAssetDistribution ;
+                                                        dct:description "Questa è la distribuzione JSON-LD dell'ontologia degli eventi IoT"@it ,
+                                                                        "This is the distribution in JSON-LD of the IoT Events ontology"@en ;
+                                                        dct:format <http://publications.europa.eu/resource/authority/file-type/JSON_LD> ;
+                                                        dct:license <https://w3id.org/italia/controlled-vocabulary/licences/A21_CCBY40> ;
+                                                        dct:title "Distribuzione JSON-LD ontologia IoT-AP_IT"@it ,
+                                                                  "JSON-LD distribution of IoT-AP_IT Ontology"@en ;
+                                                        dcat:accessURL <https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/IoT/latest> ;
+                                                        dcat:downloadURL <https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/IoT/IoT-AP_IT.jsonld> .
+
+
+###  https://w3id.org/italia/data/distribution/IOT-RDF-TURTLE
+<https://w3id.org/italia/data/distribution/IOT-RDF-TURTLE> rdf:type owl:NamedIndividual ,
+                                                                    admsapit:SemanticAssetDistribution ;
+                                                           dct:description "Questa è la distribuzione RDF/Turtle dell'ontologia degli eventi IoT"@it ,
+                                                                           "This is the distribution in RDF/turtle of the IoT Events ontology"@en ;
+                                                           dct:format <http://publications.europa.eu/resource/authority/file-type/RDF_TURTLE> ;
+                                                           dct:license <https://w3id.org/italia/controlled-vocabulary/licences/A21_CCBY40> ;
+                                                           dct:title "Distribuzione RDF/Turtle ontologia IoT-AP_IT"@it ,
+                                                                     "RDF/Turtle distribution of IoT-AP_IT Ontology"@en ;
+                                                           dcat:accessURL <https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/IoT/latest> ;
+                                                           dcat:downloadURL <https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/IoT/latest/IoT-AP_IT.ttl> .
+
+
+###  https://w3id.org/italia/data/distribution/IOT-RDF-XML
+<https://w3id.org/italia/data/distribution/IOT-RDF-XML> rdf:type owl:NamedIndividual ,
+                                                                 admsapit:SemanticAssetDistribution ;
+                                                        dct:description "Questa è la distribuzione RDF/XML dell'ontologia degli eventi IoT"@it ,
+                                                                        "This is the distribution in RDF/XML of the IoT Events ontology"@en ;
+                                                        dct:format <http://publications.europa.eu/resource/authority/file-type/RDF_XML> ;
+                                                        dct:license <https://w3id.org/italia/controlled-vocabulary/licences/A21_CCBY40> ;
+                                                        dct:title "Distribuzione RDF/XML ontologia IoT-AP_IT"@it ,
+                                                                  "RDF/XML distribution of IoT-AP_IT Ontology"@en ;
+                                                        dcat:accessURL <https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/IoT/latest> ;
+                                                        dcat:downloadURL <https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/IoT/latest/IoT-AP_IT.rdf> .
+
+
+###  https://w3id.org/italia/data/organization/public-organization/td
+<https://w3id.org/italia/data/organization/public-organization/td> rdf:type owl:NamedIndividual ,
+                                                                            dcatapit:Agent ,
+                                                                            foaf:Agent ;
+                                                                   dct:identifier "TD" ;
+                                                                   foaf:name "Digital Transformation Team"@en ,
+                                                                             "Team per la Trasformazione Digitale"@it .
+
+
+###  https://w3id.org/italia/data/organization/support-unit/cnr-Z6HZEH/stlab
+<https://w3id.org/italia/data/organization/support-unit/cnr-Z6HZEH/stlab> rdf:type owl:NamedIndividual ,
+                                                                                   dcatapit:Agent ;
+                                                                          dct:identifier "cnr - Z6HZEH - STLab" ;
+                                                                          foaf:name "Institute of Cognitive Sciences and Technologies of the Italian Research Council (CNR) - Semantic Technology Laboratory (STLab)"@en ,
+                                                                                    "Istituto di Scienze e Tecnologie della Cognizione del CNR - Semantic Technology Lab (STLab)"@it .
+
+
+###  https://w3id.org/italia/data/project/DAF
+<https://w3id.org/italia/data/project/DAF> rdf:type owl:NamedIndividual ,
+                                                    admsapit:Project ;
+                                           foaf:name "Data & Analytics Framework"@it .
+
+
+###  https://w3id.org/italia/data/project/OntoPiA
+<https://w3id.org/italia/data/project/OntoPiA> rdf:type owl:NamedIndividual ,
+                                                        admsapit:Project ;
+                                               l0:name "OntoPiA - la rete di ontologie della pubblica amministrazione italiana"@it .
+
+
+###  https://w3id.org/italia/onto/IoT
+<https://w3id.org/italia/onto/IoT> rdf:type owl:NamedIndividual ,
+                                            admsapit:SemanticAsset .
+
+
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
