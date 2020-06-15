@@ -135,22 +135,9 @@ admsapit:status rdf:type owl:AnnotationProperty .
 #    Object Properties
 #################################################################
 
-###  https://w3id.org/italia/onto/MU/isMeasureTypeOf
-:isMeasureTypeOf rdf:type owl:ObjectProperty ;
-                 owl:inverseOf :hasMeasureType ;
-                 rdfs:domain :MeasureType ;
-                 rdfs:range :Value ;
-                 rdfs:comment "Inverse property of \"has measure type\" that links a measure type to the value."@en ,
-                              "Proprietà inversa di \"ha tipo di misura\" che collega un tipo di misura al valore."@it ;
-                 rdfs:isDefinedBy <https://w3id.org/italia/onto/MU> ;
-                 rdfs:label "is measure type of"@en ,
-                            "è tipo misura di"@it ;
-                 owl:versionInfo "stabile"@it ,
-                                 "stable"@en .
-
-
 ###  https://w3id.org/italia/onto/MU/hasMeasureType
 :hasMeasureType rdf:type owl:ObjectProperty ;
+                owl:inverseOf :isMeasureTypeOf ;
                 rdfs:domain :Value ;
                 rdfs:range :MeasureType ;
                 rdfs:comment "Property that links a Value to its type of measure"@en ,
@@ -187,6 +174,19 @@ admsapit:status rdf:type owl:AnnotationProperty .
                      "has value"@en ;
           owl:versionInfo "stabile"@it ,
                           "stable"@en .
+
+
+###  https://w3id.org/italia/onto/MU/isMeasureTypeOf
+:isMeasureTypeOf rdf:type owl:ObjectProperty ;
+                 rdfs:domain :MeasureType ;
+                 rdfs:range :Value ;
+                 rdfs:comment "Inverse property of \"has measure type\" that links a measure type to the value."@en ,
+                              "Proprietà inversa di \"ha tipo di misura\" che collega un tipo di misura al valore."@it ;
+                 rdfs:isDefinedBy <https://w3id.org/italia/onto/MU> ;
+                 rdfs:label "is measure type of"@en ,
+                            "è tipo misura di"@it ;
+                 owl:versionInfo "stabile"@it ,
+                                 "stable"@en .
 
 
 ###  https://w3id.org/italia/onto/MU/isMeasurementUnitOf
@@ -291,13 +291,12 @@ admsapit:SemanticAssetDistribution rdf:type owl:Class .
 :MeasureType rdf:type owl:Class ;
              rdfs:subClassOf l0:Characteristic ,
                              [ rdf:type owl:Restriction ;
-                               owl:onProperty :isMeasureTypeOf ;
-                               owl:someValuesFrom :Value
+                               owl:onProperty :hasMeasurementUnit ;
+                               owl:someValuesFrom :MeasurementUnit
                              ] ,
                              [ rdf:type owl:Restriction ;
-                               owl:onProperty :hasMeasurementUnit ;
-                               owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                               owl:onClass :MeasurementUnit
+                               owl:onProperty :isMeasureTypeOf ;
+                               owl:someValuesFrom :Value
                              ] ;
              rdfs:comment "La classe che rappresenta il tipo di misura (e.g., la lunghezza, l'altezza, ecc.)"@it ,
                           "The class that represents the type of measure (e.g., length, height, etc.)"@en ;
