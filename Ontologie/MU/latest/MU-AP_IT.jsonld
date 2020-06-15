@@ -23,12 +23,12 @@
       },
       "owl:versionInfo": [
         {
-          "@language": "en",
-          "@value": "stable"
-        },
-        {
           "@language": "it",
           "@value": "stabile"
+        },
+        {
+          "@language": "en",
+          "@value": "stable"
         }
       ],
       "rdfs:comment": [
@@ -62,24 +62,20 @@
       }
     },
     {
-      "@id": "_:ub58bL326C30",
+      "@id": "_:ub60bL324C30",
       "@type": "owl:Restriction",
-      "owl:onClass": {
-        "@id": "https://w3id.org/italia/onto/MU/MeasurementUnit"
-      },
       "owl:onProperty": {
-        "@id": "https://w3id.org/italia/onto/MU/hasMeasurementUnit"
+        "@id": "https://w3id.org/italia/onto/MU/isMeasureTypeOf"
       },
-      "owl:qualifiedCardinality": {
-        "@type": "xsd:nonNegativeInteger",
-        "@value": "1"
+      "owl:someValuesFrom": {
+        "@id": "https://w3id.org/italia/onto/MU/Value"
       }
     },
     {
       "@id": "https://w3id.org/italia/data/project/OntoPiA",
       "@type": [
-        "admsapit:Project",
-        "owl:NamedIndividual"
+        "owl:NamedIndividual",
+        "admsapit:Project"
       ],
       "l0:name": {
         "@language": "it",
@@ -89,8 +85,8 @@
     {
       "@id": "https://w3id.org/italia/data/distribution/MUAPIT-JSON-LD",
       "@type": [
-        "admsapit:SemanticAssetDistribution",
-        "owl:NamedIndividual"
+        "owl:NamedIndividual",
+        "admsapit:SemanticAssetDistribution"
       ],
       "dcat:accessURL": {
         "@id": "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/MU/latest"
@@ -100,12 +96,12 @@
       },
       "dcterms:description": [
         {
-          "@language": "en",
-          "@value": "This is the distribution in JSON-LD of the Measurement Unit ontology"
-        },
-        {
           "@language": "it",
           "@value": "Questa è la distribuzione JSON-LD dell'ontologia delle unità di misura"
+        },
+        {
+          "@language": "en",
+          "@value": "This is the distribution in JSON-LD of the Measurement Unit ontology"
         }
       ],
       "dcterms:format": {
@@ -140,12 +136,12 @@
       ],
       "rdfs:comment": [
         {
-          "@language": "it",
-          "@value": "Questa classe è utilizzata per rappresentare un'unità di misura (e.g., metro, chilometro, grammo, ecc.)."
-        },
-        {
           "@language": "en",
           "@value": "This class is used to model a measurement unit (e.g., meter, kilometer, gram, etc.)"
+        },
+        {
+          "@language": "it",
+          "@value": "Questa classe è utilizzata per rappresentare un'unità di misura (e.g., metro, chilometro, grammo, ecc.)."
         }
       ],
       "rdfs:isDefinedBy": {
@@ -153,12 +149,12 @@
       },
       "rdfs:label": [
         {
-          "@language": "it",
-          "@value": "Unità di Misura"
-        },
-        {
           "@language": "en",
           "@value": "Measurement Unit"
+        },
+        {
+          "@language": "it",
+          "@value": "Unità di Misura"
         }
       ],
       "rdfs:subClassOf": {
@@ -166,8 +162,41 @@
       }
     },
     {
-      "@id": "dcterms:format",
-      "@type": "owl:AnnotationProperty"
+      "@id": "_:ub60bL372C24",
+      "@type": "owl:Restriction",
+      "owl:onProperty": {
+        "@id": "https://w3id.org/italia/onto/MU/value"
+      },
+      "owl:someValuesFrom": {
+        "@id": "rdfs:Literal"
+      }
+    },
+    {
+      "@id": "_:ub60bL328C30",
+      "@type": "owl:Restriction",
+      "owl:onClass": {
+        "@id": "https://w3id.org/italia/onto/MU/MeasurementUnit"
+      },
+      "owl:onProperty": {
+        "@id": "https://w3id.org/italia/onto/MU/hasMeasurementUnit"
+      },
+      "owl:qualifiedCardinality": {
+        "@type": "xsd:nonNegativeInteger",
+        "@value": "1"
+      }
+    },
+    {
+      "@id": "https://w3id.org/italia/data/contact-point/onto-agid",
+      "@type": [
+        "vcard:Organization",
+        "http://dati.gov.it/onto/dcatapit#Organization",
+        "owl:NamedIndividual",
+        "vcard:Kind"
+      ],
+      "vcard:fn": "banche dati e open data",
+      "vcard:hasEmail": {
+        "@id": "mailto:info@dati.gov.it"
+      }
     },
     {
       "@id": "vcard:Kind",
@@ -188,12 +217,12 @@
       ],
       "rdfs:comment": [
         {
-          "@language": "en",
-          "@value": "The class of the values. The value is described with a single value such an integer, a float, a string (at least one has to be specified) and, when available, a unit of measurement."
-        },
-        {
           "@language": "it",
           "@value": "La classe dei valori. Un valore è descritto con un singolo valore come per esempio un intero, una stringa un float (almeno un valore deve essere specificato per la classe Valore) e, dove disponibile, un'unità di misura."
+        },
+        {
+          "@language": "en",
+          "@value": "The class of the values. The value is described with a single value such an integer, a float, a string (at least one has to be specified) and, when available, a unit of measurement."
         }
       ],
       "rdfs:isDefinedBy": {
@@ -201,42 +230,32 @@
       },
       "rdfs:label": [
         {
-          "@language": "en",
-          "@value": "Value"
-        },
-        {
           "@language": "it",
           "@value": "Valore"
+        },
+        {
+          "@language": "en",
+          "@value": "Value"
         }
       ],
       "rdfs:subClassOf": [
         {
-          "@id": "_:ub58bL365C24"
+          "@id": "_:ub60bL363C24"
         },
         {
-          "@id": "_:ub58bL361C24"
-        },
-        {
-          "@id": "_:ub58bL370C24"
+          "@id": "_:ub60bL367C24"
         },
         {
           "@id": "l0:Characteristic"
+        },
+        {
+          "@id": "_:ub60bL372C24"
         }
       ]
     },
     {
       "@id": "http://dati.gov.it/onto/dcatapit#Agent",
       "@type": "owl:Class"
-    },
-    {
-      "@id": "_:ub58bL370C24",
-      "@type": "owl:Restriction",
-      "owl:onProperty": {
-        "@id": "https://w3id.org/italia/onto/MU/value"
-      },
-      "owl:someValuesFrom": {
-        "@id": "rdfs:Literal"
-      }
     },
     {
       "@id": "https://w3id.org/italia/onto/MU/minPercentage",
@@ -269,12 +288,12 @@
       },
       "rdfs:label": [
         {
-          "@language": "it",
-          "@value": "percentuale minima"
-        },
-        {
           "@language": "en",
           "@value": "minumum percentage"
+        },
+        {
+          "@language": "it",
+          "@value": "percentuale minima"
         }
       ],
       "rdfs:range": {
@@ -289,11 +308,11 @@
       "@type": "owl:AnnotationProperty"
     },
     {
-      "@id": "vcard:hasEmail",
+      "@id": "dcterms:format",
       "@type": "owl:AnnotationProperty"
     },
     {
-      "@id": "_:ub58bL365C24",
+      "@id": "_:ub60bL367C24",
       "@type": "owl:Restriction",
       "owl:maxQualifiedCardinality": {
         "@type": "xsd:nonNegativeInteger",
@@ -305,6 +324,10 @@
       "owl:onProperty": {
         "@id": "https://w3id.org/italia/onto/MU/hasMeasureType"
       }
+    },
+    {
+      "@id": "vcard:hasEmail",
+      "@type": "owl:AnnotationProperty"
     },
     {
       "@id": "http://dati.gov.it/onto/dcatapit#Organization",
@@ -348,13 +371,13 @@
       ],
       "rdfs:subClassOf": [
         {
+          "@id": "_:ub60bL328C30"
+        },
+        {
           "@id": "l0:Characteristic"
         },
         {
-          "@id": "_:ub58bL326C30"
-        },
-        {
-          "@id": "_:ub58bL322C30"
+          "@id": "_:ub60bL324C30"
         }
       ]
     },
@@ -372,24 +395,14 @@
       "dcterms:identifier": "TD",
       "foaf:name": [
         {
-          "@language": "it",
-          "@value": "Team per la Trasformazione Digitale"
-        },
-        {
           "@language": "en",
           "@value": "Digital Transformation Team"
+        },
+        {
+          "@language": "it",
+          "@value": "Team per la Trasformazione Digitale"
         }
       ]
-    },
-    {
-      "@id": "_:ub58bL322C30",
-      "@type": "owl:Restriction",
-      "owl:onProperty": {
-        "@id": "https://w3id.org/italia/onto/MU/isMeasureTypeOf"
-      },
-      "owl:someValuesFrom": {
-        "@id": "https://w3id.org/italia/onto/MU/Value"
-      }
     },
     {
       "@id": "l0:name",
@@ -402,17 +415,17 @@
     {
       "@id": "https://w3id.org/italia/onto/MU",
       "@type": [
-        "owl:Ontology",
+        "admsapit:SemanticAsset",
         "owl:NamedIndividual",
-        "admsapit:SemanticAsset"
+        "owl:Ontology"
       ],
       "admsapit:acronym": "MU-AP_IT",
       "admsapit:hasContributor": [
         {
-          "@id": "https://w3id.org/italia/data/organization/public-organization/td"
+          "@id": "https://w3id.org/italia/data/organization/support-unit/cnr-Z6HZEH/stlab"
         },
         {
-          "@id": "https://w3id.org/italia/data/organization/support-unit/cnr-Z6HZEH/stlab"
+          "@id": "https://w3id.org/italia/data/organization/public-organization/td"
         }
       ],
       "admsapit:hasFormalityLevel": {
@@ -420,10 +433,10 @@
       },
       "admsapit:hasKeyClass": [
         {
-          "@id": "https://w3id.org/italia/onto/MU/MeasurementUnit"
+          "@id": "https://w3id.org/italia/onto/MU/Value"
         },
         {
-          "@id": "https://w3id.org/italia/onto/MU/Value"
+          "@id": "https://w3id.org/italia/onto/MU/MeasurementUnit"
         }
       ],
       "admsapit:hasOntologyLanguage": {
@@ -431,10 +444,10 @@
       },
       "admsapit:hasSemanticAssetDistribution": [
         {
-          "@id": "https://w3id.org/italia/data/distribution/MUAPIT-RDF-TURTLE"
+          "@id": "https://w3id.org/italia/data/distribution/MUAPIT-JSON-LD"
         },
         {
-          "@id": "https://w3id.org/italia/data/distribution/MUAPIT-JSON-LD"
+          "@id": "https://w3id.org/italia/data/distribution/MUAPIT-RDF-TURTLE"
         },
         {
           "@id": "https://w3id.org/italia/data/distribution/MUAPIT-RDF-XML"
@@ -471,13 +484,13 @@
         }
       ],
       "admsapit:status": [
-        "published",
-        "catalogued"
+        "catalogued",
+        "published"
       ],
       "admsapit:target": [
-        "Pubbliche Amministrazioni",
         "Cittadini",
-        "Imprese"
+        "Imprese",
+        "Pubbliche Amministrazioni"
       ],
       "admsapit:type": {
         "@id": "admsapit:ServiceOntology"
@@ -500,12 +513,12 @@
       },
       "dcterms:description": [
         {
-          "@language": "en",
-          "@value": "This is the ontology for modeling values and measurement units"
-        },
-        {
           "@language": "it",
           "@value": "Questa è l'ontologia per la modellazione di valori e unità di misura"
+        },
+        {
+          "@language": "en",
+          "@value": "This is the ontology for modeling values and measurement units"
         }
       ],
       "dcterms:identifier": "https://w3id.org/italia/onto/MU",
@@ -530,12 +543,12 @@
       },
       "dcterms:title": [
         {
-          "@language": "it",
-          "@value": "Ontologia Valori e Unità di Misura - Profilo applicativo italiano"
-        },
-        {
           "@language": "en",
           "@value": "Value and Measurement Unit Ontology - Italian Application Profile"
+        },
+        {
+          "@language": "it",
+          "@value": "Ontologia Valori e Unità di Misura - Profilo applicativo italiano"
         }
       ],
       "owl:imports": {
@@ -546,12 +559,12 @@
       },
       "owl:versionInfo": [
         {
-          "@language": "en",
-          "@value": "Version 0.4 - Modified on June 15 2020 - introduced MeasureType concept which is connected to Value and expressed in some MeasurementUnit."
-        },
-        {
           "@language": "it",
           "@value": "Versione 0.4 - modificata il 15 Giugno 2020 - Inserito il concetto di MeasureType che è connesso con il Valore ed espresso in una qualche unità di misura. I valoei del nuovo concetto possono essere lunghezza, altezza, profondità, ecc, ovvero il tipo di misura espressa poi con un valore e un'unità di misura. SI noti che non è obbligatorio specificarla ma se la si include deve essere associata a un valore ed espresa in un qualche unità di misura."
+        },
+        {
+          "@language": "en",
+          "@value": "Version 0.4 - Modified on June 15 2020 - introduced MeasureType concept which is connected to Value and expressed in some MeasurementUnit."
         }
       ],
       "prov:wasDerivedFrom": {
@@ -559,12 +572,12 @@
       },
       "rdfs:comment": [
         {
-          "@language": "en",
-          "@value": "This is the ontology for modeling values and measurement units"
-        },
-        {
           "@language": "it",
           "@value": "Questa è l'ontologia per la modellazione di valori e unità di misura"
+        },
+        {
+          "@language": "en",
+          "@value": "This is the ontology for modeling values and measurement units"
         }
       ],
       "rdfs:isDefinedBy": {
@@ -596,12 +609,12 @@
       ],
       "rdfs:comment": [
         {
-          "@language": "en",
-          "@value": "Property that allows one to represent the measurement unit in which a measure type is expressed."
-        },
-        {
           "@language": "it",
           "@value": "Proprietà che consente di rappresentare l'unità di misura in cui è espresso il tipo di misura (e.g., se il tipo dell'unità di misura è una lunghezza, questa può essere espressa in cm oppure in km, oppure in ore, ecc)"
+        },
+        {
+          "@language": "en",
+          "@value": "Property that allows one to represent the measurement unit in which a measure type is expressed."
         }
       ],
       "rdfs:domain": {
@@ -612,12 +625,12 @@
       },
       "rdfs:label": [
         {
-          "@language": "en",
-          "@value": "is expressed in"
-        },
-        {
           "@language": "it",
           "@value": "è espressa in"
+        },
+        {
+          "@language": "en",
+          "@value": "is expressed in"
         }
       ],
       "rdfs:range": {
@@ -625,17 +638,8 @@
       }
     },
     {
-      "@id": "https://w3id.org/italia/data/contact-point/onto-agid",
-      "@type": [
-        "owl:NamedIndividual",
-        "vcard:Organization",
-        "http://dati.gov.it/onto/dcatapit#Organization",
-        "vcard:Kind"
-      ],
-      "vcard:fn": "banche dati e open data",
-      "vcard:hasEmail": {
-        "@id": "mailto:info@dati.gov.it"
-      }
+      "@id": "foaf:Agent",
+      "@type": "owl:Class"
     },
     {
       "@id": "admsapit:SemanticAssetDistribution",
@@ -652,19 +656,19 @@
     {
       "@id": "http://spcdata.digitpa.gov.it/browse/page/Amministrazione/agid",
       "@type": [
-        "owl:NamedIndividual",
         "foaf:Agent",
-        "http://dati.gov.it/onto/dcatapit#Agent"
+        "http://dati.gov.it/onto/dcatapit#Agent",
+        "owl:NamedIndividual"
       ],
       "dcterms:identifier": "agid",
       "foaf:name": [
         {
-          "@language": "en",
-          "@value": "Italian Digital Agency"
-        },
-        {
           "@language": "it",
           "@value": "Agenzia per l'Italia Digitale"
+        },
+        {
+          "@language": "en",
+          "@value": "Italian Digital Agency"
         }
       ]
     },
@@ -673,8 +677,14 @@
       "@type": "owl:AnnotationProperty"
     },
     {
-      "@id": "foaf:Agent",
-      "@type": "owl:Class"
+      "@id": "_:ub60bL363C24",
+      "@type": "owl:Restriction",
+      "owl:allValuesFrom": {
+        "@id": "https://w3id.org/italia/onto/MU/MeasurementUnit"
+      },
+      "owl:onProperty": {
+        "@id": "https://w3id.org/italia/onto/MU/hasMeasurementUnit"
+      }
     },
     {
       "@id": "l0:Characteristic",
@@ -687,8 +697,8 @@
     {
       "@id": "https://w3id.org/italia/data/organization/support-unit/cnr-Z6HZEH/stlab",
       "@type": [
-        "owl:NamedIndividual",
-        "l0:Agent"
+        "l0:Agent",
+        "owl:NamedIndividual"
       ],
       "dcterms:identifier": "cnr - Z6HZEH - STLab",
       "l0:name": [
@@ -719,12 +729,12 @@
       "@type": "owl:DatatypeProperty",
       "owl:versionInfo": [
         {
-          "@language": "en",
-          "@value": "stable"
-        },
-        {
           "@language": "it",
           "@value": "stabile"
+        },
+        {
+          "@language": "en",
+          "@value": "stable"
         }
       ],
       "rdfs:comment": [
@@ -745,12 +755,12 @@
       },
       "rdfs:label": [
         {
-          "@language": "it",
-          "@value": "percetuale massima"
-        },
-        {
           "@language": "en",
           "@value": "maximum percentage"
+        },
+        {
+          "@language": "it",
+          "@value": "percetuale massima"
         }
       ],
       "rdfs:range": {
@@ -799,26 +809,16 @@
       },
       "rdfs:label": [
         {
-          "@language": "it",
-          "@value": "ha tipo di misura"
-        },
-        {
           "@language": "en",
           "@value": "has measure type"
+        },
+        {
+          "@language": "it",
+          "@value": "ha tipo di misura"
         }
       ],
       "rdfs:range": {
         "@id": "https://w3id.org/italia/onto/MU/MeasureType"
-      }
-    },
-    {
-      "@id": "_:ub58bL361C24",
-      "@type": "owl:Restriction",
-      "owl:allValuesFrom": {
-        "@id": "https://w3id.org/italia/onto/MU/MeasurementUnit"
-      },
-      "owl:onProperty": {
-        "@id": "https://w3id.org/italia/onto/MU/hasMeasurementUnit"
       }
     },
     {
@@ -847,12 +847,12 @@
       },
       "dcterms:description": [
         {
-          "@language": "en",
-          "@value": "This is the distribution in RDF/turtle of the Measurement Unit ontology"
-        },
-        {
           "@language": "it",
           "@value": "Questa è la distribuzione RDF/Turtle dell'ontologia delle unità di misura"
+        },
+        {
+          "@language": "en",
+          "@value": "This is the distribution in RDF/turtle of the Measurement Unit ontology"
         }
       ],
       "dcterms:format": {
@@ -887,12 +887,12 @@
       ],
       "rdfs:comment": [
         {
-          "@language": "en",
-          "@value": "Inverse object property of 'has measurement unit'."
-        },
-        {
           "@language": "it",
           "@value": "Object property inversa di 'ha unità di misura'."
+        },
+        {
+          "@language": "en",
+          "@value": "Inverse object property of 'has measurement unit'."
         }
       ],
       "rdfs:domain": {
@@ -920,22 +920,22 @@
       "@type": "owl:DatatypeProperty",
       "owl:versionInfo": [
         {
-          "@language": "it",
-          "@value": "stabile"
-        },
-        {
           "@language": "en",
           "@value": "stable"
+        },
+        {
+          "@language": "it",
+          "@value": "stabile"
         }
       ],
       "rdfs:comment": [
         {
-          "@language": "it",
-          "@value": "Questa proprietà rappresenta un valore, il valore osservato e il valore di una capacità di misurazione."
-        },
-        {
           "@language": "en",
           "@value": "This property represents a value. It can be the value of the observedValue or the value of the Measurement Capability."
+        },
+        {
+          "@language": "it",
+          "@value": "Questa proprietà rappresenta un valore, il valore osservato e il valore di una capacità di misurazione."
         }
       ],
       "rdfs:domain": {
@@ -944,10 +944,16 @@
       "rdfs:isDefinedBy": {
         "@id": "https://w3id.org/italia/onto/MU"
       },
-      "rdfs:label": {
-        "@language": "it",
-        "@value": "valore"
-      },
+      "rdfs:label": [
+        {
+          "@language": "en",
+          "@value": "value"
+        },
+        {
+          "@language": "it",
+          "@value": "valore"
+        }
+      ],
       "rdfs:range": {
         "@id": "rdfs:Literal"
       }
@@ -986,12 +992,12 @@
       },
       "rdfs:label": [
         {
-          "@language": "en",
-          "@value": "is measure type of"
-        },
-        {
           "@language": "it",
           "@value": "è tipo misura di"
+        },
+        {
+          "@language": "en",
+          "@value": "is measure type of"
         }
       ],
       "rdfs:range": {
@@ -1001,8 +1007,8 @@
     {
       "@id": "https://w3id.org/italia/data/project/DAF",
       "@type": [
-        "owl:NamedIndividual",
-        "admsapit:Project"
+        "admsapit:Project",
+        "owl:NamedIndividual"
       ],
       "l0:name": {
         "@language": "it",
