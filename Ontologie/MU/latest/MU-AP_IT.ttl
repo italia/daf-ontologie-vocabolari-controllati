@@ -15,7 +15,7 @@
 @base <https://w3id.org/italia/onto/MU> .
 
 <https://w3id.org/italia/onto/MU> rdf:type owl:Ontology ;
-                                   owl:versionIRI <https://w3id.org/italia/onto/MU/0.3> ;
+                                   owl:versionIRI <https://w3id.org/italia/onto/MU/0.4> ;
                                    owl:imports <https://w3id.org/italia/onto/l0> ;
                                    dct:accrualPeriodicity <http://publications.europa.eu/resource/authority/frequency/IRREG> ;
                                    dct:creator <http://spcdata.digitpa.gov.it/browse/page/Amministrazione/agid> ;
@@ -25,7 +25,7 @@
                                    dct:issued "2017-11-13"^^xsd:date ;
                                    dct:language <http://publications.europa.eu/resource/authority/language/ENG> ,
                                                 <http://publications.europa.eu/resource/authority/language/ITA> ;
-                                   dct:modified "2020-04-27" ;
+                                   dct:modified "2020-06-15" ;
                                    dct:publisher <http://spcdata.digitpa.gov.it/browse/page/Amministrazione/agid> ;
                                    dct:rightsHolder <http://spcdata.digitpa.gov.it/browse/page/Amministrazione/agid> ;
                                    dct:title "Ontologia Valori e Unità di Misura - Profilo applicativo italiano"@it ,
@@ -35,8 +35,8 @@
                                    rdfs:isDefinedBy <https://w3id.org/italia/onto/MU> ;
                                    rdfs:label "Ontologia Valori e Unità di Misura"@it ,
                                               "Value and Measurement Unit Ontology"@en ;
-                                   owl:versionInfo "Version 0.3 - Modified on April 27 2020 - introduced annotation properties for Value class and owl:versionInfo annotation properties for all the elements of the ontology. This change answer to the issue #87. Modified on April 19 2020 - relaxing OWL constraints on value and hasMesurmentUnit properties for Value class - Modified on April 24 2019 - introduction of minPercentage and maxPercentage properties"@en ,
-                                                   "Versione 0.3 - modificata il 27 Aprile 2020 - inserite le proprietà di annotazione per la classe Valore e  le proprietà di annotazione owl:versionInfo per tutti gli elementi dell'ontologia; modificata il 19 Aprile 2020 - rilassati i vincoli OWL sulla classe Vlaue per le prorietà ha unità di misura e valore. Modificata il 24 Aprile 2019- introduzione delle proprietà minPercentage e maxPercentage"@it ;
+                                   owl:versionInfo "Version 0.4 - Modified on June 15 2020 - introduced MeasureType concept which is connected to Value and expressed in some MeasurementUnit."@en ,
+                                                   "Versione 0.4 - modificata il 15 Giugno 2020 - Inserito il concetto di MeasureType che è connesso con il Valore ed espresso in una qualche unità di misura. I valoei del nuovo concetto possono essere lunghezza, altezza, profondità, ecc, ovvero il tipo di misura espressa poi con un valore e un'unità di misura. SI noti che non è obbligatorio specificarla ma se la si include deve essere associata a un valore ed espresa in un qualche unità di misura."@it ;
                                    dcat:contactPoint <https://w3id.org/italia/data/contact-point/onto-agid> ;
                                    dcat:keyword "Unità di misura"@it ;
                                    dcat:theme <http://publications.europa.eu/resource/authority/data-theme/TECH> ;
@@ -134,6 +134,46 @@ admsapit:status rdf:type owl:AnnotationProperty .
 #################################################################
 #    Object Properties
 #################################################################
+
+###  https://w3id.org/italia/onto/MU#isExpressedIn
+:isExpressedIn rdf:type owl:ObjectProperty ;
+               rdfs:domain :MeasureType ;
+               rdfs:range :MeasurementUnit ;
+               rdfs:comment "Property that allows one to represent the measurement unit in which a measure type is expressed."@en ,
+                            "Proprietà che consente di rappresentare l'unità di misura in cui è espresso il tipo di misura (e.g., se il tipo dell'unità di misura è una lunghezza, questa può essere espressa in cm oppure in km, oppure in ore, ecc)"@it ;
+               rdfs:isDefinedBy <https://w3id.org/italia/onto/MU> ;
+               rdfs:label "is expressed in"@en ,
+                          "è espressa in"@it ;
+               owl:versionInfo "stabile"@it ,
+                               "stable"@en .
+
+
+###  https://w3id.org/italia/onto/MU#isMeasureTypeOf
+:isMeasureTypeOf rdf:type owl:ObjectProperty ;
+                 owl:inverseOf :hasMeasureType ;
+                 rdfs:domain :MeasureType ;
+                 rdfs:range :Value ;
+                 rdfs:comment "Inverse property of \"has measure type\" that links a measure type to the value."@en ,
+                              "Proprietà inversa di \"ha tipo di misura\" che collega un tipo di misura al valore."@it ;
+                 rdfs:isDefinedBy <https://w3id.org/italia/onto/MU> ;
+                 rdfs:label "is measure type of"@en ,
+                            "è tipo misura di"@it ;
+                 owl:versionInfo "stabile"@it ,
+                                 "stable"@en .
+
+
+###  https://w3id.org/italia/onto/MU/hasMeasureType
+:hasMeasureType rdf:type owl:ObjectProperty ;
+                rdfs:domain :Value ;
+                rdfs:range :MeasureType ;
+                rdfs:comment "Property that links a Value to its type of measure"@en ,
+                             "Proprietà che consente di collegare un valore al suo tipo di misura"@it ;
+                rdfs:isDefinedBy <https://w3id.org/italia/onto/MU> ;
+                rdfs:label "ha tipo di misura"@it ,
+                           "has measure type"@en ;
+                owl:versionInfo "stabile"@it ,
+                                "stable"@en .
+
 
 ###  https://w3id.org/italia/onto/MU/hasMeasurementUnit
 :hasMeasurementUnit rdf:type owl:ObjectProperty ;
@@ -246,6 +286,27 @@ admsapit:SemanticAsset rdf:type owl:Class .
 admsapit:SemanticAssetDistribution rdf:type owl:Class .
 
 
+###  https://w3id.org/italia/onto/MU/MeasureType
+:MeasureType rdf:type owl:Class ;
+             rdfs:subClassOf l0:Characteristic ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :isMeasureTypeOf ;
+                               owl:someValuesFrom :Value
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :hasMeasurementUnit ;
+                               owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                               owl:onClass :MeasurementUnit
+                             ] ;
+             rdfs:comment "La classe che rappresenta il tipo di misura (e.g., la lunghezza, l'altezza, ecc.)"@it ,
+                          "The class that represents the type of measure (e.g., length, height, etc.)"@en ;
+             rdfs:isDefinedBy <https://w3id.org/italia/onto/MU> ;
+             rdfs:label "Measure Type"@en ,
+                        "Tipo di Misura"@it ;
+             owl:versionInfo "stabile"@it ,
+                             "stable"@en .
+
+
 ###  https://w3id.org/italia/onto/MU/MeasurementUnit
 :MeasurementUnit rdf:type owl:Class ;
                  rdfs:subClassOf l0:Characteristic ;
@@ -264,6 +325,11 @@ admsapit:SemanticAssetDistribution rdf:type owl:Class .
                        [ rdf:type owl:Restriction ;
                          owl:onProperty :hasMeasurementUnit ;
                          owl:allValuesFrom :MeasurementUnit
+                       ] ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :hasMeasureType ;
+                         owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                         owl:onClass :MeasureType
                        ] ,
                        [ rdf:type owl:Restriction ;
                          owl:onProperty :value ;

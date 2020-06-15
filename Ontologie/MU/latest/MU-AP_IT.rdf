@@ -15,7 +15,7 @@
      xmlns:vcard="http://www.w3.org/2006/vcard/ns#"
      xmlns:admsapit="https://w3id.org/italia/onto/ADMS/">
     <owl:Ontology rdf:about="https://w3id.org/italia/onto/MU">
-        <owl:versionIRI rdf:resource="https://w3id.org/italia/onto/MU/0.3"/>
+        <owl:versionIRI rdf:resource="https://w3id.org/italia/onto/MU/0.4"/>
         <owl:imports rdf:resource="https://w3id.org/italia/onto/l0"/>
         <dct:accrualPeriodicity rdf:resource="http://publications.europa.eu/resource/authority/frequency/IRREG"/>
         <dct:creator rdf:resource="http://spcdata.digitpa.gov.it/browse/page/Amministrazione/agid"/>
@@ -25,7 +25,7 @@
         <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2017-11-13</dct:issued>
         <dct:language rdf:resource="http://publications.europa.eu/resource/authority/language/ENG"/>
         <dct:language rdf:resource="http://publications.europa.eu/resource/authority/language/ITA"/>
-        <dct:modified>2020-04-27</dct:modified>
+        <dct:modified>2020-06-15</dct:modified>
         <dct:publisher rdf:resource="http://spcdata.digitpa.gov.it/browse/page/Amministrazione/agid"/>
         <dct:rightsHolder rdf:resource="http://spcdata.digitpa.gov.it/browse/page/Amministrazione/agid"/>
         <dct:title xml:lang="it">Ontologia Valori e Unità di Misura - Profilo applicativo italiano</dct:title>
@@ -35,8 +35,8 @@
         <rdfs:isDefinedBy rdf:resource="https://w3id.org/italia/onto/MU"/>
         <rdfs:label xml:lang="it">Ontologia Valori e Unità di Misura</rdfs:label>
         <rdfs:label xml:lang="en">Value and Measurement Unit Ontology</rdfs:label>
-        <owl:versionInfo xml:lang="en">Version 0.3 - Modified on April 27 2020 - introduced annotation properties for Value class and owl:versionInfo annotation properties for all the elements of the ontology. This change answer to the issue #87. Modified on April 19 2020 - relaxing OWL constraints on value and hasMesurmentUnit properties for Value class - Modified on April 24 2019 - introduction of minPercentage and maxPercentage properties</owl:versionInfo>
-        <owl:versionInfo xml:lang="it">Versione 0.3 - modificata il 27 Aprile 2020 - inserite le proprietà di annotazione per la classe Valore e  le proprietà di annotazione owl:versionInfo per tutti gli elementi dell&apos;ontologia; modificata il 19 Aprile 2020 - rilassati i vincoli OWL sulla classe Vlaue per le prorietà ha unità di misura e valore. Modificata il 24 Aprile 2019- introduzione delle proprietà minPercentage e maxPercentage</owl:versionInfo>
+        <owl:versionInfo xml:lang="en">Version 0.4 - Modified on June 15 2020 - introduced MeasureType concept which is connected to Value and expressed in some MeasurementUnit.</owl:versionInfo>
+        <owl:versionInfo xml:lang="it">Versione 0.4 - modificata il 15 Giugno 2020 - Inserito il concetto di MeasureType che è connesso con il Valore ed espresso in una qualche unità di misura. I valoei del nuovo concetto possono essere lunghezza, altezza, profondità, ecc, ovvero il tipo di misura espressa poi con un valore e un&apos;unità di misura. SI noti che non è obbligatorio specificarla ma se la si include deve essere associata a un valore ed espresa in un qualche unità di misura.</owl:versionInfo>
         <dcat:contactPoint rdf:resource="https://w3id.org/italia/data/contact-point/onto-agid"/>
         <dcat:keyword xml:lang="it">Unità di misura</dcat:keyword>
         <dcat:theme rdf:resource="http://publications.europa.eu/resource/authority/data-theme/TECH"/>
@@ -179,6 +179,55 @@
     ///////////////////////////////////////////////////////////////////////////////////////
      -->
 
+    
+
+
+    <!-- https://w3id.org/italia/onto/MU#isExpressedIn -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/italia/onto/MU#isExpressedIn">
+        <rdfs:domain rdf:resource="https://w3id.org/italia/onto/MU/MeasureType"/>
+        <rdfs:range rdf:resource="https://w3id.org/italia/onto/MU/MeasurementUnit"/>
+        <rdfs:comment xml:lang="en">Property that allows one to represent the measurement unit in which a measure type is expressed.</rdfs:comment>
+        <rdfs:comment xml:lang="it">Proprietà che consente di rappresentare l&apos;unità di misura in cui è espresso il tipo di misura (e.g., se il tipo dell&apos;unità di misura è una lunghezza, questa può essere espressa in cm oppure in km, oppure in ore, ecc)</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/italia/onto/MU"/>
+        <rdfs:label xml:lang="en">is expressed in</rdfs:label>
+        <rdfs:label xml:lang="it">è espressa in</rdfs:label>
+        <owl:versionInfo xml:lang="it">stabile</owl:versionInfo>
+        <owl:versionInfo xml:lang="en">stable</owl:versionInfo>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/italia/onto/MU#isMeasureTypeOf -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/italia/onto/MU#isMeasureTypeOf">
+        <owl:inverseOf rdf:resource="https://w3id.org/italia/onto/MU/hasMeasureType"/>
+        <rdfs:domain rdf:resource="https://w3id.org/italia/onto/MU/MeasureType"/>
+        <rdfs:range rdf:resource="https://w3id.org/italia/onto/MU/Value"/>
+        <rdfs:comment xml:lang="en">Inverse property of &quot;has measure type&quot; that links a measure type to the value.</rdfs:comment>
+        <rdfs:comment xml:lang="it">Proprietà inversa di &quot;ha tipo di misura&quot; che collega un tipo di misura al valore.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/italia/onto/MU"/>
+        <rdfs:label xml:lang="en">is measure type of</rdfs:label>
+        <rdfs:label xml:lang="it">è tipo misura di</rdfs:label>
+        <owl:versionInfo xml:lang="it">stabile</owl:versionInfo>
+        <owl:versionInfo xml:lang="en">stable</owl:versionInfo>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/italia/onto/MU/hasMeasureType -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/italia/onto/MU/hasMeasureType">
+        <rdfs:domain rdf:resource="https://w3id.org/italia/onto/MU/Value"/>
+        <rdfs:range rdf:resource="https://w3id.org/italia/onto/MU/MeasureType"/>
+        <rdfs:comment xml:lang="en">Property that links a Value to its type of measure</rdfs:comment>
+        <rdfs:comment xml:lang="it">Proprietà che consente di collegare un valore al suo tipo di misura</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/italia/onto/MU"/>
+        <rdfs:label xml:lang="it">ha tipo di misura</rdfs:label>
+        <rdfs:label xml:lang="en">has measure type</rdfs:label>
+        <owl:versionInfo xml:lang="it">stabile</owl:versionInfo>
+        <owl:versionInfo xml:lang="en">stable</owl:versionInfo>
+    </owl:ObjectProperty>
     
 
 
@@ -340,6 +389,34 @@
     
 
 
+    <!-- https://w3id.org/italia/onto/MU/MeasureType -->
+
+    <owl:Class rdf:about="https://w3id.org/italia/onto/MU/MeasureType">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/italia/onto/l0/Characteristic"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/MU#isMeasureTypeOf"/>
+                <owl:someValuesFrom rdf:resource="https://w3id.org/italia/onto/MU/Value"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/MU/hasMeasurementUnit"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="https://w3id.org/italia/onto/MU/MeasurementUnit"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="it">La classe che rappresenta il tipo di misura (e.g., la lunghezza, l&apos;altezza, ecc.)</rdfs:comment>
+        <rdfs:comment xml:lang="en">The class that represents the type of measure (e.g., length, height, etc.)</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/italia/onto/MU"/>
+        <rdfs:label xml:lang="en">Measure Type</rdfs:label>
+        <rdfs:label xml:lang="it">Tipo di Misura</rdfs:label>
+        <owl:versionInfo xml:lang="it">stabile</owl:versionInfo>
+        <owl:versionInfo xml:lang="en">stable</owl:versionInfo>
+    </owl:Class>
+    
+
+
     <!-- https://w3id.org/italia/onto/MU/MeasurementUnit -->
 
     <owl:Class rdf:about="https://w3id.org/italia/onto/MU/MeasurementUnit">
@@ -363,6 +440,13 @@
             <owl:Restriction>
                 <owl:onProperty rdf:resource="https://w3id.org/italia/onto/MU/hasMeasurementUnit"/>
                 <owl:allValuesFrom rdf:resource="https://w3id.org/italia/onto/MU/MeasurementUnit"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/MU/hasMeasureType"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onClass rdf:resource="https://w3id.org/italia/onto/MU/MeasureType"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
