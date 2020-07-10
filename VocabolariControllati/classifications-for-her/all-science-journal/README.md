@@ -20,3 +20,5 @@ Come tutti gli altri vocabolari della rete OntoPiA, è disponibile nelle tre ser
 + Life Sciences
 + Social Sciences & Humanities
 + Physical Sciences
+
+Infine, il vocabolario include una mappatura non ufficiale, gestita nel contesto del progetto Toscana Open Research, verso il vocabolario controllato sugli ERC panel - https://w3id.org/italia/controlled-vocabulary/classifications-for-her/erc-panel-h2020-fp
