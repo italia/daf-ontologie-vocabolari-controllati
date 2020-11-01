@@ -28,7 +28,7 @@
                                         dct:issued "2019-05-14"^^xsd:date ;
                                         dct:language <http://publications.europa.eu/resource/authority/language/ENG> ,
                                                      <http://publications.europa.eu/resource/authority/language/ITA> ;
-                                        dct:modified "2020-10-31"^^xsd:date ;
+                                        dct:modified "2020-11-01"^^xsd:date ;
                                         dct:publisher <https://w3id.org/italia/data/public-organization/agid> ;
                                         dct:rightsHolder <https://w3id.org/italia/data/public-organization/agid> ;
                                         dct:title "Project-AP_IT - Project Ontology - Italian Application Profile "@en ,
@@ -38,8 +38,8 @@
                                         rdfs:isDefinedBy <https://w3id.org/italia/onto/Project> ;
                                         rdfs:label "Ontologia dei progetti (pubblici)"@it ,
                                                    "Project ontology"@en ;
-                                        owl:versionInfo "Version 0.3 - 01  October 2020 - introduction of the following elements for the project: call, programme, work package, summary."@en ,
-                                                        "Versione 0.3 - 01 Ottobre 2020 - L'ontologia introduce nuovi elementi per i progetti: bandi, work package, programma, summary"@it ;
+                                        owl:versionInfo "Version 0.3 - 01  November 2020 - introduction of the following elements for the project: call, programme, work package, summary and their related restrictions."@en ,
+                                                        "Versione 0.3 - 01 Novembre 2020 - L'ontologia introduce nuovi elementi per i progetti: bandi, work package, programma, summary. Inoltre si aggiungo le relative restrizioni per questi elementi."@it ;
                                         dcat:contactPoint <https://w3id.org/italia/data/contact-point/onto-agid> ;
                                         dcat:keyword "cup"@it ,
                                                      "progetti"@it ,
@@ -313,7 +313,19 @@
 
 ###  https://w3id.org/italia/onto/Project/Call
 :Call rdf:type owl:Class ;
-      rdfs:subClassOf l0:Object ;
+      rdfs:subClassOf l0:Object ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty l0:description ;
+                        owl:someValuesFrom rdfs:Literal
+                      ] ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty l0:name ;
+                        owl:someValuesFrom rdfs:Literal
+                      ] ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty l0:identifier ;
+                        owl:cardinality "1"^^xsd:nonNegativeInteger
+                      ] ;
       rdfs:comment "L'insieme delle informazioni necessarie per invitare candidati a presentare proposte di progetti, con l'obiettivo di ricevere un finanziamento."@it ,
                    "The set of information required to invite applicants to submit project proposals, with the aim of receiving funding."@en ;
       rdfs:isDefinedBy <https://w3id.org/italia/onto/Project> ;
@@ -338,7 +350,19 @@
 
 ###  https://w3id.org/italia/onto/Project/Programme
 :Programme rdf:type owl:Class ;
-           rdfs:subClassOf l0:Concept ;
+           rdfs:subClassOf l0:Concept ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty l0:description ;
+                             owl:someValuesFrom rdfs:Literal
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty l0:name ;
+                             owl:someValuesFrom rdfs:Literal
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty l0:identifier ;
+                             owl:cardinality "1"^^xsd:nonNegativeInteger
+                           ] ;
            rdfs:comment "A set of related measures or activities with a particular long-term aim, typically established by a funding agency. Often associated with publication of a call."@en ,
                         "Un insieme di misure o attività correlate con un particolare obiettivo a lungo termine, tipicamente stabilite da un'agenzia di finanziamento. Spesso associato alla pubblicazione di un invito a presentare proposte (bando)."@it ;
            rdfs:isDefinedBy <https://w3id.org/italia/onto/Project> ;
@@ -444,7 +468,15 @@
 
 ###  https://w3id.org/italia/onto/Project/Summary
 :Summary rdf:type owl:Class ;
-         rdfs:subClassOf l0:Object ;
+         rdfs:subClassOf l0:Object ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty l0:description ;
+                           owl:someValuesFrom rdfs:Literal
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty l0:identifier ;
+                           owl:maxCardinality "1"^^xsd:nonNegativeInteger
+                         ] ;
          rdfs:comment "A description of funded activities"@en ,
                       "Uan descrizione delle attività progettuali finanziate."@it ;
          rdfs:isDefinedBy <https://w3id.org/italia/onto/Project> ;
@@ -489,7 +521,15 @@
 
 ###  https://w3id.org/italia/onto/Project/WorkPackage
 :WorkPackage rdf:type owl:Class ;
-             rdfs:subClassOf l0:Description ;
+             rdfs:subClassOf l0:Description ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty l0:name ;
+                               owl:someValuesFrom rdfs:Literal
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty l0:identifier ;
+                               owl:cardinality "1"^^xsd:nonNegativeInteger
+                             ] ;
              rdfs:comment "It is a building block of the work breakdown structure that allows the project management to define the steps necessary for completion of the work. As such, it can be thought of as a sub-project, which, when combined with other work package units, form the completed project."@en ,
                           "Si tratta di un elemento costitutivo della suddivisione dei lavori che consente alla direzione del progetto di definire le fasi necessarie per il completamento dei lavori. Come tale, può essere pensato come un sotto-progetto, che, se combinato con altri work package, forma il progetto completato."@it ;
              rdfs:isDefinedBy <https://w3id.org/italia/onto/Project> ;

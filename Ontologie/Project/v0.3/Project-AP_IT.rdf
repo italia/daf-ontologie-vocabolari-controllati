@@ -29,7 +29,7 @@
         <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-05-14</dct:issued>
         <dct:language rdf:resource="http://publications.europa.eu/resource/authority/language/ENG"/>
         <dct:language rdf:resource="http://publications.europa.eu/resource/authority/language/ITA"/>
-        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2020-10-31</dct:modified>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2020-11-01</dct:modified>
         <dct:publisher rdf:resource="https://w3id.org/italia/data/public-organization/agid"/>
         <dct:rightsHolder rdf:resource="https://w3id.org/italia/data/public-organization/agid"/>
         <dct:title xml:lang="en">Project-AP_IT - Project Ontology - Italian Application Profile </dct:title>
@@ -39,8 +39,8 @@
         <rdfs:isDefinedBy rdf:resource="https://w3id.org/italia/onto/Project"/>
         <rdfs:label xml:lang="it">Ontologia dei progetti (pubblici)</rdfs:label>
         <rdfs:label xml:lang="en">Project ontology</rdfs:label>
-        <owl:versionInfo xml:lang="en">Version 0.3 - 01  October 2020 - introduction of the following elements for the project: call, programme, work package, summary.</owl:versionInfo>
-        <owl:versionInfo xml:lang="it">Versione 0.3 - 01 Ottobre 2020 - L&apos;ontologia introduce nuovi elementi per i progetti: bandi, work package, programma, summary</owl:versionInfo>
+        <owl:versionInfo xml:lang="en">Version 0.3 - 01  November 2020 - introduction of the following elements for the project: call, programme, work package, summary and their related restrictions.</owl:versionInfo>
+        <owl:versionInfo xml:lang="it">Versione 0.3 - 01 Novembre 2020 - L&apos;ontologia introduce nuovi elementi per i progetti: bandi, work package, programma, summary. Inoltre si aggiungo le relative restrizioni per questi elementi.</owl:versionInfo>
         <dcat:contactPoint rdf:resource="https://w3id.org/italia/data/contact-point/onto-agid"/>
         <dcat:keyword xml:lang="it">cup</dcat:keyword>
         <dcat:keyword xml:lang="it">progetti</dcat:keyword>
@@ -402,6 +402,24 @@
 
     <owl:Class rdf:about="https://w3id.org/italia/onto/Project/Call">
         <rdfs:subClassOf rdf:resource="https://w3id.org/italia/onto/l0/Object"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/l0/description"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/l0/name"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/l0/identifier"/>
+                <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <rdfs:comment xml:lang="it">L&apos;insieme delle informazioni necessarie per invitare candidati a presentare proposte di progetti, con l&apos;obiettivo di ricevere un finanziamento.</rdfs:comment>
         <rdfs:comment xml:lang="en">The set of information required to invite applicants to submit project proposals, with the aim of receiving funding.</rdfs:comment>
         <rdfs:isDefinedBy rdf:resource="https://w3id.org/italia/onto/Project"/>
@@ -433,6 +451,24 @@
 
     <owl:Class rdf:about="https://w3id.org/italia/onto/Project/Programme">
         <rdfs:subClassOf rdf:resource="https://w3id.org/italia/onto/l0/Concept"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/l0/description"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/l0/name"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/l0/identifier"/>
+                <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <rdfs:comment xml:lang="en">A set of related measures or activities with a particular long-term aim, typically established by a funding agency. Often associated with publication of a call.</rdfs:comment>
         <rdfs:comment xml:lang="it">Un insieme di misure o attività correlate con un particolare obiettivo a lungo termine, tipicamente stabilite da un&apos;agenzia di finanziamento. Spesso associato alla pubblicazione di un invito a presentare proposte (bando).</rdfs:comment>
         <rdfs:isDefinedBy rdf:resource="https://w3id.org/italia/onto/Project"/>
@@ -580,6 +616,18 @@
 
     <owl:Class rdf:about="https://w3id.org/italia/onto/Project/Summary">
         <rdfs:subClassOf rdf:resource="https://w3id.org/italia/onto/l0/Object"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/l0/description"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/l0/identifier"/>
+                <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <rdfs:comment xml:lang="en">A description of funded activities</rdfs:comment>
         <rdfs:comment xml:lang="it">Uan descrizione delle attività progettuali finanziate.</rdfs:comment>
         <rdfs:isDefinedBy rdf:resource="https://w3id.org/italia/onto/Project"/>
@@ -646,6 +694,18 @@
 
     <owl:Class rdf:about="https://w3id.org/italia/onto/Project/WorkPackage">
         <rdfs:subClassOf rdf:resource="https://w3id.org/italia/onto/l0/Description"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/l0/name"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/l0/identifier"/>
+                <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <rdfs:comment xml:lang="en">It is a building block of the work breakdown structure that allows the project management to define the steps necessary for completion of the work. As such, it can be thought of as a sub-project, which, when combined with other work package units, form the completed project.</rdfs:comment>
         <rdfs:comment xml:lang="it">Si tratta di un elemento costitutivo della suddivisione dei lavori che consente alla direzione del progetto di definire le fasi necessarie per il completamento dei lavori. Come tale, può essere pensato come un sotto-progetto, che, se combinato con altri work package, forma il progetto completato.</rdfs:comment>
         <rdfs:isDefinedBy rdf:resource="https://w3id.org/italia/onto/Project"/>
