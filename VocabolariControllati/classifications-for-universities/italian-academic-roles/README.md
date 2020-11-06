@@ -1,7 +1,20 @@
 Vocabolari controllati sui Ruoli Accademici Italiani
 ====================================================
 
-Questo è il vocabolario controllato sui ruoli accademici definiti nell'ambito italiano dal [Ministero dell'Istruzione e Ministero dell'Università e della Ricerca.](https://www.miur.gov.it/reclutamento-nelle-universita)
+QQuesto è il vocabolario controllato sui ruoli accademici (da intendersi come posizioni o figure della carriera universitaria, riferita alle attività di ricerca e didattica, a cui si accede tramite procedure concorsuali) definiti nell'ambito italiano dal [Ministero dell'Istruzione e Ministero dell'Università e della Ricerca.](https://www.miur.gov.it/reclutamento-nelle-universita)
+
+I contratti che immettono i titolari in ruoli accademici seconda la definizione xxx sono:
+Professore associato
+Professore associato non confermato
+Professore ordinario
+Professore straordinario
+Ricercatore a tempo determinato
+Ricercatore a tempo determinato di tipo A (junior)
+Ricercatore a tempo determinato di tipo B (senior)
+Ricercatore a tempo indeterminato
+Ricercatore a tempo indeterminato non confermato
+
+Vista la definizione adottata, non vengono inclusi nel vocabolario titoli aggiuntivi che possono essere attribuiti a figure che svolgono già funzioni accademiche, quali il “titolo” di Professore Aggregato, previsto dapprima dalla Legge 4 novembre 2005, n. 230, art. 1, c. 11, successivamente dalla Legge 30 dicembre 2010, n. 240, art. 6, c. 4."
 
 Il vocabolario nasce dalla collaborazione che si è instaurata, nei primi mesi del 2020, tra i seguenti attori:
 
