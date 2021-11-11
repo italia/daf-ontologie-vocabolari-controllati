@@ -1,0 +1,16 @@
+#
+# Development tools for ontopia. Run with:
+#
+#   docker-compose up test
+#
+version: "3.3"
+services:
+  test:
+    image: python:3
+    volumes:
+    - .:/code
+    working_dir: /code
+    command:
+    - bash
+    - -c
+    - 'pip install pre-commit; pre-commit run -a'
