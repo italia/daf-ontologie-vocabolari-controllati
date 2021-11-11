@@ -65,9 +65,21 @@ repos:
 - repo: local
   hooks:
   - id: pyshacl
-    name: pyshacl
+    name: pyshacl ontologies
     entry: tests/shacl-validator.py
-    files: '.*\.ttl'
+    files: 'Ontologie.*latest.*\.ttl'
+    language: python
+    types:
+    - file
+    additional_dependencies:
+    - pyshacl
+
+- repo: local
+  hooks:
+  - id: pyshacl
+    name: pyshacl vocabularies
+    entry: tests/shacl-validator.py
+    files: 'Vocabolari.*\.ttl'
     language: python
     types:
     - file
