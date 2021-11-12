@@ -5,12 +5,13 @@
 #
 version: "3.3"
 services:
-  test:
-    image: python:3
+  test-onto:
+    build: .
     volumes:
     - .:/code
     working_dir: /code
     command:
-    - bash
+    - /bin/sh
     - -c
-    - 'pip install pre-commit; pre-commit run -a'
+    - >-
+      pre-commit run -a onto-pyshacl && pre-commit run -a onto-latest
