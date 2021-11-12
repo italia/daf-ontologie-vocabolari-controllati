@@ -64,9 +64,20 @@ repos:
     - id: python-safety-dependencies-check
 - repo: local
   hooks:
-  - id: pyshacl
+  - id: onto-pyshacl
     name: pyshacl ontologies
     entry: tests/shacl-validator.py
+    files: 'Ontologie.*latest.*\.ttl'
+    language: python
+    types:
+    - file
+    additional_dependencies:
+    - pyshacl
+- repo: local
+  hooks:
+  - id: onto-latest
+    name: Ontologies latest validator
+    entry: tests/directory-validator.py
     files: 'Ontologie.*latest.*\.ttl'
     language: python
     types:
@@ -76,7 +87,7 @@ repos:
 
 - repo: local
   hooks:
-  - id: pyshacl
+  - id: vocab-pyshacl
     name: pyshacl vocabularies
     entry: tests/shacl-validator.py
     files: 'Vocabolari.*\.ttl'
