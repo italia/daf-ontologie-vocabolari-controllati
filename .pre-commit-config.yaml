@@ -64,6 +64,15 @@ repos:
     - id: python-safety-dependencies-check
 - repo: local
   hooks:
+  - id: repo-valid-layout
+    name: Validate repo layout
+    entry: tests/repo-layout-validator.py
+    language: python
+    files: ndc-config.yaml
+    types:
+    - file
+    additional_dependencies:
+    - pyyaml
   - id: onto-pyshacl
     name: pyshacl ontologies
     entry: tests/shacl-validator.py
@@ -73,8 +82,6 @@ repos:
     - file
     additional_dependencies:
     - pyshacl
-- repo: local
-  hooks:
   - id: onto-latest
     name: Ontologies latest validator
     entry: tests/directory-validator.py
@@ -84,9 +91,6 @@ repos:
     - file
     additional_dependencies:
     - pyshacl
-
-- repo: local
-  hooks:
   - id: vocab-pyshacl
     name: pyshacl vocabularies
     entry: tests/shacl-validator.py
