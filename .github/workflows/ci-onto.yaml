@@ -6,7 +6,7 @@ name: CI
 on:
   # Triggers the workflow on push or pull request events but only for the main branch
   push:
-    branches: [ "master" ]
+    branches: [ "ndc-mvp/0.1" ]
     paths-ignore:
       - "**/*.md"
       - "**/*.rdf"
@@ -30,6 +30,18 @@ jobs:
         run: |-
           pip install pre-commit
           pre-commit run -a onto-pyshacl
+  test-repo-layout:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+        with:
+          python-version: '3.8'
+          architecture: 'x64'
+      - name: Run a script
+        run: |-
+          pip install pre-commit
+          pre-commit run -a repo-valid-layout
   test-onto-latest:
     runs-on: ubuntu-latest
     steps:
