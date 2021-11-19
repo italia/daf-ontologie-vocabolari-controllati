@@ -5,12 +5,12 @@
 # Usage: directory-validator.py <file.ttl>
 import difflib
 import logging
+from distutils.version import LooseVersion
 from pathlib import Path
 from sys import argv
 
 log = logging.getLogger(__name__)
 logging.basicConfig(level=logging.WARNING)
-from distutils.version import LooseVersion
 
 MAX_DEPTH = 5
 basedir = Path(__file__).parent

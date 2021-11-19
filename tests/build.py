@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 import json
 import logging
+import shutil
+from distutils.version import LooseVersion
 from io import BytesIO
 from pathlib import Path
 
@@ -37,6 +39,21 @@ def yaml_to_json(s: str):
     return json.dumps(yaml.safe_load(s), indent=2)
 
 
+def get_last_asset_version(asset_path: Path):
+    if asset_path.parent.name != "latest":
+        return None
+
+    folders = [
+        x.name
+        for x in asset_path.parent.parent.glob("*/")
+        if x.name != "latest" and x.is_dir() and x.name[:2] != "v."
+    ]
+    log.debug("Identified folders: ", folders)
+    last_version_dirname = sorted(LooseVersion(x) for x in folders)[-1]
+    log.debug("Version:", last_version_dirname)
+    return asset_path.parent.parent / last_version_dirname.vstring / asset_path.name
+
+
 def build_semantic_asset(asset_path: Path, dest_dir: Path = Path(".")):
     log.warning(f"Building {asset_path} in {dest_dir}")
 
@@ -63,6 +80,11 @@ def build_semantic_asset(asset_path: Path, dest_dir: Path = Path(".")):
                 del ctx[""]
             json_data = jsonld.compact(indata, ctx)
             dpath.write_text(normalize_json(json_data))
+
+        last_asset_version_path = get_last_asset_version(dpath)
+        if last_asset_version_path:
+            log.warning(f"Copying {dpath} to {last_asset_version_path}")
+            shutil.copy(dpath, last_asset_version_path)
 
 
 def json_deep_copy(json_data):
