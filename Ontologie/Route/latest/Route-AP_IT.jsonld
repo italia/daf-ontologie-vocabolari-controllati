@@ -6,7 +6,6 @@
     "dcat": "http://www.w3.org/ns/dcat#",
     "dcatapit": "http://dati.gov.it/onto/dcatapit#",
     "dct": "http://purl.org/dc/terms/",
-    "dcterms": "http://purl.org/dc/terms/",
     "foaf": "http://xmlns.com/foaf/0.1/",
     "l0": "https://w3id.org/italia/onto/l0/",
     "mu": "https://w3id.org/italia/onto/MU/",
@@ -17,86 +16,12 @@
     "schema": "http://schema.org/",
     "ti": "https://w3id.org/italia/onto/TI/",
     "vcard": "http://www.w3.org/2006/vcard/ns#",
+    "xml": "http://www.w3.org/XML/1998/namespace",
     "xsd": "http://www.w3.org/2001/XMLSchema#"
   },
   "@graph": [
     {
-      "@id": "l0:Description",
-      "@type": "owl:Class"
-    },
-    {
-      "@id": "http://spcdata.digitpa.gov.it/Amministrazione/m_bac",
-      "@type": [
-        "owl:NamedIndividual",
-        "dcatapit:Agent",
-        "foaf:Agent"
-      ],
-      "dcterms:identifier": "m_bac",
-      "foaf:name": {
-        "@language": "it",
-        "@value": "Ministero dei Beni e delle Attivita' Culturali"
-      }
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/Route/TripPlan",
-      "@type": "owl:Class",
-      "owl:versionInfo": [
-        {
-          "@language": "en",
-          "@value": "stable"
-        },
-        {
-          "@language": "it",
-          "@value": "stabile"
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@language": "en",
-          "@value": "The class represents a specific trip plan that is part of the route. This is used to associated an estimated duration to the route. A trip plan can be detailed in additional trip plans."
-        },
-        {
-          "@language": "it",
-          "@value": "La classe rappresenta uno specifico piano di viaggio che è parte di un percorso. Esso è utilizzato anche per associare una durata stimata del percorso. Il piano di viaggio può essere dettagliato in ulteriori piani di viaggio."
-        }
-      ],
-      "rdfs:isDefinedBy": {
-        "@id": "https://w3id.org/italia/onto/Route"
-      },
-      "rdfs:label": [
-        {
-          "@language": "en",
-          "@value": "Trip Plan"
-        },
-        {
-          "@language": "it",
-          "@value": "Piano di Viaggio"
-        }
-      ],
-      "rdfs:subClassOf": [
-        {
-          "@id": "_:ub7bL724C27"
-        },
-        {
-          "@id": "_:ub7bL720C27"
-        },
-        {
-          "@id": "_:ub7bL716C27"
-        },
-        {
-          "@id": "l0:Description"
-        },
-        {
-          "@id": "_:ub7bL728C27"
-        }
-      ]
-    },
-    {
-      "@id": "clv:long",
-      "@type": "owl:DatatypeProperty"
-    },
-    {
-      "@id": "_:ub7bL601C24",
+      "@id": "_:n8615a13332454315a37f851875572dd1b1",
       "@type": "owl:Restriction",
       "owl:onProperty": {
         "@id": "https://w3id.org/italia/onto/Route/hasLength"
@@ -106,7 +31,188 @@
       }
     },
     {
-      "@id": "_:ub7bL623C24",
+      "@id": "_:n8615a13332454315a37f851875572dd1b10",
+      "@type": "owl:Restriction",
+      "owl:onDataRange": {
+        "@id": "xsd:int"
+      },
+      "owl:onProperty": {
+        "@id": "https://w3id.org/italia/onto/Route/numberOfStages"
+      },
+      "owl:qualifiedCardinality": {
+        "@type": "xsd:nonNegativeInteger",
+        "@value": "1"
+      }
+    },
+    {
+      "@id": "_:n8615a13332454315a37f851875572dd1b11",
+      "@type": "owl:Restriction",
+      "owl:allValuesFrom": {
+        "@id": "https://w3id.org/italia/onto/Route/Stage"
+      },
+      "owl:onProperty": {
+        "@id": "l0:directlyFollows"
+      }
+    },
+    {
+      "@id": "_:n8615a13332454315a37f851875572dd1b12",
+      "@type": "owl:Restriction",
+      "owl:allValuesFrom": {
+        "@id": "https://w3id.org/italia/onto/Route/Stage"
+      },
+      "owl:onProperty": {
+        "@id": "l0:directlyPrecedes"
+      }
+    },
+    {
+      "@id": "_:n8615a13332454315a37f851875572dd1b13",
+      "@type": "owl:Restriction",
+      "owl:allValuesFrom": {
+        "@id": "https://w3id.org/italia/onto/Route/Stage"
+      },
+      "owl:onProperty": {
+        "@id": "l0:follows"
+      }
+    },
+    {
+      "@id": "_:n8615a13332454315a37f851875572dd1b14",
+      "@type": "owl:Restriction",
+      "owl:allValuesFrom": {
+        "@id": "https://w3id.org/italia/onto/Route/Stage"
+      },
+      "owl:onProperty": {
+        "@id": "l0:precedes"
+      }
+    },
+    {
+      "@id": "_:n8615a13332454315a37f851875572dd1b15",
+      "@type": "owl:Restriction",
+      "owl:onDataRange": {
+        "@id": "xsd:int"
+      },
+      "owl:onProperty": {
+        "@id": "https://w3id.org/italia/onto/Route/stageOrdering"
+      },
+      "owl:qualifiedCardinality": {
+        "@type": "xsd:nonNegativeInteger",
+        "@value": "1"
+      }
+    },
+    {
+      "@id": "_:n8615a13332454315a37f851875572dd1b16",
+      "@type": "owl:Restriction",
+      "owl:onProperty": {
+        "@id": "https://w3id.org/italia/onto/Route/hasRoute"
+      },
+      "owl:someValuesFrom": {
+        "@id": "https://w3id.org/italia/onto/Route/Route"
+      }
+    },
+    {
+      "@id": "_:n8615a13332454315a37f851875572dd1b17",
+      "@type": "owl:Restriction",
+      "owl:allValuesFrom": {
+        "@id": "https://w3id.org/italia/onto/Route/TripPlan"
+      },
+      "owl:onProperty": {
+        "@id": "https://w3id.org/italia/onto/Route/hasSubTripPlan"
+      }
+    },
+    {
+      "@id": "_:n8615a13332454315a37f851875572dd1b18",
+      "@type": "owl:Restriction",
+      "owl:allValuesFrom": {
+        "@id": "https://w3id.org/italia/onto/Route/TripPlan"
+      },
+      "owl:onProperty": {
+        "@id": "https://w3id.org/italia/onto/Route/hasSuperTripPlan"
+      }
+    },
+    {
+      "@id": "_:n8615a13332454315a37f851875572dd1b19",
+      "@type": "owl:Restriction",
+      "owl:onClass": {
+        "@id": "ti:Duration"
+      },
+      "owl:onProperty": {
+        "@id": "https://w3id.org/italia/onto/Route/hasEstimatedDuration"
+      },
+      "owl:qualifiedCardinality": {
+        "@type": "xsd:nonNegativeInteger",
+        "@value": "1"
+      }
+    },
+    {
+      "@id": "_:n8615a13332454315a37f851875572dd1b2",
+      "@type": "owl:Restriction",
+      "owl:onProperty": {
+        "@id": "l0:hasMember"
+      },
+      "owl:someValuesFrom": {
+        "@id": "https://w3id.org/italia/onto/Route/Stage"
+      }
+    },
+    {
+      "@id": "_:n8615a13332454315a37f851875572dd1b20",
+      "owl:cardinality": {
+        "@type": "xsd:nonNegativeInteger",
+        "@value": "1"
+      }
+    },
+    {
+      "@id": "_:n8615a13332454315a37f851875572dd1b21",
+      "owl:qualifiedCardinality": {
+        "@type": "xsd:nonNegativeInteger",
+        "@value": "1"
+      }
+    },
+    {
+      "@id": "_:n8615a13332454315a37f851875572dd1b22",
+      "owl:qualifiedCardinality": {
+        "@type": "xsd:nonNegativeInteger",
+        "@value": "1"
+      }
+    },
+    {
+      "@id": "_:n8615a13332454315a37f851875572dd1b3",
+      "@type": "owl:Restriction",
+      "owl:allValuesFrom": {
+        "@id": "clv:SpatialObject"
+      },
+      "owl:onProperty": {
+        "@id": "https://w3id.org/italia/onto/Route/crosses"
+      }
+    },
+    {
+      "@id": "_:n8615a13332454315a37f851875572dd1b4",
+      "@type": "owl:Restriction",
+      "owl:onClass": {
+        "@id": "clv:Geometry"
+      },
+      "owl:onProperty": {
+        "@id": "clv:hasGeometry"
+      },
+      "owl:qualifiedCardinality": {
+        "@type": "xsd:nonNegativeInteger",
+        "@value": "1"
+      }
+    },
+    {
+      "@id": "_:n8615a13332454315a37f851875572dd1b5",
+      "@type": "owl:Restriction",
+      "owl:onClass": {
+        "@id": "https://w3id.org/italia/onto/Route/RouteType"
+      },
+      "owl:onProperty": {
+        "@id": "https://w3id.org/italia/onto/Route/hasRouteType"
+      },
+      "owl:qualifiedCardinality": {
+        "@type": "xsd:nonNegativeInteger",
+        "@value": "1"
+      }
+    },
+    {
+      "@id": "_:n8615a13332454315a37f851875572dd1b6",
       "@type": "owl:Restriction",
       "owl:onProperty": {
         "@id": "https://w3id.org/italia/onto/Route/routeLongName"
@@ -116,10 +222,1303 @@
       }
     },
     {
-      "@id": "_:ub7bL890C1",
-      "owl:cardinality": {
-        "@type": "xsd:nonNegativeInteger",
-        "@value": "1"
+      "@id": "_:n8615a13332454315a37f851875572dd1b7",
+      "@type": "owl:Restriction",
+      "owl:onProperty": {
+        "@id": "https://w3id.org/italia/onto/Route/routeShortName"
+      },
+      "owl:someValuesFrom": {
+        "@id": "rdfs:Literal"
+      }
+    },
+    {
+      "@id": "_:n8615a13332454315a37f851875572dd1b8",
+      "@type": "owl:Restriction",
+      "owl:onProperty": {
+        "@id": "https://w3id.org/italia/onto/Route/routelLength"
+      },
+      "owl:someValuesFrom": {
+        "@id": "rdfs:Literal"
+      }
+    },
+    {
+      "@id": "_:n8615a13332454315a37f851875572dd1b9",
+      "@type": "owl:Restriction",
+      "owl:allValuesFrom": {
+        "@id": "rdfs:Literal"
+      },
+      "owl:onProperty": {
+        "@id": "l0:description"
+      }
+    },
+    {
+      "@id": "admsapit:depiction",
+      "@type": "owl:AnnotationProperty"
+    },
+    {
+      "@id": "admsapit:prev",
+      "@type": "owl:AnnotationProperty"
+    },
+    {
+      "@id": "admsapit:status",
+      "@type": "owl:AnnotationProperty"
+    },
+    {
+      "@id": "clv:Geometry",
+      "@type": "owl:Class",
+      "rdfs:subClassOf": {
+        "@id": "clv:SpatialObject"
+      }
+    },
+    {
+      "@id": "clv:GeometryType",
+      "@type": "owl:Class",
+      "rdfs:subClassOf": {
+        "@id": "l0:Characteristic"
+      }
+    },
+    {
+      "@id": "clv:Point",
+      "@type": "owl:NamedIndividual"
+    },
+    {
+      "@id": "clv:SpatialObject",
+      "@type": "owl:Class",
+      "rdfs:subClassOf": {
+        "@id": "l0:Location"
+      }
+    },
+    {
+      "@id": "clv:hasGeometry",
+      "@type": "owl:ObjectProperty"
+    },
+    {
+      "@id": "clv:hasGeometryType",
+      "@type": "owl:ObjectProperty"
+    },
+    {
+      "@id": "clv:lat",
+      "@type": "owl:DatatypeProperty"
+    },
+    {
+      "@id": "clv:long",
+      "@type": "owl:DatatypeProperty"
+    },
+    {
+      "@id": "http://spcdata.digitpa.gov.it/Amministrazione/agid",
+      "@type": [
+        "owl:NamedIndividual",
+        "dcatapit:Agent",
+        "foaf:Agent"
+      ],
+      "dct:identifier": "agid",
+      "foaf:name": [
+        {
+          "@language": "it",
+          "@value": "Agenzia per l'Italia Digitale"
+        },
+        {
+          "@language": "en",
+          "@value": "Italian Digital Agency"
+        }
+      ]
+    },
+    {
+      "@id": "http://spcdata.digitpa.gov.it/Amministrazione/m_bac",
+      "@type": [
+        "owl:NamedIndividual",
+        "dcatapit:Agent",
+        "foaf:Agent"
+      ],
+      "dct:identifier": "m_bac",
+      "foaf:name": {
+        "@language": "it",
+        "@value": "Ministero dei Beni e delle Attivita' Culturali"
+      }
+    },
+    {
+      "@id": "https://w3id.org/italia/data/contact-point/onto-dgt",
+      "@type": [
+        "owl:NamedIndividual",
+        "dcatapit:Organization",
+        "vcard:Kind",
+        "vcard:Organization"
+      ],
+      "vcard:fn": "MIBAC - Direzine Generale Turismo",
+      "vcard:hasEmail": {
+        "@id": "mailto:dg-t@beniculturali.it"
+      }
+    },
+    {
+      "@id": "https://w3id.org/italia/data/distribution/RTAPIT-JSON-LD",
+      "@type": [
+        "owl:NamedIndividual",
+        "admsapit:SemanticAssetDistribution"
+      ],
+      "dcat:accessURL": {
+        "@id": "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/Route/latest"
+      },
+      "dcat:downloadURL": {
+        "@id": "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/Route/Route-AP_IT.jsonld"
+      },
+      "dct:description": [
+        {
+          "@language": "it",
+          "@value": "Questa è la distribuzione JSON-LD dell'ontologia sui percorsi"
+        },
+        {
+          "@language": "en",
+          "@value": "This is the distribution in JSON-LD of the Routes ontology"
+        }
+      ],
+      "dct:format": {
+        "@id": "http://publications.europa.eu/resource/authority/file-type/JSON_LD"
+      },
+      "dct:license": {
+        "@id": "https://w3id.org/italia/controlled-vocabulary/licences/A21_CCBY40"
+      },
+      "dct:title": [
+        {
+          "@language": "it",
+          "@value": "Distribuzione JSON-LD ontologia Route-AP_IT"
+        },
+        {
+          "@language": "en",
+          "@value": "JSON-LD distribution of Route-AP_IT Ontology"
+        }
+      ]
+    },
+    {
+      "@id": "https://w3id.org/italia/data/distribution/RTAPIT-RDF-TURTLE",
+      "@type": [
+        "owl:NamedIndividual",
+        "admsapit:SemanticAssetDistribution"
+      ],
+      "dcat:accessURL": {
+        "@id": "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/Route/latest"
+      },
+      "dcat:downloadURL": {
+        "@id": "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/Route/latest/Route-AP_IT.ttl"
+      },
+      "dct:description": [
+        {
+          "@language": "it",
+          "@value": "Questa è la distribuzione RDF/Turtle dell'ontologia sui percorsi"
+        },
+        {
+          "@language": "en",
+          "@value": "This is the distribution in RDF/turtle of the Routes ontology"
+        }
+      ],
+      "dct:format": {
+        "@id": "http://publications.europa.eu/resource/authority/file-type/RDF_TURTLE"
+      },
+      "dct:license": {
+        "@id": "https://w3id.org/italia/controlled-vocabulary/licences/A21_CCBY40"
+      },
+      "dct:title": [
+        {
+          "@language": "it",
+          "@value": "Distribuzione RDF/Turtle ontologia Route-AP_IT"
+        },
+        {
+          "@language": "en",
+          "@value": "RDF/Turtle distribution of Route-AP_IT Ontology"
+        }
+      ]
+    },
+    {
+      "@id": "https://w3id.org/italia/data/distribution/RTAPIT-RDF-XML",
+      "@type": [
+        "owl:NamedIndividual",
+        "admsapit:SemanticAssetDistribution"
+      ],
+      "dcat:accessURL": {
+        "@id": "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/Route/latest"
+      },
+      "dcat:downloadURL": {
+        "@id": "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/Route/latest/Route-AP_IT.rdf"
+      },
+      "dct:description": [
+        {
+          "@language": "it",
+          "@value": "Questa è la distribuzione RDF/XML dell'ontologia dei percorsi"
+        },
+        {
+          "@language": "en",
+          "@value": "This is the distribution in RDF/XML of the Routes ontology"
+        }
+      ],
+      "dct:format": {
+        "@id": "http://publications.europa.eu/resource/authority/file-type/RDF_XML"
+      },
+      "dct:license": {
+        "@id": "https://w3id.org/italia/controlled-vocabulary/licences/A21_CCBY40"
+      },
+      "dct:title": [
+        {
+          "@language": "it",
+          "@value": "Distribuzione RDF/XML ontologia Route-AP_IT"
+        },
+        {
+          "@language": "en",
+          "@value": "RDF/XML distribution of Route-AP_IT Ontology"
+        }
+      ]
+    },
+    {
+      "@id": "https://w3id.org/italia/data/project/AtlanteCammini",
+      "@type": [
+        "owl:NamedIndividual",
+        "admsapit:Project"
+      ],
+      "l0:name": {
+        "@language": "it",
+        "@value": "Atlante dei Cammini d'Italia"
+      }
+    },
+    {
+      "@id": "https://w3id.org/italia/data/project/DAF",
+      "@type": [
+        "owl:NamedIndividual",
+        "admsapit:Project"
+      ],
+      "l0:name": {
+        "@language": "it",
+        "@value": "Data & Analytics Framework"
+      }
+    },
+    {
+      "@id": "https://w3id.org/italia/data/project/OntoPiA",
+      "@type": [
+        "owl:NamedIndividual",
+        "admsapit:Project"
+      ],
+      "l0:name": {
+        "@language": "it",
+        "@value": "OntoPiA - la rete di ontologie della pubblica amministrazione italiana"
+      }
+    },
+    {
+      "@id": "https://w3id.org/italia/data/support-unit/cnr-Z6HZEH/stlab",
+      "@type": [
+        "owl:NamedIndividual",
+        "dcatapit:Agent",
+        "foaf:Agent"
+      ],
+      "dct:identifier": "cnr - Z6HZEH - STLab",
+      "foaf:name": [
+        {
+          "@language": "en",
+          "@value": "Institute of Cognitive Sciences and Technologies of the Italian Research Council (CNR) - Semantic Technology Laboratory (STLab)"
+        },
+        {
+          "@language": "it",
+          "@value": "Istituto di Scienze e Tecnologie della Cognizione del CNR - Semantic Technology Lab (STLab)"
+        }
+      ]
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/POI/MultiplePointOfInterest",
+      "@type": "owl:Class"
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/Route",
+      "@type": [
+        "owl:Ontology",
+        "owl:NamedIndividual",
+        "admsapit:SemanticAsset"
+      ],
+      "admsapit:acronym": "Route-AP_IT",
+      "admsapit:depiction": {
+        "@id": "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/Route/v0.1/Route-AP_IT.png"
+      },
+      "admsapit:hasContributor": {
+        "@id": "http://spcdata.digitpa.gov.it/Amministrazione/agid"
+      },
+      "admsapit:hasFormalityLevel": {
+        "@id": "admsapit:Formal"
+      },
+      "admsapit:hasKeyClass": [
+        {
+          "@id": "https://w3id.org/italia/onto/Route/Route"
+        },
+        {
+          "@id": "https://w3id.org/italia/onto/Route/Stage"
+        },
+        {
+          "@id": "https://w3id.org/italia/onto/Route/TripPlan"
+        }
+      ],
+      "admsapit:hasOntologyLanguage": {
+        "@id": "admsapit:OWL"
+      },
+      "admsapit:hasSemanticAssetDistribution": [
+        {
+          "@id": "https://w3id.org/italia/data/distribution/RTAPIT-JSON-LD"
+        },
+        {
+          "@id": "https://w3id.org/italia/data/distribution/RTAPIT-RDF-TURTLE"
+        },
+        {
+          "@id": "https://w3id.org/italia/data/distribution/RTAPIT-RDF-XML"
+        }
+      ],
+      "admsapit:hasTask": [
+        {
+          "@id": "admsapit:AnnotationTask"
+        },
+        {
+          "@id": "admsapit:QueryFormulationTask"
+        },
+        {
+          "@id": "admsapit:SearchTask"
+        }
+      ],
+      "admsapit:last": {
+        "@id": "https://w3id.org/italia/onto/Route/0.2"
+      },
+      "admsapit:officialURI": {
+        "@type": "xsd:anyURI",
+        "@value": "https://w3id.org/italia/onto/Route"
+      },
+      "admsapit:prefix": "rtapit",
+      "admsapit:prev": {
+        "@id": "https://w3id.org/italia/onto/Route/0.1"
+      },
+      "admsapit:semanticAssetInUse": [
+        {
+          "@id": "https://w3id.org/italia/data/project/AtlanteCammini"
+        },
+        {
+          "@id": "https://w3id.org/italia/data/project/DAF"
+        },
+        {
+          "@id": "https://w3id.org/italia/data/project/OntoPiA"
+        }
+      ],
+      "admsapit:status": "initial draft",
+      "admsapit:target": [
+        {
+          "@language": "it",
+          "@value": "Cittadini"
+        },
+        {
+          "@language": "it",
+          "@value": "Imprese"
+        },
+        {
+          "@language": "it",
+          "@value": "Pubbliche Amministrazioni"
+        }
+      ],
+      "admsapit:type": {
+        "@id": "admsapit:ServiceOntology"
+      },
+      "dcat:contactPoint": {
+        "@id": "https://w3id.org/italia/data/contact-point/onto-dgt"
+      },
+      "dcat:keyword": [
+        {
+          "@language": "it",
+          "@value": "Percorso"
+        },
+        {
+          "@language": "it",
+          "@value": "Pianificazione viaggio"
+        },
+        {
+          "@language": "it",
+          "@value": "Tappa"
+        }
+      ],
+      "dcat:theme": [
+        {
+          "@id": "http://publications.europa.eu/resource/authority/data-theme/EDUC"
+        },
+        {
+          "@id": "http://publications.europa.eu/resource/authority/data-theme/TRANS"
+        }
+      ],
+      "dct:accrualPeriodicity": {
+        "@id": "http://publications.europa.eu/resource/authority/frequency/IRREG"
+      },
+      "dct:creator": [
+        {
+          "@id": "http://spcdata.digitpa.gov.it/Amministrazione/m_bac"
+        },
+        {
+          "@id": "https://w3id.org/italia/data/support-unit/cnr-Z6HZEH/stlab"
+        }
+      ],
+      "dct:description": [
+        {
+          "@id": "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/Route/v0.1/Route-AP_IT.png"
+        },
+        {
+          "@language": "it",
+          "@value": "Questo il profilo applicativo italiano dell'ontologia sui percorsi. Essi sono i percorsi di transito che possono essere seguiti mediante l'uso di diversi mezzi di trasporto come per esempio i percorsi degli autobus, i percorsi della metro, i percorsi a piedi, i percorsi a cavallo."
+        },
+        {
+          "@language": "en",
+          "@value": "This is the Italian application profile of the routes. They are transit routes that can be followed using different means of transportation such as bus routes, metro routes, walking routes, hourseback routes, etc."
+        }
+      ],
+      "dct:issued": {
+        "@type": "xsd:date",
+        "@value": "2018-10-18"
+      },
+      "dct:language": [
+        {
+          "@id": "http://publications.europa.eu/resource/authority/language/ENG"
+        },
+        {
+          "@id": "http://publications.europa.eu/resource/authority/language/ITA"
+        }
+      ],
+      "dct:modified": "2020-04-16",
+      "dct:publisher": {
+        "@id": "https://w3id.org/italia/data/support-unit/cnr-Z6HZEH/stlab"
+      },
+      "dct:rightsHolder": {
+        "@id": "http://spcdata.digitpa.gov.it/Amministrazione/m_bac"
+      },
+      "dct:title": [
+        {
+          "@language": "it",
+          "@value": "Ontologia dei Percorsi - Profilo applicativo italiano"
+        },
+        {
+          "@language": "en",
+          "@value": "Routes Ontology - Italian Application Profile"
+        }
+      ],
+      "owl:imports": {
+        "@id": "https://w3id.org/italia/onto/l0"
+      },
+      "owl:versionIRI": {
+        "@id": "https://w3id.org/italia/onto/Route/0.2"
+      },
+      "owl:versionInfo": [
+        {
+          "@language": "en",
+          "@value": "Version 0.2- Modified on 16 April 2020 - renamed property ordering in stageOrdering and defined as subproperty of l0:positionInSequence - Modified on 24 April 2019 - Some errors have been corrected."
+        },
+        {
+          "@language": "it",
+          "@value": "Versione 0.2- Modificata il 16 Aprile 2020 - rinominata proprietà ordering in stageOrdering e definita come sotto proprietà di positionInSequence di l0 - Modificata il 24 Aprile 2019 - Correzione di alcuni errori"
+        }
+      ],
+      "rdfs:comment": [
+        {
+          "@language": "it",
+          "@value": "Questo il profilo applicativo italiano dell'ontologia sui percorsi. Essi sono i percorsi di transito che possono essere seguiti mediante l'uso di diversi mezzi di trasporto come per esempio i percorsi degli autobus, i percorsi della metro, i percorsi a piedi, i percorsi a cavallo."
+        },
+        {
+          "@language": "en",
+          "@value": "This is the ontology of the Italian application profile for Routes"
+        }
+      ],
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/italia/onto/Route"
+      },
+      "rdfs:label": [
+        {
+          "@language": "it",
+          "@value": "Ontologia dei Percorsi"
+        },
+        {
+          "@language": "en",
+          "@value": "Routes Ontology"
+        }
+      ]
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/Route/Route",
+      "@type": "owl:Class",
+      "owl:versionInfo": [
+        {
+          "@language": "it",
+          "@value": "stabile"
+        },
+        {
+          "@language": "en",
+          "@value": "stable"
+        }
+      ],
+      "prov:wasDerivedFrom": {
+        "@id": "http://vocab.gtfs.org/terms#Route"
+      },
+      "rdfs:comment": [
+        {
+          "@language": "en",
+          "@value": "A sequence of ordered stages that can be followed by a human being and/or any type of transit vehicle"
+        },
+        {
+          "@language": "it",
+          "@value": "Una sequenza ordinata di tappe che possono essere seguite da persone e/o da qualsiasi tipo di veicolo di transito"
+        }
+      ],
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/italia/onto/Route"
+      },
+      "rdfs:label": [
+        {
+          "@language": "it",
+          "@value": "Percorso"
+        },
+        {
+          "@language": "en",
+          "@value": "Route"
+        }
+      ],
+      "rdfs:subClassOf": [
+        {
+          "@id": "l0:Description"
+        },
+        {
+          "@id": "l0:Sequence"
+        },
+        {
+          "@id": "_:n8615a13332454315a37f851875572dd1b1"
+        },
+        {
+          "@id": "_:n8615a13332454315a37f851875572dd1b2"
+        },
+        {
+          "@id": "_:n8615a13332454315a37f851875572dd1b3"
+        },
+        {
+          "@id": "_:n8615a13332454315a37f851875572dd1b4"
+        },
+        {
+          "@id": "_:n8615a13332454315a37f851875572dd1b5"
+        },
+        {
+          "@id": "_:n8615a13332454315a37f851875572dd1b6"
+        },
+        {
+          "@id": "_:n8615a13332454315a37f851875572dd1b7"
+        },
+        {
+          "@id": "_:n8615a13332454315a37f851875572dd1b8"
+        },
+        {
+          "@id": "_:n8615a13332454315a37f851875572dd1b9"
+        },
+        {
+          "@id": "_:n8615a13332454315a37f851875572dd1b10"
+        }
+      ]
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/Route/RouteType",
+      "@type": "owl:Class",
+      "l0:controlledVocabulary": {
+        "@id": "https://w3id.org/italia/controlled-vocabulary/classifications-for-routes/route-types"
+      },
+      "owl:versionInfo": [
+        {
+          "@language": "it",
+          "@value": "stabile"
+        },
+        {
+          "@language": "en",
+          "@value": "stable"
+        }
+      ],
+      "prov:wasInfluencedBy": {
+        "@id": "http://vocab.gtfs.org/terms#RouteType"
+      },
+      "rdfs:comment": [
+        {
+          "@language": "it",
+          "@value": "La classe che consente di modellare il tipo di percorso a seconda del mezzo di  trasporto utiizzato nel percorso stesso. L'ontologia definisce attualmente un vocabolario controllato sui tipi di percorso (percorso dell'autobus, percorso del treno, percorso del tram, percorso della nave).\nIl vocabolario controllato si base su quanto proposto nella specifica GTFS (con gli stessi codici) e ulteriori voci aggiunte allo scopo di modellare i tipi di percorso per l'ontologia del'atlante dei cammini"
+        },
+        {
+          "@language": "en",
+          "@value": "The class represents the type of route in terms of means of transportation used in the route itself. The ontology uses a controlled vocabulary on the type of transportation (bus, ferry, rail, LightRail, horseback, etc.)"
+        }
+      ],
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/italia/onto/Route"
+      },
+      "rdfs:label": [
+        {
+          "@language": "en",
+          "@value": "Route Type"
+        },
+        {
+          "@language": "it",
+          "@value": "Tipo di percorso"
+        }
+      ],
+      "rdfs:subClassOf": {
+        "@id": "l0:Characteristic"
+      }
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/Route/Stage",
+      "@type": "owl:Class",
+      "owl:versionInfo": [
+        {
+          "@language": "it",
+          "@value": "stabile"
+        },
+        {
+          "@language": "en",
+          "@value": "stable"
+        }
+      ],
+      "prov:wasInfluencedBy": {
+        "@id": "http://vocab.gtfs.org/terms#Stop"
+      },
+      "rdfs:comment": [
+        {
+          "@language": "it",
+          "@value": "Questa classe rappresenta una tappa di un percorso ovvero una sosta durante il viaggio o escursione"
+        },
+        {
+          "@language": "en",
+          "@value": "This class represents a stage of a route; that is a stop during a trip or excursion"
+        }
+      ],
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/italia/onto/Route"
+      },
+      "rdfs:label": [
+        {
+          "@language": "en",
+          "@value": "Stage"
+        },
+        {
+          "@language": "it",
+          "@value": "Tappa"
+        }
+      ],
+      "rdfs:subClassOf": [
+        {
+          "@id": "https://w3id.org/italia/onto/POI/MultiplePointOfInterest"
+        },
+        {
+          "@id": "l0:Object"
+        },
+        {
+          "@id": "_:n8615a13332454315a37f851875572dd1b11"
+        },
+        {
+          "@id": "_:n8615a13332454315a37f851875572dd1b12"
+        },
+        {
+          "@id": "_:n8615a13332454315a37f851875572dd1b13"
+        },
+        {
+          "@id": "_:n8615a13332454315a37f851875572dd1b14"
+        },
+        {
+          "@id": "_:n8615a13332454315a37f851875572dd1b15"
+        }
+      ]
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/Route/TripPlan",
+      "@type": "owl:Class",
+      "owl:versionInfo": [
+        {
+          "@language": "it",
+          "@value": "stabile"
+        },
+        {
+          "@language": "en",
+          "@value": "stable"
+        }
+      ],
+      "rdfs:comment": [
+        {
+          "@language": "it",
+          "@value": "La classe rappresenta uno specifico piano di viaggio che è parte di un percorso. Esso è utilizzato anche per associare una durata stimata del percorso. Il piano di viaggio può essere dettagliato in ulteriori piani di viaggio."
+        },
+        {
+          "@language": "en",
+          "@value": "The class represents a specific trip plan that is part of the route. This is used to associated an estimated duration to the route. A trip plan can be detailed in additional trip plans."
+        }
+      ],
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/italia/onto/Route"
+      },
+      "rdfs:label": [
+        {
+          "@language": "it",
+          "@value": "Piano di Viaggio"
+        },
+        {
+          "@language": "en",
+          "@value": "Trip Plan"
+        }
+      ],
+      "rdfs:subClassOf": [
+        {
+          "@id": "l0:Description"
+        },
+        {
+          "@id": "_:n8615a13332454315a37f851875572dd1b16"
+        },
+        {
+          "@id": "_:n8615a13332454315a37f851875572dd1b17"
+        },
+        {
+          "@id": "_:n8615a13332454315a37f851875572dd1b18"
+        },
+        {
+          "@id": "_:n8615a13332454315a37f851875572dd1b19"
+        }
+      ]
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/Route/crosses",
+      "@type": "owl:ObjectProperty",
+      "owl:inverseOf": {
+        "@id": "https://w3id.org/italia/onto/Route/isCrossedBy"
+      },
+      "owl:versionInfo": [
+        {
+          "@language": "it",
+          "@value": "provvisoria"
+        },
+        {
+          "@language": "en",
+          "@value": "unstable"
+        }
+      ],
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "The relation between a route and a geospatial object. I.e. a route 'crosses' a certain geospatial point."
+      },
+      "rdfs:domain": {
+        "@id": "https://w3id.org/italia/onto/Route/Route"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/italia/onto/Route"
+      },
+      "rdfs:label": [
+        {
+          "@language": "it",
+          "@value": "La relazione che permette di asserire che un percorso attraversa un certo punto geospaziale."
+        },
+        {
+          "@language": "it",
+          "@value": "attraversa"
+        },
+        {
+          "@language": "en",
+          "@value": "crosses"
+        }
+      ],
+      "rdfs:range": {
+        "@id": "clv:SpatialObject"
+      }
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/Route/hasAltRoute",
+      "@type": "owl:ObjectProperty",
+      "owl:inverseOf": {
+        "@id": "https://w3id.org/italia/onto/Route/isAltRouteOf"
+      },
+      "owl:versionInfo": [
+        {
+          "@language": "it",
+          "@value": "stabile"
+        },
+        {
+          "@language": "en",
+          "@value": "stable"
+        }
+      ],
+      "rdfs:comment": [
+        {
+          "@language": "it",
+          "@value": "La object property che permette di identificare un percorso alternativo"
+        },
+        {
+          "@language": "en",
+          "@value": "The object property that allows to identify an alternative route."
+        }
+      ],
+      "rdfs:domain": {
+        "@id": "owl:Thing"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/italia/onto/Route"
+      },
+      "rdfs:label": [
+        {
+          "@language": "en",
+          "@value": "has alternative route"
+        },
+        {
+          "@language": "it",
+          "@value": "percorso alternativo"
+        }
+      ],
+      "rdfs:range": {
+        "@id": "https://w3id.org/italia/onto/Route/Route"
+      },
+      "rdfs:subPropertyOf": {
+        "@id": "https://w3id.org/italia/onto/Route/hasRoute"
+      }
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/Route/hasDeviation",
+      "@type": "owl:ObjectProperty",
+      "owl:inverseOf": {
+        "@id": "https://w3id.org/italia/onto/Route/isDeviationOf"
+      },
+      "owl:versionInfo": [
+        {
+          "@language": "it",
+          "@value": "stabile"
+        },
+        {
+          "@language": "en",
+          "@value": "stable"
+        }
+      ],
+      "rdfs:comment": [
+        {
+          "@language": "it",
+          "@value": "La object property che permette di identificare una deviazione nel percorso"
+        },
+        {
+          "@language": "en",
+          "@value": "The object property that allows to represent a deviation."
+        }
+      ],
+      "rdfs:domain": {
+        "@id": "owl:Thing"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/italia/onto/Route"
+      },
+      "rdfs:label": [
+        {
+          "@language": "it",
+          "@value": "deviazione"
+        },
+        {
+          "@language": "en",
+          "@value": "has deviation"
+        }
+      ],
+      "rdfs:range": {
+        "@id": "https://w3id.org/italia/onto/Route/Route"
+      },
+      "rdfs:subPropertyOf": {
+        "@id": "https://w3id.org/italia/onto/Route/hasAltRoute"
+      }
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/Route/hasEstimatedDuration",
+      "@type": "owl:ObjectProperty",
+      "owl:versionInfo": [
+        {
+          "@language": "it",
+          "@value": "provvisoria"
+        },
+        {
+          "@language": "en",
+          "@value": "unstable"
+        }
+      ],
+      "rdfs:comment": [
+        {
+          "@language": "en",
+          "@value": "Property that links the trip plan to its duration"
+        },
+        {
+          "@language": "it",
+          "@value": "Proprietà che consente di specificare una durata per il piano di viaggio."
+        }
+      ],
+      "rdfs:domain": {
+        "@id": "https://w3id.org/italia/onto/Route/TripPlan"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/italia/onto/Route"
+      },
+      "rdfs:label": [
+        {
+          "@language": "it",
+          "@value": "ha durata stimata"
+        },
+        {
+          "@language": "en",
+          "@value": "has estimated duration"
+        }
+      ],
+      "rdfs:range": {
+        "@id": "ti:Duration"
+      }
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/Route/hasLength",
+      "@type": "owl:ObjectProperty",
+      "owl:versionInfo": [
+        {
+          "@language": "it",
+          "@value": "stabile"
+        },
+        {
+          "@language": "en",
+          "@value": "stable"
+        }
+      ],
+      "rdfs:comment": [
+        {
+          "@language": "it",
+          "@value": "Proprietà utilizzata per specificare la lunghezza di un piano di viaggio"
+        },
+        {
+          "@language": "en",
+          "@value": "Prpperty used to specify the length of a trip plan"
+        }
+      ],
+      "rdfs:domain": {
+        "@id": "https://w3id.org/italia/onto/Route/Route"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/italia/onto/Route"
+      },
+      "rdfs:label": [
+        {
+          "@language": "it",
+          "@value": "ha lunghezza"
+        },
+        {
+          "@language": "en",
+          "@value": "has length"
+        }
+      ],
+      "rdfs:range": {
+        "@id": "mu:Value"
+      }
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/Route/hasPrefRoute",
+      "@type": "owl:ObjectProperty",
+      "owl:inverseOf": {
+        "@id": "https://w3id.org/italia/onto/Route/isPrefRouteOf"
+      },
+      "owl:versionInfo": [
+        {
+          "@language": "it",
+          "@value": "stabile"
+        },
+        {
+          "@language": "en",
+          "@value": "stable"
+        }
+      ],
+      "rdfs:comment": [
+        {
+          "@language": "it",
+          "@value": "La object property che permette di specificare un percorso preferenziale."
+        },
+        {
+          "@language": "en",
+          "@value": "The object property that allows to specify the preferred route."
+        }
+      ],
+      "rdfs:domain": {
+        "@id": "owl:Thing"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/italia/onto/Route"
+      },
+      "rdfs:label": [
+        {
+          "@language": "en",
+          "@value": "has preferred route"
+        },
+        {
+          "@language": "it",
+          "@value": "percorso preferenziale"
+        }
+      ],
+      "rdfs:range": {
+        "@id": "https://w3id.org/italia/onto/Route/Route"
+      },
+      "rdfs:subPropertyOf": {
+        "@id": "https://w3id.org/italia/onto/Route/hasRoute"
+      }
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/Route/hasRoute",
+      "@type": "owl:ObjectProperty",
+      "owl:inverseOf": {
+        "@id": "https://w3id.org/italia/onto/Route/isRouteOf"
+      },
+      "owl:versionInfo": [
+        {
+          "@language": "it",
+          "@value": "stabile"
+        },
+        {
+          "@language": "en",
+          "@value": "stable"
+        }
+      ],
+      "rdfs:comment": [
+        {
+          "@language": "en",
+          "@value": "Property used to connect any thing to a route"
+        },
+        {
+          "@language": "it",
+          "@value": "Proprietà utilizzata per collegare qualsiasi cosa a un percorso"
+        }
+      ],
+      "rdfs:domain": {
+        "@id": "owl:Thing"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/italia/onto/Route"
+      },
+      "rdfs:label": [
+        {
+          "@language": "it",
+          "@value": "ha percorso"
+        },
+        {
+          "@language": "en",
+          "@value": "has route"
+        }
+      ],
+      "rdfs:range": {
+        "@id": "https://w3id.org/italia/onto/Route/Route"
+      }
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/Route/hasRouteType",
+      "@type": "owl:ObjectProperty",
+      "owl:versionInfo": [
+        {
+          "@language": "it",
+          "@value": "stabile"
+        },
+        {
+          "@language": "en",
+          "@value": "stable"
+        }
+      ],
+      "rdfs:comment": [
+        {
+          "@language": "en",
+          "@value": "Property that links the route to its type (walking route, bus route, etc.)"
+        },
+        {
+          "@language": "it",
+          "@value": "Proprietà che lega un percorso al suo tipo (percorso in bici, percorso a piedi, percorso in autobus, ecc.)"
+        }
+      ],
+      "rdfs:domain": {
+        "@id": "https://w3id.org/italia/onto/Route/Route"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/italia/onto/Route"
+      },
+      "rdfs:label": [
+        {
+          "@language": "en",
+          "@value": "has route type"
+        },
+        {
+          "@language": "it",
+          "@value": "tipo percorso"
+        }
+      ],
+      "rdfs:range": {
+        "@id": "https://w3id.org/italia/onto/Route/RouteType"
+      }
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/Route/hasSubTripPlan",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:TransitiveProperty"
+      ],
+      "owl:inverseOf": {
+        "@id": "https://w3id.org/italia/onto/Route/hasSuperTripPlan"
+      },
+      "owl:versionInfo": [
+        {
+          "@language": "it",
+          "@value": "stabile"
+        },
+        {
+          "@language": "en",
+          "@value": "stable"
+        }
+      ],
+      "rdfs:comment": [
+        {
+          "@language": "en",
+          "@value": "Property used to specify additional trip plans that compose a bigger one."
+        },
+        {
+          "@language": "it",
+          "@value": "Proprietà utilizzata per suddividere un piano di viaggio in ulteriori piani"
+        }
+      ],
+      "rdfs:domain": {
+        "@id": "https://w3id.org/italia/onto/Route/TripPlan"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/italia/onto/Route"
+      },
+      "rdfs:label": [
+        {
+          "@language": "en",
+          "@value": "has sub trip plan"
+        },
+        {
+          "@language": "it",
+          "@value": "sotto piano di viaggio"
+        }
+      ],
+      "rdfs:range": {
+        "@id": "https://w3id.org/italia/onto/Route/TripPlan"
+      }
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/Route/hasSuperTripPlan",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:TransitiveProperty"
+      ],
+      "owl:versionInfo": [
+        {
+          "@language": "it",
+          "@value": "stabile"
+        },
+        {
+          "@language": "en",
+          "@value": "stable"
+        }
+      ],
+      "rdfs:comment": [
+        {
+          "@language": "en",
+          "@value": "Property used to indicate the super trip plan which contains other trip plans"
+        },
+        {
+          "@language": "it",
+          "@value": "Proprietà utilizzata per indicare il piano di viaggio che contiene altri piani di viaggio"
+        }
+      ],
+      "rdfs:domain": {
+        "@id": "https://w3id.org/italia/onto/Route/TripPlan"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/italia/onto/Route"
+      },
+      "rdfs:label": [
+        {
+          "@language": "en",
+          "@value": "has super trip plan"
+        },
+        {
+          "@language": "it",
+          "@value": "super piano di viaggio"
+        }
+      ],
+      "rdfs:range": {
+        "@id": "https://w3id.org/italia/onto/Route/TripPlan"
+      }
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/Route/hasTripPlan",
+      "@type": "owl:ObjectProperty",
+      "owl:inverseOf": {
+        "@id": "https://w3id.org/italia/onto/Route/isTripPlanOf"
+      },
+      "owl:versionInfo": [
+        {
+          "@language": "it",
+          "@value": "stabile"
+        },
+        {
+          "@language": "en",
+          "@value": "stable"
+        }
+      ],
+      "rdfs:comment": [
+        {
+          "@language": "en",
+          "@value": "Property that links any thing to a trip plan"
+        },
+        {
+          "@language": "it",
+          "@value": "Proprietà che lega qualsiasi cosa a un piano di viaggio"
+        }
+      ],
+      "rdfs:domain": {
+        "@id": "owl:Thing"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/italia/onto/Route"
+      },
+      "rdfs:label": [
+        {
+          "@language": "it",
+          "@value": "ha piano di viaggio"
+        },
+        {
+          "@language": "en",
+          "@value": "has trip plan"
+        }
+      ],
+      "rdfs:range": {
+        "@id": "https://w3id.org/italia/onto/Route/TripPlan"
+      }
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/Route/isAltRouteOf",
+      "@type": "owl:ObjectProperty",
+      "owl:versionInfo": [
+        {
+          "@language": "it",
+          "@value": "stabile"
+        },
+        {
+          "@language": "en",
+          "@value": "stable"
+        }
+      ],
+      "rdfs:comment": [
+        {
+          "@language": "en",
+          "@value": "Inverse property of has alternative route"
+        },
+        {
+          "@language": "it",
+          "@value": "Proprietà inversa di percorso alternativo"
+        }
+      ],
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/italia/onto/Route"
+      },
+      "rdfs:label": [
+        {
+          "@language": "en",
+          "@value": "is alternative route of"
+        },
+        {
+          "@language": "it",
+          "@value": "percorso alternativo di"
+        }
+      ],
+      "rdfs:subPropertyOf": {
+        "@id": "https://w3id.org/italia/onto/Route/isRouteOf"
       }
     },
     {
@@ -166,609 +1565,26 @@
       }
     },
     {
-      "@id": "l0:precedes",
-      "@type": "owl:ObjectProperty"
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/Route/crosses",
-      "@type": "owl:ObjectProperty",
-      "owl:inverseOf": {
-        "@id": "https://w3id.org/italia/onto/Route/isCrossedBy"
-      },
-      "owl:versionInfo": [
-        {
-          "@language": "it",
-          "@value": "provvisoria"
-        },
-        {
-          "@language": "en",
-          "@value": "unstable"
-        }
-      ],
-      "rdfs:comment": {
-        "@language": "en",
-        "@value": "The relation between a route and a geospatial object. I.e. a route 'crosses' a certain geospatial point."
-      },
-      "rdfs:domain": {
-        "@id": "https://w3id.org/italia/onto/Route/Route"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "https://w3id.org/italia/onto/Route"
-      },
-      "rdfs:label": [
-        {
-          "@language": "en",
-          "@value": "crosses"
-        },
-        {
-          "@language": "it",
-          "@value": "attraversa"
-        },
-        {
-          "@language": "it",
-          "@value": "La relazione che permette di asserire che un percorso attraversa un certo punto geospaziale."
-        }
-      ],
-      "rdfs:range": {
-        "@id": "clv:SpatialObject"
-      }
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/Route/routeLongName",
-      "@type": "owl:DatatypeProperty",
-      "owl:versionInfo": [
-        {
-          "@language": "it",
-          "@value": "stabile"
-        },
-        {
-          "@language": "en",
-          "@value": "stable"
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@language": "en",
-          "@value": "The property represents the full name of the route. This name is generally more descriptive than the route short name and will often include the route's destination or stop. If the route long name does not exist, it is possible to include an empty string. However, it is necessary to specify the route short name"
-        },
-        {
-          "@language": "it",
-          "@value": "La proprietà rappresenta il nome completo o esteso del percoso. Il nome completo è più descrittivo del nome breve del percorso e spesso include anche la destinazione del percorso o le fermate. Se il nome per esteso non esiste, si può include la stringa vuota. Tuttavia è necessario specificare il nome breve del percorso"
-        }
-      ],
-      "rdfs:domain": {
-        "@id": "https://w3id.org/italia/onto/Route/Route"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "https://w3id.org/italia/onto/Route"
-      },
-      "rdfs:label": [
-        {
-          "@language": "it",
-          "@value": "nome esteso percorso"
-        },
-        {
-          "@language": "en",
-          "@value": "route long name"
-        }
-      ],
-      "rdfs:range": {
-        "@id": "rdfs:Literal"
-      },
-      "rdfs:subPropertyOf": {
-        "@id": "l0:name"
-      }
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/Route/stageOrdering",
-      "@type": "owl:DatatypeProperty",
-      "owl:versionInfo": [
-        {
-          "@language": "it",
-          "@value": "stabile"
-        },
-        {
-          "@language": "en",
-          "@value": "stable"
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@language": "it",
-          "@value": "L'ordinamento dell'elemento all'interno della sequenza espresso come intero. Nel contesto dell'ontologia indica la posizione della tappa nel percorso inteso come sequenza ordinata di tappe."
-        },
-        {
-          "@language": "en",
-          "@value": "The integer that expresses the ordering of an item in a certain sequence. In the context of this ontology is the ordering in the sequence of stages."
-        }
-      ],
-      "rdfs:domain": {
-        "@id": "https://w3id.org/italia/onto/Route/Stage"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "https://w3id.org/italia/onto/Route"
-      },
-      "rdfs:label": [
-        {
-          "@language": "it",
-          "@value": "ordinamento tappa"
-        },
-        {
-          "@language": "en",
-          "@value": "stage ordering"
-        }
-      ],
-      "rdfs:range": {
-        "@id": "xsd:int"
-      },
-      "rdfs:subPropertyOf": {
-        "@id": "l0:positionInSequence"
-      }
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/Route/hasPrefRoute",
-      "@type": "owl:ObjectProperty",
-      "owl:inverseOf": {
-        "@id": "https://w3id.org/italia/onto/Route/isPrefRouteOf"
-      },
-      "owl:versionInfo": [
-        {
-          "@language": "en",
-          "@value": "stable"
-        },
-        {
-          "@language": "it",
-          "@value": "stabile"
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@language": "en",
-          "@value": "The object property that allows to specify the preferred route."
-        },
-        {
-          "@language": "it",
-          "@value": "La object property che permette di specificare un percorso preferenziale."
-        }
-      ],
-      "rdfs:domain": {
-        "@id": "owl:Thing"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "https://w3id.org/italia/onto/Route"
-      },
-      "rdfs:label": [
-        {
-          "@language": "it",
-          "@value": "percorso preferenziale"
-        },
-        {
-          "@language": "en",
-          "@value": "has preferred route"
-        }
-      ],
-      "rdfs:range": {
-        "@id": "https://w3id.org/italia/onto/Route/Route"
-      },
-      "rdfs:subPropertyOf": {
-        "@id": "https://w3id.org/italia/onto/Route/hasRoute"
-      }
-    },
-    {
-      "@id": "https://w3id.org/italia/data/distribution/RTAPIT-RDF-XML",
-      "@type": [
-        "admsapit:SemanticAssetDistribution",
-        "owl:NamedIndividual"
-      ],
-      "dcat:accessURL": {
-        "@id": "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/Route/latest"
-      },
-      "dcat:downloadURL": {
-        "@id": "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/Route/latest/Route-AP_IT.rdf"
-      },
-      "dcterms:description": [
-        {
-          "@language": "en",
-          "@value": "This is the distribution in RDF/XML of the Routes ontology"
-        },
-        {
-          "@language": "it",
-          "@value": "Questa è la distribuzione RDF/XML dell'ontologia dei percorsi"
-        }
-      ],
-      "dcterms:format": {
-        "@id": "http://publications.europa.eu/resource/authority/file-type/RDF_XML"
-      },
-      "dcterms:license": {
-        "@id": "https://w3id.org/italia/controlled-vocabulary/licences/A21_CCBY40"
-      },
-      "dcterms:title": [
-        {
-          "@language": "it",
-          "@value": "Distribuzione RDF/XML ontologia Route-AP_IT"
-        },
-        {
-          "@language": "en",
-          "@value": "RDF/XML distribution of Route-AP_IT Ontology"
-        }
-      ]
-    },
-    {
-      "@id": "https://w3id.org/italia/data/distribution/RTAPIT-JSON-LD",
-      "@type": [
-        "admsapit:SemanticAssetDistribution",
-        "owl:NamedIndividual"
-      ],
-      "dcat:accessURL": {
-        "@id": "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/Route/latest"
-      },
-      "dcat:downloadURL": {
-        "@id": "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/Route/Route-AP_IT.jsonld"
-      },
-      "dcterms:description": [
-        {
-          "@language": "it",
-          "@value": "Questa è la distribuzione JSON-LD dell'ontologia sui percorsi"
-        },
-        {
-          "@language": "en",
-          "@value": "This is the distribution in JSON-LD of the Routes ontology"
-        }
-      ],
-      "dcterms:format": {
-        "@id": "http://publications.europa.eu/resource/authority/file-type/JSON_LD"
-      },
-      "dcterms:license": {
-        "@id": "https://w3id.org/italia/controlled-vocabulary/licences/A21_CCBY40"
-      },
-      "dcterms:title": [
-        {
-          "@language": "it",
-          "@value": "Distribuzione JSON-LD ontologia Route-AP_IT"
-        },
-        {
-          "@language": "en",
-          "@value": "JSON-LD distribution of Route-AP_IT Ontology"
-        }
-      ]
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/Route/hasAltRoute",
-      "@type": "owl:ObjectProperty",
-      "owl:inverseOf": {
-        "@id": "https://w3id.org/italia/onto/Route/isAltRouteOf"
-      },
-      "owl:versionInfo": [
-        {
-          "@language": "en",
-          "@value": "stable"
-        },
-        {
-          "@language": "it",
-          "@value": "stabile"
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@language": "it",
-          "@value": "La object property che permette di identificare un percorso alternativo"
-        },
-        {
-          "@language": "en",
-          "@value": "The object property that allows to identify an alternative route."
-        }
-      ],
-      "rdfs:domain": {
-        "@id": "owl:Thing"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "https://w3id.org/italia/onto/Route"
-      },
-      "rdfs:label": [
-        {
-          "@language": "en",
-          "@value": "has alternative route"
-        },
-        {
-          "@language": "it",
-          "@value": "percorso alternativo"
-        }
-      ],
-      "rdfs:range": {
-        "@id": "https://w3id.org/italia/onto/Route/Route"
-      },
-      "rdfs:subPropertyOf": {
-        "@id": "https://w3id.org/italia/onto/Route/hasRoute"
-      }
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/Route/routeEstDuration",
-      "@type": "owl:DatatypeProperty",
-      "owl:versionInfo": [
-        {
-          "@language": "en",
-          "@value": "unstable"
-        },
-        {
-          "@language": "it",
-          "@value": "provvisoria"
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@language": "en",
-          "@value": "The estimated duration of the route"
-        },
-        {
-          "@language": "it",
-          "@value": "La durata stimata del percorso"
-        }
-      ],
-      "rdfs:domain": {
-        "@id": "https://w3id.org/italia/onto/Route/Route"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "https://w3id.org/italia/onto/Route"
-      },
-      "rdfs:label": [
-        {
-          "@language": "it",
-          "@value": "durata stimata percorso"
-        },
-        {
-          "@language": "en",
-          "@value": "route estimated duration"
-        }
-      ],
-      "rdfs:range": {
-        "@id": "xsd:duration"
-      },
-      "rdfs:subPropertyOf": {
-        "@id": "ti:duration"
-      }
-    },
-    {
-      "@id": "_:ub7bL631C24",
-      "@type": "owl:Restriction",
-      "owl:onProperty": {
-        "@id": "https://w3id.org/italia/onto/Route/routelLength"
-      },
-      "owl:someValuesFrom": {
-        "@id": "rdfs:Literal"
-      }
-    },
-    {
-      "@id": "l0:Collection",
-      "@type": "owl:Class"
-    },
-    {
-      "@id": "_:ub7bL884C1",
-      "owl:qualifiedCardinality": {
-        "@type": "xsd:nonNegativeInteger",
-        "@value": "1"
-      }
-    },
-    {
-      "@id": "clv:SpatialObject",
-      "@type": "owl:Class",
-      "rdfs:subClassOf": {
-        "@id": "l0:Location"
-      }
-    },
-    {
-      "@id": "https://w3id.org/italia/data/project/OntoPiA",
-      "@type": [
-        "admsapit:Project",
-        "owl:NamedIndividual"
-      ],
-      "l0:name": {
-        "@language": "it",
-        "@value": "OntoPiA - la rete di ontologie della pubblica amministrazione italiana"
-      }
-    },
-    {
-      "@id": "admsapit:prev",
-      "@type": "owl:AnnotationProperty"
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/Route/RouteType",
-      "@type": "owl:Class",
-      "l0:controlledVocabulary": {
-        "@id": "https://w3id.org/italia/controlled-vocabulary/classifications-for-routes/route-types"
-      },
-      "owl:versionInfo": [
-        {
-          "@language": "it",
-          "@value": "stabile"
-        },
-        {
-          "@language": "en",
-          "@value": "stable"
-        }
-      ],
-      "prov:wasInfluencedBy": {
-        "@id": "http://vocab.gtfs.org/terms#RouteType"
-      },
-      "rdfs:comment": [
-        {
-          "@language": "it",
-          "@value": "La classe che consente di modellare il tipo di percorso a seconda del mezzo di  trasporto utiizzato nel percorso stesso. L'ontologia definisce attualmente un vocabolario controllato sui tipi di percorso (percorso dell'autobus, percorso del treno, percorso del tram, percorso della nave).\nIl vocabolario controllato si base su quanto proposto nella specifica GTFS (con gli stessi codici) e ulteriori voci aggiunte allo scopo di modellare i tipi di percorso per l'ontologia del'atlante dei cammini"
-        },
-        {
-          "@language": "en",
-          "@value": "The class represents the type of route in terms of means of transportation used in the route itself. The ontology uses a controlled vocabulary on the type of transportation (bus, ferry, rail, LightRail, horseback, etc.)"
-        }
-      ],
-      "rdfs:isDefinedBy": {
-        "@id": "https://w3id.org/italia/onto/Route"
-      },
-      "rdfs:label": [
-        {
-          "@language": "it",
-          "@value": "Tipo di percorso"
-        },
-        {
-          "@language": "en",
-          "@value": "Route Type"
-        }
-      ],
-      "rdfs:subClassOf": {
-        "@id": "l0:Characteristic"
-      }
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/Route/numberOfStages",
-      "@type": "owl:DatatypeProperty",
-      "owl:versionInfo": [
-        {
-          "@language": "en",
-          "@value": "unstable"
-        },
-        {
-          "@language": "it",
-          "@value": "provvisoria"
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@language": "it",
-          "@value": "Il numero complessivo di tappe che costituiscono il percorso"
-        },
-        {
-          "@language": "en",
-          "@value": "The total number of stages that form the route"
-        }
-      ],
-      "rdfs:domain": {
-        "@id": "https://w3id.org/italia/onto/Route/Route"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "https://w3id.org/italia/onto/Route"
-      },
-      "rdfs:label": [
-        {
-          "@language": "en",
-          "@value": "number of stages"
-        },
-        {
-          "@language": "it",
-          "@value": "numero di tappe"
-        }
-      ],
-      "rdfs:range": {
-        "@id": "xsd:int"
-      }
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/Route/Route",
-      "@type": "owl:Class",
-      "owl:versionInfo": [
-        {
-          "@language": "it",
-          "@value": "stabile"
-        },
-        {
-          "@language": "en",
-          "@value": "stable"
-        }
-      ],
-      "prov:wasDerivedFrom": {
-        "@id": "http://vocab.gtfs.org/terms#Route"
-      },
-      "rdfs:comment": [
-        {
-          "@language": "it",
-          "@value": "Una sequenza ordinata di tappe che possono essere seguite da persone e/o da qualsiasi tipo di veicolo di transito"
-        },
-        {
-          "@language": "en",
-          "@value": "A sequence of ordered stages that can be followed by a human being and/or any type of transit vehicle"
-        }
-      ],
-      "rdfs:isDefinedBy": {
-        "@id": "https://w3id.org/italia/onto/Route"
-      },
-      "rdfs:label": [
-        {
-          "@language": "en",
-          "@value": "Route"
-        },
-        {
-          "@language": "it",
-          "@value": "Percorso"
-        }
-      ],
-      "rdfs:subClassOf": [
-        {
-          "@id": "_:ub7bL627C24"
-        },
-        {
-          "@id": "_:ub7bL618C24"
-        },
-        {
-          "@id": "_:ub7bL601C24"
-        },
-        {
-          "@id": "l0:Description"
-        },
-        {
-          "@id": "_:ub7bL613C24"
-        },
-        {
-          "@id": "_:ub7bL639C24"
-        },
-        {
-          "@id": "_:ub7bL605C24"
-        },
-        {
-          "@id": "_:ub7bL623C24"
-        },
-        {
-          "@id": "_:ub7bL609C24"
-        },
-        {
-          "@id": "_:ub7bL635C24"
-        },
-        {
-          "@id": "_:ub7bL631C24"
-        },
-        {
-          "@id": "l0:Sequence"
-        }
-      ]
-    },
-    {
-      "@id": "https://w3id.org/italia/data/project/DAF",
-      "@type": [
-        "admsapit:Project",
-        "owl:NamedIndividual"
-      ],
-      "l0:name": {
-        "@language": "it",
-        "@value": "Data & Analytics Framework"
-      }
-    },
-    {
       "@id": "https://w3id.org/italia/onto/Route/isDeviationOf",
       "@type": "owl:ObjectProperty",
       "owl:versionInfo": [
         {
-          "@language": "en",
-          "@value": "stable"
-        },
-        {
           "@language": "it",
           "@value": "stabile"
+        },
+        {
+          "@language": "en",
+          "@value": "stable"
         }
       ],
       "rdfs:comment": [
         {
-          "@language": "it",
-          "@value": "Proprietà inversa di deviazione"
-        },
-        {
           "@language": "en",
           "@value": "Inverse property of has deviation"
+        },
+        {
+          "@language": "it",
+          "@value": "Proprietà inversa di deviazione"
         }
       ],
       "rdfs:domain": {
@@ -779,12 +1595,12 @@
       },
       "rdfs:label": [
         {
-          "@language": "en",
-          "@value": "is deviation of"
-        },
-        {
           "@language": "it",
           "@value": "deviazione di"
+        },
+        {
+          "@language": "en",
+          "@value": "is deviation of"
         }
       ],
       "rdfs:range": {
@@ -792,1252 +1608,6 @@
       },
       "rdfs:subPropertyOf": {
         "@id": "https://w3id.org/italia/onto/Route/isAltRouteOf"
-      }
-    },
-    {
-      "@id": "_:ub7bL609C24",
-      "@type": "owl:Restriction",
-      "owl:allValuesFrom": {
-        "@id": "clv:SpatialObject"
-      },
-      "owl:onProperty": {
-        "@id": "https://w3id.org/italia/onto/Route/crosses"
-      }
-    },
-    {
-      "@id": "clv:hasGeometryType",
-      "@type": "owl:ObjectProperty"
-    },
-    {
-      "@id": "https://w3id.org/italia/data/distribution/RTAPIT-RDF-TURTLE",
-      "@type": [
-        "owl:NamedIndividual",
-        "admsapit:SemanticAssetDistribution"
-      ],
-      "dcat:accessURL": {
-        "@id": "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/Route/latest"
-      },
-      "dcat:downloadURL": {
-        "@id": "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/Route/latest/Route-AP_IT.ttl"
-      },
-      "dcterms:description": [
-        {
-          "@language": "it",
-          "@value": "Questa è la distribuzione RDF/Turtle dell'ontologia sui percorsi"
-        },
-        {
-          "@language": "en",
-          "@value": "This is the distribution in RDF/turtle of the Routes ontology"
-        }
-      ],
-      "dcterms:format": {
-        "@id": "http://publications.europa.eu/resource/authority/file-type/RDF_TURTLE"
-      },
-      "dcterms:license": {
-        "@id": "https://w3id.org/italia/controlled-vocabulary/licences/A21_CCBY40"
-      },
-      "dcterms:title": [
-        {
-          "@language": "it",
-          "@value": "Distribuzione RDF/Turtle ontologia Route-AP_IT"
-        },
-        {
-          "@language": "en",
-          "@value": "RDF/Turtle distribution of Route-AP_IT Ontology"
-        }
-      ]
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/Route/hasSuperTripPlan",
-      "@type": [
-        "owl:TransitiveProperty",
-        "owl:ObjectProperty"
-      ],
-      "owl:versionInfo": [
-        {
-          "@language": "en",
-          "@value": "stable"
-        },
-        {
-          "@language": "it",
-          "@value": "stabile"
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@language": "en",
-          "@value": "Property used to indicate the super trip plan which contains other trip plans"
-        },
-        {
-          "@language": "it",
-          "@value": "Proprietà utilizzata per indicare il piano di viaggio che contiene altri piani di viaggio"
-        }
-      ],
-      "rdfs:domain": {
-        "@id": "https://w3id.org/italia/onto/Route/TripPlan"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "https://w3id.org/italia/onto/Route"
-      },
-      "rdfs:label": [
-        {
-          "@language": "en",
-          "@value": "has super trip plan"
-        },
-        {
-          "@language": "it",
-          "@value": "super piano di viaggio"
-        }
-      ],
-      "rdfs:range": {
-        "@id": "https://w3id.org/italia/onto/Route/TripPlan"
-      }
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/Route/isRouteOf",
-      "@type": "owl:ObjectProperty",
-      "owl:versionInfo": [
-        {
-          "@language": "it",
-          "@value": "stabile"
-        },
-        {
-          "@language": "en",
-          "@value": "stable"
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@language": "it",
-          "@value": "Proprietà inversa di ha percorso"
-        },
-        {
-          "@language": "en",
-          "@value": "Inverse property of has route"
-        }
-      ],
-      "rdfs:domain": {
-        "@id": "https://w3id.org/italia/onto/Route/Route"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "https://w3id.org/italia/onto/Route"
-      },
-      "rdfs:label": [
-        {
-          "@language": "en",
-          "@value": "is route of"
-        },
-        {
-          "@language": "it",
-          "@value": "è percorso di"
-        }
-      ],
-      "rdfs:range": {
-        "@id": "owl:Thing"
-      }
-    },
-    {
-      "@id": "prov:wasInfluencedBy",
-      "@type": "owl:AnnotationProperty"
-    },
-    {
-      "@id": "clv:Geometry",
-      "@type": "owl:Class",
-      "rdfs:subClassOf": {
-        "@id": "clv:SpatialObject"
-      }
-    },
-    {
-      "@id": "_:ub7bL605C24",
-      "@type": "owl:Restriction",
-      "owl:onProperty": {
-        "@id": "l0:hasMember"
-      },
-      "owl:someValuesFrom": {
-        "@id": "https://w3id.org/italia/onto/Route/Stage"
-      }
-    },
-    {
-      "@id": "_:ub7bL635C24",
-      "@type": "owl:Restriction",
-      "owl:allValuesFrom": {
-        "@id": "rdfs:Literal"
-      },
-      "owl:onProperty": {
-        "@id": "l0:description"
-      }
-    },
-    {
-      "@id": "clv:Point",
-      "@type": "owl:NamedIndividual"
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/Route/routelLength",
-      "@type": "owl:DatatypeProperty",
-      "owl:versionInfo": [
-        {
-          "@language": "en",
-          "@value": "stable"
-        },
-        {
-          "@language": "it",
-          "@value": "stabile"
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@language": "en",
-          "@value": "The length of the route. The length can be expressed in different measurment units."
-        },
-        {
-          "@language": "it",
-          "@value": "La lunghezza del percorso. Essa può essere espressa in diverse unità di misura."
-        }
-      ],
-      "rdfs:domain": {
-        "@id": "https://w3id.org/italia/onto/Route/Route"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "https://w3id.org/italia/onto/Route"
-      },
-      "rdfs:label": [
-        {
-          "@language": "it",
-          "@value": "lunghezza del percorso"
-        },
-        {
-          "@language": "en",
-          "@value": "route length"
-        }
-      ],
-      "rdfs:range": {
-        "@id": "rdfs:Literal"
-      }
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/Route/hasRoute",
-      "@type": "owl:ObjectProperty",
-      "owl:inverseOf": {
-        "@id": "https://w3id.org/italia/onto/Route/isRouteOf"
-      },
-      "owl:versionInfo": [
-        {
-          "@language": "en",
-          "@value": "stable"
-        },
-        {
-          "@language": "it",
-          "@value": "stabile"
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@language": "it",
-          "@value": "Proprietà utilizzata per collegare qualsiasi cosa a un percorso"
-        },
-        {
-          "@language": "en",
-          "@value": "Property used to connect any thing to a route"
-        }
-      ],
-      "rdfs:domain": {
-        "@id": "owl:Thing"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "https://w3id.org/italia/onto/Route"
-      },
-      "rdfs:label": [
-        {
-          "@language": "en",
-          "@value": "has route"
-        },
-        {
-          "@language": "it",
-          "@value": "ha percorso"
-        }
-      ],
-      "rdfs:range": {
-        "@id": "https://w3id.org/italia/onto/Route/Route"
-      }
-    },
-    {
-      "@id": "l0:hasMember",
-      "@type": "owl:ObjectProperty"
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/Route/hasRouteType",
-      "@type": "owl:ObjectProperty",
-      "owl:versionInfo": [
-        {
-          "@language": "en",
-          "@value": "stable"
-        },
-        {
-          "@language": "it",
-          "@value": "stabile"
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@language": "en",
-          "@value": "Property that links the route to its type (walking route, bus route, etc.)"
-        },
-        {
-          "@language": "it",
-          "@value": "Proprietà che lega un percorso al suo tipo (percorso in bici, percorso a piedi, percorso in autobus, ecc.)"
-        }
-      ],
-      "rdfs:domain": {
-        "@id": "https://w3id.org/italia/onto/Route/Route"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "https://w3id.org/italia/onto/Route"
-      },
-      "rdfs:label": [
-        {
-          "@language": "it",
-          "@value": "tipo percorso"
-        },
-        {
-          "@language": "en",
-          "@value": "has route type"
-        }
-      ],
-      "rdfs:range": {
-        "@id": "https://w3id.org/italia/onto/Route/RouteType"
-      }
-    },
-    {
-      "@id": "l0:description",
-      "@type": "owl:DatatypeProperty"
-    },
-    {
-      "@id": "_:ub7bL695C24",
-      "@type": "owl:Restriction",
-      "owl:onDataRange": {
-        "@id": "xsd:int"
-      },
-      "owl:onProperty": {
-        "@id": "https://w3id.org/italia/onto/Route/ordering"
-      },
-      "owl:qualifiedCardinality": {
-        "@type": "xsd:nonNegativeInteger",
-        "@value": "1"
-      }
-    },
-    {
-      "@id": "http://spcdata.digitpa.gov.it/Amministrazione/agid",
-      "@type": [
-        "owl:NamedIndividual",
-        "dcatapit:Agent",
-        "foaf:Agent"
-      ],
-      "dcterms:identifier": "agid",
-      "foaf:name": [
-        {
-          "@language": "en",
-          "@value": "Italian Digital Agency"
-        },
-        {
-          "@language": "it",
-          "@value": "Agenzia per l'Italia Digitale"
-        }
-      ]
-    },
-    {
-      "@id": "clv:GeometryType",
-      "@type": "owl:Class",
-      "rdfs:subClassOf": {
-        "@id": "l0:Characteristic"
-      }
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/Route/routeShortName",
-      "@type": "owl:DatatypeProperty",
-      "owl:versionInfo": [
-        {
-          "@language": "it",
-          "@value": "stabile"
-        },
-        {
-          "@language": "en",
-          "@value": "stable"
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@language": "en",
-          "@value": "The property is used to specify a short name for the route. It is often a short identifier such as \"32\", \"100X\", \"Green\" that can be used by riders to identify the route; however it does not provide any indication of the places or stages that the route serves."
-        },
-        {
-          "@language": "it",
-          "@value": "La proprietà è utilizzata per specificare il nome breve del percorso. Esso è un breve identificatore come per esempio \"32\", \"100X\", o \"Verde\" che chi segue il percorso usa per identificarlo ma che non dà alcuna indicazione di quali luoghi il percorso attraversa."
-        }
-      ],
-      "rdfs:domain": {
-        "@id": "https://w3id.org/italia/onto/Route/Route"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "https://w3id.org/italia/onto/Route"
-      },
-      "rdfs:label": [
-        {
-          "@language": "it",
-          "@value": "nome breve percorso"
-        },
-        {
-          "@language": "en",
-          "@value": "route short name"
-        }
-      ],
-      "rdfs:range": {
-        "@id": "rdfs:Literal"
-      },
-      "rdfs:subPropertyOf": {
-        "@id": "l0:name"
-      }
-    },
-    {
-      "@id": "mu:Value",
-      "@type": "owl:Class",
-      "rdfs:subClassOf": {
-        "@id": "l0:Characteristic"
-      }
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/Route/Stage",
-      "@type": "owl:Class",
-      "owl:versionInfo": [
-        {
-          "@language": "it",
-          "@value": "stabile"
-        },
-        {
-          "@language": "en",
-          "@value": "stable"
-        }
-      ],
-      "prov:wasInfluencedBy": {
-        "@id": "http://vocab.gtfs.org/terms#Stop"
-      },
-      "rdfs:comment": [
-        {
-          "@language": "en",
-          "@value": "This class represents a stage of a route; that is a stop during a trip or excursion"
-        },
-        {
-          "@language": "it",
-          "@value": "Questa classe rappresenta una tappa di un percorso ovvero una sosta durante il viaggio o escursione"
-        }
-      ],
-      "rdfs:isDefinedBy": {
-        "@id": "https://w3id.org/italia/onto/Route"
-      },
-      "rdfs:label": [
-        {
-          "@language": "en",
-          "@value": "Stage"
-        },
-        {
-          "@language": "it",
-          "@value": "Tappa"
-        }
-      ],
-      "rdfs:subClassOf": [
-        {
-          "@id": "_:ub7bL683C24"
-        },
-        {
-          "@id": "https://w3id.org/italia/onto/POI/MultiplePointOfInterest"
-        },
-        {
-          "@id": "l0:Object"
-        },
-        {
-          "@id": "_:ub7bL691C24"
-        },
-        {
-          "@id": "_:ub7bL687C24"
-        },
-        {
-          "@id": "_:ub7bL679C24"
-        },
-        {
-          "@id": "_:ub7bL695C24"
-        }
-      ]
-    },
-    {
-      "@id": "_:ub7bL639C24",
-      "@type": "owl:Restriction",
-      "owl:onDataRange": {
-        "@id": "xsd:int"
-      },
-      "owl:onProperty": {
-        "@id": "https://w3id.org/italia/onto/Route/numberOfStages"
-      },
-      "owl:qualifiedCardinality": {
-        "@type": "xsd:nonNegativeInteger",
-        "@value": "1"
-      }
-    },
-    {
-      "@id": "_:ub7bL724C27",
-      "@type": "owl:Restriction",
-      "owl:allValuesFrom": {
-        "@id": "https://w3id.org/italia/onto/Route/TripPlan"
-      },
-      "owl:onProperty": {
-        "@id": "https://w3id.org/italia/onto/Route/hasSuperTripPlan"
-      }
-    },
-    {
-      "@id": "https://w3id.org/italia/data/support-unit/cnr-Z6HZEH/stlab",
-      "@type": [
-        "dcatapit:Agent",
-        "owl:NamedIndividual",
-        "foaf:Agent"
-      ],
-      "dcterms:identifier": "cnr - Z6HZEH - STLab",
-      "foaf:name": [
-        {
-          "@language": "en",
-          "@value": "Institute of Cognitive Sciences and Technologies of the Italian Research Council (CNR) - Semantic Technology Laboratory (STLab)"
-        },
-        {
-          "@language": "it",
-          "@value": "Istituto di Scienze e Tecnologie della Cognizione del CNR - Semantic Technology Lab (STLab)"
-        }
-      ]
-    },
-    {
-      "@id": "prov:wasDerivedFrom",
-      "@type": "owl:AnnotationProperty"
-    },
-    {
-      "@id": "l0:follows",
-      "@type": "owl:ObjectProperty"
-    },
-    {
-      "@id": "l0:directlyFollows",
-      "@type": "owl:ObjectProperty"
-    },
-    {
-      "@id": "l0:directlyPrecedes",
-      "@type": "owl:ObjectProperty"
-    },
-    {
-      "@id": "admsapit:status",
-      "@type": "owl:AnnotationProperty"
-    },
-    {
-      "@id": "_:ub7bL613C24",
-      "@type": "owl:Restriction",
-      "owl:onClass": {
-        "@id": "clv:Geometry"
-      },
-      "owl:onProperty": {
-        "@id": "clv:hasGeometry"
-      },
-      "owl:qualifiedCardinality": {
-        "@type": "xsd:nonNegativeInteger",
-        "@value": "1"
-      }
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/Route/hasSubTripPlan",
-      "@type": [
-        "owl:TransitiveProperty",
-        "owl:ObjectProperty"
-      ],
-      "owl:inverseOf": {
-        "@id": "https://w3id.org/italia/onto/Route/hasSuperTripPlan"
-      },
-      "owl:versionInfo": [
-        {
-          "@language": "it",
-          "@value": "stabile"
-        },
-        {
-          "@language": "en",
-          "@value": "stable"
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@language": "en",
-          "@value": "Property used to specify additional trip plans that compose a bigger one."
-        },
-        {
-          "@language": "it",
-          "@value": "Proprietà utilizzata per suddividere un piano di viaggio in ulteriori piani"
-        }
-      ],
-      "rdfs:domain": {
-        "@id": "https://w3id.org/italia/onto/Route/TripPlan"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "https://w3id.org/italia/onto/Route"
-      },
-      "rdfs:label": [
-        {
-          "@language": "en",
-          "@value": "has sub trip plan"
-        },
-        {
-          "@language": "it",
-          "@value": "sotto piano di viaggio"
-        }
-      ],
-      "rdfs:range": {
-        "@id": "https://w3id.org/italia/onto/Route/TripPlan"
-      }
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/Route/hasEstimatedDuration",
-      "@type": "owl:ObjectProperty",
-      "owl:versionInfo": [
-        {
-          "@language": "en",
-          "@value": "unstable"
-        },
-        {
-          "@language": "it",
-          "@value": "provvisoria"
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@language": "it",
-          "@value": "Proprietà che consente di specificare una durata per il piano di viaggio."
-        },
-        {
-          "@language": "en",
-          "@value": "Property that links the trip plan to its duration"
-        }
-      ],
-      "rdfs:domain": {
-        "@id": "https://w3id.org/italia/onto/Route/TripPlan"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "https://w3id.org/italia/onto/Route"
-      },
-      "rdfs:label": [
-        {
-          "@language": "en",
-          "@value": "has estimated duration"
-        },
-        {
-          "@language": "it",
-          "@value": "ha durata stimata"
-        }
-      ],
-      "rdfs:range": {
-        "@id": "ti:Duration"
-      }
-    },
-    {
-      "@id": "_:ub7bL683C24",
-      "@type": "owl:Restriction",
-      "owl:allValuesFrom": {
-        "@id": "https://w3id.org/italia/onto/Route/Stage"
-      },
-      "owl:onProperty": {
-        "@id": "l0:directlyPrecedes"
-      }
-    },
-    {
-      "@id": "ti:Duration",
-      "@type": "owl:Class",
-      "rdfs:subClassOf": {
-        "@id": "l0:Entity"
-      }
-    },
-    {
-      "@id": "_:ub7bL627C24",
-      "@type": "owl:Restriction",
-      "owl:onProperty": {
-        "@id": "https://w3id.org/italia/onto/Route/routeShortName"
-      },
-      "owl:someValuesFrom": {
-        "@id": "rdfs:Literal"
-      }
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/Route/hasLength",
-      "@type": "owl:ObjectProperty",
-      "owl:versionInfo": [
-        {
-          "@language": "it",
-          "@value": "stabile"
-        },
-        {
-          "@language": "en",
-          "@value": "stable"
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@language": "en",
-          "@value": "Prpperty used to specify the length of a trip plan"
-        },
-        {
-          "@language": "it",
-          "@value": "Proprietà utilizzata per specificare la lunghezza di un piano di viaggio"
-        }
-      ],
-      "rdfs:domain": {
-        "@id": "https://w3id.org/italia/onto/Route/Route"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "https://w3id.org/italia/onto/Route"
-      },
-      "rdfs:label": [
-        {
-          "@language": "en",
-          "@value": "has length"
-        },
-        {
-          "@language": "it",
-          "@value": "ha lunghezza"
-        }
-      ],
-      "rdfs:range": {
-        "@id": "mu:Value"
-      }
-    },
-    {
-      "@id": "_:ub7bL716C27",
-      "@type": "owl:Restriction",
-      "owl:onProperty": {
-        "@id": "https://w3id.org/italia/onto/Route/hasRoute"
-      },
-      "owl:someValuesFrom": {
-        "@id": "https://w3id.org/italia/onto/Route/Route"
-      }
-    },
-    {
-      "@id": "xsd:duration",
-      "@type": "rdfs:Datatype"
-    },
-    {
-      "@id": "owl:qualifiedCardinality",
-      "@type": "owl:AnnotationProperty"
-    },
-    {
-      "@id": "https://w3id.org/italia/data/project/AtlanteCammini",
-      "@type": [
-        "admsapit:Project",
-        "owl:NamedIndividual"
-      ],
-      "l0:name": {
-        "@language": "it",
-        "@value": "Atlante dei Cammini d'Italia"
-      }
-    },
-    {
-      "@id": "_:ub7bL720C27",
-      "@type": "owl:Restriction",
-      "owl:allValuesFrom": {
-        "@id": "https://w3id.org/italia/onto/Route/TripPlan"
-      },
-      "owl:onProperty": {
-        "@id": "https://w3id.org/italia/onto/Route/hasSubTripPlan"
-      }
-    },
-    {
-      "@id": "admsapit:depiction",
-      "@type": "owl:AnnotationProperty"
-    },
-    {
-      "@id": "_:ub7bL679C24",
-      "@type": "owl:Restriction",
-      "owl:allValuesFrom": {
-        "@id": "https://w3id.org/italia/onto/Route/Stage"
-      },
-      "owl:onProperty": {
-        "@id": "l0:directlyFollows"
-      }
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/Route/isTripPlanOf",
-      "@type": "owl:ObjectProperty",
-      "owl:versionInfo": [
-        {
-          "@language": "en",
-          "@value": "stable"
-        },
-        {
-          "@language": "it",
-          "@value": "stabile"
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@language": "en",
-          "@value": "Inverse property of has trip plan"
-        },
-        {
-          "@id": "https://w3id.org/italia/onto/Route"
-        },
-        {
-          "@language": "it",
-          "@value": "Proprietà inversa di ha piano di viaggio"
-        }
-      ],
-      "rdfs:domain": {
-        "@id": "https://w3id.org/italia/onto/Route/TripPlan"
-      },
-      "rdfs:label": [
-        {
-          "@language": "en",
-          "@value": "is trip plan of"
-        },
-        {
-          "@language": "it",
-          "@value": "piano viaggio di"
-        }
-      ],
-      "rdfs:range": {
-        "@id": "owl:Thing"
-      }
-    },
-    {
-      "@id": "https://w3id.org/italia/data/contact-point/onto-dgt",
-      "@type": [
-        "vcard:Organization",
-        "vcard:Kind",
-        "dcatapit:Organization",
-        "owl:NamedIndividual"
-      ],
-      "vcard:fn": "MIBAC - Direzine Generale Turismo",
-      "vcard:hasEmail": {
-        "@id": "mailto:dg-t@beniculturali.it"
-      }
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/Route/isAltRouteOf",
-      "@type": "owl:ObjectProperty",
-      "owl:versionInfo": [
-        {
-          "@language": "it",
-          "@value": "stabile"
-        },
-        {
-          "@language": "en",
-          "@value": "stable"
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@language": "en",
-          "@value": "Inverse property of has alternative route"
-        },
-        {
-          "@language": "it",
-          "@value": "Proprietà inversa di percorso alternativo"
-        }
-      ],
-      "rdfs:isDefinedBy": {
-        "@id": "https://w3id.org/italia/onto/Route"
-      },
-      "rdfs:label": [
-        {
-          "@language": "it",
-          "@value": "percorso alternativo di"
-        },
-        {
-          "@language": "en",
-          "@value": "is alternative route of"
-        }
-      ],
-      "rdfs:subPropertyOf": {
-        "@id": "https://w3id.org/italia/onto/Route/isRouteOf"
-      }
-    },
-    {
-      "@id": "owl:cardinality",
-      "@type": "owl:AnnotationProperty"
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/Route/hasTripPlan",
-      "@type": "owl:ObjectProperty",
-      "owl:inverseOf": {
-        "@id": "https://w3id.org/italia/onto/Route/isTripPlanOf"
-      },
-      "owl:versionInfo": [
-        {
-          "@language": "en",
-          "@value": "stable"
-        },
-        {
-          "@language": "it",
-          "@value": "stabile"
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@language": "it",
-          "@value": "Proprietà che lega qualsiasi cosa a un piano di viaggio"
-        },
-        {
-          "@language": "en",
-          "@value": "Property that links any thing to a trip plan"
-        }
-      ],
-      "rdfs:domain": {
-        "@id": "owl:Thing"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "https://w3id.org/italia/onto/Route"
-      },
-      "rdfs:label": [
-        {
-          "@language": "en",
-          "@value": "has trip plan"
-        },
-        {
-          "@language": "it",
-          "@value": "ha piano di viaggio"
-        }
-      ],
-      "rdfs:range": {
-        "@id": "https://w3id.org/italia/onto/Route/TripPlan"
-      }
-    },
-    {
-      "@id": "ti:duration",
-      "@type": "owl:DatatypeProperty"
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/Route/hasDeviation",
-      "@type": "owl:ObjectProperty",
-      "owl:inverseOf": {
-        "@id": "https://w3id.org/italia/onto/Route/isDeviationOf"
-      },
-      "owl:versionInfo": [
-        {
-          "@language": "en",
-          "@value": "stable"
-        },
-        {
-          "@language": "it",
-          "@value": "stabile"
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@language": "en",
-          "@value": "The object property that allows to represent a deviation."
-        },
-        {
-          "@language": "it",
-          "@value": "La object property che permette di identificare una deviazione nel percorso"
-        }
-      ],
-      "rdfs:domain": {
-        "@id": "owl:Thing"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "https://w3id.org/italia/onto/Route"
-      },
-      "rdfs:label": [
-        {
-          "@language": "en",
-          "@value": "has deviation"
-        },
-        {
-          "@language": "it",
-          "@value": "deviazione"
-        }
-      ],
-      "rdfs:range": {
-        "@id": "https://w3id.org/italia/onto/Route/Route"
-      },
-      "rdfs:subPropertyOf": {
-        "@id": "https://w3id.org/italia/onto/Route/hasAltRoute"
-      }
-    },
-    {
-      "@id": "_:ub7bL687C24",
-      "@type": "owl:Restriction",
-      "owl:allValuesFrom": {
-        "@id": "https://w3id.org/italia/onto/Route/Stage"
-      },
-      "owl:onProperty": {
-        "@id": "l0:follows"
-      }
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/Route",
-      "@type": [
-        "admsapit:SemanticAsset",
-        "owl:NamedIndividual",
-        "owl:Ontology"
-      ],
-      "admsapit:acronym": "Route-AP_IT",
-      "admsapit:depiction": {
-        "@id": "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/Route/v0.1/Route-AP_IT.png"
-      },
-      "admsapit:hasContributor": {
-        "@id": "http://spcdata.digitpa.gov.it/Amministrazione/agid"
-      },
-      "admsapit:hasFormalityLevel": {
-        "@id": "admsapit:Formal"
-      },
-      "admsapit:hasKeyClass": [
-        {
-          "@id": "https://w3id.org/italia/onto/Route/Route"
-        },
-        {
-          "@id": "https://w3id.org/italia/onto/Route/TripPlan"
-        },
-        {
-          "@id": "https://w3id.org/italia/onto/Route/Stage"
-        }
-      ],
-      "admsapit:hasOntologyLanguage": {
-        "@id": "admsapit:OWL"
-      },
-      "admsapit:hasSemanticAssetDistribution": [
-        {
-          "@id": "https://w3id.org/italia/data/distribution/RTAPIT-JSON-LD"
-        },
-        {
-          "@id": "https://w3id.org/italia/data/distribution/RTAPIT-RDF-XML"
-        },
-        {
-          "@id": "https://w3id.org/italia/data/distribution/RTAPIT-RDF-TURTLE"
-        }
-      ],
-      "admsapit:hasTask": [
-        {
-          "@id": "admsapit:QueryFormulationTask"
-        },
-        {
-          "@id": "admsapit:SearchTask"
-        },
-        {
-          "@id": "admsapit:AnnotationTask"
-        }
-      ],
-      "admsapit:last": {
-        "@id": "https://w3id.org/italia/onto/Route/0.2"
-      },
-      "admsapit:officialURI": {
-        "@type": "xsd:anyURI",
-        "@value": "https://w3id.org/italia/onto/Route"
-      },
-      "admsapit:prefix": "rtapit",
-      "admsapit:prev": {
-        "@id": "https://w3id.org/italia/onto/Route/0.1"
-      },
-      "admsapit:semanticAssetInUse": [
-        {
-          "@id": "https://w3id.org/italia/data/project/AtlanteCammini"
-        },
-        {
-          "@id": "https://w3id.org/italia/data/project/DAF"
-        },
-        {
-          "@id": "https://w3id.org/italia/data/project/OntoPiA"
-        }
-      ],
-      "admsapit:status": "initial draft",
-      "admsapit:target": [
-        {
-          "@language": "it",
-          "@value": "Pubbliche Amministrazioni"
-        },
-        {
-          "@language": "it",
-          "@value": "Cittadini"
-        },
-        {
-          "@language": "it",
-          "@value": "Imprese"
-        }
-      ],
-      "admsapit:type": {
-        "@id": "admsapit:ServiceOntology"
-      },
-      "dcat:contactPoint": {
-        "@id": "https://w3id.org/italia/data/contact-point/onto-dgt"
-      },
-      "dcat:keyword": [
-        {
-          "@language": "it",
-          "@value": "Percorso"
-        },
-        {
-          "@language": "it",
-          "@value": "Pianificazione viaggio"
-        },
-        {
-          "@language": "it",
-          "@value": "Tappa"
-        }
-      ],
-      "dcat:theme": [
-        {
-          "@id": "http://publications.europa.eu/resource/authority/data-theme/EDUC"
-        },
-        {
-          "@id": "http://publications.europa.eu/resource/authority/data-theme/TRANS"
-        }
-      ],
-      "dcterms:accrualPeriodicity": {
-        "@id": "http://publications.europa.eu/resource/authority/frequency/IRREG"
-      },
-      "dcterms:creator": [
-        {
-          "@id": "http://spcdata.digitpa.gov.it/Amministrazione/m_bac"
-        },
-        {
-          "@id": "https://w3id.org/italia/data/support-unit/cnr-Z6HZEH/stlab"
-        }
-      ],
-      "dcterms:description": [
-        {
-          "@language": "en",
-          "@value": "This is the Italian application profile of the routes. They are transit routes that can be followed using different means of transportation such as bus routes, metro routes, walking routes, hourseback routes, etc."
-        },
-        {
-          "@language": "it",
-          "@value": "Questo il profilo applicativo italiano dell'ontologia sui percorsi. Essi sono i percorsi di transito che possono essere seguiti mediante l'uso di diversi mezzi di trasporto come per esempio i percorsi degli autobus, i percorsi della metro, i percorsi a piedi, i percorsi a cavallo."
-        },
-        {
-          "@id": "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/Route/v0.1/Route-AP_IT.png"
-        }
-      ],
-      "dcterms:issued": {
-        "@type": "xsd:date",
-        "@value": "2018-10-18"
-      },
-      "dcterms:language": [
-        {
-          "@id": "http://publications.europa.eu/resource/authority/language/ITA"
-        },
-        {
-          "@id": "http://publications.europa.eu/resource/authority/language/ENG"
-        }
-      ],
-      "dcterms:modified": {
-        "@type": "xsd:date",
-        "@value": "2020-04-16"
-      },
-      "dcterms:publisher": {
-        "@id": "https://w3id.org/italia/data/support-unit/cnr-Z6HZEH/stlab"
-      },
-      "dcterms:rightsHolder": {
-        "@id": "http://spcdata.digitpa.gov.it/Amministrazione/m_bac"
-      },
-      "dcterms:title": [
-        {
-          "@language": "it",
-          "@value": "Ontologia dei Percorsi - Profilo applicativo italiano"
-        },
-        {
-          "@language": "en",
-          "@value": "Routes Ontology - Italian Application Profile"
-        }
-      ],
-      "owl:imports": {
-        "@id": "https://w3id.org/italia/onto/l0"
-      },
-      "owl:versionIRI": {
-        "@id": "https://w3id.org/italia/onto/Route/0.2"
-      },
-      "owl:versionInfo": [
-        {
-          "@language": "it",
-          "@value": "Versione 0.2- Modificata il 16 Aprile 2020 - rinominata proprietà ordering in stageOrdering e definita come sotto proprietà di positionInSequence di l0 - Modificata il 24 Aprile 2019 - Correzione di alcuni errori"
-        },
-        {
-          "@language": "en",
-          "@value": "Version 0.2- Modified on 16 April 2020 - renamed property ordering in stageOrdering and defined as subproperty of l0:positionInSequence - Modified on 24 April 2019 - Some errors have been corrected."
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@language": "it",
-          "@value": "Questo il profilo applicativo italiano dell'ontologia sui percorsi. Essi sono i percorsi di transito che possono essere seguiti mediante l'uso di diversi mezzi di trasporto come per esempio i percorsi degli autobus, i percorsi della metro, i percorsi a piedi, i percorsi a cavallo."
-        },
-        {
-          "@language": "en",
-          "@value": "This is the ontology of the Italian application profile for Routes"
-        }
-      ],
-      "rdfs:isDefinedBy": {
-        "@id": "https://w3id.org/italia/onto/Route"
-      },
-      "rdfs:label": [
-        {
-          "@language": "en",
-          "@value": "Routes Ontology"
-        },
-        {
-          "@language": "it",
-          "@value": "Ontologia dei Percorsi"
-        }
-      ]
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/POI/MultiplePointOfInterest",
-      "@type": "owl:Class"
-    },
-    {
-      "@id": "clv:lat",
-      "@type": "owl:DatatypeProperty"
-    },
-    {
-      "@id": "_:ub7bL887C1",
-      "owl:qualifiedCardinality": {
-        "@type": "xsd:nonNegativeInteger",
-        "@value": "1"
-      }
-    },
-    {
-      "@id": "l0:Characteristic",
-      "@type": "owl:Class"
-    },
-    {
-      "@id": "_:ub7bL618C24",
-      "@type": "owl:Restriction",
-      "owl:onClass": {
-        "@id": "https://w3id.org/italia/onto/Route/RouteType"
-      },
-      "owl:onProperty": {
-        "@id": "https://w3id.org/italia/onto/Route/hasRouteType"
-      },
-      "owl:qualifiedCardinality": {
-        "@type": "xsd:nonNegativeInteger",
-        "@value": "1"
-      }
-    },
-    {
-      "@id": "l0:Sequence",
-      "@type": "owl:Class",
-      "rdfs:subClassOf": {
-        "@id": "l0:Collection"
-      }
-    },
-    {
-      "@id": "l0:controlledVocabulary",
-      "@type": "owl:AnnotationProperty"
-    },
-    {
-      "@id": "l0:Location",
-      "@type": "owl:Class"
-    },
-    {
-      "@id": "_:ub7bL691C24",
-      "@type": "owl:Restriction",
-      "owl:allValuesFrom": {
-        "@id": "https://w3id.org/italia/onto/Route/Stage"
-      },
-      "owl:onProperty": {
-        "@id": "l0:precedes"
       }
     },
     {
@@ -2087,22 +1657,449 @@
       }
     },
     {
-      "@id": "clv:hasGeometry",
+      "@id": "https://w3id.org/italia/onto/Route/isRouteOf",
+      "@type": "owl:ObjectProperty",
+      "owl:versionInfo": [
+        {
+          "@language": "it",
+          "@value": "stabile"
+        },
+        {
+          "@language": "en",
+          "@value": "stable"
+        }
+      ],
+      "rdfs:comment": [
+        {
+          "@language": "en",
+          "@value": "Inverse property of has route"
+        },
+        {
+          "@language": "it",
+          "@value": "Proprietà inversa di ha percorso"
+        }
+      ],
+      "rdfs:domain": {
+        "@id": "https://w3id.org/italia/onto/Route/Route"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/italia/onto/Route"
+      },
+      "rdfs:label": [
+        {
+          "@language": "en",
+          "@value": "is route of"
+        },
+        {
+          "@language": "it",
+          "@value": "è percorso di"
+        }
+      ],
+      "rdfs:range": {
+        "@id": "owl:Thing"
+      }
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/Route/isTripPlanOf",
+      "@type": "owl:ObjectProperty",
+      "owl:versionInfo": [
+        {
+          "@language": "it",
+          "@value": "stabile"
+        },
+        {
+          "@language": "en",
+          "@value": "stable"
+        }
+      ],
+      "rdfs:comment": [
+        {
+          "@id": "https://w3id.org/italia/onto/Route"
+        },
+        {
+          "@language": "en",
+          "@value": "Inverse property of has trip plan"
+        },
+        {
+          "@language": "it",
+          "@value": "Proprietà inversa di ha piano di viaggio"
+        }
+      ],
+      "rdfs:domain": {
+        "@id": "https://w3id.org/italia/onto/Route/TripPlan"
+      },
+      "rdfs:label": [
+        {
+          "@language": "en",
+          "@value": "is trip plan of"
+        },
+        {
+          "@language": "it",
+          "@value": "piano viaggio di"
+        }
+      ],
+      "rdfs:range": {
+        "@id": "owl:Thing"
+      }
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/Route/numberOfStages",
+      "@type": "owl:DatatypeProperty",
+      "owl:versionInfo": [
+        {
+          "@language": "it",
+          "@value": "provvisoria"
+        },
+        {
+          "@language": "en",
+          "@value": "unstable"
+        }
+      ],
+      "rdfs:comment": [
+        {
+          "@language": "it",
+          "@value": "Il numero complessivo di tappe che costituiscono il percorso"
+        },
+        {
+          "@language": "en",
+          "@value": "The total number of stages that form the route"
+        }
+      ],
+      "rdfs:domain": {
+        "@id": "https://w3id.org/italia/onto/Route/Route"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/italia/onto/Route"
+      },
+      "rdfs:label": [
+        {
+          "@language": "en",
+          "@value": "number of stages"
+        },
+        {
+          "@language": "it",
+          "@value": "numero di tappe"
+        }
+      ],
+      "rdfs:range": {
+        "@id": "xsd:int"
+      }
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/Route/routeEstDuration",
+      "@type": "owl:DatatypeProperty",
+      "owl:versionInfo": [
+        {
+          "@language": "it",
+          "@value": "provvisoria"
+        },
+        {
+          "@language": "en",
+          "@value": "unstable"
+        }
+      ],
+      "rdfs:comment": [
+        {
+          "@language": "it",
+          "@value": "La durata stimata del percorso"
+        },
+        {
+          "@language": "en",
+          "@value": "The estimated duration of the route"
+        }
+      ],
+      "rdfs:domain": {
+        "@id": "https://w3id.org/italia/onto/Route/Route"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/italia/onto/Route"
+      },
+      "rdfs:label": [
+        {
+          "@language": "it",
+          "@value": "durata stimata percorso"
+        },
+        {
+          "@language": "en",
+          "@value": "route estimated duration"
+        }
+      ],
+      "rdfs:range": {
+        "@id": "xsd:duration"
+      },
+      "rdfs:subPropertyOf": {
+        "@id": "ti:duration"
+      }
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/Route/routeLongName",
+      "@type": "owl:DatatypeProperty",
+      "owl:versionInfo": [
+        {
+          "@language": "it",
+          "@value": "stabile"
+        },
+        {
+          "@language": "en",
+          "@value": "stable"
+        }
+      ],
+      "rdfs:comment": [
+        {
+          "@language": "it",
+          "@value": "La proprietà rappresenta il nome completo o esteso del percoso. Il nome completo è più descrittivo del nome breve del percorso e spesso include anche la destinazione del percorso o le fermate. Se il nome per esteso non esiste, si può include la stringa vuota. Tuttavia è necessario specificare il nome breve del percorso"
+        },
+        {
+          "@language": "en",
+          "@value": "The property represents the full name of the route. This name is generally more descriptive than the route short name and will often include the route's destination or stop. If the route long name does not exist, it is possible to include an empty string. However, it is necessary to specify the route short name"
+        }
+      ],
+      "rdfs:domain": {
+        "@id": "https://w3id.org/italia/onto/Route/Route"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/italia/onto/Route"
+      },
+      "rdfs:label": [
+        {
+          "@language": "it",
+          "@value": "nome esteso percorso"
+        },
+        {
+          "@language": "en",
+          "@value": "route long name"
+        }
+      ],
+      "rdfs:range": {
+        "@id": "rdfs:Literal"
+      },
+      "rdfs:subPropertyOf": {
+        "@id": "l0:name"
+      }
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/Route/routeShortName",
+      "@type": "owl:DatatypeProperty",
+      "owl:versionInfo": [
+        {
+          "@language": "it",
+          "@value": "stabile"
+        },
+        {
+          "@language": "en",
+          "@value": "stable"
+        }
+      ],
+      "rdfs:comment": [
+        {
+          "@language": "it",
+          "@value": "La proprietà è utilizzata per specificare il nome breve del percorso. Esso è un breve identificatore come per esempio \"32\", \"100X\", o \"Verde\" che chi segue il percorso usa per identificarlo ma che non dà alcuna indicazione di quali luoghi il percorso attraversa."
+        },
+        {
+          "@language": "en",
+          "@value": "The property is used to specify a short name for the route. It is often a short identifier such as \"32\", \"100X\", \"Green\" that can be used by riders to identify the route; however it does not provide any indication of the places or stages that the route serves."
+        }
+      ],
+      "rdfs:domain": {
+        "@id": "https://w3id.org/italia/onto/Route/Route"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/italia/onto/Route"
+      },
+      "rdfs:label": [
+        {
+          "@language": "it",
+          "@value": "nome breve percorso"
+        },
+        {
+          "@language": "en",
+          "@value": "route short name"
+        }
+      ],
+      "rdfs:range": {
+        "@id": "rdfs:Literal"
+      },
+      "rdfs:subPropertyOf": {
+        "@id": "l0:name"
+      }
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/Route/routelLength",
+      "@type": "owl:DatatypeProperty",
+      "owl:versionInfo": [
+        {
+          "@language": "it",
+          "@value": "stabile"
+        },
+        {
+          "@language": "en",
+          "@value": "stable"
+        }
+      ],
+      "rdfs:comment": [
+        {
+          "@language": "it",
+          "@value": "La lunghezza del percorso. Essa può essere espressa in diverse unità di misura."
+        },
+        {
+          "@language": "en",
+          "@value": "The length of the route. The length can be expressed in different measurment units."
+        }
+      ],
+      "rdfs:domain": {
+        "@id": "https://w3id.org/italia/onto/Route/Route"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/italia/onto/Route"
+      },
+      "rdfs:label": [
+        {
+          "@language": "it",
+          "@value": "lunghezza del percorso"
+        },
+        {
+          "@language": "en",
+          "@value": "route length"
+        }
+      ],
+      "rdfs:range": {
+        "@id": "rdfs:Literal"
+      }
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/Route/stageOrdering",
+      "@type": "owl:DatatypeProperty",
+      "owl:versionInfo": [
+        {
+          "@language": "it",
+          "@value": "stabile"
+        },
+        {
+          "@language": "en",
+          "@value": "stable"
+        }
+      ],
+      "rdfs:comment": [
+        {
+          "@language": "it",
+          "@value": "L'ordinamento dell'elemento all'interno della sequenza espresso come intero. Nel contesto dell'ontologia indica la posizione della tappa nel percorso inteso come sequenza ordinata di tappe."
+        },
+        {
+          "@language": "en",
+          "@value": "The integer that expresses the ordering of an item in a certain sequence. In the context of this ontology is the ordering in the sequence of stages."
+        }
+      ],
+      "rdfs:domain": {
+        "@id": "https://w3id.org/italia/onto/Route/Stage"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/italia/onto/Route"
+      },
+      "rdfs:label": [
+        {
+          "@language": "it",
+          "@value": "ordinamento tappa"
+        },
+        {
+          "@language": "en",
+          "@value": "stage ordering"
+        }
+      ],
+      "rdfs:range": {
+        "@id": "xsd:int"
+      },
+      "rdfs:subPropertyOf": {
+        "@id": "l0:positionInSequence"
+      }
+    },
+    {
+      "@id": "l0:Characteristic",
+      "@type": "owl:Class"
+    },
+    {
+      "@id": "l0:Collection",
+      "@type": "owl:Class"
+    },
+    {
+      "@id": "l0:Description",
+      "@type": "owl:Class"
+    },
+    {
+      "@id": "l0:Location",
+      "@type": "owl:Class"
+    },
+    {
+      "@id": "l0:Sequence",
+      "@type": "owl:Class",
+      "rdfs:subClassOf": {
+        "@id": "l0:Collection"
+      }
+    },
+    {
+      "@id": "l0:controlledVocabulary",
+      "@type": "owl:AnnotationProperty"
+    },
+    {
+      "@id": "l0:description",
+      "@type": "owl:DatatypeProperty"
+    },
+    {
+      "@id": "l0:directlyFollows",
       "@type": "owl:ObjectProperty"
     },
     {
-      "@id": "_:ub7bL728C27",
-      "@type": "owl:Restriction",
-      "owl:onClass": {
-        "@id": "ti:Duration"
-      },
-      "owl:onProperty": {
-        "@id": "https://w3id.org/italia/onto/Route/hasEstimatedDuration"
-      },
-      "owl:qualifiedCardinality": {
-        "@type": "xsd:nonNegativeInteger",
-        "@value": "1"
+      "@id": "l0:directlyPrecedes",
+      "@type": "owl:ObjectProperty"
+    },
+    {
+      "@id": "l0:follows",
+      "@type": "owl:ObjectProperty"
+    },
+    {
+      "@id": "l0:hasMember",
+      "@type": "owl:ObjectProperty"
+    },
+    {
+      "@id": "l0:precedes",
+      "@type": "owl:ObjectProperty"
+    },
+    {
+      "@id": "mu:Value",
+      "@type": "owl:Class",
+      "rdfs:subClassOf": {
+        "@id": "l0:Characteristic"
       }
+    },
+    {
+      "@id": "owl:cardinality",
+      "@type": "owl:AnnotationProperty"
+    },
+    {
+      "@id": "owl:qualifiedCardinality",
+      "@type": "owl:AnnotationProperty"
+    },
+    {
+      "@id": "prov:wasDerivedFrom",
+      "@type": "owl:AnnotationProperty"
+    },
+    {
+      "@id": "prov:wasInfluencedBy",
+      "@type": "owl:AnnotationProperty"
+    },
+    {
+      "@id": "ti:Duration",
+      "@type": "owl:Class",
+      "rdfs:subClassOf": {
+        "@id": "l0:Entity"
+      }
+    },
+    {
+      "@id": "ti:duration",
+      "@type": "owl:DatatypeProperty"
+    },
+    {
+      "@id": "xsd:duration",
+      "@type": "rdfs:Datatype"
     }
   ]
 }

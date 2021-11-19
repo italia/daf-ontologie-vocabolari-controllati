@@ -3,7 +3,6 @@
     "admsapit": "https://w3id.org/italia/onto/ADMS/",
     "dcat": "http://www.w3.org/ns/dcat#",
     "dct": "http://purl.org/dc/terms/",
-    "dcterms": "http://purl.org/dc/terms/",
     "foaf": "http://xmlns.com/foaf/0.1/",
     "l0": "https://w3id.org/italia/onto/l0/",
     "owl": "http://www.w3.org/2002/07/owl#",
@@ -11,11 +10,70 @@
     "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
     "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
     "vcard": "http://www.w3.org/2006/vcard/ns#",
+    "xml": "http://www.w3.org/XML/1998/namespace",
     "xsd": "http://www.w3.org/2001/XMLSchema#"
   },
   "@graph": [
     {
-      "@id": "_:ub842bL442C35",
+      "@id": "_:ncaa1c44d5e9d47c1b62db9ae9ff012bcb1",
+      "@type": "owl:Class",
+      "owl:unionOf": {
+        "@list": [
+          {
+            "@id": "https://w3id.org/italia/onto/AccessCondition/OpeningHoursSpecification"
+          },
+          {
+            "@id": "https://w3id.org/italia/onto/AccessCondition/TemporaryClosure"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "_:ncaa1c44d5e9d47c1b62db9ae9ff012bcb10",
+      "@type": "owl:Restriction",
+      "owl:onProperty": {
+        "@id": "l0:name"
+      },
+      "owl:someValuesFrom": {
+        "@id": "rdfs:Literal"
+      }
+    },
+    {
+      "@id": "_:ncaa1c44d5e9d47c1b62db9ae9ff012bcb11",
+      "@type": "owl:Restriction",
+      "owl:allValuesFrom": {
+        "@id": "https://w3id.org/italia/onto/TI/TimeInterval"
+      },
+      "owl:onProperty": {
+        "@id": "https://w3id.org/italia/onto/TI/atTime"
+      }
+    },
+    {
+      "@id": "_:ncaa1c44d5e9d47c1b62db9ae9ff012bcb12",
+      "@type": "owl:Restriction",
+      "owl:allValuesFrom": {
+        "@id": "https://w3id.org/italia/onto/TI/DayOfWeek"
+      },
+      "owl:onProperty": {
+        "@id": "https://w3id.org/italia/onto/TI/hasDayOfWeek"
+      }
+    },
+    {
+      "@id": "_:ncaa1c44d5e9d47c1b62db9ae9ff012bcb13",
+      "@type": "owl:Restriction",
+      "owl:maxQualifiedCardinality": {
+        "@type": "xsd:nonNegativeInteger",
+        "@value": "1"
+      },
+      "owl:onClass": {
+        "@id": "https://w3id.org/italia/onto/AccessCondition/AdmissionType"
+      },
+      "owl:onProperty": {
+        "@id": "https://w3id.org/italia/onto/AccessCondition/hasAdmissionType"
+      }
+    },
+    {
+      "@id": "_:ncaa1c44d5e9d47c1b62db9ae9ff012bcb14",
       "@type": "owl:Restriction",
       "owl:allValuesFrom": {
         "@id": "xsd:time"
@@ -23,6 +81,276 @@
       "owl:onProperty": {
         "@id": "https://w3id.org/italia/onto/AccessCondition/closes"
       }
+    },
+    {
+      "@id": "_:ncaa1c44d5e9d47c1b62db9ae9ff012bcb15",
+      "@type": "owl:Restriction",
+      "owl:allValuesFrom": {
+        "@id": "xsd:time"
+      },
+      "owl:onProperty": {
+        "@id": "https://w3id.org/italia/onto/AccessCondition/opens"
+      }
+    },
+    {
+      "@id": "_:ncaa1c44d5e9d47c1b62db9ae9ff012bcb16",
+      "@type": "owl:Restriction",
+      "owl:allValuesFrom": {
+        "@id": "https://w3id.org/italia/onto/TI/TimeInterval"
+      },
+      "owl:onProperty": {
+        "@id": "https://w3id.org/italia/onto/TI/atTime"
+      }
+    },
+    {
+      "@id": "_:ncaa1c44d5e9d47c1b62db9ae9ff012bcb17",
+      "@type": "owl:Restriction",
+      "owl:allValuesFrom": {
+        "@id": "https://w3id.org/italia/onto/TI/DayOfWeek"
+      },
+      "owl:onProperty": {
+        "@id": "https://w3id.org/italia/onto/TI/hasDayOfWeek"
+      }
+    },
+    {
+      "@id": "_:ncaa1c44d5e9d47c1b62db9ae9ff012bcb18",
+      "@type": "owl:Restriction",
+      "owl:onProperty": {
+        "@id": "https://w3id.org/italia/onto/AccessCondition/reasonClosure"
+      },
+      "owl:someValuesFrom": {
+        "@id": "rdfs:Literal"
+      }
+    },
+    {
+      "@id": "_:ncaa1c44d5e9d47c1b62db9ae9ff012bcb19",
+      "@type": "owl:Restriction",
+      "owl:allValuesFrom": {
+        "@id": "xsd:time"
+      },
+      "owl:onProperty": {
+        "@id": "https://w3id.org/italia/onto/AccessCondition/closes"
+      }
+    },
+    {
+      "@id": "_:ncaa1c44d5e9d47c1b62db9ae9ff012bcb20",
+      "@type": "owl:Restriction",
+      "owl:allValuesFrom": {
+        "@id": "xsd:time"
+      },
+      "owl:onProperty": {
+        "@id": "https://w3id.org/italia/onto/AccessCondition/opens"
+      }
+    },
+    {
+      "@id": "_:ncaa1c44d5e9d47c1b62db9ae9ff012bcb4",
+      "@type": "owl:Class",
+      "owl:unionOf": {
+        "@list": [
+          {
+            "@id": "https://w3id.org/italia/onto/AccessCondition/OpeningHoursSpecification"
+          },
+          {
+            "@id": "https://w3id.org/italia/onto/AccessCondition/TemporaryClosure"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "_:ncaa1c44d5e9d47c1b62db9ae9ff012bcb7",
+      "@type": "owl:Restriction",
+      "owl:allValuesFrom": {
+        "@id": "rdfs:Literal"
+      },
+      "owl:onProperty": {
+        "@id": "l0:description"
+      }
+    },
+    {
+      "@id": "_:ncaa1c44d5e9d47c1b62db9ae9ff012bcb8",
+      "@type": "owl:Restriction",
+      "owl:onProperty": {
+        "@id": "l0:name"
+      },
+      "owl:someValuesFrom": {
+        "@id": "rdfs:Literal"
+      }
+    },
+    {
+      "@id": "_:ncaa1c44d5e9d47c1b62db9ae9ff012bcb9",
+      "@type": "owl:Restriction",
+      "owl:allValuesFrom": {
+        "@id": "rdfs:Literal"
+      },
+      "owl:onProperty": {
+        "@id": "l0:description"
+      }
+    },
+    {
+      "@id": "admsapit:Project",
+      "@type": "owl:Class"
+    },
+    {
+      "@id": "admsapit:SemanticAsset",
+      "@type": "owl:Class"
+    },
+    {
+      "@id": "admsapit:SemanticAssetDistribution",
+      "@type": "owl:Class"
+    },
+    {
+      "@id": "dcat:accessURL",
+      "@type": "owl:AnnotationProperty"
+    },
+    {
+      "@id": "dcat:downloadURL",
+      "@type": "owl:AnnotationProperty"
+    },
+    {
+      "@id": "dct:description",
+      "@type": "owl:AnnotationProperty"
+    },
+    {
+      "@id": "dct:format",
+      "@type": "owl:AnnotationProperty"
+    },
+    {
+      "@id": "dct:identifier",
+      "@type": "owl:AnnotationProperty"
+    },
+    {
+      "@id": "dct:license",
+      "@type": "owl:AnnotationProperty"
+    },
+    {
+      "@id": "dct:title",
+      "@type": "owl:AnnotationProperty"
+    },
+    {
+      "@id": "foaf:Agent",
+      "@type": "owl:Class"
+    },
+    {
+      "@id": "foaf:name",
+      "@type": "owl:AnnotationProperty"
+    },
+    {
+      "@id": "http://dati.gov.it/onto/dcatapit#Agent",
+      "@type": "owl:Class"
+    },
+    {
+      "@id": "http://dati.gov.it/onto/dcatapit#Organization",
+      "@type": "owl:Class"
+    },
+    {
+      "@id": "http://spcdata.digitpa.gov.it/browse/page/Amministrazione/agid",
+      "@type": [
+        "owl:NamedIndividual",
+        "http://dati.gov.it/onto/dcatapit#Agent",
+        "foaf:Agent"
+      ],
+      "dct:identifier": "agid",
+      "foaf:name": [
+        {
+          "@language": "it",
+          "@value": "Agenzia per l'Italia Digitale"
+        },
+        {
+          "@language": "en",
+          "@value": "Italian Digital Agency"
+        }
+      ]
+    },
+    {
+      "@id": "https://w3id.org/italia/data/contact-point/onto-agid",
+      "@type": [
+        "owl:NamedIndividual",
+        "http://dati.gov.it/onto/dcatapit#Organization",
+        "vcard:Kind",
+        "vcard:Organization"
+      ],
+      "vcard:fn": "banche dati e open data",
+      "vcard:hasEmail": {
+        "@id": "mailto:info@dati.gov.it"
+      }
+    },
+    {
+      "@id": "https://w3id.org/italia/data/distribution/ACAPIT-JSON-LD",
+      "@type": [
+        "owl:NamedIndividual",
+        "admsapit:SemanticAssetDistribution"
+      ],
+      "dcat:accessURL": {
+        "@id": "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/AccessCondition/latest"
+      },
+      "dcat:downloadURL": {
+        "@id": "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/AccessCondition/latest/AC-AP_IT.jsonld"
+      },
+      "dct:description": [
+        {
+          "@language": "it",
+          "@value": "Questa è la distribuzione JSON-LD dell'ontologia delle condizioni d'accesso"
+        },
+        {
+          "@language": "en",
+          "@value": "This is the distribution in JSON-LD of Access Condition ontology"
+        }
+      ],
+      "dct:format": {
+        "@id": "http://publications.europa.eu/resource/authority/file-type/JSON_LD"
+      },
+      "dct:license": {
+        "@id": "https://w3id.org/italia/controlled-vocabulary/licences/A21_CCBY40"
+      },
+      "dct:title": [
+        {
+          "@language": "it",
+          "@value": "Distribuzione JSON-LD ontologia AC-AP_IT"
+        },
+        {
+          "@language": "en",
+          "@value": "JSON-LD distribution of AC-AP_IT Ontology"
+        }
+      ]
+    },
+    {
+      "@id": "https://w3id.org/italia/data/distribution/ACAPIT-RDF-TURTLE",
+      "@type": [
+        "owl:NamedIndividual",
+        "admsapit:SemanticAssetDistribution"
+      ],
+      "dcat:accessURL": {
+        "@id": "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/AccessCondition/latest"
+      },
+      "dcat:downloadURL": {
+        "@id": "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/AccessCondition/latest/AC-AP_IT.ttl"
+      },
+      "dct:description": [
+        {
+          "@language": "it",
+          "@value": "Questa è la distribuzione RDF/Turtle dell'ontologia delle condizioni d'accesso"
+        },
+        {
+          "@language": "en",
+          "@value": "This is the distribution in RDF/turtle of the access condition ontology"
+        }
+      ],
+      "dct:format": {
+        "@id": "http://publications.europa.eu/resource/authority/file-type/RDF_TURTLE"
+      },
+      "dct:license": {
+        "@id": "https://w3id.org/italia/controlled-vocabulary/licences/A21_CCBY40"
+      },
+      "dct:title": [
+        {
+          "@language": "it",
+          "@value": "Distribuzione RDF/Turtle ontologia AC-AP_IT"
+        },
+        {
+          "@language": "en",
+          "@value": "RDF/Turtle distribution of AC-AP_IT Ontology"
+        }
+      ]
     },
     {
       "@id": "https://w3id.org/italia/data/distribution/ACAPIT-RDF-XML",
@@ -36,30 +364,67 @@
       "dcat:downloadURL": {
         "@id": "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/AccessCondition/latest/AC-AP_IT.rdf"
       },
-      "dcterms:description": [
-        {
-          "@language": "en",
-          "@value": "This is the distribution in RDF/XML of the access condition ontology"
-        },
+      "dct:description": [
         {
           "@language": "it",
           "@value": "Questa è la distribuzione RDF/XML dell'ontologia delle condizioni d'accesso"
-        }
-      ],
-      "dcterms:format": {
-        "@id": "http://publications.europa.eu/resource/authority/file-type/RDF_XML"
-      },
-      "dcterms:license": {
-        "@id": "https://w3id.org/italia/controlled-vocabulary/licences/A21_CCBY40"
-      },
-      "dcterms:title": [
+        },
         {
           "@language": "en",
-          "@value": "RDF/XML distribution of AC-AP_IT Ontology"
-        },
+          "@value": "This is the distribution in RDF/XML of the access condition ontology"
+        }
+      ],
+      "dct:format": {
+        "@id": "http://publications.europa.eu/resource/authority/file-type/RDF_XML"
+      },
+      "dct:license": {
+        "@id": "https://w3id.org/italia/controlled-vocabulary/licences/A21_CCBY40"
+      },
+      "dct:title": [
         {
           "@language": "it",
           "@value": "Distribuzione RDF/XML ontologia AC-AP_IT"
+        },
+        {
+          "@language": "en",
+          "@value": "RDF/XML distribution of AC-AP_IT Ontology"
+        }
+      ]
+    },
+    {
+      "@id": "https://w3id.org/italia/data/organization/public-organization/td",
+      "@type": [
+        "owl:NamedIndividual",
+        "http://dati.gov.it/onto/dcatapit#Agent",
+        "foaf:Agent"
+      ],
+      "dct:identifier": "TD",
+      "foaf:name": [
+        {
+          "@language": "en",
+          "@value": "Digital Transformation Team"
+        },
+        {
+          "@language": "it",
+          "@value": "Team per la Trasformazione Digitale"
+        }
+      ]
+    },
+    {
+      "@id": "https://w3id.org/italia/data/organization/support-unit/cnr-Z6HZEH/stlab",
+      "@type": [
+        "owl:NamedIndividual",
+        "l0:Agent"
+      ],
+      "dct:identifier": "cnr - Z6HZEH - STLab",
+      "l0:name": [
+        {
+          "@language": "en",
+          "@value": "Institute of Cognitive Sciences and Technologies of the Italian Research Council (CNR) - Semantic Technology Laboratory (STLab)"
+        },
+        {
+          "@language": "it",
+          "@value": "Istituto di Scienze e Tecnologie della Cognizione del CNR - Semantic Technology Lab (STLab)"
         }
       ]
     },
@@ -75,147 +440,231 @@
       }
     },
     {
-      "@id": "_:ub842bL438C35",
-      "@type": "owl:Restriction",
-      "owl:onProperty": {
-        "@id": "https://w3id.org/italia/onto/AccessCondition/reasonClosure"
-      },
-      "owl:someValuesFrom": {
-        "@id": "rdfs:Literal"
+      "@id": "https://w3id.org/italia/data/project/OntoPiA",
+      "@type": [
+        "owl:NamedIndividual",
+        "admsapit:Project"
+      ],
+      "l0:name": {
+        "@language": "it",
+        "@value": "OntoPiA - la rete di ontologie della pubblica amministrazione italiana"
       }
     },
     {
-      "@id": "https://w3id.org/italia/onto/AccessCondition/hasAccessCondition",
-      "@type": "owl:ObjectProperty",
-      "owl:inverseOf": {
-        "@id": "https://w3id.org/italia/onto/AccessCondition/isAccessConditionOf"
+      "@id": "https://w3id.org/italia/onto/AccessCondition",
+      "@type": [
+        "owl:Ontology",
+        "owl:NamedIndividual",
+        "admsapit:SemanticAsset"
+      ],
+      "admsapit:acronym": "AC-AP_IT",
+      "admsapit:hasContributor": [
+        {
+          "@id": "https://w3id.org/italia/data/organization/support-unit/cnr-Z6HZEH/stlab"
+        },
+        {
+          "@id": "https://w3id.org/italia/data/organization/public-organization/td"
+        }
+      ],
+      "admsapit:hasFormalityLevel": {
+        "@id": "admsapit:Formal"
+      },
+      "admsapit:hasKeyClass": [
+        {
+          "@id": "https://w3id.org/italia/onto/AccessCondition/OpeningHoursSpecification"
+        },
+        {
+          "@id": "https://w3id.org/italia/onto/AccessCondition/AccessCondition"
+        },
+        {
+          "@id": "https://w3id.org/italia/onto/AccessCondition/TemporaryClosure"
+        }
+      ],
+      "admsapit:hasOntologyLanguage": {
+        "@id": "admsapit:OWL"
+      },
+      "admsapit:hasSemanticAssetDistribution": [
+        {
+          "@id": "https://w3id.org/italia/data/distribution/ACAPIT-RDF-TURTLE"
+        },
+        {
+          "@id": "https://w3id.org/italia/data/distribution/ACAPIT-RDF-XML"
+        },
+        {
+          "@id": "https://w3id.org/italia/data/distribution/ACAPIT-JSON-LD"
+        }
+      ],
+      "admsapit:hasTask": [
+        {
+          "@id": "admsapit:AnnotationTask"
+        },
+        {
+          "@id": "admsapit:QueryFormulationTask"
+        },
+        {
+          "@id": "admsapit:SearchTask"
+        }
+      ],
+      "admsapit:officialURI": {
+        "@type": "xsd:anyURI",
+        "@value": "https://w3id.org/italia/onto/AccessCondition"
+      },
+      "admsapit:prefix": "acapit",
+      "admsapit:semanticAssetInUse": [
+        {
+          "@id": "https://w3id.org/italia/data/project/DAF"
+        },
+        {
+          "@id": "https://w3id.org/italia/data/project/OntoPiA"
+        }
+      ],
+      "admsapit:status": "initial draft",
+      "admsapit:target": [
+        "Imprese",
+        "Pubbliche Amministrazioni"
+      ],
+      "admsapit:type": {
+        "@id": "admsapit:ServiceOntology"
+      },
+      "dcat:contactPoint": {
+        "@id": "https://w3id.org/italia/data/contact-point/onto-agid"
+      },
+      "dcat:keyword": [
+        {
+          "@language": "en",
+          "@value": "Access Condition"
+        },
+        {
+          "@language": "it",
+          "@value": "Condizioni d'accesso"
+        },
+        {
+          "@language": "it",
+          "@value": "Orari di apertura"
+        }
+      ],
+      "dcat:theme": [
+        {
+          "@id": "http://publications.europa.eu/resource/authority/data-theme/SOCI"
+        },
+        {
+          "@id": "http://publications.europa.eu/resource/authority/data-theme/GOVE"
+        }
+      ],
+      "dct:accrualPeriodicity": {
+        "@id": "http://publications.europa.eu/resource/authority/frequency/IRREG"
+      },
+      "dct:creator": {
+        "@id": "http://spcdata.digitpa.gov.it/browse/page/Amministrazione/agid"
+      },
+      "dct:description": [
+        {
+          "@language": "en",
+          "@value": "This is the ontology of the Italian application profile for Access Conditions (Access Conditions - Italian Application Profile - AC-AP_IT). It can be used to model the access conditions to public locations."
+        },
+        {
+          "@language": "it",
+          "@value": "Questa è l'ontologia del profilo di italiano sulle condizioni di accesso, inclusi gli orari di apertura (Access Condition Ontology - Italian Application Profile  - AccessCondition-AP_IT). Essa può essere utilizzata per modellare tutte le condizioni di accesso a luoghi pubblici."
+        }
+      ],
+      "dct:issued": {
+        "@type": "xsd:date",
+        "@value": "2018-06-18"
+      },
+      "dct:language": [
+        {
+          "@id": "http://publications.europa.eu/resource/authority/language/ITA"
+        },
+        {
+          "@id": "http://publications.europa.eu/resource/authority/language/ENG"
+        }
+      ],
+      "dct:modified": {
+        "@type": "xsd:date",
+        "@value": "2018-06-18"
+      },
+      "dct:publisher": {
+        "@id": "http://spcdata.digitpa.gov.it/browse/page/Amministrazione/agid"
+      },
+      "dct:rightsHolder": {
+        "@id": "http://spcdata.digitpa.gov.it/browse/page/Amministrazione/agid"
+      },
+      "dct:title": [
+        {
+          "@language": "en",
+          "@value": "Access Condition Ontology - Italian Application Profile"
+        },
+        {
+          "@language": "it",
+          "@value": "Ontologia delle Condizioni di Accesso - Profilo applicativo italiano"
+        }
+      ],
+      "owl:imports": [
+        {
+          "@id": "https://w3id.org/italia/onto/l0"
+        },
+        {
+          "@id": "https://w3id.org/italia/onto/TI"
+        }
+      ],
+      "owl:versionIRI": {
+        "@id": "https://w3id.org/italia/onto/AccessCondition/0.1"
       },
       "owl:versionInfo": [
         {
           "@language": "it",
-          "@value": "stabile"
+          "@value": "Versione 0.1 - 18 Giugno 2018 - Creazione della prima versione dell'ontologia"
         },
         {
           "@language": "en",
-          "@value": "stable"
+          "@value": "Version 0.1 - 18 June 2018 - Creation of the first version of the ontology"
         }
       ],
       "rdfs:comment": [
         {
           "@language": "it",
-          "@value": "Proprietà che collega qualcosa del dominio modellato alle condizioni di accesso che si potrebbero applicare a quella cosa. Per esempio, si potrebbe utilizzare la proprietà per collegare un punto di interesse, un luogo della cultura, un evento pubblico, un ufficio della pubblica amministrazione, un servizio pubblico a condizioni per accedervi"
+          "@value": "Questa è l'ontologia del profilo di italiano sulle condizioni di accesso, inclusi gli orari di apertura (Access Condition Ontology - Italian Application Profile  - AccessCondition-AP_IT). Essa può essere utilizzata per modellare tutte le condizioni di accesso a luoghi pubblici."
         },
         {
           "@language": "en",
-          "@value": "Property that links a thing of the modelled domain to access conditions that may apply."
+          "@value": "This is the ontology of the Italian application profile for access conditions including opening hours specifications. It can be used to model all the access conditions to public locations."
         }
       ],
-      "rdfs:domain": {
-        "@id": "owl:Thing"
-      },
       "rdfs:isDefinedBy": {
-        "@id": "https://w3id.org/italia/onto/AccessCondition"
+        "@id": "https://w3id.org/italia/onto/AccessCondition/"
       },
       "rdfs:label": [
         {
           "@language": "en",
-          "@value": "has access condition"
+          "@value": "Access Conditions Ontology"
         },
         {
           "@language": "it",
-          "@value": "ha condizione d'accesso"
+          "@value": "Ontologia delle Condizioni di accesso"
         }
-      ],
-      "rdfs:range": {
-        "@id": "https://w3id.org/italia/onto/AccessCondition/AccessCondition"
-      }
+      ]
     },
     {
-      "@id": "dcterms:description",
-      "@type": "owl:AnnotationProperty"
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/AccessCondition/closes",
-      "@type": "owl:DatatypeProperty",
-      "owl:versionInfo": [
-        {
-          "@language": "en",
-          "@value": "stable"
-        },
-        {
-          "@language": "it",
-          "@value": "stabile"
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@language": "en",
-          "@value": "Property that represents the closing hour or the hour on which the temporary closure terminates. Example: if the temporary closure is on Tuesday from 10:00am to 13:00am, closes is used to model \"13:00am\"."
-        },
-        {
-          "@language": "it",
-          "@value": "Proprietà che rappresenta l'orario di chiusura o l'ora in cui una chiusura temporanea cessa di valere. Esempio: se la chiusura temporanea è Martedì dalle 10:00 alle 13:00 la proprietà modella \"13:00\""
-        }
-      ],
-      "rdfs:domain": {
-        "@id": "_:ub842bL216C21"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "https://w3id.org/italia/onto/AccessCondition"
-      },
-      "rdfs:label": [
-        {
-          "@language": "en",
-          "@value": "closes"
-        },
-        {
-          "@language": "it",
-          "@value": "orario di chiusura"
-        }
-      ],
-      "rdfs:range": {
-        "@id": "xsd:time"
-      }
-    },
-    {
-      "@id": "vcard:Kind",
-      "@type": "owl:Class"
-    },
-    {
-      "@id": "_:ub842bL236C20",
+      "@id": "https://w3id.org/italia/onto/AccessCondition/AccessCondition",
       "@type": "owl:Class",
-      "owl:unionOf": {
-        "@list": [
-          {
-            "@id": "https://w3id.org/italia/onto/AccessCondition/OpeningHoursSpecification"
-          },
-          {
-            "@id": "https://w3id.org/italia/onto/AccessCondition/TemporaryClosure"
-          }
-        ]
-      }
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/AccessCondition/TemporaryClosure",
-      "@type": "owl:Class",
       "owl:versionInfo": [
-        {
-          "@language": "en",
-          "@value": "stable"
-        },
         {
           "@language": "it",
           "@value": "stabile"
+        },
+        {
+          "@language": "en",
+          "@value": "stable"
         }
       ],
       "rdfs:comment": [
         {
           "@language": "it",
-          "@value": "La chiusura temporanea è una sottoclasse di Condizioni di accesso i cui individui forniscono informazioni sulla chiusura temporanea, tipicamente di un luogo.\n\nGli individui sono descritti in termini di:\n * tempo da cui parte la chiusura;\n * tempo fino a cui si verifica la chiusura\n * la motivazione per la chiusura\n * i giorni della settimana in cui si può verificare\n * un intervallo temporale di date di chiusura\n\nQuesta classe ci consente di modellare dati di questo tipo:\nIl luogo rimarrà chiuso Martedì 19 dalle 12:00 alle 13:00 per riunioni interne oppure modellare situazioni quali \"Domenica chiuso\", \"La Galleria Civica rimarrà chiusa al pubblico lunedì 21/05/2018 (Lunedì di Pentecoste)\""
+          "@value": "Questa classe rappresenta le condizioni di accesso. Tipicamente le condizioni di accesso sono specificate per comunicare come accedere a luoghi pubblici. Esse includono informazioni su prenotazioni, su orari di apertura e chiusure straordinarie."
         },
         {
           "@language": "en",
-          "@value": "A temporary closure is a subclass of 'AccessCondition' whose individuals provide information about a temporary closure.\nThese individuals are described in terms of:\n * the time from which the closure starts\n * the reason about the temporary closure;\n * the time to which the closure ends.\n * the dayOfWeek of the closure\n\nIn this way we are able to model something like \"the location will be closed Tuesday 19 June 2018 from 10:00 to 13:00 for internal meetings"
+          "@value": "This class represents the access conditions. Typically, access conditions are specified to communicate how to access public places. This includes information on bookings, opening hours and extraordinary/temporary closures."
         }
       ],
       "rdfs:isDefinedBy": {
@@ -224,31 +673,67 @@
       "rdfs:label": [
         {
           "@language": "en",
-          "@value": "Temporary Closure"
+          "@value": "Access Condition"
         },
         {
           "@language": "it",
-          "@value": "Chiusura Temporanea"
+          "@value": "Accesso"
         }
       ],
       "rdfs:subClassOf": [
         {
-          "@id": "_:ub842bL442C35"
+          "@id": "l0:Characteristic"
         },
         {
-          "@id": "_:ub842bL430C35"
+          "@id": "_:ncaa1c44d5e9d47c1b62db9ae9ff012bcb7"
+        }
+      ]
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/AccessCondition/AdmissionType",
+      "@type": "owl:Class",
+      "owl:versionInfo": [
+        {
+          "@language": "it",
+          "@value": "stabile"
         },
         {
-          "@id": "_:ub842bL446C35"
+          "@language": "en",
+          "@value": "stable"
+        }
+      ],
+      "rdfs:comment": [
+        {
+          "@language": "it",
+          "@value": "Individui di questa classe identificano i possibili tipi di politiche di accesso che possono essere applicate agli orari di apertura di un luogo."
         },
         {
-          "@id": "_:ub842bL434C35"
+          "@language": "en",
+          "@value": "It represents the type of admission. Examples are: weekly, monthly, daily, etc."
+        }
+      ],
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/italia/onto/AccessCondition"
+      },
+      "rdfs:label": [
+        {
+          "@language": "en",
+          "@value": "Admission Type"
         },
         {
-          "@id": "_:ub842bL438C35"
+          "@language": "it",
+          "@value": "Tipi di apertura"
+        }
+      ],
+      "rdfs:subClassOf": [
+        {
+          "@id": "l0:Characteristic"
         },
         {
-          "@id": "https://w3id.org/italia/onto/AccessCondition/AccessCondition"
+          "@id": "_:ncaa1c44d5e9d47c1b62db9ae9ff012bcb8"
+        },
+        {
+          "@id": "_:ncaa1c44d5e9d47c1b62db9ae9ff012bcb9"
         }
       ]
     },
@@ -257,12 +742,12 @@
       "@type": "owl:Class",
       "owl:versionInfo": [
         {
-          "@language": "en",
-          "@value": "stable"
-        },
-        {
           "@language": "it",
           "@value": "stabile"
+        },
+        {
+          "@language": "en",
+          "@value": "stable"
         }
       ],
       "rdfs:comment": [
@@ -293,94 +778,21 @@
           "@id": "https://w3id.org/italia/onto/AccessCondition/AccessCondition"
         },
         {
-          "@id": "_:ub842bL361C26"
+          "@id": "_:ncaa1c44d5e9d47c1b62db9ae9ff012bcb10"
         }
       ]
-    },
-    {
-      "@id": "_:ub842bL384C44",
-      "@type": "owl:Restriction",
-      "owl:allValuesFrom": {
-        "@id": "https://w3id.org/italia/onto/TI/DayOfWeek"
-      },
-      "owl:onProperty": {
-        "@id": "https://w3id.org/italia/onto/TI/hasDayOfWeek"
-      }
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/TI/hasDayOfWeek",
-      "@type": "owl:ObjectProperty"
-    },
-    {
-      "@id": "dcat:downloadURL",
-      "@type": "owl:AnnotationProperty"
-    },
-    {
-      "@id": "prov:wasDerivedFrom",
-      "@type": "owl:AnnotationProperty"
-    },
-    {
-      "@id": "l0:controlledVocabulary",
-      "@type": "owl:AnnotationProperty"
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/AccessCondition/opens",
-      "@type": "owl:DatatypeProperty",
-      "owl:versionInfo": [
-        {
-          "@language": "en",
-          "@value": "stable"
-        },
-        {
-          "@language": "it",
-          "@value": "stabile"
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@language": "it",
-          "@value": "Proprietà utilizzata per indicare l'orario di apertura o l'orario in cui inizia una chiusura temporanea. Se l'evento pubblico ha come condizioni di accesso ogni lunedì dalle 9:00 alle 12:00, la proprietà è utilizzata per modellare \"9:00\"."
-        },
-        {
-          "@language": "en",
-          "@value": "Property used to indicate the opening hour or the hour in which starts a possible temporary closure. If a public event can be accessed every Monday from 9:00am to 12:00am, the property is used to model \"9:00am\"."
-        }
-      ],
-      "rdfs:domain": {
-        "@id": "_:ub842bL236C20"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "https://w3id.org/italia/onto/AccessCondition"
-      },
-      "rdfs:label": [
-        {
-          "@language": "it",
-          "@value": "orario apertura"
-        },
-        {
-          "@language": "en",
-          "@value": "opens"
-        }
-      ],
-      "rdfs:range": {
-        "@id": "xsd:time"
-      }
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/TI/TimeInterval",
-      "@type": "owl:Class"
     },
     {
       "@id": "https://w3id.org/italia/onto/AccessCondition/OpeningHoursSpecification",
       "@type": "owl:Class",
       "owl:versionInfo": [
         {
-          "@language": "en",
-          "@value": "stable"
-        },
-        {
           "@language": "it",
           "@value": "stabile"
+        },
+        {
+          "@language": "en",
+          "@value": "stable"
         }
       ],
       "rdfs:comment": [
@@ -398,55 +810,37 @@
       },
       "rdfs:label": [
         {
-          "@language": "it",
-          "@value": "Orario di Apertura"
-        },
-        {
           "@language": "en",
           "@value": "Opening Hours Specification"
+        },
+        {
+          "@language": "it",
+          "@value": "Orario di Apertura"
         }
       ],
       "rdfs:subClassOf": [
         {
-          "@id": "_:ub842bL380C44"
-        },
-        {
-          "@id": "_:ub842bL397C44"
-        },
-        {
           "@id": "https://w3id.org/italia/onto/AccessCondition/AccessCondition"
         },
         {
-          "@id": "_:ub842bL388C44"
+          "@id": "_:ncaa1c44d5e9d47c1b62db9ae9ff012bcb11"
         },
         {
-          "@id": "_:ub842bL384C44"
+          "@id": "_:ncaa1c44d5e9d47c1b62db9ae9ff012bcb12"
         },
         {
-          "@id": "_:ub842bL393C44"
+          "@id": "_:ncaa1c44d5e9d47c1b62db9ae9ff012bcb13"
+        },
+        {
+          "@id": "_:ncaa1c44d5e9d47c1b62db9ae9ff012bcb14"
+        },
+        {
+          "@id": "_:ncaa1c44d5e9d47c1b62db9ae9ff012bcb15"
         }
       ]
     },
     {
-      "@id": "https://w3id.org/italia/onto/TI/DayOfWeek",
-      "@type": "owl:Class"
-    },
-    {
-      "@id": "dcterms:format",
-      "@type": "owl:AnnotationProperty"
-    },
-    {
-      "@id": "_:ub842bL430C35",
-      "@type": "owl:Restriction",
-      "owl:allValuesFrom": {
-        "@id": "https://w3id.org/italia/onto/TI/TimeInterval"
-      },
-      "owl:onProperty": {
-        "@id": "https://w3id.org/italia/onto/TI/atTime"
-      }
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/AccessCondition/AdmissionType",
+      "@id": "https://w3id.org/italia/onto/AccessCondition/TemporaryClosure",
       "@type": "owl:Class",
       "owl:versionInfo": [
         {
@@ -460,12 +854,12 @@
       ],
       "rdfs:comment": [
         {
-          "@language": "it",
-          "@value": "Individui di questa classe identificano i possibili tipi di politiche di accesso che possono essere applicate agli orari di apertura di un luogo."
+          "@language": "en",
+          "@value": "A temporary closure is a subclass of 'AccessCondition' whose individuals provide information about a temporary closure.\nThese individuals are described in terms of:\n * the time from which the closure starts\n * the reason about the temporary closure;\n * the time to which the closure ends.\n * the dayOfWeek of the closure\n\nIn this way we are able to model something like \"the location will be closed Tuesday 19 June 2018 from 10:00 to 13:00 for internal meetings"
         },
         {
-          "@language": "en",
-          "@value": "It represents the type of admission. Examples are: weekly, monthly, daily, etc."
+          "@language": "it",
+          "@value": "La chiusura temporanea è una sottoclasse di Condizioni di accesso i cui individui forniscono informazioni sulla chiusura temporanea, tipicamente di un luogo.\n\nGli individui sono descritti in termini di:\n * tempo da cui parte la chiusura;\n * tempo fino a cui si verifica la chiusura\n * la motivazione per la chiusura\n * i giorni della settimana in cui si può verificare\n * un intervallo temporale di date di chiusura\n\nQuesta classe ci consente di modellare dati di questo tipo:\nIl luogo rimarrà chiuso Martedì 19 dalle 12:00 alle 13:00 per riunioni interne oppure modellare situazioni quali \"Domenica chiuso\", \"La Galleria Civica rimarrà chiusa al pubblico lunedì 21/05/2018 (Lunedì di Pentecoste)\""
         }
       ],
       "rdfs:isDefinedBy": {
@@ -474,58 +868,233 @@
       "rdfs:label": [
         {
           "@language": "it",
-          "@value": "Tipi di apertura"
+          "@value": "Chiusura Temporanea"
         },
         {
           "@language": "en",
-          "@value": "Admission Type"
+          "@value": "Temporary Closure"
         }
       ],
       "rdfs:subClassOf": [
         {
-          "@id": "_:ub842bL338C32"
+          "@id": "https://w3id.org/italia/onto/AccessCondition/AccessCondition"
         },
         {
-          "@id": "l0:Characteristic"
+          "@id": "_:ncaa1c44d5e9d47c1b62db9ae9ff012bcb16"
         },
         {
-          "@id": "_:ub842bL342C32"
+          "@id": "_:ncaa1c44d5e9d47c1b62db9ae9ff012bcb17"
+        },
+        {
+          "@id": "_:ncaa1c44d5e9d47c1b62db9ae9ff012bcb18"
+        },
+        {
+          "@id": "_:ncaa1c44d5e9d47c1b62db9ae9ff012bcb19"
+        },
+        {
+          "@id": "_:ncaa1c44d5e9d47c1b62db9ae9ff012bcb20"
         }
       ]
     },
     {
-      "@id": "prov:wasInfluencedBy",
-      "@type": "owl:AnnotationProperty"
+      "@id": "https://w3id.org/italia/onto/AccessCondition/closes",
+      "@type": "owl:DatatypeProperty",
+      "owl:versionInfo": [
+        {
+          "@language": "it",
+          "@value": "stabile"
+        },
+        {
+          "@language": "en",
+          "@value": "stable"
+        }
+      ],
+      "rdfs:comment": [
+        {
+          "@language": "en",
+          "@value": "Property that represents the closing hour or the hour on which the temporary closure terminates. Example: if the temporary closure is on Tuesday from 10:00am to 13:00am, closes is used to model \"13:00am\"."
+        },
+        {
+          "@language": "it",
+          "@value": "Proprietà che rappresenta l'orario di chiusura o l'ora in cui una chiusura temporanea cessa di valere. Esempio: se la chiusura temporanea è Martedì dalle 10:00 alle 13:00 la proprietà modella \"13:00\""
+        }
+      ],
+      "rdfs:domain": {
+        "@id": "_:ncaa1c44d5e9d47c1b62db9ae9ff012bcb1"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/italia/onto/AccessCondition"
+      },
+      "rdfs:label": [
+        {
+          "@language": "en",
+          "@value": "closes"
+        },
+        {
+          "@language": "it",
+          "@value": "orario di chiusura"
+        }
+      ],
+      "rdfs:range": {
+        "@id": "xsd:time"
+      }
     },
     {
-      "@id": "vcard:fn",
-      "@type": "owl:AnnotationProperty"
+      "@id": "https://w3id.org/italia/onto/AccessCondition/hasAccessCondition",
+      "@type": "owl:ObjectProperty",
+      "owl:inverseOf": {
+        "@id": "https://w3id.org/italia/onto/AccessCondition/isAccessConditionOf"
+      },
+      "owl:versionInfo": [
+        {
+          "@language": "it",
+          "@value": "stabile"
+        },
+        {
+          "@language": "en",
+          "@value": "stable"
+        }
+      ],
+      "rdfs:comment": [
+        {
+          "@language": "en",
+          "@value": "Property that links a thing of the modelled domain to access conditions that may apply."
+        },
+        {
+          "@language": "it",
+          "@value": "Proprietà che collega qualcosa del dominio modellato alle condizioni di accesso che si potrebbero applicare a quella cosa. Per esempio, si potrebbe utilizzare la proprietà per collegare un punto di interesse, un luogo della cultura, un evento pubblico, un ufficio della pubblica amministrazione, un servizio pubblico a condizioni per accedervi"
+        }
+      ],
+      "rdfs:domain": {
+        "@id": "owl:Thing"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/italia/onto/AccessCondition"
+      },
+      "rdfs:label": [
+        {
+          "@language": "it",
+          "@value": "ha condizione d'accesso"
+        },
+        {
+          "@language": "en",
+          "@value": "has access condition"
+        }
+      ],
+      "rdfs:range": {
+        "@id": "https://w3id.org/italia/onto/AccessCondition/AccessCondition"
+      }
     },
     {
-      "@id": "foaf:Agent",
-      "@type": "owl:Class"
+      "@id": "https://w3id.org/italia/onto/AccessCondition/hasAdmissionType",
+      "@type": "owl:ObjectProperty",
+      "owl:inverseOf": {
+        "@id": "https://w3id.org/italia/onto/AccessCondition/isAdmissionTypeOf"
+      },
+      "owl:versionInfo": [
+        {
+          "@language": "it",
+          "@value": "stabile"
+        },
+        {
+          "@language": "en",
+          "@value": "stable"
+        }
+      ],
+      "rdfs:comment": [
+        {
+          "@language": "en",
+          "@value": "Property that links the opening hours specificatin to the admission type (weekly, daily, etc.)"
+        },
+        {
+          "@language": "it",
+          "@value": "Proprietà che lega gli orari di apertura al tipo di apertura (settimanale, giornaliera, ecc.)"
+        }
+      ],
+      "rdfs:domain": {
+        "@id": "https://w3id.org/italia/onto/AccessCondition/OpeningHoursSpecification"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/italia/onto/AccessCondition"
+      },
+      "rdfs:label": [
+        {
+          "@language": "it",
+          "@value": "ha tipo di apertura"
+        },
+        {
+          "@language": "en",
+          "@value": "has admission type"
+        }
+      ],
+      "rdfs:range": {
+        "@id": "https://w3id.org/italia/onto/AccessCondition/AdmissionType"
+      }
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/AccessCondition/isAccessConditionOf",
+      "@type": "owl:ObjectProperty",
+      "owl:versionInfo": [
+        {
+          "@language": "it",
+          "@value": "stabile"
+        },
+        {
+          "@language": "en",
+          "@value": "stable"
+        }
+      ],
+      "rdfs:comment": [
+        {
+          "@language": "en",
+          "@value": "Inverse property of \"has access condition\""
+        },
+        {
+          "@language": "it",
+          "@value": "Proprietà inversa di \"ha condizione d'accesso\""
+        }
+      ],
+      "rdfs:domain": {
+        "@id": "https://w3id.org/italia/onto/AccessCondition/AccessCondition"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/italia/onto/AccessCondition"
+      },
+      "rdfs:label": [
+        {
+          "@language": "en",
+          "@value": "is access condition of"
+        },
+        {
+          "@language": "it",
+          "@value": "è condizione di accesso di"
+        }
+      ],
+      "rdfs:range": {
+        "@id": "owl:Thing"
+      }
     },
     {
       "@id": "https://w3id.org/italia/onto/AccessCondition/isAdmissionTypeOf",
       "@type": "owl:ObjectProperty",
       "owl:versionInfo": [
         {
-          "@language": "en",
-          "@value": "stable"
-        },
-        {
           "@language": "it",
           "@value": "stabile"
+        },
+        {
+          "@language": "en",
+          "@value": "stable"
         }
       ],
       "rdfs:comment": [
         {
-          "@language": "it",
-          "@value": "Proprietà inversa di \"ha tipo di apertura\""
-        },
-        {
           "@language": "en",
           "@value": "Inverse property of \"has admission type\""
+        },
+        {
+          "@language": "it",
+          "@value": "Proprietà inversa di \"ha tipo di apertura\""
         }
       ],
       "rdfs:domain": {
@@ -536,12 +1105,12 @@
       },
       "rdfs:label": [
         {
-          "@language": "it",
-          "@value": "è tipo di apertura di"
-        },
-        {
           "@language": "en",
           "@value": "is admission type of"
+        },
+        {
+          "@language": "it",
+          "@value": "è tipo di apertura di"
         }
       ],
       "rdfs:range": {
@@ -549,386 +1118,46 @@
       }
     },
     {
-      "@id": "_:ub842bL446C35",
-      "@type": "owl:Restriction",
-      "owl:allValuesFrom": {
-        "@id": "xsd:time"
-      },
-      "owl:onProperty": {
-        "@id": "https://w3id.org/italia/onto/AccessCondition/opens"
-      }
-    },
-    {
-      "@id": "_:ub842bL342C32",
-      "@type": "owl:Restriction",
-      "owl:allValuesFrom": {
-        "@id": "rdfs:Literal"
-      },
-      "owl:onProperty": {
-        "@id": "l0:description"
-      }
-    },
-    {
-      "@id": "_:ub842bL397C44",
-      "@type": "owl:Restriction",
-      "owl:allValuesFrom": {
-        "@id": "xsd:time"
-      },
-      "owl:onProperty": {
-        "@id": "https://w3id.org/italia/onto/AccessCondition/opens"
-      }
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/TI/atTime",
-      "@type": "owl:ObjectProperty"
-    },
-    {
-      "@id": "foaf:name",
-      "@type": "owl:AnnotationProperty"
-    },
-    {
-      "@id": "https://w3id.org/italia/data/organization/support-unit/cnr-Z6HZEH/stlab",
-      "@type": [
-        "l0:Agent",
-        "owl:NamedIndividual"
-      ],
-      "dcterms:identifier": "cnr - Z6HZEH - STLab",
-      "l0:name": [
-        {
-          "@language": "en",
-          "@value": "Institute of Cognitive Sciences and Technologies of the Italian Research Council (CNR) - Semantic Technology Laboratory (STLab)"
-        },
-        {
-          "@language": "it",
-          "@value": "Istituto di Scienze e Tecnologie della Cognizione del CNR - Semantic Technology Lab (STLab)"
-        }
-      ]
-    },
-    {
-      "@id": "admsapit:SemanticAssetDistribution",
-      "@type": "owl:Class"
-    },
-    {
-      "@id": "https://w3id.org/italia/data/organization/public-organization/td",
-      "@type": [
-        "http://dati.gov.it/onto/dcatapit#Agent",
-        "foaf:Agent",
-        "owl:NamedIndividual"
-      ],
-      "dcterms:identifier": "TD",
-      "foaf:name": [
-        {
-          "@language": "en",
-          "@value": "Digital Transformation Team"
-        },
-        {
-          "@language": "it",
-          "@value": "Team per la Trasformazione Digitale"
-        }
-      ]
-    },
-    {
-      "@id": "admsapit:SemanticAsset",
-      "@type": "owl:Class"
-    },
-    {
-      "@id": "_:ub842bL361C26",
-      "@type": "owl:Restriction",
-      "owl:onProperty": {
-        "@id": "l0:name"
-      },
-      "owl:someValuesFrom": {
-        "@id": "rdfs:Literal"
-      }
-    },
-    {
-      "@id": "l0:Agent",
-      "@type": "owl:Class"
-    },
-    {
-      "@id": "dcterms:license",
-      "@type": "owl:AnnotationProperty"
-    },
-    {
-      "@id": "https://w3id.org/italia/data/distribution/ACAPIT-RDF-TURTLE",
-      "@type": [
-        "owl:NamedIndividual",
-        "admsapit:SemanticAssetDistribution"
-      ],
-      "dcat:accessURL": {
-        "@id": "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/AccessCondition/latest"
-      },
-      "dcat:downloadURL": {
-        "@id": "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/AccessCondition/latest/AC-AP_IT.ttl"
-      },
-      "dcterms:description": [
-        {
-          "@language": "it",
-          "@value": "Questa è la distribuzione RDF/Turtle dell'ontologia delle condizioni d'accesso"
-        },
-        {
-          "@language": "en",
-          "@value": "This is the distribution in RDF/turtle of the access condition ontology"
-        }
-      ],
-      "dcterms:format": {
-        "@id": "http://publications.europa.eu/resource/authority/file-type/RDF_TURTLE"
-      },
-      "dcterms:license": {
-        "@id": "https://w3id.org/italia/controlled-vocabulary/licences/A21_CCBY40"
-      },
-      "dcterms:title": [
-        {
-          "@language": "en",
-          "@value": "RDF/Turtle distribution of AC-AP_IT Ontology"
-        },
-        {
-          "@language": "it",
-          "@value": "Distribuzione RDF/Turtle ontologia AC-AP_IT"
-        }
-      ]
-    },
-    {
-      "@id": "l0:Characteristic",
-      "@type": "owl:Class"
-    },
-    {
-      "@id": "xsd:time",
-      "@type": "rdfs:Datatype"
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/AccessCondition",
-      "@type": [
-        "admsapit:SemanticAsset",
-        "owl:Ontology",
-        "owl:NamedIndividual"
-      ],
-      "admsapit:acronym": "AC-AP_IT",
-      "admsapit:hasContributor": [
-        {
-          "@id": "https://w3id.org/italia/data/organization/public-organization/td"
-        },
-        {
-          "@id": "https://w3id.org/italia/data/organization/support-unit/cnr-Z6HZEH/stlab"
-        }
-      ],
-      "admsapit:hasFormalityLevel": {
-        "@id": "admsapit:Formal"
-      },
-      "admsapit:hasKeyClass": [
-        {
-          "@id": "https://w3id.org/italia/onto/AccessCondition/AccessCondition"
-        },
-        {
-          "@id": "https://w3id.org/italia/onto/AccessCondition/OpeningHoursSpecification"
-        },
-        {
-          "@id": "https://w3id.org/italia/onto/AccessCondition/TemporaryClosure"
-        }
-      ],
-      "admsapit:hasOntologyLanguage": {
-        "@id": "admsapit:OWL"
-      },
-      "admsapit:hasSemanticAssetDistribution": [
-        {
-          "@id": "https://w3id.org/italia/data/distribution/ACAPIT-RDF-XML"
-        },
-        {
-          "@id": "https://w3id.org/italia/data/distribution/ACAPIT-JSON-LD"
-        },
-        {
-          "@id": "https://w3id.org/italia/data/distribution/ACAPIT-RDF-TURTLE"
-        }
-      ],
-      "admsapit:hasTask": [
-        {
-          "@id": "admsapit:AnnotationTask"
-        },
-        {
-          "@id": "admsapit:SearchTask"
-        },
-        {
-          "@id": "admsapit:QueryFormulationTask"
-        }
-      ],
-      "admsapit:officialURI": {
-        "@type": "xsd:anyURI",
-        "@value": "https://w3id.org/italia/onto/AccessCondition"
-      },
-      "admsapit:prefix": "acapit",
-      "admsapit:semanticAssetInUse": [
-        {
-          "@id": "https://w3id.org/italia/data/project/DAF"
-        },
-        {
-          "@id": "https://w3id.org/italia/data/project/OntoPiA"
-        }
-      ],
-      "admsapit:status": "initial draft",
-      "admsapit:target": [
-        "Pubbliche Amministrazioni",
-        "Imprese"
-      ],
-      "admsapit:type": {
-        "@id": "admsapit:ServiceOntology"
-      },
-      "dcat:contactPoint": {
-        "@id": "https://w3id.org/italia/data/contact-point/onto-agid"
-      },
-      "dcat:keyword": [
-        {
-          "@language": "it",
-          "@value": "Condizioni d'accesso"
-        },
-        {
-          "@language": "it",
-          "@value": "Orari di apertura"
-        },
-        {
-          "@language": "en",
-          "@value": "Access Condition"
-        }
-      ],
-      "dcat:theme": [
-        {
-          "@id": "http://publications.europa.eu/resource/authority/data-theme/SOCI"
-        },
-        {
-          "@id": "http://publications.europa.eu/resource/authority/data-theme/GOVE"
-        }
-      ],
-      "dcterms:accrualPeriodicity": {
-        "@id": "http://publications.europa.eu/resource/authority/frequency/IRREG"
-      },
-      "dcterms:creator": {
-        "@id": "http://spcdata.digitpa.gov.it/browse/page/Amministrazione/agid"
-      },
-      "dcterms:description": [
-        {
-          "@language": "it",
-          "@value": "Questa è l'ontologia del profilo di italiano sulle condizioni di accesso, inclusi gli orari di apertura (Access Condition Ontology - Italian Application Profile  - AccessCondition-AP_IT). Essa può essere utilizzata per modellare tutte le condizioni di accesso a luoghi pubblici."
-        },
-        {
-          "@language": "en",
-          "@value": "This is the ontology of the Italian application profile for Access Conditions (Access Conditions - Italian Application Profile - AC-AP_IT). It can be used to model the access conditions to public locations."
-        }
-      ],
-      "dcterms:issued": {
-        "@type": "xsd:date",
-        "@value": "2018-06-18"
-      },
-      "dcterms:language": [
-        {
-          "@id": "http://publications.europa.eu/resource/authority/language/ENG"
-        },
-        {
-          "@id": "http://publications.europa.eu/resource/authority/language/ITA"
-        }
-      ],
-      "dcterms:modified": {
-        "@type": "xsd:date",
-        "@value": "2018-06-18"
-      },
-      "dcterms:publisher": {
-        "@id": "http://spcdata.digitpa.gov.it/browse/page/Amministrazione/agid"
-      },
-      "dcterms:rightsHolder": {
-        "@id": "http://spcdata.digitpa.gov.it/browse/page/Amministrazione/agid"
-      },
-      "dcterms:title": [
-        {
-          "@language": "it",
-          "@value": "Ontologia delle Condizioni di Accesso - Profilo applicativo italiano"
-        },
-        {
-          "@language": "en",
-          "@value": "Access Condition Ontology - Italian Application Profile"
-        }
-      ],
-      "owl:imports": [
-        {
-          "@id": "https://w3id.org/italia/onto/TI"
-        },
-        {
-          "@id": "https://w3id.org/italia/onto/l0"
-        }
-      ],
-      "owl:versionIRI": {
-        "@id": "https://w3id.org/italia/onto/AccessCondition/0.1"
-      },
+      "@id": "https://w3id.org/italia/onto/AccessCondition/opens",
+      "@type": "owl:DatatypeProperty",
       "owl:versionInfo": [
         {
-          "@language": "en",
-          "@value": "Version 0.1 - 18 June 2018 - Creation of the first version of the ontology"
+          "@language": "it",
+          "@value": "stabile"
         },
         {
-          "@language": "it",
-          "@value": "Versione 0.1 - 18 Giugno 2018 - Creazione della prima versione dell'ontologia"
+          "@language": "en",
+          "@value": "stable"
         }
       ],
       "rdfs:comment": [
         {
           "@language": "en",
-          "@value": "This is the ontology of the Italian application profile for access conditions including opening hours specifications. It can be used to model all the access conditions to public locations."
+          "@value": "Property used to indicate the opening hour or the hour in which starts a possible temporary closure. If a public event can be accessed every Monday from 9:00am to 12:00am, the property is used to model \"9:00am\"."
         },
         {
           "@language": "it",
-          "@value": "Questa è l'ontologia del profilo di italiano sulle condizioni di accesso, inclusi gli orari di apertura (Access Condition Ontology - Italian Application Profile  - AccessCondition-AP_IT). Essa può essere utilizzata per modellare tutte le condizioni di accesso a luoghi pubblici."
+          "@value": "Proprietà utilizzata per indicare l'orario di apertura o l'orario in cui inizia una chiusura temporanea. Se l'evento pubblico ha come condizioni di accesso ogni lunedì dalle 9:00 alle 12:00, la proprietà è utilizzata per modellare \"9:00\"."
         }
       ],
+      "rdfs:domain": {
+        "@id": "_:ncaa1c44d5e9d47c1b62db9ae9ff012bcb4"
+      },
       "rdfs:isDefinedBy": {
-        "@id": "https://w3id.org/italia/onto/AccessCondition/"
+        "@id": "https://w3id.org/italia/onto/AccessCondition"
       },
       "rdfs:label": [
         {
-          "@language": "it",
-          "@value": "Ontologia delle Condizioni di accesso"
+          "@language": "en",
+          "@value": "opens"
         },
         {
-          "@language": "en",
-          "@value": "Access Conditions Ontology"
+          "@language": "it",
+          "@value": "orario apertura"
         }
-      ]
-    },
-    {
-      "@id": "https://w3id.org/italia/data/contact-point/onto-agid",
-      "@type": [
-        "owl:NamedIndividual",
-        "http://dati.gov.it/onto/dcatapit#Organization",
-        "vcard:Organization",
-        "vcard:Kind"
       ],
-      "vcard:fn": "banche dati e open data",
-      "vcard:hasEmail": {
-        "@id": "mailto:info@dati.gov.it"
-      }
-    },
-    {
-      "@id": "_:ub842bL388C44",
-      "@type": "owl:Restriction",
-      "owl:maxQualifiedCardinality": {
-        "@type": "xsd:nonNegativeInteger",
-        "@value": "1"
-      },
-      "owl:onClass": {
-        "@id": "https://w3id.org/italia/onto/AccessCondition/AdmissionType"
-      },
-      "owl:onProperty": {
-        "@id": "https://w3id.org/italia/onto/AccessCondition/hasAdmissionType"
-      }
-    },
-    {
-      "@id": "dcterms:identifier",
-      "@type": "owl:AnnotationProperty"
-    },
-    {
-      "@id": "_:ub842bL393C44",
-      "@type": "owl:Restriction",
-      "owl:allValuesFrom": {
+      "rdfs:range": {
         "@id": "xsd:time"
-      },
-      "owl:onProperty": {
-        "@id": "https://w3id.org/italia/onto/AccessCondition/closes"
       }
     },
     {
@@ -962,12 +1191,12 @@
       },
       "rdfs:label": [
         {
-          "@language": "en",
-          "@value": "reason for closure"
-        },
-        {
           "@language": "it",
           "@value": "motivazione di chiusura"
+        },
+        {
+          "@language": "en",
+          "@value": "reason for closure"
         }
       ],
       "rdfs:range": {
@@ -975,7 +1204,51 @@
       }
     },
     {
-      "@id": "http://dati.gov.it/onto/dcatapit#Organization",
+      "@id": "https://w3id.org/italia/onto/TI/DayOfWeek",
+      "@type": "owl:Class"
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/TI/TimeInterval",
+      "@type": "owl:Class"
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/TI/atTime",
+      "@type": "owl:ObjectProperty"
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/TI/hasDayOfWeek",
+      "@type": "owl:ObjectProperty"
+    },
+    {
+      "@id": "l0:Agent",
+      "@type": "owl:Class"
+    },
+    {
+      "@id": "l0:Characteristic",
+      "@type": "owl:Class"
+    },
+    {
+      "@id": "l0:controlledVocabulary",
+      "@type": "owl:AnnotationProperty"
+    },
+    {
+      "@id": "l0:description",
+      "@type": "owl:DatatypeProperty"
+    },
+    {
+      "@id": "l0:name",
+      "@type": "owl:DatatypeProperty"
+    },
+    {
+      "@id": "prov:wasDerivedFrom",
+      "@type": "owl:AnnotationProperty"
+    },
+    {
+      "@id": "prov:wasInfluencedBy",
+      "@type": "owl:AnnotationProperty"
+    },
+    {
+      "@id": "vcard:Kind",
       "@type": "owl:Class"
     },
     {
@@ -983,289 +1256,16 @@
       "@type": "owl:Class"
     },
     {
-      "@id": "l0:description",
-      "@type": "owl:DatatypeProperty"
-    },
-    {
-      "@id": "_:ub842bL216C21",
-      "@type": "owl:Class",
-      "owl:unionOf": {
-        "@list": [
-          {
-            "@id": "https://w3id.org/italia/onto/AccessCondition/OpeningHoursSpecification"
-          },
-          {
-            "@id": "https://w3id.org/italia/onto/AccessCondition/TemporaryClosure"
-          }
-        ]
-      }
-    },
-    {
-      "@id": "_:ub842bL434C35",
-      "@type": "owl:Restriction",
-      "owl:allValuesFrom": {
-        "@id": "https://w3id.org/italia/onto/TI/DayOfWeek"
-      },
-      "owl:onProperty": {
-        "@id": "https://w3id.org/italia/onto/TI/hasDayOfWeek"
-      }
-    },
-    {
-      "@id": "l0:name",
-      "@type": "owl:DatatypeProperty"
-    },
-    {
-      "@id": "dcterms:title",
+      "@id": "vcard:fn",
       "@type": "owl:AnnotationProperty"
-    },
-    {
-      "@id": "admsapit:Project",
-      "@type": "owl:Class"
-    },
-    {
-      "@id": "https://w3id.org/italia/data/distribution/ACAPIT-JSON-LD",
-      "@type": [
-        "admsapit:SemanticAssetDistribution",
-        "owl:NamedIndividual"
-      ],
-      "dcat:accessURL": {
-        "@id": "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/AccessCondition/latest"
-      },
-      "dcat:downloadURL": {
-        "@id": "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/AccessCondition/latest/AC-AP_IT.jsonld"
-      },
-      "dcterms:description": [
-        {
-          "@language": "it",
-          "@value": "Questa è la distribuzione JSON-LD dell'ontologia delle condizioni d'accesso"
-        },
-        {
-          "@language": "en",
-          "@value": "This is the distribution in JSON-LD of Access Condition ontology"
-        }
-      ],
-      "dcterms:format": {
-        "@id": "http://publications.europa.eu/resource/authority/file-type/JSON_LD"
-      },
-      "dcterms:license": {
-        "@id": "https://w3id.org/italia/controlled-vocabulary/licences/A21_CCBY40"
-      },
-      "dcterms:title": [
-        {
-          "@language": "it",
-          "@value": "Distribuzione JSON-LD ontologia AC-AP_IT"
-        },
-        {
-          "@language": "en",
-          "@value": "JSON-LD distribution of AC-AP_IT Ontology"
-        }
-      ]
-    },
-    {
-      "@id": "dcat:accessURL",
-      "@type": "owl:AnnotationProperty"
-    },
-    {
-      "@id": "_:ub842bL338C32",
-      "@type": "owl:Restriction",
-      "owl:onProperty": {
-        "@id": "l0:name"
-      },
-      "owl:someValuesFrom": {
-        "@id": "rdfs:Literal"
-      }
     },
     {
       "@id": "vcard:hasEmail",
       "@type": "owl:AnnotationProperty"
     },
     {
-      "@id": "https://w3id.org/italia/onto/AccessCondition/AccessCondition",
-      "@type": "owl:Class",
-      "owl:versionInfo": [
-        {
-          "@language": "en",
-          "@value": "stable"
-        },
-        {
-          "@language": "it",
-          "@value": "stabile"
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@language": "en",
-          "@value": "This class represents the access conditions. Typically, access conditions are specified to communicate how to access public places. This includes information on bookings, opening hours and extraordinary/temporary closures."
-        },
-        {
-          "@language": "it",
-          "@value": "Questa classe rappresenta le condizioni di accesso. Tipicamente le condizioni di accesso sono specificate per comunicare come accedere a luoghi pubblici. Esse includono informazioni su prenotazioni, su orari di apertura e chiusure straordinarie."
-        }
-      ],
-      "rdfs:isDefinedBy": {
-        "@id": "https://w3id.org/italia/onto/AccessCondition"
-      },
-      "rdfs:label": [
-        {
-          "@language": "en",
-          "@value": "Access Condition"
-        },
-        {
-          "@language": "it",
-          "@value": "Accesso"
-        }
-      ],
-      "rdfs:subClassOf": [
-        {
-          "@id": "_:ub842bL319C34"
-        },
-        {
-          "@id": "l0:Characteristic"
-        }
-      ]
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/AccessCondition/isAccessConditionOf",
-      "@type": "owl:ObjectProperty",
-      "owl:versionInfo": [
-        {
-          "@language": "en",
-          "@value": "stable"
-        },
-        {
-          "@language": "it",
-          "@value": "stabile"
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@language": "it",
-          "@value": "Proprietà inversa di \"ha condizione d'accesso\""
-        },
-        {
-          "@language": "en",
-          "@value": "Inverse property of \"has access condition\""
-        }
-      ],
-      "rdfs:domain": {
-        "@id": "https://w3id.org/italia/onto/AccessCondition/AccessCondition"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "https://w3id.org/italia/onto/AccessCondition"
-      },
-      "rdfs:label": [
-        {
-          "@language": "it",
-          "@value": "è condizione di accesso di"
-        },
-        {
-          "@language": "en",
-          "@value": "is access condition of"
-        }
-      ],
-      "rdfs:range": {
-        "@id": "owl:Thing"
-      }
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/AccessCondition/hasAdmissionType",
-      "@type": "owl:ObjectProperty",
-      "owl:inverseOf": {
-        "@id": "https://w3id.org/italia/onto/AccessCondition/isAdmissionTypeOf"
-      },
-      "owl:versionInfo": [
-        {
-          "@language": "en",
-          "@value": "stable"
-        },
-        {
-          "@language": "it",
-          "@value": "stabile"
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@language": "it",
-          "@value": "Proprietà che lega gli orari di apertura al tipo di apertura (settimanale, giornaliera, ecc.)"
-        },
-        {
-          "@language": "en",
-          "@value": "Property that links the opening hours specificatin to the admission type (weekly, daily, etc.)"
-        }
-      ],
-      "rdfs:domain": {
-        "@id": "https://w3id.org/italia/onto/AccessCondition/OpeningHoursSpecification"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "https://w3id.org/italia/onto/AccessCondition"
-      },
-      "rdfs:label": [
-        {
-          "@language": "en",
-          "@value": "has admission type"
-        },
-        {
-          "@language": "it",
-          "@value": "ha tipo di apertura"
-        }
-      ],
-      "rdfs:range": {
-        "@id": "https://w3id.org/italia/onto/AccessCondition/AdmissionType"
-      }
-    },
-    {
-      "@id": "https://w3id.org/italia/data/project/OntoPiA",
-      "@type": [
-        "owl:NamedIndividual",
-        "admsapit:Project"
-      ],
-      "l0:name": {
-        "@language": "it",
-        "@value": "OntoPiA - la rete di ontologie della pubblica amministrazione italiana"
-      }
-    },
-    {
-      "@id": "_:ub842bL380C44",
-      "@type": "owl:Restriction",
-      "owl:allValuesFrom": {
-        "@id": "https://w3id.org/italia/onto/TI/TimeInterval"
-      },
-      "owl:onProperty": {
-        "@id": "https://w3id.org/italia/onto/TI/atTime"
-      }
-    },
-    {
-      "@id": "_:ub842bL319C34",
-      "@type": "owl:Restriction",
-      "owl:allValuesFrom": {
-        "@id": "rdfs:Literal"
-      },
-      "owl:onProperty": {
-        "@id": "l0:description"
-      }
-    },
-    {
-      "@id": "http://dati.gov.it/onto/dcatapit#Agent",
-      "@type": "owl:Class"
-    },
-    {
-      "@id": "http://spcdata.digitpa.gov.it/browse/page/Amministrazione/agid",
-      "@type": [
-        "foaf:Agent",
-        "owl:NamedIndividual",
-        "http://dati.gov.it/onto/dcatapit#Agent"
-      ],
-      "dcterms:identifier": "agid",
-      "foaf:name": [
-        {
-          "@language": "en",
-          "@value": "Italian Digital Agency"
-        },
-        {
-          "@language": "it",
-          "@value": "Agenzia per l'Italia Digitale"
-        }
-      ]
+      "@id": "xsd:time",
+      "@type": "rdfs:Datatype"
     }
   ]
 }

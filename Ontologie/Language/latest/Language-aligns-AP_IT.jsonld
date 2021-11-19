@@ -1,30 +1,40 @@
 {
   "@context": {
     "dc": "http://purl.org/dc/elements/1.1/",
-    "dcterms": "http://purl.org/dc/terms/",
+    "dct": "http://purl.org/dc/terms/",
     "owl": "http://www.w3.org/2002/07/owl#",
     "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
     "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
-    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "xml": "http://www.w3.org/XML/1998/namespace",
     "xsd": "http://www.w3.org/2001/XMLSchema#"
   },
   "@graph": [
     {
-      "@id": "dcterms:LinguisticSystem",
+      "@id": "dc:creator",
+      "@type": "owl:AnnotationProperty"
+    },
+    {
+      "@id": "dc:issued",
+      "@type": "owl:AnnotationProperty"
+    },
+    {
+      "@id": "dc:modified",
+      "@type": "owl:AnnotationProperty"
+    },
+    {
+      "@id": "dct:LinguisticSystem",
       "@type": "owl:Class",
       "owl:equivalentClass": {
         "@id": "https://w3id.org/italia/onto/Language/Language"
       }
     },
     {
-      "@id": "https://w3id.org/italia/onto/Language/Language",
-      "@type": "owl:Class",
-      "rdfs:isDefinedBy": {
-        "@id": "https://w3id.org/italia/onto/Language"
-      },
-      "rdfs:subClassOf": {
-        "@id": "skos:Concept"
-      }
+      "@id": "dct:language",
+      "@type": "owl:ObjectProperty"
+    },
+    {
+      "@id": "http://www.w3.org/2004/02/skos/core#Concept",
+      "@type": "owl:Class"
     },
     {
       "@id": "https://w3id.org/italia/onto/Language-aligns",
@@ -32,15 +42,15 @@
       "dc:creator": [
         {
           "@language": "en",
+          "@value": "Agency for Digital Italy - AgID"
+        },
+        {
+          "@language": "en",
           "@value": "Institute of Cognitive Sciences and Technologies of the Italian Research Council (CNR) - Semantic Technology Laboratory (STLab)"
         },
         {
           "@language": "en",
           "@value": "Italian Digital Transformation Team"
-        },
-        {
-          "@language": "en",
-          "@value": "Agency for Digital Italy - AgID"
         }
       ],
       "dc:issued": {
@@ -51,17 +61,17 @@
         "@type": "xsd:date",
         "@value": "2019-04-23"
       },
-      "dcterms:description": [
-        {
-          "@language": "en",
-          "@value": "These are the alignments to external ontologies widely used and available at the state of the art for language ontology"
-        },
+      "dct:description": [
         {
           "@language": "it",
           "@value": "Questi sono gli allineamenti dell'ontologia sulle lingue Language - Italian Application Profile  (Language-AP_IT) verso ontologie esterne del Web semantico standard e ampiamente utilizzate."
+        },
+        {
+          "@language": "en",
+          "@value": "These are the alignments to external ontologies widely used and available at the state of the art for language ontology"
         }
       ],
-      "dcterms:title": [
+      "dct:title": [
         {
           "@language": "it",
           "@value": "Allineamenti ontologia Lingue"
@@ -79,12 +89,14 @@
       }
     },
     {
-      "@id": "skos:Concept",
-      "@type": "owl:Class"
-    },
-    {
-      "@id": "dcterms:language",
-      "@type": "owl:ObjectProperty"
+      "@id": "https://w3id.org/italia/onto/Language/Language",
+      "@type": "owl:Class",
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/italia/onto/Language"
+      },
+      "rdfs:subClassOf": {
+        "@id": "http://www.w3.org/2004/02/skos/core#Concept"
+      }
     },
     {
       "@id": "https://w3id.org/italia/onto/Language/hasLanguage",
@@ -93,7 +105,7 @@
         "@id": "https://w3id.org/italia/onto/Language"
       },
       "rdfs:subPropertyOf": {
-        "@id": "dcterms:language"
+        "@id": "dct:language"
       }
     }
   ]

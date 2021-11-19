@@ -2,7 +2,6 @@
   "@context": {
     "dc": "http://purl.org/dc/elements/1.1/",
     "dct": "http://purl.org/dc/terms/",
-    "dcterms": "http://purl.org/dc/terms/",
     "dul": "http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#",
     "foaf": "http://xmlns.com/foaf/0.1/",
     "owl": "http://www.w3.org/2002/07/owl#",
@@ -14,111 +13,17 @@
     "smapit": "https://w3id.org/italia/onto/SM/",
     "ti": "http://www.ontologydesignpatterns.org/cp/owl/timeinterval.owl",
     "vcard": "http://www.w3.org/2006/vcard/ns#",
+    "xml": "http://www.w3.org/XML/1998/namespace",
     "xsd": "http://www.w3.org/2001/XMLSchema#"
   },
   "@graph": [
     {
-      "@id": "sioc:Site",
+      "@id": "foaf:Image",
       "@type": "owl:Class"
     },
     {
-      "@id": "smapit:hasEmail",
-      "@type": "owl:ObjectProperty",
-      "owl:subPropertyOf": {
-        "@id": "vcard:hasEmail"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "smapit:"
-      }
-    },
-    {
-      "@id": "sioc:has_reply",
-      "@type": "owl:ObjectProperty"
-    },
-    {
-      "@id": "smapit:bestUserRating",
-      "@type": "owl:DatatypeProperty",
-      "owl:subPropertyOf": {
-        "@id": "schema:bestRating"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "smapit:"
-      }
-    },
-    {
-      "@id": "schema:Rating",
+      "@id": "foaf:OnlineAccount",
       "@type": "owl:Class"
-    },
-    {
-      "@id": "smapit:worstUserRating",
-      "@type": "owl:DatatypeProperty",
-      "owl:subPropertyOf": {
-        "@id": "schema:worstRating"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "smapit:"
-      }
-    },
-    {
-      "@id": "smapit:Post",
-      "@type": "owl:Class",
-      "owl:subClassOf": [
-        {
-          "@id": "schema:SocialMediaPosting"
-        },
-        {
-          "@id": "sioc:Post"
-        }
-      ],
-      "rdfs:isDefinedBy": {
-        "@id": "smapit:"
-      }
-    },
-    {
-      "@id": "vcard:Email",
-      "@type": "owl:Class"
-    },
-    {
-      "@id": "smapit:hasCreator",
-      "@type": "owl:ObjectProperty",
-      "owl:subPropertyOf": {
-        "@id": "sioc:has_creator"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "smapit:"
-      }
-    },
-    {
-      "@id": "smapit:UserAccount",
-      "@type": "owl:Class",
-      "owl:subClassOf": {
-        "@id": "foaf:OnlineAccount"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "smapit:"
-      }
-    },
-    {
-      "@id": "smapit:hasRating",
-      "@type": "owl:ObjectProperty",
-      "owl:subPropertyOf": {
-        "@id": "schema:reviewRating"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "smapit:"
-      }
-    },
-    {
-      "@id": "vcard:hasEmail",
-      "@type": "owl:ObjectProperty"
-    },
-    {
-      "@id": "schema:SocialMediaPosting",
-      "@type": "owl:Class"
-    },
-    {
-      "@id": "schema:worstRating",
-      "@type": "owl:DatatypeProperty"
     },
     {
       "@id": "https://w3id.org/italia/onto/SM-aligns",
@@ -130,11 +35,11 @@
         },
         {
           "@language": "en",
-          "@value": "Italian Digital Transformation Team"
+          "@value": "Agency for Digital Italy - AgID"
         },
         {
           "@language": "en",
-          "@value": "Agency for Digital Italy - AgID"
+          "@value": "Italian Digital Transformation Team"
         }
       ],
       "dc:issued": {
@@ -145,7 +50,7 @@
         "@type": "xsd:date",
         "@value": "2018-06-25"
       },
-      "dcterms:description": [
+      "dct:description": [
         {
           "@language": "en",
           "@value": "These are the alignments to external ontologies widely used and available at the state of the art for the Social Media and Internet Ontology"
@@ -155,14 +60,14 @@
           "@value": "Questi sono gli allineamenti dell'ontologia Social Media and Internet Social Media  - Italian Application Profile  (SM-AP_IT) verso ontologie esterne del Web semantico standard e ampiamente utilizzate."
         }
       ],
-      "dcterms:title": [
-        {
-          "@language": "it",
-          "@value": "Allineamenti per l'ontologia Social media e Internet"
-        },
+      "dct:title": [
         {
           "@language": "en",
           "@value": "Social Media and Internet Ontology Alignments"
+        },
+        {
+          "@language": "it",
+          "@value": "Allineamenti per l'ontologia Social media e Internet"
         }
       ],
       "owl:imports": {
@@ -173,18 +78,62 @@
       }
     },
     {
-      "@id": "smapit:TelephoneType",
-      "@type": "owl:Class",
-      "owl:equivalentClass": {
-        "@id": "vcard:Phone"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "smapit:"
-      }
+      "@id": "schema:ContactPoint",
+      "@type": "owl:Class"
     },
     {
-      "@id": "vcard:hasTelephone",
+      "@id": "schema:ImageObject",
+      "@type": "owl:Class"
+    },
+    {
+      "@id": "schema:Rating",
+      "@type": "owl:Class"
+    },
+    {
+      "@id": "schema:Review",
+      "@type": "owl:Class"
+    },
+    {
+      "@id": "schema:SocialMediaPosting",
+      "@type": "owl:Class"
+    },
+    {
+      "@id": "schema:bestRating",
+      "@type": "owl:DatatypeProperty"
+    },
+    {
+      "@id": "schema:reviewRating",
       "@type": "owl:ObjectProperty"
+    },
+    {
+      "@id": "schema:worstRating",
+      "@type": "owl:DatatypeProperty"
+    },
+    {
+      "@id": "sioc:Post",
+      "@type": "owl:Class"
+    },
+    {
+      "@id": "sioc:Site",
+      "@type": "owl:Class"
+    },
+    {
+      "@id": "sioc:has_creator",
+      "@type": "owl:ObjectProperty"
+    },
+    {
+      "@id": "sioc:has_reply",
+      "@type": "owl:ObjectProperty"
+    },
+    {
+      "@id": "smapit:Email",
+      "@type": "owl:Class",
+      "owl:equivalentClass": {
+        "@id": "vcard:Email"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/italia/onto/SM/"
+      }
     },
     {
       "@id": "smapit:Image",
@@ -198,17 +147,7 @@
         }
       ],
       "rdfs:isDefinedBy": {
-        "@id": "smapit:"
-      }
-    },
-    {
-      "@id": "smapit:Review",
-      "@type": "owl:Class",
-      "owl:subClassOf": {
-        "@id": "schema:Review"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "smapit:"
+        "@id": "https://w3id.org/italia/onto/SM/"
       }
     },
     {
@@ -223,20 +162,23 @@
         }
       ],
       "rdfs:isDefinedBy": {
-        "@id": "smapit:"
+        "@id": "https://w3id.org/italia/onto/SM/"
       }
     },
     {
-      "@id": "schema:bestRating",
-      "@type": "owl:DatatypeProperty"
-    },
-    {
-      "@id": "schema:Review",
-      "@type": "owl:Class"
-    },
-    {
-      "@id": "schema:reviewRating",
-      "@type": "owl:ObjectProperty"
+      "@id": "smapit:Post",
+      "@type": "owl:Class",
+      "owl:subClassOf": [
+        {
+          "@id": "schema:SocialMediaPosting"
+        },
+        {
+          "@id": "sioc:Post"
+        }
+      ],
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/italia/onto/SM/"
+      }
     },
     {
       "@id": "smapit:Rating",
@@ -245,7 +187,87 @@
         "@id": "schema:Rating"
       },
       "rdfs:isDefinedBy": {
-        "@id": "smapit:"
+        "@id": "https://w3id.org/italia/onto/SM/"
+      }
+    },
+    {
+      "@id": "smapit:Review",
+      "@type": "owl:Class",
+      "owl:subClassOf": {
+        "@id": "schema:Review"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/italia/onto/SM/"
+      }
+    },
+    {
+      "@id": "smapit:TelephoneType",
+      "@type": "owl:Class",
+      "owl:equivalentClass": {
+        "@id": "vcard:Phone"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/italia/onto/SM/"
+      }
+    },
+    {
+      "@id": "smapit:UserAccount",
+      "@type": "owl:Class",
+      "owl:subClassOf": {
+        "@id": "foaf:OnlineAccount"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/italia/onto/SM/"
+      }
+    },
+    {
+      "@id": "smapit:WebSite",
+      "@type": "owl:Class",
+      "owl:subClassOf": {
+        "@id": "sioc:Site"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/italia/onto/SM/"
+      }
+    },
+    {
+      "@id": "smapit:bestUserRating",
+      "@type": "owl:DatatypeProperty",
+      "owl:subPropertyOf": {
+        "@id": "schema:bestRating"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/italia/onto/SM/"
+      }
+    },
+    {
+      "@id": "smapit:hasCreator",
+      "@type": "owl:ObjectProperty",
+      "owl:subPropertyOf": {
+        "@id": "sioc:has_creator"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/italia/onto/SM/"
+      }
+    },
+    {
+      "@id": "smapit:hasEmail",
+      "@type": "owl:ObjectProperty",
+      "owl:subPropertyOf": {
+        "@id": "vcard:hasEmail"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/italia/onto/SM/"
+      }
+    },
+    {
+      "@id": "smapit:hasRating",
+      "@type": "owl:ObjectProperty",
+      "owl:subPropertyOf": {
+        "@id": "schema:reviewRating"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/italia/onto/SM/"
       }
     },
     {
@@ -255,46 +277,8 @@
         "@id": "sioc:has_reply"
       },
       "rdfs:isDefinedBy": {
-        "@id": "smapit:"
+        "@id": "https://w3id.org/italia/onto/SM/"
       }
-    },
-    {
-      "@id": "schema:ImageObject",
-      "@type": "owl:Class"
-    },
-    {
-      "@id": "sioc:Post",
-      "@type": "owl:Class"
-    },
-    {
-      "@id": "schema:ContactPoint",
-      "@type": "owl:Class"
-    },
-    {
-      "@id": "vcard:Contact",
-      "@type": "owl:Class"
-    },
-    {
-      "@id": "smapit:WebSite",
-      "@type": "owl:Class",
-      "owl:subClassOf": {
-        "@id": "sioc:Site"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "smapit:"
-      }
-    },
-    {
-      "@id": "foaf:OnlineAccount",
-      "@type": "owl:Class"
-    },
-    {
-      "@id": "vcard:Phone",
-      "@type": "owl:Class"
-    },
-    {
-      "@id": "sioc:has_creator",
-      "@type": "owl:ObjectProperty"
     },
     {
       "@id": "smapit:hasTelephone",
@@ -303,22 +287,38 @@
         "@id": "vcard:hasTelephone"
       },
       "rdfs:isDefinedBy": {
-        "@id": "smapit:"
+        "@id": "https://w3id.org/italia/onto/SM/"
       }
     },
     {
-      "@id": "smapit:Email",
-      "@type": "owl:Class",
-      "owl:equivalentClass": {
-        "@id": "vcard:Email"
+      "@id": "smapit:worstUserRating",
+      "@type": "owl:DatatypeProperty",
+      "owl:subPropertyOf": {
+        "@id": "schema:worstRating"
       },
       "rdfs:isDefinedBy": {
-        "@id": "smapit:"
+        "@id": "https://w3id.org/italia/onto/SM/"
       }
     },
     {
-      "@id": "foaf:Image",
+      "@id": "vcard:Contact",
       "@type": "owl:Class"
+    },
+    {
+      "@id": "vcard:Email",
+      "@type": "owl:Class"
+    },
+    {
+      "@id": "vcard:Phone",
+      "@type": "owl:Class"
+    },
+    {
+      "@id": "vcard:hasEmail",
+      "@type": "owl:ObjectProperty"
+    },
+    {
+      "@id": "vcard:hasTelephone",
+      "@type": "owl:ObjectProperty"
     }
   ]
 }

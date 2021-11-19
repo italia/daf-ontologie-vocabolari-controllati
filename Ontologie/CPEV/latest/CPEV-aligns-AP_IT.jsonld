@@ -5,12 +5,32 @@
     "owl": "http://www.w3.org/2002/07/owl#",
     "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
     "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
-    "schema": "http://schema.org/",
+    "xml": "http://www.w3.org/XML/1998/namespace",
     "xsd": "http://www.w3.org/2001/XMLSchema#"
   },
   "@graph": [
     {
-      "@id": "http://data.europa.eu/m8g/PublicEventformat",
+      "@id": "http://data.europa.eu/m8g/PublicEventPublicEvent",
+      "@type": "owl:Class"
+    },
+    {
+      "@id": "http://data.europa.eu/m8g/format",
+      "@type": "owl:ObjectProperty"
+    },
+    {
+      "@id": "http://schema.org/Audience",
+      "@type": "owl:Class"
+    },
+    {
+      "@id": "http://schema.org/Event",
+      "@type": "owl:Class"
+    },
+    {
+      "@id": "http://schema.org/audience",
+      "@type": "owl:ObjectProperty"
+    },
+    {
+      "@id": "http://schema.org/subEvent",
       "@type": "owl:ObjectProperty"
     },
     {
@@ -19,11 +39,11 @@
       "dc:creator": [
         {
           "@language": "en",
-          "@value": "Institute of Cognitive Sciences and Technologies of the Italian Research Council (CNR) - Semantic Technology Laboratory (STLab)"
+          "@value": "Agency for Digital Italy - AgID"
         },
         {
           "@language": "en",
-          "@value": "Agency for Digital Italy - AgID"
+          "@value": "Institute of Cognitive Sciences and Technologies of the Italian Research Council (CNR) - Semantic Technology Laboratory (STLab)"
         },
         {
           "@language": "en",
@@ -40,22 +60,22 @@
       },
       "dcterms:description": [
         {
-          "@language": "it",
-          "@value": "Questi sono gli allineamenti dell'ontologia sugli eventi pubblici Core Public Event Vocabulary - Italian Application Profile  (CPEV-AP_IT) verso ontologie esterne del Web semantico standard e ampiamente utilizzate."
-        },
-        {
           "@language": "en",
           "@value": "These are the alignments to external ontologies widely used and available at the state of the art for the Core Public Event Vocabulary - Italian Application Profile"
+        },
+        {
+          "@language": "it",
+          "@value": "Questi sono gli allineamenti dell'ontologia sugli eventi pubblici Core Public Event Vocabulary - Italian Application Profile  (CPEV-AP_IT) verso ontologie esterne del Web semantico standard e ampiamente utilizzate."
         }
       ],
       "dcterms:title": [
         {
-          "@language": "it",
-          "@value": "Allinemaneti per l'Ontologia degli Eventi Pubblici"
-        },
-        {
           "@language": "en",
           "@value": "Public Event Ontology Alignments"
+        },
+        {
+          "@language": "it",
+          "@value": "Allinemaneti per l'Ontologia degli Eventi Pubblici"
         }
       ],
       "owl:imports": {
@@ -66,14 +86,10 @@
       }
     },
     {
-      "@id": "http://data.europa.eu/m8g/PublicEventPublicEvent",
-      "@type": "owl:Class"
-    },
-    {
       "@id": "https://w3id.org/italia/onto/CPEV/Audience",
       "@type": "owl:Class",
       "owl:subClassOf": {
-        "@id": "schema:Audience"
+        "@id": "http://schema.org/Audience"
       },
       "rdfs:isDefinedBy": {
         "@id": "https://w3id.org/italia/onto/CPEV"
@@ -84,10 +100,10 @@
       "@type": "owl:Class",
       "owl:subClassOf": [
         {
-          "@id": "schema:Event"
+          "@id": "http://data.europa.eu/m8g/PublicEvent"
         },
         {
-          "@id": "http://data.europa.eu/m8g/PublicEvent"
+          "@id": "http://schema.org/Event"
         }
       ],
       "rdfs:isDefinedBy": {
@@ -95,36 +111,10 @@
       }
     },
     {
-      "@id": "schema:subEvent",
-      "@type": "owl:ObjectProperty"
-    },
-    {
-      "@id": "schema:audience",
-      "@type": "owl:ObjectProperty"
-    },
-    {
-      "@id": "schema:Event",
-      "@type": "owl:Class"
-    },
-    {
       "@id": "https://w3id.org/italia/onto/CPEV/hasFormat",
       "@type": "owl:ObjectProperty",
       "owl:subPropertyOf": {
-        "@id": "http://data.europa.eu/m8g/PublicEventformat"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "https://w3id.org/italia/onto/CPEV"
-      }
-    },
-    {
-      "@id": "schema:Audience",
-      "@type": "owl:Class"
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/CPEV/targetAudience",
-      "@type": "owl:ObjectProperty",
-      "owl:subPropertyOf": {
-        "@id": "schema:audience"
+        "@id": "http://data.europa.eu/m8g/format"
       },
       "rdfs:isDefinedBy": {
         "@id": "https://w3id.org/italia/onto/CPEV"
@@ -134,7 +124,17 @@
       "@id": "https://w3id.org/italia/onto/CPEV/subEventOf",
       "@type": "owl:ObjectProperty",
       "owl:equivalentProperty": {
-        "@id": "schema:subEvent"
+        "@id": "http://schema.org/subEvent"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/italia/onto/CPEV"
+      }
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/CPEV/targetAudience",
+      "@type": "owl:ObjectProperty",
+      "owl:subPropertyOf": {
+        "@id": "http://schema.org/audience"
       },
       "rdfs:isDefinedBy": {
         "@id": "https://w3id.org/italia/onto/CPEV"
