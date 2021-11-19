@@ -42,6 +42,9 @@ if __name__ == "__main__":
         log.debug("Version:", last_version_dirname)
         cpath = fpath.parent.parent / last_version_dirname.vstring / fpath.name
 
+        if cpath.suffix not in (".ttl", ".jsonld", ".rdf"):
+            continue
+
         with open(cpath) as f_latest, open(fpath) as f_version:
             diffs = []
             diff = difflib.unified_diff(
