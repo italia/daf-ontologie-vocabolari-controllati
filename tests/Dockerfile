@@ -3,4 +3,4 @@
 #  on ontologies and vocabularies.
 #
 FROM python:3
-RUN pip3 install pre-commit
+RUN pip3 install pre-commit tox

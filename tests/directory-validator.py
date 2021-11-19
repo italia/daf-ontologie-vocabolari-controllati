@@ -5,12 +5,12 @@
 # Usage: directory-validator.py <file.ttl>
 import difflib
 import logging
+from distutils.version import LooseVersion
 from pathlib import Path
 from sys import argv
 
 log = logging.getLogger(__name__)
 logging.basicConfig(level=logging.WARNING)
-from distutils.version import LooseVersion
 
 MAX_DEPTH = 5
 basedir = Path(__file__).parent
@@ -41,6 +41,9 @@ if __name__ == "__main__":
         last_version_dirname = sorted(LooseVersion(x) for x in folders)[-1]
         log.debug("Version:", last_version_dirname)
         cpath = fpath.parent.parent / last_version_dirname.vstring / fpath.name
+
+        if cpath.suffix not in (".ttl", ".jsonld", ".rdf"):
+            continue
 
         with open(cpath) as f_latest, open(fpath) as f_version:
             diffs = []
