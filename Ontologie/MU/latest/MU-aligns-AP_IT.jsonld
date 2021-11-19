@@ -6,9 +6,42 @@
     "owl": "http://www.w3.org/2002/07/owl#",
     "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
     "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "xml": "http://www.w3.org/XML/1998/namespace",
     "xsd": "http://www.w3.org/2001/XMLSchema#"
   },
   "@graph": [
+    {
+      "@id": "dul:Amount",
+      "@type": "owl:Class"
+    },
+    {
+      "@id": "dul:UnitOfMeasure",
+      "@type": "owl:Class",
+      "owl:equivalentClass": {
+        "@id": "mu:MeasurementUnit"
+      }
+    },
+    {
+      "@id": "dul:hasDataValue",
+      "@type": [
+        "owl:AnnotationProperty",
+        "owl:DatatypeProperty"
+      ]
+    },
+    {
+      "@id": "dul:isParametrizedBy",
+      "@type": [
+        "owl:AnnotationProperty",
+        "owl:ObjectProperty"
+      ]
+    },
+    {
+      "@id": "dul:parametrizes",
+      "@type": [
+        "owl:AnnotationProperty",
+        "owl:ObjectProperty"
+      ]
+    },
     {
       "@id": "https://w3id.org/italia/onto/MU-aligns",
       "@type": "owl:Ontology",
@@ -20,11 +53,22 @@
       }
     },
     {
-      "@id": "dul:hasDataValue",
-      "@type": [
-        "owl:AnnotationProperty",
-        "owl:DatatypeProperty"
-      ]
+      "@id": "mu:MeasurementUnit",
+      "@type": "owl:Class"
+    },
+    {
+      "@id": "mu:Value",
+      "@type": "owl:Class",
+      "rdfs:subClassOf": {
+        "@id": "dul:Amount"
+      }
+    },
+    {
+      "@id": "mu:hasMeasurementUnit",
+      "@type": "owl:AnnotationProperty",
+      "rdfs:subPropertyOf": {
+        "@id": "dul:isParametrizedBy"
+      }
     },
     {
       "@id": "mu:isMeasurementUnitOf",
@@ -38,49 +82,6 @@
       "@type": "owl:AnnotationProperty",
       "rdfs:subPropertyOf": {
         "@id": "dul:hasDataValue"
-      }
-    },
-    {
-      "@id": "mu:Value",
-      "@type": "owl:Class",
-      "rdfs:subClassOf": {
-        "@id": "dul:Amount"
-      }
-    },
-    {
-      "@id": "mu:MeasurementUnit",
-      "@type": "owl:Class"
-    },
-    {
-      "@id": "dul:UnitOfMeasure",
-      "@type": "owl:Class",
-      "owl:equivalentClass": {
-        "@id": "mu:MeasurementUnit"
-      }
-    },
-    {
-      "@id": "dul:parametrizes",
-      "@type": [
-        "owl:ObjectProperty",
-        "owl:AnnotationProperty"
-      ]
-    },
-    {
-      "@id": "dul:isParametrizedBy",
-      "@type": [
-        "owl:ObjectProperty",
-        "owl:AnnotationProperty"
-      ]
-    },
-    {
-      "@id": "dul:Amount",
-      "@type": "owl:Class"
-    },
-    {
-      "@id": "mu:hasMeasurementUnit",
-      "@type": "owl:AnnotationProperty",
-      "rdfs:subPropertyOf": {
-        "@id": "dul:isParametrizedBy"
       }
     }
   ]

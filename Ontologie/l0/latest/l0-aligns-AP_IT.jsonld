@@ -2,20 +2,27 @@
   "@context": {
     "dc": "http://purl.org/dc/elements/1.1/",
     "dcat": "http://www.w3.org/ns/dcat#",
-    "dcterms": "http://purl.org/dc/terms/",
     "foaf": "http://xmlns.com/foaf/0.1/",
     "l0": "https://w3id.org/italia/onto/l0/",
+    "ns": "http://www.w3.org/2006/vcard/ns#",
     "owl": "http://www.w3.org/2002/07/owl#",
     "prov": "http://www.w3.org/ns/prov#",
     "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
     "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
-    "vcard": "http://www.w3.org/2006/vcard/ns#",
+    "terms": "http://purl.org/dc/terms/",
+    "xml": "http://www.w3.org/XML/1998/namespace",
     "xsd": "http://www.w3.org/2001/XMLSchema#"
   },
   "@graph": [
     {
-      "@id": "l0:Description",
-      "@type": "owl:Class"
+      "@id": "dc:modified",
+      "@type": "owl:AnnotationProperty"
+    },
+    {
+      "@id": "http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic",
+      "owl:equivalentClass": {
+        "@id": "l0:Characteristic"
+      }
     },
     {
       "@id": "http://www.ontologydesignpatterns.org/ont/d0.owl#Location",
@@ -24,17 +31,80 @@
       }
     },
     {
-      "@id": "l0:Activity",
-      "@type": "owl:Class",
-      "rdfs:subClassOf": {
-        "@id": "http://www.ontologydesignpatterns.org/ont/d0.owl#Activity"
-      }
-    },
-    {
       "@id": "http://www.ontologydesignpatterns.org/ont/d0.owl#System",
       "owl:equivalentClass": {
         "@id": "l0:System"
       }
+    },
+    {
+      "@id": "http://www.ontologydesignpatterns.org/ont/d0.owl#Topic",
+      "owl:equivalentClass": {
+        "@id": "l0:Topic"
+      }
+    },
+    {
+      "@id": "http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Abstract",
+      "owl:disjointWith": [
+        {
+          "@id": "l0:EventOrSituation"
+        },
+        {
+          "@id": "l0:Object"
+        }
+      ]
+    },
+    {
+      "@id": "http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Agent",
+      "owl:equivalentClass": {
+        "@id": "l0:Agent"
+      }
+    },
+    {
+      "@id": "http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Collection",
+      "owl:equivalentClass": {
+        "@id": "l0:Collection"
+      }
+    },
+    {
+      "@id": "http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Concept",
+      "owl:equivalentClass": {
+        "@id": "l0:Concept"
+      }
+    },
+    {
+      "@id": "http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Description",
+      "owl:equivalentClass": {
+        "@id": "l0:Description"
+      }
+    },
+    {
+      "@id": "http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Entity",
+      "owl:equivalentClass": {
+        "@id": "l0:Entity"
+      }
+    },
+    {
+      "@id": "http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Event",
+      "owl:disjointWith": {
+        "@id": "l0:Object"
+      }
+    },
+    {
+      "@id": "http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Object",
+      "owl:equivalentClass": {
+        "@id": "l0:Object"
+      }
+    },
+    {
+      "@id": "http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Quality",
+      "owl:disjointWith": [
+        {
+          "@id": "l0:EventOrSituation"
+        },
+        {
+          "@id": "l0:Object"
+        }
+      ]
     },
     {
       "@id": "https://w3id.org/italia/onto/l0-aligns",
@@ -56,19 +126,68 @@
       },
       "owl:versionInfo": [
         {
-          "@language": "it",
-          "@value": "Versione 0.8  del 24 Aprile 2019 - Revisione degli allineamenti a Dolce Ultra Light e DOLCE\""
-        },
-        {
           "@language": "en",
           "@value": "Version 0.8 on 24 April 2019 - better alignment with DOLCE\""
+        },
+        {
+          "@language": "it",
+          "@value": "Versione 0.8  del 24 Aprile 2019 - Revisione degli allineamenti a Dolce Ultra Light e DOLCE\""
         }
       ]
     },
     {
-      "@id": "http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Agent",
-      "owl:equivalentClass": {
-        "@id": "l0:Agent"
+      "@id": "l0:Activity",
+      "@type": "owl:Class",
+      "rdfs:subClassOf": {
+        "@id": "http://www.ontologydesignpatterns.org/ont/d0.owl#Activity"
+      }
+    },
+    {
+      "@id": "l0:Characteristic",
+      "@type": "owl:Class"
+    },
+    {
+      "@id": "l0:Collection",
+      "@type": "owl:Class"
+    },
+    {
+      "@id": "l0:Concept",
+      "@type": "owl:Class"
+    },
+    {
+      "@id": "l0:Description",
+      "@type": "owl:Class"
+    },
+    {
+      "@id": "l0:EventOrSituation",
+      "rdfs:subClassOf": {
+        "@id": "http://www.ontologydesignpatterns.org/ont/d0.owl#Eventuality"
+      }
+    },
+    {
+      "@id": "l0:Location",
+      "@type": "owl:Class"
+    },
+    {
+      "@id": "l0:System",
+      "@type": "owl:Class"
+    },
+    {
+      "@id": "l0:Topic",
+      "@type": "owl:Class"
+    },
+    {
+      "@id": "l0:description",
+      "@type": "owl:DatatypeProperty",
+      "rdfs:subPropertyOf": {
+        "@id": "http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#hasDataValue"
+      }
+    },
+    {
+      "@id": "l0:identifier",
+      "@type": "owl:DatatypeProperty",
+      "rdfs:subPropertyOf": {
+        "@id": "http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#hasDataValue"
       }
     },
     {
@@ -82,120 +201,6 @@
       "rdfs:subPropertyOf": {
         "@id": "http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#hasDataValue"
       }
-    },
-    {
-      "@id": "http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Quality",
-      "owl:disjointWith": [
-        {
-          "@id": "l0:Object"
-        },
-        {
-          "@id": "l0:EventOrSituation"
-        }
-      ]
-    },
-    {
-      "@id": "http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Entity",
-      "owl:equivalentClass": {
-        "@id": "l0:Entity"
-      }
-    },
-    {
-      "@id": "l0:Concept",
-      "@type": "owl:Class"
-    },
-    {
-      "@id": "l0:Location",
-      "@type": "owl:Class"
-    },
-    {
-      "@id": "http://www.ontologydesignpatterns.org/ont/d0.owl#Topic",
-      "owl:equivalentClass": {
-        "@id": "l0:Topic"
-      }
-    },
-    {
-      "@id": "http://www.ontologydesignpatterns.org/ont/d0.owl#Characteristic",
-      "owl:equivalentClass": {
-        "@id": "l0:Characteristic"
-      }
-    },
-    {
-      "@id": "l0:Characteristic",
-      "@type": "owl:Class"
-    },
-    {
-      "@id": "http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Object",
-      "owl:equivalentClass": {
-        "@id": "l0:Object"
-      }
-    },
-    {
-      "@id": "http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Abstract",
-      "owl:disjointWith": [
-        {
-          "@id": "l0:Object"
-        },
-        {
-          "@id": "l0:EventOrSituation"
-        }
-      ]
-    },
-    {
-      "@id": "l0:EventOrSituation",
-      "rdfs:subClassOf": {
-        "@id": "http://www.ontologydesignpatterns.org/ont/d0.owl#Eventuality"
-      }
-    },
-    {
-      "@id": "l0:identifier",
-      "@type": "owl:DatatypeProperty",
-      "rdfs:subPropertyOf": {
-        "@id": "http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#hasDataValue"
-      }
-    },
-    {
-      "@id": "l0:System",
-      "@type": "owl:Class"
-    },
-    {
-      "@id": "http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Description",
-      "owl:equivalentClass": {
-        "@id": "l0:Description"
-      }
-    },
-    {
-      "@id": "l0:description",
-      "@type": "owl:DatatypeProperty",
-      "rdfs:subPropertyOf": {
-        "@id": "http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#hasDataValue"
-      }
-    },
-    {
-      "@id": "http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Concept",
-      "owl:equivalentClass": {
-        "@id": "l0:Concept"
-      }
-    },
-    {
-      "@id": "http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Collection",
-      "owl:equivalentClass": {
-        "@id": "l0:Collection"
-      }
-    },
-    {
-      "@id": "l0:Collection",
-      "@type": "owl:Class"
-    },
-    {
-      "@id": "http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Event",
-      "owl:disjointWith": {
-        "@id": "l0:Object"
-      }
-    },
-    {
-      "@id": "l0:Topic",
-      "@type": "owl:Class"
     }
   ]
 }

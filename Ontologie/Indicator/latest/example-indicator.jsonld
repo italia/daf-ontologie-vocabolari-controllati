@@ -8,51 +8,10 @@
     "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
     "skos": "http://www.w3.org/2004/02/skos/core#",
     "tiapit": "https://w3id.org/italia/onto/TI/",
+    "xml": "http://www.w3.org/XML/1998/namespace",
     "xsd": "http://www.w3.org/2001/XMLSchema#"
   },
   "@graph": [
-    {
-      "@id": "https://w3id.org/italia/data/observation-value/10",
-      "@type": [
-        "iotapit:ObservationValue",
-        "muapit:Value"
-      ],
-      "muapit:value": "10"
-    },
-    {
-      "@id": "https://w3id.org/italia/data/time-interval/2020-05-26",
-      "@type": "tiapit:TimeInterval",
-      "tiapit:date": {
-        "@type": "xsd:date",
-        "@value": "2020-05-26"
-      }
-    },
-    {
-      "@id": "https://w3id.org/italia/data/time-interval/(2020-05-04)-(2020-05-31)",
-      "@type": "tiapit:TimeInterval",
-      "tiapit:endDate": {
-        "@type": "xsd:date",
-        "@value": "2020-05-31"
-      },
-      "tiapit:startDate": {
-        "@type": "xsd:date",
-        "@value": "2020-05-04"
-      }
-    },
-    {
-      "@id": "https://w3id.org/italia/data/measurement-unit/percentage",
-      "@type": "muapit:MeasurementUnit",
-      "l0:name": [
-        {
-          "@language": "it",
-          "@value": "Percentuale"
-        },
-        {
-          "@language": "en",
-          "@value": "Percentage"
-        }
-      ]
-    },
     {
       "@id": "https://w3id.org/italia/controlled-vocabulary/classifications-for-indicators/covid19-indicators/1-1",
       "@type": [
@@ -61,6 +20,28 @@
       ],
       "https://w3id.org/italia/onto/Indicator/computedInIndicatorCalculation": {
         "@id": "https://w3id.org/italia/data/indicator-calculation/1-1"
+      }
+    },
+    {
+      "@id": "https://w3id.org/italia/data/datum-source/A",
+      "@type": "https://w3id.org/italia/onto/Indicator/DatumSource",
+      "https://w3id.org/italia/onto/Indicator/isDatumSourceOf": {
+        "@id": "https://w3id.org/italia/data/indicator-calculation/1-1"
+      },
+      "https://w3id.org/italia/onto/Indicator/isProvidedBy": {
+        "@id": "https://w3id.org/italia/data/observation/A1"
+      },
+      "l0:name": {
+        "@language": "it",
+        "@value": "Sorveglianza integrata nazionale"
+      }
+    },
+    {
+      "@id": "https://w3id.org/italia/data/feature-of-interest/patient",
+      "@type": "iotapit:FeatureOfInterest",
+      "l0:name": {
+        "@language": "it",
+        "@value": "Paziente"
       }
     },
     {
@@ -102,16 +83,30 @@
       }
     },
     {
-      "@id": "https://w3id.org/italia/data/feature-of-interest/patient",
-      "@type": "iotapit:FeatureOfInterest",
+      "@id": "https://w3id.org/italia/data/indicator-parameter/1-1-1-1",
+      "@type": "https://w3id.org/italia/onto/Indicator/Parameter",
       "l0:name": {
         "@language": "it",
-        "@value": "Paziente"
+        "@value": "casi sintomatici con data inizio sintomi"
       }
     },
     {
+      "@id": "https://w3id.org/italia/data/measurement-unit/percentage",
+      "@type": "muapit:MeasurementUnit",
+      "l0:name": [
+        {
+          "@language": "en",
+          "@value": "Percentage"
+        },
+        {
+          "@language": "it",
+          "@value": "Percentuale"
+        }
+      ]
+    },
+    {
       "@id": "https://w3id.org/italia/data/metric/1-1-1",
-      "@type": "htpos://w3id.org/italia/onto/Indicator/Metric",
+      "@type": "https://w3id.org/italia/onto/Indicator/Metric",
       "https://w3id.org/italia/onto/Indicator/hasParameter": {
         "@id": "https://w3id.org/italia/data/indicator-parameter/1-1-1-1"
       },
@@ -132,25 +127,27 @@
       }
     },
     {
-      "@id": "https://w3id.org/italia/data/datum-source/A",
-      "@type": "https://w3id.org/italia/onto/Indicator/DatumSource",
-      "https://w3id.org/italia/onto/Indicator/isDatumSourceOf": {
-        "@id": "https://w3id.org/italia/data/indicator-calculation/1-1"
-      },
-      "https://w3id.org/italia/onto/Indicator/isProvidedBy": {
-        "@id": "https://w3id.org/italia/data/observation/A1"
-      },
-      "l0:name": {
-        "@language": "it",
-        "@value": "Sorveglianza integrata nazionale"
-      }
+      "@id": "https://w3id.org/italia/data/observation-value/10",
+      "@type": [
+        "iotapit:ObservationValue",
+        "muapit:Value"
+      ],
+      "muapit:value": "10"
     },
     {
-      "@id": "https://w3id.org/italia/data/indicator-parameter/1-1-1-1",
-      "@type": "https://w3id.org/italia/onto/Indicator/Parameter",
-      "l0:name": {
-        "@language": "it",
-        "@value": "casi sintomatici con data inizio sintomi"
+      "@id": "https://w3id.org/italia/data/observation/A1",
+      "@type": "iotapit:Observation",
+      "iotapit:generationTime": {
+        "@id": "https://w3id.org/italia/data/time-interval/2020-05-26"
+      },
+      "iotapit:hasFeatureOfInterest": {
+        "@id": "https://w3id.org/italia/data/feature-of-interest/patient"
+      },
+      "iotapit:hasObservationParameter": {
+        "@id": "https://w3id.org/italia/data/observation-parameter/positive-cases-with-date"
+      },
+      "iotapit:hasObservationValue": {
+        "@id": "https://w3id.org/italia/data/observation-value/10"
       }
     },
     {
@@ -169,28 +166,32 @@
       }
     },
     {
+      "@id": "https://w3id.org/italia/data/time-interval/(2020-05-04)-(2020-05-31)",
+      "@type": "tiapit:TimeInterval",
+      "tiapit:endDate": {
+        "@type": "xsd:date",
+        "@value": "2020-05-31"
+      },
+      "tiapit:startDate": {
+        "@type": "xsd:date",
+        "@value": "2020-05-04"
+      }
+    },
+    {
+      "@id": "https://w3id.org/italia/data/time-interval/2020-05-26",
+      "@type": "tiapit:TimeInterval",
+      "tiapit:date": {
+        "@type": "xsd:date",
+        "@value": "2020-05-26"
+      }
+    },
+    {
       "@id": "https://w3id.org/italia/data/value/60",
       "@type": "muapit:Value",
       "muapit:hasMeasurementUnit": {
         "@id": "https://w3id.org/italia/data/measurement-unit/percentage"
       },
       "muapit:value": "60"
-    },
-    {
-      "@id": "https://w3id.org/italia/data/observation/A1",
-      "@type": "iotapit:Observation",
-      "iotapit:generationTime": {
-        "@id": "https://w3id.org/italia/data/time-interval/2020-05-26"
-      },
-      "iotapit:hasFeatureOfInterest": {
-        "@id": "https://w3id.org/italia/data/feature-of-interest/patient"
-      },
-      "iotapit:hasObservationParameter": {
-        "@id": "https://w3id.org/italia/data/observation-parameter/positive-cases-with-date"
-      },
-      "iotapit:hasObservationValue": {
-        "@id": "https://w3id.org/italia/data/observation-value/10"
-      }
     }
   ]
 }

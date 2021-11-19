@@ -7,35 +7,19 @@
     "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
     "sosa": "http://www.w3.org/ns/sosa/",
     "ssn": "http://www.w3.org/ns/ssn/",
+    "xml": "http://www.w3.org/XML/1998/namespace",
     "xsd": "http://www.w3.org/2001/XMLSchema#"
   },
   "@graph": [
     {
-      "@id": "https://w3id.org/italia/onto/IoT/MeasurementQuality",
+      "@id": "d0:Characteristic",
+      "@type": "owl:Class"
+    },
+    {
+      "@id": "dul:Amount",
       "@type": "owl:Class",
       "rdfs:subClassOf": {
-        "@id": "ssn:SystemProperty"
-      }
-    },
-    {
-      "@id": "dul:isRegionOf",
-      "@type": "owl:ObjectProperty",
-      "rdfs:subPropertyOf": {
-        "@id": "dul:associatedWith"
-      }
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/IoT/isObservationParameterFor",
-      "@type": "owl:ObjectProperty",
-      "rdfs:subPropertyOf": {
-        "@id": "dul:isParameterFor"
-      }
-    },
-    {
-      "@id": "dul:Object",
-      "@type": "owl:Class",
-      "rdfs:subClassOf": {
-        "@id": "dul:Entity"
+        "@id": "dul:Region"
       }
     },
     {
@@ -46,52 +30,80 @@
       }
     },
     {
-      "@id": "https://w3id.org/italia/onto/IoT/usedMethod",
-      "@type": "owl:ObjectProperty",
-      "rdfs:subPropertyOf": {
-        "@id": "sosa:usedProcedure"
-      }
+      "@id": "dul:Entity",
+      "@type": "owl:Class"
     },
     {
-      "@id": "ssn:Sensor",
+      "@id": "dul:Event",
       "@type": "owl:Class",
       "rdfs:subClassOf": {
-        "@id": "dul:Object"
+        "@id": "dul:Entity"
       }
     },
     {
-      "@id": "https://w3id.org/italia/onto/IoT/hasFeatureOfInterest",
-      "@type": "owl:ObjectProperty",
-      "rdfs:subPropertyOf": {
-        "@id": "sosa:hasFeatureOfInterest"
+      "@id": "dul:Method",
+      "@type": "owl:Class"
+    },
+    {
+      "@id": "dul:Object",
+      "@type": "owl:Class",
+      "rdfs:subClassOf": {
+        "@id": "dul:Entity"
       }
     },
     {
-      "@id": "https://w3id.org/italia/onto/IoT/hasValueForObservationParameter",
-      "@type": "owl:ObjectProperty",
-      "rdfs:subPropertyOf": {
-        "@id": "dul:hasRegion"
+      "@id": "dul:Parameter",
+      "@type": "owl:Class",
+      "rdfs:subClassOf": {
+        "@id": "d0:Characteristic"
       }
     },
     {
-      "@id": "sosa:hasFeatureOfInterest",
+      "@id": "dul:Quality",
+      "@type": "owl:Class",
+      "rdfs:subClassOf": [
+        {
+          "@id": "d0:Characteristic"
+        },
+        {
+          "@id": "dul:Entity"
+        }
+      ]
+    },
+    {
+      "@id": "dul:Region",
+      "@type": "owl:Class",
+      "rdfs:subClassOf": {
+        "@id": "d0:Characteristic"
+      }
+    },
+    {
+      "@id": "dul:associatedWith",
+      "@type": "owl:ObjectProperty"
+    },
+    {
+      "@id": "dul:hasMember",
+      "@type": "owl:ObjectProperty"
+    },
+    {
+      "@id": "dul:hasParameter",
       "@type": "owl:ObjectProperty",
       "rdfs:subPropertyOf": {
         "@id": "dul:associatedWith"
       }
     },
     {
-      "@id": "https://w3id.org/italia/onto/IoT/isValueForObservationParameter",
+      "@id": "dul:hasQuality",
       "@type": "owl:ObjectProperty",
       "rdfs:subPropertyOf": {
-        "@id": "dul:isRegionOf"
+        "@id": "dul:associatedWith"
       }
     },
     {
-      "@id": "https://w3id.org/italia/onto/IoT/Sensor",
-      "@type": "owl:Class",
-      "rdfs:subClassOf": {
-        "@id": "ssn:Sensor"
+      "@id": "dul:hasRegion",
+      "@type": "owl:ObjectProperty",
+      "rdfs:subPropertyOf": {
+        "@id": "dul:associatedWith"
       }
     },
     {
@@ -102,10 +114,94 @@
       }
     },
     {
-      "@id": "dul:Parameter",
+      "@id": "dul:isParameterFor",
+      "@type": "owl:ObjectProperty",
+      "rdfs:subPropertyOf": {
+        "@id": "dul:associatedWith"
+      }
+    },
+    {
+      "@id": "dul:isRegionOf",
+      "@type": "owl:ObjectProperty",
+      "rdfs:subPropertyOf": {
+        "@id": "dul:associatedWith"
+      }
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/IoT/FeatureOfInterest",
       "@type": "owl:Class",
       "rdfs:subClassOf": {
-        "@id": "d0:Characteristic"
+        "@id": "sosa:FeatureOfInterest"
+      }
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/IoT/MeasurementQuality",
+      "@type": "owl:Class",
+      "rdfs:subClassOf": {
+        "@id": "ssn:SystemProperty"
+      }
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/IoT/MeasurementQualityValue",
+      "@type": "owl:Class",
+      "rdfs:subClassOf": {
+        "@id": "dul:Amount"
+      }
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/IoT/Method",
+      "@type": "owl:Class",
+      "rdfs:subClassOf": {
+        "@id": "sosa:Procedure"
+      }
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/IoT/Observation",
+      "@type": "owl:Class",
+      "rdfs:subClassOf": {
+        "@id": "sosa:Observation"
+      }
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/IoT/ObservationCollection",
+      "@type": "owl:Class",
+      "rdfs:subClassOf": {
+        "@id": "dul:Collection"
+      }
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/IoT/ObservationParameter",
+      "@type": "owl:Class",
+      "rdfs:subClassOf": {
+        "@id": "dul:Parameter"
+      }
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/IoT/Platform",
+      "@type": "owl:Class",
+      "rdfs:subClassOf": {
+        "@id": "sosa:Platform"
+      }
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/IoT/Sensor",
+      "@type": "owl:Class",
+      "rdfs:subClassOf": {
+        "@id": "ssn:Sensor"
+      }
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/IoT/consistsOf",
+      "@type": "owl:ObjectProperty",
+      "rdfs:subPropertyOf": {
+        "@id": "dul:hasMember"
+      }
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/IoT/hasFeatureOfInterest",
+      "@type": "owl:ObjectProperty",
+      "rdfs:subPropertyOf": {
+        "@id": "sosa:hasFeatureOfInterest"
       }
     },
     {
@@ -123,21 +219,94 @@
       }
     },
     {
-      "@id": "sosa:madeBySensor",
+      "@id": "https://w3id.org/italia/onto/IoT/hasObservationValue",
+      "@type": "owl:ObjectProperty",
+      "rdfs:subPropertyOf": {
+        "@id": "dul:hasRegion"
+      }
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/IoT/hasQuality",
+      "@type": "owl:ObjectProperty",
+      "rdfs:subPropertyOf": {
+        "@id": "dul:hasQuality"
+      }
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/IoT/hasValueForObservationParameter",
+      "@type": "owl:ObjectProperty",
+      "rdfs:subPropertyOf": {
+        "@id": "dul:hasRegion"
+      }
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/IoT/hostsMonitoringFacility",
+      "@type": "owl:ObjectProperty",
+      "rdfs:subPropertyOf": {
+        "@id": "sosa:hosts"
+      }
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/IoT/isFeatureOfInterestFor",
+      "@type": "owl:ObjectProperty",
+      "rdfs:subPropertyOf": {
+        "@id": "sosa:isFeatureOfInterestOf"
+      }
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/IoT/isMeasurementQualityValueOf",
+      "@type": "owl:ObjectProperty",
+      "rdfs:subPropertyOf": {
+        "@id": "dul:isRegionOf"
+      }
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/IoT/isObservationParameterFor",
+      "@type": "owl:ObjectProperty",
+      "rdfs:subPropertyOf": {
+        "@id": "dul:isParameterFor"
+      }
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/IoT/isObservationValueOf",
+      "@type": "owl:ObjectProperty",
+      "rdfs:subPropertyOf": {
+        "@id": "dul:isRegionOf"
+      }
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/IoT/isPartOf",
+      "@type": "owl:ObjectProperty",
+      "rdfs:subPropertyOf": {
+        "@id": "dul:isMemberOf"
+      }
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/IoT/isValueForObservationParameter",
+      "@type": "owl:ObjectProperty",
+      "rdfs:subPropertyOf": {
+        "@id": "dul:isRegionOf"
+      }
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/IoT/makesObservation",
+      "@type": "owl:ObjectProperty",
+      "rdfs:subPropertyOf": {
+        "@id": "sosa:madeObservation"
+      }
+    },
+    {
+      "@id": "https://w3id.org/italia/onto/IoT/makesObservationCollection",
       "@type": "owl:ObjectProperty",
       "rdfs:subPropertyOf": {
         "@id": "dul:associatedWith"
       }
     },
     {
-      "@id": "sosa:usedProcedure",
-      "@type": "owl:ObjectProperty"
-    },
-    {
-      "@id": "dul:Region",
-      "@type": "owl:Class",
-      "rdfs:subClassOf": {
-        "@id": "d0:Characteristic"
+      "@id": "https://w3id.org/italia/onto/IoT/observationCollectionMadeBySensor",
+      "@type": "owl:ObjectProperty",
+      "rdfs:subPropertyOf": {
+        "@id": "dul:associatedWith"
       }
     },
     {
@@ -148,10 +317,10 @@
       }
     },
     {
-      "@id": "https://w3id.org/italia/onto/IoT/ObservationCollection",
-      "@type": "owl:Class",
-      "rdfs:subClassOf": {
-        "@id": "dul:Collection"
+      "@id": "https://w3id.org/italia/onto/IoT/usedMethod",
+      "@type": "owl:ObjectProperty",
+      "rdfs:subPropertyOf": {
+        "@id": "sosa:usedProcedure"
       }
     },
     {
@@ -165,210 +334,10 @@
       }
     },
     {
-      "@id": "https://w3id.org/italia/onto/IoT/ObservationParameter",
-      "@type": "owl:Class",
-      "rdfs:subClassOf": {
-        "@id": "dul:Parameter"
-      }
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/IoT/isMeasurementQualityValueOf",
-      "@type": "owl:ObjectProperty",
-      "rdfs:subPropertyOf": {
-        "@id": "dul:isRegionOf"
-      }
-    },
-    {
-      "@id": "sosa:Procedure",
-      "@type": "owl:Class",
-      "rdfs:subClassOf": {
-        "@id": "dul:Method"
-      }
-    },
-    {
-      "@id": "dul:hasMember",
-      "@type": "owl:ObjectProperty"
-    },
-    {
-      "@id": "sosa:hosts",
-      "@type": "owl:ObjectProperty"
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/IoT/hasObservationValue",
-      "@type": "owl:ObjectProperty",
-      "rdfs:subPropertyOf": {
-        "@id": "dul:hasRegion"
-      }
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/IoT/Method",
-      "@type": "owl:Class",
-      "rdfs:subClassOf": {
-        "@id": "sosa:Procedure"
-      }
-    },
-    {
-      "@id": "dul:Method",
-      "@type": "owl:Class"
-    },
-    {
-      "@id": "d0:Characteristic",
-      "@type": "owl:Class"
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/IoT/Observation",
-      "@type": "owl:Class",
-      "rdfs:subClassOf": {
-        "@id": "sosa:Observation"
-      }
-    },
-    {
       "@id": "sosa:FeatureOfInterest",
       "@type": "owl:Class",
       "rdfs:subClassOf": {
         "@id": "dul:Entity"
-      }
-    },
-    {
-      "@id": "sosa:isFeatureOfInterestOf",
-      "@type": "owl:ObjectProperty",
-      "rdfs:subPropertyOf": {
-        "@id": "dul:associatedWith"
-      }
-    },
-    {
-      "@id": "dul:Entity",
-      "@type": "owl:Class"
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/IoT/consistsOf",
-      "@type": "owl:ObjectProperty",
-      "rdfs:subPropertyOf": {
-        "@id": "dul:hasMember"
-      }
-    },
-    {
-      "@id": "dul:isParameterFor",
-      "@type": "owl:ObjectProperty",
-      "rdfs:subPropertyOf": {
-        "@id": "dul:associatedWith"
-      }
-    },
-    {
-      "@id": "dul:hasParameter",
-      "@type": "owl:ObjectProperty",
-      "rdfs:subPropertyOf": {
-        "@id": "dul:associatedWith"
-      }
-    },
-    {
-      "@id": "ssn:SystemProperty",
-      "@type": "owl:Class",
-      "rdfs:subClassOf": {
-        "@id": "dul:Quality"
-      }
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/IoT/isPartOf",
-      "@type": "owl:ObjectProperty",
-      "rdfs:subPropertyOf": {
-        "@id": "dul:isMemberOf"
-      }
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/IoT/MeasurementQualityValue",
-      "@type": "owl:Class",
-      "rdfs:subClassOf": {
-        "@id": "dul:Amount"
-      }
-    },
-    {
-      "@id": "dul:hasQuality",
-      "@type": "owl:ObjectProperty",
-      "rdfs:subPropertyOf": {
-        "@id": "dul:associatedWith"
-      }
-    },
-    {
-      "@id": "dul:Quality",
-      "@type": "owl:Class",
-      "rdfs:subClassOf": [
-        {
-          "@id": "d0:Characteristic"
-        },
-        {
-          "@id": "dul:Entity"
-        }
-      ]
-    },
-    {
-      "@id": "dul:Amount",
-      "@type": "owl:Class",
-      "rdfs:subClassOf": {
-        "@id": "dul:Region"
-      }
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/IoT/observationCollectionMadeBySensor",
-      "@type": "owl:ObjectProperty",
-      "rdfs:subPropertyOf": {
-        "@id": "dul:associatedWith"
-      }
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/IoT/FeatureOfInterest",
-      "@type": "owl:Class",
-      "rdfs:subClassOf": {
-        "@id": "sosa:FeatureOfInterest"
-      }
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/IoT/makesObservationCollection",
-      "@type": "owl:ObjectProperty",
-      "rdfs:subPropertyOf": {
-        "@id": "dul:associatedWith"
-      }
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/IoT/isObservationValueOf",
-      "@type": "owl:ObjectProperty",
-      "rdfs:subPropertyOf": {
-        "@id": "dul:isRegionOf"
-      }
-    },
-    {
-      "@id": "dul:hasRegion",
-      "@type": "owl:ObjectProperty",
-      "rdfs:subPropertyOf": {
-        "@id": "dul:associatedWith"
-      }
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/IoT/Platform",
-      "@type": "owl:Class",
-      "rdfs:subClassOf": {
-        "@id": "sosa:Platform"
-      }
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/IoT/isFeatureOfInterestFor",
-      "@type": "owl:ObjectProperty",
-      "rdfs:subPropertyOf": {
-        "@id": "sosa:isFeatureOfInterestOf"
-      }
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/IoT/makesObservation",
-      "@type": "owl:ObjectProperty",
-      "rdfs:subPropertyOf": {
-        "@id": "sosa:madeObservation"
-      }
-    },
-    {
-      "@id": "sosa:Platform",
-      "@type": "owl:Class",
-      "rdfs:subClassOf": {
-        "@id": "dul:Object"
       }
     },
     {
@@ -379,28 +348,42 @@
       }
     },
     {
-      "@id": "dul:associatedWith",
+      "@id": "sosa:Platform",
+      "@type": "owl:Class",
+      "rdfs:subClassOf": {
+        "@id": "dul:Object"
+      }
+    },
+    {
+      "@id": "sosa:Procedure",
+      "@type": "owl:Class",
+      "rdfs:subClassOf": {
+        "@id": "dul:Method"
+      }
+    },
+    {
+      "@id": "sosa:hasFeatureOfInterest",
+      "@type": "owl:ObjectProperty",
+      "rdfs:subPropertyOf": {
+        "@id": "dul:associatedWith"
+      }
+    },
+    {
+      "@id": "sosa:hosts",
       "@type": "owl:ObjectProperty"
     },
     {
-      "@id": "dul:Event",
-      "@type": "owl:Class",
-      "rdfs:subClassOf": {
-        "@id": "dul:Entity"
+      "@id": "sosa:isFeatureOfInterestOf",
+      "@type": "owl:ObjectProperty",
+      "rdfs:subPropertyOf": {
+        "@id": "dul:associatedWith"
       }
     },
     {
-      "@id": "https://w3id.org/italia/onto/IoT/hasQuality",
+      "@id": "sosa:madeBySensor",
       "@type": "owl:ObjectProperty",
       "rdfs:subPropertyOf": {
-        "@id": "dul:hasQuality"
-      }
-    },
-    {
-      "@id": "https://w3id.org/italia/onto/IoT/hostsMonitoringFacility",
-      "@type": "owl:ObjectProperty",
-      "rdfs:subPropertyOf": {
-        "@id": "sosa:hosts"
+        "@id": "dul:associatedWith"
       }
     },
     {
@@ -408,6 +391,24 @@
       "@type": "owl:ObjectProperty",
       "rdfs:subPropertyOf": {
         "@id": "dul:associatedWith"
+      }
+    },
+    {
+      "@id": "sosa:usedProcedure",
+      "@type": "owl:ObjectProperty"
+    },
+    {
+      "@id": "ssn:Sensor",
+      "@type": "owl:Class",
+      "rdfs:subClassOf": {
+        "@id": "dul:Object"
+      }
+    },
+    {
+      "@id": "ssn:SystemProperty",
+      "@type": "owl:Class",
+      "rdfs:subClassOf": {
+        "@id": "dul:Quality"
       }
     }
   ]

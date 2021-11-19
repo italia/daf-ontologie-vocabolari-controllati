@@ -1,165 +1,50 @@
-<?xml version="1.0"?>
-
-
-<!DOCTYPE rdf:RDF [
-    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
-    <!ENTITY mu "https://w3id.org/italia/onto/MU/" >
-    <!ENTITY l0 "https://w3id.org/italia/onto/l0/" >
-    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
-    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
-    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
-    <!ENTITY dul "http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#" >
-]>
-
-
-<rdf:RDF xmlns="https://w3id.org/italia/onto/MU-aligns/"
-     xml:base="https://w3id.org/italia/onto/MU-aligns/"
-     xmlns:l0="https://w3id.org/italia/onto/l0/"
-     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-     xmlns:owl="http://www.w3.org/2002/07/owl#"
-     xmlns:mu="https://w3id.org/italia/onto/MU/"
-     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
-     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
-     xmlns:dul="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#">
-    <owl:Ontology rdf:about="https://w3id.org/italia/onto/MU-aligns">
-        <owl:imports rdf:resource="https://w3id.org/italia/onto/MU"/>
-        <owl:versionIRI rdf:resource="https://w3id.org/italia/onto/MU-aligns/0.2"/>
-    </owl:Ontology>
-    
-
-
-    <!-- 
-    ///////////////////////////////////////////////////////////////////////////////////////
-    //
-    // Annotation properties
-    //
-    ///////////////////////////////////////////////////////////////////////////////////////
-     -->
-
-    
-
-
-    <!-- http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#hasDataValue -->
-
-    <owl:AnnotationProperty rdf:about="&dul;hasDataValue"/>
-    
-
-
-    <!-- http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#isParametrizedBy -->
-
-    <owl:AnnotationProperty rdf:about="&dul;isParametrizedBy"/>
-    
-
-
-    <!-- http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#parametrizes -->
-
-    <owl:AnnotationProperty rdf:about="&dul;parametrizes"/>
-    
-
-
-    <!-- https://w3id.org/italia/onto/MU/hasMeasurementUnit -->
-
-    <owl:AnnotationProperty rdf:about="&mu;hasMeasurementUnit">
-        <rdfs:subPropertyOf rdf:resource="&dul;isParametrizedBy"/>
-    </owl:AnnotationProperty>
-    
-
-
-    <!-- https://w3id.org/italia/onto/MU/isMeasurementUnitOf -->
-
-    <owl:AnnotationProperty rdf:about="&mu;isMeasurementUnitOf">
-        <rdfs:subPropertyOf rdf:resource="&dul;parametrizes"/>
-    </owl:AnnotationProperty>
-    
-
-
-    <!-- https://w3id.org/italia/onto/MU/value -->
-
-    <owl:AnnotationProperty rdf:about="&mu;value">
-        <rdfs:subPropertyOf rdf:resource="&dul;hasDataValue"/>
-    </owl:AnnotationProperty>
-    
-
-
-    <!-- 
-    ///////////////////////////////////////////////////////////////////////////////////////
-    //
-    // Object Properties
-    //
-    ///////////////////////////////////////////////////////////////////////////////////////
-     -->
-
-    
-
-
-    <!-- http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#isParametrizedBy -->
-
-    <owl:ObjectProperty rdf:about="&dul;isParametrizedBy"/>
-    
-
-
-    <!-- http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#parametrizes -->
-
-    <owl:ObjectProperty rdf:about="&dul;parametrizes"/>
-    
-
-
-    <!-- 
-    ///////////////////////////////////////////////////////////////////////////////////////
-    //
-    // Data properties
-    //
-    ///////////////////////////////////////////////////////////////////////////////////////
-     -->
-
-    
-
-
-    <!-- http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#hasDataValue -->
-
-    <owl:DatatypeProperty rdf:about="&dul;hasDataValue"/>
-    
-
-
-    <!-- 
-    ///////////////////////////////////////////////////////////////////////////////////////
-    //
-    // Classes
-    //
-    ///////////////////////////////////////////////////////////////////////////////////////
-     -->
-
-    
-
-
-    <!-- http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Amount -->
-
-    <owl:Class rdf:about="&dul;Amount"/>
-    
-
-
-    <!-- http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#UnitOfMeasure -->
-
-    <owl:Class rdf:about="&dul;UnitOfMeasure">
-        <owl:equivalentClass rdf:resource="&mu;MeasurementUnit"/>
-    </owl:Class>
-    
-
-
-    <!-- https://w3id.org/italia/onto/MU/MeasurementUnit -->
-
-    <owl:Class rdf:about="&mu;MeasurementUnit"/>
-    
-
-
-    <!-- https://w3id.org/italia/onto/MU/Value -->
-
-    <owl:Class rdf:about="&mu;Value">
-        <rdfs:subClassOf rdf:resource="&dul;Amount"/>
-    </owl:Class>
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF
+   xmlns:owl="http://www.w3.org/2002/07/owl#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+>
+  <rdf:Description rdf:about="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#isParametrizedBy">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/italia/onto/MU/MeasurementUnit">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/italia/onto/MU-aligns">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Ontology"/>
+    <owl:versionIRI rdf:resource="https://w3id.org/italia/onto/MU-aligns/0.2"/>
+    <owl:imports rdf:resource="https://w3id.org/italia/onto/MU"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#hasDataValue">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#parametrizes">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/italia/onto/MU/Value">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Amount"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#UnitOfMeasure">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <owl:equivalentClass rdf:resource="https://w3id.org/italia/onto/MU/MeasurementUnit"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/italia/onto/MU/value">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#hasDataValue"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Amount">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/italia/onto/MU/hasMeasurementUnit">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#isParametrizedBy"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/italia/onto/MU/isMeasurementUnitOf">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#parametrizes"/>
+  </rdf:Description>
 </rdf:RDF>
-
-
-
-<!-- Generated by the OWL API (version 3.5.1) http://owlapi.sourceforge.net -->
-

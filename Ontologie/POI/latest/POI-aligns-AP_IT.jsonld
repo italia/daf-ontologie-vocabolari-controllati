@@ -1,16 +1,41 @@
 {
   "@context": {
     "dc": "http://purl.org/dc/elements/1.1/",
-    "dcterms": "http://purl.org/dc/terms/",
+    "dct": "http://purl.org/dc/terms/",
     "owl": "http://www.w3.org/2002/07/owl#",
     "poiapit": "https://w3id.org/italia/onto/POI/",
     "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
     "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
     "schema": "http://schema.org/",
     "skos": "http://www.w3.org/2004/02/skos/core#",
+    "xml": "http://www.w3.org/XML/1998/namespace",
     "xsd": "http://www.w3.org/2001/XMLSchema#"
   },
   "@graph": [
+    {
+      "@id": "dc:creator",
+      "@type": "owl:AnnotationProperty"
+    },
+    {
+      "@id": "dc:modified",
+      "@type": "owl:AnnotationProperty"
+    },
+    {
+      "@id": "dc:title",
+      "@type": "owl:AnnotationProperty"
+    },
+    {
+      "@id": "dct:description",
+      "@type": "owl:DatatypeProperty"
+    },
+    {
+      "@id": "dct:identifier",
+      "@type": "owl:DatatypeProperty"
+    },
+    {
+      "@id": "dct:issued",
+      "@type": "owl:AnnotationProperty"
+    },
     {
       "@id": "https://w3id.org/italia/onto/POI-aligns",
       "@type": "owl:Ontology",
@@ -39,7 +64,7 @@
           "@value": "These are the alignments to external ontologies widely used and available at the state of the art for the POI-AP_IT ontology"
         }
       ],
-      "dcterms:issued": "2017-10-20",
+      "dct:issued": "2017-10-20",
       "owl:imports": {
         "@id": "https://w3id.org/italia/onto/POI"
       },
@@ -48,69 +73,14 @@
       }
     },
     {
-      "@id": "skos:Concept",
-      "@type": "owl:Class"
-    },
-    {
       "@id": "poiapit:POIID",
       "@type": "owl:DatatypeProperty",
       "rdfs:isDefinedBy": {
         "@id": "https://w3id.org/italia/onto/POI"
       },
       "rdfs:subPropertyOf": {
-        "@id": "dcterms:identifier"
+        "@id": "dct:identifier"
       }
-    },
-    {
-      "@id": "poiapit:POIdescription",
-      "@type": "owl:DatatypeProperty",
-      "rdfs:isDefinedBy": {
-        "@id": "https://w3id.org/italia/onto/POI"
-      },
-      "rdfs:subPropertyOf": {
-        "@id": "dcterms:description"
-      }
-    },
-    {
-      "@id": "poiapit:POIcategoryIdentifier",
-      "@type": "owl:DatatypeProperty",
-      "rdfs:isDefinedBy": {
-        "@id": "https://w3id.org/italia/onto/POI"
-      },
-      "rdfs:subPropertyOf": [
-        {
-          "@id": "dcterms:identifier"
-        },
-        {
-          "@id": "skos:notation"
-        }
-      ]
-    },
-    {
-      "@id": "skos:prefLabel",
-      "@type": "owl:DatatypeProperty"
-    },
-    {
-      "@id": "dcterms:identifier",
-      "@type": "owl:DatatypeProperty"
-    },
-    {
-      "@id": "skos:notation",
-      "@type": "owl:DatatypeProperty"
-    },
-    {
-      "@id": "poiapit:PointOfInterestCategory",
-      "@type": "owl:Class",
-      "rdfs:isDefinedBy": {
-        "@id": "https://w3id.org/italia/onto/POI"
-      },
-      "rdfs:subClassOf": {
-        "@id": "skos:Concept"
-      }
-    },
-    {
-      "@id": "dcterms:description",
-      "@type": "owl:DatatypeProperty"
     },
     {
       "@id": "poiapit:POIalternativeName",
@@ -123,8 +93,19 @@
       }
     },
     {
-      "@id": "skos:altLabel",
-      "@type": "owl:DatatypeProperty"
+      "@id": "poiapit:POIcategoryIdentifier",
+      "@type": "owl:DatatypeProperty",
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/italia/onto/POI"
+      },
+      "rdfs:subPropertyOf": [
+        {
+          "@id": "dct:identifier"
+        },
+        {
+          "@id": "skos:notation"
+        }
+      ]
     },
     {
       "@id": "poiapit:POIcategoryName",
@@ -135,6 +116,42 @@
       "rdfs:subPropertyOf": {
         "@id": "skos:prefLabel"
       }
+    },
+    {
+      "@id": "poiapit:POIdescription",
+      "@type": "owl:DatatypeProperty",
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/italia/onto/POI"
+      },
+      "rdfs:subPropertyOf": {
+        "@id": "dct:description"
+      }
+    },
+    {
+      "@id": "poiapit:PointOfInterestCategory",
+      "@type": "owl:Class",
+      "rdfs:isDefinedBy": {
+        "@id": "https://w3id.org/italia/onto/POI"
+      },
+      "rdfs:subClassOf": {
+        "@id": "skos:Concept"
+      }
+    },
+    {
+      "@id": "skos:Concept",
+      "@type": "owl:Class"
+    },
+    {
+      "@id": "skos:altLabel",
+      "@type": "owl:DatatypeProperty"
+    },
+    {
+      "@id": "skos:notation",
+      "@type": "owl:DatatypeProperty"
+    },
+    {
+      "@id": "skos:prefLabel",
+      "@type": "owl:DatatypeProperty"
     }
   ]
 }
