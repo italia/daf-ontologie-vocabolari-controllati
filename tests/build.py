@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 import json
 import logging
+from io import BytesIO
 from pathlib import Path
 
 import click
@@ -96,19 +97,33 @@ def normalize_json_file(fpath):
     fpath.write_text(json_text)
 
 
+def normalize_xml_file(fpath):
+    fpath = Path(fpath)
+    import lxml.etree as ET
+
+    et = ET.parse(BytesIO(fpath.read_bytes()))
+    output = BytesIO()
+    et.write_c14n(output)
+    fpath.write_bytes(output.getvalue())
+
+
 @click.command()
 @click.argument("src")
-@click.option("--normalize", is_flag=True, default=False)
+@click.option("--normalize-json", is_flag=True, default=False)
+@click.option("--normalize-xml", is_flag=True, default=False)
 @click.option("--build", is_flag=True)
-def main(src, normalize, build):
+def main(src, normalize_json, normalize_xml, build):
     fpath = Path(src)
 
-    if normalize:
+    if normalize_json:
         doit = normalize_json_file
         ext = "*.jsonld"
     elif build:
         doit = build_semantic_asset
         ext = "*.ttl"
+    elif normalize_xml:
+        doit = normalize_xml_file
+        ext = "*.rdf"
     else:
         raise Exception("No action specified")
 
