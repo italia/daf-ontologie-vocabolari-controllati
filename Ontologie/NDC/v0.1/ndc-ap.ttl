@@ -1,0 +1,164 @@
+#
+# The Application profile for the National Data Catalog for Semantic Interoperability.
+#
+@prefix : <https://w3id.org/italia/onto/ndc-profile/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
+@prefix admsapit: <https://w3id.org/italia/onto/ADMS/> .
+@prefix dcatapit: <http://dati.gov.it/onto/dcatapit#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@base <https://w3id.org/italia/onto/ndc-profile> .
+
+<https://w3id.org/italia/onto/ndc-profile>
+    rdf:type owl:Ontology ;
+    owl:versionIRI <https://w3id.org/italia/onto/ndc-profile/0.1> ;
+    owl:imports <http://dati.gov.it/onto/dcatapit/2.0> ;
+    rdfs:isDefinedBy <https://w3id.org/italia/onto/ndc-profile> ;
+    rdfs:label "Profilo applicativo italiano per il catalogo nazionale dati (NDC)"@it ,
+        "Italian Application Profile for the national data catalogue (NDC)."@en ;
+    dct:title "Profilo applicativo italiano per il catalogo nazionale dati (NDC)."@it ,
+        "Italian Application Profile for the national data catalogue (NDC)."@en ;
+    rdfs:comment "This is the ontology of the Italian Application Profile for the national data catalogue (NDC)"@en ,
+        "Questa è l'ontologia del profilo applicativo italiano per il catalogo nazionale dati (NDC)"@it ;
+    dct:description "This is the ontology of the Italian Application Profile for the national data catalogue - NDC"@en ,
+        "Questa è l'ontologia del profilo applicativo italiano per il catalogo nazionale dati (NDC)"@it ;
+    dct:issued "2021-11-19"^^xsd:date ;
+    owl:versionInfo "0.1 - 19 November 2021 - Creation of the profile"@en ;
+    admsapit:hasTask admsapit:AnnotationTask ,
+    admsapit:QueryFormulationTask ;
+    admsapit:target "Developers"@it ;
+    admsapit:hasOntologyLanguage admsapit:OWL ;
+    dct:creator <https://w3id.org/italia/data/organization/support-unit/cnr-Z6HZEH/stlab> ;
+    dcat:keyword "catalogo vocabolari"@it ;
+    admsapit:hasSemanticAssetDistribution <https://w3id.org/italia/data/distribution/ndc-profile-RDF-TURTLE> ;
+    dct:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    admsapit:hasFormalityLevel admsapit:Formal ;
+    dct:rightsHolder <https://w3id.org/italia/data/organization/support-unit/pcm-AA1D3A2> ;
+    admsapit:officialURI "https://w3id.org/italia/onto/ndc-profile"^^xsd:anyURI ;
+    dct:publisher <https://w3id.org/italia/data/organization/support-unit/pcm-AA1D3A2> ;
+    dct:modified "2021-11-19" ;
+    admsapit:prefix "ndc" ;
+    admsapit:last : ;
+    dcat:contactPoint <https://w3id.org/italia/data/contact-point/ndc> ;
+    admsapit:semanticAssetInUse  <https://w3id.org/italia/data/project/OntoPiA> ;
+    dct:accrualPeriodicity <http://publications.europa.eu/resource/authority/frequency/IRREG> ;
+    admsapit:acronym "NDC-AP_IT" ;
+    prov:wasInfluencedBy <ttp://dati.gov.it/onto/dcatapit#> ;
+    rdfs:isDefinedBy <https://w3id.org/italia/onto/ndc-profile> ;
+    dcat:theme <http://publications.europa.eu/resource/authority/data-theme/GOVE> ;
+    owl:versionInfo "0.1- 19 Novembre 2021 - Creazione del profilo"@it ;
+    dct:language <http://publications.europa.eu/resource/authority/language/ITA> ;
+    dcat:theme <http://publications.europa.eu/resource/authority/data-theme/TECH> .
+ 
+ 
+#################################################################
+#    Object Properties
+#################################################################
+ 
+###  https://w3id.org/italia/onto/ndc-profile/jsonSchemaURL
+:jsonSchemaURL rdf:type owl:ObjectProperty ;
+    rdfs:domain <http://dati.gov.it/onto/dcatapit#Dataset> ;
+    rdfs:range rdfs:Resource ;
+    rdfs:comment "Questa proprietà consente di collegare un dataset nell'ontologia DCAT-AP_IT a un URL delle relative API del dataset, definite mediante JSON-schema."@it ,
+        "This property allows one to link a dataset to the json-schema URL"@en ;
+    rdfs:isDefinedBy <https://w3id.org/italia/onto/ndc-profile> ;
+    rdfs:label "URL dello schema"@it ,
+        "json schema URL"@en ;
+    owl:versionInfo "provvisorio"@it ,
+        "unstable"@en .
+ 
+ 
+#################################################################
+#    Data properties
+#################################################################
+ 
+###  https://w3id.org/italia/onto/ndc-profile/keyConcept
+:keyConcept rdf:type owl:DatatypeProperty ;
+    rdfs:domain <http://dati.gov.it/onto/dcatapit#Dataset> ;
+    rdfs:range rdfs:Literal ;
+    rdfs:comment "Questa proprietà consente di specifcare un concetto chiave rappresentato dal dataset. Nell'ambito del profilo applicativo per il catalogo nazionale dati, il concetto chiave è associato ai vocabolari controllati, che sono dataset, per indicare il concetto chiave che rappresentano come vocabolari di riferimento. Esempio: il dataset https://w3id.org/italia/controlled-vocabulary/classifications-for-public-services/authentication-type ha come concetto chiave \"authentication type\" o \"tipo di autenticazione\""@it ,
+        "This property allows a key concept of a dataset to be specified. Within the application profile for the national data catalogue, the key concept is associated with controlled vocabularies, which are datasets, to indicate the key concept they represent as reference vocabularies. Example: the dataset https://w3id.org/italia/controlled-vocabulary/classifications-for-public-services/authentication-type has as key concept 'authentication type'."@en ;
+    rdfs:isDefinedBy <https://w3id.org/italia/onto/ndc-profile> ;
+    rdfs:label "concetto chiave"@it ,
+        "key concept"@en ;
+    owl:versionInfo "provvisorio"@it ,
+        "unstable"@en .
+ 
+ 
+#################################################################
+#    Classes
+#################################################################
+ 
+###  http://dati.gov.it/onto/dcatapit#Dataset
+<http://dati.gov.it/onto/dcatapit#Dataset>
+    rdfs:subClassOf [ 
+      rdf:type owl:Restriction ;
+      owl:onProperty :jsonSchemaURL ;
+      owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onClass rdfs:Resource
+      ] ,
+    [ rdf:type owl:Restriction ;
+    owl:onProperty :keyConcept ;
+    owl:cardinality "1"^^xsd:nonNegativeInteger
+    ] .
+ 
+ 
+#################################################################
+#    Individuals
+#################################################################
+ 
+###  https://w3id.org/italia/data/organization/support-unit/pcm-AA1D3A2
+<https://w3id.org/italia/data/organization/support-unit/pcm-AA1D3A2>  rdf:type owl:NamedIndividual ,
+    dcatapit:Agent ,
+    foaf:Agent ;
+    dct:identifier "pcm-AA1D3A2" ;
+    foaf:name "Dipartimento per la Trasformazione Digitale"@it ,
+        "Department of Digital Transformation"@en .
+ 
+ 
+###  https://w3id.org/italia/data/contact-point/onto-agid
+<https://w3id.org/italia/data/contact-point/ndc> rdf:type owl:NamedIndividual ,
+    vcard:Kind ,
+    vcard:Organization ;
+    vcard:fn "Contatti dipartimento per la trasformazione digitale" ;
+    vcard:hasEmail <mailto:segreteria.trasformazionedigitale@governo.it> .
+ 
+###  https://w3id.org/italia/data/distribution/ndc-profile-RDF-TURTLE
+<https://w3id.org/italia/data/distribution/ndc-profile-RDF-TURTLE> rdf:type owl:NamedIndividual ,
+    admsapit:SemanticAssetDistribution ;
+    dct:description "Questa è la distribuzione RDF/Turtle dell'ontologia sul profilo applicativo italiano dell'NDC"@it ,
+        "This is the distribution in RDF/turtle of Italian application profile of the NDC project"@en ;
+    dct:format <http://publications.europa.eu/resource/authority/file-type/RDF_TURTLE> ;
+    dct:license <https://w3id.org/italia/controlled-vocabulary/licences/A21_CCBY40> ;
+    dct:title "Distribuzione RDF/Turtle ontologia NDC-AP_IT"@it ,
+        "RDF/Turtle distribution of NDC-AP_IT Ontology"@en ;
+    dcat:accessURL <https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/NDC/latest> ;
+    dcat:downloadURL <https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/NDC/latest/NDC-AP_IT.ttl> .
+ 
+###  https://w3id.org/italia/data/organization/support-unit/cnr-Z6HZEH/stlab
+<https://w3id.org/italia/data/organization/support-unit/cnr-Z6HZEH/stlab> rdf:type owl:NamedIndividual ,
+    dcatapit:Agent ;
+    dct:identifier "cnr - Z6HZEH - STLab" ;
+    foaf:name "Institute of Cognitive Sciences and Technologies of the Italian Research Council (CNR) - Semantic Technology Laboratory (STLab)"@en ,
+        "Istituto di Scienze e Tecnologie della Cognizione del CNR - Semantic Technology Lab (STLab)"@it .
+ 
+ 
+###  https://w3id.org/italia/data/project/OntoPiA
+<https://w3id.org/italia/data/project/OntoPiA> rdf:type owl:NamedIndividual ,
+    admsapit:Project ;
+    :name "OntoPiA - la rete di ontologie della pubblica amministrazione italiana"@it .
+ 
+###  https://w3id.org/italia/onto/ndc-profile
+<https://w3id.org/italia/onto/ndc-profile> rdf:type owl:NamedIndividual ,
+    admsapit:SemanticAsset .
+ 
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
+
