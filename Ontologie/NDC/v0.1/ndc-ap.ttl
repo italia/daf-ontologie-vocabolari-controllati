@@ -63,18 +63,48 @@
 #    Object Properties
 #################################################################
  
-###  https://w3id.org/italia/onto/ndc-profile/jsonSchemaURL
-:jsonSchemaURL rdf:type owl:ObjectProperty ;
-    rdfs:domain <http://dati.gov.it/onto/dcatapit#Dataset> ;
+
+
+###  https://w3id.org/italia/onto/ndc-profile/DataService
+:DataService a owl:Class ;
+  rdfs:subClassOf dctype:Service ;
+  rdfs:isDefinedBy <https://w3id.org/italia/onto/ndc-profile> ;
+  rdfs:comment
+    "A site or end-point providing operations related to the discovery of, access to, or processing functions on, data or related resources."@en,
+    "Un sito o end-point che fornisce operazioni relative alla scoperta, all'accesso o all'elaborazione di funzioni su dati o risorse correlate."@it ;
+  rdfs:label
+    "Data service"@en,
+    "Servizio di dati"@it ;
+  skos:definition
+    "A site or end-point providing operations related to the discovery of, access to, or processing functions on, data or related resources."@en,
+    "Un sito o end-point che fornisce operazioni relative alla scoperta, all'accesso o all'elaborazione di funzioni su dati o risorse correlate."@it ;
+  owl:versionInfo "provvisorio"@it ,
+    "unstable"@en .
+
+###  https://w3id.org/italia/onto/ndc-profile/endpointURL
+:endpointURL a owl:ObjectProperty ;
+    rdfs:domain :DataService ;
     rdfs:range rdfs:Resource ;
-    rdfs:comment "Questa proprietà consente di collegare un dataset nell'ontologia DCAT-AP_IT a un URL delle relative API del dataset, definite mediante JSON-schema."@it ,
-        "This property allows one to link a dataset to the json-schema URL"@en ;
+    rdfs:comment
+      "The root location or primary endpoint of the service (a web-resolvable IRI)."@en,
+      "La locazione principale o l'endpoint primario del servizio (un IRI risolvibile via web)."@it ;
     rdfs:isDefinedBy <https://w3id.org/italia/onto/ndc-profile> ;
-    rdfs:label "URL dello schema"@it ,
-        "json schema URL"@en ;
     owl:versionInfo "provvisorio"@it ,
-        "unstable"@en .
- 
+      "unstable"@en .
+
+## https://w3id.org/italia/onto/ndc-profile/servesDataset
+:servesDataset
+  a owl:ObjectProperty ;
+  rdfs:comment
+    "This property correlates an  API (a DataService) to a Dataset."@en,
+    "Questa proprietà consente di collegare un'API (DataService) ad un dataset nell'ontologia DCAT-AP_IT."@it ;
+  rdfs:isDefinedBy <https://w3id.org/italia/onto/ndc-profile> ;
+  rdfs:label
+    "The served dataset"@en,
+    "Il dataset erogato"@it ;
+  owl:versionInfo "provvisorio"@it ,
+      "unstable"@en .
+
  
 #################################################################
 #    Data properties
@@ -84,8 +114,8 @@
 :keyConcept rdf:type owl:DatatypeProperty ;
     rdfs:domain <http://dati.gov.it/onto/dcatapit#Dataset> ;
     rdfs:range rdfs:Literal ;
-    rdfs:comment "Questa proprietà consente di specifcare un concetto chiave rappresentato dal dataset. Nell'ambito del profilo applicativo per il catalogo nazionale dati, il concetto chiave è associato ai vocabolari controllati, che sono dataset, per indicare il concetto chiave che rappresentano come vocabolari di riferimento. Esempio: il dataset https://w3id.org/italia/controlled-vocabulary/classifications-for-public-services/authentication-type ha come concetto chiave \"authentication type\" o \"tipo di autenticazione\""@it ,
-        "This property allows a key concept of a dataset to be specified. Within the application profile for the national data catalogue, the key concept is associated with controlled vocabularies, which are datasets, to indicate the key concept they represent as reference vocabularies. Example: the dataset https://w3id.org/italia/controlled-vocabulary/classifications-for-public-services/authentication-type has as key concept 'authentication type'."@en ;
+    rdfs:comment "Questa proprietà specifica un concetto chiave rappresentato dal dataset. Nell'ambito del profilo applicativo per il catalogo nazionale dati, il concetto chiave è associato ai vocabolari controllati, che sono dataset, per indicare il concetto chiave che rappresentano come vocabolari di riferimento. Esempio: il dataset https://w3id.org/italia/controlled-vocabulary/classifications-for-public-services/authentication-type ha come concetto chiave \"authentication-type\" o \"tipo di autenticazione\""@it ,
+        "This property allows a key concept of a dataset to be specified. Within the application profile for the national data catalogue, the key concept is associated with controlled vocabularies, which are datasets, to indicate the key concept they represent as reference vocabularies. Example: the dataset https://w3id.org/italia/controlled-vocabulary/classifications-for-public-services/authentication-type has as key concept 'authentication-type'."@en ;
     rdfs:isDefinedBy <https://w3id.org/italia/onto/ndc-profile> ;
     rdfs:label "concetto chiave"@it ,
         "key concept"@en ;
@@ -99,15 +129,10 @@
  
 ###  http://dati.gov.it/onto/dcatapit#Dataset
 <http://dati.gov.it/onto/dcatapit#Dataset>
-    rdfs:subClassOf [ 
-      rdf:type owl:Restriction ;
-      owl:onProperty :jsonSchemaURL ;
-      owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-      owl:onClass rdfs:Resource
-      ] ,
-    [ rdf:type owl:Restriction ;
-    owl:onProperty :keyConcept ;
-    owl:cardinality "1"^^xsd:nonNegativeInteger
+    rdfs:subClassOf [
+        rdf:type owl:Restriction ;
+        owl:onProperty :keyConcept ;
+        owl:cardinality "1"^^xsd:nonNegativeInteger
     ] .
  
  
