@@ -7,7 +7,7 @@ Il presente vocabolario controllato codifica gli obblighi di trasparenza della P
 
 ## Corrispondenze di applicazione tra obblighi di trasparenza e organizzazioni
 
-Il vocabolario è stato impostato per esplicitare quali obblighi di trasparenza si applicano alle diverse organizzazioni o tipologie di amministrazioni. Tali corrispondenze sono state materializzate in un file separato [transparency-obligation-organization](https://w3id.org/italia/controlled-vocabulary/classifications-for-trasparency/transparency-obligation-organization.ttl) per motivi di organizzazione e manutenzione in previsione di futuri aggiornamenti.
+Il vocabolario è stato impostato per esplicitare quali obblighi di trasparenza si applicano alle diverse organizzazioni o tipologie di amministrazioni. Tali corrispondenze sono state materializzate in un file separato [transparency-obligation-organization](https://github.com/italia/daf-ontologie-vocabolari-controllati/blob/master/VocabolariControllati/classifications-for-transparency/transparency-obligation/transparency-obligation-organization.ttl) per motivi di organizzazione e manutenzione in previsione di futuri aggiornamenti.
 Allo stato attuale, l'insieme delle corrispondenze riguarda le seguenti pubbliche amministrazioni e tipologie (rif.  [Elenco analitico delle amministrazioni pubbliche](https://www.istat.it/it/archivio/190748)):
 
 * Presidenza del Consiglio dei Ministri e Ministeri (corrispondenze sulle singole amministrazioni)
