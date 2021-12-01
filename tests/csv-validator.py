@@ -12,7 +12,7 @@ from frictionless import validate
 
 log = logging.getLogger(__name__)
 
-RE_FIELD = re.compile("^[a-zA-Z0-9_]{3,64}$")
+RE_FIELD = re.compile("^[a-zA-Z0-9_]{2,64}$")
 
 
 if __name__ == "__main__":
@@ -46,7 +46,7 @@ if __name__ == "__main__":
             for field in tasks.resource.schema.fields
         ]:
             if not RE_FIELD.match(str(field_name)):
-                log.error(f"Invalid field name: {field_name}")
+                log.error(f"Invalid field name: {field_name} in {fpath.name}")
                 errors[fpath.as_posix()] = [f"Invalid field name: {field_name}"]
                 continue
 
