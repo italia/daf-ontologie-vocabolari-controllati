@@ -53,7 +53,7 @@ if __name__ == "__main__":
         log.info(f"File {fpath} is valid")
     if errors:
         log.debug("Found errors: line, field, error\n" + json.dumps(errors, indent=2))
-        log.error("Validation failed.")
+        log.error(f"Validation failed for {fpath.as_posix()}.")
         exit(1)
 
     log.info("All files are valid")
