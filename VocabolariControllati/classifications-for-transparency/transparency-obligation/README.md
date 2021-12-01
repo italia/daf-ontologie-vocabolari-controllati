@@ -40,6 +40,6 @@ A supporto di questa parte è pubblicato un file di mapping R2RML (transparency-
 ## Riferimenti <a name="rifnorm"></a>
 
 * [Decreto Legislativo 14 marzo 2013, n. 33](http://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legislativo:2013-03-14;33) aggiornato dal [Decreto Legislativo 25 maggio 2016, n. 97](http://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legislativo:2016-05-25;97) e descritto nel dettaglio dalla delibera ANAC 1310/2016
-* [Delibera numero 50 del 04 luglio 2013](https://www.anticorruzione.it/portal/public/classic/AttivitaAutorita/AttiDellAutorita/_Atto?id=06b340010a7780425ec5237d6ee89951)
-* [FAQ in materia di trasparenza (ANAC)](https://www.anticorruzione.it/portal/public/classic/MenuServizio/FAQ/Trasparenza)
+* [Delibera numero 50 del 04 luglio 2013](https://www.anticorruzione.it/-/delibera%C2%A0numero-50-del-04/07/2013-1?inheritRedirect=true&redirect=%2Frisultati-ricerca%3Fq%3DDelibera%2520numero%252050%2520del%252004%2520luglio%25202013%26sort%3DpublishDate_sortable-)
+* [FAQ in materia di trasparenza (ANAC)](https://www.anticorruzione.it/chiedilo-ad-anac/-/categories/119067?p_r_p_resetCur=true&p_r_p_categoryId=119067#nav-filtercategoryNavigation45586)
 * Siti istituzionali delle pubbliche amministrazioni in oggetto
