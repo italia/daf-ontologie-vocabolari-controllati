@@ -5,8 +5,10 @@
 #
 version: "3.3"
 services:
-  test-onto:
-    build: .
+  test-onto: &test-base
+    build:
+      dockerfile: tests/Dockerfile
+      context: .
     volumes:
     - .:/code
     working_dir: /code
@@ -15,3 +17,11 @@ services:
     - -c
     - >-
       pre-commit run -a onto-pyshacl && pre-commit run -a onto-latest
+
+  test:
+    <<: *test-base
+    command: pre-commit run -a
+
+  build:
+    <<: *test-base
+    command: tox -e build
