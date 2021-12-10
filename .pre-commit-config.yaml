@@ -1,0 +1,94 @@
+#
+# Run pre-commit hooks. You can run them without installing
+#  the hook with
+#
+# $ pre-commit run --all-files
+#
+# See https://pre-commit.com for more information
+# See https://pre-commit.com/hooks.html for more hooks
+repos:
+-   repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.0.1
+    hooks:
+    # -   id: trailing-whitespace
+    # -   id: end-of-file-fixer
+    -   id: check-yaml
+        args: [--allow-multiple-documents]
+    -   id: check-added-large-files
+        args:
+        - "--maxkb=4000"
+- repo: https://github.com/myint/autoflake
+  rev: v1.4
+  hooks:
+    - id: autoflake
+      args:
+        - --in-place
+        - --remove-unused-variables
+        - --remove-all-unused-imports
+-   repo: https://github.com/psf/black
+    rev: 21.12b0
+    hooks:
+    -   id: black
+- repo: https://github.com/pycqa/isort
+  rev: 5.10.1
+  hooks:
+    - id: isort
+      name: isort (python)
+      # Use black profile for isort to avoid conflicts
+      #   see https://github.com/PyCQA/isort/issues/1518
+      args: ["--profile", "black"]
+    - id: isort
+      name: isort (cython)
+      types: [cython]
+    - id: isort
+      name: isort (pyi)
+      types: [pyi]
+- repo: https://gitlab.com/pycqa/flake8
+  rev: 3.9.2
+  hooks:
+  - id: flake8
+- repo: https://github.com/Lucas-C/pre-commit-hooks-safety
+  rev: v1.2.2
+  hooks:
+    - id: python-safety-dependencies-check
+- repo: local
+  hooks:
+  - id: jsonschema
+    name: jsonschema
+    entry: python -m dati_playground validate --validate-jsonschema=true
+    files: '.*\.schema.yaml'
+    language: python
+    types:
+    - file
+    additional_dependencies:
+    - git+https://github.com/ioggstream/json-semantic-playground.git
+  - id: onto-pyshacl
+    name: pyshacl ontologies
+    entry: python -m dati_playground validate --validate-shacl=true
+    files: >-
+      ^Ontologie\/[^/]+\/latest/.*\.ttl
+    types:
+    - file
+    language: python
+    additional_dependencies:
+    - git+https://github.com/ioggstream/json-semantic-playground.git
+  - id: onto-latest
+    name: Ontologies latest validator
+    entry: python -m dati_playground validate --validate-versioned-directory=true
+    files: >-
+      ^Ontologie\/.*\.ttl
+    language: python
+    types:
+    - file
+    additional_dependencies:
+    - git+https://github.com/ioggstream/json-semantic-playground.git
+  - id: vocab-pyshacl
+    name: pyshacl vocabularies
+    entry: python -m dati_playground validate --validate-shacl=true
+    files:
+      ^VocabolariControllati\/.*\.ttl
+    language: python
+    types:
+    - file
+    additional_dependencies:
+    - git+https://github.com/ioggstream/json-semantic-playground.git
