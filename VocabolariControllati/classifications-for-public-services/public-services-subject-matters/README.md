@@ -17,7 +17,7 @@ Per ogni concetto sono state definite delle etichette ufficiali (riportate nella
 - etichetta alternativa "Vita lavorativa - lavoro, disoccupazione, pensione"
 
 ### Struttura del Vocabolario
-Il vocabolario è strutturato seguendo lo standard skos e le regole generale di OntoPiA.  
+Il vocabolario è strutturato seguendo lo standard skos e le regole generale di OntoPiA.
 
 La sua struttura attuale è la seguente:
 
