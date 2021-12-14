@@ -15,7 +15,7 @@ Il vocabolario è collegato pertanto, anche semanticamente attraverso la proprie
 
 
 ### Struttura del Vocabolario
-Il vocabolario è strutturato seguendo il modello [skos](http://www.w3.org/2004/02/skos/core#) e le regole generale di OntoPiA.  
+Il vocabolario è strutturato seguendo il modello [skos](http://www.w3.org/2004/02/skos/core#) e le regole generale di OntoPiA.
 
 La sua struttura attuale (nella versione 0.2 nata a seguito della discussione aperta in merito e identificabile nell'issue #78) è la seguente:
 

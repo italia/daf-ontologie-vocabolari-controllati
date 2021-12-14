@@ -11,7 +11,7 @@ Il vocabolario è stato impostato per esplicitare quali obblighi di trasparenza 
 Allo stato attuale, l'insieme delle corrispondenze riguarda le seguenti pubbliche amministrazioni e tipologie (rif.  [Elenco analitico delle amministrazioni pubbliche](https://www.istat.it/it/archivio/190748)):
 
 * Presidenza del Consiglio dei Ministri e Ministeri (corrispondenze sulle singole amministrazioni)
-  
+
     * Presidenza del Consiglio dei Ministri
     * Ministero degli Affari Esteri e della Cooperazione Internazionale
     * Ministero del Lavoro e delle Politiche Sociali
