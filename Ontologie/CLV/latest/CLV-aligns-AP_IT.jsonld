@@ -6,6 +6,7 @@
     "covapit": "https://w3id.org/italia/onto/COV/",
     "dc": "http://purl.org/dc/elements/1.1/",
     "dct": "http://purl.org/dc/terms/",
+    "dcterms": "http://purl.org/dc/terms/",
     "dul": "http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#",
     "geo": "https://www.w3.org/2003/01/geo/wgs84_pos#",
     "gn": "http://www.geonames.org/ontology#",
@@ -21,29 +22,52 @@
   },
   "@graph": [
     {
-      "@id": "clvapit:Geometry",
+      "@id": "geo:alt",
+      "@type": "owl:DatatypeProperty"
+    },
+    {
+      "@id": "clvapit:District",
       "@type": "owl:Class",
-      "owl:subClassOf": [
-        {
-          "@id": "gsp:Geometry"
-        },
-        {
-          "@id": "locn:Geometry"
-        }
-      ],
+      "owl:subClass": {
+        "@id": "skos:Concept"
+      },
       "rdfs:isDefinedBy": {
         "@id": "clvapit:"
       }
     },
     {
-      "@id": "gsp:Geometry",
+      "@id": "gsp:SpatialObject",
       "@type": "owl:Class"
     },
     {
-      "@id": "clvapit:GeographicalDistribution",
+      "@id": "clvapit:long",
+      "@type": "owl:DatatypeProperty",
+      "owl:equivalentProperty": {
+        "@id": "geo:long"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "clvapit:"
+      }
+    },
+    {
+      "@id": "clvapit:AdminUnitComponent",
       "@type": "owl:Class",
       "owl:subClassOf": {
-        "@id": "skos:Concept"
+        "@id": "au:AdministrativeUnit"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "clvapit:"
+      }
+    },
+    {
+      "@id": "ad:Address",
+      "@type": "owl:Class"
+    },
+    {
+      "@id": "clvapit:hasGeometry",
+      "@type": "owl:ObjectProperty",
+      "owl:subPropertyOf": {
+        "@id": "locn:geometry"
       },
       "rdfs:isDefinedBy": {
         "@id": "clvapit:"
@@ -52,6 +76,178 @@
     {
       "@id": "ad:component",
       "@type": "owl:ObjectProperty"
+    },
+    {
+      "@id": "clvapit:fullAddress",
+      "@type": "owl:DatatypeProperty",
+      "owl:subPropertyOf": {
+        "@id": "locn:fullAddress"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "clvapit:"
+      }
+    },
+    {
+      "@id": "clvapit:serialization",
+      "@type": "owl:DatatypeProperty",
+      "owl:equivalentProperty": {
+        "@id": "gsp:hasSerialization"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "clvapit:"
+      }
+    },
+    {
+      "@id": "ad:postCode",
+      "@type": "owl:DatatypeProperty"
+    },
+    {
+      "@id": "clvapit:City",
+      "@type": "owl:Class",
+      "owl:subClass": {
+        "@id": "skos:Concept"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "clvapit:"
+      }
+    },
+    {
+      "@id": "clvapit:Geometry",
+      "@type": "owl:Class",
+      "owl:subClassOf": [
+        {
+          "@id": "locn:Geometry"
+        },
+        {
+          "@id": "gsp:Geometry"
+        }
+      ],
+      "rdfs:isDefinedBy": {
+        "@id": "clvapit:"
+      }
+    },
+    {
+      "@id": "geo:long",
+      "@type": "owl:DatatypeProperty"
+    },
+    {
+      "@id": "ad:situatedWithin",
+      "@type": "owl:ObjectProperty"
+    },
+    {
+      "@id": "clvapit:Region",
+      "@type": "owl:Class",
+      "owl:subClass": {
+        "@id": "skos:Concept"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "clvapit:"
+      }
+    },
+    {
+      "@id": "clvapit:hasSpatialCoverage",
+      "@type": "owl:ObjectProperty",
+      "owl:subPropertyOf": {
+        "@id": "locn:location"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "clvapit:"
+      }
+    },
+    {
+      "@id": "clvapit:StreetToponym",
+      "@type": "owl:Class",
+      "owl:subClassOf": {
+        "@id": "ad:ThoroughfareName"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "clvapit:"
+      }
+    },
+    {
+      "@id": "ad:parentAddress",
+      "@type": "owl:ObjectProperty"
+    },
+    {
+      "@id": "locn:Geometry",
+      "@type": "owl:Class"
+    },
+    {
+      "@id": "skos:Concept",
+      "@type": "owl:Class"
+    },
+    {
+      "@id": "gn:Feature",
+      "@type": "owl:Class"
+    },
+    {
+      "@id": "clvapit:lat",
+      "@type": "owl:DatatypeProperty",
+      "owl:equivalentProperty": {
+        "@id": "geo:lat"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "clvapit:"
+      }
+    },
+    {
+      "@id": "gsp:Feature",
+      "@type": "owl:Class"
+    },
+    {
+      "@id": "ad:AddressAreaName",
+      "@type": "owl:Class"
+    },
+    {
+      "@id": "gsp:Geometry",
+      "@type": "owl:Class"
+    },
+    {
+      "@id": "clvapit:Country",
+      "@type": "owl:Class",
+      "owl:subClass": {
+        "@id": "skos:Concept"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "clvapit:"
+      }
+    },
+    {
+      "@id": "gsp:hasSerialization",
+      "@type": "owl:DatatypeProperty"
+    },
+    {
+      "@id": "clvapit:Identifier",
+      "@type": "owl:Class",
+      "owl:subClassOf": {
+        "@id": "gn:Code"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "clvapit:"
+      }
+    },
+    {
+      "@id": "locn:address",
+      "@type": "owl:ObjectProperty"
+    },
+    {
+      "@id": "gsp:ehInside",
+      "@type": "owl:ObjectProperty"
+    },
+    {
+      "@id": "clvapit:Address",
+      "@type": "owl:Class",
+      "owl:subClassOf": [
+        {
+          "@id": "ad:Address"
+        },
+        {
+          "@id": "locn:Address"
+        }
+      ],
+      "rdfs:isDefinedBy": {
+        "@id": "clvapit:"
+      }
     },
     {
       "@id": "https://w3id.org/italia/onto/CLV-aligns",
@@ -93,11 +289,11 @@
       }
     },
     {
-      "@id": "locn:Address",
-      "@type": "owl:Class"
+      "@id": "geo:lat",
+      "@type": "owl:DatatypeProperty"
     },
     {
-      "@id": "geo:long",
+      "@id": "locn:fullAddress",
       "@type": "owl:DatatypeProperty"
     },
     {
@@ -111,112 +307,8 @@
       }
     },
     {
-      "@id": "locn:Geometry",
-      "@type": "owl:Class"
-    },
-    {
-      "@id": "clvapit:hasSpatialCoverage",
-      "@type": "owl:ObjectProperty",
-      "owl:subPropertyOf": {
-        "@id": "locn:location"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "clvapit:"
-      }
-    },
-    {
-      "@id": "clvapit:AddressComponent",
-      "@type": "owl:Class",
-      "owl:subClassOf": {
-        "@id": "ad:AddressComponent"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "clvapit:"
-      }
-    },
-    {
-      "@id": "clvapit:Province",
-      "@type": "owl:Class",
-      "owl:subClass": {
-        "@id": "skos:Concept"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "clvapit:"
-      }
-    },
-    {
-      "@id": "clvapit:District",
-      "@type": "owl:Class",
-      "owl:subClass": {
-        "@id": "skos:Concept"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "clvapit:"
-      }
-    },
-    {
-      "@id": "clvapit:alt",
-      "@type": "owl:DatatypeProperty",
-      "owl:equivalentProperty": {
-        "@id": "geo:alt"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "clvapit:"
-      }
-    },
-    {
-      "@id": "clvapit:SpatialObject",
-      "@type": "owl:Class",
-      "owl:subClassOf": [
-        {
-          "@id": "gsp:SpatialObject"
-        },
-        {
-          "@id": "geo:SpatialThing"
-        }
-      ],
-      "rdfs:isDefinedBy": {
-        "@id": "clvapit:"
-      }
-    },
-    {
-      "@id": "clvapit:Address",
-      "@type": "owl:Class",
-      "owl:subClassOf": [
-        {
-          "@id": "locn:Address"
-        },
-        {
-          "@id": "ad:Address"
-        }
-      ],
-      "rdfs:isDefinedBy": {
-        "@id": "clvapit:"
-      }
-    },
-    {
-      "@id": "clvapit:lat",
-      "@type": "owl:DatatypeProperty",
-      "owl:equivalentProperty": {
-        "@id": "geo:lat"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "clvapit:"
-      }
-    },
-    {
-      "@id": "clvapit:AddressArea",
-      "@type": "owl:Class",
-      "owl:subClassOf": {
-        "@id": "ad:AddressAreaName"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "clvapit:"
-      }
-    },
-    {
-      "@id": "locn:fullAddress",
-      "@type": "owl:DatatypeProperty"
+      "@id": "locn:location",
+      "@type": "owl:ObjectProperty"
     },
     {
       "@id": "clvapit:Feature",
@@ -234,42 +326,10 @@
       }
     },
     {
-      "@id": "skos:Concept",
-      "@type": "owl:Class"
-    },
-    {
-      "@id": "clvapit:City",
+      "@id": "clvapit:AddressComponent",
       "@type": "owl:Class",
-      "owl:subClass": {
-        "@id": "skos:Concept"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "clvapit:"
-      }
-    },
-    {
-      "@id": "locn:location",
-      "@type": "owl:ObjectProperty"
-    },
-    {
-      "@id": "clvapit:hasGeometry",
-      "@type": "owl:ObjectProperty",
-      "owl:subPropertyOf": {
-        "@id": "locn:geometry"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "clvapit:"
-      }
-    },
-    {
-      "@id": "au:AdministrativeUnit",
-      "@type": "owl:Class"
-    },
-    {
-      "@id": "clvapit:serialization",
-      "@type": "owl:DatatypeProperty",
-      "owl:equivalentProperty": {
-        "@id": "gsp:hasSerialization"
+      "owl:subClassOf": {
+        "@id": "ad:AddressComponent"
       },
       "rdfs:isDefinedBy": {
         "@id": "clvapit:"
@@ -280,16 +340,33 @@
       "@type": "owl:Class"
     },
     {
-      "@id": "gsp:hasSerialization",
-      "@type": "owl:DatatypeProperty"
+      "@id": "clvapit:situatedWithin",
+      "@type": "owl:ObjectProperty",
+      "owl:equivalentProperty": [
+        {
+          "@id": "ad:situatedWithin"
+        },
+        {
+          "@id": "gsp:ehInside"
+        }
+      ],
+      "rdfs:isDefinedBy": {
+        "@id": "clvapit:"
+      }
     },
     {
-      "@id": "ad:AddressAreaName",
+      "@id": "au:AdministrativeUnit",
       "@type": "owl:Class"
     },
     {
-      "@id": "gsp:ehInside",
-      "@type": "owl:ObjectProperty"
+      "@id": "clvapit:AddressArea",
+      "@type": "owl:Class",
+      "owl:subClassOf": {
+        "@id": "ad:AddressAreaName"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "clvapit:"
+      }
     },
     {
       "@id": "clvapit:postCode",
@@ -302,88 +379,38 @@
       }
     },
     {
-      "@id": "clvapit:Country",
-      "@type": "owl:Class",
-      "owl:subClass": {
-        "@id": "skos:Concept"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "clvapit:"
-      }
-    },
-    {
-      "@id": "clvapit:StreetToponym",
-      "@type": "owl:Class",
-      "owl:subClassOf": {
-        "@id": "ad:ThoroughfareName"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "clvapit:"
-      }
-    },
-    {
-      "@id": "gsp:Feature",
+      "@id": "ad:AddressComponent",
       "@type": "owl:Class"
-    },
-    {
-      "@id": "ad:postCode",
-      "@type": "owl:DatatypeProperty"
-    },
-    {
-      "@id": "clvapit:fullAddress",
-      "@type": "owl:DatatypeProperty",
-      "owl:subPropertyOf": {
-        "@id": "locn:fullAddress"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "clvapit:"
-      }
-    },
-    {
-      "@id": "geo:lat",
-      "@type": "owl:DatatypeProperty"
-    },
-    {
-      "@id": "ad:parentAddress",
-      "@type": "owl:ObjectProperty"
-    },
-    {
-      "@id": "geo:alt",
-      "@type": "owl:DatatypeProperty"
-    },
-    {
-      "@id": "locn:address",
-      "@type": "owl:ObjectProperty"
-    },
-    {
-      "@id": "clvapit:Region",
-      "@type": "owl:Class",
-      "owl:subClass": {
-        "@id": "skos:Concept"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "clvapit:"
-      }
-    },
-    {
-      "@id": "gn:Feature",
-      "@type": "owl:Class"
-    },
-    {
-      "@id": "clvapit:AdminUnitComponent",
-      "@type": "owl:Class",
-      "owl:subClassOf": {
-        "@id": "au:AdministrativeUnit"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "clvapit:"
-      }
     },
     {
       "@id": "clvapit:hasAddress",
       "@type": "owl:ObjectProperty",
       "owl:subPropertyOf": {
         "@id": "locn:address"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "clvapit:"
+      }
+    },
+    {
+      "@id": "clvapit:alt",
+      "@type": "owl:DatatypeProperty",
+      "owl:equivalentProperty": {
+        "@id": "geo:alt"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "clvapit:"
+      }
+    },
+    {
+      "@id": "locn:Address",
+      "@type": "owl:Class"
+    },
+    {
+      "@id": "clvapit:Province",
+      "@type": "owl:Class",
+      "owl:subClass": {
+        "@id": "skos:Concept"
       },
       "rdfs:isDefinedBy": {
         "@id": "clvapit:"
@@ -410,28 +437,18 @@
       }
     },
     {
-      "@id": "gsp:SpatialObject",
-      "@type": "owl:Class"
+      "@id": "locn:geometry",
+      "@type": "owl:ObjectProperty"
     },
     {
-      "@id": "clvapit:long",
-      "@type": "owl:DatatypeProperty",
-      "owl:equivalentProperty": {
-        "@id": "geo:long"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "clvapit:"
-      }
-    },
-    {
-      "@id": "clvapit:situatedWithin",
-      "@type": "owl:ObjectProperty",
-      "owl:equivalentProperty": [
+      "@id": "clvapit:SpatialObject",
+      "@type": "owl:Class",
+      "owl:subClassOf": [
         {
-          "@id": "ad:situatedWithin"
+          "@id": "geo:SpatialThing"
         },
         {
-          "@id": "gsp:ehInside"
+          "@id": "gsp:SpatialObject"
         }
       ],
       "rdfs:isDefinedBy": {
@@ -439,34 +456,19 @@
       }
     },
     {
-      "@id": "ad:Address",
-      "@type": "owl:Class"
-    },
-    {
-      "@id": "gn:Code",
-      "@type": "owl:Class"
-    },
-    {
-      "@id": "locn:geometry",
-      "@type": "owl:ObjectProperty"
-    },
-    {
-      "@id": "clvapit:Identifier",
+      "@id": "clvapit:GeographicalDistribution",
       "@type": "owl:Class",
       "owl:subClassOf": {
-        "@id": "gn:Code"
+        "@id": "skos:Concept"
       },
       "rdfs:isDefinedBy": {
         "@id": "clvapit:"
       }
     },
     {
-      "@id": "ad:situatedWithin",
-      "@type": "owl:ObjectProperty"
-    },
-    {
-      "@id": "ad:AddressComponent",
+      "@id": "gn:Code",
       "@type": "owl:Class"
     }
   ]
 }
+
