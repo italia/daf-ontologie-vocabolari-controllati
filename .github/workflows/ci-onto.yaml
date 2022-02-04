@@ -11,14 +11,12 @@ on:
       - "**/*.md"
       - "**/*.rdf"
       - "**/*.jsonld"
-      - "VocabolariControllati/**"
   pull_request:
     branches: [ "master" ]
     paths-ignore:
       - "**/*.md"
       - "**/*.rdf"
       - "**/*.jsonld"
-      - "VocabolariControllati/**"
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -36,7 +34,7 @@ jobs:
       - name: Run a script
         run: |-
           pip install pre-commit
-          pre-commit run -a onto-pyshacl
+          pre-commit run -a validate-turtle
   test-onto-latest:
     runs-on: ubuntu-latest
     steps:
@@ -48,4 +46,4 @@ jobs:
       - name: Run a script
         run: |-
           pip install pre-commit
-          pre-commit run -a onto-latest
+          pre-commit run -a validate-directory-versioning
