@@ -51,48 +51,23 @@ repos:
   rev: v1.2.2
   hooks:
     - id: python-safety-dependencies-check
-- repo: local
+- repo: https://github.com/ioggstream/json-semantic-playground.git
+  rev: ce554f258910c67661751675e362dbb67e3ee946
   hooks:
-  - id: jsonschema
-    name: jsonschema
-    entry: python -m dati_playground validate --validate-jsonschema=true
-    files: '.*\.schema.yaml'
-    language: python
-    types:
-    - file
-    additional_dependencies:
-    - git+https://github.com/ioggstream/json-semantic-playground.git
-  - id: onto-pyshacl
-    name: pyshacl ontologies
-    entry: python -m dati_playground validate --validate-shacl=true
-    exclude: >-
-      .*(-aligns|-DBGT|example).*
-    files: >-
-      ^Ontologie\/[^/]+\/latest/.*\.ttl
-    types:
-    - file
-    language: python
-    additional_dependencies:
-    - git+https://github.com/ioggstream/json-semantic-playground.git
-  - id: onto-latest
-    name: Ontologies latest validator
-    entry: python -m dati_playground validate --validate-versioned-directory=true
-    exclude: >-
-      .*(-aligns|-DBGT|example).*
-    files: >-
-      ^Ontologie\/.*\.ttl
-    language: python
-    types:
-    - file
-    additional_dependencies:
-    - git+https://github.com/ioggstream/json-semantic-playground.git
-  - id: vocab-pyshacl
-    name: pyshacl vocabularies
-    entry: python -m dati_playground validate --validate-shacl=true
-    files:
-      ^VocabolariControllati\/.*\.ttl
-    language: python
-    types:
-    - file
-    additional_dependencies:
-    - git+https://github.com/ioggstream/json-semantic-playground.git
+  -   id: validate-csv
+      files: >-
+        ^VocabolariControllati/.*\.csv
+  -   id: validate-directory-versioning
+      files: >-
+        ^Ontologie/.*/latest/.*\.ttl
+  -   id: validate-turtle
+      name: validate-turtle-ontologies
+      files: >-
+        ^Ontologie/.*/latest/.*\.ttl
+  -   id: validate-turtle
+      name: validate-turtle-vocabularies
+      files: >-
+        ^VocabolariControllati/.*\.ttl
+      exclude: >-
+        ^.*(scriptR2RML|vocs-deprecated).*
+  -   id: validate-oas-schema
