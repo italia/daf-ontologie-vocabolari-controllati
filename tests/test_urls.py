@@ -1,18 +1,20 @@
 import re
 import time
+from os import environ
 from pathlib import Path
 
 import pytest
 import requests
 
-re_url = re.compile(r'[<"]https://github[^>"]*')
+re_url = re.compile(r'[<"](https://github|https://raw.githubusercontent[^>"]*)[>"]')
 
 
 def get_urls(glob_path):
     files = Path(".").glob(glob_path)
     for f in files:
         for url in re_url.findall(f.read_text()):
-            yield f, url.strip('<">')
+            if environ.get("PYTEST_ONLY", "") in url:
+                yield f, url.strip('<">')
 
 
 @pytest.mark.parametrize("fpath,url", get_urls("VocabolariControllati/**/*.ttl"))
