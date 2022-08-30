@@ -8,7 +8,7 @@
 # See https://pre-commit.com/hooks.html for more hooks
 repos:
 -   repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.0.1
+    rev: v4.3.0
     hooks:
     # -   id: trailing-whitespace
     # -   id: end-of-file-fixer
@@ -26,7 +26,7 @@ repos:
         - --remove-unused-variables
         - --remove-all-unused-imports
 -   repo: https://github.com/psf/black
-    rev: 21.12b0
+    rev: 22.6.0
     hooks:
     -   id: black
 - repo: https://github.com/pycqa/isort
@@ -48,15 +48,17 @@ repos:
   hooks:
   - id: flake8
 - repo: https://github.com/Lucas-C/pre-commit-hooks-safety
-  rev: v1.2.2
+  rev: v1.3.0
   hooks:
     - id: python-safety-dependencies-check
-- repo: https://github.com/ioggstream/json-semantic-playground.git
-  rev: ce554f258910c67661751675e362dbb67e3ee946
+- repo: https://github.com/teamdigitale/json-semantic-playground.git
+  rev: c10c587
   hooks:
   -   id: validate-csv
       files: >-
         ^VocabolariControllati/.*\.csv
+      exclude: >-
+        ^.*(scriptR2RML|vocs-deprecated).*
   -   id: validate-directory-versioning
       files: >-
         ^Ontologie/.*/latest/.*\.ttl
