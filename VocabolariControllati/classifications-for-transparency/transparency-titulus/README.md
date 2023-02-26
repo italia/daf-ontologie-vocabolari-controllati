@@ -6,7 +6,7 @@ Il presente vocabolario controllato implementa la struttura della sezione "Ammin
 
 
 **NOTA**
-Questo vocabolario sarà utilizzato dall'ontologia della trasparenza per le pubbliche amministrazioni (attualmente in fase di sviluppo).
+Questo vocabolario è utilizzato dall'ontologia della trasparenza per le pubbliche amministrazioni.
 
 
 
@@ -26,6 +26,7 @@ https://www.anticorruzione.it/portal/public/classic/AttivitaAutorita/AttiDellAut
 	- [CNR](https://www.cnr.it/en/amministrazione-trasparente)
 	- [Ministero Esteri](https://www.esteri.it/mae/en/trasparenza_comunicazioni_legali/)
 	- [SIAE](https://www.siae.it/en/transparent-siae/transparent-siae)
+	- Uso di traduttori automatici con revisione di persone
 
 	Per la traduzione in Tedesco:
 	- [provincia bolzano](http://www.provinz.bz.it/de/default.asp)
