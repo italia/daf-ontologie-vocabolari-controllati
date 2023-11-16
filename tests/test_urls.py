@@ -1,3 +1,4 @@
+import os
 import re
 import time
 from os import environ
@@ -49,6 +50,12 @@ def test_vocab_url(fpath, url):
             pytest.skip(f"See {issue_url}")
 
     ret = request_rl(requests.head, url)
+
+    # The file exists locally, so it will exist when a PR is merged
+    url_filename = url.replace("https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/", "")
+    if ret.status_code == 404 and os.path.exists(url_filename):
+        return
+
     assert ret.status_code in (200, 301, 302)
 
 
@@ -72,4 +79,10 @@ def test_onto_url(fpath, url):
             pytest.skip(f"See {issue_url}")
 
     ret = request_rl(requests.head, url)
+
+    # The file exists locally, so it will exist when a PR is merged
+    url_filename = url.replace("https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/", "")
+    if ret.status_code == 404 and os.path.exists(url_filename):
+        return
+
     assert ret.status_code in (200, 301, 302)
