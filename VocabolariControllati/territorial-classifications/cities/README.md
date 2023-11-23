@@ -50,7 +50,3 @@ Il vocabolario controllato è collegato al vocabolario controllato delle regioni
 2. [Linked Open Data di ISPRA](http://dati.isprambiente.it/dataset/i-luoghi/).
 
 
-### Note finali e ringraziamenti
-Il dataset Archivio storico dei comuni non era in formato aperto prima dell'inizio del presente lavoro. Grazie all'impulso della PDND e alla produzione di questo dataset anche la fonte ora risulta essere disponibile a un permanent URL, in formato CSV, con la codifica UTF8 gestita e una tabella di accompagnamento che descrive la semantica delle colonne del CSV.
-
-A tal proposito si ringrazia tutto il team dell'ANPR che ha prontamente agito in base alle richieste giunte, anche dalle comunità.
