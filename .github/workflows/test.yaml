@@ -38,7 +38,7 @@ jobs:
           for i in */; do
             last_version_dir=$(basename $(ls -dv  $i/*/ | tail -1))
 
-            [ -e $i/latest ] && (echo "$i/latest already exists" >&2 ; exit 1)
+            rm -fr $i/latest
 
             ln -s $last_version_dir $i/latest
           done
