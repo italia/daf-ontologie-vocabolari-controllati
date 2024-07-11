@@ -146,9 +146,9 @@
                                                                dcat:downloadURL <https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/RPO/latest/RPO-AP_IT.jsonld> .
 
 
+
 #################################################################
-#    Datatypes
-#################################################################
+#    Datatypes#################################################################
 
 ###  http://www.w3.org/2001/XMLSchema#dateTime
 xsd:dateTime rdf:type rdfs:Datatype .
@@ -163,8 +163,7 @@ xsd:string rdf:type rdfs:Datatype .
 
 
 #################################################################
-#    Object Properties
-#################################################################
+#    Object Properties#################################################################
 
 ###  https://w3id.org/italia/onto/CPV/hasBirthPlace
 cpv:hasBirthPlace rdf:type owl:ObjectProperty .
@@ -194,7 +193,7 @@ rpo:belongsToRegisteredFamily rdf:type owl:ObjectProperty ,
 ###  https://w3id.org/italia/onto/RPO/belongsToRegisteredFamilyOrCohabitance
 rpo:belongsToRegisteredFamilyOrCohabitance rdf:type owl:ObjectProperty ,
                                                     owl:FunctionalProperty ;
-                                           rdfs:domain cpv:Alive ;
+                                           rdfs:domain rpo:RegisteredResidentPerson ;
                                            rdfs:label "appartiene a famiglia o convivenza"@it ,
                                                       "belongs to registered family or cohabitance"@en .
 
@@ -223,8 +222,8 @@ rpo:bornInCountry rdf:type owl:ObjectProperty ;
 rpo:citizenshipAtTimeOfDeath rdf:type owl:ObjectProperty ;
                              rdfs:domain cpv:Dead ;
                              rdfs:range rpo:Citizenship ;
-                             rdfs:label "citizenship at time of death"@en ,
-                                        "cittadinanza_al_decesso"@it .
+                             rdfs:label "Citizenship at time of death"@en ,
+                                        "Cittadinanza al decesso"@it .
 
 
 ###  https://w3id.org/italia/onto/RPO/currentlyHasDomicileIn
@@ -312,7 +311,7 @@ rpo:hasRegisteredParentalRelationship rdf:type owl:ObjectProperty ,
 rpo:hasRegisteredResidence rdf:type owl:ObjectProperty ;
                            rdfs:subPropertyOf cpv:hasResidenceInTime ;
                            rdf:type owl:InverseFunctionalProperty ;
-                           rdfs:domain cpv:Person ;
+                           rdfs:domain rpo:RegisteredResidentPerson ;
                            rdfs:range rpo:RegisteredResidence ;
                            rdfs:label "ha residenza anagrafica"@it ,
                                       "has registered residence"@en .
@@ -374,6 +373,7 @@ rpo:isCurrentlyCitizen rdf:type owl:ObjectProperty ;
 rpo:isCurrentlyPredominantlyCitizen rdf:type owl:ObjectProperty ;
                                     rdfs:subPropertyOf rpo:isCurrentlyCitizen ;
                                     rdf:type owl:FunctionalProperty ;
+									rdfs:comment "La persona nei cui confronti è riconosciuta la cittadinanza da parte di più Stati è sottoposta alle rispettive leggi di ciascuno Stato di appartenenza. Nell'ordinamento italiano, nei rapporti di diritto internazionale privato, se la persona ha più cittadinanze, si applica la legge di quello tra gli Stati di appartenenza con il quale essa ha il collegamento più stretto. Se tra le cittadinanze vi è quella italiana, questa prevale (art. 19 legge 218/1995)."@it ;
                                     rdfs:label "is currently predominantly citizen"@en ,
                                                "è attualmente prevalentemente cittadino"@it .
 
@@ -424,8 +424,7 @@ rpo:residenceInCityAtTimeOfDeath rdf:type owl:ObjectProperty ,
 
 
 #################################################################
-#    Data properties
-#################################################################
+#    Data properties#################################################################
 
 ###  https://w3id.org/italia/onto/CPV/personID
 cpv:personID rdf:type owl:DatatypeProperty .
@@ -560,21 +559,20 @@ rpo:residentPersonID rdf:type owl:DatatypeProperty ;
                      rdfs:domain rpo:RegisteredResidentPerson ;
                      rdfs:range xsd:string ;
                      rdfs:comment "Codice identificativo univoco attribuito dall'Anagrafe Nazionale delle Persone Residenti (ANPR) a ciascun cittadino per garantire la circolarità dei dati anagrafici e l'interoperabilità con le altre banche dati delle pubbliche amministrazioni e dei gestori di servizi pubblici. L’ID ANPR è attribuito ad ogni individuo all’atto della sua iscrizione in anagrafe e conseguente registrazione in ANPR. L’ID ANPR si contraddistingue per le seguenti caratteristiche: a. è alfanumerico con lunghezza di 9 caratteri compreso il check digit; b. è attribuito e associato univocamente ad ogni individuo già registrato in ANPR ovvero ad ogni individuo in fase di registrazione nell’ANPR; c. può essere generato soltanto dal sistema ANPR; d. non è ricavato dai dati anagrafici della persona a cui è attribuito; e. non contiene elementi identificativi dei dati anagrafici della persona a cui è attribuito; f. non può essere riassegnato; g. garantisce l’associazione immutabile al soggetto cui è attribuito; h. non fornisce evidenza di alcuna sequenzialità, tantomeno temporale; i. è dotato di check digit (il check digit è l’ultimo carattere dell’ID ANPR calcolato tramite uno specifico algoritmo per consentire di verificare la validità dei numeri che lo precedono); j. è possibile la ricostruzione del check digit\". [art. 62, c.3, ultimo periodo, CAD; DM Ministero Interno 18.4.2023; artt. 7 e 17 DPR 223/1989]"@it ;
-                     rdfs:label "ID persona residente"@it ,
-                                "residentPersonID"@en .
+                     rdfs:label "Identificativo persona residente"@it ,
+                                "Resident person identifier "@en .
 
 
 ###  https://w3id.org/italia/onto/RPO/weddingDate
 rpo:weddingDate rdf:type owl:DatatypeProperty ;
                 rdfs:domain cpv:Person ;
-                rdfs:range xsd:integer ;
-                rdfs:label "dataMatrimonio"@it ,
-                           "wedding date"@en .
+                rdfs:range xsd:dateTime ;
+                rdfs:label "Data di matrimonio"@it ,
+                           "Wedding date"@en .
 
 
 #################################################################
-#    Classes
-#################################################################
+#    Classes#################################################################
 
 ###  https://w3id.org/italia/onto/CLV/Address
 CLV:Address rdf:type owl:Class .
@@ -601,11 +599,6 @@ CLV:City rdf:type owl:Class ;
 
 ###  https://w3id.org/italia/onto/CLV/Country
 CLV:Country rdf:type owl:Class ;
-            owl:equivalentClass [ rdf:type owl:Restriction ;
-                                  owl:onProperty [ owl:inverseOf rpo:bornInCountry
-                                                 ] ;
-                                  owl:someValuesFrom owl:Thing
-                                ] ;
             rdfs:label "Stato"@it .
 
 
@@ -623,24 +616,12 @@ cpv:Alive rdf:type owl:Class ;
                               [ rdf:type owl:Restriction ;
                                 owl:onProperty rpo:isCurrentlyCitizen ;
                                 owl:someValuesFrom owl:Thing
-                              ] ,
-                              [ rdf:type owl:Restriction ;
-                                owl:onProperty rpo:currentMaritalStatusStartDate ;
-                                owl:someValuesFrom rdfs:Literal
                               ] ;
           owl:disjointWith cpv:Dead .
 
 
 ###  https://w3id.org/italia/onto/CPV/Dead
-cpv:Dead rdf:type owl:Class ;
-         owl:equivalentClass [ rdf:type owl:Restriction ;
-                               owl:onProperty rpo:citizenshipAtTimeOfDeath ;
-                               owl:someValuesFrom owl:Thing
-                             ] ,
-                             [ rdf:type owl:Restriction ;
-                               owl:onProperty rpo:maritalStatusAtTimeOfDeath ;
-                               owl:someValuesFrom owl:Thing
-                             ] .
+cpv:Dead rdf:type owl:Class .
 
 
 ###  https://w3id.org/italia/onto/CPV/Person
@@ -678,7 +659,7 @@ rpo:Citizenship rdf:type owl:Class ;
                                       owl:onProperty rpo:citizenshipDenomination ;
                                       owl:someValuesFrom rdfs:Literal
                                     ] ;
-                rdfs:comment "Situazione giuridica soggettiva (complesso di diritti e di doveri) di una persona fisica nei suoi rapporti con uno Stato, il cui ordinamento giuridico ne regola fattispecie e modalità di acquisizione e perdita. La cittadinanza italiana si acquisisce di diritto (automaticamente): -per nascita (art. 1, l. n. 91/1992): a) il figlio di padre o di madre cittadini; b) chi è nato nel territorio della Repubblica se entrambi i genitori sono ignoti o apolidi, ovvero se il figlio non segue la cittadinanza dei genitori secondo la legge dello Stato al quale questi appartengono. È considerato cittadino per nascita il figlio di ignoti trovato nel territorio della Repubblica, se non venga provato il possesso di altra cittadinanza; -da parte di un minorenne straniero adottato da cittadino italiano (art. 3, l. n.91/92). Può essere riconosciuta per beneficio di legge agli stranieri nati e residenti ininterrottamente in Italia fino al 18mo anno di età ovvero in casi particolari di discendenti in linea retta di cittadini per nascita con dichiarazione resa all’Ufficiale di stato civile (artt. 4 e 23, l. 91/92). Può essere concessa: per naturalizzazione in caso di residenza legale (iscrizione all’anagrafe della popolazione residente, art. 1 DPR n.572/1993 e la cui durata varia in funzione della ricorrenza di altri requisiti previsti dall’art. 9 l. n. 91/1992), con decreto del Presidente della Repubblica, sentito il Consiglio di Stato, su proposta del Ministro dell'interno; -per matrimonio (art. 5, l. n. 91/1992): a istanza dell’interessato, con provvedimento del Prefetto ovvero con decreto del Ministro dell’interno (art. 7 l. n. 91/1992 e Direttiva ministeriale 7.3.2012)."@it ;
+                rdfs:comment "Situazione giuridica soggettiva (complesso di diritti e di doveri) di una persona fisica nei suoi rapporti con uno Stato, il cui ordinamento giuridico ne regola fattispecie e modalità di acquisizione e perdita.La cittadinanza italiana si acquisisce di diritto (automaticamente):-per nascita (art. 1, l. n. 91/1992): a) il figlio di padre o di madre cittadini; b) chi è nato nel territorio della Repubblica se entrambi i genitori sono ignoti o apolidi, ovvero se il figlio non segue la cittadinanza dei genitori secondo la legge dello Stato al quale questi appartengono. È considerato cittadino per nascita il figlio di ignoti trovato nel territorio della Repubblica, se non venga provato il possesso di altra cittadinanza;-da parte di un minorenne straniero adottato da cittadino italiano (art. 3, l. n.91/92).Può essere riconosciuta per beneficio di legge agli stranieri nati e residenti ininterrottamente in Italia fino al 18mo anno di età ovvero in casi particolari di discendenti in linea retta di cittadini per nascita con dichiarazione resa all’Ufficiale di stato civile (artt. 4 e 23, l. 91/92).Può essere concessa:per naturalizzazione in caso di residenza legale (iscrizione all’anagrafe della popolazione residente, art. 1 DPR n.572/1993 e la cui durata varia in funzione della ricorrenza di altri requisiti previsti dall’art. 9 l. n. 91/1992), con decreto del Presidente della Repubblica, sentito il Consiglio di Stato, su proposta del Ministro dell'interno;-per matrimonio (art. 5, l. n. 91/1992): a istanza dell’interessato, con provvedimento del Prefetto ovvero con decreto del Ministro dell’interno (art. 7 l. n. 91/1992 e Direttiva ministeriale 7.3.2012)."@it ;
                 rdfs:label "Citizenship"@en ,
                            "Cittadinanza"@it .
 
@@ -833,14 +814,6 @@ rpo:RegisteredFamily rdf:type owl:Class ;
 ###  https://w3id.org/italia/onto/RPO/RegisteredResidence
 rpo:RegisteredResidence rdf:type owl:Class ;
                         owl:equivalentClass [ rdf:type owl:Restriction ;
-                                              owl:onProperty rpo:registeredResidenceInCity ;
-                                              owl:someValuesFrom owl:Thing
-                                            ] ,
-                                            [ rdf:type owl:Restriction ;
-                                              owl:onProperty rpo:residenceInAddress ;
-                                              owl:someValuesFrom owl:Thing
-                                            ] ,
-                                            [ rdf:type owl:Restriction ;
                                               owl:onProperty [ owl:inverseOf rpo:hasRegisteredResidence
                                                              ] ;
                                               owl:someValuesFrom owl:Thing
@@ -878,12 +851,17 @@ rpo:RegisteredResidentPerson rdf:type owl:Class ;
                                                    owl:someValuesFrom owl:Thing
                                                  ] ,
                                                  [ rdf:type owl:Restriction ;
+                                                   owl:onProperty rpo:belongsToRegisteredFamilyOrCohabitance ;
+                                                   owl:someValuesFrom owl:Thing
+                                                 ] ,
+                                                 [ rdf:type owl:Restriction ;
                                                    owl:onProperty rpo:currentlyHasRegisteredResidenceIn ;
                                                    owl:someValuesFrom owl:Thing
                                                  ] ,
                                                  [ rdf:type owl:Restriction ;
                                                    owl:onProperty rpo:residentPersonID ;
-                                                   owl:someValuesFrom rdfs:Literal
+                                                   owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                   owl:onDataRange xsd:string
                                                  ] ;
                              rdfs:comment "Persona fisica avente dimora abituale in un determinato Comune come risultante nell'anagrafe della popolazione residente (artt. 3 e 7 DPR n. 223/1989; art. 43 cc). "@it ;
                              rdfs:label "Persona anagraficamente residente"@it ,
@@ -901,7 +879,7 @@ rpo:RegistryOfficeRegistrationMotivation rdf:type owl:Class ;
 ###  https://w3id.org/italia/onto/RPO/RegistryOfficeRemovalMotivation
 rpo:RegistryOfficeRemovalMotivation rdf:type owl:Class ;
                                     rdfs:comment "Classificazione degli eventi di cancellazione anagrafica secondo i possibili motivi: morte accertata; morte presunta giudizialmente dichiarata; trasferimento di residenza all’estero di uno straniero; irreperibilità; mancato rinnovo dimora abituale/permesso di soggiorno; rettifiche post censuarie; perdita della cittadinanza italiana (AIRE); altro motivo."@it ;
-                                    rdfs:label "Motivo cancellazioneanagrafe"@it ,
+                                    rdfs:label "Motivo cancellazione anagrafe"@it ,
                                                "Registry office removal motivation"@en .
 
 
@@ -918,8 +896,7 @@ TI:TimeIndexedEvent rdf:type owl:Class .
 
 
 #################################################################
-#    General axioms
-#################################################################
+#    General axioms#################################################################
 
 [ rdf:type owl:Class ;
   owl:unionOf ( rpo:RegisteredCohabitance
@@ -933,7 +910,7 @@ TI:TimeIndexedEvent rdf:type owl:Class .
 ] .
 
 
-###  Generated by the OWL API (version 4.5.29) https://github.com/owlcs/owlapi
+###  Generated by the OWL API (version 2.4) https://github.com/owlcs/owlapi
 
 #################################################################
 #    Annotation properties

@@ -174,7 +174,7 @@
 
     <owl:ObjectProperty rdf:about="https://w3id.org/italia/onto/RPO/belongsToRegisteredFamilyOrCohabitance">
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:domain rdf:resource="https://w3id.org/italia/onto/CPV/Alive"/>
+        <rdfs:domain rdf:resource="https://w3id.org/italia/onto/RPO/RegisteredResidentPerson"/>
         <rdfs:label xml:lang="it">appartiene a famiglia o convivenza</rdfs:label>
         <rdfs:label xml:lang="en">belongs to registered family or cohabitance</rdfs:label>
     </owl:ObjectProperty>
@@ -212,8 +212,8 @@
     <owl:ObjectProperty rdf:about="https://w3id.org/italia/onto/RPO/citizenshipAtTimeOfDeath">
         <rdfs:domain rdf:resource="https://w3id.org/italia/onto/CPV/Dead"/>
         <rdfs:range rdf:resource="https://w3id.org/italia/onto/RPO/Citizenship"/>
-        <rdfs:label xml:lang="en">citizenship at time of death</rdfs:label>
-        <rdfs:label xml:lang="it">cittadinanza_al_decesso</rdfs:label>
+        <rdfs:label xml:lang="en">Citizenship at time of death</rdfs:label>
+        <rdfs:label xml:lang="it">Cittadinanza al decesso</rdfs:label>
     </owl:ObjectProperty>
     
 
@@ -331,7 +331,7 @@
     <owl:ObjectProperty rdf:about="https://w3id.org/italia/onto/RPO/hasRegisteredResidence">
         <rdfs:subPropertyOf rdf:resource="https://w3id.org/italia/onto/CPV/hasResidenceInTime"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#InverseFunctionalProperty"/>
-        <rdfs:domain rdf:resource="https://w3id.org/italia/onto/CPV/Person"/>
+        <rdfs:domain rdf:resource="https://w3id.org/italia/onto/RPO/RegisteredResidentPerson"/>
         <rdfs:range rdf:resource="https://w3id.org/italia/onto/RPO/RegisteredResidence"/>
         <rdfs:label xml:lang="it">ha residenza anagrafica</rdfs:label>
         <rdfs:label xml:lang="en">has registered residence</rdfs:label>
@@ -414,6 +414,7 @@
     <owl:ObjectProperty rdf:about="https://w3id.org/italia/onto/RPO/isCurrentlyPredominantlyCitizen">
         <rdfs:subPropertyOf rdf:resource="https://w3id.org/italia/onto/RPO/isCurrentlyCitizen"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+		<rdfs:comment xml:lang="it">La persona nei cui confronti è riconosciuta la cittadinanza da parte di più Stati è sottoposta alle rispettive leggi di ciascuno Stato di appartenenza. Nell'ordinamento italiano, nei rapporti di diritto internazionale privato, se la persona ha più cittadinanze, si applica la legge di quello tra gli Stati di appartenenza con il quale essa ha il collegamento più stretto. Se tra le cittadinanze vi è quella italiana, questa prevale (art. 19 legge 218/1995)</rdfs:comment>
         <rdfs:label xml:lang="en">is currently predominantly citizen</rdfs:label>
         <rdfs:label xml:lang="it">è attualmente prevalentemente cittadino</rdfs:label>
     </owl:ObjectProperty>
@@ -669,8 +670,8 @@
         <rdfs:domain rdf:resource="https://w3id.org/italia/onto/RPO/RegisteredResidentPerson"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
         <rdfs:comment xml:lang="it">Codice identificativo univoco attribuito dall&apos;Anagrafe Nazionale delle Persone Residenti (ANPR) a ciascun cittadino per garantire la circolarità dei dati anagrafici e l&apos;interoperabilità con le altre banche dati delle pubbliche amministrazioni e dei gestori di servizi pubblici. L’ID ANPR è attribuito ad ogni individuo all’atto della sua iscrizione in anagrafe e conseguente registrazione in ANPR. L’ID ANPR si contraddistingue per le seguenti caratteristiche: a. è alfanumerico con lunghezza di 9 caratteri compreso il check digit; b. è attribuito e associato univocamente ad ogni individuo già registrato in ANPR ovvero ad ogni individuo in fase di registrazione nell’ANPR; c. può essere generato soltanto dal sistema ANPR; d. non è ricavato dai dati anagrafici della persona a cui è attribuito; e. non contiene elementi identificativi dei dati anagrafici della persona a cui è attribuito; f. non può essere riassegnato; g. garantisce l’associazione immutabile al soggetto cui è attribuito; h. non fornisce evidenza di alcuna sequenzialità, tantomeno temporale; i. è dotato di check digit (il check digit è l’ultimo carattere dell’ID ANPR calcolato tramite uno specifico algoritmo per consentire di verificare la validità dei numeri che lo precedono); j. è possibile la ricostruzione del check digit&quot;. [art. 62, c.3, ultimo periodo, CAD; DM Ministero Interno 18.4.2023; artt. 7 e 17 DPR 223/1989]</rdfs:comment>
-        <rdfs:label xml:lang="it">ID persona residente</rdfs:label>
-        <rdfs:label xml:lang="en">residentPersonID</rdfs:label>
+        <rdfs:label xml:lang="it">Identificativo persona residente</rdfs:label>
+        <rdfs:label xml:lang="en">Resident person identifier </rdfs:label>
     </owl:DatatypeProperty>
     
 
@@ -679,9 +680,9 @@
 
     <owl:DatatypeProperty rdf:about="https://w3id.org/italia/onto/RPO/weddingDate">
         <rdfs:domain rdf:resource="https://w3id.org/italia/onto/CPV/Person"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
-        <rdfs:label xml:lang="it">dataMatrimonio</rdfs:label>
-        <rdfs:label xml:lang="en">wedding date</rdfs:label>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+        <rdfs:label xml:lang="it">Data di matrimonio</rdfs:label>
+        <rdfs:label xml:lang="en">Wedding date</rdfs:label>
     </owl:DatatypeProperty>
     
 
@@ -743,16 +744,6 @@
     <!-- https://w3id.org/italia/onto/CLV/Country -->
 
     <owl:Class rdf:about="https://w3id.org/italia/onto/CLV/Country">
-        <owl:equivalentClass>
-            <owl:Restriction>
-                <owl:onProperty>
-                    <rdf:Description>
-                        <owl:inverseOf rdf:resource="https://w3id.org/italia/onto/RPO/bornInCountry"/>
-                    </rdf:Description>
-                </owl:onProperty>
-                <owl:someValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
-            </owl:Restriction>
-        </owl:equivalentClass>
         <rdfs:label xml:lang="it">Stato</rdfs:label>
     </owl:Class>
     
@@ -781,12 +772,6 @@
                 <owl:someValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
             </owl:Restriction>
         </owl:equivalentClass>
-        <owl:equivalentClass>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/RPO/currentMaritalStatusStartDate"/>
-                <owl:someValuesFrom rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
-            </owl:Restriction>
-        </owl:equivalentClass>
         <owl:disjointWith rdf:resource="https://w3id.org/italia/onto/CPV/Dead"/>
     </owl:Class>
     
@@ -794,20 +779,7 @@
 
     <!-- https://w3id.org/italia/onto/CPV/Dead -->
 
-    <owl:Class rdf:about="https://w3id.org/italia/onto/CPV/Dead">
-        <owl:equivalentClass>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/RPO/citizenshipAtTimeOfDeath"/>
-                <owl:someValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
-            </owl:Restriction>
-        </owl:equivalentClass>
-        <owl:equivalentClass>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/RPO/maritalStatusAtTimeOfDeath"/>
-                <owl:someValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
-            </owl:Restriction>
-        </owl:equivalentClass>
-    </owl:Class>
+    <owl:Class rdf:about="https://w3id.org/italia/onto/CPV/Dead"/>
     
 
 
@@ -865,7 +837,7 @@
                 <owl:someValuesFrom rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
             </owl:Restriction>
         </owl:equivalentClass>
-        <rdfs:comment xml:lang="it">Situazione giuridica soggettiva (complesso di diritti e di doveri) di una persona fisica nei suoi rapporti con uno Stato, il cui ordinamento giuridico ne regola fattispecie e modalità di acquisizione e perdita. La cittadinanza italiana si acquisisce di diritto (automaticamente): -per nascita (art. 1, l. n. 91/1992): a) il figlio di padre o di madre cittadini; b) chi è nato nel territorio della Repubblica se entrambi i genitori sono ignoti o apolidi, ovvero se il figlio non segue la cittadinanza dei genitori secondo la legge dello Stato al quale questi appartengono. È considerato cittadino per nascita il figlio di ignoti trovato nel territorio della Repubblica, se non venga provato il possesso di altra cittadinanza; -da parte di un minorenne straniero adottato da cittadino italiano (art. 3, l. n.91/92). Può essere riconosciuta per beneficio di legge agli stranieri nati e residenti ininterrottamente in Italia fino al 18mo anno di età ovvero in casi particolari di discendenti in linea retta di cittadini per nascita con dichiarazione resa all’Ufficiale di stato civile (artt. 4 e 23, l. 91/92). Può essere concessa: per naturalizzazione in caso di residenza legale (iscrizione all’anagrafe della popolazione residente, art. 1 DPR n.572/1993 e la cui durata varia in funzione della ricorrenza di altri requisiti previsti dall’art. 9 l. n. 91/1992), con decreto del Presidente della Repubblica, sentito il Consiglio di Stato, su proposta del Ministro dell'interno; -per matrimonio (art. 5, l. n. 91/1992): a istanza dell’interessato, con provvedimento del Prefetto ovvero con decreto del Ministro dell’interno (art. 7 l. n. 91/1992 e Direttiva ministeriale 7.3.2012).</rdfs:comment>
+        <rdfs:comment xml:lang="it">Situazione giuridica soggettiva (complesso di diritti e di doveri) di una persona fisica nei suoi rapporti con uno Stato, il cui ordinamento giuridico ne regola fattispecie e modalità di acquisizione e perdita.La cittadinanza italiana si acquisisce di diritto (automaticamente):-per nascita (art. 1, l. n. 91/1992): a) il figlio di padre o di madre cittadini; b) chi è nato nel territorio della Repubblica se entrambi i genitori sono ignoti o apolidi, ovvero se il figlio non segue la cittadinanza dei genitori secondo la legge dello Stato al quale questi appartengono. È considerato cittadino per nascita il figlio di ignoti trovato nel territorio della Repubblica, se non venga provato il possesso di altra cittadinanza;-da parte di un minorenne straniero adottato da cittadino italiano (art. 3, l. n.91/92).Può essere riconosciuta per beneficio di legge agli stranieri nati e residenti ininterrottamente in Italia fino al 18mo anno di età ovvero in casi particolari di discendenti in linea retta di cittadini per nascita con dichiarazione resa all’Ufficiale di stato civile (artt. 4 e 23, l. 91/92).Può essere concessa:per naturalizzazione in caso di residenza legale (iscrizione all’anagrafe della popolazione residente, art. 1 DPR n.572/1993 e la cui durata varia in funzione della ricorrenza di altri requisiti previsti dall’art. 9 l. n. 91/1992), con decreto del Presidente della Repubblica, sentito il Consiglio di Stato, su proposta del Ministro dell&apos;interno;-per matrimonio (art. 5, l. n. 91/1992): a istanza dell’interessato, con provvedimento del Prefetto ovvero con decreto del Ministro dell’interno (art. 7 l. n. 91/1992 e Direttiva ministeriale 7.3.2012).</rdfs:comment>
         <rdfs:label xml:lang="en">Citizenship</rdfs:label>
         <rdfs:label xml:lang="it">Cittadinanza</rdfs:label>
     </owl:Class>
@@ -1105,18 +1077,6 @@
     <owl:Class rdf:about="https://w3id.org/italia/onto/RPO/RegisteredResidence">
         <owl:equivalentClass>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/RPO/registeredResidenceInCity"/>
-                <owl:someValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
-            </owl:Restriction>
-        </owl:equivalentClass>
-        <owl:equivalentClass>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/RPO/residenceInAddress"/>
-                <owl:someValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
-            </owl:Restriction>
-        </owl:equivalentClass>
-        <owl:equivalentClass>
-            <owl:Restriction>
                 <owl:onProperty>
                     <rdf:Description>
                         <owl:inverseOf rdf:resource="https://w3id.org/italia/onto/RPO/hasRegisteredResidence"/>
@@ -1174,6 +1134,12 @@
         </owl:equivalentClass>
         <owl:equivalentClass>
             <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/italia/onto/RPO/belongsToRegisteredFamilyOrCohabitance"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <owl:equivalentClass>
+            <owl:Restriction>
                 <owl:onProperty rdf:resource="https://w3id.org/italia/onto/RPO/currentlyHasRegisteredResidenceIn"/>
                 <owl:someValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
             </owl:Restriction>
@@ -1181,7 +1147,8 @@
         <owl:equivalentClass>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="https://w3id.org/italia/onto/RPO/residentPersonID"/>
-                <owl:someValuesFrom rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
             </owl:Restriction>
         </owl:equivalentClass>
         <rdfs:comment xml:lang="it">Persona fisica avente dimora abituale in un determinato Comune come risultante nell&apos;anagrafe della popolazione residente (artt. 3 e 7 DPR n. 223/1989; art. 43 cc). </rdfs:comment>
@@ -1206,7 +1173,7 @@
 
     <owl:Class rdf:about="https://w3id.org/italia/onto/RPO/RegistryOfficeRemovalMotivation">
         <rdfs:comment xml:lang="it">Classificazione degli eventi di cancellazione anagrafica secondo i possibili motivi: morte accertata; morte presunta giudizialmente dichiarata; trasferimento di residenza all’estero di uno straniero; irreperibilità; mancato rinnovo dimora abituale/permesso di soggiorno; rettifiche post censuarie; perdita della cittadinanza italiana (AIRE); altro motivo.</rdfs:comment>
-        <rdfs:label xml:lang="it">Motivo cancellazioneanagrafe</rdfs:label>
+        <rdfs:label xml:lang="it">Motivo cancellazione anagrafe</rdfs:label>
         <rdfs:label xml:lang="en">Registry office removal motivation</rdfs:label>
     </owl:Class>
     
